@@ -1,0 +1,23 @@
+[project]
+name = "yupi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Tony Mason", email = "fsgeek@cs.ubc.ca" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "opentimestamps-client>=0.7.2",
+    "pydantic>=2.13.4",
+    "pytest>=9.1.1",
+    "python-arango>=8.3.3",
+    "pyyaml>=6.0.3",
+]
+
+[project.scripts]
+yupi = "yupi:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
