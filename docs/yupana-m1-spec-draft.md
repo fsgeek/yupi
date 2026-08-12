@@ -44,6 +44,8 @@ Rungs (from proposal §6.1): actor-only → +object → +related-entity → +lin
 
 Thread names drawn per-episode from a pool of ≥50 tokens for ≤4 threads; locks and devices proportionally. No token ever has a stable semantic role. Held-out evaluation reserves a subset of names never seen in training. This constraint is arithmetic, not preference: without pool ≫ count, held-out-binding evaluation is impossible.
 
+*Warning added 2026-08-11 (from full-text read of arXiv:2607.19379):* per-episode symbol relabeling is empirically **scale-invariantly fatal** (2.8M→316M params, immune to extended training) when the discriminative statistic requires *computing over* symbol identities (e.g., composing per-episode bindings with arithmetic), but harmless when the required structure is purely *relational* (attention key-matching). Audit requirement: every headline Yupana condition must depend only on relational structure over per-episode names (who owns, who waits, who wakes). Any condition that would require arithmetic keyed to episode-random tokens (counters, timers over fresh names) must be either redesigned or explicitly designated a learnability-boundary condition — never left as an accident.
+
 ### D4 — Support-bound co-design (promoted from CLAUDE.md constraint (b))
 
 The sparsest interface produces the fastest posterior-support growth and is the binding computational constraint. Requirement: before any transformer exists, measure reachable-support growth of the exact filter under the actor-only interface on the base configuration. If support growth under the sparsest rung exceeds the enumeration budget, the world shrinks — not the ladder.
