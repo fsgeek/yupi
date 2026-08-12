@@ -54,6 +54,12 @@ The sparsest interface produces the fastest posterior-support growth and is the 
 
 One schema across all interfaces; masked fields carry a distinguished MASKED token. Vocabulary size and record length constant across conditions, so observability gains cannot masquerade as tokenization gains.
 
+### D6 — Belief update must be in the transformer-learnable regime (added 2026-08-11, from full-text read of arXiv:2602.14814)
+
+Siems et al. show 265M from-scratch transformers fail S₅ permutation-composition state tracking outright even under dense observation — an *expressivity* failure, not an information failure. If Yupana's hidden dynamics embed group-word-problem-hard structure (e.g., scheduling rules that compose like permutations), the accessible-representation gap silently absorbs an architecture-expressivity term and the three-gap decomposition's interpretation corrupts.
+
+*Requirement:* M1's characterization must include an argument (or measurement) that Yupana's exact belief update lies within the transformer-learnable regime — e.g., bounded-depth filtering without hard group-composition subproblems. If any condition intentionally crosses that boundary, architecture becomes an explicit experimental factor for that condition, and it is labeled as such.
+
 ## Configurations
 
 - **C0 (validation):** 2 threads, 1 CPU, 1 lock, 1 device, queue depth 1. Small enough for exhaustive enumeration of the full belief-state dynamics. Every filtering result must match enumeration exactly here before C1 is touched.

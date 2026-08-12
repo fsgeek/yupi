@@ -1,0 +1,50 @@
+# Reading Notes — Founding-Day Deep Reads (2026-08-11)
+
+Companion to `literature-review-2026-08-11.md`, which was abstracts-only. Six papers have now been read in full text (LaTeXML HTML or PDF, cover to cover; figures available as captions only). This document records what the abstracts could not tell us. Everything below is verified from full text unless marked.
+
+## Papers read
+
+1. arXiv:2607.17060 — Aswadi, Ma & Wei (Monash), *What does a Bayes-filtered transformer believe? A predictive Monte Carlo approach*
+2. arXiv:2512.22471 (v5) — Agarwal, Dalal & Misra (Columbia), *The Bayesian Geometry of Transformer Attention* — "Paper I of the Bayesian Attention Trilogy" (II = 2512.22473 gradient dynamics; III = 2512.23752 production-scale)
+3. arXiv:2607.19379 — Dalal, Misra & Parekh, *Bayesian Wind Tunnels for Model Selection*
+4. arXiv:2605.20824 — "Abdullah X" (Zephara AI), *Markovian Circuit Tracing for Transformer State Dynamics* — authorship verified as-is: independent, unreviewed, v1-only preprint
+5. arXiv:2602.14814 (v3) — Siems, Grazzi et al. (Freiburg/Microsoft/Tübingen), *Learning State-Tracking from Code Using Linear RNNs*
+6. arXiv:2604.05469 — Dalla Riva (Baffelan OÜ), *Task Ecologies and the Evolution of World-Tracking Representations in LLMs* — single-author, no venue, mathematically serious (theorem-proof, 50 pp.)
+
+## Threat-assessment deltas (vs. the abstracts-only review)
+
+**Confirmed unclaimed, now at full-text confidence:** interface-as-variable over a fixed generator; interface-conditioned exact ceilings; the three-gap decomposition; structured systems worlds. In the wind tunnels the HMM generator parameters are handed to the model *in the trace header* — their worlds are engineered so no observation gap can open; the gap-opening experiment would require inverting their design principle.
+
+**Newly occupied prior art:** 2605.20824 owns the conjunction "exact HMM ceilings + tiny transformers + excess-over-Bayes scalar + belief probes + exact-counterfactual state forcing." Unreviewed and methodologically leaky (extractors fit and evaluated on the same validation split; oracle Hungarian matching), race threat low — but citation obligation absolute. Our claim must rest on the interface axis and the decomposition, never on "exact ceilings + tiny models" alone.
+
+**The decomposition has a formal neighbor:** Dalla Riva's Thm 8 / Prop 40: loss = H(Y|C,W) + JS-excess Δ + decoder-class gap Γ. Structural differences that are the defense: his floor is **oracle-conditioned on the world state** — no observation channel exists in his framework, so nothing corresponds to our observation gap; and his "encoding" is the behaviorally induced output partition — activations are deliberately bracketed, so his Δ is closer to our gap 3 than our gap 2. In the degenerate case (interface makes state exactly recoverable; activations replaced by the behavioral partition) our decomposition collapses onto his. We extend the telescope upstream (interface-conditioned floor, varied experimentally) and insert the mechanistic middle term. A reviewer will find this paper; the differentiation must be in v0.3 before they supply it. His Prop 78 (off-ecology non-identifiability) belongs in the impossibility-result lineage citations.
+
+**Gap-3 time pressure, sharpened:** Wei et al. define implicit posteriors *only* via representation theorems (de Finetti / Diaconis–Freedman); the Markov case has no relaxed theory and they verify none of their own validity conditions, certifying post hoc against closed-form references. Their related-work section explicitly names combining PMC (output-side) with belief-state geometry (internal-side) as future work — that combination is an empirical exposure-gap measurement without a definition. Meanwhile 2607.19379 empirically demonstrates the fourth gap (verbalized CoT near-chance at 6–9% while logits carry 98.7% on the correct answer) and declines to formalize it. Both bookends of the query-class theorem are published: immediate logits provably lossy (distinct posteriors, identical predictive means — their Fig. 2); full continuations complete only under c.i.d.-type idealizations trained models empirically violate. The lattice between is open. Dalla Riva's Def. 39/Prop. 40 (gap relative to an admissible decoder class) made the same DPI repair on the decoding side and is a ready-made scaffold.
+
+**Clock update:** the fastest adjacent group is the Columbia trilogy (three papers + model selection in ~7 months, already at production-scale models), not Simplex. A second cluster is forming on the linear-RNN/SSM side: Siems et al. plus Shaj et al. (Kalman linear attention, 2602.10743) and Zhao et al. (linear recurrent memory in PO-RL, 2605.31261) — add both to the watch list.
+
+## Design consequences for Yupana (applied to the M1 spec)
+
+1. **Relational-only binding audit (D3, committed earlier today):** 2607.19379's perceptual-access 2×2 shows per-episode symbol relabeling is scale-invariantly fatal (2.8M→316M, immune to training) when the discriminative statistic requires computing over symbol identities, harmless when the structure is relational. With a fixed-relabeling stationarity control isolating semantic stationarity as the operative factor.
+2. **Expressivity confound (new D6):** Siems et al. show 265M from-scratch transformers fail S₅ permutation-composition state tracking outright even with dense reveals — an *expressivity* failure, not an information failure. If Yupana's dynamics embed group-word-problem-hard structure (e.g., permutation-like scheduling compositions), the accessible-representation gap silently absorbs an architecture-expressivity term and the decomposition's interpretation corrupts. M1 must characterize whether Yupana's belief update lies in the transformer-learnable regime, or architecture becomes an explicit factor.
+3. **Capacity relative to belief-state dimension:** the weakest ceiling-match in Wei et al. was a 90-parameter latent on a 100K model. Yupana's sparse-interface posterior support will far exceed 5 HMM states; model-size floors should be set against measured support dimension (compounds D4).
+4. **Hostile-interface templates:** Siems et al.'s adversarial reveal sequences (never reveal one entry → belief mass on it decays) are a constructive template for deliberately hostile interface conditions. Their PFSA-SR formalism (hard support-pruning reveals, L1-renormalized filtering) is a clean special case of Yupana's filtering worth citing in the M1 spec.
+
+## Methodology to adopt outright
+
+- **State-forcing control battery** (2605.20824, Table 3): patch toward exact counterfactual target e_iTE; controls = unpatched / wrong-state / mean-activation / moment-matched-random / shuffled-label / true-state-centroid. Adopt with the strictness upgrade they skipped: fit extractors on train activations, intervene on held-out.
+- **Belief-vs-physical intervention targets as a hypothesis:** their recovered belief-like centroid *beat the true-state centroid* as an intervention target. Yupana makes both exactly available — test causal use against belief-state and physical-state targets separately. (Supports H1.)
+- **Exact-calibration diagonal figures** (Dalla Riva Fig. 1: measured excess vs. theoretical excess on the diagonal in enumerable worlds) — mirror as the Milestone 1 validation figure convention.
+- **Split-vs-merge threshold** (Dalla Riva Thm 55): a distinction survives capacity pressure iff its expected JS gain exceeds β·h(λ). Yields falsifiable predictions about *which* Yupana distinctions small models merge first — testable against exact belief geometry; a candidate confirmatory hypothesis for later preregistration.
+- **Wind-tunnel calibration numbers as prior evidence:** 2–3M-param transformers reach exact ceilings at 10⁻³–10⁻⁵ bits (entropy MAE; KL 10⁻⁴ nats) on single-GPU, sub-3-hour runs, across two independent groups. Validates the 4090 plan and the 1M–50M band for the ceiling-matching regime. (Cite the parameter-matched 0.049-bit figure, not only the task-optimized 7.5×10⁻⁵ one.)
+
+## Differentiation sentences (drafted for v0.3 related work)
+
+- *vs. 2605.20824:* Markovian Circuit Tracing benchmarks belief probing and counterfactual state forcing against exact HMM ground truth, but holds the observation channel fixed and reports a single excess-over-Bayes scalar; Yupi treats the observation interface as the primary experimental variable over a fixed generator and decomposes loss against exact interface-conditioned ceilings.
+- *vs. 2602.14814:* Siems et al. vary the spacing of in-band state reveals as a supervision-density axis and measure behavioral accuracy, analyzing reveals through linear-RNN representational stability; Yupi varies what the trace semantically carries over a fixed stochastic generator and quantifies each interface's contribution as exact posterior entropy and per-gap loss.
+- *vs. 2604.05469:* Dalla Riva decomposes Bayes-optimal loss into an irreducible floor plus JS excess for encodings with oracle access to the world state, adding a decoder-class deployment gap; Yupi's floor is conditioned on an observation interface that never grants oracle access — contributing an observation gap absent from that framework — and grounds the representational term in activations against exact belief geometry, which that framework deliberately brackets.
+- *vs. wind tunnels (2512.22471, 2607.19379):* the wind-tunnel program calibrates how exactly transformers reach Bayes-optimal posteriors when the generator is fully carried by the trace; Yupi asks what happens when it is not — the interface is the specimen, and the ceilings become interface-indexed.
+
+## Still unread / unverified
+
+Trilogy Papers II (2512.22473) and III (2512.23752); Dalla Riva's companion theory paper (EcoEvoRxiv) and code; Wei et al.'s supplementary file; Shaj 2602.10743 and Zhao 2605.31261 (new watch items); Alignment Forum 2026 (still the likeliest hiding place for unindexed Simplex work). Figure graphics in all six papers (captions only).
