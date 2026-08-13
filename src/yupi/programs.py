@@ -67,6 +67,24 @@ def c0b_programs() -> Tuple[Program, Program]:
     return (thread_0, thread_1)
 
 
+def c0c_programs() -> Tuple[Program, Program, Program]:
+    """Return the canonical C0c program triple.
+
+    Thread 0: (io(0),)
+    Thread 1: (COMPUTE,)
+    Thread 2: (COMPUTE,)
+
+    The minimal workload for the 2-CPU scheduling witnesses: threads 1-2
+    supply the pure-compute pair whose dispatch and execution ordering the
+    scheduler must choose between; thread 0's single IO puts a request in
+    flight so Stage A completion can fire while both CPU slots are busy.
+    """
+    thread_0 = (io(0),)
+    thread_1 = (COMPUTE,)
+    thread_2 = (COMPUTE,)
+    return (thread_0, thread_1, thread_2)
+
+
 def c0a_programs() -> Tuple[Program, Program]:
     """Return the canonical C0a program pair.
 
