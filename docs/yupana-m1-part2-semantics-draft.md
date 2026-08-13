@@ -1,8 +1,10 @@
-# Yupana Milestone 1 — Part II: Formal Semantics (Draft v0.2)
+# Yupana Milestone 1 — Part II: Formal Semantics (Draft v0.2.1)
 
-**Status:** exploratory draft, 2026-08-12; updated same day for Part I v0.2.3 (predictive-state targets §5, witnesses 10–11, symmetric witness quality). This is the statute to Part I's constitution (`yupana-m1-spec-draft.md`, frozen at v0.2.3, commit `00ef2a7`). Every normative choice below carries rationale; contested choices carry a falsifier or revisit trigger. Attack freely.
+**Status:** exploratory draft, 2026-08-12; current through the 2026-08-13 correction round and Part I v0.2.4. This is the statute to Part I's constitution (`yupana-m1-spec-draft.md`). Every normative choice below carries rationale; contested choices carry a falsifier or revisit trigger. Attack freely.
 
 **v0.2 (2026-08-13, truncation review round):** §2's truncated-window paragraph replaced by normative truncation, window-sampling, and shifted-reference semantics; the v0.1 offset-known default is **inverted** (offset-unanchored base), with the inversion recorded in place. §4's TIME_CLASS becomes a maskable absolute field. Provenance: derived-prior principle and two-reference decomposition proposed in-session (Claude instance); the IID/generalization boundary forced by Tony's question; support-containment admissibility rule and its two measure-theoretic amendments from cross-family review (ChatGPT), adopted after verification with two sharpenings (process-vs-empirical support; exactness boundary at transcendental diagnostics). Motivating measurement: commit `3e5a19f` — the C0 family is lossless at every rung at full context from reset, so all interface-rung grip at validation scale lives on the axes this section defines.
+
+**v0.2.1 (2026-08-13, cross-document correction round):** the fixed-horizon window measure is made consistent with terminal episodes; unanchored inference retains the latent window position jointly rather than averaging anchored posteriors with fixed weights; context length $L$ and D8 bucket size $B$ receive distinct notation. The shifted-reference rule now separates exact rational density ratios from numerical logarithms and reports observation shift separately from conditional-target shift. §9 and Part I D10 are reconciled with the full-context redundancy measured at `3e5a19f`. `CLAUDE.md` is re-graded as founding orientation rather than normative authority. These are corrections to v0.2's enacted direction, not a reversal of it.
 
 Contract: this document discharges the twelve Part II items enumerated at the end of Part I. The mapping is: §1→item 1, §2→item 2, §3→item 3, §4→item 4, §5→items 5+9, §6→items 6+10, §7→item 7, §8→item 8, §9→item 12, §10→item 11.
 
@@ -31,13 +33,29 @@ $$S_t = (\mathbf{pc}, \mathbf{st}, \mathbf{run}, \rho, \mathbf{own}, \mathbf{wq}
 
 **Initial state $\mu_0$:** deterministic modulo naming — all threads at $\mathbf{pc}=0$, RUNNABLE, $\mathbf{run} = \emptyset$, locks FREE, queues empty; $\sigma$ drawn uniformly from injections. So $\mu_0$ is uniform over the naming orbit of a single structural state. *(Rationale: a known reset state makes the full-episode condition the zero of the context-as-observability axis, per proposal §6.2.)*
 
-**Episode boundary:** an explicit RESET record, visible at **every** rung *(rationale: episode-boundary observability is not an interface rung under study in M1; making it universal keeps the ladder about within-episode information)*. Episodes run to a fixed horizon $T_{ep}$ (parameter) or until all threads TERMINATED, whichever is first.
+**Episode boundary and length:** an explicit RESET record $O_0$, visible at **every** rung when it falls within the available context *(rationale: episode-boundary observability is not an interface rung under study in M1; making the field universal keeps the ladder about within-episode information)*. The window-generating process always produces transition records $O_1,\ldots,O_{T_{ep}}$ through a fixed horizon $T_{ep}$, chosen as a multiple of D8 bucket size $B$. If all threads terminate earlier, §3.6's absorbing terminal IDLE self-loop supplies the remaining records. Thus “episode” means the fixed record sequence for corpus and exact-measure purposes; a simulator UI may stop displaying at termination, but that presentation choice does not change the training path measure.
 
 **Truncation, window sampling, and shifted-reference semantics** *(v0.2, 2026-08-13 review round; supersedes the v0.1 offset-known default — the inversion is recorded here, not silently applied).*
 
-*(a) Training window protocol.* Episodes run from $\mu_0$ to $T_{ep}$; a window position $t \sim \mathrm{Uniform}\{1..T_{ep}\}$ is drawn; the observation is the last $\min(k, t)$ records, with $k$ the context-length condition parameter. **The truncation prior is derived, not stipulated:** the exact-filter prior is whatever marginal this sampling law induces. Rationale: a Bayes ceiling is a ceiling *for a learner* only under the learner's own generative process; any stipulated prior the training distribution does not induce converts prior mismatch into a phantom accessible-representation term and the decomposition stops decomposing.
+*(a) Training window protocol.* Generate $O_{0:T_{ep}}$ as above. Let $L$ be the context horizon in transition records, constrained to a multiple of $B$, and draw a delivered-bucket endpoint
 
-*(b) Base condition: offset-unanchored.* The prior at window start is the $t_0$-mixture of exact marginals $P(S_{t_0})$ induced by (a). This inverts v0.1's default (offset known, "lost history, not lost clock"): review found the absolute offset is a covert information channel that partially undoes the truncation it rides on. The anchored condition remains defined and is priced under (e); v0.1's falsifier anticipated the offset-unknown variant — the round made it the base.
+$$
+T \sim \mathrm{Uniform}(\mathcal E_B), \qquad \mathcal E_B=\{B,2B,\ldots,T_{ep}\}, \qquad U=\max(0,T-L).
+$$
+
+The serialized window is
+
+$$
+H^{(L)}_T =
+\begin{cases}
+(O_0,O_1,\ldots,O_T), & U=0,\\
+(O_{U+1},\ldots,O_T), & U>0.
+\end{cases}
+$$
+
+Thus every truncated window contains complete delivered buckets; RESET is included exactly when the window reaches episode start and is not charged against the $L$-transition-record horizon. Its presence and the resulting one-record length difference are intentional synchronization evidence. **The truncation prior is derived, not stipulated:** the exact-filter prior is the marginal induced by this joint episode/endpoint/window law. Rationale: a Bayes ceiling is a ceiling *for a learner* only under the learner's own generative process; any stipulated prior the training distribution does not induce converts prior mismatch into a phantom accessible-representation term and the decomposition stops decomposing.
+
+*(b) Base condition: offset-unanchored.* The observer is not given $T$ or $U$. Exact inference therefore retains a **joint** belief over latent start offset and state $(U,S_U)$. Equivalently, an implementation may retain one anchored component per compatible $U$ together with that component's evidence likelihood. After observing $h$, the mixture weights are posterior weights $P(U\mid h)$; they are not frozen at their sampling-prior values. Window length, the presence of RESET, and record content are legitimate evidence about position and must update those weights. This inverts v0.1's default (offset known, "lost history, not lost clock"): review found the absolute offset is a covert information channel that partially undoes the truncation it rides on. The anchored condition remains defined and is priced under (e); v0.1's falsifier anticipated the offset-unknown variant — the round made it the base.
 
 *(c) Anchoring is a maskable field, not a protocol fork.* TIME_CLASS carries the absolute bucket index; the base condition masks it (§4); the anchored condition is a rung-style unmasking of the same schema. Anchored evaluation of a *model* is admissible only by promotion, per (e).
 
@@ -45,9 +63,21 @@ $$S_t = (\mathbf{pc}, \mathbf{st}, \mathbf{run}, \rho, \mathbf{own}, \mathbf{wq}
 
 *(e) Shifted-reference rule (normative).* For an evaluation process $Q \neq P$ (the training process), with $f_Q, f_P$ the exact Bayes predictors of the two processes and $f_M$ the model:
 
-- A **model-generalization row** (shifted ceiling $f_Q$; transplanted reference $f_P$; model $f_M$) is admissible only under process-level absolute continuity, established on the joint episode-path/window measure and required at two marginals: $Q_H \ll P_H$ (the transplant is defined on $Q$'s observations) **and** $Q_{H,Z} \ll P_{H,Z}$ (log-score comparisons are finite; where this fails the row reports infinite transplant cost explicitly rather than being silently dropped). *Process* support is the criterion, not empirical-sample support: $f_P$ is defined on unsampled-but-possible windows — the same fact D3's exchangeable split relies on.
-- Decomposition and names: $R_Q(f_M) - R_Q(f_Q) = \underbrace{[R_Q(f_P) - R_Q(f_Q)]}_{\text{transplant cost, } \ge 0} + \underbrace{[R_Q(f_M) - R_Q(f_P)]}_{\text{learner residual, signed}}$. The transplant cost prices the *unchanged $P$-optimal rule* under $Q$; it is not a floor for all learners, and a model may outperform the transplant (negative residual).
-- Mandatory per-row diagnostics, separating admissibility, reweighting severity, and finite-sample coverage: the exact log-density-ratio range of $dQ_H/dP_H$ (rational ratios — exact); $D_{\mathrm{KL}}(Q_H \| P_H)$ or an equivalent expected-shift measure *(transcendental: reported at declared precision — the Fraction-exactness discipline covers measures and ratios, not logarithms)*; the $Q$-mass of windows absent from the empirical training sample; a $Q$-weighted summary of empirical training counts. **Artifact requirement:** the training-sample window census is a retained deliverable; the coverage diagnostics are computable only if it exists.
+- A **model-generalization row** (shifted ceiling $f_Q$; transplanted reference $f_P$; model $f_M$) is admissible only under process-level absolute continuity. When $P$ and $Q$ share a common joint episode-path/endpoint space $J$, require $Q_J \ll P_J$; the relevant measurable marginals then inherit absolute continuity. At the scored interface, verify and report both $Q_H \ll P_H$ (the transplant is defined on $Q$'s observations) and $Q_{H,Z} \ll P_{H,Z}$ (expected log loss is finite). If the first holds but the second fails, the transplant is defined but receives infinite log-loss cost; report that result rather than dropping the row. *Process* support is the criterion, not empirical-sample support: $f_P$ is defined on unsampled-but-possible windows — the same fact D3's exchangeable split relies on.
+- Under the declared risk $R_Q$, decomposition and names are $R_Q(f_M) - R_Q(f_Q) = \underbrace{[R_Q(f_P) - R_Q(f_Q)]}_{\text{transplant cost, } \ge 0} + \underbrace{[R_Q(f_M) - R_Q(f_P)]}_{\text{learner residual, signed}}$. The nonnegativity follows because $f_Q$ is Bayes-optimal for that risk. The transplant cost prices the *unchanged $P$-optimal rule* under $Q$; it is not a floor for all learners, and a model may outperform the transplant (negative residual).
+- Mandatory per-row diagnostics separate admissibility, reweighting severity, conditional-target shift, and finite-sample coverage. Report: (i) the range of $Q_H(h)/P_H(h)$ over $h$ with $Q_H(h)>0$ as exact rational ratios; any logarithmic rendering at declared numerical precision; (ii) $D_{\mathrm{KL}}(Q_H \| P_H)$; (iii) the conditional-target divergence
+
+  $$
+  \mathbb{E}_{h\sim Q_H} D_{\mathrm{KL}}\!\left(Q(Z\mid h)\,\|\,P(Z\mid h)\right),
+  $$
+
+  which equals transplant cost under expected log loss; and (iv) the joint check
+
+  $$
+  D_{\mathrm{KL}}(Q_{H,Z}\|P_{H,Z}) = D_{\mathrm{KL}}(Q_H\|P_H) + \mathbb{E}_{h\sim Q_H}D_{\mathrm{KL}}\!\left(Q(Z\mid h)\,\|\,P(Z\mid h)\right).
+  $$
+
+  KL terms and log ratios are transcendental in general and are reported at declared precision; probability measures and density ratios remain exact Fractions. Also report the $Q$-mass of windows absent from the empirical training sample and a $Q$-weighted summary of empirical training counts. **Artifact requirement:** the training-sample window census is a retained deliverable; the coverage diagnostics are computable only if it exists.
 - **Information-expanding shifts** (observations outside $P$'s support by construction — e.g., unmasking TIME_CLASS): oracle rows only — the shifted ceiling plus a **declared-coarsening reference** (remask the expanded field), constituting a value-of-information analysis. Model rows for such shifts require either applying the declared coarsening to the model's inputs, or promotion of the shift to a *trained* interface condition (a ladder rung). Reserving vocabulary for never-trained values does not make an eval-only model claim admissible.
 
 ## §3 Transition kernel
@@ -93,7 +123,7 @@ If no completion fired and no thread can step: emit IDLE, all entity fields MASK
 
 Schema (fixed, D5): `EVENT_KIND ACTOR OBJECT RELATED LINEAGE TIME_CLASS`, with `EVENT_KIND` ∈ {RESET, STEP, DISPATCH, ACQUIRE, BLOCK, RELEASE, IO_ISSUE, IO_COMPLETE, IDLE}.
 
-Field semantics per kind: ACTOR = the transitioning thread (or MASKED for IDLE/RESET); OBJECT = lock/device acted on; RELATED = current owner (on BLOCK), woken thread (on RELEASE), dispatching... (full table below); LINEAGE = request id (IO events) or MASKED; TIME_CLASS = absolute bucket index (D8), constant granularity within a condition, **maskable** *(v0.2)*: the base truncation condition masks it (offset-unanchored, §2b–c) and the anchored condition unmasks it — same schema, same vocabulary, model claims only by coarsening or promotion per §2e.
+Field semantics per kind: ACTOR = the transitioning thread (or MASKED for IDLE/RESET); OBJECT = lock/device acted on; RELATED = current owner (on BLOCK), woken thread (on RELEASE), dispatching... (full table below); LINEAGE = request id (IO events) or MASKED; TIME_CLASS = absolute bucket index $\lfloor(t-1)/B\rfloor$ for transition record $O_t$ under D8 bucket size $B$, **maskable** *(v0.2)*: the base truncation condition masks it (offset-unanchored, §2b–c) and the anchored condition unmasks it — same schema, same vocabulary, model claims only by coarsening or promotion per §2e. RESET's TIME_CLASS is 0 when exposed.
 
 **Projection table (content rungs).** M = MASKED.
 
@@ -108,7 +138,7 @@ Field semantics per kind: ACTOR = the transitioning thread (or MASKED for IDLE/R
 
 RELATED per kind — BLOCK: current owner. RELEASE: woken thread (or M if none). IO_COMPLETE: M (the completing request is LINEAGE's job — keeping the related-entity and lineage increments disjoint, per D2's one-kind-of-information-per-rung requirement). DISPATCH: M in M1 (no CPU identity). STEP/IO_ISSUE: M.
 
-**Order modes (D8):** each content rung crosses with order mode ∈ {ordered, shuffled}, both bucketed at size $k$, delivered at bucket boundaries, queries scored at boundaries only. Ordered: identity serialization, deterministic projection $\pi_r$. Shuffled: uniform within-bucket permutation — a stochastic kernel $\Pi_r(O_b \mid E_{bk+1:bk+k})$ whose likelihood of a visible sequence is $m/k!$ where $m$ is the number of permutations of the latent bucket producing it (duplicate records make $m > 1$). The filter multiplies world-path probability by this channel likelihood; it never assumes uniformity over causally possible latent orders.
+**Order modes (D8):** each content rung crosses with order mode ∈ {ordered, shuffled}, both bucketed at size $B$, delivered at bucket boundaries, queries scored at boundaries only. Ordered: identity serialization, deterministic projection $\pi_r$. Shuffled: uniform within-bucket permutation — a stochastic kernel $\Pi_r(O_b \mid E_{bB+1:bB+B})$ whose likelihood of a visible sequence is $m/B!$ where $m$ is the number of permutations of the latent bucket producing it (duplicate records make $m > 1$). The filter multiplies world-path probability by this channel likelihood; it never assumes uniformity over causally possible latent orders.
 
 ## §5 Queries: signatures, evaluation times, computation
 
@@ -142,25 +172,25 @@ Per the D4/D9 precedence rule: benchmark the filter on C1-scale states first, th
 
 ## §8 Dependency pinning
 
-- Part I: `docs/yupana-m1-spec-draft.md` @ v0.2.3, commit `00ef2a7`.
+- Part I: `docs/yupana-m1-spec-draft.md` @ v0.2.4, revised in the same correction round as this v0.2.1 statute.
 - Exposure-gap note: `docs/exposure-gap-note-v0.1.md` @ commit `60cd340` (stamped b2ccffe).
 - Proposal: `docs/what-the-trace-surrenders-proposal-v0.2.md` (v0.2, 2026-08-11).
-- CLAUDE.md as of commit `0e50bc2`.
+- CLAUDE.md founding snapshot at commit `0e50bc2`, with its authority re-graded by the status header added in this correction round.
 - arXiv: 2405.15943, 2602.02385, 2602.14814, 2602.23164, 2603.20531, 2607.17060, 2607.19379, 2512.22471, 2604.05469, 2002.10689.
 - Episode external-validity claim: Chutani et al., "The Episode File System," USENIX Winter 1992; production-lineage claim (Episode as the basis of the z/OS POSIX file system) per Tony Mason, co-author, 2026-08-12 — *implementation-time task: replace with a citable IBM zFS heritage reference.*
 
 ## §9 Interface-witness test suite (Part II item 12)
 
-Machine-checkable witness histories, each an executable test asserting an exact-posterior property:
+Machine-checkable witness searches and controls. Exact-zero controls are executable assertions; positive predicted classes are executable searches whose empty result records a falsifier and triggers the stated redesign rule rather than being coerced into a passing test.
 
-Symmetric witness quality is required (Part I v0.2.3): witnesses 1–3 must each be a **history class surviving beyond a single handcrafted transition** — established by enumeration over C0-family histories, reporting the fraction of histories at horizon $H$ where the field moves the posterior — so that no single rung (lineage included) becomes the protagonist by construction.
+Symmetric witness quality is required (Part I v0.2.4): witnesses 1–3 must each be a **window-history class surviving beyond a single handcrafted transition** — established by enumeration over C0-family windows, reporting the fraction under the declared window measure where the field moves the posterior — so that no single rung (lineage included) becomes the protagonist by construction.
 
 1. r2 > r1: a history class where OBJECT changes Q1's posterior.
 2. r3 > r2: a history class where RELATED (owner on BLOCK) changes Q1/Q5's posterior.
-3. r4 > r3: a stochastic-world history class where LINEAGE changes Q3's posterior.
+3. r4 > r3: under truncated stochastic-order C0b windows, search for the predicted class where LINEAGE changes Q3's posterior; full context is an exact-zero control in both completion disciplines. Failure to find the class at the frozen validation horizon falsifies the proposed C0b mechanism or its scale — it is not automatically classified as a filter bug.
 4. ctrl-irr: the decoy field changes **no** query ceiling (exact zero, not approximately).
-5. ctrl-red: FIFO-world lineage changes no ceiling at full context.
-6. Crossover: the same FIFO-world history under truncation — lineage changes a ceiling.
+5. ctrl-red: lineage changes no ceiling at full context in either FIFO or stochastic order under the enacted I5/ACTOR/lowest-free semantics.
+6. Crossover: under truncated FIFO C0b windows, search for the predicted class where lineage changes a ceiling; failure has the same redesign-or-rescale interpretation as witness 3.
 7. Shuffled channel: a bucket with two noncommuting events where order mode changes a posterior; filter validated against hand-computed channel likelihood, including a duplicate-record bucket ($m > 1$).
 8. Reachability: no lock-cycle state reachable under I6-conforming workloads (C0 family, exhaustive).
 9. Q4 decomposition: a history exhibiting $H(Z) = H(Z \mid S_t) > 0$ at full observability (the irreducible term isolated).
@@ -169,7 +199,7 @@ Symmetric witness quality is required (Part I v0.2.3): witnesses 1–3 must each
 
 ## §10 Hazard-audit scope (Part II item 11)
 
-The D6 audit covers, per scheduler condition and order mode: absence of group-word-problem/permutation-composition subproblems in the belief update; posterior-support size; probability aggregation/normalization depth; numerical precision demanded by query outputs; within-bucket permutation marginalization cost (grows as $k!/\prod(\text{dup multiplicities})$ — $k$ must stay small, which is also an interface-design fact worth reporting); Q4's hitting-time computation; and working memory as a function of context horizon.
+The D6 audit covers, per scheduler condition and order mode: absence of group-word-problem/permutation-composition subproblems in the belief update; posterior-support size; probability aggregation/normalization depth; numerical precision demanded by query outputs; within-bucket permutation marginalization cost (grows as $B!/\prod(\text{dup multiplicities})$ — $B$ must stay small, which is also an interface-design fact worth reporting); Q4's hitting-time computation; and working memory as a function of context horizon.
 
 ---
 
@@ -180,4 +210,4 @@ The D6 audit covers, per scheduler condition and order mode: absence of group-wo
 3. **FIFO wake with direct handoff** (§3.5) — zero lock-subsystem entropy by design; the argued trade is attribution cleanliness for D10.
 4. **Blocking on full queue re-executes the issue** (§3.3) — simplest semantics; creates a BLOCK record whose OBJECT is a device.
 5. **IDLE records** (§3.6) — makes completion timing visible at all rungs as gap length; an alternative world would coarsen that too.
-6. **Known-offset truncation windows** (§2) — models lost history, not lost clock.
+6. **Offset-unanchored truncation windows** (§2) — avoids handing over the clock explicitly, but length, RESET, and record content still leak position probabilistically; the joint-position filter must account for that evidence.

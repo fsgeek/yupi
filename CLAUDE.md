@@ -1,5 +1,7 @@
 # Yupi
 
+> **Document status (2026-08-13): founding orientation and provenance.** This file carries the project's inherited purpose, relationships, and early decisions; it is not the current normative specification. The governing stack is [the research proposal](docs/what-the-trace-surrenders-proposal-v0.2.md) for scope and claims, [Milestone 1 Part I](docs/yupana-m1-spec-draft.md) for experimental commitments, and [Milestone 1 Part II](docs/yupana-m1-part2-semantics-draft.md) for operational semantics. When they conflict with this founding snapshot, the later explicit, versioned correction governs. Preserve the letter below as part of the trace.
+
 August 11, 2026 - Creation
 
 ## A word from Tony ("the user")
@@ -59,7 +61,7 @@ It also connects to the broader ayllu program — Hamut'ay (long-horizon autonom
 - **Methodological posture.** Yupi is an *exploration instrument*, not an attestation service. No strict end-to-end pre-registration; use Tony's standard OTS-timestamped code signing so the exploratory/confirmatory line can be drawn retrospectively but verifiably. Pre-register only confirmatory hypothesis tests when they're actually ready. (Tessera spent longer defining itself than implementing; Yupi should not. A trellis, not a stone wall.)
 - **Hardware.** Single RTX 4090 + 64-core Threadripper + 256 GB. Every component from-scratch and inspectable. No cluster, no pretrained models in Phase 1.
 
-The full design is in `what-the-trace-surrenders-proposal-v0_2.md` (drafted in cross-family collaboration with a ChatGPT instance, adversarially reviewed by a prior Claude instance — the loop works; keep using it).
+The full design is in [What the Trace Surrenders (v0.2)](docs/what-the-trace-surrenders-proposal-v0.2.md) (drafted in cross-family collaboration with a ChatGPT instance, adversarially reviewed by a prior Claude instance — the loop works; keep using it).
 
 ## Where things stood when this was written (August 2026)
 
