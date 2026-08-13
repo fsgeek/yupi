@@ -1,6 +1,6 @@
 # Yupana Milestone 1 — Part II: Formal Semantics (Draft v0.1)
 
-**Status:** exploratory draft, 2026-08-12. This is the statute to Part I's constitution (`yupana-m1-spec-draft.md`, frozen at v0.2.2, commit `5cce658`). Every normative choice below carries rationale; contested choices carry a falsifier or revisit trigger. Attack freely — this draft has had zero review rounds.
+**Status:** exploratory draft, 2026-08-12; updated same day for Part I v0.2.3 (predictive-state targets §5, witnesses 10–11, symmetric witness quality). This is the statute to Part I's constitution (`yupana-m1-spec-draft.md`, frozen at v0.2.3, commit `00ef2a7`). Every normative choice below carries rationale; contested choices carry a falsifier or revisit trigger. Attack freely.
 
 Contract: this document discharges the twelve Part II items enumerated at the end of Part I. The mapping is: §1→item 1, §2→item 2, §3→item 3, §4→item 4, §5→items 5+9, §6→items 6+10, §7→item 7, §8→item 8, §9→item 12, §10→item 11.
 
@@ -98,6 +98,11 @@ Evaluated at bucket boundaries $t$ (§4). All are exact posteriors under the obs
 - **Q4:** the thread *directly* woken by the first wake-causing transition in $(t, t + W]$ — for a completion, the issuer of the departing request; for a release-with-waiter, the woken head. Secondary wakes (QUEUE_BLOCKED threads freed by the same completion, §3.3) are excluded, keeping the value single-valued. Value in $\{1..n_T\} \cup \{\mathrm{NONE\_WITHIN\_W}\}$, horizon $W$ a fixed parameter. **Computation** *(Part II item 9)*: finite-horizon forward sum over the belief-state–conditioned kernel — for each support state, a $W$-step absorbing computation where absorption = first wake event, tagged by woken thread; cost $O(W \cdot |\mathrm{supp}| \cdot b)$ ($b$ = branching), budgeted separately from the forward filter and reported in the M1 report. *(Q4 is the query whose entropy has an irreducible term under exact state knowledge — Part I D1 correction; both terms reported.)*
 - **Q5$(i_b, i_r)$:** predicate — $\exists l:\; i_b \in \mathbf{wq}[l] \wedge \mathbf{own}[l] = i_r \wedge i_r \in \mathbf{run}$. Evaluated over ordered pairs; C1 can satisfy it for several pairs simultaneously (the Part I singular phrasing is a simplification, per review round one).
 
+**Predictive-state targets (added with Part I v0.2.3, restoring proposal §3.2/§5.4).** Alongside the fact posteriors, the exact-inference component computes, per condition:
+- **P-next:** the Bayes-optimal next-record distribution $P(O_{t+1} \mid h_t)$ under the condition's observation model.
+- **P-horizon:** a preregistered finite test set $\mathcal{T}$ of future-observation functionals — for M1: the distribution of the next $m$ EVENT_KINDs; the identity of the next IO_COMPLETE's LINEAGE (where exposed); and the time-to-next-wake distribution truncated at $W$ — each computed exactly by finite-horizon forward sum over the belief-conditioned kernel ($m$, and $\mathcal{T}$ itself, frozen with the budgets in §7).
+- **Divergent-history search:** enumeration (C0 family) and guided search (C1) for history pairs with equal P-next but unequal P-horizon on some $\tau \in \mathcal{T}$ — the immediate-agree/later-diverge classes that the exposure experiments require. Their existence, prevalence, and the interfaces under which they arise are an M1 exit deliverable (Part I deliverable 5); predictive equivalence ("histories inducing the same distribution over all futures") is the quotient these tests probe from the finite side.
+
 ## §6 Operational definitions
 
 - **Arithmetic:** exact rationals end-to-end (Python `fractions.Fraction` or equivalent). No floats in the filter, enumerator, or any ceiling.
@@ -115,7 +120,7 @@ Per the D4/D9 precedence rule: benchmark the filter on C1-scale states first, th
 
 ## §8 Dependency pinning
 
-- Part I: `docs/yupana-m1-spec-draft.md` @ v0.2.2, commit `5cce658`.
+- Part I: `docs/yupana-m1-spec-draft.md` @ v0.2.3, commit `00ef2a7`.
 - Exposure-gap note: `docs/exposure-gap-note-v0.1.md` @ commit `60cd340` (stamped b2ccffe).
 - Proposal: `docs/what-the-trace-surrenders-proposal-v0.2.md` (v0.2, 2026-08-11).
 - CLAUDE.md as of commit `0e50bc2`.
@@ -126,15 +131,19 @@ Per the D4/D9 precedence rule: benchmark the filter on C1-scale states first, th
 
 Machine-checkable witness histories, each an executable test asserting an exact-posterior property:
 
-1. r2 > r1: a history where OBJECT changes Q1's posterior.
-2. r3 > r2: a history where RELATED (owner on BLOCK) changes Q1/Q5's posterior.
-3. r4 > r3: a stochastic-world history where LINEAGE changes Q3's posterior.
+Symmetric witness quality is required (Part I v0.2.3): witnesses 1–3 must each be a **history class surviving beyond a single handcrafted transition** — established by enumeration over C0-family histories, reporting the fraction of histories at horizon $H$ where the field moves the posterior — so that no single rung (lineage included) becomes the protagonist by construction.
+
+1. r2 > r1: a history class where OBJECT changes Q1's posterior.
+2. r3 > r2: a history class where RELATED (owner on BLOCK) changes Q1/Q5's posterior.
+3. r4 > r3: a stochastic-world history class where LINEAGE changes Q3's posterior.
 4. ctrl-irr: the decoy field changes **no** query ceiling (exact zero, not approximately).
 5. ctrl-red: FIFO-world lineage changes no ceiling at full context.
 6. Crossover: the same FIFO-world history under truncation — lineage changes a ceiling.
 7. Shuffled channel: a bucket with two noncommuting events where order mode changes a posterior; filter validated against hand-computed channel likelihood, including a duplicate-record bucket ($m > 1$).
 8. Reachability: no lock-cycle state reachable under I6-conforming workloads (C0 family, exhaustive).
 9. Q4 decomposition: a history exhibiting $H(Z) = H(Z \mid S_t) > 0$ at full observability (the irreducible term isolated).
+10. Divergent histories: a pair with equal exact next-record distributions and unequal P-horizon on some $\tau \in \mathcal{T}$ (§5) — the exposure experiments' raw material, witnessed before any training.
+11. Predictive rung discrimination: an adjacent interface pair distinguished by a P-horizon test while all Q1–Q5 posteriors are unchanged — the D2 disjunctive clause (b) exercised, proving the query suite alone does not define interface value.
 
 ## §10 Hazard-audit scope (Part II item 11)
 
