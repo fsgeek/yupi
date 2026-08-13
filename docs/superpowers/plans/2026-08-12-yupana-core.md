@@ -376,7 +376,7 @@ from yupi.enumerator import paths, posterior_by_paths
 from yupi.interfaces import project
 from yupi.filter import initial_belief, step
 
-CFG, PROGS, H = WorldConfig.c0a(), c0a_programs(), 6
+CFG, PROGS, H = WorldConfig.c0a(), c0a_programs(), 12  # H amended 6→12 in execution: H=6 paths never reach IO_ISSUE/IO_COMPLETE/IDLE, leaving the completion hazard unvalidated; H=11 is the measured minimum covering all 8 kinds, 12 adds slack. A companion test asserts kind-coverage so the gate is self-documenting.
 
 def test_bit_for_bit_all_histories_all_rungs():
     for rung in ("r1", "r2", "r3", "r4"):
