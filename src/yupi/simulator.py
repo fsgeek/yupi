@@ -70,8 +70,17 @@ def sample_episode(
         # Convert each probability to integer numerator over common_denom.
         weights = [int(p * common_denom) for p in probabilities]
 
-        # Sample one transition index using random.choices with integer weights.
-        chosen_idx = rng.choices(range(len(transitions)), weights=weights, k=1)[0]
+        # Draw using integer-only randrange with cumulative weights.
+        # No float conversion anywhere: randrange draws from [0, total) as integers.
+        total = sum(weights)
+        draw = rng.randrange(total)
+        cumsum = 0
+        chosen_idx = 0
+        for i, weight in enumerate(weights):
+            cumsum += weight
+            if draw < cumsum:
+                chosen_idx = i
+                break
 
         transition, _ = transitions[chosen_idx]
         record = record_of(transition)
