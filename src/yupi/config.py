@@ -22,9 +22,12 @@ class WorldConfig:
     discipline: str
 
     @classmethod
-    def c0a(cls) -> "WorldConfig":
+    def c0a(cls, p: Fraction = Fraction(1, 3)) -> "WorldConfig":
         """Canonical minimal config: 2 threads, 1 CPU, 1 lock, 1 device,
-        depth 1, pool 2, completion_p = 2/3, epsilon = 1, fifo discipline.
+        depth 1, pool 2, completion_p = p (default 1/3), epsilon = 1, fifo discipline.
+
+        Args:
+            p: Device completion probability (default Fraction(1, 3))
         """
         return cls(
             n_threads=2,
@@ -33,7 +36,7 @@ class WorldConfig:
             n_devices=1,
             queue_depth=1,
             req_pool=2,
-            completion_p=Fraction(2, 3),
+            completion_p=p,
             epsilon=Fraction(1),
             discipline="fifo"
         )
