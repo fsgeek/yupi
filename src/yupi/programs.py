@@ -50,6 +50,23 @@ def validate_lock_order(programs: Tuple[Program, ...]) -> bool:
     return True
 
 
+def c0b_programs() -> Tuple[Program, Program]:
+    """Return the canonical C0b program pair.
+
+    Thread 0: (io(0),)
+    Thread 1: (io(0),)
+
+    The minimal workload placing two requests in flight (Part I,
+    Configurations): with one CPU, thread 0 issues and blocks, thread 1 is
+    dispatched and issues, and the depth-2 queue holds both requests. No
+    locks, no compute: every record kind this world can emit concerns the
+    device.
+    """
+    thread_0 = (io(0),)
+    thread_1 = (io(0),)
+    return (thread_0, thread_1)
+
+
 def c0a_programs() -> Tuple[Program, Program]:
     """Return the canonical C0a program pair.
 
