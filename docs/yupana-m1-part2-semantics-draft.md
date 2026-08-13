@@ -1,6 +1,8 @@
-# Yupana Milestone 1 — Part II: Formal Semantics (Draft v0.1)
+# Yupana Milestone 1 — Part II: Formal Semantics (Draft v0.2)
 
 **Status:** exploratory draft, 2026-08-12; updated same day for Part I v0.2.3 (predictive-state targets §5, witnesses 10–11, symmetric witness quality). This is the statute to Part I's constitution (`yupana-m1-spec-draft.md`, frozen at v0.2.3, commit `00ef2a7`). Every normative choice below carries rationale; contested choices carry a falsifier or revisit trigger. Attack freely.
+
+**v0.2 (2026-08-13, truncation review round):** §2's truncated-window paragraph replaced by normative truncation, window-sampling, and shifted-reference semantics; the v0.1 offset-known default is **inverted** (offset-unanchored base), with the inversion recorded in place. §4's TIME_CLASS becomes a maskable absolute field. Provenance: derived-prior principle and two-reference decomposition proposed in-session (Claude instance); the IID/generalization boundary forced by Tony's question; support-containment admissibility rule and its two measure-theoretic amendments from cross-family review (ChatGPT), adopted after verification with two sharpenings (process-vs-empirical support; exactness boundary at transcendental diagnostics). Motivating measurement: commit `3e5a19f` — the C0 family is lossless at every rung at full context from reset, so all interface-rung grip at validation scale lives on the axes this section defines.
 
 Contract: this document discharges the twelve Part II items enumerated at the end of Part I. The mapping is: §1→item 1, §2→item 2, §3→item 3, §4→item 4, §5→items 5+9, §6→items 6+10, §7→item 7, §8→item 8, §9→item 12, §10→item 11.
 
@@ -31,7 +33,22 @@ $$S_t = (\mathbf{pc}, \mathbf{st}, \mathbf{run}, \rho, \mathbf{own}, \mathbf{wq}
 
 **Episode boundary:** an explicit RESET record, visible at **every** rung *(rationale: episode-boundary observability is not an interface rung under study in M1; making it universal keeps the ladder about within-episode information)*. Episodes run to a fixed horizon $T_{ep}$ (parameter) or until all threads TERMINATED, whichever is first.
 
-**Truncated-window conditions:** the window start offset $t_0$ is **known to the observer** (the condition models lost history, not lost clock). The exact-filter prior at window start is the exact marginal $P(S_{t_0})$ pushed forward from $\mu_0$. *(Falsifier: if offset-known windows make truncation too benign — H5 effects too small — an offset-unknown condition may be added; its prior is the $t_0$-mixture of marginals. That is a new experimental condition, not a redefinition.)*
+**Truncation, window sampling, and shifted-reference semantics** *(v0.2, 2026-08-13 review round; supersedes the v0.1 offset-known default — the inversion is recorded here, not silently applied).*
+
+*(a) Training window protocol.* Episodes run from $\mu_0$ to $T_{ep}$; a window position $t \sim \mathrm{Uniform}\{1..T_{ep}\}$ is drawn; the observation is the last $\min(k, t)$ records, with $k$ the context-length condition parameter. **The truncation prior is derived, not stipulated:** the exact-filter prior is whatever marginal this sampling law induces. Rationale: a Bayes ceiling is a ceiling *for a learner* only under the learner's own generative process; any stipulated prior the training distribution does not induce converts prior mismatch into a phantom accessible-representation term and the decomposition stops decomposing.
+
+*(b) Base condition: offset-unanchored.* The prior at window start is the $t_0$-mixture of exact marginals $P(S_{t_0})$ induced by (a). This inverts v0.1's default (offset known, "lost history, not lost clock"): review found the absolute offset is a covert information channel that partially undoes the truncation it rides on. The anchored condition remains defined and is priced under (e); v0.1's falsifier anticipated the offset-unknown variant — the round made it the base.
+
+*(c) Anchoring is a maskable field, not a protocol fork.* TIME_CLASS carries the absolute bucket index; the base condition masks it (§4); the anchored condition is a rung-style unmasking of the same schema. Anchored evaluation of a *model* is admissible only by promotion, per (e).
+
+*(d) Headline claims are exchangeable and in-distribution.* Every gap-decomposition claim is evaluated on held-out windows drawn by the exact training protocol (mirroring D3's exchangeability discipline). Shifts enter only as rows governed by (e).
+
+*(e) Shifted-reference rule (normative).* For an evaluation process $Q \neq P$ (the training process), with $f_Q, f_P$ the exact Bayes predictors of the two processes and $f_M$ the model:
+
+- A **model-generalization row** (shifted ceiling $f_Q$; transplanted reference $f_P$; model $f_M$) is admissible only under process-level absolute continuity, established on the joint episode-path/window measure and required at two marginals: $Q_H \ll P_H$ (the transplant is defined on $Q$'s observations) **and** $Q_{H,Z} \ll P_{H,Z}$ (log-score comparisons are finite; where this fails the row reports infinite transplant cost explicitly rather than being silently dropped). *Process* support is the criterion, not empirical-sample support: $f_P$ is defined on unsampled-but-possible windows — the same fact D3's exchangeable split relies on.
+- Decomposition and names: $R_Q(f_M) - R_Q(f_Q) = \underbrace{[R_Q(f_P) - R_Q(f_Q)]}_{\text{transplant cost, } \ge 0} + \underbrace{[R_Q(f_M) - R_Q(f_P)]}_{\text{learner residual, signed}}$. The transplant cost prices the *unchanged $P$-optimal rule* under $Q$; it is not a floor for all learners, and a model may outperform the transplant (negative residual).
+- Mandatory per-row diagnostics, separating admissibility, reweighting severity, and finite-sample coverage: the exact log-density-ratio range of $dQ_H/dP_H$ (rational ratios — exact); $D_{\mathrm{KL}}(Q_H \| P_H)$ or an equivalent expected-shift measure *(transcendental: reported at declared precision — the Fraction-exactness discipline covers measures and ratios, not logarithms)*; the $Q$-mass of windows absent from the empirical training sample; a $Q$-weighted summary of empirical training counts. **Artifact requirement:** the training-sample window census is a retained deliverable; the coverage diagnostics are computable only if it exists.
+- **Information-expanding shifts** (observations outside $P$'s support by construction — e.g., unmasking TIME_CLASS): oracle rows only — the shifted ceiling plus a **declared-coarsening reference** (remask the expanded field), constituting a value-of-information analysis. Model rows for such shifts require either applying the declared coarsening to the model's inputs, or promotion of the shift to a *trained* interface condition (a ladder rung). Reserving vocabulary for never-trained values does not make an eval-only model claim admissible.
 
 ## §3 Transition kernel
 
@@ -76,7 +93,7 @@ If no completion fired and no thread can step: emit IDLE, all entity fields MASK
 
 Schema (fixed, D5): `EVENT_KIND ACTOR OBJECT RELATED LINEAGE TIME_CLASS`, with `EVENT_KIND` ∈ {RESET, STEP, DISPATCH, ACQUIRE, BLOCK, RELEASE, IO_ISSUE, IO_COMPLETE, IDLE}.
 
-Field semantics per kind: ACTOR = the transitioning thread (or MASKED for IDLE/RESET); OBJECT = lock/device acted on; RELATED = current owner (on BLOCK), woken thread (on RELEASE), dispatching... (full table below); LINEAGE = request id (IO events) or MASKED; TIME_CLASS = bucket index (D8), constant granularity within a condition.
+Field semantics per kind: ACTOR = the transitioning thread (or MASKED for IDLE/RESET); OBJECT = lock/device acted on; RELATED = current owner (on BLOCK), woken thread (on RELEASE), dispatching... (full table below); LINEAGE = request id (IO events) or MASKED; TIME_CLASS = absolute bucket index (D8), constant granularity within a condition, **maskable** *(v0.2)*: the base truncation condition masks it (offset-unanchored, §2b–c) and the anchored condition unmasks it — same schema, same vocabulary, model claims only by coarsening or promotion per §2e.
 
 **Projection table (content rungs).** M = MASKED.
 
