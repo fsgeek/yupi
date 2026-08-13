@@ -4,6 +4,8 @@
 
 **v0.2 (2026-08-12):** all four founding-day open questions are now resolved — three by D8–D10 below, the fourth (gap-3's home) by `exposure-gap-note-v0.1.md` on founding evening. D7 adds a new constraint from Yupi's second purpose (training-intervention testbed). Decision rules pre-stated before any measurement; resolved in dialogue with Tony. The decision-discipline note below records the principle that did the deciding.
 
+**v0.2.1 (2026-08-12, same day):** cross-family adversarial review (ChatGPT, via Tony) applied. Two conceptual corrections: D8's ordering mechanism (the v0.2 TIME_CLASS-coarsening claim was wrong *a priori* — see the correction note there) and the C0 validation design (depth-1 cannot witness the D10 distinction; C0 is now a family). D10's contrasts reframed (computational accessibility, not token volume). Scoped refinements to D1, D3, D5, D6, D7, and a D4/D9 precedence rule. This document is Part I — design decisions and experimental commitments; Part II (normative formal semantics) is the v0.3 target, contents listed at the end. Verdict adopted from the review: the constitution is sound; the statute is unwritten.
+
 **Milestone 1 goal (per proposal §11):** specify the finite state machine and transition process; implement simulator + event interfaces; validate exact filtering against exhaustive enumeration; characterize observability and synchronization per interface — all *before* training any transformer.
 
 ## Governing design principle: interface-first
@@ -15,6 +17,8 @@ The observation interface is the specimen; the world is the apparatus. Design or
 3. Choose **world dynamics** so that (a) each rung's added field provably changes the posterior over the query set, and (b) the sparsest rung stays inside the exact-filtering support bound.
 
 Realism is not a design criterion. Yupana does not need to resemble Linux; it needs to be the world in which interface differences cast the sharpest shadows.
+
+*Scope guard:* M1 establishes identifiability and instrument validity; it does not establish the prevalence or magnitude of these effects in production systems. Deliberately constructed sensitivity is not an empirical claim about real telemetry.
 
 ## Decision discipline: collapse vs. generality (added 2026-08-12)
 
@@ -40,7 +44,7 @@ Every thread runs a fixed finite program (compute / acquire / IO / release loop)
 
 *Rationale:* all world entropy then arises from interleaving and asynchrony — exactly the things telemetry fields describe — so every bit of posterior uncertainty is attributable to what the interface masked. Private coin flips inside workloads would inject entropy no interface could surrender, flattening rung differences.
 
-*Falsifier / known risk:* over-synchronization. Deterministic workloads may make the world too inferable — long contexts could collapse every interface to certainty, erasing rung differences. **M1 must measure posterior entropy vs. context length per interface.** Contingency: add back the minimal workload randomness needed to keep rungs separated; the amount required is itself a synchronization measurement, reported not hidden.
+*Falsifier / known risk:* over-synchronization. Deterministic workloads may make the world too inferable — long contexts could collapse every interface to certainty, erasing rung differences. **M1 must measure posterior entropy vs. context length per interface.** Contingency: add back the minimal workload randomness needed to keep rungs separated; the amount required is itself a synchronization measurement, reported not hidden. *Qualifier (v0.2.1):* private workload coins raise the irreducible entropy floor without necessarily increasing the incremental information richer rungs deliver — which would flatten rungs further, not separate them. The contingency ordering is therefore: (1) additional scheduler/device entropy, whose consequences the ladder differentially reveals; (2) randomized-but-exposable workload branches (a field a rung can carry); (3) private workload coins, last resort only.
 
 ### D2 — Interface ladder as controlled information increments
 
@@ -52,31 +56,37 @@ Thread names drawn per-episode from a pool of ≥50 tokens for ≤4 threads; loc
 
 *Warning added 2026-08-11 (from full-text read of arXiv:2607.19379):* per-episode symbol relabeling is empirically **scale-invariantly fatal** (2.8M→316M params, immune to extended training) when the discriminative statistic requires *computing over* symbol identities (e.g., composing per-episode bindings with arithmetic), but harmless when the required structure is purely *relational* (attention key-matching). Audit requirement: every headline Yupana condition must depend only on relational structure over per-episode names (who owns, who waits, who wakes). Any condition that would require arithmetic keyed to episode-random tokens (counters, timers over fresh names) must be either redesigned or explicitly designated a learnability-boundary condition — never left as an accident.
 
+*Evaluation split (v0.2.1):* held-out evaluation conflates two generalization problems and must be run as two named tests. **Binding generalization** — every identifier token occurs during training, but episode-level assignments, relational structures, and query pairings are held out; this is the headline Q5 test. **Lexical generalization** — identifier tokens never seen during training (untrained embeddings); this is a separate robustness test, since failure there can mean untrained-embedding pathology rather than binding failure. Headline claims rest on the first; the second is reported, not conflated.
+
 ### D4 — Support-bound co-design (promoted from CLAUDE.md constraint (b))
 
 The sparsest interface produces the fastest posterior-support growth and is the binding computational constraint. Requirement: before any transformer exists, measure reachable-support growth of the exact filter under the actor-only interface on the base configuration. If support growth under the sparsest rung exceeds the enumeration budget, the world shrinks — not the ladder.
 
 ### D5 — Fixed record schema with MASKED symbols (from proposal §5.3)
 
-One schema across all interfaces; masked fields carry a distinguished MASKED token. Vocabulary size and record length constant across conditions, so observability gains cannot masquerade as tokenization gains.
+One schema across all interfaces; masked fields carry a distinguished MASKED token. Vocabulary size and record length constant across conditions. *Claim narrowed (v0.2.1):* this prevents sequence-length and nominal-vocabulary confounds; it does **not** by itself eliminate token-distribution, embedding-frequency, or lexical-entropy effects, which the D2 controls and D10 contrasts must handle explicitly.
 
 ### D6 — Belief update must be in the transformer-learnable regime (added 2026-08-11, from full-text read of arXiv:2602.14814)
 
 Siems et al. show 265M from-scratch transformers fail S₅ permutation-composition state tracking outright even under dense observation — an *expressivity* failure, not an information failure. If Yupana's hidden dynamics embed group-word-problem-hard structure (e.g., scheduling rules that compose like permutations), the accessible-representation gap silently absorbs an architecture-expressivity term and the three-gap decomposition's interpretation corrupts.
 
-*Requirement:* M1's characterization must include an argument (or measurement) that Yupana's exact belief update lies within the transformer-learnable regime — e.g., bounded-depth filtering without hard group-composition subproblems. If any condition intentionally crosses that boundary, architecture becomes an explicit experimental factor for that condition, and it is labeled as such.
+*Requirement (reworded v0.2.1 — a falsifiable commitment, not a learnability promise):* M1 delivers a **hazard audit**: demonstrate that the world excludes specified known-hard update structures (group-word-problem composition, permutation-state tracking), and bound the computational depth and working-state size the exact belief update requires. No pre-training argument can establish that a particular transformer/optimizer/curriculum will learn the update; the audit is what is checkable before training. The audit runs **per scheduler condition**: as ε→0, round-robin over a dynamically changing runnable set may itself introduce ordered-list/permutation tracking — the very structures being excluded — which is an additional argument for the ε=1 default in D9. If any condition intentionally crosses the boundary, architecture becomes an explicit experimental factor for that condition, and it is labeled as such.
 
 ### D7 — Reward–truth divergence hook (added 2026-08-12)
 
 Yupi's second purpose (stated by Tony, 2026-08-12) is testing alternative training regimes — post-training and fine-tuning interventions measured against exact ceilings. Requirement on the world/query design, cheap now and expensive to retrofit: **the query and output design must admit query classes where a rewarded report and the posterior-truthful report can differ.** Without reward–truth divergence, the phase-2 masking experiment (does compliance-style post-training widen the exposure gap G(Q)?) has nothing to grip. Consistency check against the restricted-observer hierarchy in `exposure-gap-note-v0.1.md` is an implementation-time deliverable.
 
-*Positioning note:* adjacent literatures test sycophancy and reward hacking behaviorally — against raters, preference models, or other LLMs. The contribution here is the conjunction: divergence measured against exact posteriors, i.e., against ground truth rather than against another opinion. Nobody else can currently run that experiment, because nobody else has the ceilings.
+*Report space (v0.2.1):* because hidden state may remain uncertain, "truthful" cannot mean emitting the realized latent answer. Truthful reporting is defined against the **exact posterior under a proper scoring rule** (log or Brier score against $P(Z_t \mid h_t)$); the intervention reward is any objective favoring an answer or presentation independently of that posterior. Divergence then has a precise optimum rather than a labeling convention. This is the same repair the exposure-gap note applies everywhere: define the observer, then measure relative to it.
+
+*Positioning note:* adjacent literatures test sycophancy and reward hacking behaviorally — against raters, preference models, or other LLMs. The intended differentiator here is the conjunction: divergence measured against exact posteriors rather than against another opinion. (Priority phrasing belongs in the proposal/paper with literature support, not in this spec.)
 
 ### D8 — Tick semantics: strict interleaving, committed (resolved 2026-08-12)
 
 Exactly one enabled transition fires per tick (scheduler step, instruction, lock op, I/O issue, or completion); exactly one record is emitted. Two-CPU parallelism in C1 is modeled as tick-alternation — standard interleaving semantics, named honestly. **No composite-tick abstraction in the transition API.** By the decision discipline: composite ticks fail both tests (different state space, filter update, and record schema; no scheduled measurement discriminates), so holding the option open is a standing generality tax on the exact filter for an option the serialization argument says we would likely never exercise — the trace is a token sequence regardless, so simultaneous dynamics would need a serialization order that reintroduces interleaving at the token level.
 
-Ordering-loss as an interface phenomenon is carried instead by coarsening the TIME_CLASS field on the ladder. *Revisit trigger:* if TIME_CLASS coarsening proves insufficient to study ordering-uncertainty, composite ticks earn a world v2 — a bounded, honest rewrite, not an option held open.
+**Correction (v0.2.1, from cross-family review):** v0.2 claimed ordering-loss could be carried by coarsening the TIME_CLASS *field*. That was wrong a priori, not pending measurement: under D5, every tick emits exactly one fixed-length record, so record *position* encodes the tick index and total order exactly — no field masking can remove information the serialization already carries. The v0.2 revisit trigger would have fired on day one of implementation.
+
+The repair keeps the world strictly interleaved and coarsens the **observation process** instead: an ordering-coarsened interface buffers $k$ consecutive records and serializes each bucket in a *randomly permuted order*, with TIME_CLASS carrying bucket-granularity time. Record count and length are unchanged (D5-clean, unlike record-omission variants, which are rejected for exactly that reason); within-bucket order is genuinely surrendered; the exact filter handles it as a permutation-mixture over the bucket. Ordering-loss thereby becomes a proper interface-ladder axis — simultaneous world dynamics remain unnecessary. *Revisit trigger (narrowed):* only if some future question requires ordering-uncertainty in the **world's causal structure** — not merely in observation — do composite ticks earn a world v2.
 
 ### D9 — Scheduler: ε-parameterized, decision rule pre-stated (resolved 2026-08-12)
 
@@ -86,6 +96,8 @@ Policy: round-robin with probability 1−ε, uniform-random among runnable with 
 
 *The tension this resolves is constitutive, not accidental:* masked entropy and posterior support are the same quantity seen from the observer's side and the filter's side — rung separation **is** support growth. D1's placement of entropy in scheduler and device is defended on relational grounds (that is where queries Q1–Q5 live; private workload coins would add entropy no query posterior cares about), and D4's budget is a hardware fact — binding, not wrong. Structured scheduling enters later as the §6.4 priority-interaction manipulation, not baked into the base.
 
+*D4/D9 precedence rule (v0.2.1):* (1) select the largest ε satisfying the support budget and rung separation; (2) if no ε satisfies both, shrink C1; (3) the interface ladder is never altered to rescue tractability. The D4 budget itself (maximum support count, peak memory, wall-clock per filtering step — support size alone is not a sufficient tractability metric) is frozen from hardware benchmarks **before** any observability curve is computed, preserving the preregistration discipline.
+
 ### D10 — Device completion discipline: the lineage 2×2 (resolved 2026-08-12)
 
 Completion discipline is a two-valued world parameter sharing one state space (an ordered queue either way; only the enabled completion-transitions differ):
@@ -93,22 +105,34 @@ Completion discipline is a two-valued world parameter sharing one state space (a
 - **Stochastic-order (base world):** any in-flight request completes with per-tick probability. Q3 (in-flight set and order) is substantive, and the provenance rung has its D2 grip — lineage on a completion record resolves *which* request finished, moving the Q3/Q4 posteriors.
 - **FIFO (control world):** completion order equals issue order; only timing is stochastic. Lineage becomes *derivable* — the k-th completion is the k-th issue — making it exactly D2's redundant-telemetry control, in the same schema, same field, same vocabulary. Cleaner than a synthetic derivable field.
 
-**The experimental unit is the 2×2:** {FIFO, stochastic} × {lineage exposed, MASKED}. One diagonal isolates information gain, the other isolates token-volume effect, and the cross-world comparison at fixed interface measures how the same field changes what a model learns when the world decides whether the field carries information.
+**The experimental unit is the 2×2** {FIFO, stochastic} × {lineage exposed, MASKED}, analyzed as simple contrasts and their difference (v0.2.1 — the v0.2 "diagonal" framing was wrong; diagonals move both factors, and under D5's fixed schema there is no token-*volume* difference at all, only token identity/entropy):
 
-*Pre-registered crossover prediction (doubles as instrument validation):* FIFO-lineage is redundant only relative to full context — truncation before the issue events makes the "redundant" field informative again. The redundancy control should therefore show no effect at full context and a growing effect under truncation (an H5 × D2 interaction, exactly computable in advance). If the measured posteriors do not show this crossover, the filter or the reasoning is wrong.
+- Δ_FIFO = M(FIFO, exposed) − M(FIFO, masked)
+- Δ_stoch = M(stochastic, exposed) − M(stochastic, masked)
+- Δ_information = Δ_stoch − Δ_FIFO
+
+At the **Bayes ceiling with full context**, Δ_FIFO = 0 (lineage derivable) and Δ_stoch > 0 (lineage moves the posterior). For a **learned model**, Δ_FIFO need not be zero — and that is the more interesting reading: redundant lineage spares the model long-range matching, queue simulation, and counting, so a nonzero learned Δ_FIFO measures **computational accessibility** — information present implicitly but requiring computation, versus handed over as telemetry. The FIFO condition thereby separates three states of a fact: absent from the interface, present-but-computed-for, and directly given — which maps onto the three-gap decomposition rather than being a nuisance control.
+
+*Pre-registered crossover prediction (doubles as instrument validation, stated at the Bayes ceiling):* FIFO-lineage is redundant only relative to full context — truncation before the issue events makes the "redundant" field informative again. The exact-posterior computation must show zero ceiling-effect at full context and a growing ceiling-effect under truncation (an H5 × D2 interaction, computable in advance). If the computed posteriors do not show this crossover, the filter or the reasoning is wrong. The learned model's Δ_FIFO across the same truncation sweep then decomposes into the ceiling term plus the computational-accessibility term.
 
 *External validity (Tony, from the builder's chair):* disk controllers have reordered operations since at least 1990 — Episode's asynchronous old/new-value log (STEAL/NO-FORCE semantics) was deliberately designed to exploit controller reordering, and Episode remains in production today as the POSIX file system for IBM z/OS. Stochastic-order is the ecologically honest base; FIFO is correctly framed as the idealized control.
 
 ## Configurations
 
-- **C0 (validation):** 2 threads, 1 CPU, 1 lock, 1 device, queue depth 1. Small enough for exhaustive enumeration of the full belief-state dynamics. Every filtering result must match enumeration exactly here before C1 is touched. Both completion disciplines (D10) are enumerated on C0.
+Validation is a **family** (v0.2.1 — a single depth-1 configuration cannot witness the D10 distinction: with one in-flight candidate, "complete the FIFO head" and "complete any in-flight request" are the same transition rule). Every semantically distinct transition rule must have an independently checked witness configuration:
+
+- **C0a (base validation):** 2 threads, 1 CPU, 1 lock, 1 device, queue depth 1. Basic transition and filtering validation against exhaustive enumeration.
+- **C0b (device validation):** 2 threads, 1 CPU, 1 device, queue depth 2, minimal workload placing two requests in flight. Witnesses stochastic-order completion of a non-head request, lineage disambiguation, the FIFO/stochastic informational difference, and the D10 crossover.
+- **C0c (scheduling validation):** minimal 2-CPU configuration. Witnesses CPU-slot assignment, alternation, and scheduler invariants.
 - **C1 (base experimental):** 4 threads, 2 CPUs, 2 locks, 1 device, queue depth 2 (pending D4 measurement). Scheduler ε per D9's decision rule; completion discipline stochastic-order per D10. Exact filtering along sampled histories; support bound per D4.
+
+"Exhaustive enumeration" requires an operational definition (finite horizon $H$, or proved belief-state closure) — fixed in Part II, since a finite hidden-state machine with cycles generates unboundedly many histories and potentially unboundedly many distinct belief states. Every filtering result must match enumeration under that definition on the C0 family before C1 is touched.
 
 ## Deliverables and exit criteria
 
 1. State-space and transition specification document (machine-checkable form).
 2. Simulator + interface emitters (all rungs, D5 schema).
-3. Exact filter, validated bit-for-bit against enumeration on C0.
+3. Exact filter, validated bit-for-bit (criterion per Part II §6) against an algorithmically independent enumerator on the C0 family.
 4. **Observability characterization report:** per-interface posterior entropy over the query set vs. context length; support-growth curves; synchronization horizons; D1 falsifier verdict; the D9 ε-sweep and base-ε decision under the pre-stated rule; the D10 crossover computation (FIFO-lineage redundancy vs. context horizon) as instrument validation; the D7 consistency check against the exposure-gap note's observer hierarchy.
 
 M1 succeeds if the report shows measurably distinct observability regimes across rungs within tractable support bounds — that is, if the world can carry the experiment. M1 fails informatively if the rungs collapse (over-synchronization) or the support explodes (D4 violation); either outcome redesigns the world before any GPU-hour is spent.
@@ -122,4 +146,17 @@ M1 succeeds if the report shows measurably distinct observability regimes across
 
 ## Remaining open parameters (implementation-time)
 
-Numeric parameters — per-tick completion probability, identifier pool sizes (≥50 per D3), the ε sweep grid, workload program shapes — are set at implementation time and recorded in the M1 report, not frozen here. Each must respect the D3 relational-structure audit and the D6 learnable-regime argument.
+Numeric parameters — per-tick completion probability, identifier pool sizes (≥50 per D3), the ε sweep grid, workload program shapes, the ordering-coarsening bucket size $k$ — are set at implementation time and recorded in the M1 report, not frozen here. Each must respect the D3 relational-structure audit and the D6 hazard audit. Exception per the D4/D9 precedence rule: the D4 budget numbers are frozen from hardware benchmarks *before* any observability curve is computed.
+
+## Toward v0.3 — Part II: formal semantics (the statute to this constitution)
+
+This document is Part I: design decisions and experimental commitments. It deliberately does not yet determine the transition kernel. Part II is normative and must define, at minimum:
+
+1. The complete state tuple $S_t$ and all invariants; bounded, reusable request identifiers (finiteness).
+2. Initial-state prior $\mu_0$, episode generation and termination (or validation horizon $H$); whether episode boundaries are observable; how context truncation initializes its prior.
+3. The transition/event kernel $P_\theta(S_{t+1}, E_{t+1} \mid S_t)$, resolving in particular: event-class choice when multiple classes are enabled (CPU step vs. device completion); same-tick completion conflicts under the one-transition rule; CPU-slot selection/assignment/alternation; whether round-robin is global, per-CPU, or over a shared runnable queue; lock wait-queue discipline (which waiter a release wakes — this changes the Q4 posterior, not just the implementation); queue-full behavior; instruction taxonomy (are lock ops and I/O issues instruction subclasses?).
+4. The full record schema — every field explicit, including EVENT_KIND and TIME_CLASS — and one observation-projection table $\pi_r$ per interface rung, including the ordering-coarsened rungs (D8).
+5. Formal query signatures with type and evaluation-time conventions: Q1$(L) \in \mathcal{T} \cup \{$FREE$\}$; Q2$(T)$ over the full status enum (including TERMINATED); Q3$(D) \in$ Req$^{\le d}$; Q4 as a future-event functional with its none/termination semantics stated; Q5$(T_b, T_r)$ as an explicit predicate over pairs (C1 can hold multiple blocked and running threads — the singular phrasing in the query-set section is a simplification).
+6. Operational definitions: "exhaustive," "bit-for-bit" (exact rationals vs. floats, equality criterion), enumerator/filter algorithmic independence, entropy and incremental-information estimators, synchronization horizon, support growth, and the numerical rung-collapse criterion.
+7. Frozen computational budgets (D4 numbers) and validation horizons.
+8. Dependency pinning: proposal version, exposure-gap note version, CLAUDE.md commit, cited arXiv identifiers — by hash where possible — plus a stable citation for the Episode/z/OS external-validity claim.
