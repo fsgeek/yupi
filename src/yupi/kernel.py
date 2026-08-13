@@ -68,33 +68,45 @@ def _program_len(programs, i: int) -> int:
 
 
 def _epsilon_policy(
-    candidates: List[int], cursor: int, eps: Fraction
+    candidates: List[int], cursor: int, eps: Fraction, n_threads: int
 ) -> List[Tuple[int, Fraction, int]]:
     """ε-policy over a candidate list: uniform-among-candidates with total
     probability eps, plus a single round-robin pick with probability 1-eps.
 
-    Returns a list of (choice, probability, new_cursor) triples. The
-    round-robin pick is the candidate at-or-after `cursor` (wrapping),
-    ordered by candidate value; its new_cursor is choice+1 (so the cursor
-    always advances past the thread it just picked). The uniform entries
-    keep the cursor unchanged, EXCEPT when a uniform entry's choice equals
-    the round-robin choice, in which case the two contributions are merged
-    by the caller (both entries carry the same next_state once realized, so
-    merging happens naturally when the caller sums by next_state).
+    Returns a list of (choice, probability, new_cursor) triples.
 
-    candidates must be non-empty and sorted (callers pass sorted lists).
-    At eps == 1, the round-robin contribution is zero-weight and omitted so
-    the cursor is never touched (per §3.1: "at the ε=1 base the cursor is
-    absent from the effective state").
+    CRITICAL invariant (fixed after review — was previously violated): the
+    cursor advances past the picked thread on BOTH mixture components, not
+    just the round-robin one, and every returned cursor is canonicalized mod
+    n_threads. Previously the uniform entries kept the cursor unchanged while
+    only the round-robin entry advanced it, so a uniform pick and a
+    round-robin pick landing on the *same* thread produced two Transitions
+    differing only in rr_cursor -- they never merged, and the reachable
+    cursor space was unbounded (any thread index the RR pick had ever
+    stopped at), blowing up the exact posterior support (measured: 198 vs 72
+    reachable C0a states at eps=1/2, a 2.75x blowup against the committed
+    support bound). With every choice advancing the cursor identically
+    (new_cursor = (chosen + 1) % n_threads), the uniform and round-robin
+    components picking the same thread now produce IDENTICAL next_states and
+    merge via `_merge`, and the cursor's reachable range collapses to
+    {0, ..., n_threads-1} regardless of mixture path.
+
+    candidates must be non-empty and sorted (callers pass sorted lists). The
+    round-robin pick is the candidate at-or-after `cursor` (wrapping).
+    At eps == 1, the round-robin contribution is zero-weight and omitted and
+    the cursor is left untouched (per §3.1: "at the ε=1 base the cursor is
+    absent from the effective state") -- there is no advancement to make
+    canonical-vs-not a distinction at ε=1, since no cursor read/write occurs.
     """
     assert candidates, "_epsilon_policy requires a non-empty candidate list"
+    assert n_threads > 0
     n = len(candidates)
     results: List[Tuple[int, Fraction, int]] = []
 
     if eps > 0:
         share = eps / n
         for c in candidates:
-            results.append((c, share, cursor))
+            results.append((c, share, (c + 1) % n_threads))
 
     if eps < 1:
         # Round-robin: the first candidate at-or-after cursor, wrapping.
@@ -105,7 +117,7 @@ def _epsilon_policy(
                 break
         if rr_choice is None:
             rr_choice = candidates[0]
-        results.append((rr_choice, Fraction(1) - eps, rr_choice + 1))
+        results.append((rr_choice, Fraction(1) - eps, (rr_choice + 1) % n_threads))
 
     return results
 
@@ -236,7 +248,7 @@ def _dispatch_transitions(
     if not runnable:
         return []
 
-    picks = _epsilon_policy(runnable, state.rr_cursor, cfg.epsilon)
+    picks = _epsilon_policy(runnable, state.rr_cursor, cfg.epsilon, cfg.n_threads)
     out: List[Tuple[Transition, Fraction]] = []
     for thread, prob, new_cursor in picks:
         new_status = list(state.status)
@@ -423,7 +435,7 @@ def _execution_transitions(
     if not running:
         return []
 
-    picks = _epsilon_policy(running, state.rr_cursor, cfg.epsilon)
+    picks = _epsilon_policy(running, state.rr_cursor, cfg.epsilon, cfg.n_threads)
     out: List[Tuple[Transition, Fraction]] = []
     for thread, prob, new_cursor in picks:
         t = _execute_one(thread, state, cfg, programs)

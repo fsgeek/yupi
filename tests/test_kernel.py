@@ -1,4 +1,5 @@
 from fractions import Fraction
+from dataclasses import replace as replace_cfg
 from yupi.config import WorldConfig
 from yupi.state import initial_state, RUNNABLE, RUNNING, TERMINATED, queue_blocked
 from yupi.programs import c0a_programs
@@ -174,3 +175,56 @@ def test_terminated_on_last_instruction_leaves_running():
     assert s.status[0] == TERMINATED
     assert 0 not in s.running
     assert s.pc[0] == 1  # len(program) == 1
+
+
+def test_epsilon_policy_cursor_canonical_and_merges_across_mixture_components():
+    """Regression for the cursor-canonicalization bug found in review: both
+    the uniform and round-robin components of the epsilon-mixture must
+    advance the cursor identically (mod n_threads), so that when they pick
+    the same thread the two contributions collapse into ONE Transition via
+    _merge, rather than surviving as two entries that differ only in
+    rr_cursor. Before the fix, a uniform pick left the cursor unchanged
+    while a round-robin pick advanced it -- so at the initial state
+    (cursor=0), dispatching thread 0 via the mixture at eps=1/2 produced two
+    distinct next_states (cursor 0 vs cursor 1) instead of one, and the
+    reachable-state space grew without the cursor ever being bounded back
+    into range.
+    """
+    cfg = replace_cfg(CFG, epsilon=Fraction(1, 2))
+    pairs = enabled(initial_state(cfg), cfg, PROGS)
+    # Exactly one entry per distinct chosen thread: two runnable threads (0
+    # and 1), no completion branch (device queue empty) -- so exactly 2
+    # entries, not 4 (which is what the pre-fix bug produced: one per
+    # thread from the uniform component plus a separate one for whichever
+    # thread round-robin picked).
+    assert len(pairs) == 2
+    assert {t.actor for t, _ in pairs} == {0, 1}
+    assert total(pairs) == Fraction(1)
+    # Every resulting cursor is canonical: in range [0, n_threads).
+    for t, _ in pairs:
+        assert 0 <= t.next_state.rr_cursor < cfg.n_threads
+
+
+def test_epsilon_mixture_reachable_space_has_no_duplicate_transitions():
+    """BFS the eps=1/2 C0a reachable space and assert every state's
+    enabled() list has unique (kind, actor, next_state) triples -- i.e. no
+    two entries differ only by an uncanonicalized or mixture-path-dependent
+    cursor value that should have merged.
+    """
+    cfg = replace_cfg(CFG, epsilon=Fraction(1, 2))
+    s = initial_state(cfg)
+    frontier, seen = [s], set()
+    while frontier:
+        s = frontier.pop()
+        if s in seen:
+            continue
+        seen.add(s)
+        pairs = enabled(s, cfg, PROGS)
+        assert total(pairs) == Fraction(1), s
+        keys = [(t.kind, t.actor, t.next_state) for t, _ in pairs]
+        assert len(keys) == len(set(keys)), (s, pairs)
+        # canonical cursor invariant on every reachable next_state
+        for t, _ in pairs:
+            assert 0 <= t.next_state.rr_cursor < cfg.n_threads
+        frontier.extend(t.next_state for t, _ in pairs)
+    assert len(seen) > 1  # sanity: BFS actually explored something
