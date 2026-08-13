@@ -228,3 +228,44 @@ def test_epsilon_mixture_reachable_space_has_no_duplicate_transitions():
             assert 0 <= t.next_state.rr_cursor < cfg.n_threads
         frontier.extend(t.next_state for t, _ in pairs)
     assert len(seen) > 1  # sanity: BFS actually explored something
+
+
+def test_epsilon_one_cursor_absent_from_effective_state():
+    """Regression: at eps=1 the round-robin cursor must be truly absent from
+    the dynamics (per §3.1), not merely omitted from the round-robin-only
+    advancement. Before the fix, `_epsilon_policy`'s uniform branch advanced
+    the cursor unconditionally `(c+1) % n_threads` even at eps=1, and both
+    call sites wrote that into next_state -- so the cursor silently kept
+    moving even though eps=1 documents it as absent. That inflated the
+    reachable C0a space to 85 states over a 72-state physical quotient (13
+    states split only by rr_cursor).
+
+    BFS the full reachable space of WorldConfig.c0a() (eps=1 by default) and
+    assert (a) no two reachable states are identical except for rr_cursor --
+    i.e. the cursor never actually varies once eps=1 is in effect -- and (b)
+    the reachable count is exactly 72, matching §3.2a's measured "transient
+    gives 72 states" claim.
+    """
+    cfg = WorldConfig.c0a()
+    assert cfg.epsilon == Fraction(1)
+    progs = c0a_programs()
+    s = initial_state(cfg)
+    frontier, seen = [s], set()
+    while frontier:
+        s = frontier.pop()
+        if s in seen:
+            continue
+        seen.add(s)
+        pairs = enabled(s, cfg, progs)
+        assert total(pairs) == Fraction(1), s
+        frontier.extend(t.next_state for t, _ in pairs)
+
+    # (a) no two reachable states differ only by rr_cursor
+    quotient = {replace_cfg(st, rr_cursor=0) for st in seen}
+    assert len(quotient) == len(seen), (
+        "reachable states differ only by rr_cursor -- cursor is not truly "
+        "absent from the dynamics at eps=1"
+    )
+
+    # (b) exact reachable count matches §3.2a's "transient gives 72 states"
+    assert len(seen) == 72

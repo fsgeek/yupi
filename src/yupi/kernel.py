@@ -93,15 +93,23 @@ def _epsilon_policy(
 
     candidates must be non-empty and sorted (callers pass sorted lists). The
     round-robin pick is the candidate at-or-after `cursor` (wrapping).
-    At eps == 1, the round-robin contribution is zero-weight and omitted and
-    the cursor is left untouched (per §3.1: "at the ε=1 base the cursor is
-    absent from the effective state") -- there is no advancement to make
-    canonical-vs-not a distinction at ε=1, since no cursor read/write occurs.
+    At eps == 1, the round-robin contribution is zero-weight and omitted, and
+    every uniform entry returns the INCOMING cursor unchanged (per §3.1: "at
+    the ε=1 base the cursor is absent from the effective state") -- the
+    cursor is then never written at ε=1, stays at its initial value forever,
+    and is truly absent from the dynamics rather than merely absent from the
+    round-robin-only advancement.
     """
     assert candidates, "_epsilon_policy requires a non-empty candidate list"
     assert n_threads > 0
     n = len(candidates)
     results: List[Tuple[int, Fraction, int]] = []
+
+    if eps == Fraction(1):
+        share = eps / n
+        for c in candidates:
+            results.append((c, share, cursor))
+        return results
 
     if eps > 0:
         share = eps / n
