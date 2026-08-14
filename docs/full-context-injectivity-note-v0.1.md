@@ -96,10 +96,14 @@ plausible failure point — multi-waiter wake ambiguity:
    one interface manipulation that attacks the induction step rather than
    the base). This sharpens proposal §6.2: full context is the zero of the
    context axis *and*, provably, of the interface axis.
-4. **Part II §2's truncation-prior open item is now formally the critical
-   path.** Every informational witness in the program waits on it. It was
-   already flagged as critical on August 13; this note upgrades that from
-   observation to theorem-backed necessity.
+4. **Part II §2's truncation machinery is now formally the critical
+   path.** Every informational witness in the program waits on it.
+   *(Correction, v0.1.1 — same-day review: the original wording called
+   this an "open item," which was drift from a stale memory. Part II §2
+   v0.2 already rules the truncation prior derived-not-stipulated and the
+   base observer offset-unanchored over joint (U, S_U); what is critical
+   is implementing that statute, not deciding it. See
+   window-prior-experiment-note v0.3.)*
 5. **The nondegeneracy gate (consequence 4 of the losslessness memory)
    cannot be discharged by any full-context configuration.** The bit-for-bit
    filter gate will carry its first support>1 belief only when window/

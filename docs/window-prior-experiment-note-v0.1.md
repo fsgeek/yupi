@@ -11,6 +11,15 @@ open and belongs to cross-family review. No spec text is edited by this note.
 partially killed F5's strong form — see the amendment section at the end.
 v0.1's body is preserved unedited above it; read the amendment before
 citing F5 or the proposed implication.
+**v0.3 (same day, cross-family review):** ChatGPT's audit found two
+errors the v0.2 amendment did not: the note's framing ("Part II leaves
+initialization open") is document drift — Part II §2(a)/(b) v0.2 already
+rules the prior *derived, not stipulated* and the base observer
+*offset-unanchored* with a joint (U, S_U) belief — and P3 is not that
+observer: it deletes the clock AND the measure AND collapses time-
+multiplicity, so "clock dominance" priced a three-way bundle. Withdrawn
+and re-measured; see the v0.3 section at the end. Read v0.3 before citing
+anything about P3 or the clock.
 
 ## The question and the candidates
 
@@ -156,3 +165,62 @@ pointed at), and P3 as the deliberately hard class. Part II §2's clause
 should still name clock knowledge explicitly; v0.2 adds that it must also
 name the prior's *measure*, because at ε<1 the measure demonstrably
 survives into conclusions.
+
+---
+
+## v0.3 amendment — review correction: the statute observer, measured properly
+
+ChatGPT's audit (same day) reproduced every number above, confirmed the
+witness exemplars exactly (6/31 pairs; 1/2–1/2), and then identified what
+the reproduction could not fix: an interpretive error and a drift error.
+
+**Drift correction.** This note's premise — "Part II §2 leaves
+initialization open" — was written from a stale memory of the pre-statute
+state. Part II §2 v0.2 (the truncation/window-sampling statute) already
+rules: *(a)* **the truncation prior is derived, not stipulated** — the
+exact-filter prior is the marginal induced by the joint
+episode/endpoint/window law; *(b)* the **base condition is
+offset-unanchored** — exact inference retains a joint belief over
+(U, S_U) whose mixture weights are posterior-updated by evidence; *(c)*
+anchoring is a maskable field (TIME_CLASS), priced under the §2(e)
+value-of-information rule, not a design choice to be made. v0.1's
+"proposed implication" and v0.2's revision thereof are accordingly
+**withdrawn as proposals** — there is nothing to decide; the statute
+decided it. What the experiments contribute is *pricing*, which is
+exactly what §2(e) asks for.
+
+**P3 withdrawn as malformed.** P3 was uniform over the union of
+all-depth supports: it removes clock knowledge AND replaces the derived
+measure AND collapses occurrences of the same state at different times.
+Its TV curves price that bundle, not the clock. Every "clock dominance"
+claim in v0.1/v0.2 is withdrawn. (What P3's data still legitimately
+shows: a maximally naive observer is bad. Not news.)
+
+**The clock, priced per the statute** (`scripts/clock_value_experiment.py`;
+U uniform on {2,4,6}, fixed W=6 so no length/RESET side-channel; anchored
+= same law with U revealed; both worlds, ε ∈ {1, 1/2}):
+
+- E[TV(unanchored ‖ anchored)] starts at 0.61–0.66 and decays to
+  0.04–0.20 by step 6 — real, and materially smaller than the confounded
+  P3 suggested (0.75–0.96 initial).
+- **The unanchored observer re-learns the clock from record content
+  alone:** E[P(U = true U | h)] climbs from ~1/3 (the sampling prior) to
+  0.80–0.91 within six observations, faster at r3/r4 than r1/r2 — the
+  recovery-rate rung effect (F4) extends to time itself.
+
+**The corrected headline, replacing "clock ≫ measure":** the two
+ignorances have opposite fates. **Clock ignorance is evidence-curable**
+— posterior weights concentrate on the true offset and the TV gap
+decays. **Measure ignorance can be evidence-immune** — on sparse rungs
+at ε<1, a stipulated prior's error persists verbatim in subspaces the
+window never re-observes (v0.2's result, which stands: it compared
+same-clock observers and was never confounded).
+
+**And the statute's rationale is now empirically confirmed.** §2(a)
+justifies deriving the prior because "any stipulated prior the training
+distribution does not induce converts prior mismatch into a phantom
+accessible-representation term." The v0.2 rung-dependent residue is that
+phantom term, measured: a stipulated (support-uniform) prior leaves a
+rung-dependent artifact that would masquerade as gap-2 structure in any
+observability curve. The experiment set out to inform a decision that
+was already made, and ended up verifying the reason it was made.
