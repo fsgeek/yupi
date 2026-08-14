@@ -66,17 +66,24 @@ def _step_unnorm(
 
 
 def filter_window(
-    cfg: WorldConfig, programs, law: WindowLaw, obs_seq: List[Record], rung: str
+    cfg: WorldConfig,
+    programs,
+    law: WindowLaw,
+    obs_seq: List[Record],
+    rung: str,
+    reset_observed: bool,
 ) -> WindowPosterior:
     """Exact posterior over (U, S_T) for an observed window, offset-unanchored.
 
-    Length conditioning first (the compatible-endpoint rule), then per-step
-    mixture filtering: each component's belief updates by Bayes, its weight
-    accumulates the evidence likelihood; weights normalize across surviving
-    components at the end (equivalent to per-step renormalization, exact
-    either way).
+    Length and RESET conditioning first (the compatible-endpoint rule),
+    then per-step mixture filtering: each component's belief updates by
+    Bayes, its weight accumulates the evidence likelihood; weights
+    normalize across surviving components at the end (equivalent to
+    per-step renormalization, exact either way). `reset_observed` is
+    required, not defaulted: the caller must say whether the window
+    reached episode start, because the statute makes that observable.
     """
-    compatible = law.compatible_endpoints(len(obs_seq))
+    compatible = law.compatible_endpoints(len(obs_seq), reset_observed)
     if not compatible:
         raise ZeroProbabilityWindow(
             f"no endpoint on the grid yields a window of {len(obs_seq)} records"

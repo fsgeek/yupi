@@ -13,11 +13,15 @@ Statute anchors (Part II §2(a)/(b), v0.2; window-prior note v0.3):
   whose mixture weights are posterior-updated by evidence. Window length
   is evidence (the length-compatibility rule below is its exact form).
 
-Not yet modeled here (awaiting the record-schema extension): the RESET
-record O_0 that the statute includes when U = 0, and TIME_CLASS. In this
-implementation the U = 0 signal is carried entirely by length
-compatibility; when RESET lands in the schema it becomes an additional,
-redundant-at-B=1 piece of evidence, not a semantic change.
+RESET is modeled as an observation-level FLAG (`reset_observed`), not yet
+as a schema record: the statute includes the RESET record O_0 exactly when
+U = 0, so its presence pins U = 0 and its absence excludes U = 0 a priori.
+The flag carries precisely that information. *(Correction, v0.2 — the v0.1
+docstring claimed RESET would be "redundant, not a semantic change"; that
+was false: without it, U = 0 wrongly competes with U > 0 at full window
+length, and reset-visible windows wrongly fail to collapse to the point
+masses injectivity guarantees. Self-caught on day five, before external
+review.)* TIME_CLASS still awaits the schema extension.
 """
 
 from dataclasses import dataclass, field
@@ -54,15 +58,20 @@ class WindowLaw:
     def offset(self, T: int) -> int:
         return max(0, T - self.L)
 
-    def compatible_endpoints(self, n_obs: int) -> List[Tuple[int, int]]:
+    def compatible_endpoints(
+        self, n_obs: int, reset_observed: bool
+    ) -> List[Tuple[int, int]]:
         """(T, U) pairs the law permits for an observed window of n_obs
-        transition records — the exact form of 'window length is evidence'.
-        Offsets are distinct across the returned pairs (T = U + n_obs).
+        transition records — the exact form of 'window length and RESET are
+        evidence'. RESET is present iff U = 0 (statute §2a), so the flag
+        partitions the offsets: with RESET only U = 0 is possible; without
+        it only U > 0. Offsets are distinct across pairs (T = U + n_obs).
         """
         return [
             (T, self.offset(T))
             for T in self.endpoints()
             if T - self.offset(T) == n_obs
+            and (self.offset(T) == 0) == reset_observed
         ]
 
 

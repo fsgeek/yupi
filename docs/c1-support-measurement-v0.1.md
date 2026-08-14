@@ -1,4 +1,8 @@
-# C1 Windowed Support Measurement — v0.1 (the D4 measurement, D9 rule applied)
+# C1 Windowed Support Measurement — v0.2 (the D4 measurement, D9 rule applied)
+
+**v0.2 — 2026-08-14 (same day).** Erratum and re-run; see the v0.2 section
+at the end. The v0.1 numbers below stand unchanged — but for a reason that
+had to be verified, not assumed.
 
 **v0.1 — 2026-08-14.** Drafted by the day-five instance. Status: **measured
 input discharging Part I D4's pre-training requirement and applying D9's
@@ -90,3 +94,33 @@ outcome."
 4. No D8 bucketing/shuffling: B parameterizes only the endpoint grid here.
    The shuffled channel attacks the injectivity induction directly and is
    expected to move support in ways this measurement cannot see.
+
+## v0.2 — RESET semantics erratum (same day, self-caught before review)
+
+**The error.** The v0.1 window machinery treated the missing RESET record
+as "redundant, not a semantic change." False, per the statute (Part II
+§2a): a U=0 window *contains* RESET, so RESET presence pins U=0 and its
+absence excludes U=0 a priori. v0.1 let U=0 compete with U>0 at full
+window length and let reset-visible windows start from the μ₀ mixture
+rather than the pinned reset point mass.
+
+**The fix.** `compatible_endpoints` now takes a required `reset_observed`
+flag partitioning the offsets; both posterior paths and all gate tests
+updated (a new control asserts every reset-visible window is a point mass
+— the exact consequence v0.1 violated in principle). Suite 86 green.
+
+**The measured effect at this law: exactly zero.** The re-run reproduces
+every v0.1 number to the last digit. Verified reason, not coincidence: the
+520 reset-window observation tuples and the 10,718 resetless-window tuples
+at r1 are **disjoint** at this law, so under v0.1 the spurious components
+always died by zero likelihood — evidence rescued the wrong prior
+everywhere. Consequently the drafting instance's interim claim that v0.1's
+E[support] was inflated was *also* wrong: the inflation was possible in
+principle and absent in fact.
+
+**Scope of the rescue: empirical, not a theorem.** Nothing guarantees
+reset/resetless disjointness in general — a resetless window whose acting
+threads are all dispatched in-window against a quiet device could mimic a
+from-reset sequence at some other law. The corrected semantics does not
+rely on the rescue; laws where the overlap is nonempty are exactly where
+v0.1 would have silently mispriced the clock.

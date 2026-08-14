@@ -25,7 +25,12 @@ from yupi.window import Belief, WindowLaw, WindowPosterior
 
 
 def posterior_by_window_paths(
-    cfg: WorldConfig, programs, law: WindowLaw, obs_seq: List[Record], rung: str
+    cfg: WorldConfig,
+    programs,
+    law: WindowLaw,
+    obs_seq: List[Record],
+    rung: str,
+    reset_observed: bool,
 ) -> WindowPosterior:
     """Exact joint posterior over (U, S_T) by exhaustive path summation.
 
@@ -35,7 +40,7 @@ def posterior_by_window_paths(
     """
     n = len(obs_seq)
     raw: Dict[int, Belief] = {}
-    for T, u in law.compatible_endpoints(n):
+    for T, u in law.compatible_endpoints(n, reset_observed):
         totals: Belief = {}
         for recs, prob, final in paths(cfg, programs, T):
             projected = [project(r, rung) for r in recs[u:]]

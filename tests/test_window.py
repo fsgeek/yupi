@@ -45,16 +45,16 @@ def _world_a():
 
 
 def _all_windows(cfg, progs, law, rung):
-    """Every (obs_window, generating probability) the law can produce,
-    by exhaustive episode enumeration: endpoint T uniform on the grid,
-    window = projected records U+1..T."""
+    """Every (reset_flag, obs_window, generating probability) the law can
+    produce, by exhaustive episode enumeration: endpoint T uniform on the
+    grid, window = projected records U+1..T, RESET visible iff U=0."""
     out = []
     w_T = endpoint_prior(law)
     for T in law.endpoints():
         u = law.offset(T)
         for recs, prob, _ in paths(cfg, progs, T):
             window = tuple(project(r, rung) for r in recs[u:])
-            out.append((window, w_T * prob))
+            out.append((u == 0, window, w_T * prob))
     return out
 
 
@@ -67,6 +67,25 @@ def test_law_endpoint_grid_and_offsets():
     assert law.offset(2) == 0
     assert law.offset(4) == 0
     assert law.offset(6) == 2
+
+
+def test_law_reset_observed_partitions_compatibility():
+    # Statute §2(a): a U=0 window includes RESET; a window without RESET
+    # can only have U>0. The reset flag therefore PARTITIONS the
+    # compatible-endpoint sets — no offset is compatible with both.
+    law = WindowLaw(T_ep=8, L=4, B=2)
+    with_reset = law.compatible_endpoints(4, reset_observed=True)
+    without = law.compatible_endpoints(4, reset_observed=False)
+    assert with_reset == [(4, 0)]
+    assert without == [(6, 2), (8, 4)]
+
+
+def test_law_short_window_without_reset_is_impossible():
+    # Every U>0 window has exactly L transition records; a shorter window
+    # must have reached episode start and so must carry RESET.
+    law = WindowLaw(T_ep=8, L=4, B=2)
+    assert law.compatible_endpoints(2, reset_observed=False) == []
+    assert law.compatible_endpoints(2, reset_observed=True) == [(2, 0)]
 
 
 def test_law_endpoint_prior_is_uniform_on_grid():
@@ -86,7 +105,7 @@ def test_full_context_reduction_matches_plain_filter():
     for T in law.endpoints():
         for recs, _, _ in paths(cfg, progs, T)[:10]:
             obs = [project(r, "r1") for r in recs]
-            post = filter_window(cfg, progs, law, obs, "r1")
+            post = filter_window(cfg, progs, law, obs, "r1", reset_observed=True)
             assert set(post.components) == {0}
             marginal = post.state_marginal()
             assert marginal == filter_run(cfg, progs, obs, "r1")
@@ -102,12 +121,14 @@ def _assert_gate(cfg, progs, law, rung, max_windows=None):
     if max_windows is not None:
         stride = max(1, len(windows) // max_windows)
         windows = windows[::stride]
-    for obs, _ in windows:
-        if obs in seen:
+    for reset, obs, _ in windows:
+        if (reset, obs) in seen:
             continue
-        seen.add(obs)
-        post = filter_window(cfg, progs, law, list(obs), rung)
-        ref = posterior_by_window_paths(cfg, progs, law, list(obs), rung)
+        seen.add((reset, obs))
+        post = filter_window(cfg, progs, law, list(obs), rung, reset_observed=reset)
+        ref = posterior_by_window_paths(
+            cfg, progs, law, list(obs), rung, reset_observed=reset
+        )
         assert set(post.components) == set(ref.components)
         for u in post.components:
             w_f, b_f = post.components[u]
@@ -139,29 +160,42 @@ def test_gate_c1_sampled_r1():
 
 
 def test_short_window_conditions_length_to_full_context():
-    # A window shorter than L can only have come from U=0 (T = n on the
-    # grid): length is evidence, and the posterior must say so.
+    # A window shorter than L can only have come from U=0 (it carries
+    # RESET): length and reset agree, and the posterior must say so.
     cfg, progs = _world_a()
     law = WindowLaw(T_ep=8, L=4, B=2)
     recs, _, _ = paths(cfg, progs, 2)[0]
     obs = [project(r, "r1") for r in recs]
-    post = filter_window(cfg, progs, law, obs, "r1")
+    post = filter_window(cfg, progs, law, obs, "r1", reset_observed=True)
     assert set(post.components) == {0}
 
 
-def test_mixture_weights_are_posterior_not_frozen():
-    # At full window length L, several offsets are a priori compatible;
-    # evidence must move the weights. Find a window where some a priori
-    # compatible offset is killed outright (posterior weight 0 by absence).
+def test_reset_visible_windows_are_point_masses():
+    # Statute + injectivity corollary: RESET pins U=0, the prior is the
+    # known reset state, and full-context injectivity makes every
+    # reset-visible posterior a point mass. (This is the control the v0.1
+    # semantics got wrong by letting U=0 compete at full window length.)
     cfg, progs = _world_a()
     law = WindowLaw(T_ep=8, L=4, B=2)
-    a_priori = {law.offset(T) for T in law.endpoints() if T - law.offset(T) == law.L}
+    for reset, obs, _ in _all_windows(cfg, progs, law, "r1"):
+        if not reset:
+            continue
+        post = filter_window(cfg, progs, law, list(obs), "r1", reset_observed=True)
+        assert len(post.state_marginal()) == 1
+
+
+def test_mixture_weights_are_posterior_not_frozen():
+    # A resetless window has a priori compatible offsets {2, 4}; evidence
+    # must be able to kill one outright (posterior weight 0 by absence).
+    cfg, progs = _world_a()
+    law = WindowLaw(T_ep=8, L=4, B=2)
+    a_priori = {u for _, u in law.compatible_endpoints(law.L, reset_observed=False)}
     assert len(a_priori) >= 2  # the ambiguity must exist to be resolved
     killed = False
-    for obs, _ in _all_windows(cfg, progs, law, "r1"):
-        if len(obs) != law.L:
+    for reset, obs, _ in _all_windows(cfg, progs, law, "r1"):
+        if reset:
             continue
-        post = filter_window(cfg, progs, law, list(obs), "r1")
+        post = filter_window(cfg, progs, law, list(obs), "r1", reset_observed=False)
         if set(post.components) < a_priori:
             killed = True
             break
@@ -178,8 +212,10 @@ def test_fat_state_marginal_exists_world_a_r1():
     cfg, progs = _world_a()
     law = WindowLaw(T_ep=8, L=4, B=2)
     fat = False
-    for obs, _ in _all_windows(cfg, progs, law, "r1"):
-        post = filter_window(cfg, progs, law, list(obs), "r1")
+    for reset, obs, _ in _all_windows(cfg, progs, law, "r1"):
+        if reset:
+            continue  # reset-visible windows are point masses by injectivity
+        post = filter_window(cfg, progs, law, list(obs), "r1", reset_observed=False)
         if len(post.state_marginal()) > 1:
             fat = True
             break
@@ -193,8 +229,10 @@ def test_fat_state_marginal_exists_c1_r1():
     progs = c1_programs()
     law = WindowLaw(T_ep=6, L=4, B=2)
     fat = False
-    for obs, _ in _all_windows(cfg, progs, law, "r1"):
-        post = filter_window(cfg, progs, law, list(obs), "r1")
+    for reset, obs, _ in _all_windows(cfg, progs, law, "r1"):
+        if reset:
+            continue
+        post = filter_window(cfg, progs, law, list(obs), "r1", reset_observed=False)
         if len(post.state_marginal()) > 1:
             fat = True
             break

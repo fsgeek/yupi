@@ -50,7 +50,7 @@ def windows_for(cfg, progs, rung, exhaustive):
             path_cache[T] = paths(cfg, progs, T)
         agg = {}
         for recs, prob, _ in path_cache[T]:
-            win = tuple(project(r, rung) for r in recs[u:])
+            win = (u == 0, tuple(project(r, rung) for r in recs[u:]))
             agg[win] = agg.get(win, Fraction(0)) + w_T * prob
         items = sorted(agg.items(), key=lambda kv: kv[0].__repr__())
         cap = 2 * SAMPLE_TARGET if exhaustive and T == 12 else (
@@ -62,9 +62,9 @@ def windows_for(cfg, progs, rung, exhaustive):
         yield items
 
 
-def filter_instrumented(cfg, progs, mu_cache, obs_seq, rung):
+def filter_instrumented(cfg, progs, mu_cache, obs_seq, rung, reset_observed):
     """window_filter's mixture loop, instrumented, using its primitives."""
-    compatible = LAW.compatible_endpoints(len(obs_seq))
+    compatible = LAW.compatible_endpoints(len(obs_seq), reset_observed)
     comps = {}
     worst_step_transitions = 0
     worst_step_wall = 0.0
@@ -113,9 +113,9 @@ def main():
                 max_step_transitions=0, max_step_wall=0.0,
             )
             for items in windows_for(cfg, progs, rung, exhaustive):
-                for win, w in items:
+                for (reset, win), w in items:
                     ms, js, mt, mw = filter_instrumented(
-                        cfg, progs, mu_cache, list(win), rung
+                        cfg, progs, mu_cache, list(win), rung, reset
                     )
                     stats["n"] += 1
                     stats["w_total"] += w
