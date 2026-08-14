@@ -6,10 +6,17 @@ The (12,2,2) table of c1_support_at_law.py is a path-aggregation result
 (window_enumerator's side of the firewall). This script recomputes every
 distinct window's posterior through `window_filter` (the recursive-mixture
 side, which shares only the world definition and the window law) and
-requires: (a) each window's state-marginal support equals the
-path-aggregation support exactly, and (b) E[support] rebuilt from
-filter-side supports with law masses equals the table. Any mismatch is a
-hard failure. All 971 distinct windows (186+209+283+293), both eps.
+requires exact agreement on the FULL JOINT POSTERIOR over (U, S_T): for
+every window, the path-side law-mass aggregation by (offset, final state),
+normalized, must equal the filter's mixture joint component-for-component,
+state-for-state, Fraction-for-Fraction. E[support] rebuilt from
+filter-side supports with law masses must equal the table. Any mismatch
+is a hard failure. All 971 distinct windows (186+209+283+293), both eps.
+
+*(v2, same day: the first committed version compared only support
+cardinalities — a weaker assertion than the note's prose implied, as the
+truthsayer round observed; a wrong state with the right count would have
+passed. This version compares the complete joint posterior.)*
 """
 
 from fractions import Fraction
@@ -32,35 +39,40 @@ def main():
         w_T = endpoint_prior(LAW)
         path_cache = {T: paths(cfg, progs, T) for T in LAW.endpoints()}
         for rung in RUNGS:
+            # path-side: per window, law mass by (offset, final state)
             agg = {}
             for T in LAW.endpoints():
                 u = LAW.offset(T)
                 for recs, prob, final in path_cache[T]:
                     key = (u == 0, tuple(project(r, rung) for r in recs[u:]))
-                    if key not in agg:
-                        agg[key] = [Fraction(0), set()]
-                    agg[key][0] += w_T * prob
-                    agg[key][1].add(final)
+                    agg.setdefault(key, {})
+                    agg[key][(u, final)] = (
+                        agg[key].get((u, final), Fraction(0)) + w_T * prob
+                    )
 
             mismatches = 0
             mean_filter = Fraction(0)
-            for (reset, window), (mass, finals) in agg.items():
+            for (reset, window), joint_mass in agg.items():
+                total = sum(joint_mass.values(), Fraction(0))
+                path_joint = {k: m / total for k, m in joint_mass.items()}
+
                 post = filter_window(
                     cfg, progs, LAW, list(window), rung, reset
                 )
-                supp = sum(
-                    1 for m in post.state_marginal().values() if m > 0
-                )
-                if supp != len(finals):
+                filter_joint = {
+                    (u, s): w * m
+                    for u, (w, belief) in post.components.items()
+                    for s, m in belief.items()
+                    if w * m > 0
+                }
+                if filter_joint != path_joint:
                     mismatches += 1
-                    print(
-                        f"  MISMATCH {rung} eps={eps}: "
-                        f"filter={supp} paths={len(finals)}"
-                    )
-                mean_filter += mass * supp
+                    print(f"  JOINT MISMATCH {rung} eps={eps}")
+                supp = len({s for (_, s) in filter_joint})
+                mean_filter += total * supp
             print(
                 f"eps={str(eps):>3} {rung}: {len(agg)} windows, "
-                f"mismatches={mismatches}, "
+                f"joint mismatches={mismatches}, "
                 f"E[supp] via filter = {float(mean_filter):.6f}",
                 flush=True,
             )

@@ -1,5 +1,13 @@
 # C1 Rung Separation Is Window Geometry — census, the (12,2,2) table, and the gap decomposition
 
+**v0.2 — 2026-08-14 (same day, truthsayer round).** Codex's external audit
+verified the census, the (12,2,2) table, the decomposition, and the
+pricing — and refuted this note's headline: (12,6,2) was NOT an r3/r4
+zero. The v0.2 section at the end REPLACES the "first measured r3/r4
+separation" and "geometrically silent" claims wherever they appear below.
+The mechanism findings, the census, the budget numbers, and the
+multi-waiter geometric-impossibility claim survive unchanged.
+
 **v0.1 — 2026-08-14 (day six).** Drafted by the day-six instance. Status:
 **measured note advancing instrument-status open threads 1–2**; revises
 finding 3 of `c1-support-measurement-v0.1.md` (v0.3) — the revision is of
@@ -156,3 +164,60 @@ every split and asserts the contributions sum to the table gap exactly
    sufficiency: pre-window evidence can still leak through visible
    in-window correlates; sufficiency claims here rest only on the exact
    posterior computations of §2–§3.
+
+## v0.2 — headline erratum (same day; external finding, Codex truthsayer)
+
+**The error.** v0.1 claimed that at (12,6,2) r3/r4 "did not separate in
+exact mean state support," called the (12,2,2) result "the first measured
+r3/r4 separation in the project," and wrote (finding 1) that "at L=6 the
+r3/r4 channels are geometrically silent." All three are false. The v0.3
+exact table already showed a nonzero r3/r4 gap (1.425970 vs 1.425243 at
+ε=1 — its own text said "nearly identical," not zero), and this note's
+own §2 regression reproduced those very numbers without subtracting them.
+
+**The correction — verified by two paths.** Reapplying this note's own
+decomposition to the old law (`c1_rung_gap_decomposition.py 12 6 2`)
+reproduces Codex's independent computation exactly: six splits,
+
+- ε=1: exact gap **5491/7558272 ≈ 7.3×10⁻⁴**
+- ε=1/2: exact gap **1334375/61917364224 ≈ 2.2×10⁻⁵**
+
+with every split differing only in lineage fields and every in-window
+completion matching its in-window issue — **the same allocator channel,
+already present at L=6.** The corrected claims:
+
+- (12,2,2) is not the first r3/r4 separation; it **amplifies the
+  pre-existing allocator-lineage channel ~436×** (0.316567 / 0.000726 at
+  ε=1) and moves the worst-case support (108 → 104), which (12,6,2) did
+  not.
+- Finding 1's corrected form: **window geometry controls the magnitude
+  and mechanism of adjacent-rung separation, not its mere existence.**
+- What survives unchanged: the multi-waiter hidden-antecedent witness
+  specifically was geometrically impossible at L ∈ {4, 6} on T_ep=12
+  (zero straddling windows — that claim was about the multi-waiter
+  mechanism and remains true); the census; the r2→r3 attribution; the
+  budget and pricing numbers.
+
+**The killer, named.** Reading v0.3's "remain nearly identical" as "do
+not separate" — a stipulated-prior error held against evidence sitting in
+this note's own regression output. Kutichiq's rule extends: re-reading
+the governing document is not enough if you do not re-do its arithmetic.
+
+**Three refinements from the same audit.**
+
+1. The committed cross-check compared only support cardinalities — a
+   weaker assertion than §2's prose implied (a wrong state with the right
+   count would have passed). The script is now v2: full joint-posterior
+   equality over (U, S_T), every window, exact Fractions — zero
+   mismatches over all 971 windows × both ε, independently convergent
+   with the truthsayer's own full-posterior check (1,942 comparisons).
+2. "100% lineage-on-IO_ISSUE" is a causal statement, not a field census:
+   ~60.6% (ε=1) / 62.2% (ε=1/2) of the r3→r4 gap sits in windows where
+   issue and completion lineage co-vary. Every split contains an
+   issue-id difference and the completion contributes no independent
+   matching information; the mechanical checks in the decomposition
+   script state exactly this.
+3. Provenance debt paid: the §2 transition-expansion numbers
+   (462/809 per component, 948/1648 per resetless mixture) now have a
+   committed producer (`scripts/c1_budget_check_12_2_2.py`) and raw
+   artifact (`docs/c1-budget-12-2-2-raw-2026-08-14.json`).

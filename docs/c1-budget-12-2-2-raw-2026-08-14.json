@@ -1,0 +1,82 @@
+{
+  "law": {
+    "T_ep": 12,
+    "L": 2,
+    "B": 2
+  },
+  "b1_transitions": 70000,
+  "results": {
+    "1": {
+      "per_offset": [
+        {
+          "u": 0,
+          "prior_support": 1,
+          "expanded": 4
+        },
+        {
+          "u": 2,
+          "prior_support": 6,
+          "expanded": 12
+        },
+        {
+          "u": 4,
+          "prior_support": 24,
+          "expanded": 54
+        },
+        {
+          "u": 6,
+          "prior_support": 60,
+          "expanded": 144
+        },
+        {
+          "u": 8,
+          "prior_support": 112,
+          "expanded": 276
+        },
+        {
+          "u": 10,
+          "prior_support": 191,
+          "expanded": 462
+        }
+      ],
+      "worst_component": 462,
+      "worst_resetless_mixture": 948
+    },
+    "1/2": {
+      "per_offset": [
+        {
+          "u": 0,
+          "prior_support": 1,
+          "expanded": 4
+        },
+        {
+          "u": 2,
+          "prior_support": 12,
+          "expanded": 24
+        },
+        {
+          "u": 4,
+          "prior_support": 36,
+          "expanded": 81
+        },
+        {
+          "u": 6,
+          "prior_support": 102,
+          "expanded": 243
+        },
+        {
+          "u": 8,
+          "prior_support": 200,
+          "expanded": 491
+        },
+        {
+          "u": 10,
+          "prior_support": 332,
+          "expanded": 809
+        }
+      ],
+      "worst_component": 809,
+      "worst_resetless_mixture": 1648
+    }
+  }
+}
