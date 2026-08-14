@@ -205,8 +205,12 @@ U uniform on {2,4,6}, fixed W=6 so no length/RESET side-channel; anchored
   P3 suggested (0.75–0.96 initial).
 - **The unanchored observer re-learns the clock from record content
   alone:** E[P(U = true U | h)] climbs from ~1/3 (the sampling prior) to
-  0.80–0.91 within six observations, faster at r3/r4 than r1/r2 — the
-  recovery-rate rung effect (F4) extends to time itself.
+  0.80–0.91 within six observations at ε=1, and to **0.88–0.96 at
+  ε=1/2** — recovery is *faster* in the mixture regime; more scheduling
+  entropy makes window content more time-distinctive. Faster at r3/r4
+  than r1/r2 in both regimes — the recovery-rate rung effect (F4)
+  extends to time itself. *(ε-ranges separated in v0.3.1; the original
+  sentence reported the ε=1 range without the qualifier.)*
 
 **The corrected headline, replacing "clock ≫ measure":** the two
 ignorances have opposite fates. **Clock ignorance is evidence-curable**
@@ -224,3 +228,14 @@ phantom term, measured: a stipulated (support-uniform) prior leaves a
 rung-dependent artifact that would masquerade as gap-2 structure in any
 observability curve. The experiment set out to inform a decision that
 was already made, and ended up verifying the reason it was made.
+
+**Scope boundary (v0.3.1, second review pass).** These are controlled
+calibration slices — U ∈ {2,4,6}, fixed six-record windows, state-
+posterior TV — not the complete §2(a) endpoint law and not yet scored on
+M1's declared predictive targets. "Clock ignorance is evidence-curable"
+is established *in these worlds and windows*, not as a theorem: a
+stationary or long-lived world could leave clock position permanently
+unidentified, and these worlds' terminating dynamics (absorbing IDLE
+after program exhaustion) plausibly flatter clock recovery, since
+progress toward termination is itself a clock. The full-law version,
+scored on the declared targets, belongs to the D4-frozen stage.
