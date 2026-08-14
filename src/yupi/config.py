@@ -42,6 +42,42 @@ class WorldConfig:
         )
 
     @classmethod
+    def c1(
+        cls,
+        p: Fraction = Fraction(1, 3),
+        queue_depth: int = 2,
+        epsilon: Fraction = Fraction(1),
+    ) -> "WorldConfig":
+        """Base experimental config (Part I, Configurations): 4 threads,
+        2 CPUs, 2 locks, 1 device, queue depth 2 (pending the D4/D9
+        support measurement — hence parameterized), pool 4 (>= 2*depth per
+        I4), completion_p = p (default 1/3), epsilon per D9's decision rule
+        (default 1, the pre-stated base), stochastic completion per D10.
+
+        epsilon and queue_depth are parameters because Part I leaves both
+        to measurement (the D9 sweep and the D4 budget); the defaults are
+        the pre-stated base values, not measured outcomes.
+
+        Args:
+            p: Device completion probability (default Fraction(1, 3)).
+            queue_depth: Device queue capacity (default 2; final value set
+                by the D4 measurement).
+            epsilon: Scheduler mixture weight (default 1 per D9's
+                pre-stated rule; the sweep may lower it).
+        """
+        return cls(
+            n_threads=4,
+            n_cpus=2,
+            n_locks=2,
+            n_devices=1,
+            queue_depth=queue_depth,
+            req_pool=4,
+            completion_p=p,
+            epsilon=epsilon,
+            discipline="stochastic",
+        )
+
+    @classmethod
     def c0c(cls, p: Fraction = Fraction(1, 3)) -> "WorldConfig":
         """Scheduling-validation config (Part I, Configurations): minimal
         2-CPU world. 3 threads, 2 CPUs, 0 locks, 1 device, depth 1, pool 2,

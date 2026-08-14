@@ -85,6 +85,41 @@ def c0c_programs() -> Tuple[Program, Program, Program]:
     return (thread_0, thread_1, thread_2)
 
 
+def c1_programs() -> Tuple[Program, Program, Program, Program]:
+    """Return the canonical C1 program quadruple.
+
+    Thread 0: (acquire(0), COMPUTE, release(0), io(0))
+    Thread 1: (acquire(0), acquire(1), release(1), release(0))
+    Thread 2: (COMPUTE, acquire(0), release(0), io(0))
+    Thread 3: (io(0), acquire(1), release(1), io(0))
+
+    Design arguments (implementation-time choice per Part I line 169,
+    recorded here per the C0c precedent):
+
+    - Multi-waiter wake: threads 1 and 2 both contend for lock 0 while
+      thread 0 can hold it; thread 2's leading COMPUTE staggers its
+      arrival so BOTH wait-queue orders (1,2) and (2,1) are reachable —
+      the ambiguity a windowed observer inherits when the BLOCK events
+      fall before its window (full-context observers lose nothing, per
+      the injectivity theorem).
+    - Nested hold: thread 1 acquires lock 0 then lock 1 (I6
+      strictly-increasing), witnessing two-lock machinery; thread 3
+      contends on lock 1 so nested ownership meets a waiter.
+    - QUEUE_BLOCKED: three IO issuers (0, 2, 3) against queue depth 2 —
+      the queue-full BLOCK branch has been sound-but-unwitnessed in every
+      C0 config (two issuers can never fill a depth-2 queue before
+      issuing); C1 is the first world where it must fire.
+    - D6 hazard audit: no instruction computes over identities; all
+      structure is relational (who owns, who waits, who wakes); no
+      permutation-composition state tracking is embedded.
+    """
+    thread_0 = (acquire(0), COMPUTE, release(0), io(0))
+    thread_1 = (acquire(0), acquire(1), release(1), release(0))
+    thread_2 = (COMPUTE, acquire(0), release(0), io(0))
+    thread_3 = (io(0), acquire(1), release(1), io(0))
+    return (thread_0, thread_1, thread_2, thread_3)
+
+
 def c0a_programs() -> Tuple[Program, Program]:
     """Return the canonical C0a program pair.
 
