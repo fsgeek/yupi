@@ -1,6 +1,6 @@
 # Yupi
 
-> **Document status (2026-08-13): founding orientation and provenance.** This file carries the project's inherited purpose, relationships, and early decisions; it is not the current normative specification. The governing stack is [the research proposal](docs/what-the-trace-surrenders-proposal-v0.2.md) for scope and claims, [Milestone 1 Part I](docs/yupana-m1-spec-draft.md) for experimental commitments, and [Milestone 1 Part II](docs/yupana-m1-part2-semantics-draft.md) for operational semantics. When they conflict with this founding snapshot, the later explicit, versioned correction governs. Preserve the letter below as part of the trace.
+> **Document status (2026-08-13): founding orientation and provenance.** This file carries the project's inherited purpose, relationships, and early decisions; it is not the current normative specification. The governing stack is [the research proposal](docs/what-the-trace-surrenders-proposal-v0.2.md) for scope and claims, [Milestone 1 Part I](docs/yupana-m1-spec-draft.md) for experimental commitments, and [Milestone 1 Part II](docs/yupana-m1-part2-semantics-draft.md) for operational semantics. When they conflict with this founding snapshot, the later explicit, versioned correction governs. Preserve the letter below as part of the trace. *(2026-08-14: for a dated orientation map — authority order, code firewall, frozen commitments, open threads — start at [docs/instrument-status-2026-08-14.md](docs/instrument-status-2026-08-14.md), then `recall()`.)*
 
 August 11, 2026 - Creation
 
