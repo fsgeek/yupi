@@ -1,8 +1,18 @@
-# C1 Windowed Support Measurement — v0.2 (the D4 measurement, D9 rule applied)
+# C1 Windowed Support Measurement — v0.3 (the D4 measurement, D9 rule applied)
+
+**v0.3 — 2026-08-14 (same day, truthsayer round).** Codex's external audit
+found the v0.1 mean-support table sampling-biased; the exact exhaustive
+table (cross-verified by two independent computations) is in the v0.3
+section at the end, which REPLACES v0.1's table and findings 3–4 wherever
+they conflict. Read v0.3 before citing any mean, any rung-separation
+claim, or the "clock" framing. The budget/headroom conclusions and the
+max-support exemplar survive unchanged.
 
 **v0.2 — 2026-08-14 (same day).** Erratum and re-run; see the v0.2 section
 at the end. The v0.1 numbers below stand unchanged — but for a reason that
-had to be verified, not assumed.
+had to be verified, not assumed. *(v0.3: "unchanged" is true of what v0.1
+measured, but v0.1's means were biased estimators to begin with — see
+below.)*
 
 **v0.1 — 2026-08-14.** Drafted by the day-five instance. Status: **measured
 input discharging Part I D4's pre-training requirement and applying D9's
@@ -124,3 +134,56 @@ threads are all dispatched in-window against a quiet device could mimic a
 from-reset sequence at some other law. The corrected semantics does not
 rely on the rescue; laws where the overlap is nonempty are exactly where
 v0.1 would have silently mispriced the clock.
+
+## v0.3 — sampling-bias erratum (same day; external finding, Codex audit)
+
+**The error.** The v0.1 script labeled r1 "exhaustive" while
+stride-sampling T=12 (~400 of 8,404 distinct windows) and sampled ~200
+windows per endpoint at r2–r4 — then kept original law masses and
+renormalized over the sample. That is an estimator of nothing: the
+reported means (especially ~1.10 at rich rungs) were severe
+underestimates.
+
+**The correction — exact, exhaustive, cross-verified.** Codex recomputed
+every distinct window by direct path aggregation; this repository's
+independent recomputation (`scripts/c1_support_exact.py`, one-pass path
+aggregation with the RESET partition; E[support] as an exact Fraction over
+the full law) matches Codex's table in all 16 cells to four decimals:
+
+| ε | r1 | r2 | r3 | r4 |
+|---|---|---|---|---|
+| 1 | 1.6097 | 1.4718 | 1.4260 | 1.4252 |
+| 1/2 | 1.4402 | 1.3432 | 1.3139 | 1.3139 |
+
+(Distinct windows per rung: 11,238 / 12,033 / 12,254 / 12,260. Max
+support 28 in every cell, unchanged.)
+
+**Findings revised.** (a) The ε direction survives: ε=1/2 lowers mean
+ambiguity at every rung. (b) r1/r2 separation survives but is far smaller
+than v0.1's biased table implied (1.61 vs 1.47, not 1.55 vs 1.10).
+(c) v0.1's "r2/r3/r4 do not resolve" is **withdrawn**: r2 and r3 separate
+in exact mean support (1.4718 vs 1.4260 at ε=1). (d) r3/r4 remain nearly
+identical by this metric. (e) These are state-support separations, not
+yet the named-query or predictive-target witnesses M1's exit criteria
+require.
+
+**The "clock" framing corrected.** The max-28 window survives exactly
+(offset weights ≈ 0.371/0.309/0.320) — but its per-component supports are
+3/9/16 at U=2/4/6: even with the clock supplied, hidden-prefix ambiguity
+contributes up to 16 states. The defensible claim is: *the worst-support
+history is rung-invariant and retains complete three-way offset
+ambiguity.* v0.1's "worst-case ignorance is the clock" attributed more
+than support count establishes and is withdrawn.
+
+**D9 status downgraded to provisional.** ε=1 fits the budget with large
+headroom and shows rung separation in mean state support, but
+adjacent-rung separation on the *declared M1 targets* is not yet
+established, and this note already requires an M1-scale rerun before
+corpus generation. "Base ε=1, queue depth 2" stands as the provisional
+outcome of the pre-stated rule, not a closed selection.
+
+**Two wording corrections from the same audit.** C1 validation is 13
+tests covering six witness classes (not "13 witnesses each with a
+control"). And the D4 freeze preceded every *C1* curve; the window-prior
+experiments (worlds A/B) predate it — the freeze doc carries the same
+qualification as of v0.1.1.

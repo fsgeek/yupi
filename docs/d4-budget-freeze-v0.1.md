@@ -4,9 +4,12 @@
 binding** per Part I's D4/D9 precedence rule ("the D4 budget itself … is
 frozen from hardware benchmarks **before** any observability curve is
 computed, preserving the preregistration discipline"). As of this commit,
-no C1 support-growth or observability curve has been computed anywhere in
-the repository; the harness generates pricing states by world-reachability
-BFS only, consulting no observations and no rungs. Measurements: commit
+no **C1** support-growth or observability curve has been computed anywhere
+in the repository; the harness generates pricing states by
+world-reachability BFS only, consulting no observations and no rungs.
+*(Precision added v0.1.1, truthsayer round: the window-prior experiments
+on worlds A/B predate this freeze, so "before any observability curve" is
+true only C1-scoped — which is the scope D4 governs.)* Measurements: commit
 8de5564 (`src/yupi/benchmark.py`, `scripts/d4_budget_benchmark.py`, raw
 sweep in `docs/d4-pricing-raw-2026-08-14.json`; 9 harness tests, suite 60
 green).
