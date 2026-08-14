@@ -206,11 +206,22 @@ U uniform on {2,4,6}, fixed W=6 so no length/RESET side-channel; anchored
 - **The unanchored observer re-learns the clock from record content
   alone:** E[P(U = true U | h)] climbs from ~1/3 (the sampling prior) to
   0.80–0.91 within six observations at ε=1, and to **0.88–0.96 at
-  ε=1/2** — recovery is *faster* in the mixture regime; more scheduling
-  entropy makes window content more time-distinctive. Faster at r3/r4
+  ε=1/2** — recovery is *faster* in the mixture regime. A plausible
+  mechanism, not isolated by this experiment, is that the round-robin
+  component's persistent cursor gives record histories a stronger
+  temporal signature. Faster at r3/r4
   than r1/r2 in both regimes — the recovery-rate rung effect (F4)
   extends to time itself. *(ε-ranges separated in v0.3.1; the original
-  sentence reported the ε=1 range without the qualifier.)*
+  sentence reported the ε=1 range without the qualifier. Mechanism
+  sentence corrected in v0.3.2, Codex review: v0.3.1 attributed the
+  speed-up to "more scheduling entropy," which is backwards — ε=1 is
+  Yupana's maximum-entropy scheduler, and the ε=1/2 mixture *lowers*
+  conditional choice entropy (0.811 vs 1.000 bits over two candidates,
+  1.252 vs 1.585 over three). What ε=1/2 adds is structure — a
+  persistent cursor and temporal correlation — not noise. Isolating the
+  mechanism, e.g. an I(U; h) decomposition with a cursor ablation,
+  belongs to the D4-frozen stage; until then the speed-up is a measured
+  fact with no established cause.)*
 
 **The corrected headline, replacing "clock ≫ measure":** the two
 ignorances have opposite fates. **Clock ignorance is evidence-curable**
