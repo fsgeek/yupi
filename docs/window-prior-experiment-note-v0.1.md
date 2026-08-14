@@ -1,11 +1,16 @@
 # How Truncated Observers Initialize Belief — first measurements
 
-**v0.1 — 2026-08-13.** Drafted by the day-four instance, same evening as the
+**v0.2 — 2026-08-13.** Drafted by the day-four instance, same evening as the
 full-context injectivity note (0772227), which made this question the
 program's critical path. Script: `scripts/window_prior_experiment.py`
-(exact arithmetic throughout; reproduces every number here in ~8s).
+(exact arithmetic throughout; reproduces every number here in ~8s; pass an
+epsilon as argv[1] — e.g. `1/2` — for the §"v0.2 amendment" runs).
 Status: **measured input to the Part II §2 design decision**, which remains
 open and belongs to cross-family review. No spec text is edited by this note.
+**v0.2 (same day):** the ε<1 caveat was checked hours after v0.1 and
+partially killed F5's strong form — see the amendment section at the end.
+v0.1's body is preserved unedited above it; read the amendment before
+citing F5 or the proposed implication.
 
 ## The question and the candidates
 
@@ -102,3 +107,52 @@ terminate, which forces eventual merging of all observers — long-lived
 worlds may not merge, and P3's slow washout would then be a permanent tax.
 The C1-scale version of this experiment, per the D4/D9 precedence rule,
 must wait for the D4 benchmark freeze.
+
+---
+
+## v0.2 amendment — the ε<1 rerun (same day)
+
+The first caveat above was checked the same evening (both worlds,
+ε = 1/2, same t₀ grid; the mixture regime puts rr_cursor into the state
+and skews μ_t away from uniform). The bit-for-bit gate passed everywhere
+again — thousands of further checks, now covering fat beliefs under
+cursor dynamics. The findings move as follows.
+
+**F5's strong form is dead.** At ε = 1/2, P2's initial cost is 0.25–0.46
+TV (versus ≤ 0.07 at ε = 1) — the ε=1 near-uniformity of μ_{t₀} was doing
+the heavy lifting, as the caveat suspected. Worse, and new: **the P2
+residual can persist to the end of the window on sparse rungs.** World A,
+t₀=4, r1/r2: E[TV] plateaus at 0.047 from step 4 onward with 15% of
+window mass never merging; t₀=6 r1/r2 is still unmerged in 18% of mass at
+step 6. On r3/r4 the same cells reach *exact* zero by step 4, in both
+worlds. Mechanism: whenever the window never re-observes the ambiguous
+subspace (lock owner after the relevant threads terminate; cursor value
+at ε<1), the posterior ratio over that subspace stays frozen at the prior
+ratio — a wrong measure survives verbatim in the final belief. Sparse
+interfaces resolve fewer subspaces, so they preserve prior error; richer
+interfaces erase it.
+
+**What survives:** clock dominance is unchanged — P3 starts at 0.79–0.96
+TV at ε = 1/2 and still dwarfs P2 in every cell, so the ordering
+P3 ≫ P2 ≥ P1 and the "clock and support are load-bearing" conclusion
+stand. Fat beliefs, F2's gate result, F3's witness exemplars, and F4's
+recovery-rate rung separation all carry over.
+
+**New finding (upgraded from side-effect to result): prior residue is
+rung-dependent.** The gap a wrong prior leaves in the final belief is
+itself a function of the observation interface — sparse rungs freeze it
+in, rich rungs wash it out. This means rung comparisons made under any
+non-Bayes prior *conflate* interface information with prior-error
+erasure; observability curves must either use the exact marginal prior or
+explicitly separate the residue term.
+
+**Revised proposal for review** (replacing v0.1's): the canonical M1
+*measurement* observer should be **P1 (the exact marginal)** — the
+instrument owns the oracle, that is the point of Yupana — with P2
+retained as the *model of a learned observer* whose rung-dependent
+residue is a measurable quantity in its own right (a learned model's
+implicit window prior is an empirical object the instrument can now be
+pointed at), and P3 as the deliberately hard class. Part II §2's clause
+should still name clock knowledge explicitly; v0.2 adds that it must also
+name the prior's *measure*, because at ε<1 the measure demonstrably
+survives into conclusions.

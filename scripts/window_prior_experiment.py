@@ -44,12 +44,17 @@ H = 12
 
 from yupi.programs import io
 
-# World A: pure contention, epsilon=1 symmetry (marginals nearly uniform —
-# flatters the support-uniform prior; the skew check is world B's job).
+# Scheduler epsilon: 1 by default (the v0.1 runs); pass e.g. "1/2" as
+# argv[1] for the v0.2 amendment runs (mixture regime, cursor in state).
+EPS = Fraction(sys.argv[1]) if len(sys.argv) > 1 else Fraction(1)
+
+# World A: pure contention. At epsilon=1 the marginals are nearly uniform,
+# which flatters the support-uniform prior; the skew checks are world B
+# (device timing) and the epsilon<1 rerun (cursor + mixture).
 CFG_A = WorldConfig(
     n_threads=3, n_cpus=1, n_locks=1, n_devices=0,
     queue_depth=1, req_pool=2,
-    completion_p=Fraction(1, 3), epsilon=Fraction(1), discipline="fifo",
+    completion_p=Fraction(1, 3), epsilon=EPS, discipline="fifo",
 )
 PROGS_A = (
     (acquire(0), COMPUTE, release(0)),
@@ -63,7 +68,7 @@ PROGS_A = (
 CFG_B = WorldConfig(
     n_threads=3, n_cpus=1, n_locks=1, n_devices=1,
     queue_depth=1, req_pool=2,
-    completion_p=Fraction(1, 3), epsilon=Fraction(1), discipline="fifo",
+    completion_p=Fraction(1, 3), epsilon=EPS, discipline="fifo",
 )
 PROGS_B = (
     (acquire(0), io(0), release(0)),
