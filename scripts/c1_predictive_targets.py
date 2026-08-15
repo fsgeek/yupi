@@ -2,6 +2,12 @@
 
 (run: python scripts/c1_predictive_targets.py T_ep L B [out.json])
 
+v0.2 (day seven, second truthsayer pass): adds pair_prob — the probability
+that two independent law-weighted window draws form a divergent pair — and
+tv_pair_prob, the same weighted by the largest total-variation distance
+among the differing tau mixtures. `class_pairs` counts pairs of distinct
+joint tau-signature classes within a P-next class (NOT state pairs).
+
 Windows by path aggregation; per-state functionals via `predict`
 (one memo per eps); per window the (total, irreducible, gap) split of
 each functional; divergent-pair search per (eps, rung): windows grouped
@@ -29,6 +35,11 @@ M, W = 2, 4
 
 def freeze(d):
     return frozenset(d.items())
+
+
+def _tv(a, b):
+    keys = set(a) | set(b)
+    return sum(abs(a.get(k, Fraction(0)) - b.get(k, Fraction(0))) for k in keys) / 2
 
 
 def main():
@@ -83,6 +94,8 @@ def main():
             # classes (window pairs = sum n_a*n_b, no enumeration).
             n_pairs = 0
             n_class_pairs = 0
+            pair_prob = Fraction(0)      # P(two law-weighted draws form a divergent pair)
+            tv_pair_prob = Fraction(0)   # same, weighted by max-tau total-variation distance
             sep_by_tau = {t: 0 for t in taus}
             windows_in = set()
             mass_in = Fraction(0)
@@ -98,6 +111,11 @@ def main():
                 for (sa, wa), (sb, wb) in combinations(items, 2):
                     n_class_pairs += 1
                     n_pairs += len(wa) * len(wb)
+                    ma = sum((m for _, m in wa), Fraction(0))
+                    mb = sum((m for _, m in wb), Fraction(0))
+                    pair_prob += 2 * ma * mb
+                    tv = max(_tv(dict(sa[i]), dict(sb[i])) for i in range(len(taus)))
+                    tv_pair_prob += 2 * ma * mb * tv
                     for i, t in enumerate(taus):
                         if sa[i] != sb[i]:
                             sep_by_tau[t] += len(wa) * len(wb)
@@ -110,12 +128,12 @@ def main():
             row = dict(eps=str(eps), rung=rung, n_windows=len(agg),
                        n_pnext_classes=len(groups),
                        means={t: dict(total=v[0], irreducible=v[1], gap=v[2]) for t, v in means.items()},
-                       divergent=dict(pairs=n_pairs, class_pairs=n_class_pairs, windows=len(windows_in), mass=mass_in, separated_by=sep_by_tau))
+                       divergent=dict(pairs=n_pairs, class_pairs=n_class_pairs, windows=len(windows_in), mass=mass_in, pair_prob=float(pair_prob), tv_pair_prob=float(tv_pair_prob), separated_by=sep_by_tau))
             out["rows"].append(row)
             print(f"eps={row['eps']:>3} {rung} n={len(agg):>6} pnext-classes={len(groups):>5} "
                   f"pnext(tot/irr/gap)={means['pnext'][0]:.4f}/{means['pnext'][1]:.4f}/{means['pnext'][2]:.4f} "
                   f"kinds2 gap={means['kinds2'][2]:.4f} ttw4 gap={means['ttw4'][2]:.4f} lin4 gap={means['lineage4'][2]:.4f} | "
-                  f"divergent pairs={n_pairs} windows={len(windows_in)} mass={mass_in:.4f} by={sep_by_tau}", flush=True)
+                  f"divergent pairs={n_pairs} windows={len(windows_in)} mass={mass_in:.4f} pair_prob={float(pair_prob):.3e} tv_pair_prob={float(tv_pair_prob):.3e} by={sep_by_tau}", flush=True)
     if len(sys.argv) > 4:
         with open(sys.argv[4], "w") as f:
             json.dump(out, f, indent=2)

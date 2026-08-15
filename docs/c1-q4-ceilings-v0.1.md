@@ -1,5 +1,41 @@
 # C1 Statutory Q4 — the first ceiling that is not zero at full context (v0.1)
 
+**v0.2 — 2026-08-15 (same night, truthsayer round on the forecast layer).**
+Codex verified every (12,2,2), W=4 value by independent explicit
+continuation, the conservation identities, and the W/L flip; and
+refuted three things this note said. Corrections (v0.1 text preserved
+below the rule):
+
+1. **Finding 2's ranking is withdrawn — it was false.** "Q4's gap term is
+   larger than every state-predicate query's total ceiling except
+   Q4proxy[L0] and Q1[L0]" — at (12,2,2), ε=1, r4 the Q4 gap is 0.2648
+   bits while Q2[T0] = 0.6161, Q5joint = 0.5170, Q2[T3] = 0.5007 (and
+   others) exceed it; and it compared a gap term to totals. The
+   defensible statement: **Q4 carries a substantial observation-induced
+   gap of ~0.11–0.40 bits under the measured windowed laws.** No ranking.
+2. **Finding 5's heading "W matters to the irreducible term, not to the
+   ordering" is rewritten**: W demonstrably changes which content rung
+   dominates the gap term (owner at W=4/L=2, object at W=8 — the flip
+   the P5 paragraph itself reports). W raises the irreducible term AND
+   changes the ordering.
+3. **W=8 gate**: caveat 1 is discharged — the committed test now checks
+   forward sum against explicit W=8 enumeration exhaustively over every
+   horizon-8 endpoint state, both ε (312 states, ~6 s, zero mismatches),
+   in addition to W ≤ 4. Codex had independently checked six
+   structurally selected states at W=8; the exhaustive check subsumes it.
+4. **Decision (i) (continuation past T_ep)** — Codex recommends the same
+   reading (§2's T_ep is the generated-record horizon, not the world's
+   end) but it is an unstated semantic decision affecting a third or
+   more of endpoint conditions. It is now written up as an explicit
+   proposed Part II amendment (`docs/part2-amendment-proposal-v0.2.3.md`)
+   and these numbers are **exploratory until the amendment is confirmed
+   and stamped**. Likewise W itself: Part II §5 says W is frozen with the
+   §7 budgets, and the D4 freeze does not include it — the "W = 4
+   primary, W = 8 secondary" choice here is an exploratory selection, not
+   a freeze.
+
+---
+
 **v0.1 — 2026-08-15 (day seven, evening).** Drafted by the day-seven
 instance. Status: **measured note; statutory Q4 (Part II §5, item 9)
 implemented and measured** — the last of Q1–Q5 to exist. Code:

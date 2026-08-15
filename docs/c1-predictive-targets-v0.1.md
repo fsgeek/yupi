@@ -1,5 +1,104 @@
 # C1 Predictive-State Targets — P-next, P-horizon, and the divergent-history search (v0.1)
 
+**v0.2 — 2026-08-15 (same night, truthsayer round on the forecast layer).**
+Codex confirmed the three witness pairs, the conservation identities,
+the two-path gate, and the suite — and refuted four claims and one
+procedural claim in this note. Each recomputed independently before
+adoption; v0.1 text preserved below the rule.
+
+1. **m = 2 and W = 4 were NOT frozen** — Part II §5 says 𝒯, m, and W are
+   frozen with the §7 budgets; the D4 freeze (B1–B4) predates and omits
+   them; a measured note cannot freeze them retroactively. Same for the
+   rung-collapse δ and δ_sync (§6) — also absent from the D4 freeze — so
+   every rung-gap comparison this week is exploratory relative to a δ
+   that was to be frozen first. **Status of everything in this note and
+   in `c1-q4-ceilings-v0.1.md`: exploratory parameter selection.**
+   Repair: a prospective amendment is drafted as
+   `docs/part2-amendment-proposal-v0.2.3.md` (m, W, the past-T_ep
+   continuation, δ/δ_sync placeholders, and the divergent-class
+   criterion form); it binds when Tony confirms and it is stamped, and
+   only measurements after that stamp are confirmatory. On the
+   truthsayer's suggestion to freeze δ-close/Δ-apart thresholds now: I
+   decline to pick numbers without a sweep — freezing an arbitrary
+   threshold is a worse error than leaving it exploratory one more day;
+   the proposal names the criterion form and a sweep as the freeze's
+   precondition.
+2. **"Divergent mass rises with rung" is overstated.** r4 > r1 in all
+   six windowed (law, ε) cells; adjacent monotonicity does NOT hold —
+   (12,2,2) ε=1 r3→r4: 0.013812 → 0.013673; ε=½: 0.013126 → 0.013119.
+   I printed the decrease and called it a rise. P2's scoring line is
+   corrected to "reversed in the r1→r4 comparison; not monotone."
+3. **The "siblings" mechanism is mostly wrong.** Tracing every divergent
+   fine pair to its coarse parents at (12,2,2), ε=1 (my recomputation
+   reproduces Codex's): r1→r2 **0/21** siblings, r2→r3 **7/90**, r3→r4
+   **0/86**. Refinement creates newly qualifying pairs mainly because
+   children of DIFFERENT coarse parents acquire coincident P-next
+   mixtures while keeping different futures — not because one window
+   splits into divergent siblings. Finding 5's causal sentence is
+   replaced by this narrower one.
+4. **Metric qualifications adopted.** The L=2 range is **0.065%–9.92%**
+   of law mass, not "0.5–7%". `class_pairs` counts pairs of distinct
+   joint τ-signature classes within a P-next class — NOT state pairs
+   (caveat 2 was wrong). "Knife-edge under truncation" is too broad:
+   rare at L=2, already 31–42% at truncated L=4. Divergent mass is valid
+   for the EXISTENCE question and is one coverage measure only — a
+   high-mass window counts fully even if its only partner is negligible.
+   Two prevalence measures added to the script (v0.2, raw files
+   `…-raw-2026-08-15-v0.2.json`, v0.1 files untouched): **pair_prob**,
+   the probability that two independent law-weighted window draws form
+   a divergent pair, and **tv_pair_prob**, the same weighted by the
+   largest total-variation distance among the differing τ mixtures:
+
+| law | ε | rung | div. mass | pair_prob | tv_pair_prob | class_pairs |
+|---|---|---|---|---|---|---|
+| (12,2,2) | 1 | r1 | 0.0053 | 4.28e-06 | 1.93e-06 | 15 |
+| (12,2,2) | 1 | r2 | 0.0056 | 4.41e-06 | 1.95e-06 | 18 |
+| (12,2,2) | 1 | r3 | 0.0138 | 1.13e-05 | 3.77e-06 | 53 |
+| (12,2,2) | 1 | r4 | 0.0137 | 1.13e-05 | 3.77e-06 | 48 |
+| (12,2,2) | 1/2 | r1 | 0.0007 | 5.00e-08 | 1.16e-08 | 7 |
+| (12,2,2) | 1/2 | r2 | 0.0008 | 5.00e-08 | 1.16e-08 | 8 |
+| (12,2,2) | 1/2 | r3 | 0.0131 | 2.23e-05 | 8.98e-06 | 27 |
+| (12,2,2) | 1/2 | r4 | 0.0131 | 2.23e-05 | 8.98e-06 | 23 |
+| (14,4,2) | 1 | r1 | 0.3114 | 1.16e-03 | 4.82e-04 | 6086 |
+| (14,4,2) | 1 | r2 | 0.3756 | 1.38e-03 | 5.88e-04 | 7727 |
+| (14,4,2) | 1 | r3 | 0.3952 | 1.70e-03 | 7.47e-04 | 8182 |
+| (14,4,2) | 1 | r4 | 0.4068 | 2.04e-03 | 8.82e-04 | 8474 |
+| (14,4,2) | 1/2 | r1 | 0.3347 | 8.36e-04 | 2.56e-04 | 5574 |
+| (14,4,2) | 1/2 | r2 | 0.3758 | 1.00e-03 | 2.92e-04 | 7729 |
+| (14,4,2) | 1/2 | r3 | 0.4025 | 9.83e-04 | 3.30e-04 | 9377 |
+| (14,4,2) | 1/2 | r4 | 0.4222 | 1.06e-03 | 3.54e-04 | 9674 |
+| (14,2,2) | 1 | r1 | 0.0552 | 1.67e-05 | 7.12e-06 | 10 |
+| (14,2,2) | 1 | r2 | 0.0553 | 1.67e-05 | 7.12e-06 | 11 |
+| (14,2,2) | 1 | r3 | 0.0647 | 2.45e-05 | 9.15e-06 | 59 |
+| (14,2,2) | 1 | r4 | 0.0672 | 2.52e-05 | 9.25e-06 | 64 |
+| (14,2,2) | 1/2 | r1 | 0.0052 | 1.24e-05 | 5.49e-06 | 5 |
+| (14,2,2) | 1/2 | r2 | 0.0052 | 1.24e-05 | 5.49e-06 | 5 |
+| (14,2,2) | 1/2 | r3 | 0.0160 | 3.05e-05 | 7.01e-06 | 39 |
+| (14,2,2) | 1/2 | r4 | 0.0992 | 3.05e-05 | 7.01e-06 | 46 |
+
+   Read: the class is real and rare — 10⁻⁸–10⁻⁵ pair probability at
+   L=2, ~10⁻³ at L=4; the 9.92%-mass cell at (14,2,2) ε=½ r4 has
+   pair_prob 3×10⁻⁵ (one high-mass window, negligible partners).
+   Full-context (12,12,2), v0.2 rerun — pair_prob is the honest
+   version of the "95–98% mass" figure:
+
+| law | ε | rung | div. mass | pair_prob | tv_pair_prob | class_pairs |
+|---|---|---|---|---|---|---|
+| (12,12,2) | 1 | r1 | 0.9776 | 1.51e-02 | 7.18e-03 | 3255 |
+| (12,12,2) | 1 | r2 | 0.9773 | 1.44e-02 | 7.02e-03 | 3228 |
+| (12,12,2) | 1 | r3 | 0.9484 | 1.38e-02 | 6.83e-03 | 3205 |
+| (12,12,2) | 1 | r4 | 0.9478 | 1.38e-02 | 6.83e-03 | 3192 |
+| (12,12,2) | 1/2 | r1 | 0.9810 | 6.65e-03 | 3.18e-03 | 4872 |
+| (12,12,2) | 1/2 | r2 | 0.9791 | 6.50e-03 | 3.16e-03 | 4821 |
+| (12,12,2) | 1/2 | r3 | 0.9522 | 6.16e-03 | 3.06e-03 | 4727 |
+| (12,12,2) | 1/2 | r4 | 0.9522 | 6.16e-03 | 3.06e-03 | 4714 |
+
+5. Also from the round: continuation past T_ep is Codex's recommended
+   reading too, but it is an unstated semantic decision — in the
+   proposal (item 1).
+
+---
+
 **v0.1 — 2026-08-15 (day seven, night).** Drafted by the day-seven
 instance. Status: **measured note; Part II §5 predictive-state targets
 implemented and measured; divergent-history search run** (M1
@@ -113,7 +212,7 @@ Conservation check (all τ AND P-next irreducible rung-invariant at every law/ε
 ### Predictions scored
 
 - **P1 held**: divergent pairs exist at (12,2,2) at every rung, both ε (18–90 pairs, 0.5–1.4% law mass), and at every other windowed law.
-- **P2 REFUTED, in the opposite direction, at every windowed law**: divergent mass RISES with rung — (12,2,2) ε=1: 0.0053→0.0056→0.0138→0.0137; (12,2,2) ε=1/2: 0.0007→0.0008→0.0131→0.0131; (14,4,2) ε=1: 0.3114→0.3756→0.3952→0.4068; (14,4,2) ε=1/2: 0.3347→0.3758→0.4025→0.4222; (14,2,2) ε=1: 0.0552→0.0553→0.0647→0.0672; (14,2,2) ε=1/2: 0.0052→0.0052→0.0160→0.0992. Mechanism: a finer interface splits a coarse window into siblings that share the same next-record mixture but differ later — the history partition refines faster than the P-next partition. The finer the interface, the MORE immediate-agree/later-diverge histories it manufactures. (Also: many split siblings are near-point-mass, and exact P-next equality between resolved windows is easy — see finding 4.)
+- **P2 REFUTED in the r1→r4 comparison at every windowed law; NOT monotone (v0.2 correction — see block above; the list below includes an r3→r4 DECREASE at (12,2,2) that v0.1 called a rise)**: (12,2,2) ε=1: 0.0053→0.0056→0.0138→0.0137; (12,2,2) ε=1/2: 0.0007→0.0008→0.0131→0.0131; (14,4,2) ε=1: 0.3114→0.3756→0.3952→0.4068; (14,4,2) ε=1/2: 0.3347→0.3758→0.4025→0.4222; (14,2,2) ε=1: 0.0552→0.0553→0.0647→0.0672; (14,2,2) ε=1/2: 0.0052→0.0052→0.0160→0.0992. Mechanism: a finer interface splits a coarse window into siblings that share the same next-record mixture but differ later — the history partition refines faster than the P-next partition. The finer the interface, the MORE immediate-agree/later-diverge histories it manufactures. (Also: many split siblings are near-point-mass, and exact P-next equality between resolved windows is easy — see finding 4.)
 - **P3 held (marginally)**: at full context divergent STATE pairs exist at r1 (194,388,028 window pairs, mass 0.9776) and are fewer at r4 (193,256,520, mass 0.9478); P-next classes 126→195 over 720 states (ε=1). Held in direction; the magnitude says P-next is a very lossy summary of state — 95–98% of law mass has a next-record twin with a different future.
 - **P4 held (conservation)**: True — every functional's irreducible term is float-identical across rungs at every law and ε; P-next's too (given the exact state, the r1 record determines the r4 record: injectivity at one step).
 - **P5 held in 26 of 32 (law,ε,rung) cells — MIXED, not "almost everywhere"**: next-2-kinds separates ≥ as many pairs as time-to-wake at (12,2,2) and (14,4,2) throughout, but at **(14,2,2) time-to-wake separates MORE in six cells** (ε=1: r1 3 vs 18, r2 5 vs 20, r4 134 vs 157; ε=½: r1 0 vs 9, r2 0 vs 9, r4 82 vs 88), and at (12,2,2) r1/r2 the LINEAGE functional separates the most (16 vs 14 at ε=1; 7 vs 3 at ε=½). Which functional exposes divergence depends on the law. Neither exception was predicted.
@@ -145,10 +244,12 @@ Conservation check (all τ AND P-next irreducible rung-invariant at every law/ε
    the exposure experiments:** define the class with δ-close P-next and
    Δ-apart P-horizon, not exact equality; the exact version is the
    δ = 0 corner and this note is its baseline.
-5. **Divergent mass RISES with interface fineness** (P2 reversed at
-   every windowed law): finer rungs split windows into siblings that
-   agree on the next record and disagree later. The finer the
-   telemetry, the more such pairs it hands a model.
+5. **Divergent mass at r4 exceeds r1 in every windowed (law, ε) cell;
+   adjacent steps are not monotone** (v0.2 correction). Mechanism (v0.2,
+   replacing v0.1's "siblings" story, which traced to 0/21, 7/90, 0/86):
+   refinement creates newly qualifying pairs mainly when children of
+   DIFFERENT coarse parents acquire coincident P-next mixtures while
+   keeping different futures.
 6. **Which functional exposes divergence is law-dependent** (P5 mixed):
    kinds at (12,2,2)/(14,4,2), time-to-wake at (14,2,2), lineage at the
    coarsest (12,2,2) rungs.

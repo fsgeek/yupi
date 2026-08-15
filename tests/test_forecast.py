@@ -41,14 +41,17 @@ def test_no_wake_possible_in_short_horizon_from_reset():
 
 def test_two_paths_agree_on_every_endpoint_state():
     """Every distinct final state of every C1 path to horizon 8, both ε,
-    W ∈ {1..4}: forward sum == explicit path enumeration, Fraction-exact."""
+    W ∈ {1..4} AND W = 8 (the measurement's secondary horizon; made
+    exhaustive on the second truthsayer pass — ~6 s): forward sum ==
+    explicit path enumeration, Fraction-exact."""
     for eps in (Fraction(1), Fraction(1, 2)):
         cfg, progs = _c1(eps)
         finals = {f for _, _, f in paths(cfg, progs, 8)}
         assert len(finals) > 10
+        memo = {}
         for s in finals:
-            for W in (1, 2, 3, 4):
-                assert q4_forward(s, cfg, progs, W) == q4_by_paths(s, cfg, progs, W)
+            for W in (1, 2, 3, 4, 8):
+                assert q4_forward(s, cfg, progs, W, memo) == q4_by_paths(s, cfg, progs, W)
 
 
 def test_wake_is_witnessed_somewhere():
@@ -75,3 +78,23 @@ def test_mixture_and_split():
     pm = {finals[0]: Fraction(1)}
     t, i, g = split_entropy(pm, {finals[0]: per_state[finals[0]]})
     assert g == pytest.approx(0.0) and t == pytest.approx(i)
+
+
+def test_two_paths_agree_at_w8_on_representative_states():
+    """W=8 is used in measurement; exhaustive gating stops at W=4. This
+    committed representative check (second truthsayer pass): six
+    structurally selected horizon-8 endpoint states per ε — the first two
+    in deterministic enumeration order among (a) states with a held lock
+    and a waiter, (b) states with a request in flight, (c) states with
+    neither — forward sum == explicit W=8 enumeration, Fraction-exact.
+    Runtime bounded by picking states with modest branching."""
+    for eps in (Fraction(1), Fraction(1, 2)):
+        cfg, progs = _c1(eps)
+        finals = sorted({f for _, _, f in paths(cfg, progs, 8)}, key=repr)
+        a = [s for s in finals if any(o is not None for o in s.lock_owner) and any(s.lock_wq)]
+        b = [s for s in finals if any(s.dev_q)]
+        c = [s for s in finals if not any(s.dev_q) and not any(s.lock_wq)]
+        picks = a[:2] + b[:2] + c[:2]
+        assert len(picks) == 6
+        for s in picks:
+            assert q4_forward(s, cfg, progs, 8) == q4_by_paths(s, cfg, progs, 8)
