@@ -1,0 +1,90 @@
+{
+  "law": {
+    "T_ep": 14,
+    "L": 4,
+    "B": 2
+  },
+  "W": 8,
+  "rows": [
+    {
+      "eps": "1",
+      "rung": "r1",
+      "n_windows": 3497,
+      "n_states": 1216,
+      "total_bits": 1.1700943481682327,
+      "irreducible_bits": 0.9544052268225172,
+      "gap_bits": 0.21568912134570944,
+      "none_mass": 0.2545726989382835
+    },
+    {
+      "eps": "1",
+      "rung": "r2",
+      "n_windows": 3922,
+      "n_states": 1216,
+      "total_bits": 1.136988138315925,
+      "irreducible_bits": 0.954405226822518,
+      "gap_bits": 0.18258291149340442,
+      "none_mass": 0.25457269893828366
+    },
+    {
+      "eps": "1",
+      "rung": "r3",
+      "n_windows": 4577,
+      "n_states": 1216,
+      "total_bits": 1.1173383687019427,
+      "irreducible_bits": 0.9544052268225172,
+      "gap_bits": 0.1629331418794243,
+      "none_mass": 0.2545726989382858
+    },
+    {
+      "eps": "1",
+      "rung": "r4",
+      "n_windows": 4698,
+      "n_states": 1216,
+      "total_bits": 1.1170984162270687,
+      "irreducible_bits": 0.9544052268225164,
+      "gap_bits": 0.16269318940455046,
+      "none_mass": 0.25457269893828594
+    },
+    {
+      "eps": "1/2",
+      "rung": "r1",
+      "n_windows": 3497,
+      "n_states": 2139,
+      "total_bits": 0.88948483870232,
+      "irreducible_bits": 0.7436854457893802,
+      "gap_bits": 0.1457993929129383,
+      "none_mass": 0.22597676949139095
+    },
+    {
+      "eps": "1/2",
+      "rung": "r2",
+      "n_windows": 3922,
+      "n_states": 2139,
+      "total_bits": 0.8677453163564768,
+      "irreducible_bits": 0.7436854457893813,
+      "gap_bits": 0.12405987056709461,
+      "none_mass": 0.22597676949139142
+    },
+    {
+      "eps": "1/2",
+      "rung": "r3",
+      "n_windows": 4577,
+      "n_states": 2139,
+      "total_bits": 0.8527338740696241,
+      "irreducible_bits": 0.7436854457893813,
+      "gap_bits": 0.10904842828024462,
+      "none_mass": 0.22597676949139117
+    },
+    {
+      "eps": "1/2",
+      "rung": "r4",
+      "n_windows": 4698,
+      "n_states": 2139,
+      "total_bits": 0.852720148663539,
+      "irreducible_bits": 0.7436854457893821,
+      "gap_bits": 0.10903470287416013,
+      "none_mass": 0.22597676949139114
+    }
+  ]
+}
