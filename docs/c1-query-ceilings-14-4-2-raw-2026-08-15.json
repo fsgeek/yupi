@@ -39,19 +39,67 @@
           "mean_bits": 0.0671736556043128,
           "resolved_mass": 0.7657089492689242
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.0671736556043128,
           "resolved_mass": 0.7657089492689242
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.34226757008408204,
           "resolved_mass": 0.6389613218807114
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.018508244950362397,
           "resolved_mass": 0.9694518965446071
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.09814609665239342,
+          "resolved_mass": 0.8623137783754704
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.016452331995674967,
+          "resolved_mass": 0.9511816466968716
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.0842058808233096,
+          "resolved_mass": 0.876132891930476
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.017886577308509573,
+          "resolved_mass": 0.9488472690625246
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.007814525394612354,
+          "resolved_mass": 0.985403817216044
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.04959524431950444,
+          "resolved_mass": 0.926462515831703
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.05823268623733152,
+          "resolved_mass": 0.9092942677598586
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.003043150380754541,
+          "resolved_mass": 0.9931370320396741
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.2749137833909055,
           "resolved_mass": 0.7237514925201178
         }
@@ -91,19 +139,67 @@
           "mean_bits": 0.06679417649316073,
           "resolved_mass": 0.785182554290208
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.06679417649316073,
           "resolved_mass": 0.785182554290208
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.2999581752837117,
           "resolved_mass": 0.7011364518113085
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.0029793944845315948,
           "resolved_mass": 0.9901490451218782
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.0867673003672192,
+          "resolved_mass": 0.8773419404352556
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.015082471198514108,
+          "resolved_mass": 0.954766415902622
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.08066619788938485,
+          "resolved_mass": 0.8827555366302169
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.016373773102186916,
+          "resolved_mass": 0.9532561211879084
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.0013169660305050721,
+          "resolved_mass": 0.9942263352560706
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.048088323050741975,
+          "resolved_mass": 0.9304543296068244
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.055222073484468365,
+          "resolved_mass": 0.9224694941137718
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.003043150380754541,
+          "resolved_mass": 0.9931370320396741
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.24923225039104432,
           "resolved_mass": 0.7652646491208153
         }
@@ -143,19 +239,67 @@
           "mean_bits": 0.06628908233410957,
           "resolved_mass": 0.787223279032394
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.06628908233410957,
           "resolved_mass": 0.787223279032394
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.26922017454898817,
           "resolved_mass": 0.7228067043106116
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.002840268144393384,
           "resolved_mass": 0.9926719184056129
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.07171529073888261,
+          "resolved_mass": 0.9029031421068748
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.003869490872025264,
+          "resolved_mass": 0.9840927382986103
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.06513156872489384,
+          "resolved_mass": 0.9136678278206263
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.004187032007368647,
+          "resolved_mass": 0.9837729462354475
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.001299578067121624,
+          "resolved_mass": 0.9957121269631093
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.028782206954025176,
+          "resolved_mass": 0.9547427677609169
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.03456991647042568,
+          "resolved_mass": 0.9479601677021852
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.0030312851315066405,
+          "resolved_mass": 0.9940721345245505
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.19327146341690257,
           "resolved_mass": 0.8090134267136679
         }
@@ -195,19 +339,67 @@
           "mean_bits": 0.06455649658975027,
           "resolved_mass": 0.8634476531458639
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.06455649658975027,
           "resolved_mass": 0.8634476531458639
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.2691604717588218,
           "resolved_mass": 0.7228646414636942
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.002840268144393384,
           "resolved_mass": 0.9926719184056129
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.07168842863738453,
+          "resolved_mass": 0.9029321232839279
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.0038694702433637058,
+          "resolved_mass": 0.9840936455354572
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.06510755699003772,
+          "resolved_mass": 0.9136918191950215
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.004187011378707088,
+          "resolved_mass": 0.9837738534722945
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.001299578067121624,
+          "resolved_mass": 0.9957121269631093
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.028782131054047533,
+          "resolved_mass": 0.9547436749977638
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.03456984534604108,
+          "resolved_mass": 0.947961074939032
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.0030312851315066405,
+          "resolved_mass": 0.9940721345245505
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.1932203779025765,
           "resolved_mass": 0.8090614094624585
         }
@@ -247,19 +439,67 @@
           "mean_bits": 0.04168656580561795,
           "resolved_mass": 0.8321078458188623
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.04168656580561795,
           "resolved_mass": 0.8321078458188623
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.22493916051008736,
           "resolved_mass": 0.6462176208577504
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.008478124292816061,
           "resolved_mass": 0.9761844123379113
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.04930271543383921,
+          "resolved_mass": 0.9215409629973489
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.005570398836614076,
+          "resolved_mass": 0.97174487408696
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.08211386643200073,
+          "resolved_mass": 0.8294524325877152
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.005920219879542321,
+          "resolved_mass": 0.9598165964653453
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.003807400921674701,
+          "resolved_mass": 0.9874656059845003
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.0331601469636749,
+          "resolved_mass": 0.9397566072377455
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.025360664419542496,
+          "resolved_mass": 0.9540242566814497
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.00046696171717814354,
+          "resolved_mass": 0.9976918351330024
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.16740037859312368,
           "resolved_mass": 0.7293902273136106
         }
@@ -299,19 +539,67 @@
           "mean_bits": 0.041119970490538754,
           "resolved_mass": 0.8525180351122124
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.041119970490538754,
           "resolved_mass": 0.8525180351122124
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.19310649946083133,
           "resolved_mass": 0.6828722267409436
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.00038489468866216196,
           "resolved_mass": 0.9957732860234143
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.03889526982159521,
+          "resolved_mass": 0.9271580077769672
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.004552210589142454,
+          "resolved_mass": 0.9740320218265291
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.08050720085671957,
+          "resolved_mass": 0.8336632098311841
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.004884936885937345,
+          "resolved_mass": 0.9622751319666076
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.00017568952021111445,
+          "resolved_mass": 0.9979085392112834
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.03274835836772551,
+          "resolved_mass": 0.9420858255467017
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.024346051574006985,
+          "resolved_mass": 0.9598169169676709
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.00046696171717814354,
+          "resolved_mass": 0.9976918351330024
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.14979200518939725,
           "resolved_mass": 0.7562001433693982
         }
@@ -351,19 +639,67 @@
           "mean_bits": 0.040940413579165794,
           "resolved_mass": 0.8532116239304043
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.040940413579165794,
           "resolved_mass": 0.8532116239304043
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.17162283943440176,
           "resolved_mass": 0.7015916894430975
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.000376551719518231,
           "resolved_mass": 0.9968953709710472
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.028582687664900283,
+          "resolved_mass": 0.9472903034628379
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.0005062572579110643,
+          "resolved_mass": 0.996047365701068
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.06603963723301988,
+          "resolved_mass": 0.8881192254445345
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.0005317784069876671,
+          "resolved_mass": 0.9962069741959766
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.00017473885981862862,
+          "resolved_mass": 0.9985951401204107
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.016148468256624422,
+          "resolved_mass": 0.9657055238140785
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.013560232242673324,
+          "resolved_mass": 0.9778438906101043
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.0004666975542568773,
+          "resolved_mass": 0.997920997672853
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.11727675903870018,
           "resolved_mass": 0.8187697297132938
         }
@@ -403,19 +739,67 @@
           "mean_bits": 0.040794054449837254,
           "resolved_mass": 0.9055119152756844
         },
-        "Q3ids[D0]": {
+        "Q3thr[D0]": {
           "mean_bits": 0.040794054449837254,
           "resolved_mass": 0.9055119152756844
         },
-        "Q4[L0]": {
+        "Q4proxy[L0]": {
           "mean_bits": 0.17161965332738072,
           "resolved_mass": 0.7015946266090074
         },
-        "Q4[L1]": {
+        "Q4proxy[L1]": {
           "mean_bits": 0.000376551719518231,
           "resolved_mass": 0.9968953709710472
         },
-        "Q5": {
+        "Q5[T0,T1]": {
+          "mean_bits": 0.02858151306512847,
+          "resolved_mass": 0.9472913758283763
+        },
+        "Q5[T0,T2]": {
+          "mean_bits": 0.0005062572460637146,
+          "resolved_mass": 0.9960473692034318
+        },
+        "Q5[T0,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T1,T0]": {
+          "mean_bits": 0.06603809844298457,
+          "resolved_mass": 0.8881206109309444
+        },
+        "Q5[T1,T2]": {
+          "mean_bits": 0.0005317783934393371,
+          "resolved_mass": 0.9962069776983404
+        },
+        "Q5[T1,T3]": {
+          "mean_bits": 0.00017473885981862862,
+          "resolved_mass": 0.9985951401204107
+        },
+        "Q5[T2,T0]": {
+          "mean_bits": 0.016148467549523517,
+          "resolved_mass": 0.9657055273164423
+        },
+        "Q5[T2,T1]": {
+          "mean_bits": 0.013560232056192488,
+          "resolved_mass": 0.9778438941124683
+        },
+        "Q5[T2,T3]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T0]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5[T3,T1]": {
+          "mean_bits": 0.0004666975542568773,
+          "resolved_mass": 0.997920997672853
+        },
+        "Q5[T3,T2]": {
+          "mean_bits": 0.0,
+          "resolved_mass": 1.0
+        },
+        "Q5joint": {
           "mean_bits": 0.11727402235933287,
           "resolved_mass": 0.81877210675477
         }
