@@ -1,5 +1,5 @@
-"""Query layer (Part I §Q1–Q5): pure functions of State, pushforward of a
-belief through a query, exact-probability entropy.
+"""Query layer (Part II §5 Q1–Q5, statutory and proxy): pure functions of
+State, pushforward of a belief through a query, exact-probability entropy.
 
 Design rule: queries are WORLD DEFINITION (functions of the state tuple),
 so they may sit on the shared side of the two-path firewall like
@@ -17,8 +17,8 @@ from yupi.state import (
 )
 from yupi.queries import (
     all_queries, entropy_bits, pushforward, q1_owner, q2_status,
-    q3_inflight, q3_inflight_ids, q4_next_release_wake, q5_relation,
-    state_entropy_bits,
+    q3_inflight, q3_inflight_ids, q4_next_release_wake, q5_pair,
+    q5_relation, state_entropy_bits,
 )
 
 
@@ -69,6 +69,8 @@ def test_busy_state_answers():
     assert q4_next_release_wake(s, 0) == 1
     # t1 waits on L0, owned by running t0.
     assert q5_relation(s) == frozenset({(1, 0)})
+    assert q5_pair(s, 1, 0) is True
+    assert q5_pair(s, 0, 1) is False and q5_pair(s, 1, 2) is False
 
 
 def test_all_queries_enumerates_per_entity():
@@ -77,9 +79,11 @@ def test_all_queries_enumerates_per_entity():
     names = [n for n, _ in qs]
     assert "Q1[L0]" in names and "Q1[L1]" in names
     assert "Q2[T3]" in names
-    assert "Q3[D0]" in names and "Q3ids[D0]" in names
-    assert "Q4[L1]" in names
-    assert "Q5" in names
+    assert "Q3[D0]" in names and "Q3thr[D0]" in names
+    assert "Q4proxy[L1]" in names
+    assert "Q5[T1,T0]" in names and "Q5[T0,T1]" in names
+    assert "Q5joint" in names
+    assert len([n for n in names if n.startswith("Q5[")]) == 12
     s = initial_state(cfg)
     for _, fn in qs:
         fn(s)  # every query is total on states

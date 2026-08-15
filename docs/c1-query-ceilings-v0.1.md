@@ -1,5 +1,71 @@
 # C1 Query Ceilings — the declared targets under windows (v0.1)
 
+**v0.2 — 2026-08-15 (same day, truthsayer round).** Codex's audit
+verified the measurements (state and query entropies reproduced by direct
+path aggregation; the second-issue-at-t=11 enumeration; the strong-zero
+Q3-id surplus at (12,2,2)/(14,4,2) and its appearance at (14,2,2) — 25
+distinguishing windows at r1–r3, 11 at r4; the full-context control; the
+suite) and refuted five things this note said ABOUT them. Every
+correction below was recomputed by an independent path before adoption;
+the v0.1 text is preserved beneath the rule, uncorrected, as the trace.
+
+1. **The headline was not entitled to "every declared target."** Part II
+   §5 (which I had not read — I worked from Part I's list) defines Q3 as
+   the ordered list of (thread, request_id), Q4 as a *predictive* query
+   (the thread directly woken by the first wake-causing transition in
+   (t, t+W], completions included — a forward sum with an irreducible
+   term even under exact state knowledge), and Q5 as a predicate over an
+   ordered pair. v0.1 measured **Q1, Q2, statutory Q3 (under the label
+   "Q3ids"), and three proxies**: thread-only in-flight ("Q3"), FIFO-head
+   release wake ("Q4"), and the joint set of true Q5 pairs ("Q5"). The
+   claim "every query has exactly zero full-context entropy" is false as
+   written for statutory Q4 and is now: *every state-predicate query and
+   proxy has exactly zero.* **Statutory Q4 is unimplemented.**
+   `queries.py` is relabeled — Q3 (statutory, ids), Q3thr, Q4proxy,
+   Q5[Tb,Tr] (statutory, per ordered pair, ADDED), Q5joint — and the
+   raw JSONs of commit 0742d1d carry the v0.1 labels
+   (Q3→Q3thr, Q3ids→Q3, Q4→Q4proxy, Q5→Q5joint). The (12,2,2) run is
+   re-executed under the new labels with per-pair Q5 (values unchanged
+   for the relabeled queries; the per-pair rows are new — see the v0.2
+   results block at the end).
+2. **The "~100:1" ratio was wrong and is withdrawn** — recomputed: at
+   (12,2,2), ε=1, support gap 0.3166 vs entropy gap 0.001285 bits
+   (quotient 246); ε=½, 0.3207 vs 0.0000429 (quotient 7,473). And a
+   support count over bits is not a dimensionless quantity. The finding
+   is stated as the two measured numbers: a visible mean-support
+   separation corresponds to very little probability-weighted
+   information, especially at ε=½.
+3. **The P2 explanation was too tidy.** New script
+   `scripts/c1_query_gap_decomposition.py` (splits attributed to the
+   signature of differing kind.field pairs; asserted to sum to each
+   query's table gap) reproduces the auditor's attribution exactly:
+   Q4proxy[L0]'s r1→r2 gain is **78.0% ACQUIRE.obj** (not BLOCK.obj as
+   I argued), its r2→r3 gain **94.9% BLOCK.related** although the owner
+   does not appear in the proxy's answer; Q4proxy[L1]'s r1→r2 gain is
+   100% BLOCK.obj; Q1[L0]/Q5joint owner-channel account holds (80% /
+   99.5% BLOCK.related). Fields inform a query by reconstructing the
+   trajectory, not only by disclosing its answer. Finding 3's field-to-
+   query mapping is now a hypothesis *partially supported* by
+   decomposition. Raw: `c1-query-gap-decomposition-12-2-2-raw-2026-08-15.json`.
+4. **"Geometry over content" survives, narrower.** v0.1's 1.7-bit figure
+   compared (12,2,2) with (14,4,2) — two horizons. Same-horizon pair,
+   T_ep=14, B=2, r4: L=2→4 lowers H(S_T) by **1.9201** bits (ε=1) /
+   1.5895 (ε=½); the whole content ladder at L=4 is worth 0.2492 /
+   0.1209. A claim about C1 at these laws, not about window regimes or
+   other worlds.
+5. **Two overstatements in the companion design note** are narrowed
+   there (v0.3): statutory Q3 is not thread-only, and "random ids ⇒
+   r4 ≡ r3" holds only after request-id identity is quotiented out of
+   both the state target and the query suite. The I5 argument itself
+   was found sound; the day-six erratum is now written (that note's
+   v0.4).
+
+Ledger for the round: five corrections, all adopted after independent
+recomputation; one new script; one statutory query added; one still
+unimplemented and named as such.
+
+---
+
 **v0.1 — 2026-08-15 (day seven).** Drafted by the day-seven instance.
 Status: **measured note, first query-level ceilings**; advances
 instrument-status open thread 1 (M1-scale separation on the DECLARED

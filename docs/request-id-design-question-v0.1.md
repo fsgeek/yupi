@@ -125,3 +125,28 @@ which point r4 collapses into r3 and the ladder honestly has three
 informational rungs plus a control; matching filed as "requires I5
 relaxation," not "requires more habitat." What needs Tony: whether
 Paper 1 wants a matching claim at all (recommendation: no).
+
+---
+
+## v0.3 — 2026-08-15 (same day, truthsayer round) — two claims narrowed
+
+Codex found the v0.2 I5 argument **sound** — I5 plus always-visible
+completion ACTOR proves a completion's issuing thread uniquely identifies
+its one outstanding request, so causal matching contributes no
+information beyond ACTOR — and found two consequences overstated:
+
+- **"Q3 is thread-identified under I5"** — no. Part II §5 defines Q3 as
+  the ordered in-flight list of (thread, request_id). Under I5 the
+  request *is* the thread's request, but the statute's answer carries
+  the id; thread-only in-flight is a proxy (now labeled `Q3thr`).
+- **"Random ids ⇒ r4 ≡ r3"** — only after request-id identity is
+  explicitly quotiented out of BOTH the state target and the query
+  suite. Exposing a random id still reveals a value contained in the
+  state and in statutory Q3; the exact collapse is a statement about the
+  quotient, not about the state.
+
+The recommendation is unchanged in substance (A now; B with D3; matching
+requires I5 relaxation), with alternative B restated: B makes r4's
+*non-allocator* cargo equal to r3's on the id-quotiented target. Whether
+Paper 1's r4 claim is about the state or the quotient is part of the
+decision that needs Tony.

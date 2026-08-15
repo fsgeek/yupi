@@ -1,0 +1,931 @@
+{
+  "law": {
+    "T_ep": 12,
+    "L": 2,
+    "B": 2
+  },
+  "decomposition": {
+    "1": {
+      "r1->r2": {
+        "Q1[L0]": {
+          "gap_bits": 0.017332452786457314,
+          "shares": {
+            "BLOCK.obj": 0.6926333592575172,
+            "RELEASE.obj": 0.3073666407424826,
+            "ACQUIRE.obj": 0.0
+          }
+        },
+        "Q1[L1]": {
+          "gap_bits": 0.12208299953739539,
+          "shares": {
+            "ACQUIRE.obj": 0.9501302415527072,
+            "BLOCK.obj": 0.04970721619358263,
+            "RELEASE.obj": 0.00016254225371001285
+          }
+        },
+        "Q2[T0]": {
+          "gap_bits": 0.03480923051155034,
+          "shares": {
+            "ACQUIRE.obj": 0.9192939265978118,
+            "BLOCK.obj": 0.052872066170376375,
+            "RELEASE.obj": 0.02783400723181196
+          }
+        },
+        "Q2[T1]": {
+          "gap_bits": 0.005327417788801067,
+          "shares": {
+            "RELEASE.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "BLOCK.obj": 0.0
+          }
+        },
+        "Q2[T2]": {
+          "gap_bits": 0.011119318742997153,
+          "shares": {
+            "ACQUIRE.obj": 0.9496931361555834,
+            "BLOCK.obj": 0.03388717735206634,
+            "RELEASE.obj": 0.016419686492350358
+          }
+        },
+        "Q2[T3]": {
+          "gap_bits": 0.0028998775050017053,
+          "shares": {
+            "ACQUIRE.obj": 0.9468758804926962,
+            "RELEASE.obj": 0.026583965970729637,
+            "BLOCK.obj": 0.026540153536574254
+          }
+        },
+        "Q3[D0]": {
+          "gap_bits": 0.0007707521588197911,
+          "shares": {
+            "ACQUIRE.obj": 0.9739365578214134,
+            "RELEASE.obj": 0.02606344217858659,
+            "BLOCK.obj": 0.0
+          }
+        },
+        "Q3thr[D0]": {
+          "gap_bits": 0.0007707521588197911,
+          "shares": {
+            "ACQUIRE.obj": 0.9739365578214134,
+            "RELEASE.obj": 0.02606344217858659,
+            "BLOCK.obj": 0.0
+          }
+        },
+        "Q4proxy[L0]": {
+          "gap_bits": 0.0505608002959642,
+          "shares": {
+            "ACQUIRE.obj": 0.7798575593984194,
+            "BLOCK.obj": 0.1991602406500956,
+            "RELEASE.obj": 0.020982199951485037
+          }
+        },
+        "Q4proxy[L1]": {
+          "gap_bits": 0.012005034997656247,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T0,T1]": {
+          "gap_bits": 0.013334336558627943,
+          "shares": {
+            "ACQUIRE.obj": 1.0,
+            "BLOCK.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T0,T2]": {
+          "gap_bits": 0.0001092503442715624,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T0,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T1,T0]": {
+          "gap_bits": 0.001246643822424248,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T1,T2]": {
+          "gap_bits": 0.0002007382188682484,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T1,T3]": {
+          "gap_bits": 0.002913819505236231,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T2,T0]": {
+          "gap_bits": 0.00019896572849445633,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T2,T1]": {
+          "gap_bits": 0.0051192101600616,
+          "shares": {
+            "ACQUIRE.obj": 1.0,
+            "BLOCK.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T2,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T0]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T1]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T2]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5joint": {
+          "gap_bits": 0.02027120337666713,
+          "shares": {
+            "ACQUIRE.obj": 0.786653673045532,
+            "BLOCK.obj": 0.21334632695446823,
+            "RELEASE.obj": 0.0
+          }
+        }
+      },
+      "r2->r3": {
+        "Q1[L0]": {
+          "gap_bits": 0.14306072025333763,
+          "shares": {
+            "BLOCK.related": 0.8016462936494965,
+            "RELEASE.related": 0.19835370635050376
+          }
+        },
+        "Q1[L1]": {
+          "gap_bits": 0.011473742822253394,
+          "shares": {
+            "BLOCK.related": 0.7431173710628807,
+            "RELEASE.related": 0.2568826289371195
+          }
+        },
+        "Q2[T0]": {
+          "gap_bits": 0.020665512020530002,
+          "shares": {
+            "BLOCK.related": 0.8526090709508751,
+            "RELEASE.related": 0.14739092904912518
+          }
+        },
+        "Q2[T1]": {
+          "gap_bits": 0.02363312147545221,
+          "shares": {
+            "BLOCK.related": 0.7263487286801621,
+            "RELEASE.related": 0.27365127131983796
+          }
+        },
+        "Q2[T2]": {
+          "gap_bits": 0.004583952317208145,
+          "shares": {
+            "BLOCK.related": 0.5263916204534015,
+            "RELEASE.related": 0.4736083795465983
+          }
+        },
+        "Q2[T3]": {
+          "gap_bits": 0.0022562703943480172,
+          "shares": {
+            "RELEASE.related": 0.7875825170315162,
+            "BLOCK.related": 0.21241748296848395
+          }
+        },
+        "Q3[D0]": {
+          "gap_bits": 0.0008886363639746837,
+          "shares": {
+            "RELEASE.related": 0.6328930344273842,
+            "BLOCK.related": 0.3671069655726158
+          }
+        },
+        "Q3thr[D0]": {
+          "gap_bits": 0.0008886363639746837,
+          "shares": {
+            "RELEASE.related": 0.6328930344273842,
+            "BLOCK.related": 0.3671069655726158
+          }
+        },
+        "Q4proxy[L0]": {
+          "gap_bits": 0.03309578643742074,
+          "shares": {
+            "BLOCK.related": 0.9488465215512376,
+            "RELEASE.related": 0.05115347844876202
+          }
+        },
+        "Q4proxy[L1]": {
+          "gap_bits": 0.00011797133476441023,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T0,T1]": {
+          "gap_bits": 0.018678929825268156,
+          "shares": {
+            "BLOCK.related": 0.9892933365171296,
+            "RELEASE.related": 0.01070666348287054
+          }
+        },
+        "Q5[T0,T2]": {
+          "gap_bits": 0.01952709039899175,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T0,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T1,T0]": {
+          "gap_bits": 0.019452175697569685,
+          "shares": {
+            "BLOCK.related": 0.9894648281398329,
+            "RELEASE.related": 0.010535171860167083
+          }
+        },
+        "Q5[T1,T2]": {
+          "gap_bits": 0.019443050732412693,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T1,T3]": {
+          "gap_bits": 1.81263037407309e-05,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T2,T0]": {
+          "gap_bits": 0.022800031198219925,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T2,T1]": {
+          "gap_bits": 0.0224922145961111,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T2,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T0]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T1]": {
+          "gap_bits": 1.8109014019592276e-05,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T3,T2]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5joint": {
+          "gap_bits": 0.07773240183799006,
+          "shares": {
+            "BLOCK.related": 0.9947826354702352,
+            "RELEASE.related": 0.0052173645297648235
+          }
+        }
+      },
+      "r3->r4": {
+        "Q1[L0]": {
+          "gap_bits": 0.00022966314800857682,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7931873302573913,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.20681266974260873
+          }
+        },
+        "Q1[L1]": {
+          "gap_bits": 5.74618585225551e-06,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8274766494026873,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.17252335059731272
+          }
+        },
+        "Q2[T0]": {
+          "gap_bits": 0.00034104735197769675,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8128143681451919,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.18718563185480802
+          }
+        },
+        "Q2[T1]": {
+          "gap_bits": 0.00010517066236782297,
+          "shares": {
+            "IO_ISSUE.lineage": 0.9272581135452601,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.07274188645473985
+          }
+        },
+        "Q2[T2]": {
+          "gap_bits": 0.0003354219696506934,
+          "shares": {
+            "IO_ISSUE.lineage": 0.813019358933002,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.18698064106699797
+          }
+        },
+        "Q2[T3]": {
+          "gap_bits": 0.0006748813626904279,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7452409117648288,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.2547590882351712
+          }
+        },
+        "Q3[D0]": {
+          "gap_bits": 0.0012846851181224043,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7644017146804014,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.23559828531959873
+          }
+        },
+        "Q3thr[D0]": {
+          "gap_bits": 0.0012846851181224043,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7644017146804014,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.23559828531959873
+          }
+        },
+        "Q4proxy[L0]": {
+          "gap_bits": 1.9622463971521314e-05,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7750281084397677,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.22497189156023237
+          }
+        },
+        "Q4proxy[L1]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T0,T1]": {
+          "gap_bits": 7.846219278764138e-06,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8881085482870621,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.11189145171293789
+          }
+        },
+        "Q5[T0,T2]": {
+          "gap_bits": 3.8332199552948247e-07,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7561398487875008,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.24386015121249915
+          }
+        },
+        "Q5[T0,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T1,T0]": {
+          "gap_bits": 5.105011664612025e-06,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8326428678016636,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.16735713219833637
+          }
+        },
+        "Q5[T1,T2]": {
+          "gap_bits": 2.9450444681338936e-07,
+          "shares": {
+            "IO_ISSUE.lineage": 0.6825957611019452,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.31740423889805486
+          }
+        },
+        "Q5[T1,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T2,T0]": {
+          "gap_bits": 1.49263726208302e-06,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7725267012989996,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.22747329870100044
+          }
+        },
+        "Q5[T2,T1]": {
+          "gap_bits": 1.6674375665805263e-06,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7963731125079837,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.20362688749201632
+          }
+        },
+        "Q5[T2,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T0]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T1]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T2]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5joint": {
+          "gap_bits": 1.7369608090817e-05,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8755500443796633,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.12444995562033663
+          }
+        }
+      }
+    },
+    "1/2": {
+      "r1->r2": {
+        "Q1[L0]": {
+          "gap_bits": 0.005423415893030113,
+          "shares": {
+            "BLOCK.obj": 0.938414498361364,
+            "RELEASE.obj": 0.06158550163863598,
+            "ACQUIRE.obj": 0.0
+          }
+        },
+        "Q1[L1]": {
+          "gap_bits": 0.0746234045938881,
+          "shares": {
+            "ACQUIRE.obj": 0.9654666894378522,
+            "BLOCK.obj": 0.03453235020495027,
+            "RELEASE.obj": 9.603571973896133e-07
+          }
+        },
+        "Q2[T0]": {
+          "gap_bits": 0.041478022674982386,
+          "shares": {
+            "ACQUIRE.obj": 0.9559648964962937,
+            "BLOCK.obj": 0.040687190296239614,
+            "RELEASE.obj": 0.0033479132074665744
+          }
+        },
+        "Q2[T1]": {
+          "gap_bits": 0.00033400378836721047,
+          "shares": {
+            "RELEASE.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "BLOCK.obj": 0.0
+          }
+        },
+        "Q2[T2]": {
+          "gap_bits": 0.008112122526855054,
+          "shares": {
+            "ACQUIRE.obj": 0.9895944506336939,
+            "BLOCK.obj": 0.009149123901193691,
+            "RELEASE.obj": 0.0012564254651124523
+          }
+        },
+        "Q2[T3]": {
+          "gap_bits": 0.00921757511859766,
+          "shares": {
+            "ACQUIRE.obj": 0.9870107020451593,
+            "BLOCK.obj": 0.010984048652450307,
+            "RELEASE.obj": 0.00200524930239041
+          }
+        },
+        "Q3[D0]": {
+          "gap_bits": 0.001411389083843827,
+          "shares": {
+            "ACQUIRE.obj": 0.9972270938807438,
+            "RELEASE.obj": 0.0027729061192562974,
+            "BLOCK.obj": 0.0
+          }
+        },
+        "Q3thr[D0]": {
+          "gap_bits": 0.001411389083843827,
+          "shares": {
+            "ACQUIRE.obj": 0.9972270938807438,
+            "RELEASE.obj": 0.0027729061192562974,
+            "BLOCK.obj": 0.0
+          }
+        },
+        "Q4proxy[L0]": {
+          "gap_bits": 0.046796225790969107,
+          "shares": {
+            "ACQUIRE.obj": 0.9065702112569952,
+            "BLOCK.obj": 0.090527418242803,
+            "RELEASE.obj": 0.0029023705002016865
+          }
+        },
+        "Q4proxy[L1]": {
+          "gap_bits": 0.005089412104662904,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T0,T1]": {
+          "gap_bits": 0.010148362508560223,
+          "shares": {
+            "ACQUIRE.obj": 1.0,
+            "BLOCK.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T0,T2]": {
+          "gap_bits": 1.7254393343647714e-05,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T0,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T1,T0]": {
+          "gap_bits": 0.0008433680774869011,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T1,T2]": {
+          "gap_bits": 1.96992531802479e-05,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T1,T3]": {
+          "gap_bits": 0.000964721338977151,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T2,T0]": {
+          "gap_bits": 2.354293512867511e-05,
+          "shares": {
+            "BLOCK.obj": 1.0,
+            "ACQUIRE.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T2,T1]": {
+          "gap_bits": 0.001665475012534938,
+          "shares": {
+            "ACQUIRE.obj": 1.0,
+            "BLOCK.obj": 0.0,
+            "RELEASE.obj": 0.0
+          }
+        },
+        "Q5[T2,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T0]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T1]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T2]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5joint": {
+          "gap_bits": 0.01295247656080783,
+          "shares": {
+            "ACQUIRE.obj": 0.8589661184738769,
+            "BLOCK.obj": 0.1410338815261229,
+            "RELEASE.obj": 0.0
+          }
+        }
+      },
+      "r2->r3": {
+        "Q1[L0]": {
+          "gap_bits": 0.06779205561840362,
+          "shares": {
+            "BLOCK.related": 0.8998216526884925,
+            "RELEASE.related": 0.10017834731150702
+          }
+        },
+        "Q1[L1]": {
+          "gap_bits": 0.005304917028827118,
+          "shares": {
+            "BLOCK.related": 0.9516990793285711,
+            "RELEASE.related": 0.048300920671428896
+          }
+        },
+        "Q2[T0]": {
+          "gap_bits": 0.016374904263635682,
+          "shares": {
+            "BLOCK.related": 0.9765991937404519,
+            "RELEASE.related": 0.023400806259548122
+          }
+        },
+        "Q2[T1]": {
+          "gap_bits": 0.020781154405234422,
+          "shares": {
+            "BLOCK.related": 0.8745649060123385,
+            "RELEASE.related": 0.12543509398766137
+          }
+        },
+        "Q2[T2]": {
+          "gap_bits": 0.002079862039662737,
+          "shares": {
+            "RELEASE.related": 0.6282006276854617,
+            "BLOCK.related": 0.37179937231453836
+          }
+        },
+        "Q2[T3]": {
+          "gap_bits": 0.0016176491442617515,
+          "shares": {
+            "BLOCK.related": 0.5483229686807282,
+            "RELEASE.related": 0.45167703131927195
+          }
+        },
+        "Q3[D0]": {
+          "gap_bits": 0.0008861972163019559,
+          "shares": {
+            "BLOCK.related": 0.6181161900043004,
+            "RELEASE.related": 0.3818838099956995
+          }
+        },
+        "Q3thr[D0]": {
+          "gap_bits": 0.0008861972163019559,
+          "shares": {
+            "BLOCK.related": 0.6181161900043004,
+            "RELEASE.related": 0.3818838099956995
+          }
+        },
+        "Q4proxy[L0]": {
+          "gap_bits": 0.028193369418503263,
+          "shares": {
+            "BLOCK.related": 0.9959888272845805,
+            "RELEASE.related": 0.004011172715419466
+          }
+        },
+        "Q4proxy[L1]": {
+          "gap_bits": 6.761024652255455e-06,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T0,T1]": {
+          "gap_bits": 0.014419709481723763,
+          "shares": {
+            "BLOCK.related": 0.9991317338186211,
+            "RELEASE.related": 0.0008682661813787887
+          }
+        },
+        "Q5[T0,T2]": {
+          "gap_bits": 0.007415042646122125,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T0,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T1,T0]": {
+          "gap_bits": 0.014851820249723383,
+          "shares": {
+            "BLOCK.related": 0.9984831113139652,
+            "RELEASE.related": 0.001516888686034758
+          }
+        },
+        "Q5[T1,T2]": {
+          "gap_bits": 0.007018391965761738,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T1,T3]": {
+          "gap_bits": 1.6670764400230954e-06,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T2,T0]": {
+          "gap_bits": 0.019693595656999692,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T2,T1]": {
+          "gap_bits": 0.015331706663382563,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T2,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T0]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T1]": {
+          "gap_bits": 1.621996454903668e-06,
+          "shares": {
+            "BLOCK.related": 1.0,
+            "RELEASE.related": 0.0
+          }
+        },
+        "Q5[T3,T2]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5joint": {
+          "gap_bits": 0.04265236026960322,
+          "shares": {
+            "BLOCK.related": 0.999177616422351,
+            "RELEASE.related": 0.0008223835776490346
+          }
+        }
+      },
+      "r3->r4": {
+        "Q1[L0]": {
+          "gap_bits": 1.0681758254358383e-05,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7078705449896362,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.2921294550103638
+          }
+        },
+        "Q1[L1]": {
+          "gap_bits": 9.721716972763139e-08,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8623407819504002,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.13765921804959982
+          }
+        },
+        "Q2[T0]": {
+          "gap_bits": 1.0075455602167583e-05,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7865916775233059,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.213408322476694
+          }
+        },
+        "Q2[T1]": {
+          "gap_bits": 5.004533053489949e-06,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7005702164523022,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.29942978354769767
+          }
+        },
+        "Q2[T2]": {
+          "gap_bits": 6.448026814073792e-06,
+          "shares": {
+            "IO_ISSUE.lineage": 0.776512937697871,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.22348706230212906
+          }
+        },
+        "Q2[T3]": {
+          "gap_bits": 2.9172068275058067e-05,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7140124498426416,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.28598755015735844
+          }
+        },
+        "Q3[D0]": {
+          "gap_bits": 4.292176988072783e-05,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7377262964267594,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.26227370357324054
+          }
+        },
+        "Q3thr[D0]": {
+          "gap_bits": 4.292176988072783e-05,
+          "shares": {
+            "IO_ISSUE.lineage": 0.7377262964267594,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.26227370357324054
+          }
+        },
+        "Q4proxy[L0]": {
+          "gap_bits": 7.244849964255229e-07,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8057183893781816,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.19428161062181837
+          }
+        },
+        "Q4proxy[L1]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T0,T1]": {
+          "gap_bits": 1.7846703383520013e-07,
+          "shares": {
+            "IO_ISSUE.lineage": 0.9179435461817669,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.08205645381823308
+          }
+        },
+        "Q5[T0,T2]": {
+          "gap_bits": 1.7231107913131052e-09,
+          "shares": {
+            "IO_ISSUE.lineage": 0.9094025011586109,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.09059749884138912
+          }
+        },
+        "Q5[T0,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T1,T0]": {
+          "gap_bits": 3.377167606156972e-07,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8888750505393626,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.11112494946063742
+          }
+        },
+        "Q5[T1,T2]": {
+          "gap_bits": 6.293520554690162e-10,
+          "shares": {
+            "IO_ISSUE.lineage": 0.652426430406478,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.34757356959352204
+          }
+        },
+        "Q5[T1,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T2,T0]": {
+          "gap_bits": 1.0989775873181118e-08,
+          "shares": {
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.5990027451442086,
+            "IO_ISSUE.lineage": 0.4009972548557914
+          }
+        },
+        "Q5[T2,T1]": {
+          "gap_bits": 1.2960846713146873e-08,
+          "shares": {
+            "IO_ISSUE.lineage": 0.8376366997401437,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.16236330025985635
+          }
+        },
+        "Q5[T2,T3]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T0]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T1]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5[T3,T2]": {
+          "gap_bits": 0.0,
+          "shares": {}
+        },
+        "Q5joint": {
+          "gap_bits": 6.405606970127931e-07,
+          "shares": {
+            "IO_ISSUE.lineage": 0.9112811434792619,
+            "IO_COMPLETE.lineage+IO_ISSUE.lineage": 0.0887188565207381
+          }
+        }
+      }
+    }
+  }
+}

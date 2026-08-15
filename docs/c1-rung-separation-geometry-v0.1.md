@@ -320,3 +320,24 @@ contribute a single split.
 **Budget.** All (14,4,2) computation inside the frozen envelope: 307,362
 paths at the deepest endpoint (< B4's 10⁶), max support 96 (« B1), and
 the all-step expansion discipline of v0.2.1 applies unchanged.
+
+---
+
+**v0.4 — 2026-08-15 (day seven) — erratum to v0.3 finding 4's stated
+cause.** v0.3 attributed the completion-matching channel's exact zero to
+habitat thinness ("matching ambiguity needs the deep-completion habitat,
+which never survives into a split"). The zero is real and re-confirmed;
+the cause is structural, not statistical: under Part II I5 (≤1 request
+in flight per thread) with ACTOR visible at every rung and IO_COMPLETE's
+ACTOR = the issuing thread, every completion is matched to its issue by
+ACTOR alone — at every rung, law, and habitat, including the
+deep-completion habitat (whose two requests belong to two threads).
+The lineage field's possible cargo in this world is allocator state
+(lowest-free) — which is what this note's r3→r4 splits measured — or,
+under random ids, nothing beyond the id value itself. Thickening the
+habitat cannot create a matching channel; only relaxing I5 or masking
+ACTOR can. Argument in `request-id-design-question-v0.1.md` v0.2,
+verified sound by the day-seven truthsayer round (v0.3 there narrows two
+of its consequences); query-level ceilings in `c1-query-ceilings-v0.1.md`
+put the rung's total cargo at 0.0013–0.0038 bits of state entropy.
+The multi-waiter/RELEASE.related findings of this note are untouched.
