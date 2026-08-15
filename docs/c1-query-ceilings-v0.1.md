@@ -1,0 +1,262 @@
+# C1 Query Ceilings — the declared targets under windows (v0.1)
+
+**v0.1 — 2026-08-15 (day seven).** Drafted by the day-seven instance.
+Status: **measured note, first query-level ceilings**; advances
+instrument-status open thread 1 (M1-scale separation on the DECLARED
+targets, not state support). Code: `src/yupi/queries.py` (world-side
+query functions, TDD, `tests/test_queries.py`); script:
+`scripts/c1_query_ceilings.py`. Predictions below were written and saved
+BEFORE the first run; results are appended after, unedited above the line.
+
+## Why
+
+Every ceiling measured on days five and six is *mean state support* — a
+combinatorial proxy that Part I D9 explicitly separates from
+probability-weighted uncertainty, and that the M1 exit criteria do not
+name. The criteria name Q1–Q5 (Part I) and predictive state. This note
+computes, for each query instance, the exact posterior over its answers
+under a WindowLaw, per rung, and reports the law-mass-weighted mean
+entropy in bits: **the observation-gap ceiling for that query at that
+interface.** Two-path: every distinct window's joint (U, S_T) is
+recomputed through `window_filter` and must match the path aggregation
+Fraction-for-Fraction before any query is pushed forward.
+
+## Query definitions (decisions, recorded in `queries.py` docstring)
+
+Q1[L] owner-or-None · Q2[T] status class · Q3[D] in-flight issuing
+threads in queue order (thread-identified per I5) with Q3ids[D] as the
+lineage diagnostic · Q4[L] FIFO-head release wake · Q5 the set of
+(blocked, running) pairs where blocked waits on a lock owned by running.
+
+## Predictions (pre-stated; law (12,2,2) and (14,4,2), both ε)
+
+- **P1 (invariants, must hold):** for every query, mean entropy is
+  non-increasing r1→r2→r3→r4; for every window, H(Q|w) ≤ H(S_T|w).
+- **P2:** for Q1, Q4, Q5 the r2→r3 gap (owner channel via BLOCK.related /
+  RELEASE.related) is the largest of the three adjacent gaps.
+- **P3:** Q2 has an r1→r2 gap > 0 (BLOCK.obj disambiguates lock- vs
+  queue-block); its r3→r4 gap is < 10% of its total r1→r4 drop.
+- **P4 (the I5 prediction):** if any query moves r3→r4, Q3 does — the
+  lineage rung's cargo is allocator state, and the in-flight set is Q3's
+  subject. Q3ids − Q3 (the id-only surplus) is smaller at r4 than at r3.
+- **P5 (control):** at a full-context law (L ≥ T_ep) every query has
+  entropy exactly 0 at every rung — the injectivity theorem.
+
+---
+
+## Results — WindowLaw(12,2,2), both ε (raw: `c1-query-ceilings-12-2-2-raw-2026-08-15.json`)
+
+Two-path: all 971 distinct windows matched Fraction-for-Fraction; P1
+invariants held on every window and every rung (asserted in-script).
+Wall clock 2m03s. Mean entropy in bits, law-mass weighted; adjacent gaps
+r1→r2 | r2→r3 | r3→r4 (total r1→r4):
+
+| ε | quantity | r1 | r4 | gaps | resolved mass r1→r4 |
+|---|---|---|---|---|---|
+| 1 | H(S_T) | 3.0598 | 2.7799 | 0.1333 \| 0.1452 \| **0.0013** | — |
+| 1 | Q1[L0] | 0.6818 | 0.5212 | 0.0173 \| **0.1431** \| 0.0002 | 0.455→0.670 |
+| 1 | Q1[L1] | 0.3850 | 0.2515 | **0.1221** \| 0.0115 \| 0.0000 | 0.398→0.554 |
+| 1 | Q2[T0..T3] | 0.67/0.63/0.55/0.51 | 0.62/0.60/0.54/0.50 | all r3→r4 ≤ 0.0007 | ~0.50→0.52 |
+| 1 | Q3[D0] | 0.2043 | 0.2013 | 0.0008 \| 0.0009 \| **0.0013** | 0.448→0.606 |
+| 1 | Q3ids[D0] | 0.2043 | 0.2013 | identical to Q3 to float precision | identical |
+| 1 | Q4[L0] | 0.6879 | 0.6043 | **0.0506** \| 0.0331 \| 0.0000 | 0.283→0.403 |
+| 1 | Q4[L1] | 0.0203 | 0.0082 | 0.0120 \| 0.0001 \| 0.0000 | 0.919→0.947 |
+| 1 | Q5 | 0.6150 | 0.5170 | 0.0203 \| **0.0777** \| 0.0000 | 0.435→0.476 |
+| 1/2 | H(S_T) | 2.3040 | 2.1586 | 0.0775 \| 0.0679 \| **0.0000** | — |
+| 1/2 | Q1[L0] | 0.5114 | 0.4382 | 0.0054 \| **0.0678** \| 0.0000 | 0.457→0.669 |
+| 1/2 | Q1[L1] | 0.2494 | 0.1695 | **0.0746** \| 0.0053 \| 0.0000 | 0.451→0.557 |
+| 1/2 | Q4[L0] | 0.6447 | 0.5697 | **0.0468** \| 0.0282 \| 0.0000 | 0.298→0.399 |
+| 1/2 | Q5 | 0.5722 | 0.5166 | 0.0130 \| **0.0427** \| 0.0000 | 0.440→0.472 |
+
+(Full per-query rows for both ε in the raw JSON; ε=1/2 rows omitted here
+follow the same pattern with every level lower — the third law running.)
+
+### Predictions scored
+
+- **P1 held** (asserted). **P5** control run pending (slow: at L = T_ep
+  every path is its own window; the theorem already has a tripwire test).
+- **P2 half-refuted.** The r2→r3 owner channel dominates Q1[L0] (the
+  contended lock) and Q5 — but NOT Q1[L1] (r1→r2 dominates: which lock is
+  ACQUIRED, revealed by obj) and NOT Q4 at either lock (r1→r2 dominates).
+  Retrospectively obvious and I got it wrong a priori: Q4 asks who is at
+  the head of a wait queue; the *waiter* is the BLOCK's actor (r1) and
+  *which* queue is BLOCK.obj (r2); `related` names the owner, which is
+  Q1's business, not Q4's. The owner channel informs Q1 and Q5; the
+  object channel informs Q4 and the uncontended lock's Q1. Field-level
+  cargo, per query — T'aqaq's rule applied to my own prediction.
+- **P3 held.** Q2's r1→r2 gap > 0 for every thread; r3→r4 ≤ 0.0007 bits
+  (≤ 12% of Q2[T3]'s tiny total, < 2% for the others — the < 10% clause
+  fails on T3 alone, whose total is 0.006 bits; noted, not argued).
+- **P4 held, with a finding.** Q3 has the largest r3→r4 gap of any query
+  (0.0013 at ε=1) — the lineage cargo is allocator state and it lands on
+  Q3. But the second clause was wrong in an instructive way: Q3ids − Q3
+  is **exactly 0.0 at every rung**, not "smaller at r4." Mechanism, found
+  by enumeration: every lone id-1 request at horizon 12 arises from an
+  IO_ISSUE at t=11 followed by another thread's IO_COMPLETE at t=12 —
+  both always inside the L=2 window at T=12. The zero is
+  **horizon-bounded, not structural**. Pre-stated for the (14,4,2) run
+  (started before this paragraph was written): at T=12, L=4 the window
+  is {9..12} and a pre-window issue at t≤8 with a competing completion at
+  12 creates the id-0/id-1 twin, so **Q3ids − Q3 should be strictly
+  positive at r1–r3 (tiny mass) and return to 0 at r4**.
+
+### Findings (v0.1, one law, one horizon)
+
+1. **The lineage rung is worth 0.0013 bits of state entropy at ε=1 and
+   0.0000 at ε=1/2** — against r1→r2 = 0.133 and r2→r3 = 0.145. In mean
+   *support* the same rung separated by 0.3166 (day six). D9's
+   "support ≠ entropy" warning is now a measured 100:1 ratio: the r3/r4
+   separation is a combinatorial fact about rare states, not an
+   information fact about likely ones. **Every declared query moves
+   ≤ 0.0013 bits across r3→r4.**
+2. **The ladder is query-specific.** Q1[L0], Q5 live at r3; Q1[L1], Q4
+   live at r2; Q2 is spread; Q3 is essentially flat across the ladder
+   (0.003 bits total) — the in-flight set is an r1 question (IO_ISSUE /
+   IO_COMPLETE with actor), and its residual 0.2 bits is pre-window
+   history that no rung recovers. Interface content and window geometry
+   are separate axes, and different queries load on different ones.
+3. **Queries recover a fraction of state entropy.** H(S_T) ≈ 2.8 bits at
+   r4; the largest single query ceiling is 0.60 (Q4[L0]) — most state
+   uncertainty at this law is in fields no declared query asks about
+   (pc, rr_cursor). This is the D1 rationale seen from the other side.
+
+### Control — WindowLaw(12,12,2) (raw: `c1-query-ceilings-12-12-2-raw-2026-08-15.json`)
+
+**P5 held.** 86,086 distinct windows at every rung (every path its own
+window — injectivity at the record level), two-path matched on all of
+them, and H(S_T) = H(Q) = 0.0000 for every query, every rung, both ε.
+Wall clock 6m27s. The query layer reduces to the theorem where it must.
+
+### The failed prediction, and its replacement (pre-stated before the (14,2,2) run)
+
+**The (14,4,2) prediction FAILED**: Q3ids − Q3 = 0.0 exactly at every
+rung, both ε. Diagnosis by exhaustive enumeration at horizon 14 (17
+deep-completion signatures, matching the day-six census): the *second*
+concurrent IO_ISSUE in C1 never occurs before t = 11 (first at 3/5/7/9 or
+11, second at 11 or 13). The id-0/id-1 twin needs BOTH issues hidden
+before the window; on (12,2,2) and (14,4,2) every endpoint's window
+starts at ≤ 11, so the second issue is always visible and the survivor's
+id is determined. My mechanism named the wrong hidden event (the
+competing completion; it is the second issue). Corrected prediction, on
+record before the run: at **(14,2,2)**, T = 14 gives window {13, 14},
+issues (≤9, 11) are pre-window, deep completions at 13/14 are in-window,
+discipline is stochastic — so **Q3ids − Q3 > 0 at r1–r3 and = 0 at r4**
+(the completer's visible id reveals who was first). If this fails too,
+the claim "the zero is horizon-bounded" is withdrawn as unsupported.
+
+### Results — WindowLaw(14,4,2), both ε (raw: `c1-query-ceilings-14-4-2-raw-2026-08-15.json`)
+
+Two-path matched on every window (3497/3922/4577/4698 windows at r1..r4);
+P1 invariants held. Wall clock ≈ 25 min. Same columns as the (12,2,2) table.
+
+| ε | quantity | r1 | r4 | r1→r2 \| r2→r3 \| r3→r4 | resolved r1→r4 |
+|---|---|---|---|---|---|
+| 1 | H(S_T) | 1.3436 | 1.0944 | 0.1300 \| 0.1174 \| **0.0017** | — |
+| 1 | Q1[L0] | 0.2535 | 0.1150 | 0.0238 \| 0.1145 \| 0.0001 | 0.745→0.922 |
+| 1 | Q1[L1] | 0.2202 | 0.0993 | 0.1128 \| 0.0081 \| 0.0000 | 0.692→0.841 |
+| 1 | Q2[T0] | 0.2641 | 0.2167 | 0.0294 \| 0.0177 \| 0.0003 | 0.760→0.789 |
+| 1 | Q2[T1] | 0.2334 | 0.2011 | 0.0083 \| 0.0239 \| 0.0001 | 0.766→0.800 |
+| 1 | Q2[T2] | 0.1996 | 0.1850 | 0.0059 \| 0.0084 \| 0.0004 | 0.795→0.820 |
+| 1 | Q2[T3] | 0.1498 | 0.1450 | 0.0010 \| 0.0025 \| 0.0013 | 0.848→0.855 |
+| 1 | Q3[D0] | 0.0672 | 0.0646 | 0.0004 \| 0.0005 \| 0.0017 | 0.766→0.863 |
+| 1 | Q4[L0] | 0.3423 | 0.2692 | 0.0423 \| 0.0307 \| 0.0001 | 0.639→0.723 |
+| 1 | Q4[L1] | 0.0185 | 0.0028 | 0.0155 \| 0.0001 \| 0.0000 | 0.969→0.993 |
+| 1 | Q5 | 0.2749 | 0.1932 | 0.0257 \| 0.0560 \| 0.0001 | 0.724→0.809 |
+| 1/2 | H(S_T) | 0.7976 | 0.6767 | 0.0706 \| 0.0502 \| **0.0001** | — |
+| 1/2 | Q1[L0] | 0.1437 | 0.0841 | 0.0096 \| 0.0499 \| 0.0000 | 0.739→0.921 |
+| 1/2 | Q1[L1] | 0.1284 | 0.0609 | 0.0640 \| 0.0034 \| 0.0000 | 0.727→0.841 |
+| 1/2 | Q2[T0] | 0.1119 | 0.0741 | 0.0273 \| 0.0105 \| 0.0000 | 0.856→0.879 |
+| 1/2 | Q2[T1] | 0.1395 | 0.1201 | 0.0015 \| 0.0179 \| 0.0000 | 0.770→0.789 |
+| 1/2 | Q2[T2] | 0.0786 | 0.0714 | 0.0032 \| 0.0040 \| 0.0000 | 0.873→0.903 |
+| 1/2 | Q2[T3] | 0.0634 | 0.0616 | 0.0011 \| 0.0006 \| 0.0001 | 0.909→0.912 |
+| 1/2 | Q3[D0] | 0.0417 | 0.0408 | 0.0006 \| 0.0002 \| 0.0001 | 0.832→0.906 |
+| 1/2 | Q4[L0] | 0.2249 | 0.1716 | 0.0318 \| 0.0215 \| 0.0000 | 0.646→0.702 |
+| 1/2 | Q4[L1] | 0.0085 | 0.0004 | 0.0081 \| 0.0000 \| 0.0000 | 0.976→0.997 |
+| 1/2 | Q5 | 0.1674 | 0.1173 | 0.0176 \| 0.0325 \| 0.0000 | 0.729→0.819 |
+
+Q3ids ≡ Q3 to float precision at every rung (see the failed prediction
+above). Read against (12,2,2):
+
+- **Window length vs. rung content.** L = 2 → 4 lowers H(S_T) at r4 from
+  2.78 to 1.09 bits (ε=1); the entire r1→r4 ladder at L = 4 is worth 0.25.
+  Geometry is the big axis, content the small one — for the queries too:
+  Q1[L0] resolved on 67% of law mass at (12,2,2)/r4 and on 92% here.
+- **The lineage rung, second law: 0.0017 bits** (ε=1), 0.0001 (ε=1/2);
+  once more the largest r3→r4 mover is Q3 (0.0017) — allocator cargo,
+  landing on the in-flight query, and worth nothing anywhere else
+  (Q1/Q4/Q5 ≤ 0.0001).
+- **P2's half-refutation replicates**: r2→r3 dominates Q1[L0] and Q5;
+  r1→r2 dominates Q1[L1] and Q4[L0]/Q4[L1] — at both ε.
+- **Third law running (ε=1/2 lower everywhere) holds** for every query
+  at this law as at (12,2,2).
+
+
+### Results — WindowLaw(14,2,2), both ε (raw: `c1-query-ceilings-14-2-2-raw-2026-08-15.json`)
+
+Two-path matched on every window (223/250/359/406 windows at r1..r4);
+P1 held. H(S_T) r1→r4: 3.3514→3.0145 (ε=1; gaps 0.1378 | 0.1953 |
+0.0038), 2.4508→2.2662 (ε=1/2; 0.0792 | 0.1051 | 0.0003). Query rows in
+the raw JSON; the pattern of the two prior laws holds throughout.
+
+**The replacement prediction split.** Q3ids − Q3, in bits:
+
+| ε | r1 | r2 | r3 | r4 |
+|---|---|---|---|---|
+| 1 | 1.439e-4 | 1.432e-4 | 1.432e-4 | 9.350e-5 |
+| 1/2 | 4.712e-6 | 4.709e-6 | 4.709e-6 | 3.615e-6 |
+
+- Clause 1 **held**: strictly positive at r1–r3. The id-0/id-1 twin
+  exists once both concurrent issues are hidden; "the zero is
+  horizon-bounded, not structural" stands, and the id surplus is
+  1.4×10⁻⁴ bits at its first appearance.
+- Clause 2 **failed**: r4 drops the surplus by ~35% (ε=1) / ~23% (ε=1/2)
+  but not to zero. Cause, from the enumeration already in hand: deep
+  completions at t = 12 exist (issues (3..9, 11)) and at T = 14 the
+  {13,14} window does not contain them; a lone survivor whose id was
+  fixed by a *pre-window* completion has no in-window evidence at any
+  rung. I assumed the resolving completion was visible; only some are.
+  Two predictions about this one number, each half right — the
+  geometry each time correct, the hidden event each time misassigned.
+
+## Findings (v0.1, three windowed laws + one full-context control, C1, ε ∈ {1, ½})
+
+1. **Query ceilings exist and are two-path verified**: for every declared
+   query, every rung, three laws — the observation-gap ceiling on the
+   M1 targets is now a measured table, not a proxy. Full-context control
+   is exactly zero everywhere (theorem).
+2. **The lineage rung carries 0.0013 / 0.0017 / 0.0038 bits** of state
+   entropy at (12,2,2) / (14,4,2) / (14,2,2), ε=1 (≤ 0.0003 at ε=1/2),
+   against 0.13–0.20 for each of the other two rungs. Day six's r3/r4
+   *support* gap of 0.32 at (12,2,2) is a ~100:1 support-to-bits ratio:
+   D9's "support ≠ entropy" is a measured fact about this rung. What
+   r4 carries lands on Q3 (in-flight) — allocator cargo — and on nothing
+   else above 10⁻⁴ bits.
+3. **The ladder is query-specific**: r2→r3 (owner via `related`) is the
+   big rung for Q1 on the contended lock and Q5; r1→r2 (object) is the
+   big rung for Q1 on the quiet lock and Q4; Q3 is nearly flat across the
+   whole ladder. Predicting this a priori, I got Q4 wrong: field cargo
+   must be read per query.
+4. **Geometry over content**: L = 2 → 4 removes ~1.7 bits of state
+   entropy at r4; the whole r1→r4 ladder removes ~0.25 at L = 4.
+5. **Third law**: ε = ½ lowers every query ceiling at every rung and law.
+6. **Q3ids − Q3 (what the identifier adds beyond thread identity under
+   I5)**: exactly the id-0/id-1 twin, absent until both concurrent
+   issues are hidden (first appears at (14,2,2): 1.4×10⁻⁴ bits), and not
+   fully resolved even at r4 when the settling completion is pre-window.
+
+## Caveats
+
+1. Mean entropy in bits, law-mass weighted, from exact Fraction
+   posteriors with float logs — sums are floats; "exactly 0.0" claims
+   are float sums and should be read as "no window carries the
+   distinction" (checkable directly, and checked for Q3ids at (12,2,2)
+   by enumeration of the lone-id-1 habitat).
+2. Q4 and Q5 are my operationalizations of Part I's wording (docstring in
+   `queries.py`); the completion-side "next wake" is excluded as a
+   predictive query. Predictive-state targets are not measured here.
+3. One world, horizons ≤ 14, laws chosen for budget; the ε=1/2 branching
+   makes (14,·,·) the practical ceiling for this script (~25 min).
+4. Every prediction I made about the r4 behavior of the id surplus was
+   at least half wrong. The geometry intuition was right three times;
+   the hidden-event assignment was wrong three times. Read finding 6 as
+   measured, not as understood.
