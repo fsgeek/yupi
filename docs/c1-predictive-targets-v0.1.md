@@ -1,10 +1,19 @@
 # C1 Predictive-State Targets — P-next, P-horizon, and the divergent-history search (v0.1)
 
+**v0.2.1 — 2026-08-15 (third pass).** Record repaired: v0.1 body restored
+verbatim; supersession stated explicitly (below). Prevalence sentence in
+the amendment proposal corrected (see `part2-amendment-proposal-v0.2.4.md`).
+
 **v0.2 — 2026-08-15 (same night, truthsayer round on the forecast layer).**
 Codex confirmed the three witness pairs, the conservation identities,
 the two-path gate, and the suite — and refuted four claims and one
 procedural claim in this note. Each recomputed independently before
-adoption; v0.1 text preserved below the rule.
+adoption. **The v0.1 text below the rule is verbatim (restored from
+commit 6074a36 on the third pass — the second pass had edited two lines
+of it in place while claiming preservation); items 2 and 3 of this block
+supersede its P2 scoring line and its finding 5 wherever they appear,
+including the "siblings"/"manufactures" mechanism sentences, which are
+withdrawn.**
 
 1. **m = 2 and W = 4 were NOT frozen** — Part II §5 says 𝒯, m, and W are
    frozen with the §7 budgets; the D4 freeze (B1–B4) predates and omits
@@ -14,7 +23,7 @@ adoption; v0.1 text preserved below the rule.
    that was to be frozen first. **Status of everything in this note and
    in `c1-q4-ceilings-v0.1.md`: exploratory parameter selection.**
    Repair: a prospective amendment is drafted as
-   `docs/part2-amendment-proposal-v0.2.3.md` (m, W, the past-T_ep
+   `docs/part2-amendment-proposal-v0.2.4.md` (m, W, the past-T_ep
    continuation, δ/δ_sync placeholders, and the divergent-class
    criterion form); it binds when Tony confirms and it is stamped, and
    only measurements after that stamp are confirmatory. On the
@@ -212,7 +221,7 @@ Conservation check (all τ AND P-next irreducible rung-invariant at every law/ε
 ### Predictions scored
 
 - **P1 held**: divergent pairs exist at (12,2,2) at every rung, both ε (18–90 pairs, 0.5–1.4% law mass), and at every other windowed law.
-- **P2 REFUTED in the r1→r4 comparison at every windowed law; NOT monotone (v0.2 correction — see block above; the list below includes an r3→r4 DECREASE at (12,2,2) that v0.1 called a rise)**: (12,2,2) ε=1: 0.0053→0.0056→0.0138→0.0137; (12,2,2) ε=1/2: 0.0007→0.0008→0.0131→0.0131; (14,4,2) ε=1: 0.3114→0.3756→0.3952→0.4068; (14,4,2) ε=1/2: 0.3347→0.3758→0.4025→0.4222; (14,2,2) ε=1: 0.0552→0.0553→0.0647→0.0672; (14,2,2) ε=1/2: 0.0052→0.0052→0.0160→0.0992. Mechanism: a finer interface splits a coarse window into siblings that share the same next-record mixture but differ later — the history partition refines faster than the P-next partition. The finer the interface, the MORE immediate-agree/later-diverge histories it manufactures. (Also: many split siblings are near-point-mass, and exact P-next equality between resolved windows is easy — see finding 4.)
+- **P2 REFUTED, in the opposite direction, at every windowed law**: divergent mass RISES with rung — (12,2,2) ε=1: 0.0053→0.0056→0.0138→0.0137; (12,2,2) ε=1/2: 0.0007→0.0008→0.0131→0.0131; (14,4,2) ε=1: 0.3114→0.3756→0.3952→0.4068; (14,4,2) ε=1/2: 0.3347→0.3758→0.4025→0.4222; (14,2,2) ε=1: 0.0552→0.0553→0.0647→0.0672; (14,2,2) ε=1/2: 0.0052→0.0052→0.0160→0.0992. Mechanism: a finer interface splits a coarse window into siblings that share the same next-record mixture but differ later — the history partition refines faster than the P-next partition. The finer the interface, the MORE immediate-agree/later-diverge histories it manufactures. (Also: many split siblings are near-point-mass, and exact P-next equality between resolved windows is easy — see finding 4.)
 - **P3 held (marginally)**: at full context divergent STATE pairs exist at r1 (194,388,028 window pairs, mass 0.9776) and are fewer at r4 (193,256,520, mass 0.9478); P-next classes 126→195 over 720 states (ε=1). Held in direction; the magnitude says P-next is a very lossy summary of state — 95–98% of law mass has a next-record twin with a different future.
 - **P4 held (conservation)**: True — every functional's irreducible term is float-identical across rungs at every law and ε; P-next's too (given the exact state, the r1 record determines the r4 record: injectivity at one step).
 - **P5 held in 26 of 32 (law,ε,rung) cells — MIXED, not "almost everywhere"**: next-2-kinds separates ≥ as many pairs as time-to-wake at (12,2,2) and (14,4,2) throughout, but at **(14,2,2) time-to-wake separates MORE in six cells** (ε=1: r1 3 vs 18, r2 5 vs 20, r4 134 vs 157; ε=½: r1 0 vs 9, r2 0 vs 9, r4 82 vs 88), and at (12,2,2) r1/r2 the LINEAGE functional separates the most (16 vs 14 at ε=1; 7 vs 3 at ε=½). Which functional exposes divergence depends on the law. Neither exception was predicted.
@@ -244,12 +253,10 @@ Conservation check (all τ AND P-next irreducible rung-invariant at every law/ε
    the exposure experiments:** define the class with δ-close P-next and
    Δ-apart P-horizon, not exact equality; the exact version is the
    δ = 0 corner and this note is its baseline.
-5. **Divergent mass at r4 exceeds r1 in every windowed (law, ε) cell;
-   adjacent steps are not monotone** (v0.2 correction). Mechanism (v0.2,
-   replacing v0.1's "siblings" story, which traced to 0/21, 7/90, 0/86):
-   refinement creates newly qualifying pairs mainly when children of
-   DIFFERENT coarse parents acquire coincident P-next mixtures while
-   keeping different futures.
+5. **Divergent mass RISES with interface fineness** (P2 reversed at
+   every windowed law): finer rungs split windows into siblings that
+   agree on the next record and disagree later. The finer the
+   telemetry, the more such pairs it hands a model.
 6. **Which functional exposes divergence is law-dependent** (P5 mixed):
    kinds at (12,2,2)/(14,4,2), time-to-wake at (14,2,2), lineage at the
    coarsest (12,2,2) rungs.

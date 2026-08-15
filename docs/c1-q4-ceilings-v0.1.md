@@ -27,7 +27,7 @@ below the rule):
    reading (§2's T_ep is the generated-record horizon, not the world's
    end) but it is an unstated semantic decision affecting a third or
    more of endpoint conditions. It is now written up as an explicit
-   proposed Part II amendment (`docs/part2-amendment-proposal-v0.2.3.md`)
+   proposed Part II amendment (`docs/part2-amendment-proposal-v0.2.4.md`)
    and these numbers are **exploratory until the amendment is confirmed
    and stamped**. Likewise W itself: Part II §5 says W is frozen with the
    §7 budgets, and the D4 freeze does not include it — the "W = 4

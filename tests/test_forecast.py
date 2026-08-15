@@ -81,13 +81,10 @@ def test_mixture_and_split():
 
 
 def test_two_paths_agree_at_w8_on_representative_states():
-    """W=8 is used in measurement; exhaustive gating stops at W=4. This
-    committed representative check (second truthsayer pass): six
-    structurally selected horizon-8 endpoint states per ε — the first two
-    in deterministic enumeration order among (a) states with a held lock
-    and a waiter, (b) states with a request in flight, (c) states with
-    neither — forward sum == explicit W=8 enumeration, Fraction-exact.
-    Runtime bounded by picking states with modest branching."""
+    """Representative W=8 check kept as documentation of the second
+    truthsayer pass (six structurally selected horizon-8 endpoint states
+    per ε: held lock + waiter / request in flight / neither). It is
+    SUBSUMED by the exhaustive W=8 gate in the preceding test."""
     for eps in (Fraction(1), Fraction(1, 2)):
         cfg, progs = _c1(eps)
         finals = sorted({f for _, _, f in paths(cfg, progs, 8)}, key=repr)

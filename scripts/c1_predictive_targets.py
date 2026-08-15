@@ -12,7 +12,8 @@ Windows by path aggregation; per-state functionals via `predict`
 (one memo per eps); per window the (total, irreducible, gap) split of
 each functional; divergent-pair search per (eps, rung): windows grouped
 by exact P-next mixture, pairs within a group with unequal mixture on
-any tau. m=2, W=4 frozen (note v0.1).
+any tau. m=2, W=4 are EXPLORATORY selections (not frozen — see
+docs/part2-amendment-proposal-v0.2.4.md; Part II §5/§7).
 """
 
 import json
