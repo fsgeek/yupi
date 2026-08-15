@@ -129,7 +129,15 @@ def straddles(law, blocks_last, t):
 
 
 def main():
-    horizon = 12  # the statute's T_ep for every law considered here
+    # (v2, same day: horizon and laws parameterized — argv[1] may be an
+    # integer horizon, remaining arg an output path; defaults reproduce
+    # the committed horizon-12 run. Laws with T_ep == horizon are added
+    # so straddle geometry is evaluated on the full event set.)
+    args = sys.argv[1:]
+    horizon = 12
+    if args and args[0].isdigit():
+        horizon = int(args[0])
+        args = args[1:]
     out = {}
 
     # Control first: C0a must show zero events of either kind.
@@ -144,6 +152,8 @@ def main():
         WindowLaw(12, 4, 2),
         WindowLaw(12, 2, 2),
     ]
+    if horizon == 14:
+        laws = [WindowLaw(14, 6, 2), WindowLaw(14, 4, 2), WindowLaw(14, 2, 2)]
 
     for eps in (Fraction(1), Fraction(1, 2)):
         cfg = WorldConfig.c1(epsilon=eps)
@@ -209,10 +219,10 @@ def main():
             n_deep_completion_signatures=n_comp,
         )
 
-    if len(sys.argv) > 1:
-        with open(sys.argv[1], "w") as f:
+    if args:
+        with open(args[0], "w") as f:
             json.dump(dict(horizon=horizon, results=out), f, indent=2)
-        print(f"\nraw JSON -> {sys.argv[1]}", flush=True)
+        print(f"\nraw JSON -> {args[0]}", flush=True)
 
 
 if __name__ == "__main__":

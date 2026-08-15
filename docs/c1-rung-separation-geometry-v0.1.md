@@ -237,3 +237,86 @@ second step's maximum is 286 — as Codex's independent all-step
 measurement also found. The D4 conclusion is unchanged; the *reasoning*
 is repaired. Do not reuse the "evidence only prunes" bound at longer
 laws: measure all steps.
+
+## v0.3 — the (14,4,2) run: the habitat blooms, the RELEASE channel becomes material, the completion negative hardens (same day)
+
+The priced door from §1 was opened: census at horizon 14, exact support
+table and decomposition at WindowLaw(14,4,2), field-level attribution
+added to the decomposition (script v2), all posterior-bearing numbers
+two-path verified (full-joint crosscheck over all 16,694 distinct
+windows, both ε: zero mismatches; `c1_support_crosscheck.py`,
+parameterized successor of the (12,2,2) script). Raw:
+`c1-multiwaiter-census-h14-raw-2026-08-14.json`,
+`c1-support-14-4-2-raw-2026-08-14.json`,
+`c1-rung-gaps-14-4-2-raw-2026-08-14.json`.
+
+**Census at horizon 14.** The multi-waiter habitat grows ~7×: 6.24% of
+episode mass at ε=1 (8.01% at ε=1/2), with events now at t=11–14. The
+*designed* contender pair — threads 1 and 2 — appears for the first time
+(t=13–14) and dominates the new mass, resolving §1's observation that
+only {0,1} was reachable by t≤12: the design docstring's pair simply
+lives later than horizon 12. Notably its two orders are asymmetric even
+at ε=1 ((1,2): 0.0317 vs (2,1): 0.0139) while (0,1)/(1,0) remain exactly
+equal — thread 2's staggered arrival prices the orders differently with
+no help from ε. Several t=13–14 events are straddled by (14,4,2)'s T=14
+window, confirming §1's grid arithmetic by direct measurement.
+
+**Exact table at (14,4,2)** (all cells two-path verified):
+
+| ε | rung | windows | E[support] | max support |
+|---|---|---|---|---|
+| 1 | r1 | 3497 | 6.8131 | 96 |
+| 1 | r2 | 3922 | 6.0670 | 96 |
+| 1 | r3 | 4577 | 5.4417 | 96 |
+| 1 | r4 | 4698 | 5.3304 | **92** |
+| 1/2 | r1 | 3497 | 5.0296 | 96 |
+| 1/2 | r2 | 3922 | 4.5472 | 96 |
+| 1/2 | r3 | 4577 | 4.0914 | 96 |
+| 1/2 | r4 | 4698 | 4.0271 | **92** |
+
+All four rungs separate; r3/r4 gap 0.111312 (ε=1) / 0.064265 (ε=1/2);
+lineage again moves the worst case (96 → 92). ε=1/2 lowers every level,
+consistent for the third law running.
+
+**Field-level attribution of the r2/r3 gap** (v2 of the decomposition:
+buckets splits by which record kind's `related` field actually differs
+between children, replacing the coarser contains-a-RELEASE test; at
+(12,2,2) the two coincide exactly):
+
+| law | ε | BLOCK.related (owner) | RELEASE.related (woken) | both |
+|---|---|---|---|---|
+| (12,2,2) | 1 | 88.4% | 11.6% | — |
+| (14,4,2) | 1 | 69.6% | **29.6%** | 0.8% |
+| (12,2,2) | 1/2 | 94.9% | 5.1% | — |
+| (14,4,2) | 1/2 | 79.9% | **19.9%** | 0.2% |
+
+**The RELEASE.related channel becomes material — from 11.6% to 29.6% of
+the gap — exactly when the window geometry begins straddling the wake
+events.** The hidden-owner channel still dominates. Scope note, stated
+before anyone asks: RELEASE.related ambiguity mixes *who was waiting*
+(single-waiter releases with hidden BLOCKs) with *wake order* (the
+multi-waiter distinguisher proper); isolating pure order ambiguity needs
+a dedicated pass conditioning on the matched paths' waiter sets, which
+is deliberately deferred — this measurement bounds the wake-order
+channel above (≤29.6% + 0.8% at ε=1), it does not witness it in
+isolation.
+
+**The completion-matching negative hardens.** At L=4 a window *can*
+contain an IO_COMPLETE without its IO_ISSUE, so the matching channel had
+its first genuine geometric opportunity — and contributed exactly zero
+again: 121 splits, every one differing only in lineage fields, every
+in-window completion carrying its in-window issue's id, no
+completion-only split windows (checked mechanically, both ε). Two laws,
+two geometries, same exact zero. The structural explanation is the
+allocator itself: a lone pre-window request always holds id 0 under
+lowest-free assignment, so its completion cannot split anything;
+matching ambiguity requires the deep-completion habitat (≥2 in flight),
+whose mass (0.05–0.25%) never survives into a split at these laws. This
+sharpens the §Findings-3 design question: under lowest-free ids, the r4
+rung's information is allocator state at every law measured, and the
+completion-matching concept lineage was meant to probe has yet to
+contribute a single split.
+
+**Budget.** All (14,4,2) computation inside the frozen envelope: 307,362
+paths at the deepest endpoint (< B4's 10⁶), max support 96 (« B1), and
+the all-step expansion discipline of v0.2.1 applies unchanged.

@@ -91,6 +91,28 @@ def main():
                     f"rest (BLOCK.related owner channel): "
                     f"{float(total_gap - release_gap):.6f}"
                 )
+                # field-level attribution (v2): which record kinds actually
+                # carry the differing `related` field in each split — a
+                # window merely CONTAINING a RELEASE may still split on a
+                # BLOCK's owner field, so containment over-attributes.
+                # NOTE: RELEASE.related differing between children mixes
+                # who-was-waiting with wake-order information; isolating
+                # pure order ambiguity needs a dedicated pass, not this.
+                buckets = {}
+                for contrib, ck, kids, cm, csupp in splits:
+                    dk = set()
+                    base = kids[0][1]
+                    for k in kids[1:]:
+                        for r0, r1 in zip(base, k[1]):
+                            if r0 != r1:
+                                dk.add(r0.kind)
+                    key = tuple(sorted(dk))
+                    buckets[key] = buckets.get(key, Fraction(0)) + contrib
+                for key, g in sorted(buckets.items(), key=lambda b: -b[1]):
+                    print(
+                        f"    differing-field kinds {key}: "
+                        f"{float(g):.6f} ({float(g / total_gap) * 100:.1f}%)"
+                    )
             if (coarse, fine) == ("r3", "r4"):
                 non_issue_diff = False
                 completion_mismatch = False
