@@ -221,3 +221,19 @@ the governing document is not enough if you do not re-do its arithmetic.
    (462/809 per component, 948/1648 per resetless mixture) now have a
    committed producer (`scripts/c1_budget_check_12_2_2.py`) and raw
    artifact (`docs/c1-budget-12-2-2-raw-2026-08-14.json`).
+
+## v0.2.1 — budget-justification correction (same day; external finding, Codex truthsayer)
+
+v0.2's budget script justified its first-step-only measurement with
+"evidence only prunes, so the worst step is bounded by the first step
+from the derived priors." **That argument is invalid in general**: a
+kernel transition can re-expand a pruned support before the next
+observation, so first-step expansion is not an a priori bound for longer
+windows. The script is now v2: it measures **every step of every
+distinct window at every rung** exhaustively. At this law the v0.2
+numbers happen to be the true maxima — worst step 948 (ε=1) / 1648
+(ε=1/2), occurring on the first step of a resetless r1 window; the
+second step's maximum is 286 — as Codex's independent all-step
+measurement also found. The D4 conclusion is unchanged; the *reasoning*
+is repaired. Do not reuse the "evidence only prunes" bound at longer
+laws: measure all steps.
