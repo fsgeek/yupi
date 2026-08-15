@@ -108,3 +108,15 @@ def test_pushforward_and_entropy():
     # Data processing: H(query) <= H(state).
     assert state_entropy_bits(belief) == pytest.approx(1.0)
     assert entropy_bits(dist) <= state_entropy_bits(belief) + 1e-12
+
+
+def test_q5_diagonal_is_structurally_false():
+    """Statutory Q5 is over ordered pairs; the diagonal is excluded from
+    the emitted domain because it is invariantly false under I1. Witness:
+    every reachable C1 state (BFS, capped) and both hand states."""
+    from yupi.benchmark import reachable_states
+    from yupi.programs import c1_programs
+    cfg = _cfg()
+    for s in reachable_states(cfg, c1_programs(), 20000) + [_busy_state()]:
+        for i in range(cfg.n_threads):
+            assert q5_pair(s, i, i) is False

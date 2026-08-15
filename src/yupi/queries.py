@@ -21,7 +21,11 @@ Statutory (Part II §5) vs proxy — labels as emitted by `all_queries`:
              transition in (t, t+W], completions included; a forward
              sum with an irreducible predictive term) is UNIMPLEMENTED.
 - Q5[Tb,Tr]  STATUTORY. Predicate over an ordered pair: ∃l: Tb ∈ wq[l]
-             ∧ own[l] = Tr ∧ Tr ∈ run.
+             ∧ own[l] = Tr ∧ Tr ∈ run. Domain emitted: the 12 distinct-
+             thread pairs. The 4 diagonal predicates Q5[T,T] are
+             invariantly false (I1: T ∈ run ⇒ RUNNING, so T cannot be
+             LOCK_BLOCKED) — a structural-zero control witnessed in
+             `tests/test_queries.py`, not carried in the measurement.
 - Q5joint    PROXY (day seven). The set of all currently-true Q5 pairs;
              its entropy is a joint quantity, not any single predicate's.
 

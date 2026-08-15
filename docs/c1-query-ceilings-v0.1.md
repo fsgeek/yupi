@@ -27,7 +27,12 @@ the v0.1 text is preserved beneath the rule, uncorrected, as the trace.
    (Q3→Q3thr, Q3ids→Q3, Q4→Q4proxy, Q5→Q5joint). The (12,2,2) run is
    re-executed under the new labels with per-pair Q5 (values unchanged
    for the relabeled queries; the per-pair rows are new — see the v0.2
-   results block at the end).
+   results block at the end). *Provenance (added after the second
+   truthsayer pass):* the three raw JSONs named in the v0.1 text were
+   rewritten in place under v0.2 labels; the v0.1 artifacts are
+   restored from commit 0742d1d as `…-raw-2026-08-15-v0.1-labels.json`
+   so each text version has the file it names. Future versions get new
+   paths — append, don't overwrite.
 2. **The "~100:1" ratio was wrong and is withdrawn** — recomputed: at
    (12,2,2), ε=1, support gap 0.3166 vs entropy gap 0.001285 bits
    (quotient 246); ε=½, 0.3207 vs 0.0000429 (quotient 7,473). And a
@@ -399,11 +404,16 @@ pairs the programs never realize), mean bits r1→r4 with adjacent gaps.
 | 1/2 | Q5[T2,T1] | 0.0803 | 0.0578 | 0.0014 \| 0.0211 \| 0.0000 |
 | 1/2 | Q5[T3,T1] | 0.0054 | 0.0053 | 0.0000 \| 0.0000 \| 0.0000 |
 
-Reading: for every material pair at every law and ε, the r2→r3 owner rung
-carries the bulk of the drop and r3→r4 is ≤ 0.0001 bits; the r1→r2 share
-is largest for pairs whose blocked thread contends the quiet lock
-(Q5[T1,T3]) — consistent with the (12,2,2) decomposition, and stated as
-consistent, not as mechanism. The joint proxy's story holds pair by pair.
+Reading *(corrected same day — the v0.2 sentence here said "for every
+material pair … the owner rung carries the bulk" and "the joint proxy's
+story holds pair by pair"; both were contradicted by the table above and
+are withdrawn)*: the r2→r3 owner rung dominates **most** material pairs
+at every law and ε, and r3→r4 is ≤ 0.0001 bits for all of them; but
+pairs whose blocked thread contends the quiet lock are **object-rung
+dominated** — Q5[T1,T3] at every law and ε (e.g. (12,2,2), ε=1:
+r1→r2 0.0029 vs r2→r3 0.0000), and Q5[T0,T1] narrowly at (14,4,2), ε=½
+(0.0104 vs 0.0103). The joint proxy's owner-channel story is the
+majority pattern, not a pair-by-pair law.
 Q5[T1,T0] is the pair with the highest ceiling at ε=½ (0.28–0.30 bits at
 r4): thread 1 blocked on the lock thread 0 holds while running is the
 single most-hidden relational fact in this world at these laws.
