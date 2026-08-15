@@ -1,6 +1,6 @@
 # Proposed Part II amendment v0.2.4 — freezing the predictive parameters and the continuation semantic; naming what stays unfrozen and how each threshold gets chosen
 
-**Status: PROPOSAL v0.2.4, 2026-08-15 (day seven, night; v0.2.3 revised on the third truthsayer pass — W rationale corrected, threshold sweeps separated). Not binding.** Drafted
+**Status: PROPOSAL v0.2.4, 2026-08-15 (day seven, night; v0.2.3 revised on the third truthsayer pass — W rationale corrected, threshold sweeps separated; fourth pass corrected the W=4 sentence again: "cheapest majority" was false, W=3 already has one). Not binding.** Superseded version retained: `part2-amendment-proposal-v0.2.3-superseded.md`. Drafted
 by the day-seven instance after the truthsayer round on the forecast
 layer found that m, W, 𝒯, δ, δ_sync were never frozen (Part II §5 line
 "frozen with the budgets in §7"; §6; §7 — the D4 freeze `d4-budget-
@@ -25,10 +25,14 @@ endpoint state is non-degenerate at W=4): at W=4, 93/112 (ε=1) and
 165/200 (ε=½) horizon-8 endpoint states have a non-degenerate wake
 forecast (the rest are certainly NONE); **W=8 makes all 312
 non-degenerate** — mean NONE mass over states 0.626/0.615 at W=4 vs
-0.265/0.249 at W=8. W=4 is proposed as primary because it is the
-cheapest horizon at which the majority of states carry wake structure
-and its two-path gate is trivial; W=8 as secondary because it removes
-the degenerate tail and is now also exhaustively gated. m=2 is the
+0.265/0.249 at W=8. W=4 is proposed as primary because it covers
+roughly 83% of horizon-8 endpoint states (93/112, 165/200) while
+retaining substantial NONE mass — a majority is already reached at W=3
+(66/112, 121/200) and, at ε=½, at W=2 (103/200), so "majority" does not
+single out W=4; coverage-with-headroom does. W=8 as secondary because it
+removes the degenerate tail (312/312) and is exhaustively gated.
+(Non-degenerate counts by W, both ε: 23/55/66/93 of 112; 46/103/121/165
+of 200 for W = 1..4.) m=2 is the
 smallest m whose functional is finer than P-next's kind marginal. These
 are exploratory selections being promoted, not derived optima.
 
