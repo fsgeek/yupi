@@ -149,3 +149,16 @@ the δ=0.1 coverage row ("six ε=½, three ε=1" — actually five ε=½, zero �
 "thirty windowed cells" (eighteen cells, thirty entries). Four in one draft.
 The check that caught them was mechanical (a script over the JSON), not
 attention.
+
+---
+
+*2026-08-15 — amendment pointer, appended after the L sweep (commit time in git;
+`c1-sync-sweep-v0.1.md` §2d/§3.1):* the empty band (0.003728, 0.049943) and the
+"decision-invariant" language in §3.1/§4 hold at L ∈ {2, 4} only. At T_ep = 14 the r1→r2 and
+r2→r3 maxima decay ×0.3–0.45 per bucket through the band — (14,6,2) ε=½ r2→r3 = 0.01377,
+(14,8,2) ε=1 r2→r3 = 0.00999, (14,8,2) ε=½ r1→r2 = 0.01866 — so under any δ those pairs collapse
+at some L (the statute's "collapse at context L"). δ = 0.01 remains the proposal; its
+consequence at T_ep = 14 is collapse horizons L* = 2 (r3→r4), 8 (r2→r3), 10 (r1→r2) at both ε,
+with ±1-bucket sensitivity to a ×2–3 change in δ, and one knife-edge cell (0.00999). Nothing
+above is changed; the claim's scope is.
+
