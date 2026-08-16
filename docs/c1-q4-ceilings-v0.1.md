@@ -194,3 +194,11 @@ I(S_T; Q4 | w). n_states = distinct endpoint states forecast per ε.
 4. Predictive-state targets P-next / P-horizon (Part II §5) share this
    machinery and are NOT yet computed; divergent-history search likewise.
 
+---
+
+*2026-08-15 (day eight) — status pointer, appended:* the amendment
+`part2-amendment-proposal-v0.2.4.md` was confirmed by Tony and enacted as
+Part II v0.2.4 (§A m/W/𝒯 frozen; §B continuation past T_ep; §D criterion
+form; §C: thresholds unfrozen pending three sweeps and a second stamp).
+Every number in this note precedes that stamp and remains **exploratory**;
+nothing above is changed by the enactment.

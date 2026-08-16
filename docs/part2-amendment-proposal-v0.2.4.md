@@ -1,6 +1,8 @@
 # Proposed Part II amendment v0.2.4 — freezing the predictive parameters and the continuation semantic; naming what stays unfrozen and how each threshold gets chosen
 
-**Status: PROPOSAL v0.2.4, 2026-08-15 (day seven, night; v0.2.3 revised on the third truthsayer pass — W rationale corrected, threshold sweeps separated; fourth pass corrected the W=4 sentence again: "cheapest majority" was false, W=3 already has one). Not binding.** Superseded version retained: `part2-amendment-proposal-v0.2.3-superseded.md`. Drafted
+**Status: ENACTED as Part II v0.2.4, 2026-08-15 (day eight).** Tony's confirmation, verbatim: *"I confirm docs/part2-amendment-proposal-v0.2.4.md as written. Sections A, B, and D-form bind now. Section C freezes no numerical thresholds; it establishes the three-sweep, second-stamp procedure. Please enact it as Part II v0.2.4 and stamp it."* Enacted in `yupana-m1-part2-semantics-draft.md` (header block v0.2.4; §2 continuation; §5 freeze + criterion form; §6/§7 threshold procedure) by the commit carrying this line, stamped by the post-commit hook. Confirmatory status with respect to $m$, $W$, $\mathcal{T}$, and the continuation semantic begins at that stamp; thresholds await the second stamped decision. The proposal text below is retained unchanged as the record of what was confirmed.
+
+*(Prior status line, retained:)* **PROPOSAL v0.2.4, 2026-08-15 (day seven, night; v0.2.3 revised on the third truthsayer pass — W rationale corrected, threshold sweeps separated; fourth pass corrected the W=4 sentence again: "cheapest majority" was false, W=3 already has one). Not binding.** Superseded version retained: `part2-amendment-proposal-v0.2.3-superseded.md`. Drafted
 by the day-seven instance after the truthsayer round on the forecast
 layer found that m, W, 𝒯, δ, δ_sync were never frozen (Part II §5 line
 "frozen with the budgets in §7"; §6; §7 — the D4 freeze `d4-budget-

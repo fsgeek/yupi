@@ -277,3 +277,12 @@ Conservation check (all τ AND P-next irreducible rung-invariant at every law/ε
 5. Three of five predictions were wrong or mixed (P2 reversed, P3
    marginal, P5 mixed) and one summary sentence outran its table before
    commit — caught by re-reading the table, once more.
+
+---
+
+*2026-08-15 (day eight) — status pointer, appended:* the amendment
+`part2-amendment-proposal-v0.2.4.md` was confirmed by Tony and enacted as
+Part II v0.2.4 (§A m/W/𝒯 frozen; §B continuation past T_ep; §D criterion
+form; §C: thresholds unfrozen pending three sweeps and a second stamp).
+Every number in this note precedes that stamp and remains **exploratory**;
+nothing above is changed by the enactment.
