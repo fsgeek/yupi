@@ -12,7 +12,10 @@ endpoint entropies vary mildly … mixing U costs almost nothing" was a sentence
 cells (the ±6% was one cell, ε=1 r1 L=2); the spread over truncated endpoints at fixed
 (ε, rung, L) reaches 46% excluding the U=2 corner (ε=1 r3/r4, L=8) and 67% (ε=½ r4, L=6);
 only the 7/8 horizon agreement is claimed. (4) Provenance: the sync-note blocks are v0.1.1
-(0632368) and v0.1.2 (9deff20). The truthsayer's earlier "every horizon" overstatement and my
+(0632368) and v0.1.2 (9deff20). *(Third round, one algebraic typo: B1's statute text had placed
+the correction-factor example directly after Pr(U > 0), reading as Pr(U > 0) = 7/(7 − L/2); it
+now reads Pr(U > 0) = (T_ep − L)/T_ep and E[H | U > 0] = T_ep/(T_ep − L) · H_law. The truthsayer
+recommends confirmation without another substantive round.)* The truthsayer's earlier "every horizon" overstatement and my
 correction of it both remain in the trace, as they asked. Revised after the
 truthsayer round (Codex/ChatGPT via Tony, morning of 2026-08-16): its verdict was *amend, not
 confirm*, on five findings; four adopted as stated, one adopted with a correction (finding 2's
@@ -84,7 +87,8 @@ verdict agrees with the single-endpoint one in 7 of 8 cells.
 entropy conditional on truncation, E[H | U > 0] = H_law / Pr(U > 0), where H_law is the
 law-mass mean and Pr(U > 0) the law's mass on windows with U > 0; since full-context windows
 are lossless at every rung this identity is exact. Under uniform endpoints at multiples of B,
-Pr(U > 0) = 1 − L/T_ep (present law: 7/(7 − L/2) = 14/(14 − L)). L = T_ep has Pr(U > 0) = 0 and
+Pr(U > 0) = 1 − L/T_ep = (T_ep − L)/T_ep, hence E[H | U > 0] = T_ep/(T_ep − L) · H_law (present law:
+the factor is 14/(14 − L) = 7/(7 − L/2)). L = T_ep has Pr(U > 0) = 0 and
 is the full-context control, not a point on the synchronization curve; if no L < T_ep crosses
 δ_sync the rung is reported as not synchronized within the truncated domain. The law-mass mean
 (the learner's own law) and the per-endpoint curve at T = T_ep are reported alongside."*
