@@ -196,7 +196,7 @@ I(S_T; Q4 | w). n_states = distinct endpoint states forecast per ε.
 
 ---
 
-*2026-08-15 (day eight) — status pointer, appended:* the amendment
+*2026-08-15 ~20:40 PDT — status pointer, appended:* the amendment
 `part2-amendment-proposal-v0.2.4.md` was confirmed by Tony and enacted as
 Part II v0.2.4 (§A m/W/𝒯 frozen; §B continuation past T_ep; §D criterion
 form; §C: thresholds unfrozen pending three sweeps and a second stamp).
