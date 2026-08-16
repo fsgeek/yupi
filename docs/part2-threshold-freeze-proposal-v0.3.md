@@ -1,6 +1,8 @@
-# Proposed second stamped decision (v0.2) — the four Part II thresholds (δ, δ_sync, δ_p, Δ_τ) and two §6 semantics they depend on
+# Proposed second stamped decision (v0.3) — the four Part II thresholds (δ, δ_sync, δ_p, Δ_τ) and two §6 semantics they depend on
 
-**Status: SUPERSEDED by `part2-threshold-freeze-proposal-v0.3.md` (2026-08-16, B1 completed with the per-endpoint data). Retained unchanged below. Was: PROPOSAL v0.2, 2026-08-16. Not binding.** Revised after the
+**Status: PROPOSAL v0.3, 2026-08-16 (eighth instance; commit time in git). Not binding. Ready for
+confirmation or amendment.** Supersedes v0.2 (B1 was pending the per-endpoint run; it landed
+09:01 PDT and B1 is now complete) and v0.1 (both retained). Revised after the
 truthsayer round (Codex/ChatGPT via Tony, morning of 2026-08-16): its verdict was *amend, not
 confirm*, on five findings; four adopted as stated, one adopted with a correction (finding 2's
 "every horizon moves" is five of eight cells). What survived audit unchanged: δ = 0.01;
@@ -12,10 +14,9 @@ The three §C sweeps: `c1-delta-sweep-v0.1.md` (14484c7 + appended amendment),
 `c1-sync-sweep-v0.1.md` (ff82ce2/971f8bc; v0.1.1 block in this commit),
 `c1-tv-sweep-v0.1.md` (5163346/7a18810; v0.1.1 wording in this commit).
 
-Binds when Tony confirms it and the confirmation is stamped. **Item B1 (the synchronization
-measure) is not ready to confirm until the per-endpoint run lands** — launched 07:23 PDT
-2026-08-16, ~1.6 h; its results will be appended to `c1-sync-sweep-v0.1.md` and B1 completed
-in a v0.3 of this document. Everything else can be read now.
+Binds when Tony confirms it and the confirmation is stamped. All items are complete; B1 was
+completed with the per-endpoint run (launched 07:23, landed 09:01 PDT 2026-08-16; law-mass
+values byte-identical to the 2026-08-15 artifacts).
 
 ## A. δ = 0.01 bits (Part II §6, rung collapse) — unchanged from v0.1
 
@@ -48,35 +49,46 @@ the gap part and say so.
 
 ## B. δ_sync — two decisions, one pending
 
-### B1. The measure the horizon is defined on (PENDING per-endpoint data)
+### B1. The measure the horizon is defined on — a §6 semantic decision (COMPLETE)
 
 At fixed T_ep with uniform endpoints, windows with T ≤ L are lossless, so the law-mass mean
-over L carries lossless fraction (L/2)/7 by construction; the truncation-conditional mean is
-exactly ×7/(7 − L/2). At δ_sync = 0.01 the horizons differ between the two in **five of eight**
-cells (law-mass 10 → truncation-conditional 12 at ε=1 r1 and ε=½ r1; 8 → 10 at ε=½ r2–r4;
-ε=1 r2–r4 stay at 10). Three candidate definitions:
+over L carries lossless fraction (L/2)/7 by construction. Four measures were computed
+(`c1-sync-sweep-v0.1.md` v0.1.2 block; per-endpoint artifacts `…-2026-08-16-perT.json`):
 
-- (a) **law-mass mean** — §6 as written; the learner's own generative process (Part II §2(a)
-  derived-prior principle: the ceiling is a ceiling for a learner only under its own law), so
-  it is what a trained model at context L actually faces; but its L axis mixes "more context"
-  with "more windows that see RESET".
-- (b) **truncation-conditional mean** — removes the lossless mass; still mixes U at a given L.
-- (c) **per-endpoint at T = T_ep** — the observer's posterior entropy on windows ending at
-  the episode's last endpoint, as a function of L: a clean context curve at a fixed point in
-  the episode, no endpoint-prior artifact. Data pending (per-endpoint output added to both
-  ceilings scripts on 2026-08-16; law-mass outputs verified unchanged on (12,2,2)).
+| ε | rung | (a) law-mass (§6 as written) | (b) truncation-conditional | (c) per-endpoint T = T_ep | worst truncated endpoint |
+|---|---|---|---|---|---|
+| 1 | r1 | 10 | **12** | 12 | 12 |
+| 1 | r2–r4 | 10 | **10** | 10 | 12 |
+| ½ | r1 | 10 | **12** | 10 | 12 |
+| ½ | r2–r4 | 8 | **10** | 10 | 10 |
 
-Provisional recommendation, to be confirmed or reversed by the data: **(c) as the frozen
-criterion, with (a) co-reported** — because a synchronization horizon is meant to
-characterize the interface, and (a)'s dependence on the endpoint prior would make the
-horizon move with T_ep at fixed L for reasons unrelated to the interface. If the per-endpoint
-curve at T = T_ep is not materially different from (b), (b) may be preferred as the simpler
-statement. This is a §6 semantic decision and is written as one.
+(L*(all statutory) at δ_sync = 0.01, Q4 by gap part.) (b) and (c) agree in 7 of 8 cells; (a)
+differs from (b) in 5 of 8, entirely from the lossless mass. At fixed L the per-endpoint
+entropies vary mildly with T (±6% at L=2 across T=4…14; e.g. 0.3779/0.3825/0.2971 at L=8),
+except at the U=2 corner — so mixing U, which (b) does, costs almost nothing.
+
+**Proposed §6 text:** *"The synchronization horizon is evaluated on the mean posterior
+entropy conditional on truncation (windows with U > 0); at fixed T_ep and uniform endpoints
+this equals the law-mass mean × 7/(7 − L/2) exactly, since full-context windows are lossless
+at every rung. The law-mass mean (the learner's own law) and the per-endpoint curve at
+T = T_ep are reported alongside."*
+
+Reasons for (b) over (a): a synchronization horizon characterizes what context does for an
+observer who lost something; diluting it with windows that lost nothing makes L* move with
+the endpoint prior (hence with T_ep at fixed L) for reasons unrelated to the interface. Over
+(c): (c) discards six of seven endpoints and rests on one T; the data show it buys almost
+nothing over (b). The v0.2 provisional preference for (c) is withdrawn by the data. The
+learner-faithful reading of (a) is preserved as a co-report — it is what a trained model at
+context L actually faces, and both numbers belong in the M1 report.
+
+Under (b), δ_sync = 0.01 gives L* = 12 for r1 and 10 for r2–r4 at both ε: the actor-only rung
+needs one more bucket than every finer rung, at every ε — the cleanest rung structure any of
+the four measures shows.
 
 ### B2. The number: δ_sync = 0.01 bits
 
-Under (a): L* = 10 (ε=1 all rungs; ε=½ r1), 8 (ε=½ r2–r4). Under (b): 12 (ε=1 r1; ε=½ r1), 10
-(ε=1 r2–r4; ε=½ r2–r4). Under (c): pending. In every measure so far, 0.3 and 0.1 give
+Under (b) (proposed): L* = 12 (r1, both ε), 10 (r2–r4, both ε). Under (a): 10 (ε=1 all
+rungs; ε=½ r1), 8 (ε=½ r2–r4). Under (c): 12 (ε=1 r1), 10 (all else). In every measure so far, 0.3 and 0.1 give
 structureless horizons (4, 6 everywhere), 0.001 leans on the L = 12 cliff, and 0.01 sits in
 the informative decade with ±1-bucket sensitivity to ×2–3 in δ_sync. Same number as δ by
 convenience of units, not derivation.
@@ -108,12 +120,13 @@ bad scalar; this proposal recommends the axis.
 m, W, 𝒯, continuation past T_ep (v0.2.4 §A/§B); request-id; D8; RESET/TIME_CLASS; ε grid;
 corpus. No measured number changes.
 
-## F. Confirmation form (after B1 is completed in v0.3)
+## F. Confirmation form
 
 *"I confirm docs/part2-threshold-freeze-proposal-v0.3.md as written: §6 is amended per A′
-(Q4 by gap part) and per B1 (synchronization measure = …); δ = 0.01, δ_sync = 0.01, Δ_τ = 0.01
-bind; δ_p is reported as an axis {0, 10⁻⁴, 10⁻³, 10⁻², 3·10⁻²} with the exact anchor. Please
-enact it as Part II v0.2.5 and stamp it."*
+(Q4 enters by its gap part) and per B1 (synchronization horizon on the truncation-conditional
+mean, law-mass and per-endpoint co-reported); δ = 0.01, δ_sync = 0.01, Δ_τ = 0.01 bind; δ_p
+is reported as an axis {0, 10⁻⁴, 10⁻³, 10⁻², 3·10⁻²} with the exact anchor. Please enact it as
+Part II v0.2.5 and stamp it."*
 
 ## G. Attack surface
 
@@ -121,9 +134,11 @@ enact it as Part II v0.2.5 and stamp it."*
    coincidence is not evidence.
 2. The δ_p axis is a refusal to decide; the counter-argument stands (a threshold with no
    plateau is a convention and conventions should be visible).
-3. B1's provisional preference for (c) over the statute's (a) trades learner-faithfulness
-   for interface-faithfulness; a reader who holds that the ceiling must be the learner's own
-   should push back and prefer (a) with (c) co-reported. The per-endpoint data will show
-   whether the two disagree materially at T_ep = 14.
+3. B1 chooses (b) over the statute's (a): interface-faithfulness over learner-faithfulness
+   as the *criterion*, with (a) co-reported. A reader who holds that the ceiling must be the
+   learner's own should push back and invert the roles. The data show they disagree by one
+   bucket in five of eight cells at T_ep = 14; the disagreement will grow with T_ep at fixed L
+   under (a) and not under (b) — which is the argument for (b), and also exactly what a
+   defender of (a) would call the point.
 4. A′ removes Q4's irreducible term from δ_sync's reach by fiat; the alternative (some
    δ_sync ≥ 0.6) is not seriously arguable, but the amendment should be visible as one.
