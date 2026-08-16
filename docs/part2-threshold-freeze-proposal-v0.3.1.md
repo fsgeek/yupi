@@ -1,7 +1,19 @@
-# Proposed second stamped decision (v0.3) — the four Part II thresholds (δ, δ_sync, δ_p, Δ_τ) and two §6 semantics they depend on
+# Proposed second stamped decision (v0.3.1) — the four Part II thresholds (δ, δ_sync, δ_p, Δ_τ) and two §6 semantics they depend on
 
-**Status: SUPERSEDED by `part2-threshold-freeze-proposal-v0.3.1.md` (2026-08-16, second truthsayer round: T_ep direction in §G was backwards; B1 formula generalized; "mild variation" withdrawn; provenance). Retained unchanged below. Was: PROPOSAL v0.3. Not binding.** Supersedes v0.2 (B1 was pending the per-endpoint run; it landed
-09:01 PDT and B1 is now complete) and v0.1 (both retained). Revised after the
+**Status: PROPOSAL v0.3.1, 2026-08-16 (eighth instance; commit time in git). Not binding. Ready
+for confirmation or amendment.** Supersedes v0.3 (second truthsayer round, four corrections
+below), v0.2, v0.1 (all retained). **v0.3.1 corrections (Codex/ChatGPT via Tony, all verified
+against the artifacts):** (1) §G's T_ep direction was backwards — under uniform endpoints and
+lossless U=0 windows, H_law = Pr(U>0)·H_trunc = (1 − L/T_ep)·H_trunc, so (a) and (b) *converge*
+as T_ep grows at fixed L; the disagreement is largest at small T_ep, i.e. exactly at the
+scale we can afford. (2) B1's normative formula hard-coded T_ep = 14, B = 2; generalized to
+E[H | U > 0] = H_law / Pr(U > 0), with L = T_ep treated as the full-context control. (3) "Per-
+endpoint entropies vary mildly … mixing U costs almost nothing" was a sentence wider than its
+cells (the ±6% was one cell, ε=1 r1 L=2); the spread over truncated endpoints at fixed
+(ε, rung, L) reaches 46% excluding the U=2 corner (ε=1 r3/r4, L=8) and 67% (ε=½ r4, L=6);
+only the 7/8 horizon agreement is claimed. (4) Provenance: the sync-note blocks are v0.1.1
+(0632368) and v0.1.2 (9deff20). The truthsayer's earlier "every horizon" overstatement and my
+correction of it both remain in the trace, as they asked. Revised after the
 truthsayer round (Codex/ChatGPT via Tony, morning of 2026-08-16): its verdict was *amend, not
 confirm*, on five findings; four adopted as stated, one adopted with a correction (finding 2's
 "every horizon moves" is five of eight cells). What survived audit unchanged: δ = 0.01;
@@ -10,7 +22,7 @@ reproduction of the δ and sync artifacts; independent direct enumeration of all
 cells at (12,2,2) within float accumulation; suite 101 green.
 
 The three §C sweeps: `c1-delta-sweep-v0.1.md` (14484c7 + appended amendment),
-`c1-sync-sweep-v0.1.md` (ff82ce2/971f8bc; v0.1.1 block in this commit),
+`c1-sync-sweep-v0.1.md` (ff82ce2/971f8bc; v0.1.1 block 0632368; v0.1.2 block 9deff20),
 `c1-tv-sweep-v0.1.md` (5163346/7a18810; v0.1.1 wording in this commit).
 
 Binds when Tony confirms it and the confirmation is stamped. All items are complete; B1 was
@@ -62,21 +74,27 @@ over L carries lossless fraction (L/2)/7 by construction. Four measures were com
 | ½ | r2–r4 | 8 | **10** | 10 | 10 |
 
 (L*(all statutory) at δ_sync = 0.01, Q4 by gap part.) (b) and (c) agree in 7 of 8 cells; (a)
-differs from (b) in 5 of 8, entirely from the lossless mass. At fixed L the per-endpoint
-entropies vary mildly with T (±6% at L=2 across T=4…14; e.g. 0.3779/0.3825/0.2971 at L=8),
-except at the U=2 corner — so mixing U, which (b) does, costs almost nothing.
+differs from (b) in 5 of 8, entirely from the lossless mass. The per-endpoint entropies at
+fixed (ε, rung, L) are *not* uniform across truncated endpoints — spread (max/min − 1) up to
+0.46 excluding the U=2 corner (ε=1 r3/r4, L=8; ε=½ up to 0.67 at L=6) and up to 1.85 including
+it — so (b) genuinely averages over U; what is claimed is only that the coarse horizon
+verdict agrees with the single-endpoint one in 7 of 8 cells.
 
 **Proposed §6 text:** *"The synchronization horizon is evaluated on the mean posterior
-entropy conditional on truncation (windows with U > 0); at fixed T_ep and uniform endpoints
-this equals the law-mass mean × 7/(7 − L/2) exactly, since full-context windows are lossless
-at every rung. The law-mass mean (the learner's own law) and the per-endpoint curve at
-T = T_ep are reported alongside."*
+entropy conditional on truncation, E[H | U > 0] = H_law / Pr(U > 0), where H_law is the
+law-mass mean and Pr(U > 0) the law's mass on windows with U > 0; since full-context windows
+are lossless at every rung this identity is exact. Under uniform endpoints at multiples of B,
+Pr(U > 0) = 1 − L/T_ep (present law: 7/(7 − L/2) = 14/(14 − L)). L = T_ep has Pr(U > 0) = 0 and
+is the full-context control, not a point on the synchronization curve; if no L < T_ep crosses
+δ_sync the rung is reported as not synchronized within the truncated domain. The law-mass mean
+(the learner's own law) and the per-endpoint curve at T = T_ep are reported alongside."*
 
 Reasons for (b) over (a): a synchronization horizon characterizes what context does for an
-observer who lost something; diluting it with windows that lost nothing makes L* move with
-the endpoint prior (hence with T_ep at fixed L) for reasons unrelated to the interface. Over
-(c): (c) discards six of seven endpoints and rests on one T; the data show it buys almost
-nothing over (b). The v0.2 provisional preference for (c) is withdrawn by the data. The
+observer who lost something; diluting it with windows that lost nothing scales the curve by
+Pr(U > 0) = 1 − L/T_ep, which is small exactly at the small T_ep the budget allows (0.14 at
+L = 12 here) — the two measures converge as T_ep grows, so (a) is most contaminated where we
+measure. Over (c): (c) discards six of seven endpoints and rests on one T; its horizons agree
+with (b) in 7 of 8 cells. The v0.2 provisional preference for (c) is withdrawn by the data. The
 learner-faithful reading of (a) is preserved as a co-report — it is what a trained model at
 context L actually faces, and both numbers belong in the M1 report.
 
@@ -121,7 +139,7 @@ corpus. No measured number changes.
 
 ## F. Confirmation form
 
-*"I confirm docs/part2-threshold-freeze-proposal-v0.3.md as written: §6 is amended per A′
+*"I confirm docs/part2-threshold-freeze-proposal-v0.3.1.md as written: §6 is amended per A′
 (Q4 enters by its gap part) and per B1 (synchronization horizon on the truncation-conditional
 mean, law-mass and per-endpoint co-reported); δ = 0.01, δ_sync = 0.01, Δ_τ = 0.01 bind; δ_p
 is reported as an axis {0, 10⁻⁴, 10⁻³, 10⁻², 3·10⁻²} with the exact anchor. Please enact it as
@@ -136,8 +154,10 @@ Part II v0.2.5 and stamp it."*
 3. B1 chooses (b) over the statute's (a): interface-faithfulness over learner-faithfulness
    as the *criterion*, with (a) co-reported. A reader who holds that the ceiling must be the
    learner's own should push back and invert the roles. The data show they disagree by one
-   bucket in five of eight cells at T_ep = 14; the disagreement will grow with T_ep at fixed L
-   under (a) and not under (b) — which is the argument for (b), and also exactly what a
-   defender of (a) would call the point.
+   bucket in five of eight cells at T_ep = 14; since H_law = (1 − L/T_ep)·H_trunc the two
+   converge as T_ep grows, so the disagreement is a small-T_ep effect — a defender of (a) may
+   say it will wash out at scale; the reply is that M1's exact ceilings live at small T_ep by
+   construction, so the criterion must be right there. *(v0.3 said the disagreement grows
+   with T_ep; that was backwards — truthsayer round 2.)*
 4. A′ removes Q4's irreducible term from δ_sync's reach by fiat; the alternative (some
    δ_sync ≥ 0.6) is not seriously arguable, but the amendment should be visible as one.
