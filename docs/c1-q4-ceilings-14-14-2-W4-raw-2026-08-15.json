@@ -1,0 +1,90 @@
+{
+  "law": {
+    "T_ep": 14,
+    "L": 14,
+    "B": 2
+  },
+  "W": 4,
+  "rows": [
+    {
+      "eps": "1",
+      "rung": "r1",
+      "n_windows": 393448,
+      "n_states": 1216,
+      "total_bits": 0.6926003627946373,
+      "irreducible_bits": 0.6926003627946373,
+      "gap_bits": 0.0,
+      "none_mass": 0.6040523530094236
+    },
+    {
+      "eps": "1",
+      "rung": "r2",
+      "n_windows": 393448,
+      "n_states": 1216,
+      "total_bits": 0.6926003627946373,
+      "irreducible_bits": 0.6926003627946373,
+      "gap_bits": 0.0,
+      "none_mass": 0.6040523530094236
+    },
+    {
+      "eps": "1",
+      "rung": "r3",
+      "n_windows": 393448,
+      "n_states": 1216,
+      "total_bits": 0.6926003627946373,
+      "irreducible_bits": 0.6926003627946373,
+      "gap_bits": 0.0,
+      "none_mass": 0.6040523530094236
+    },
+    {
+      "eps": "1",
+      "rung": "r4",
+      "n_windows": 393448,
+      "n_states": 1216,
+      "total_bits": 0.6926003627946373,
+      "irreducible_bits": 0.6926003627946373,
+      "gap_bits": 0.0,
+      "none_mass": 0.6040523530094236
+    },
+    {
+      "eps": "1/2",
+      "rung": "r1",
+      "n_windows": 393448,
+      "n_states": 2139,
+      "total_bits": 0.6002967523210125,
+      "irreducible_bits": 0.6002967523210125,
+      "gap_bits": 0.0,
+      "none_mass": 0.5987371071612808
+    },
+    {
+      "eps": "1/2",
+      "rung": "r2",
+      "n_windows": 393448,
+      "n_states": 2139,
+      "total_bits": 0.6002967523210125,
+      "irreducible_bits": 0.6002967523210125,
+      "gap_bits": 0.0,
+      "none_mass": 0.5987371071612808
+    },
+    {
+      "eps": "1/2",
+      "rung": "r3",
+      "n_windows": 393448,
+      "n_states": 2139,
+      "total_bits": 0.6002967523210125,
+      "irreducible_bits": 0.6002967523210125,
+      "gap_bits": 0.0,
+      "none_mass": 0.5987371071612808
+    },
+    {
+      "eps": "1/2",
+      "rung": "r4",
+      "n_windows": 393448,
+      "n_states": 2139,
+      "total_bits": 0.6002967523210125,
+      "irreducible_bits": 0.6002967523210125,
+      "gap_bits": 0.0,
+      "none_mass": 0.5987371071612808
+    }
+  ]
+}
