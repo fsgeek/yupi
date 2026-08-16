@@ -1,6 +1,6 @@
 # δ sweep — where a rung-collapse threshold would fall (Part II v0.2.4 §C, sweep 1 of 3)
 
-**Working note v0.1 — 2026-08-15 ~21:30 PDT. Exploratory read of stamped
+**Working note v0.1 — 2026-08-15, committed 21:16 PDT (14484c7; the draft first said "~21:30", a guessed time — corrected from git). Exploratory read of stamped
 artifacts; proposes a δ for the second stamped decision, does not enact one.**
 Script: `scripts/c1_delta_sweep.py` → raw `docs/c1-delta-sweep-raw-2026-08-15.json`.
 Inputs: `c1-query-ceilings-{12-2-2, 14-2-2, 14-4-2, 12-12-2}-raw-2026-08-15.json`
