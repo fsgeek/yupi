@@ -89,7 +89,7 @@ cells with corners of 5e-08), and even the most stable law ((14,4,2)) moves 1.4�
 At δ_p = 10⁻², the ratio pair_prob(Δ_τ=3·10⁻²)/pair_prob(Δ_τ=10⁻³) is 1.00 in the twelve
 (12,2,2) and (14,2,2) ε=1 cells, 0.96–0.99 in the four (14,2,2) ε=½ cells, and 0.70–0.91 in
 the eight (14,4,2) cells (min 0.70 at ε=½ r1); the ratio at Δ_τ=0.1 is 0.62–1.00 across the
-L=2 cells (0.62 at (14,2,2) ε=½ r1; 1.00 in the six (12,2,2) cells r1–r3 … ) and 0.58–0.87
+L=2 cells (0.62 at (14,2,2) ε=½ r1; 1.00 in the six (12,2,2) r1–r3 cells) and 0.58–0.87
 in (14,4,2). At δ_p = 3·10⁻²: 0.97–1.00 for the L=2 cells, 0.60–0.86 for (14,4,2). Above 0.1 the surface falls steeply
 everywhere (e.g. (12,2,2) ε=1 r1 at δ_p=3·10⁻²: 3.72e-03 at Δ_τ=0.3, 1.06e-05 at 0.5).
 
