@@ -15,6 +15,22 @@ zero mismatches; per-query rung monotonicity asserted). Raw:
 Measured **after** the v0.2.4 stamp (5b58d7f) — confirmatory with respect to m/W/𝒯/continuation
 (W = 4 used); exploratory with respect to every threshold, which is the point of the sweep.
 
+**Truthsayer round (Codex/ChatGPT via Tony, 2026-08-16 morning; applied in the commit carrying
+this block — v0.1.1):** three findings on this note, all verified against the raw JSON before
+adoption. (1) Using Q4's *gap part* for δ_sync is a **semantic amendment to Part II §6**
+("posterior entropy on a query" = Q4's total), not a threshold choice — this note's §1 said so
+implicitly; the freeze proposal (v0.2) now carries the §6 text change explicitly for Tony's
+authorization. (2) The truncation-conditional horizons at δ_sync = 0.01 move one bucket later
+in **five of eight** cells (ε=1 r1: 10→12; ε=½ r1: 10→12; ε=½ r2–r4: 8→10) — the truthsayer's
+"every horizon" was too wide: ε=1 r2–r4 stay at 10 (Q2[T0]/Q2[T1]/Q2[T3] ×3.5 at L=10 are
+0.0063/0.0070/0.0077, under 0.01). The synchronization *measure* must be settled before its
+threshold is frozen; a per-endpoint (U-conditional) rerun was launched 07:23 PDT to settle it
+with data (`…-raw-2026-08-16-perT.json`; results appended to this note when in). (3) §3.3's
+"Q4's gap part synchronizes on the same horizon as the state" was **false** under the plain
+meaning of state (H(S)): Q4's gap crosses 0.01 one bucket *before* H(S) in all eight cells
+(10 vs 12 at ε=1 and ε=½ r1; 8 vs 10 at ε=½ r2–r4). Corrected in place below to what was
+meant and is true: Q4's gap is among the binding queries of the statutory bundle's horizon.
+
 ## 1. What is being swept
 
 Part II §6: **synchronization horizon** = smallest L at which a rung's posterior entropy on a
@@ -142,9 +158,12 @@ under δ = 0.005: ε=1 r2→r3 moves to 10 and ε=1 r1→r2 to 12. The (14,8,2) 
    per bucket at ε=1, ×0.38–0.40 at ε=½, through L = 8; law-mass mean ×0.26–0.40 over all
    eight cells (other rungs' conditional ratios in the derived printout: 0.39–0.45 at ε=1,
    0.34–0.37 at ε=½).
-3. **Q4's gap part synchronizes on the same horizon as the state**: at δ_sync = 0.01, L* = 10
-   (ε=1, all rungs; ε=½ r1) and 8 (ε=½ r2–r4), and it is among the binding queries in every
-   cell — the forecast query is not slower to synchronize than the fact queries.
+3. **Q4's gap part is among the binding queries of the statutory bundle's horizon in every
+   cell** *(v0.1.1: the v0.1 sentence "synchronizes on the same horizon as the state" was false —
+   Q4's gap crosses 0.01 one bucket before H(S) in all eight cells: L* 10 vs 12 at ε=1 and ε=½
+   r1, 8 vs 10 at ε=½ r2–r4)*: at δ_sync = 0.01 Q4's gap crosses at L = 10 (ε=1, all rungs; ε=½
+   r1) and 8 (ε=½ r2–r4), the same L as L*(all statutory) — the forecast query is not slower to
+   synchronize than the slowest fact queries, and faster than the full state.
 4. **The lineage rung never separates by more than 0.0037 bits at any L** and its gap falls
    monotonically in L in both ε (six values each, all decreasing).
 5. **r1 needs one more bucket than r2–r4** in at least one ε at every δ_sync ≤ 0.03; the
@@ -154,8 +173,13 @@ under δ = 0.005: ε=1 r2→r3 moves to 10 and ε=1 r1→r2 to 12. The (14,8,2) 
 
 ## 4. Proposal for the second stamped decision (δ_sync only)
 
-**δ_sync = 0.01 bits, applied per statutory query to the law-mass mean as §6 states, with the
-truncation-conditional mean reported alongside.** Reasons: it is inside the decade where the
+**δ_sync = 0.01 bits.** *(v0.1.1: two things this proposal needs that are not threshold
+choices — (i) Part II §6 must be amended to say Q4 enters by its gap part; (ii) the measure
+the horizon is defined on — law-mass mean vs truncation-conditional vs per-endpoint — must be
+settled first; the truncation-conditional horizons differ from the law-mass ones in five of
+eight cells at 0.01. Both are carried as explicit decision items in
+`part2-threshold-freeze-proposal-v0.2.md`; the per-endpoint data are being produced.)*
+Applied per statutory query, with the truncation-conditional mean reported alongside. Reasons: it is inside the decade where the
 horizons are informative at T_ep = 14 (0.3 and 0.1 give L* = 4 and 6 in every cell — no rung
 or ε structure; 0.001 gives 10–12 with the cliff doing the work); it is the same number
 as sweep 1's δ, which is a convenience of units (bits) not a derivation — δ compares rungs,

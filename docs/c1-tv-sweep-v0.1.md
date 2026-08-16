@@ -117,7 +117,10 @@ the smallest of the three in **23 of 24** cells — the exception is (14,2,2) ε
 
 ## 3. What the sweep shows
 
-1. **Δ_τ has a band; δ_p does not.** For Δ_τ ∈ [10⁻³, 3·10⁻²] the surface is flat to within
+1. **Δ_τ has a broad stability region with reported sensitivity; δ_p has no common stable
+   plateau on the sampled grid.** *(v0.1.1 wording, truthsayer round 2026-08-16: "flat band"
+   overstated a region that moves prevalence by up to 30% at (14,4,2); "no plateau" is a
+   statement about the sampled grid.)* For Δ_τ ∈ [10⁻³, 3·10⁻²] the surface is flat to within
    4% in the sixteen L=2 cells (exactly flat in twelve) and within 30% in the (14,4,2) cells;
    below 10⁻³ it picks up near-duplicates; above 0.1 it falls in every cell. For δ_p there is
    monotone growth in every cell with no plateau, and the growth factor between δ_p = 0 and
@@ -139,7 +142,10 @@ the smallest of the three in **23 of 24** cells — the exception is (14,2,2) ε
 - **Δ_τ = 0.01.** Inside the flat band; one significant figure; excludes the near-duplicate
   shelf by 10×; robust to within 4% (L=2) / 30% ((14,4,2)) against Δ_τ ∈ [10⁻³, 3·10⁻²].
 - **δ_p: do not freeze a scalar; freeze an axis.** Report the divergent class and pair_prob
-  at δ_p ∈ {0, 10⁻³, 10⁻², 3·10⁻²} with δ_p = 0 as the exact anchor (M1 deliverable 5,
+  at δ_p ∈ {0, 10⁻⁴, 10⁻³, 10⁻², 3·10⁻²} with δ_p = 0 as the exact anchor *(v0.1.1: 10⁻⁴ added
+  on the truthsayer's finding — the largest single departure from exact equality, 65.9× at
+  (12,2,2) ε=½ r2, occurs already at 10⁻⁴; omitting it would hide where the knife-edge
+  begins)* (M1 deliverable 5,
   *existence*, is discharged at δ_p = 0 already — the class is non-empty in every windowed
   cell). Rationale: no plateau exists to place a threshold in; a scalar δ_p would turn a
   measured sensitivity into a hidden convention. If Part II must name a single δ_p for the

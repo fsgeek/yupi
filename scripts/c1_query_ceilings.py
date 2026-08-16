@@ -44,12 +44,15 @@ def main():
         prev_mean = None
         for rung in RUNGS:
             agg = {}
+            mass_T = {}   # key -> {T: law mass of this window generated at endpoint T}
             for T in law.endpoints():
                 u = law.offset(T)
                 for recs, prob, final in path_cache[T]:
                     key = (u == 0, tuple(project(r, rung) for r in recs[u:]))
                     d = agg.setdefault(key, {})
                     d[(u, final)] = d.get((u, final), Fraction(0)) + w_T * prob
+                    mt = mass_T.setdefault(key, {})
+                    mt[T] = mt.get(T, Fraction(0)) + w_T * prob
             total_mass = sum(
                 (sum(j.values(), Fraction(0)) for j in agg.values()), Fraction(0)
             )
@@ -58,6 +61,11 @@ def main():
             mean_H = {name: 0.0 for name, _ in queries}
             resolved = {name: Fraction(0) for name, _ in queries}
             mean_HS = 0.0
+            # per-endpoint (U-conditional) means: the observer's posterior on the merged
+            # window (marginal over U), averaged over windows GENERATED at endpoint T
+            # (added 2026-08-16 for the delta_sync per-U question; existing keys unchanged)
+            by_T = {T: dict(mass=Fraction(0), HS=0.0, H={name: 0.0 for name, _ in queries})
+                    for T in law.endpoints()}
             mismatches = 0
             for (reset, window), joint_mass in agg.items():
                 mass = sum(joint_mass.values(), Fraction(0))
@@ -77,17 +85,24 @@ def main():
                     belief[s] = belief.get(s, Fraction(0)) + m
                 HS = state_entropy_bits(belief)
                 mean_HS += float(mass) * HS
+                for T, mT in mass_T[(reset, window)].items():
+                    by_T[T]["mass"] += mT
+                    by_T[T]["HS"] += float(mT) * HS
                 for name, fn in queries:
                     H = entropy_bits(pushforward(belief, fn))
                     assert H <= HS + 1e-9, (name, H, HS)
                     mean_H[name] += float(mass) * H
                     if H == 0.0:
                         resolved[name] += mass
+                    for T, mT in mass_T[(reset, window)].items():
+                        by_T[T]["H"][name] += float(mT) * H
             assert mismatches == 0, f"two-path mismatches: {mismatches}"
             if prev_mean is not None:
                 for name in mean_H:
                     assert mean_H[name] <= prev_mean[name] + 1e-9, (rung, name)
             prev_mean = mean_H
+            for T in by_T:
+                assert by_T[T]["mass"] == w_T, (T, by_T[T]["mass"], w_T)
             row = dict(
                 eps=str(eps), rung=rung, n_windows=len(agg),
                 mean_state_entropy_bits=mean_HS,
@@ -95,6 +110,13 @@ def main():
                     name: dict(mean_bits=mean_H[name],
                                resolved_mass=float(resolved[name]))
                     for name in mean_H
+                },
+                by_endpoint={
+                    str(T): dict(U=law.offset(T),
+                                 mean_state_entropy_bits=by_T[T]["HS"] / float(w_T),
+                                 queries={name: by_T[T]["H"][name] / float(w_T)
+                                          for name in mean_H})
+                    for T in by_T
                 },
             )
             out["rows"].append(row)

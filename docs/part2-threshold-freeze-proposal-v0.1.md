@@ -1,6 +1,6 @@
 # Proposed second stamped decision — the four Part II thresholds (δ, δ_sync, δ_p, Δ_τ), from the three §C sweeps
 
-**Status: PROPOSAL v0.1, 2026-08-15 (eighth instance; commit time in git). Not binding.**
+**Status: SUPERSEDED by `part2-threshold-freeze-proposal-v0.2.md` (2026-08-16, after the truthsayer round: Q4 gap-part is a §6 semantic amendment; synchronization measure must be settled; δ_p axis gains 10⁻⁴; wording). Retained unchanged below as the record of v0.1. Was: PROPOSAL v0.1, 2026-08-15. Not binding.**
 Part II v0.2.4 §C (enacted 5b58d7f) says the thresholds freeze in a *second* stamped decision
 after three separate sweeps. The sweeps are done and stamped:
 
