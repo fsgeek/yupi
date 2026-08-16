@@ -17,6 +17,13 @@ Pre-stated (before first run):
      r_obs r3->r4 increment ~0 at (12,2,2).
   G3 the diagonal r3->r4 dip at (12,2,2) = (~0 from the r_obs step) +
      (<0 from the r_pred step).
+
+v0.1.1 (Aug 16 2026, truthsayer round): G1 is now ASSERTED in its strong
+form — the divergent-pair SET at each finer r_pred is checked to be a
+subset of the set at the adjacent coarser r_pred (12 assertions per law,
+6 per eps), and the aggregate-mass check is asserted rather than printed.
+The count is 3 laws x 2 eps x 4 r_obs x 3 steps = 72 mass comparisons
+(v0.1 text said 96 — a miscount). Masses unchanged from the v0.1 raw files.
 """
 
 import json
@@ -54,6 +61,8 @@ def main():
         memo_k, memo_w, memo_l = {}, {}, {}
         fn_state, pnext_state = {}, {}
         grid = {}
+        pair_sets = {}
+        n_nesting_checks = [0]
         for r_obs in RUNGS:
             agg = {}
             for T in law.endpoints():
@@ -84,6 +93,7 @@ def main():
                     pn = freeze(q4_mixture(belief, {s: pnext_state[(s, r_pred)] for s in belief}))
                     groups[pn].append((key, mass, mixes))
                 seen, mass_in, n_pairs = set(), Fraction(0), 0
+                pair_set = set()   # v0.1.1: explicit divergent-pair set for the nesting assertion
                 for g in groups.values():
                     if len(g) < 2:
                         continue
@@ -95,12 +105,22 @@ def main():
                     items = list(classes.values())
                     for wa, wb in combinations(items, 2):
                         n_pairs += len(wa) * len(wb)
+                        for ka, _ in wa:
+                            for kb, _ in wb:
+                                pair_set.add(frozenset((ka, kb)))
                     for ws in items:
                         for key, mass in ws:
                             if key not in seen:
                                 seen.add(key)
                                 mass_in += mass
                 grid[(r_obs, r_pred)] = (float(mass_in), n_pairs, len(seen))
+                # v0.1.1 gate (G1, strong form): pair set at the finer predicted rung
+                # is a SUBSET of the pair set at the coarser one. Asserted, not printed.
+                if r_pred != RUNGS[0]:
+                    coarser = pair_sets[(r_obs, RUNGS[RUNGS.index(r_pred) - 1])]
+                    assert pair_set <= coarser, f"G1 nesting violated at r_obs={r_obs}, r_pred={r_pred}"
+                    n_nesting_checks[0] += 1
+                pair_sets[(r_obs, r_pred)] = pair_set
                 out["rows"].append(dict(eps=str(eps), r_obs=r_obs, r_pred=r_pred,
                                         n_windows=len(agg), div_mass=float(mass_in),
                                         pairs=n_pairs, windows_in=len(seen)))
@@ -111,7 +131,9 @@ def main():
         # G1 check
         viol = [(r_obs, RUNGS[i], RUNGS[i + 1]) for r_obs in RUNGS for i in range(3)
                 if grid[(r_obs, RUNGS[i + 1])][0] > grid[(r_obs, RUNGS[i])][0] + 1e-12]
-        print(f"  G1 (non-increasing in r_pred) violations: {viol}", flush=True)
+        assert not viol, viol
+        print(f"  G1: {n_nesting_checks[0]} pair-set nesting assertions passed; "
+              f"{len(RUNGS) * (len(RUNGS) - 1)} adjacent mass comparisons non-increasing", flush=True)
     if len(sys.argv) > 4:
         with open(sys.argv[4], "w") as f:
             json.dump(out, f, indent=2)

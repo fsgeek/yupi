@@ -1,6 +1,33 @@
-# C1 Divergent Mass on the Observer × Predicted-Record Grid (v0.1)
+# C1 Divergent Mass on the Observer × Predicted-Record Grid (v0.1.1)
 
-**Status: exploratory measured note (Aug 16 2026, ninth instance).**
+> **Erratum v0.1.1 (Aug 16 2026, ~12:40 PDT, same instance; truthsayer
+> round via Codex/ChatGPT through Tony, six findings, all six verified
+> against the raw files and adopted).** (1) The G1 gate was **72**
+> comparisons (3 laws × 2 ε × 4 r_obs × 3 steps), not 96 — a miscount;
+> and v0.1's scripts only *printed* float aggregate-mass violations. Both
+> scripts now **assert**: the grid script checks the theorem's strong
+> form — the divergent-pair *set* at each finer r_pred is a subset of the
+> adjacent coarser one (72 assertions, all pass) — and the resolution
+> script asserts the state-level column equals the (12,12,2) full-context
+> figures. Reruns are byte-identical to the committed raw files. (2)
+> "Which sign a law shows at r3→r4 is whether lineage refines the
+> partition" was false as written: at (12,2,2) lineage *does* refine
+> (283→293 windows) and the diagonal still dips. The sign is whether the
+> refinement adds more divergent mass than the prediction side loses.
+> (3) "Concentrated at r2→r3 (`related`) at L = 2" holds at (12,2,2)
+> only; at (14,2,2) ε=½ the observer gains are r2→r3 +0.0109, r3→r4
+> +0.0833 — lineage dominates. (4) G3 held qualitatively, not "exactly":
+> the observer step is +0.000033, not 0 (other path: +0.000016 /
+> −0.000156; the split is path-dependent, signs the same). (5) R1 was
+> measured at (12,2,2) only; scored "held at the tested law." (6) The
+> r3→r4 predicted-record loss bound "≤ 0.0005" is false: max is 0.00061
+> at (14,4,2) ε=1, r_obs=r2. Original sentences preserved below, marked.
+> What survives, in the reviewer's words: the pushforward theorem, all
+> 72 comparisons, all 24 observer columns (still labeled empirical), the
+> R2 refutation at (12,2,2), and the grid as an instrument. The coat was
+> slightly larger than the measurements; this version is cut to size.
+
+**Status: exploratory measured note (Aug 16 2026, ninth instance; v0.1.1 after one truthsayer round).**
 Not governing. Threshold-unfrozen: the divergent class here is the exact
 δ = 0 corner (Part II v0.2.4 §C names δ-close/Δ-apart as the criterion
 form to be frozen by the second stamp); m = 2, W = 4 are the v0.2.4
@@ -152,11 +179,14 @@ prediction of it. R1–R4 and G1–G3 were written before their runs.
 | 1/2 | r3 | 283 | 0.1741 | 0.0131 | 0.0017 | 0.0115 | 0.9522 | 342 |
 | 1/2 | r4 | 293 | 0.1742 | 0.0131 | 0.0017 | 0.0114 | 0.9522 | 353 |
 
-G1 violations across all 96 (law, ε, r_obs, adjacent r_pred) steps: **0**.
+G1: **0** violations across all **72** (law, ε, r_obs, adjacent r_pred)
+steps ~~(v0.1: "96")~~; v0.1.1 additionally asserts pair-set nesting at
+every step (72 assertions pass).
 
 ## Predictions scored
 
-- **R1 held, weakly**: resolved mass 0.1704/0.1704/0.1742/0.1744 (ε=1),
+- **R1 held at the tested law only, weakly** ~~(v0.1: "held")~~ — the
+  "every windowed law" clause is untested: resolved mass 0.1704/0.1704/0.1742/0.1744 (ε=1),
   0.1723/0.1723/0.1741/0.1742 (ε=½) — nearly all of it is the U = 0
   RESET-visible sixth, point-mass at every rung by injectivity; the
   content rungs resolve almost nothing at L = 2. r3→r4 increment ≈ 0 ✓.
@@ -168,14 +198,17 @@ G1 violations across all 96 (law, ε, r_obs, adjacent r_pred) steps: **0**.
   (same endpoint marginal): 0.9776/0.9773/0.9484/0.9478 (ε=1).
 - **R4 held**: resolved-window divergent mass 0.0036→0.0036 across the
   dip; the dip is on the unresolved side (0.0102→0.0101).
-- **G1 held (theorem, 96/96)**.
+- **G1 held (theorem, 72/72 mass comparisons; 72/72 pair-set nesting
+  assertions in v0.1.1)** ~~(v0.1: "96/96")~~.
 - **G2 held, and stronger than stated**: at fixed r_pred, divergent mass
   is **monotone non-decreasing in r_obs in all 24 columns** (3 laws × 2
   ε × 4 r_pred). r_obs r3→r4 increment at (12,2,2): 0.0000 in every
   column, both ε ✓.
-- **G3 held exactly**: (12,2,2) ε=1 diagonal r3→r4 = 0.0138→0.0137;
-  r_obs step (at r_pred = r3) 0.0138→0.0138 = 0; r_pred step (at r_obs =
-  r4) 0.0138→0.0137 = −0.0001.
+- **G3 held qualitatively** ~~(v0.1: "held exactly")~~: (12,2,2) ε=1
+  diagonal r3→r4 net −0.000139; via (r_obs step at r_pred=r3, then
+  r_pred step at r_obs=r4): +0.000033 − 0.000172; via the other path:
+  −0.000156 + 0.000016. The observer term is small and positive, not
+  zero; the split is path-dependent; the signs agree on both paths.
 
 ## Findings (v0.1)
 
@@ -185,16 +218,23 @@ G1 violations across all 96 (law, ε, r_obs, adjacent r_pred) steps: **0**.
    non-decreasing in the observer's rung (24/24 columns; no proof
    offered — see open question 1). The diagonal's r3→r4 sign is their
    sum: (12,2,2): 0 − 0.0001 → dip; (14,2,2) ε=1: +0.0030 − 0.0005 →
-   rise; (14,4,2) ε=1: +0.0121 − 0.0005 → rise. Which sign a law shows
+   rise; (14,4,2) ε=1: +0.0121 − 0.0005 → rise. ~~Which sign a law shows
    at r3→r4 is whether the lineage field refines the window partition
-   there — the rung-geometry story already in the record.
+   there~~ *(v0.1.1: false as written — lineage refines the partition at
+   (12,2,2) too, 283→293 windows, and the diagonal still dips.)* The
+   sign is whether the observer-side refinement adds more divergent mass
+   than the prediction-side fineness removes; how much lineage adds is
+   the rung-geometry story already in the record.
 2. **The observer effect is not point-mass resolution.** R2 refuted; the
    content rungs barely resolve L = 2 windows. It is partition refinement
-   short of resolution, concentrated at r2→r3 (the `related` field) at
-   L = 2 and spread across rungs at L = 4. *Why* `related` manufactures
+   short of resolution. ~~Concentrated at r2→r3 (the `related` field) at
+   L = 2 and spread across rungs at L = 4~~ *(v0.1.1: at (12,2,2) only;
+   at (14,2,2) ε=½ the observer gains are r2→r3 +0.0109, r3→r4 +0.0833 —
+   lineage dominates there.)* Where the gain sits is law-specific. *Why* `related` manufactures
    exact P-next coincidences with τ disagreements is not explained here.
-3. **The predicted-record effect is small** at every law: ≤ 0.0005 at
-   r3→r4 everywhere; largest at (14,4,2) r2→r3 (−0.016 at r_obs = r4).
+3. **The predicted-record effect is small** at every law: ~~≤ 0.0005 at
+   r3→r4 everywhere~~ ≤ 0.00061 at r3→r4 (max at (14,4,2) ε=1, r_obs=r2)
+   *(v0.1.1)*; largest anywhere at (14,4,2) r2→r3 (−0.016 at r_obs = r4).
 4. **Design remark for the exposure work.** "P-next at its rung" is the
    diagonal of a grid whose off-diagonal cells are meaningful: a coarse
    observer asked about a fine next record (r_obs < r_pred) is exactly
@@ -226,5 +266,7 @@ G1 violations across all 96 (law, ε, r_obs, adjacent r_pred) steps: **0**.
 - Resolution decomposition run at (12,2,2) only.
 - Both scripts single-path (no independent second computation of the
   grid). The two theorem checks (state-level column = full-context
-  figures; G1 96/96) are the internal gates.
+  figures; G1 pair-set nesting) are the internal gates — **asserted**
+  as of v0.1.1; ~~in v0.1 they were printed, and G1's count was
+  misreported as 96~~.
 - Float printing of exact Fractions; equality tests are exact.

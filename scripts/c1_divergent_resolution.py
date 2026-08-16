@@ -21,6 +21,11 @@ Pre-stated predictions (written before the first run):
   R4  at (12,2,2) the r3→r4 dip occurs with resolved-window divergent mass
       flat.
 
+v0.1.1 (Aug 16 2026, truthsayer round): the state-level column is now
+ASSERTED equal to the (T_ep,T_ep,B) full-context divergent mass from the
+day-seven v0.2 raw file when it exists (T_ep=12), instead of merely printed.
+R1 was scored "held" though only (12,2,2) was measured; see note v0.1.1.
+
 Same window construction and divergent-pair criterion (exact P-next
 equality, any tau mixture unequal; m=2, W=4) as scripts/c1_predictive_targets.py.
 Adds: per window resolved flag (|support|=1); divergent mass split
@@ -30,6 +35,7 @@ marginal P(s) at each rung; number of P-next classes among states.
 """
 
 import json
+import os
 import sys
 from collections import defaultdict
 from fractions import Fraction
@@ -136,6 +142,14 @@ def main():
                                 div_res += mass
                             else:
                                 div_unres += mass
+            # v0.1.1 gate: the state-level column must equal the full-context
+            # divergent mass at (T_ep, T_ep, B) — same endpoint marginal — when
+            # that day-seven raw file exists (it does for T_ep=12 only).
+            fc = f"docs/c1-predictive-targets-{T_ep}-{T_ep}-{B}-raw-2026-08-15-v0.2.json"
+            if os.path.exists(fc):
+                ref = [r for r in json.load(open(fc))["rows"] if r["eps"] == str(eps) and r["rung"] == rung]
+                assert ref and abs(ref[0]["divergent"]["mass"] - float(state_div_mass)) < 1e-9, \
+                    f"state-level column != full-context divergent mass at eps={eps} {rung}"
             row = dict(eps=str(eps), rung=rung, n_windows=len(agg),
                        resolved_mass=float(resolved_mass),
                        div_mass=float(div_res + div_unres),
