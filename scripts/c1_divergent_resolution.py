@@ -25,7 +25,7 @@ v0.1.1 (Aug 16 2026, truthsayer round): the state-level column is now
 ASSERTED equal to the (T_ep,T_ep,B) full-context divergent mass from the
 day-seven v0.2 raw file when it exists (T_ep=12), instead of merely printed.
 R1 was scored "held" though only (12,2,2) was measured; see note v0.1.1.
-v0.1.2: the gate is unconditional for T_ep=12 (reference resolved relative
+v0.1.2: the gate is unconditional for (T_ep,B)=(12,2) (keyed by the reference domain, not T_ep alone) (reference resolved relative
 to this file, missing reference is fatal) and exact (==), not 1e-9.
 
 Same window construction and divergent-pair criterion (exact P-next
@@ -53,7 +53,7 @@ from yupi.window import WindowLaw, endpoint_prior
 
 RUNGS = ("r1", "r2", "r3", "r4")
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FULL_CONTEXT_REF_TEP = (12,)   # T_ep values with a committed full-context reference run
+FULL_CONTEXT_REF = {(12, 2)}   # (T_ep, B) pairs with a committed full-context reference run
 M, W = 2, 4
 TAUS = ("kinds2", "ttw4", "lineage4")
 
@@ -151,9 +151,9 @@ def main():
             # full-context divergent mass at (T_ep, T_ep, B) — same endpoint
             # marginal. Reference resolved relative to this file (not cwd);
             # REQUIRED for every T_ep that has a day-seven full-context raw
-            # (T_ep=12); exact float equality — the same exact Fraction is
+            # ((T_ep,B)=(12,2)); exact float equality — the same exact Fraction is
             # converted with float() on both sides.
-            if T_ep in FULL_CONTEXT_REF_TEP:
+            if (T_ep, B) in FULL_CONTEXT_REF:
                 fc = os.path.join(REPO, "docs", f"c1-predictive-targets-{T_ep}-{T_ep}-{B}-raw-2026-08-15-v0.2.json")
                 if not os.path.exists(fc):
                     raise SystemExit(f"state-level gate reference missing: {fc}")
@@ -175,7 +175,7 @@ def main():
                   f"state-div={row['state_div_mass']:.4f} classes={len(sgroups)} "
                   f"pp={{{', '.join(f'{k}:{v:.2e}' for k, v in row['pair_prob_by_type'].items())}}}", flush=True)
     print(f"state-level gate: {n_state_gate[0]} exact-equality assertions passed"
-          + ("" if T_ep in FULL_CONTEXT_REF_TEP else " (no full-context reference for this T_ep)"), flush=True)
+          + ("" if (T_ep, B) in FULL_CONTEXT_REF else " (no full-context reference for this (T_ep, B))"), flush=True)
     if len(sys.argv) > 4:
         with open(sys.argv[4], "w") as f:
             json.dump(out, f, indent=2)

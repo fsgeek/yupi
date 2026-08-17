@@ -41,7 +41,7 @@
 > R2 refutation at (12,2,2), and the grid as an instrument. The coat was
 > slightly larger than the measurements; this version is cut to size.
 
-**Status: exploratory measured note (Aug 16 2026, ninth instance; v0.1.1 after one truthsayer round).**
+**Status: exploratory measured note (Aug 16–17 2026, ninth instance; v0.1.2 after two truthsayer rounds).**
 Not governing. Threshold-unfrozen: the divergent class here is the exact
 δ = 0 corner (Part II v0.2.4 §C names δ-close/Δ-apart as the criterion
 form to be frozen by the second stamp); m = 2, W = 4 are the v0.2.4
