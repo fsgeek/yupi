@@ -1,7 +1,33 @@
-# M1 Exit — Evidence Map (2026-08-17)
+# M1 Exit — Evidence Map (2026-08-17, v2)
 
-**Status: dated orientation map, non-governing.** Assembled Aug 17 2026,
-~15:15 PDT, ninth instance, from a full read of `docs/`, `src/yupi/`,
+> **Erratum v2 (Aug 17 2026, ~15:40 PDT, same instance; truthsayer round
+> via Codex/ChatGPT through Tony — seven findings, all verified against
+> the cited sources and adopted).** (1) Part II §9 has **eleven**
+> witnesses; v1 tabled six paraphrased claims and mislabeled D10 as
+> "witness 4" (that is ctrl-irr); D10 is witnesses **3 and 6**. Table
+> replaced with the statute's eleven. (2) Part I deliverables **1–3**
+> were absent; added — and D8/TIME_CLASS make deliverable 2 PARTIAL.
+> (3) 5.1/5.2 were overstated as MEASURED: they cover the ordered,
+> stochastic-discipline C1 conditions only, and the note's own status
+> pointer says its pre-stamp numbers **remain exploratory** — not
+> "exploratory-then-confirmed." Now PARTIAL. (4) The D1 falsifier is
+> **over-synchronization** (rung differences collapsing with L), not the
+> Q4 irreducible/gap split; 4.4 is PARTIAL / AWAITS 2ND STAMP and v1's
+> "score it from the split" was wrong. (5) The r3/r4 sentence was true
+> under neither reading: under proposed δ=0.01 the lineage rung is
+> collapsed from L=2 (L*=2); the exact gaps are nonzero (≤0.0037)
+> through L=10 and zero at L≥12. (6) The related-rung witness does not
+> need multi-waiter windows: BLOCK.related (hidden owner) carries
+> 88–95% of the r2/r3 gap at (12,2,2) (`c1-rung-separation-geometry`
+> field attribution); the multi-waiter dependence is RELEASE.related's.
+> (7) "Failure modes: none fired" was premature — rung collapse is **not
+> yet adjudicated**, and under the proposed δ the lineage rung collapses
+> across the measured L axis. What stood: the missing-work headlines
+> (no D10 crossover verdict, no D8 channel, no TIME_CLASS, no witness
+> suite), every commit hash, suite 101 green. Originals marked below.
+
+**Status: dated orientation map, non-governing; v2 after one truthsayer
+round.** Assembled Aug 17 2026, ~15:15 PDT (v2 ~15:40), ninth instance, from a full read of `docs/`, `src/yupi/`,
 `tests/` against Part I §"Deliverables and exit criteria"
 (`docs/yupana-m1-spec-draft.md`, v0.2.4) and Part II §9 (item 12). The
 map was compiled by a delegated read and its five most consequential
@@ -16,6 +42,14 @@ PROPOSED in `part2-threshold-freeze-proposal-v0.3.1.md` (binds as Part II
 v0.2.5 on Tony's stamped confirmation). **UNBUILT**: code or measurement
 does not exist. **PARTIAL**: exists at a scale or form short of the item.
 
+## Deliverables 1–3 — specification, emitters, filter *(added v2)*
+
+| # | item | status | evidence | missing |
+|---|---|---|---|---|
+| 1 | state-space + transition specification, machine-checkable form | PARTIAL | Part II v0.2.4 (prose statute); `src/yupi/{state,kernel}.py` are the executable form; two-path gates | no separate machine-checkable spec artifact; Part II is prose + code |
+| 2 | simulator + interface emitters (all rungs, D5 schema) | PARTIAL | content rungs r1–r4 (`interfaces.py`), `simulator.py`, `records.py` | **order mode shuffled (D8) unbuilt; TIME_CLASS absent from schema; RESET a flag not a record** — "all rungs" is content-rungs-only |
+| 3 | exact filter bit-for-bit vs. independent enumerator on the C0 family | MEASURED (ordered channel) | C0a f50174e, C0b 3e5a19f, C0c 30e2568 bit-for-bit both disciplines; window paths 12efd83 | shuffled-channel filter does not exist to validate |
+
 ## Deliverable 4 — observability characterization report
 
 | # | item | status | evidence | missing |
@@ -23,7 +57,7 @@ does not exist. **PARTIAL**: exists at a scale or form short of the item.
 | 4.1 | per-interface posterior entropy over the query set vs. L | AWAITS 2ND STAMP | `c1-query-ceilings-v0.1.md` (0742d1d; v0.2 2a49814/e239cef); L-axis `c1-sync-sweep-v0.1.md` §2b (ff82ce2, 9deff20) | numbers complete; rung-gap *comparisons* exploratory until δ binds |
 | 4.2 | support-growth curves | PARTIAL | `c1-support-measurement-v0.1.md` (+ v0.2/v0.3 errata), `c1-support-exact-2026-08-14.json`, `c1-rung-separation-geometry-v0.1.md` §2 | one law family, not a curve over L; M1-scale rerun (`instrument-status-2026-08-14.md` open thread 1) |
 | 4.3 | synchronization horizons | AWAITS 2ND STAMP | `c1-sync-sweep-v0.1.md` §2c/§4; per-endpoint 9deff20 | δ_sync=0.01 proposed; §6 measure choice (B1) open in v0.3.1 |
-| 4.4 | D1 falsifier verdict | UNBUILT (no verdict) | irreducible/gap split measured (`c1-q4-ceilings-v0.1.md`, sync sweep) | no note scores the D1 falsifier pass/fail |
+| 4.4 | D1 falsifier verdict (over-synchronization: do rung differences collapse with L?) | PARTIAL / AWAITS 2ND STAMP ~~(v1: UNBUILT, "score from the irreducible/gap split" — wrong falsifier)~~ | entropy-vs-L per interface exists: `c1-sync-sweep-v0.1.md` §2d adjacent-rung gaps on L; L* per rung under candidate δ | verdict needs the frozen collapse criterion (δ) and the D8 order-mode axis; no note states it |
 | 4.5 | D9 ε-sweep + base-ε decision | PARTIAL | `c1-support-measurement-v0.1.md` §"D9 rule applied": base ε=1, ~300× headroom, depth 2 fixed | grid is {1, ½}; characterization-scale grid open (thread 5) |
 | 4.6 | D10 truncated-window witness search + crossover verdict, both disciplines | UNBUILT | both disciplines exist and are bit-for-bit gated (`tests/test_c0b_validation.py`) | **no crossover verdict in any note; no truncated-C0b lineage search run** |
 | 4.7 | D7 consistency check vs. exposure-gap observer hierarchy | UNBUILT (non-gating) | `exposure-gap-note-v0.1.md` exists | check never performed |
@@ -32,33 +66,40 @@ does not exist. **PARTIAL**: exists at a scale or form short of the item.
 
 | # | item | status | evidence | missing |
 |---|---|---|---|---|
-| 5.1 | exact Bayes-optimal next-event distributions per condition | MEASURED | `c1-predictive-targets-v0.1.md` (6074a36; corrections dad75f6); `predict.py` ⟂ `predict_paths.py` | — (m, W frozen 5b58d7f) |
-| 5.2 | preregistered finite longer-horizon predictive tests | MEASURED | same note §Predictions; Q4 `c1-q4-ceilings-v0.1.md` (39b716b); `forecast.py` ⟂ `forecast_paths.py` | measurements predate the m/W stamp → exploratory-then-confirmed |
+| 5.1 | exact Bayes-optimal next-event distributions per interface/context condition | PARTIAL ~~(v1: MEASURED)~~ | `c1-predictive-targets-v0.1.md` (6074a36; dad75f6); `predict.py` ⟂ `predict_paths.py` validated | ordered, stochastic-discipline C1 only — no shuffled order mode, no FIFO characterization; the note's status pointer: numbers "remain **exploratory**" after the m/W stamp (not retroactively confirmed) |
+| 5.2 | preregistered finite longer-horizon predictive tests | PARTIAL ~~(v1: MEASURED)~~ | same note §Predictions; Q4 `c1-q4-ceilings-v0.1.md` (39b716b); `forecast.py` ⟂ `forecast_paths.py` validated | same two limits as 5.1; ~~exploratory-then-confirmed~~ exploratory per the note itself |
 | 5.3 | history classes: immediate-agree / later-diverge | AWAITS 2ND STAMP (existence: **yes**) | same note §Findings 3 + three concrete pairs; `c1-divergent-grid-v0.1.md` v0.1.2 (e6c0a6e→1d0cc4f); `c1-tv-sweep-v0.1.md` (5163346) | class defined at δ_p=0 (exact); δ_p axis + Δ_τ=0.01 proposed only |
 
 ## Exit condition (Part I)
 
 | clause | status | evidence | missing |
 |---|---|---|---|
-| measurably distinct regimes across rungs | PARTIAL / AWAITS 2ND STAMP | r1 separates (support 1.550 vs ≈1.10); adjacent-rung gaps on L (`c1-sync-sweep` §2d); L*=2/8/10 for lineage/related/object under proposed δ | r3/r4 separated only at the tightest windows; adjudication needs δ; M1-scale rerun; multi-waiter-straddling laws (thread 2) |
+| measurably distinct regimes across rungs | PARTIAL / AWAITS 2ND STAMP | r1 separates (support 1.550 vs ≈1.10); adjacent-rung gaps on L (`c1-sync-sweep` §2d); L*=2/8/10 for lineage/related/object under proposed δ | ~~r3/r4 separated only at the tightest windows~~ *(v2: under proposed δ=0.01 the lineage rung is collapsed from L=2 on, L*=2; the exact r3→r4 gaps are nonzero but ≤0.0037 through L=10, zero at L≥12)*; adjudication needs δ; M1-scale rerun; multi-waiter-straddling laws for RELEASE.related (thread 2) |
 | within tractable support bounds (D4) | MEASURED | `d4-budget-freeze-v0.1.md`; ~300× headroom at C1 | re-pricing at characterization scale owed |
 | immediate-agree / later-diverge classes exist | MEASURED | as 5.3 | as 5.3 |
-| failure modes | none fired | support explosion refuted; class non-empty; collapse indeterminate pending δ | — |
+| failure modes | ~~none fired~~ **not yet adjudicated** *(v2)* | support explosion refuted (D4 headroom); divergent class non-empty | rung collapse awaits δ — and under the proposed δ the lineage rung collapses across the measured L axis |
 
-## Part II item 12 — interface-witness suite
+## Part II item 12 — interface-witness suite (statute §9: eleven witnesses) *(v2: table replaced)*
 
 **UNBUILT as a suite.** No `test_*witness*` file exists; the 101 tests hold
 world-machinery witnesses (C0c W-witnesses, C1 W1–W6), not interface-claim
-witnesses.
+witnesses. Statute quality bar: witnesses 1–3 must be window-history
+*classes* established by enumeration under the declared window measure,
+reporting the fraction of windows where the field moves the posterior.
 
-| claim | tests | status |
-|---|---|---|
-| object rung changes a named posterior | 0 | UNBUILT (`test_interfaces.py` is masking-structure only) |
-| related rung changes a named posterior | 0 | UNBUILT (distinguisher plausibly needs multi-waiter windows, thread 2) |
-| lineage null at full context, both disciplines | 4 proxies (full-context point-mass tests) | PARTIAL — theorem in `full-context-injectivity-note-v0.1.md`; no test names the claim |
-| lineage changes a named posterior under specified truncated C0b windows | 0 | UNBUILT — this is 4.6 |
-| irrelevant control changes no ceiling | 0 | UNBUILT (existing controls are arity/context, not irrelevant-field) |
-| shuffled order changes a posterior on a noncommuting bucket | 0 | UNBUILT — needs D8 |
+| § | witness | tests | status | evidence / missing |
+|---|---|---|---|---|
+| 1 | r2 > r1: C1 window class where OBJECT changes Q1's posterior | 0 | UNBUILT as test; class evidenced | ceilings show the r1→r2 gap with argmax Q1[L1] at (12,2,2) (`c1-sync-sweep` §2d); enumeration-with-fraction not run as a test |
+| 2 | r3 > r2: C1 window class where RELATED (owner on BLOCK) changes Q1/Q5 | 0 | UNBUILT as test; class evidenced | BLOCK.related carries 88–95% of the r2/r3 gap at (12,2,2) (`c1-rung-separation-geometry` field attribution) — ~~needs multi-waiter windows~~ no |
+| 3 | r4 > r3: truncated **stochastic** C0b windows, LINEAGE changes Q3; full context exact-zero control both disciplines | 0 (control: 4 proxies) | UNBUILT — **this is D10 (4.6)** | search never run; failure at the frozen horizon = falsifier/redesign, not a bug |
+| 4 | ctrl-irr: decoy field changes no ceiling (exact zero) | 0 | UNBUILT | no decoy field in the schema or emitters |
+| 5 | ctrl-red: lineage changes no ceiling at full context, FIFO and stochastic | 4 proxies (full-context point-mass tests) | PARTIAL | theorem in `full-context-injectivity-note-v0.1.md`; no test names the claim per discipline |
+| 6 | Crossover: truncated **FIFO** C0b windows, lineage changes a ceiling | 0 | UNBUILT — **this is D10 (4.6)** | no note; "crossover" appears only in the two spec docs |
+| 7 | Shuffled channel: noncommuting bucket, order mode changes a posterior; hand-computed likelihood incl. duplicate bucket | 0 | UNBUILT | needs D8 |
+| 8 | Reachability: no lock-cycle state reachable, C0 family, exhaustive | static I6 check only (`programs.py`, `test_programs.py`) | PARTIAL | lock-order discipline validated statically; exhaustive reachability assertion not present |
+| 9 | Q4 decomposition: a history with H(Z) = H(Z\|S_t) > 0 at full observability | none as a witness | PARTIAL | measured: (12,12,2) total = irreducible = 0.6676 > 0 (`c1-q4-ceilings` P1); `test_forecast.py` tests the split machinery, not this witness |
+| 10 | Divergent histories: equal exact P-next, unequal P-horizon on some τ | none as a witness | PARTIAL | three concrete pairs in `c1-predictive-targets` §"Three divergent pairs"; grid in `c1-divergent-grid-v0.1.md`; not an executable test |
+| 11 | Predictive rung discrimination: adjacent pair distinguished by a P-horizon test while Q1–Q5 posteriors unchanged | 0 | UNBUILT | no note establishes it; candidate is r3/r4 (Q1–Q5 gaps ≤0.0037 at L≥4 while lineage4/kinds2 gaps exist) — unmeasured as stated |
 
 ## Unbuilt code
 
@@ -67,9 +108,9 @@ witnesses.
 
 ## Blocking gaps, in the order the machinery permits
 
-1. **4.6 / witness 4: D10 truncated-C0b lineage search + crossover verdict.** Needs no new code — C0b in both disciplines and the window machinery exist. Produces a verdict-shaped result the report currently lacks.
-2. **Witnesses 1, 2, 3, 5** — buildable now against C1/C0b: object and related each change a *named* posterior (the ceilings already show r1/r2 and r2/r3 gaps at (12,2,2)); lineage-null-at-full-context named and run in both disciplines; an irrelevant-field control.
-3. **4.4: D1 falsifier verdict** — score it from the measured irreducible/gap split.
+1. **4.6 / witnesses 3 and 6 ~~(v1: "witness 4")~~: D10 truncated-C0b lineage search (stochastic, w3) + crossover search (FIFO, w6), with the full-context exact-zero control (w5) in both disciplines.** Needs no new code — C0b in both disciplines and the window machinery exist. Produces the verdict-shaped result the report lacks; an empty class is a falsifier, recorded as such.
+2. **Witnesses 1, 2, 5, 8, 9, 10** — executable now against C1/C0b: object and related (BLOCK.related suffices — no multi-waiter law needed) as enumerated window classes with fractions; lineage-null named per discipline; exhaustive lock-cycle reachability; the Q4 and divergent-pair witnesses promoted from notes to tests. Witness 11 needs a measurement first.
+3. **4.4: D1 falsifier verdict** — ~~score it from the measured irreducible/gap split~~ *(v2: wrong falsifier)* — over-synchronization: adjudicate from the entropy-vs-L curves under the frozen δ, once stamped; the data (`c1-sync-sweep` §2d) exist.
 4. **D8 shuffled channel** (two-path) → witness 7 → then TIME_CLASS.
 5. **Second stamp** (Tony's): unblocks 4.1/4.3/5.3 interpretation and the confirmatory reruns.
 6. **M1-scale rerun** (thread 1) and ε grid (thread 5): scale, after the above.
