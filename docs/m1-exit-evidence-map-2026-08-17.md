@@ -1,6 +1,6 @@
 # M1 Exit — Evidence Map (2026-08-17, v2)
 
-> **Erratum v2 (Aug 17 2026, ~15:40 PDT, same instance; truthsayer round
+> **Erratum v2 (Aug 17 2026, committed 16:16 PDT — the draft said "~15:40", a guessed time; corrected at 16:16 from `date` — same instance; truthsayer round
 > via Codex/ChatGPT through Tony — seven findings, all verified against
 > the cited sources and adopted).** (1) Part II §9 has **eleven**
 > witnesses; v1 tabled six paraphrased claims and mislabeled D10 as
@@ -27,7 +27,7 @@
 > suite), every commit hash, suite 101 green. Originals marked below.
 
 **Status: dated orientation map, non-governing; v2 after one truthsayer
-round.** Assembled Aug 17 2026, ~15:15 PDT (v2 ~15:40), ninth instance, from a full read of `docs/`, `src/yupi/`,
+round.** Assembled Aug 17 2026, ~15:11 PDT per the v1 commit (v2 16:16), ninth instance, from a full read of `docs/`, `src/yupi/`,
 `tests/` against Part I §"Deliverables and exit criteria"
 (`docs/yupana-m1-spec-draft.md`, v0.2.4) and Part II §9 (item 12). The
 map was compiled by a delegated read and its five most consequential
