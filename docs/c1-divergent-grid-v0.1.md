@@ -1,4 +1,18 @@
-# C1 Divergent Mass on the Observer × Predicted-Record Grid (v0.1.1)
+# C1 Divergent Mass on the Observer × Predicted-Record Grid (v0.1.2)
+
+> **Erratum v0.1.2 (Aug 17 2026, same instance; second truthsayer pass,
+> three residuals, all verified).** (a) Three stale unmarked claims
+> survived v0.1.1 in the live text — "verified 96/96", the "0 − 0.0001"
+> decomposition, and "0.0000 in every column" — contradicting the
+> erratum's own promise that originals were marked; now marked. (b) The
+> r3→r4 predicted-record-loss argmax is a **tie**: (14,4,2) ε=1 at
+> r_obs=r1 *and* r2 (identical float 0.000606); v0.1.1 named r2 only.
+> (c) The state-level gate was conditional (silently skipped if the
+> reference file wasn't at a cwd-relative path) and approximate (1e-9).
+> Now: reference resolved relative to the script's own location,
+> **required** whenever the (T_ep,T_ep,B) full-context raw exists in the
+> repo (T_ep=12), and compared for exact float equality — the same exact
+> Fraction converted the same way on both sides. Rerun byte-identical.
 
 > **Erratum v0.1.1 (Aug 16 2026, ~12:40 PDT, same instance; truthsayer
 > round via Codex/ChatGPT through Tony, six findings, all six verified
@@ -202,8 +216,10 @@ every step (72 assertions pass).
   assertions in v0.1.1)** ~~(v0.1: "96/96")~~.
 - **G2 held, and stronger than stated**: at fixed r_pred, divergent mass
   is **monotone non-decreasing in r_obs in all 24 columns** (3 laws × 2
-  ε × 4 r_pred). r_obs r3→r4 increment at (12,2,2): 0.0000 in every
-  column, both ε ✓.
+  ε × 4 r_pred). r_obs r3→r4 increment at (12,2,2): ~~0.0000 in every
+  column, both ε~~ *(v0.1.2: exactly 0 at ε=½ in every column; at ε=1
+  +0.000033 (r_pred=r1..r3) / +0.000016 (r_pred=r4) — small, positive,
+  not zero)* ✓ as "≈ 0".
 - **G3 held qualitatively** ~~(v0.1: "held exactly")~~: (12,2,2) ε=1
   diagonal r3→r4 net −0.000139; via (r_obs step at r_pred=r3, then
   r_pred step at r_obs=r4): +0.000033 − 0.000172; via the other path:
@@ -214,10 +230,12 @@ every step (72 assertions pass).
 
 1. **The day-seven non-monotonicity decomposes into two monotone
    effects.** Divergent mass is monotone non-increasing in the predicted
-   record's rung (theorem; verified 96/96 as a gate) and monotone
+   record's rung (theorem; verified ~~96/96~~ 72/72 as a gate *(v0.1.2
+   mark)*) and monotone
    non-decreasing in the observer's rung (24/24 columns; no proof
    offered — see open question 1). The diagonal's r3→r4 sign is their
-   sum: (12,2,2): 0 − 0.0001 → dip; (14,2,2) ε=1: +0.0030 − 0.0005 →
+   sum: (12,2,2): ~~0 − 0.0001~~ +0.00003 − 0.00017 *(v0.1.2 mark)* →
+   dip; (14,2,2) ε=1: +0.0030 − 0.0005 →
    rise; (14,4,2) ε=1: +0.0121 − 0.0005 → rise. ~~Which sign a law shows
    at r3→r4 is whether the lineage field refines the window partition
    there~~ *(v0.1.1: false as written — lineage refines the partition at
@@ -233,8 +251,8 @@ every step (72 assertions pass).
    lineage dominates there.)* Where the gain sits is law-specific. *Why* `related` manufactures
    exact P-next coincidences with τ disagreements is not explained here.
 3. **The predicted-record effect is small** at every law: ~~≤ 0.0005 at
-   r3→r4 everywhere~~ ≤ 0.00061 at r3→r4 (max at (14,4,2) ε=1, r_obs=r2)
-   *(v0.1.1)*; largest anywhere at (14,4,2) r2→r3 (−0.016 at r_obs = r4).
+   r3→r4 everywhere~~ ≤ 0.00061 at r3→r4 (max 0.000606 at (14,4,2) ε=1,
+   tied at r_obs=r1 and r2 *(v0.1.2: v0.1.1 named r2 only)*) *(v0.1.1)*; largest anywhere at (14,4,2) r2→r3 (−0.016 at r_obs = r4).
 4. **Design remark for the exposure work.** "P-next at its rung" is the
    diagonal of a grid whose off-diagonal cells are meaningful: a coarse
    observer asked about a fine next record (r_obs < r_pred) is exactly

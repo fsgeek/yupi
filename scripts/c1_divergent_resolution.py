@@ -25,6 +25,8 @@ v0.1.1 (Aug 16 2026, truthsayer round): the state-level column is now
 ASSERTED equal to the (T_ep,T_ep,B) full-context divergent mass from the
 day-seven v0.2 raw file when it exists (T_ep=12), instead of merely printed.
 R1 was scored "held" though only (12,2,2) was measured; see note v0.1.1.
+v0.1.2: the gate is unconditional for T_ep=12 (reference resolved relative
+to this file, missing reference is fatal) and exact (==), not 1e-9.
 
 Same window construction and divergent-pair criterion (exact P-next
 equality, any tau mixture unequal; m=2, W=4) as scripts/c1_predictive_targets.py.
@@ -50,6 +52,8 @@ from yupi.programs import c1_programs
 from yupi.window import WindowLaw, endpoint_prior
 
 RUNGS = ("r1", "r2", "r3", "r4")
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FULL_CONTEXT_REF_TEP = (12,)   # T_ep values with a committed full-context reference run
 M, W = 2, 4
 TAUS = ("kinds2", "ttw4", "lineage4")
 
@@ -62,6 +66,7 @@ def main():
     T_ep, L, B = (int(a) for a in sys.argv[1:4])
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
     out = dict(law=dict(T_ep=T_ep, L=L, B=B), m=M, W=W, rows=[])
+    n_state_gate = [0]
     for eps in (Fraction(1), Fraction(1, 2)):
         cfg = WorldConfig.c1(epsilon=eps)
         progs = c1_programs()
@@ -142,14 +147,20 @@ def main():
                                 div_res += mass
                             else:
                                 div_unres += mass
-            # v0.1.1 gate: the state-level column must equal the full-context
-            # divergent mass at (T_ep, T_ep, B) — same endpoint marginal — when
-            # that day-seven raw file exists (it does for T_ep=12 only).
-            fc = f"docs/c1-predictive-targets-{T_ep}-{T_ep}-{B}-raw-2026-08-15-v0.2.json"
-            if os.path.exists(fc):
+            # v0.1.1 gate, hardened v0.1.2: the state-level column must equal the
+            # full-context divergent mass at (T_ep, T_ep, B) — same endpoint
+            # marginal. Reference resolved relative to this file (not cwd);
+            # REQUIRED for every T_ep that has a day-seven full-context raw
+            # (T_ep=12); exact float equality — the same exact Fraction is
+            # converted with float() on both sides.
+            if T_ep in FULL_CONTEXT_REF_TEP:
+                fc = os.path.join(REPO, "docs", f"c1-predictive-targets-{T_ep}-{T_ep}-{B}-raw-2026-08-15-v0.2.json")
+                if not os.path.exists(fc):
+                    raise SystemExit(f"state-level gate reference missing: {fc}")
                 ref = [r for r in json.load(open(fc))["rows"] if r["eps"] == str(eps) and r["rung"] == rung]
-                assert ref and abs(ref[0]["divergent"]["mass"] - float(state_div_mass)) < 1e-9, \
+                assert ref and ref[0]["divergent"]["mass"] == float(state_div_mass), \
                     f"state-level column != full-context divergent mass at eps={eps} {rung}"
+                n_state_gate[0] += 1
             row = dict(eps=str(eps), rung=rung, n_windows=len(agg),
                        resolved_mass=float(resolved_mass),
                        div_mass=float(div_res + div_unres),
@@ -163,6 +174,8 @@ def main():
                   f"div={row['div_mass']:.4f} (res {row['div_mass_resolved']:.4f} / unres {row['div_mass_unresolved']:.4f}) "
                   f"state-div={row['state_div_mass']:.4f} classes={len(sgroups)} "
                   f"pp={{{', '.join(f'{k}:{v:.2e}' for k, v in row['pair_prob_by_type'].items())}}}", flush=True)
+    print(f"state-level gate: {n_state_gate[0]} exact-equality assertions passed"
+          + ("" if T_ep in FULL_CONTEXT_REF_TEP else " (no full-context reference for this T_ep)"), flush=True)
     if len(sys.argv) > 4:
         with open(sys.argv[4], "w") as f:
             json.dump(out, f, indent=2)
