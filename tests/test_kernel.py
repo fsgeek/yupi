@@ -243,8 +243,11 @@ def test_epsilon_one_cursor_absent_from_effective_state():
     BFS the full reachable space of WorldConfig.c0a() (eps=1 by default) and
     assert (a) no two reachable states are identical except for rr_cursor --
     i.e. the cursor never actually varies once eps=1 is in effect -- and (b)
-    the reachable count is exactly 72, matching §3.2a's measured "transient
-    gives 72 states" claim.
+    the reachable count is exactly 58. (History: 72 was measured under the
+    pre-2026-08-20 kernel, whose direct-handoff defect made self-deadlock
+    states reachable and left handoff recipients' pc behind; §3.2a's
+    "transient gives 72 states" figure carries the same defect and is flagged
+    for statute erratum. Corrected kernel: 58.)
     """
     cfg = WorldConfig.c0a()
     assert cfg.epsilon == Fraction(1)
@@ -267,5 +270,6 @@ def test_epsilon_one_cursor_absent_from_effective_state():
         "absent from the dynamics at eps=1"
     )
 
-    # (b) exact reachable count matches §3.2a's "transient gives 72 states"
-    assert len(seen) == 72
+    # (b) exact reachable count under the corrected (2026-08-20) kernel;
+    # §3.2a's 72 was a buggy-kernel measurement, flagged for statute erratum
+    assert len(seen) == 58

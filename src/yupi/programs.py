@@ -25,8 +25,9 @@ def validate_lock_order(programs: Tuple[Program, ...]) -> bool:
     """Validate lock order discipline (I6) for all programs.
 
     Returns True iff in every program, ACQUIRE lock indices between paired
-    ACQUIRE/RELEASE are strictly increasing while held. This ensures no
-    deadlock cycle can occur.
+    ACQUIRE/RELEASE are strictly increasing while held, and every acquired
+    lock is released before program end. This ensures no deadlock cycle can
+    occur and no TERMINATED thread retains ownership (I3).
 
     For each program, tracks the stack of held locks. When an ACQUIRE occurs,
     the lock index must be strictly greater than the maximum held lock index.
@@ -46,6 +47,11 @@ def validate_lock_order(programs: Tuple[Program, ...]) -> bool:
                 if not held_locks or held_locks[-1] != lock_idx:
                     return False
                 held_locks.pop()
+
+        # 2026-08-20 audit (finding 10): a program ending while holding a lock
+        # leaves a TERMINATED owner (violating I3) — outside the declared machine.
+        if held_locks:
+            return False
 
     return True
 

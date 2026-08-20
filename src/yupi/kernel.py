@@ -377,6 +377,11 @@ def _execute_one(
             woken = waiters[0]
             new_lock_wq[l] = waiters[1:]
             new_lock_owner[l] = woken  # direct handoff: head owns immediately
+            # §3.3/§3.5: the woken head "acquires ownership immediately" — its
+            # ACQUIRE is complete, so its pc advances at handoff. (2026-08-20
+            # audit: leaving pc on the ACQUIRE made the woken thread re-execute
+            # it against itself and self-block behind its own lock.)
+            new_pc[woken] = new_pc[woken] + 1
         else:
             new_lock_owner[l] = None
 
@@ -388,7 +393,10 @@ def _execute_one(
             new_status[thread] = RUNNABLE
         new_running = state.running - {thread}
         if woken is not None:
-            new_status[woken] = RUNNABLE
+            new_status[woken] = (
+                TERMINATED if new_pc[woken] == _program_len(programs, woken)
+                else RUNNABLE
+            )
 
         next_state = replace(
             state,

@@ -23,5 +23,8 @@ def test_bit_for_bit_all_histories_all_rungs():
                 assert belief == exact, (rung, obs[:i])
 
 def test_horizon_covers_all_record_kinds():
-    kinds = {r.kind for recs, _, _ in paths(CFG, PROGS, H) for r in recs}
+    # 2026-08-20 direct-handoff fix: at H=12 the buggy kernel showed IDLE only
+    # via deadlocked paths (a deadlock state idles forever). Corrected kernel:
+    # IDLE requires genuine termination, first reachable at horizon 15.
+    kinds = {r.kind for recs, _, _ in paths(CFG, PROGS, 15) for r in recs}
     assert kinds == ALL_KINDS, kinds

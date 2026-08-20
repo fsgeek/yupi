@@ -32,8 +32,9 @@ def sample_episode(
         seed: Random seed for reproducibility.
 
     Returns:
-        A list of (Transition, Record) pairs, one per tick. Stops at horizon
-        or when all threads reach TERMINATED status, whichever comes first.
+        A list of (Transition, Record) pairs, exactly one per tick through
+        `horizon` (early termination pads with absorbing IDLE records, per
+        Part II §2/§3.6 — the sampler and enumerator share one episode law).
 
     Exactness: All probability sampling uses Fraction weights without float
     conversion. The RNG draws from integer numerators over a common denominator.
@@ -43,10 +44,10 @@ def sample_episode(
     episode: List[Tuple[Transition, Record]] = []
 
     for tick in range(horizon):
-        # Check if all threads are TERMINATED.
-        if all(st == TERMINATED for st in state.status):
-            break
-
+        # §2/§3.6 (2026-08-20 audit fix): the episode law is exactly `horizon`
+        # records; the all-TERMINATED state is an absorbing IDLE self-loop the
+        # kernel emits with probability 1, so no early break — the enumerator
+        # already follows this rule and the sampler must sample the same law.
         # Get the exact distribution over enabled transitions.
         transitions = enabled(state, cfg, programs)
         if not transitions:

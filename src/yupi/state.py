@@ -75,6 +75,9 @@ def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
     I3: Lock owners must not have TERMINATED status.
     I4: All in-flight request IDs must be distinct.
     I5: At most one in-flight request per thread.
+    I6: No lock owner is queued waiting on its own lock (self-wait — the
+        one-cycle deadlock; added 2026-08-20 after the direct-handoff audit,
+        where exactly this state was reachable and I1–I5 all passed).
 
     Returns:
         List of invariant names that are violated (empty if all valid).
@@ -125,6 +128,12 @@ def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
     for count in thread_req_count.values():
         if count > 1:
             violations.append("I5")
+            break
+
+    # I6: no lock owner queued on its own lock (self-wait deadlock)
+    for lock_id, owner in enumerate(state.lock_owner):
+        if owner is not None and owner in state.lock_wq[lock_id]:
+            violations.append("I6")
             break
 
     return violations
