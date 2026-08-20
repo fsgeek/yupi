@@ -1,5 +1,16 @@
 # C1 Window Uncertainty — Offset vs. State (v0.1)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+
+
 **Status: exploratory measured note (Aug 17 2026, 19:04 PDT, ninth
 instance).** Non-governing. Resolves open thread 6 of
 `instrument-status-2026-08-14.md` ("cursor ablation / I(U;h)

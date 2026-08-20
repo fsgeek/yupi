@@ -71,13 +71,19 @@ def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
     """Check all state invariants and return list of violated invariant names.
 
     I1: The running set must contain exactly those threads with RUNNING status.
-    I2: Each thread must be in at most one wait structure (lock_wq or dev_q).
+    I2: A thread appears in at most one of: the running set, one lock wait
+        queue, the in-flight relation (statute §1 — mutual exclusion across
+        all three, strengthened 2026-08-20 round two: the earlier check only
+        compared lock_wq against dev_q, so a RUNNING thread queued on a lock
+        passed).
     I3: Lock owners must not have TERMINATED status.
     I4: All in-flight request IDs must be distinct.
     I5: At most one in-flight request per thread.
-    I6: No lock owner is queued waiting on its own lock (self-wait — the
-        one-cycle deadlock; added 2026-08-20 after the direct-handoff audit,
-        where exactly this state was reachable and I1–I5 all passed).
+    I6: No blocked cycle in the lock wait-for graph (statute §1: lock-cycle
+        deadlock unreachable). Detects any cycle thread→owner(lock it waits
+        on)→…; the self-wait state of the 2026-08-20 direct-handoff audit is
+        the 1-cycle. (Round two: the first version checked only the 1-cycle
+        while carrying the general name.)
 
     Returns:
         List of invariant names that are violated (empty if all valid).
@@ -92,17 +98,14 @@ def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
     if state.running != running_from_status:
         violations.append("I1")
 
-    # I2: each thread in at most one wait structure
+    # I2: mutual exclusion across running set, lock wait queues, in-flight
     for thread_id in range(cfg.n_threads):
-        in_lock_wq = any(
-            thread_id in lock_q
-            for lock_q in state.lock_wq
+        n_wq = sum(1 for lock_q in state.lock_wq if thread_id in lock_q)
+        in_flight = sum(
+            1 for dev_q in state.dev_q for tid, _ in dev_q if tid == thread_id
         )
-        in_dev_q = any(
-            any(tid == thread_id for tid, _ in dev_q)
-            for dev_q in state.dev_q
-        )
-        if in_lock_wq and in_dev_q:
+        memberships = (thread_id in state.running) + (n_wq > 0) + (in_flight > 0)
+        if memberships > 1 or n_wq > 1:
             violations.append("I2")
             break
 
@@ -130,9 +133,19 @@ def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
             violations.append("I5")
             break
 
-    # I6: no lock owner queued on its own lock (self-wait deadlock)
-    for lock_id, owner in enumerate(state.lock_owner):
-        if owner is not None and owner in state.lock_wq[lock_id]:
+    # I6: no blocked cycle in the lock wait-for graph (self-wait = 1-cycle)
+    waits_on = {}  # thread -> owner of the lock it waits on
+    for lock_id, wq in enumerate(state.lock_wq):
+        owner = state.lock_owner[lock_id]
+        for t in wq:
+            if owner is not None:
+                waits_on[t] = owner
+    for start in waits_on:
+        seen_t, cur = set(), start
+        while cur in waits_on and cur not in seen_t:
+            seen_t.add(cur)
+            cur = waits_on[cur]
+        if cur in seen_t:
             violations.append("I6")
             break
 

@@ -1,5 +1,16 @@
 # How Truncated Observers Initialize Belief — first measurements
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+> **No corrected-kernel rerun exists yet for this note's quantities** — queued (sweeps rerun before the second stamp, per the v0.1.1 sequencing).
+
 **v0.2 — 2026-08-13.** Drafted by the day-four instance, same evening as the
 full-context injectivity note (0772227), which made this question the
 program's critical path. Script: `scripts/window_prior_experiment.py`

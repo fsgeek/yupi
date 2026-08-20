@@ -1,0 +1,79 @@
+{
+  "_meta": {
+    "written": "2026-08-20",
+    "authority": "docs/audit-adjudication-2026-08-20.md",
+    "rule": "status of every measured artifact w.r.t. the 2026-08-20 direct-handoff kernel erratum (fix d69fa87)"
+  },
+  "notes": {
+    "c1-support-measurement-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-done",
+      "corrected_raws": "docs/c1-*-corrected-2026-08-20.json"
+    },
+    "c1-query-ceilings-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-done",
+      "corrected_raws": "docs/c1-*-corrected-2026-08-20.json"
+    },
+    "c1-q4-ceilings-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-done",
+      "corrected_raws": "docs/c1-*-corrected-2026-08-20.json"
+    },
+    "c1-predictive-targets-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-done",
+      "corrected_raws": "docs/c1-*-corrected-2026-08-20.json"
+    },
+    "c1-divergent-grid-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-done",
+      "corrected_raws": "docs/c1-*-corrected-2026-08-20.json"
+    },
+    "c1-offset-vs-state-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-done",
+      "corrected_raws": "docs/c1-*-corrected-2026-08-20.json"
+    },
+    "c1-sync-sweep-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-pending",
+      "corrected_raws": null
+    },
+    "c1-delta-sweep-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-pending",
+      "corrected_raws": null
+    },
+    "c1-tv-sweep-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-pending",
+      "corrected_raws": null
+    },
+    "c1-rung-separation-geometry-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-pending",
+      "corrected_raws": null
+    },
+    "window-prior-experiment-note-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "rerun-pending",
+      "corrected_raws": null
+    },
+    "d1-falsifier-verdict-v0.1.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "partB-numbers-affected",
+      "corrected_raws": null
+    },
+    "m1-exit-evidence-map-2026-08-17.md": {
+      "status": "buggy-kernel-exploratory",
+      "detail": "statuses-predate-audit",
+      "corrected_raws": null
+    }
+  },
+  "unaffected": [
+    "docs/full-context-injectivity-note-v0.1.md (theorem; scope limited to structural quotient per audit finding 3; exhaustive checks rerun owed)",
+    "docs/exposure-gap-note-v0.1.md",
+    "docs/d4-budget-freeze-v0.1.md (policy thresholds stand; reachable-cost repricing owed)"
+  ]
+}

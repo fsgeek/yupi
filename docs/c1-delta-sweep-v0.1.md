@@ -1,5 +1,16 @@
 # δ sweep — where a rung-collapse threshold would fall (Part II v0.2.4 §C, sweep 1 of 3)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+> **No corrected-kernel rerun exists yet for this note's quantities** — queued (sweeps rerun before the second stamp, per the v0.1.1 sequencing).
+
 **Working note v0.1 — 2026-08-15, committed 21:16 PDT (14484c7; the draft first said "~21:30", a guessed time — corrected from git). Exploratory read of stamped
 artifacts; proposes a δ for the second stamped decision, does not enact one.**
 Script: `scripts/c1_delta_sweep.py` → raw `docs/c1-delta-sweep-raw-2026-08-15.json`.

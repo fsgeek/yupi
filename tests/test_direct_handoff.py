@@ -127,7 +127,9 @@ def test_validate_lock_order_rejects_unreleased_lock():
 
 def test_reachable_space_satisfies_all_invariants():
     """Exhaustive model check: every state reachable in C0a (full space) and
-    C1 (to horizon 8) satisfies I1-I6. The enumerative walk also exercises the
+    C1 (to horizon 8) satisfies I1-I6 (I2 as statutory mutual exclusion, I6 as blocked-cycle
+    detection over the lock wait-for graph -- round-two strengthening). The
+    enumerative walk also exercises the
     kernel's transition-site guards (KernelInvariantViolation) on every
     reachable transition -- embedded invariants become horizon-bounded proofs.
     """
@@ -170,3 +172,45 @@ def test_kernel_guard_fires_on_self_acquire():
     )
     with pytest.raises(KernelInvariantViolation):
         enabled(bad, cfg, programs)
+
+
+def test_check_invariants_flags_lock_cycle():
+    """Statutory I6: a blocked cycle (T0 owns L0 waits L1; T1 owns L1 waits
+    L0) must be reported. The self-wait case is the 1-cycle."""
+    from dataclasses import replace
+    from yupi.state import lock_blocked
+    cfg = WorldConfig.c1(epsilon=Fraction(1))
+    s = initial_state(cfg)
+    cyc = replace(
+        s,
+        lock_owner=(0, 1) + s.lock_owner[2:],
+        lock_wq=((1,), (0,)) + s.lock_wq[2:],
+        status=(lock_blocked(1), lock_blocked(0)) + s.status[2:],
+        running=frozenset(),
+    )
+    assert "I6" in check_invariants(cyc, cfg)
+
+
+def test_check_invariants_flags_running_thread_in_wait_queue():
+    """Statutory I2: a thread appears in at most one of run, a lock wq, the
+    in-flight relation -- RUNNING while queued must be reported."""
+    from dataclasses import replace
+    from yupi.state import RUNNING
+    cfg = WorldConfig.c0a()
+    s = initial_state(cfg)
+    bad = replace(
+        s,
+        lock_wq=((0,),) + s.lock_wq[1:],
+        status=(RUNNING,) + s.status[1:],
+        running=frozenset({0}),
+    )
+    assert "I2" in check_invariants(bad, cfg)
+
+
+def test_kernel_rejects_invalid_programs():
+    """Finding 3 (second round): the validator must be enforced at the kernel
+    boundary, not merely available -- (ACQUIRE(0),) terminates while owning."""
+    from yupi.kernel import KernelInvariantViolation
+    cfg = WorldConfig.c0a()
+    with pytest.raises(KernelInvariantViolation):
+        enabled(initial_state(cfg), cfg, ((("ACQUIRE", 0),),))

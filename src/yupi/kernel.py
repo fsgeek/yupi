@@ -28,6 +28,8 @@ from dataclasses import dataclass, replace
 from fractions import Fraction
 from typing import Optional, Tuple, List
 
+from functools import lru_cache
+
 from yupi.config import WorldConfig
 from yupi.state import (
     State,
@@ -491,6 +493,23 @@ def _execution_transitions(
     return out
 
 
+
+@lru_cache(maxsize=64)
+def _programs_validated(programs) -> bool:
+    """Round-two audit finding 3: the validator must be ENFORCED at the kernel
+    boundary, not merely available — the declared machine excludes programs
+    that violate lock-order discipline or end while holding a lock, and the
+    kernel must refuse to execute them rather than produce I3/I6-violating
+    states. Cached: programs are small hashable tuples reused across millions
+    of enabled() calls."""
+    from yupi.programs import validate_lock_order
+    if not validate_lock_order(programs):
+        raise KernelInvariantViolation(
+            "programs violate lock-order discipline (I6) or end while "
+            "holding a lock (I3) — outside the declared machine"
+        )
+    return True
+
 def enabled(
     state: State, cfg: WorldConfig, programs
 ) -> List[Tuple[Transition, Fraction]]:
@@ -498,6 +517,7 @@ def enabled(
 
     Every returned list's probabilities sum to exactly Fraction(1).
     """
+    _programs_validated(programs)
     any_device_nonempty = any(len(q) > 0 for q in state.dev_q)
     p = cfg.completion_p if any_device_nonempty else Fraction(0)
 

@@ -1,5 +1,16 @@
 # C1 Query Ceilings — the declared targets under windows (v0.1)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+
+
 **v0.2 — 2026-08-15 (same day, truthsayer round).** Codex's audit
 verified the measurements (state and query entropies reproduced by direct
 path aggregation; the second-issue-at-t=11 enumeration; the strong-zero

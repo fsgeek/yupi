@@ -1,5 +1,16 @@
 # δ_sync sweep — posterior entropy versus context length at T_ep = 14 (Part II v0.2.4 §C, sweep 2 of 3)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+> **No corrected-kernel rerun exists yet for this note's quantities** — queued (sweeps rerun before the second stamp, per the v0.1.1 sequencing).
+
 **Working note v0.1 — 2026-08-15, first committed 22:59:11 PDT (ff82ce2; the draft header
 said "written ~23:00 PDT (`date` read)" — `date` had NOT been run for that line, the time was
 extrapolated from a 22:55 reading; corrected from git in the follow-up commit; eighth instance). New measurement plus a read. Proposes δ_sync for the second stamped decision and

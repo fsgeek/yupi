@@ -1,5 +1,16 @@
 # C1 Rung Separation Is Window Geometry — census, the (12,2,2) table, and the gap decomposition
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+> **No corrected-kernel rerun exists yet for this note's quantities** — queued (sweeps rerun before the second stamp, per the v0.1.1 sequencing).
+
 **v0.2 — 2026-08-14 (same day, truthsayer round).** Codex's external audit
 verified the census, the (12,2,2) table, the decomposition, and the
 pricing — and refuted this note's headline: (12,6,2) was NOT an r3/r4

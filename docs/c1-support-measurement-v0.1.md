@@ -1,5 +1,16 @@
 # C1 Windowed Support Measurement — v0.3 (the D4 measurement, D9 rule applied)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+
+
 **v0.3 — 2026-08-14 (same day, truthsayer round).** Codex's external audit
 found the v0.1 mean-support table sampling-biased; the exact exhaustive
 table (cross-verified by two independent computations) is in the v0.3

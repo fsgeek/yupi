@@ -1,5 +1,16 @@
 # C1 Predictive-State Targets — P-next, P-horizon, and the divergent-history search (v0.1)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+
+
 **v0.2.1 — 2026-08-15 (third pass).** Record repaired: v0.1 body restored
 verbatim; supersession stated explicitly (below). Prevalence sentence in
 the amendment proposal corrected (see `part2-amendment-proposal-v0.2.4.md`).

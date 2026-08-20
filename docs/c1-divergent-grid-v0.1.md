@@ -1,5 +1,16 @@
 # C1 Divergent Mass on the Observer × Predicted-Record Grid (v0.1.2)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+
+
 > **Erratum v0.1.2 (Aug 17 2026, same instance; second truthsayer pass,
 > three residuals, all verified).** (a) Three stale unmarked claims
 > survived v0.1.1 in the live text — "verified 96/96", the "0 − 0.0001"

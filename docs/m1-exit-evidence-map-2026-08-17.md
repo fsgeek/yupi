@@ -1,5 +1,16 @@
 # M1 Exit — Evidence Map (2026-08-17, v3)
 
+> **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
+> under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
+> states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
+> Status: **buggy-kernel exploratory**. Corrected-kernel raws and drift:
+> `docs/corrected-kernel-rerun-v0.1.md` (qualitative structure survives;
+> magnitudes drift ≤0.004 at T_ep=12, ≤0.041 at (14,4,2)). Machine-readable
+> status: `docs/artifact-status.json`. This banner is an append-only marker;
+> the original text below is unchanged.
+
+> For this map: statuses predate the audit — deliverable statuses and the blocking order are superseded by the adjudication note's revised ordering.
+
 > **Erratum v3 (Aug 17 2026, same instance; second truthsayer round,
 > four residual groups, all verified and adopted).** (1) Deliverable 3
 > and 4.1 overreached: both are PARTIAL for the whole item — the ordered
