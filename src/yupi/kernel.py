@@ -40,6 +40,19 @@ from yupi.state import (
 )
 
 
+class KernelInvariantViolation(RuntimeError):
+    """A statute precondition failed at a transition site (2026-08-20).
+
+    Raised, not assert-ed, so `python -O` cannot strip it. Because the
+    enumerator exhaustively walks every path, any reachable violation fires
+    deterministically during validation: an embedded invariant here is a
+    horizon-bounded proof, not a spot check. A firing is a falsifier per
+    Part II §9 — investigate the kernel or the statute; never catch and
+    continue. The direct-handoff defect would have raised here (a thread
+    blocking on a lock it already owns) on day one of its reachability.
+    """
+
+
 @dataclass(frozen=True)
 class Transition:
     """One recorded transition: the record fields plus the resulting state.
@@ -352,6 +365,11 @@ def _execute_one(
             )
             return Transition("ACQUIRE", thread, ("LOCK", l), None, None, next_state)
         else:
+            if owner == thread:
+                raise KernelInvariantViolation(
+                    f"thread {thread} blocking on lock {l} it already owns "
+                    "(handoff pc defect signature, §3.3/§3.5)"
+                )
             new_status = list(state.status)
             new_status[thread] = lock_blocked(l)
             new_lock_wq = list(state.lock_wq)
@@ -366,6 +384,11 @@ def _execute_one(
 
     if kind == "RELEASE":
         l = instr[1]
+        if state.lock_owner[l] != thread:
+            raise KernelInvariantViolation(
+                f"thread {thread} releasing lock {l} owned by "
+                f"{state.lock_owner[l]} (§3.3: only the owner releases)"
+            )
         new_pc = list(state.pc)
         new_pc[thread] = pc + 1
         new_lock_owner = list(state.lock_owner)
@@ -375,6 +398,13 @@ def _execute_one(
         woken = None
         if waiters:
             woken = waiters[0]
+            w_pc = state.pc[woken]
+            if not (w_pc < _program_len(programs, woken)
+                    and programs[woken][w_pc] == ("ACQUIRE", l)):
+                raise KernelInvariantViolation(
+                    f"handoff head {woken} of lock {l} is not parked on "
+                    f"ACQUIRE({l}) (pc={w_pc}) — wait queue corrupt"
+                )
             new_lock_wq[l] = waiters[1:]
             new_lock_owner[l] = woken  # direct handoff: head owns immediately
             # §3.3/§3.5: the woken head "acquires ownership immediately" — its

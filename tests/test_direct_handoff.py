@@ -123,3 +123,50 @@ def test_validate_lock_order_rejects_unreleased_lock():
     """Finding 10: a program ending while holding a lock is outside the
     declared machine (I3/I6) and must be rejected."""
     assert not validate_lock_order(((("ACQUIRE", 0),),))
+
+
+def test_reachable_space_satisfies_all_invariants():
+    """Exhaustive model check: every state reachable in C0a (full space) and
+    C1 (to horizon 8) satisfies I1-I6. The enumerative walk also exercises the
+    kernel's transition-site guards (KernelInvariantViolation) on every
+    reachable transition -- embedded invariants become horizon-bounded proofs.
+    """
+    for cfg, programs, horizon in (
+        (WorldConfig.c0a(), c0a_programs(), None),      # full reachable space
+        (WorldConfig.c1(epsilon=Fraction(1)), c1_programs(), 8),
+    ):
+        frontier, seen, depth = [initial_state(cfg)], set(), 0
+        while frontier and (horizon is None or depth < horizon):
+            nxt = []
+            for s in frontier:
+                for t, _ in enabled(s, cfg, programs):
+                    ns = t.next_state
+                    if ns not in seen:
+                        seen.add(ns)
+                        assert check_invariants(ns, cfg) == [], (t.kind, ns)
+                        nxt.append(ns)
+            frontier, depth = nxt, depth + 1
+        assert seen
+
+
+def test_kernel_guard_fires_on_self_acquire():
+    """The buggy kernel's post-handoff shape -- a thread executing ACQUIRE on
+    a lock it already owns -- must raise KernelInvariantViolation, not
+    silently self-block. This is the tripwire that would have caught the
+    2026-08-20 defect on the first enumerated path."""
+    from dataclasses import replace
+    from yupi.kernel import KernelInvariantViolation
+    from yupi.state import RUNNING
+    cfg, programs = WorldConfig.c0a(), c0a_programs()
+    s = initial_state(cfg)
+    # thread 0 owns lock 0 yet is RUNNING with pc on its ACQUIRE(0)
+    acq_pc = next(i for i, ins in enumerate(programs[0]) if ins == ("ACQUIRE", 0))
+    bad = replace(
+        s,
+        pc=(acq_pc,) + s.pc[1:],
+        lock_owner=(0,) + s.lock_owner[1:],
+        status=(RUNNING,) + s.status[1:],
+        running=frozenset({0}),
+    )
+    with pytest.raises(KernelInvariantViolation):
+        enabled(bad, cfg, programs)
