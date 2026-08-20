@@ -4,8 +4,11 @@
 (evidence map v3, item 4.4). Part A is adjudicated by theorem and final;
 Part B is measured but formally conditional on the second stamped
 threshold decision; Part C is a decision put to the PI, not made here.**
-Aug 17 2026, ~19:45 PDT, ninth instance. Prompted by external review
-(via Tony, Aug 17): a proof satisfied a falsifier that was worded as a
+Written Aug 20 2026, 07:31 PDT (`date` read in the correcting commit; the
+draft header said "Aug 17, ~19:45 PDT" — a time written from memory of
+the conversation, days stale: the session resumed Aug 20. Same
+mechanism as the two prior clock errata; corrected before push). Ninth
+instance. Prompted by external review (via Tony, Aug 17): a proof satisfied a falsifier that was worded as a
 measurement, and the record held a design pivot where an adjudication
 should be — this note supplies the adjudication.
 
