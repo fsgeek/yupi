@@ -128,3 +128,39 @@ cited.
 - Part A's theorem is about the enacted kernel family; D8's stochastic
   channel deliberately exits its hypotheses — that is the point of
   Option 1.
+
+---
+
+## Part C — PI decision (recorded 2026-08-20 15:10 PDT, verbatim from Tony)
+
+> "I do not yet invoke a D1 contingency. This is because D8 is mandatory
+> instrument completion, not a competing option. I would propose that we
+> complete the corrected-kernel D1 measurements, D10 witnesses, D8
+> witness, and predictive-rung test. Once that is completed, we can
+> select the minimal targeted intervention, permitting exposable
+> workload branches, structured nonterminating workloads, and rung
+> redesign alongside scheduler/device entropy. Private workload coins
+> remain the last resort."
+
+Consequences for the record:
+
+1. **The framing above is corrected.** "Option 1 — D8 first" miscast D8
+   as one arm of the contingency choice. D8 is deliverable-2 machinery
+   (Part II §4 order modes; evidence map: PARTIAL) — it completes the
+   instrument regardless of what the contingency later selects. No D1
+   contingency is invoked at this time.
+2. **Evidence set required before any selection:** (a) corrected-kernel
+   D1 measurements — the sync/§C sweep reruns (in flight, exploratory
+   per the corrected sequencing); (b) D10 witnesses 3/6 with control 5;
+   (c) D8 witness 7; (d) the predictive-rung test (witness 11).
+3. **The candidate-intervention set is broadened** beyond the v0.2.1
+   ladder: exposable workload branches, structured nonterminating
+   workloads, and rung redesign are permitted alongside scheduler/device
+   entropy; selection is *minimal and targeted*, made on the completed
+   evidence; private workload coins remain last resort only.
+4. **Statute interactions, flagged for whichever option is selected:**
+   structured nonterminating workloads touch the episode law (§2, §3.6
+   IDLE tail and termination), and rung redesign touches the projection
+   table (§4) — either would require a Part II amendment at selection
+   time. Exposable branches and scheduler/device entropy fit the
+   existing kernel parameterization.
