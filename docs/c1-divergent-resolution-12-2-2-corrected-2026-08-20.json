@@ -1,0 +1,139 @@
+{
+  "law": {
+    "T_ep": 12,
+    "L": 2,
+    "B": 2
+  },
+  "m": 2,
+  "W": 4,
+  "rows": [
+    {
+      "eps": "1",
+      "rung": "r1",
+      "n_windows": 186,
+      "resolved_mass": 0.17038506508718748,
+      "div_mass": 0.005251591677745036,
+      "div_mass_resolved": 0.00039903300648613864,
+      "div_mass_unresolved": 0.004852558671258898,
+      "state_div_mass": 0.9739283330898915,
+      "n_state_pnext_classes": 122,
+      "pair_prob_by_type": {
+        "res-res": 0.0,
+        "res-unres": 1.6155028554775274e-08,
+        "unres-unres": 4.262346047854783e-06
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r2",
+      "n_windows": 209,
+      "resolved_mass": 0.17039578182244125,
+      "div_mass": 0.005642487903760719,
+      "div_mass_resolved": 0.0004026052515707294,
+      "div_mass_unresolved": 0.005239882652189989,
+      "state_div_mass": 0.9736226194735164,
+      "n_state_pnext_classes": 139,
+      "pair_prob_by_type": {
+        "res-res": 0.0,
+        "res-unres": 1.7726041434594853e-08,
+        "unres-unres": 4.393099484238072e-06
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r3",
+      "n_windows": 277,
+      "resolved_mass": 0.17416775840650703,
+      "div_mass": 0.01357123471255511,
+      "div_mass_resolved": 0.0033221548523260343,
+      "div_mass_unresolved": 0.010249079860229075,
+      "state_div_mass": 0.949490127615589,
+      "n_state_pnext_classes": 162,
+      "pair_prob_by_type": {
+        "res-res": 3.034084791962387e-07,
+        "res-unres": 1.4884789686264969e-06,
+        "unres-unres": 9.534326370367281e-06
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r4",
+      "n_windows": 287,
+      "resolved_mass": 0.17431876293946552,
+      "div_mass": 0.013431961256047238,
+      "div_mass_resolved": 0.0033221548523260343,
+      "div_mass_unresolved": 0.010109806403721203,
+      "state_div_mass": 0.948869527210276,
+      "n_state_pnext_classes": 171,
+      "pair_prob_by_type": {
+        "res-res": 3.034084791962387e-07,
+        "res-unres": 1.4984402466355646e-06,
+        "unres-unres": 9.530789484987359e-06
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r1",
+      "n_windows": 186,
+      "resolved_mass": 0.17231857999317668,
+      "div_mass": 0.0006520019788625297,
+      "div_mass_resolved": 0.0,
+      "div_mass_unresolved": 0.0006520019788625297,
+      "state_div_mass": 0.9801434857492404,
+      "n_state_pnext_classes": 232,
+      "pair_prob_by_type": {
+        "res-res": 0.0,
+        "res-unres": 0.0,
+        "unres-unres": 4.9976428140897764e-08
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r2",
+      "n_windows": 209,
+      "resolved_mass": 0.17231876837328855,
+      "div_mass": 0.0007839892832709481,
+      "div_mass_resolved": 1.2558674125514404e-07,
+      "div_mass_unresolved": 0.0007838636965296928,
+      "state_div_mass": 0.9781702263327382,
+      "n_state_pnext_classes": 265,
+      "pair_prob_by_type": {
+        "res-res": 0.0,
+        "res-unres": 3.312016683624976e-11,
+        "unres-unres": 4.9976428140897764e-08
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r3",
+      "n_windows": 277,
+      "resolved_mass": 0.17414081865415745,
+      "div_mass": 0.013100531945537617,
+      "div_mass_resolved": 0.0016477216573837082,
+      "div_mass_unresolved": 0.01145281028815391,
+      "state_div_mass": 0.9534830460274676,
+      "n_state_pnext_classes": 306,
+      "pair_prob_by_type": {
+        "res-res": 3.3178465729409558e-09,
+        "res-unres": 1.9147012136600696e-07,
+        "unres-unres": 2.2153822269371214e-05
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r4",
+      "n_windows": 287,
+      "resolved_mass": 0.17414739606592397,
+      "div_mass": 0.013093705685968963,
+      "div_mass_resolved": 0.0016477216573837082,
+      "div_mass_unresolved": 0.011445984028585253,
+      "state_div_mass": 0.953455960992098,
+      "n_state_pnext_classes": 317,
+      "pair_prob_by_type": {
+        "res-res": 3.3178465729409558e-09,
+        "res-unres": 1.9147012136600696e-07,
+        "unres-unres": 2.215381362301813e-05
+      }
+    }
+  ]
+}

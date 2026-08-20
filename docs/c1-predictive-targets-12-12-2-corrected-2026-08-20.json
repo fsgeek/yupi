@@ -1,0 +1,339 @@
+{
+  "law": {
+    "T_ep": 12,
+    "L": 12,
+    "B": 2
+  },
+  "m": 2,
+  "W": 4,
+  "rows": [
+    {
+      "eps": "1",
+      "rung": "r1",
+      "n_windows": 86134,
+      "n_pnext_classes": 122,
+      "means": {
+        "kinds2": {
+          "total": 1.2912230494524422,
+          "irreducible": 1.2912230494524422,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 1.0867304449332773,
+          "irreducible": 1.0867304449332773,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.5001870092279439,
+          "irreducible": 0.5001870092279439,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 1.158061101979478,
+          "irreducible": 1.158061101979478,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 194139696,
+        "class_pairs": 2935,
+        "windows": 82396,
+        "mass": 0.9739283330898915,
+        "pair_prob": 0.01520176417587192,
+        "tv_pair_prob": 0.007203584018996987,
+        "separated_by": {
+          "kinds2": 181297068,
+          "ttw4": 173528736,
+          "lineage4": 33285392
+        }
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r2",
+      "n_windows": 86134,
+      "n_pnext_classes": 139,
+      "means": {
+        "kinds2": {
+          "total": 1.2912230494524422,
+          "irreducible": 1.2912230494524422,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 1.0867304449332773,
+          "irreducible": 1.0867304449332773,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.5001870092279439,
+          "irreducible": 0.5001870092279439,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 1.158061101979478,
+          "irreducible": 1.158061101979478,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 193490624,
+        "class_pairs": 2908,
+        "windows": 82234,
+        "mass": 0.9736226194735164,
+        "pair_prob": 0.01438995981715807,
+        "tv_pair_prob": 0.007032319109279126,
+        "separated_by": {
+          "kinds2": 180847040,
+          "ttw4": 172883044,
+          "lineage4": 33256212
+        }
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r3",
+      "n_windows": 86134,
+      "n_pnext_classes": 162,
+      "means": {
+        "kinds2": {
+          "total": 1.2912230494524422,
+          "irreducible": 1.2912230494524422,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 1.0867304449332773,
+          "irreducible": 1.0867304449332773,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.5001870092279439,
+          "irreducible": 0.5001870092279439,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 1.158061101979478,
+          "irreducible": 1.158061101979478,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 193115880,
+        "class_pairs": 2888,
+        "windows": 79644,
+        "mass": 0.949490127615589,
+        "pair_prob": 0.013922248444543006,
+        "tv_pair_prob": 0.0068540789453742255,
+        "separated_by": {
+          "kinds2": 180630096,
+          "ttw4": 172508300,
+          "lineage4": 33134480
+        }
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r4",
+      "n_windows": 86134,
+      "n_pnext_classes": 171,
+      "means": {
+        "kinds2": {
+          "total": 1.2912230494524422,
+          "irreducible": 1.2912230494524422,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 1.0867304449332773,
+          "irreducible": 1.0867304449332773,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.5001870092279439,
+          "irreducible": 0.5001870092279439,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 1.158061101979478,
+          "irreducible": 1.158061101979478,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 193099824,
+        "class_pairs": 2875,
+        "windows": 79086,
+        "mass": 0.948869527210276,
+        "pair_prob": 0.01392219175407493,
+        "tv_pair_prob": 0.006854033453023299,
+        "separated_by": {
+          "kinds2": 180624024,
+          "ttw4": 172502468,
+          "lineage4": 33118424
+        }
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r1",
+      "n_windows": 86134,
+      "n_pnext_classes": 232,
+      "means": {
+        "kinds2": {
+          "total": 1.0571420296103968,
+          "irreducible": 1.0571420296103968,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 0.9919061469909783,
+          "irreducible": 0.9919061469909783,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.4652549634456824,
+          "irreducible": 0.4652549634456824,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 0.924921401416551,
+          "irreducible": 0.924921401416551,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 106242350,
+        "class_pairs": 4508,
+        "windows": 82344,
+        "mass": 0.9801434857492404,
+        "pair_prob": 0.0066456427991431685,
+        "tv_pair_prob": 0.0031824967312608357,
+        "separated_by": {
+          "kinds2": 104176610,
+          "ttw4": 99881096,
+          "lineage4": 13686144
+        }
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r2",
+      "n_windows": 86134,
+      "n_pnext_classes": 265,
+      "means": {
+        "kinds2": {
+          "total": 1.0571420296103968,
+          "irreducible": 1.0571420296103968,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 0.9919061469909783,
+          "irreducible": 0.9919061469909783,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.4652549634456824,
+          "irreducible": 0.4652549634456824,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 0.924921401416551,
+          "irreducible": 0.924921401416551,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 105825904,
+        "class_pairs": 4457,
+        "windows": 82166,
+        "mass": 0.9781702263327382,
+        "pair_prob": 0.006471134414566718,
+        "tv_pair_prob": 0.0031676419413168657,
+        "separated_by": {
+          "kinds2": 103896540,
+          "ttw4": 99466340,
+          "lineage4": 13664288
+        }
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r3",
+      "n_windows": 86134,
+      "n_pnext_classes": 306,
+      "means": {
+        "kinds2": {
+          "total": 1.0571420296103968,
+          "irreducible": 1.0571420296103968,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 0.9919061469909783,
+          "irreducible": 0.9919061469909783,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.4652549634456824,
+          "irreducible": 0.4652549634456824,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 0.924921401416551,
+          "irreducible": 0.924921401416551,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 105601076,
+        "class_pairs": 4392,
+        "windows": 79580,
+        "mass": 0.9534830460274676,
+        "pair_prob": 0.006204084225515273,
+        "tv_pair_prob": 0.0030649059543461474,
+        "separated_by": {
+          "kinds2": 103766196,
+          "ttw4": 99241512,
+          "lineage4": 13589944
+        }
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r4",
+      "n_windows": 86134,
+      "n_pnext_classes": 317,
+      "means": {
+        "kinds2": {
+          "total": 1.0571420296103968,
+          "irreducible": 1.0571420296103968,
+          "gap": 0.0
+        },
+        "ttw4": {
+          "total": 0.9919061469909783,
+          "irreducible": 0.9919061469909783,
+          "gap": 0.0
+        },
+        "lineage4": {
+          "total": 0.4652549634456824,
+          "irreducible": 0.4652549634456824,
+          "gap": 0.0
+        },
+        "pnext": {
+          "total": 0.924921401416551,
+          "irreducible": 0.924921401416551,
+          "gap": 0.0
+        }
+      },
+      "divergent": {
+        "pairs": 105585196,
+        "class_pairs": 4379,
+        "windows": 79030,
+        "mass": 0.953455960992098,
+        "pair_prob": 0.006204083681891711,
+        "tv_pair_prob": 0.003064905518105017,
+        "separated_by": {
+          "kinds2": 103760124,
+          "ttw4": 99235680,
+          "lineage4": 13574064
+        }
+      }
+    }
+  ]
+}

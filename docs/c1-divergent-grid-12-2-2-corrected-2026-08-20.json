@@ -1,0 +1,299 @@
+{
+  "law": {
+    "T_ep": 12,
+    "L": 2,
+    "B": 2
+  },
+  "m": 2,
+  "W": 4,
+  "rows": [
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r1",
+      "n_windows": 186,
+      "div_mass": 0.005251591677745036,
+      "pairs": 18,
+      "windows_in": 23
+    },
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r2",
+      "n_windows": 186,
+      "div_mass": 0.005251591677745036,
+      "pairs": 18,
+      "windows_in": 23
+    },
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r3",
+      "n_windows": 186,
+      "div_mass": 0.005251591677745036,
+      "pairs": 18,
+      "windows_in": 23
+    },
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r4",
+      "n_windows": 186,
+      "div_mass": 0.005095824151340412,
+      "pairs": 13,
+      "windows_in": 16
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r1",
+      "n_windows": 209,
+      "div_mass": 0.005642487903760719,
+      "pairs": 21,
+      "windows_in": 26
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r2",
+      "n_windows": 209,
+      "div_mass": 0.005642487903760719,
+      "pairs": 21,
+      "windows_in": 26
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r3",
+      "n_windows": 209,
+      "div_mass": 0.005642487903760719,
+      "pairs": 21,
+      "windows_in": 26
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r4",
+      "n_windows": 209,
+      "div_mass": 0.005486720377356094,
+      "pairs": 16,
+      "windows_in": 19
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r1",
+      "n_windows": 277,
+      "div_mass": 0.014005262490332888,
+      "pairs": 91,
+      "windows_in": 56
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r2",
+      "n_windows": 277,
+      "div_mass": 0.014005262490332888,
+      "pairs": 91,
+      "windows_in": 56
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r3",
+      "n_windows": 277,
+      "div_mass": 0.01357123471255511,
+      "pairs": 87,
+      "windows_in": 52
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r4",
+      "n_windows": 277,
+      "div_mass": 0.013415467186150486,
+      "pairs": 81,
+      "windows_in": 45
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r1",
+      "n_windows": 287,
+      "div_mass": 0.014038250630126392,
+      "pairs": 95,
+      "windows_in": 58
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r2",
+      "n_windows": 287,
+      "div_mass": 0.014038250630126392,
+      "pairs": 95,
+      "windows_in": 58
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r3",
+      "n_windows": 287,
+      "div_mass": 0.013604222852348614,
+      "pairs": 91,
+      "windows_in": 54
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r4",
+      "n_windows": 287,
+      "div_mass": 0.013431961256047238,
+      "pairs": 83,
+      "windows_in": 46
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r1",
+      "n_windows": 186,
+      "div_mass": 0.0006520019788625297,
+      "pairs": 7,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r2",
+      "n_windows": 186,
+      "div_mass": 0.0006520019788625297,
+      "pairs": 7,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r3",
+      "n_windows": 186,
+      "div_mass": 0.0006520019788625297,
+      "pairs": 7,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r4",
+      "n_windows": 186,
+      "div_mass": 0.0006451757192938744,
+      "pairs": 3,
+      "windows_in": 6
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r1",
+      "n_windows": 209,
+      "div_mass": 0.0007839892832709481,
+      "pairs": 8,
+      "windows_in": 16
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r2",
+      "n_windows": 209,
+      "div_mass": 0.0007839892832709481,
+      "pairs": 8,
+      "windows_in": 16
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r3",
+      "n_windows": 209,
+      "div_mass": 0.0007839892832709481,
+      "pairs": 8,
+      "windows_in": 16
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r4",
+      "n_windows": 209,
+      "div_mass": 0.0007771630237022927,
+      "pairs": 4,
+      "windows_in": 8
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r1",
+      "n_windows": 277,
+      "div_mass": 0.013161743708142508,
+      "pairs": 40,
+      "windows_in": 41
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r2",
+      "n_windows": 277,
+      "div_mass": 0.013161743708142508,
+      "pairs": 40,
+      "windows_in": 41
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r3",
+      "n_windows": 277,
+      "div_mass": 0.013100531945537617,
+      "pairs": 38,
+      "windows_in": 37
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r4",
+      "n_windows": 277,
+      "div_mass": 0.013093705685968963,
+      "pairs": 34,
+      "windows_in": 29
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r1",
+      "n_windows": 287,
+      "div_mass": 0.013161743708142508,
+      "pairs": 40,
+      "windows_in": 41
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r2",
+      "n_windows": 287,
+      "div_mass": 0.013161743708142508,
+      "pairs": 40,
+      "windows_in": 41
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r3",
+      "n_windows": 287,
+      "div_mass": 0.013100531945537617,
+      "pairs": 38,
+      "windows_in": 37
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r4",
+      "n_windows": 287,
+      "div_mass": 0.013093705685968963,
+      "pairs": 34,
+      "windows_in": 29
+    }
+  ]
+}

@@ -154,7 +154,12 @@ def main():
             # ((T_ep,B)=(12,2)); exact float equality — the same exact Fraction is
             # converted with float() on both sides.
             if (T_ep, B) in FULL_CONTEXT_REF:
-                fc = os.path.join(REPO, "docs", f"c1-predictive-targets-{T_ep}-{T_ep}-{B}-raw-2026-08-15-v0.2.json")
+                # v0.1.3 (2026-08-20): the reference is the CORRECTED-kernel full-context
+                # run (post-d69fa87). The day-seven raw (…-raw-2026-08-15-v0.2.json) is a
+                # buggy-kernel artifact retained for history; comparing against it now
+                # correctly fails — which is how this gate caught the reference-staleness
+                # itself on the first corrected-kernel rerun.
+                fc = os.path.join(REPO, "docs", f"c1-predictive-targets-{T_ep}-{T_ep}-{B}-corrected-2026-08-20.json")
                 if not os.path.exists(fc):
                     raise SystemExit(f"state-level gate reference missing: {fc}")
                 ref = [r for r in json.load(open(fc))["rows"] if r["eps"] == str(eps) and r["rung"] == rung]

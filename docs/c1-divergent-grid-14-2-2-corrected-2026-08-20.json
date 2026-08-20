@@ -1,0 +1,299 @@
+{
+  "law": {
+    "T_ep": 14,
+    "L": 2,
+    "B": 2
+  },
+  "m": 2,
+  "W": 4,
+  "rows": [
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r1",
+      "n_windows": 221,
+      "div_mass": 0.05569041830792532,
+      "pairs": 25,
+      "windows_in": 27
+    },
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r2",
+      "n_windows": 221,
+      "div_mass": 0.05569041830792532,
+      "pairs": 25,
+      "windows_in": 27
+    },
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r3",
+      "n_windows": 221,
+      "div_mass": 0.05569041830792532,
+      "pairs": 25,
+      "windows_in": 27
+    },
+    {
+      "eps": "1",
+      "r_obs": "r1",
+      "r_pred": "r4",
+      "n_windows": 221,
+      "div_mass": 0.05517628592674714,
+      "pairs": 20,
+      "windows_in": 20
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r1",
+      "n_windows": 248,
+      "div_mass": 0.05569041830792532,
+      "pairs": 25,
+      "windows_in": 27
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r2",
+      "n_windows": 248,
+      "div_mass": 0.05569041830792532,
+      "pairs": 25,
+      "windows_in": 27
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r3",
+      "n_windows": 248,
+      "div_mass": 0.05569041830792532,
+      "pairs": 25,
+      "windows_in": 27
+    },
+    {
+      "eps": "1",
+      "r_obs": "r2",
+      "r_pred": "r4",
+      "n_windows": 248,
+      "div_mass": 0.05517628592674714,
+      "pairs": 20,
+      "windows_in": 20
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r1",
+      "n_windows": 330,
+      "div_mass": 0.06626006936296114,
+      "pairs": 96,
+      "windows_in": 68
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r2",
+      "n_windows": 330,
+      "div_mass": 0.06626006936296114,
+      "pairs": 96,
+      "windows_in": 68
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r3",
+      "n_windows": 330,
+      "div_mass": 0.06560615714220863,
+      "pairs": 88,
+      "windows_in": 60
+    },
+    {
+      "eps": "1",
+      "r_obs": "r3",
+      "r_pred": "r4",
+      "n_windows": 330,
+      "div_mass": 0.06509202476103046,
+      "pairs": 82,
+      "windows_in": 53
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r1",
+      "n_windows": 377,
+      "div_mass": 0.06925658603968805,
+      "pairs": 170,
+      "windows_in": 100
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r2",
+      "n_windows": 377,
+      "div_mass": 0.06925658603968805,
+      "pairs": 170,
+      "windows_in": 100
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r3",
+      "n_windows": 377,
+      "div_mass": 0.06860267381893555,
+      "pairs": 162,
+      "windows_in": 92
+    },
+    {
+      "eps": "1",
+      "r_obs": "r4",
+      "r_pred": "r4",
+      "n_windows": 377,
+      "div_mass": 0.06808854143775737,
+      "pairs": 155,
+      "windows_in": 85
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r1",
+      "n_windows": 221,
+      "div_mass": 0.005215151226912795,
+      "pairs": 13,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r2",
+      "n_windows": 221,
+      "div_mass": 0.005215151226912795,
+      "pairs": 13,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r3",
+      "n_windows": 221,
+      "div_mass": 0.005215151226912795,
+      "pairs": 13,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r1",
+      "r_pred": "r4",
+      "n_windows": 221,
+      "div_mass": 0.005152479284642256,
+      "pairs": 9,
+      "windows_in": 6
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r1",
+      "n_windows": 248,
+      "div_mass": 0.005215151226912795,
+      "pairs": 13,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r2",
+      "n_windows": 248,
+      "div_mass": 0.005215151226912795,
+      "pairs": 13,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r3",
+      "n_windows": 248,
+      "div_mass": 0.005215151226912795,
+      "pairs": 13,
+      "windows_in": 14
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r2",
+      "r_pred": "r4",
+      "n_windows": 248,
+      "div_mass": 0.005152479284642256,
+      "pairs": 9,
+      "windows_in": 6
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r1",
+      "n_windows": 330,
+      "div_mass": 0.016042174228177823,
+      "pairs": 49,
+      "windows_in": 51
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r2",
+      "n_windows": 330,
+      "div_mass": 0.016042174228177823,
+      "pairs": 49,
+      "windows_in": 51
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r3",
+      "n_windows": 330,
+      "div_mass": 0.015954240662604105,
+      "pairs": 45,
+      "windows_in": 43
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r3",
+      "r_pred": "r4",
+      "n_windows": 330,
+      "div_mass": 0.015891568720333565,
+      "pairs": 41,
+      "windows_in": 35
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r1",
+      "n_windows": 377,
+      "div_mass": 0.0992937471005881,
+      "pairs": 97,
+      "windows_in": 79
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r2",
+      "n_windows": 377,
+      "div_mass": 0.0992937471005881,
+      "pairs": 97,
+      "windows_in": 79
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r3",
+      "n_windows": 377,
+      "div_mass": 0.09920581353501438,
+      "pairs": 93,
+      "windows_in": 71
+    },
+    {
+      "eps": "1/2",
+      "r_obs": "r4",
+      "r_pred": "r4",
+      "n_windows": 377,
+      "div_mass": 0.09914314159274384,
+      "pairs": 89,
+      "windows_in": 63
+    }
+  ]
+}
