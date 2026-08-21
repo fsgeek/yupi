@@ -1,5 +1,10 @@
-"""δ sweep (Part II v0.2.4 §C, first of three) — a READ of the day-seven
-raw ceilings, not a new measurement.
+"""δ sweep (Part II v0.2.4 §C, first of three) — a READ of the raw
+ceilings, not a new measurement.
+
+Repointed 2026-08-21 to the corrected-kernel raws (-corrected-*.json,
+latest date wins; filenames actually read are recorded in the output).
+The buggy-kernel inputs (-raw-2026-08-15.json) and this script's prior
+form are in git history.
 
 (run: python scripts/c1_delta_sweep.py [out.json])
 
@@ -18,10 +23,11 @@ separate table and do NOT enter the max.
 Inputs (float mean_bits as stored — presentation floats of exact
 rationals; the freeze will be stated in bits at 3 significant figures,
 far coarser than float error):
-  docs/c1-query-ceilings-{T}-{L}-{B}-raw-2026-08-15.json    Q1,Q2,Q3,Q5
-  docs/c1-q4-ceilings-{T}-{L}-{B}-W{W}-raw-2026-08-15.json  Q4 statutory
+  docs/c1-query-ceilings-{T}-{L}-{B}-corrected-*.json    Q1,Q2,Q3,Q5
+  docs/c1-q4-ceilings-{T}-{L}-{B}-W{W}-corrected-*.json  Q4 statutory
 """
 
+import glob
 import json
 import os
 import sys
@@ -33,12 +39,13 @@ PAIRS = [("r1", "r2"), ("r2", "r3"), ("r3", "r4")]
 DELTA_GRID = [1e-4, 3e-4, 1e-3, 3e-3, 1e-2, 3e-2, 1e-1, 3e-1]
 
 
-def load(name):
-    p = os.path.join(DOCS, name)
-    if not os.path.exists(p):
-        return None
-    with open(p) as f:
-        return json.load(f)
+def load_latest(prefix):
+    """Latest docs/{prefix}-corrected-*.json, or (None, None)."""
+    hits = sorted(glob.glob(os.path.join(DOCS, prefix + "-corrected-*.json")))
+    if not hits:
+        return None, None
+    with open(hits[-1]) as f:
+        return json.load(f), os.path.basename(hits[-1])
 
 
 def statutory(qname):
@@ -58,16 +65,21 @@ def main():
     cell_max = []   # (law, eps, pair, W-tag, max_gap, argmax_query)
     all_gaps = []   # every statutory per-query gap
     for T, L, B in LAWS:
-        qc = load(f"c1-query-ceilings-{T}-{L}-{B}-raw-2026-08-15.json")
+        qc, qc_name = load_latest(f"c1-query-ceilings-{T}-{L}-{B}")
         if qc is None:
-            print(f"law ({T},{L},{B}): no query-ceilings artifact — skipped")
+            print(f"law ({T},{L},{B}): no corrected query-ceilings artifact — skipped")
             continue
-        q4s = {W: load(f"c1-q4-ceilings-{T}-{L}-{B}-W{W}-raw-2026-08-15.json")
-               for W in (4, 8)}
-        q4s = {W: d for W, d in q4s.items() if d is not None}
+        q4s, q4_names = {}, {}
+        for W in (4, 8):
+            d, name = load_latest(f"c1-q4-ceilings-{T}-{L}-{B}-W{W}")
+            if d is not None:
+                q4s[W], q4_names[W] = d, name
         rows = {(r["eps"], r["rung"]): r for r in qc["rows"]}
-        law_out = dict(law=dict(T_ep=T, L=L, B=B), cells=[])
+        law_out = dict(law=dict(T_ep=T, L=L, B=B), cells=[],
+                       inputs=dict(query=qc_name, q4=q4_names))
         print(f"\n=== law (T_ep={T}, L={L}, B={B})  Q4 W available: {sorted(q4s)}")
+        print(f"    reading {qc_name}" +
+              "".join(f" + {n}" for n in q4_names.values()))
         for eps in ("1", "1/2"):
             qnames = list(rows[(eps, "r1")]["queries"].keys())
             for a, b in PAIRS:

@@ -2,6 +2,11 @@
 context length L at fixed T_ep, per rung and statutory query; a READ of
 query-ceilings and Q4-ceilings artifacts at (T_ep, L, B) for several L.
 
+Repointed 2026-08-21 to the corrected-kernel raws (-corrected-*.json,
+latest date wins; filenames actually read are recorded in the output).
+The buggy-kernel inputs (-raw-2026-08-15.json) and this script's prior
+form are in git history.
+
 (run: python scripts/c1_sync_sweep.py T_ep B L1 L2 ... [--out out.json])
 
 Part II §6: synchronization horizon = smallest L at which a rung's
@@ -20,6 +25,7 @@ synchronizing quantity for Q4 is its GAP part (observation-induced),
 which is what is used here. Both are printed.
 """
 
+import glob
 import json
 import os
 import sys
@@ -29,12 +35,13 @@ RUNGS = ("r1", "r2", "r3", "r4")
 DSYNC_GRID = [0.3, 0.1, 0.03, 0.01, 0.003, 0.001]
 
 
-def load(name):
-    p = os.path.join(DOCS, name)
-    if not os.path.exists(p):
-        return None
-    with open(p) as f:
-        return json.load(f)
+def load_latest(prefix):
+    """Latest docs/{prefix}-corrected-*.json, or (None, None)."""
+    hits = sorted(glob.glob(os.path.join(DOCS, prefix + "-corrected-*.json")))
+    if not hits:
+        return None, None
+    with open(hits[-1]) as f:
+        return json.load(f), os.path.basename(hits[-1])
 
 
 def statutory(q):
@@ -55,15 +62,19 @@ def main():
     T_ep, B = int(args[0]), int(args[1])
     Ls = [int(a) for a in args[2:]]
     data = {}
+    inputs = {}
     for L in Ls:
-        qc = load(f"c1-query-ceilings-{T_ep}-{L}-{B}-raw-2026-08-15.json")
-        q4 = load(f"c1-q4-ceilings-{T_ep}-{L}-{B}-W4-raw-2026-08-15.json")
+        qc, qc_name = load_latest(f"c1-query-ceilings-{T_ep}-{L}-{B}")
+        q4, q4_name = load_latest(f"c1-q4-ceilings-{T_ep}-{L}-{B}-W4")
         if qc is None:
-            print(f"L={L}: no query-ceilings artifact — skipped")
+            print(f"L={L}: no corrected query-ceilings artifact — skipped")
             continue
+        print(f"L={L}: reading {qc_name}" + (f" + {q4_name}" if q4_name else " (no Q4)"))
         data[L] = (qc, q4)
+        inputs[L] = dict(query=qc_name, q4=q4_name)
     Ls = sorted(data)
-    out = dict(T_ep=T_ep, B=B, Ls=Ls, dsync_grid=DSYNC_GRID, curves=[], horizons=[])
+    out = dict(T_ep=T_ep, B=B, Ls=Ls, inputs=inputs,
+               dsync_grid=DSYNC_GRID, curves=[], horizons=[])
     for eps in ("1", "1/2"):
         for rung in RUNGS:
             # gather curves
