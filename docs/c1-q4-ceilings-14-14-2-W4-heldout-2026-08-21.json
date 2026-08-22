@@ -1,0 +1,498 @@
+{
+  "law": {
+    "T_ep": 14,
+    "L": 14,
+    "B": 2
+  },
+  "W": 4,
+  "rows": [
+    {
+      "eps": "1/4",
+      "rung": "r1",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.5316823639217768,
+      "irreducible_bits": 0.5316823639217768,
+      "gap_bits": 0.0,
+      "none_mass": 0.5905000479431177,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.2147538769954123,
+          "irreducible_bits": 0.2147538769954123,
+          "gap_bits": 0.0,
+          "none_mass": 0.9113226996527779
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.38756280041142854,
+          "irreducible_bits": 0.38756280041142854,
+          "gap_bits": 0.0,
+          "none_mass": 0.8235668017540455
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6982836262090306,
+          "irreducible_bits": 0.6982836262090306,
+          "gap_bits": 0.0,
+          "none_mass": 0.6610881044990569
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.7329454878383569,
+          "irreducible_bits": 0.7329454878383569,
+          "gap_bits": 0.0,
+          "none_mass": 0.508828507562783
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5376050340097998,
+          "irreducible_bits": 0.5376050340097998,
+          "gap_bits": 0.0,
+          "none_mass": 0.4402928690301505
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.6510901974777701,
+          "irreducible_bits": 0.6510901974777701,
+          "gap_bits": 0.0,
+          "none_mass": 0.5097934407330459
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.4995355245096413,
+          "irreducible_bits": 0.4995355245096413,
+          "gap_bits": 0.0,
+          "none_mass": 0.2786079123684574
+        }
+      }
+    },
+    {
+      "eps": "1/4",
+      "rung": "r2",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.5316823639217768,
+      "irreducible_bits": 0.5316823639217768,
+      "gap_bits": 0.0,
+      "none_mass": 0.5905000479431177,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.2147538769954123,
+          "irreducible_bits": 0.2147538769954123,
+          "gap_bits": 0.0,
+          "none_mass": 0.9113226996527779
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.38756280041142854,
+          "irreducible_bits": 0.38756280041142854,
+          "gap_bits": 0.0,
+          "none_mass": 0.8235668017540455
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6982836262090306,
+          "irreducible_bits": 0.6982836262090306,
+          "gap_bits": 0.0,
+          "none_mass": 0.6610881044990569
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.7329454878383569,
+          "irreducible_bits": 0.7329454878383569,
+          "gap_bits": 0.0,
+          "none_mass": 0.508828507562783
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5376050340097998,
+          "irreducible_bits": 0.5376050340097998,
+          "gap_bits": 0.0,
+          "none_mass": 0.4402928690301505
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.6510901974777701,
+          "irreducible_bits": 0.6510901974777701,
+          "gap_bits": 0.0,
+          "none_mass": 0.5097934407330459
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.4995355245096413,
+          "irreducible_bits": 0.4995355245096413,
+          "gap_bits": 0.0,
+          "none_mass": 0.2786079123684574
+        }
+      }
+    },
+    {
+      "eps": "1/4",
+      "rung": "r3",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.5316823639217768,
+      "irreducible_bits": 0.5316823639217768,
+      "gap_bits": 0.0,
+      "none_mass": 0.5905000479431177,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.2147538769954123,
+          "irreducible_bits": 0.2147538769954123,
+          "gap_bits": 0.0,
+          "none_mass": 0.9113226996527779
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.38756280041142854,
+          "irreducible_bits": 0.38756280041142854,
+          "gap_bits": 0.0,
+          "none_mass": 0.8235668017540455
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6982836262090306,
+          "irreducible_bits": 0.6982836262090306,
+          "gap_bits": 0.0,
+          "none_mass": 0.6610881044990569
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.7329454878383569,
+          "irreducible_bits": 0.7329454878383569,
+          "gap_bits": 0.0,
+          "none_mass": 0.508828507562783
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5376050340097998,
+          "irreducible_bits": 0.5376050340097998,
+          "gap_bits": 0.0,
+          "none_mass": 0.4402928690301505
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.6510901974777701,
+          "irreducible_bits": 0.6510901974777701,
+          "gap_bits": 0.0,
+          "none_mass": 0.5097934407330459
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.4995355245096413,
+          "irreducible_bits": 0.4995355245096413,
+          "gap_bits": 0.0,
+          "none_mass": 0.2786079123684574
+        }
+      }
+    },
+    {
+      "eps": "1/4",
+      "rung": "r4",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.5316823639217768,
+      "irreducible_bits": 0.5316823639217768,
+      "gap_bits": 0.0,
+      "none_mass": 0.5905000479431177,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.2147538769954123,
+          "irreducible_bits": 0.2147538769954123,
+          "gap_bits": 0.0,
+          "none_mass": 0.9113226996527779
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.38756280041142854,
+          "irreducible_bits": 0.38756280041142854,
+          "gap_bits": 0.0,
+          "none_mass": 0.8235668017540455
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6982836262090306,
+          "irreducible_bits": 0.6982836262090306,
+          "gap_bits": 0.0,
+          "none_mass": 0.6610881044990569
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.7329454878383569,
+          "irreducible_bits": 0.7329454878383569,
+          "gap_bits": 0.0,
+          "none_mass": 0.508828507562783
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5376050340097998,
+          "irreducible_bits": 0.5376050340097998,
+          "gap_bits": 0.0,
+          "none_mass": 0.4402928690301505
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.6510901974777701,
+          "irreducible_bits": 0.6510901974777701,
+          "gap_bits": 0.0,
+          "none_mass": 0.5097934407330459
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.4995355245096413,
+          "irreducible_bits": 0.4995355245096413,
+          "gap_bits": 0.0,
+          "none_mass": 0.2786079123684574
+        }
+      }
+    },
+    {
+      "eps": "5/8",
+      "rung": "r1",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.628668823151384,
+      "irreducible_bits": 0.628668823151384,
+      "gap_bits": 0.0,
+      "none_mass": 0.6001286025809356,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.5042951315704414,
+          "irreducible_bits": 0.5042951315704414,
+          "gap_bits": 0.0,
+          "none_mass": 0.8044685081199364
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.5995062785095792,
+          "irreducible_bits": 0.5995062785095792,
+          "gap_bits": 0.0,
+          "none_mass": 0.6920554488590714
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6303538508158238,
+          "irreducible_bits": 0.6303538508158238,
+          "gap_bits": 0.0,
+          "none_mass": 0.6392810072292855
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.6265111353589228,
+          "irreducible_bits": 0.6265111353589228,
+          "gap_bits": 0.0,
+          "none_mass": 0.61869280056641
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5817824782536308,
+          "irreducible_bits": 0.5817824782536308,
+          "gap_bits": 0.0,
+          "none_mass": 0.5556693012480989
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.7105053855707147,
+          "irreducible_bits": 0.7105053855707147,
+          "gap_bits": 0.0,
+          "none_mass": 0.5122934036414997
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.7477275019806153,
+          "irreducible_bits": 0.7477275019806153,
+          "gap_bits": 0.0,
+          "none_mass": 0.3784397484020387
+        }
+      }
+    },
+    {
+      "eps": "5/8",
+      "rung": "r2",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.628668823151384,
+      "irreducible_bits": 0.628668823151384,
+      "gap_bits": 0.0,
+      "none_mass": 0.6001286025809356,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.5042951315704414,
+          "irreducible_bits": 0.5042951315704414,
+          "gap_bits": 0.0,
+          "none_mass": 0.8044685081199364
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.5995062785095792,
+          "irreducible_bits": 0.5995062785095792,
+          "gap_bits": 0.0,
+          "none_mass": 0.6920554488590714
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6303538508158238,
+          "irreducible_bits": 0.6303538508158238,
+          "gap_bits": 0.0,
+          "none_mass": 0.6392810072292855
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.6265111353589228,
+          "irreducible_bits": 0.6265111353589228,
+          "gap_bits": 0.0,
+          "none_mass": 0.61869280056641
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5817824782536308,
+          "irreducible_bits": 0.5817824782536308,
+          "gap_bits": 0.0,
+          "none_mass": 0.5556693012480989
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.7105053855707147,
+          "irreducible_bits": 0.7105053855707147,
+          "gap_bits": 0.0,
+          "none_mass": 0.5122934036414997
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.7477275019806153,
+          "irreducible_bits": 0.7477275019806153,
+          "gap_bits": 0.0,
+          "none_mass": 0.3784397484020387
+        }
+      }
+    },
+    {
+      "eps": "5/8",
+      "rung": "r3",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.628668823151384,
+      "irreducible_bits": 0.628668823151384,
+      "gap_bits": 0.0,
+      "none_mass": 0.6001286025809356,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.5042951315704414,
+          "irreducible_bits": 0.5042951315704414,
+          "gap_bits": 0.0,
+          "none_mass": 0.8044685081199364
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.5995062785095792,
+          "irreducible_bits": 0.5995062785095792,
+          "gap_bits": 0.0,
+          "none_mass": 0.6920554488590714
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6303538508158238,
+          "irreducible_bits": 0.6303538508158238,
+          "gap_bits": 0.0,
+          "none_mass": 0.6392810072292855
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.6265111353589228,
+          "irreducible_bits": 0.6265111353589228,
+          "gap_bits": 0.0,
+          "none_mass": 0.61869280056641
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5817824782536308,
+          "irreducible_bits": 0.5817824782536308,
+          "gap_bits": 0.0,
+          "none_mass": 0.5556693012480989
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.7105053855707147,
+          "irreducible_bits": 0.7105053855707147,
+          "gap_bits": 0.0,
+          "none_mass": 0.5122934036414997
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.7477275019806153,
+          "irreducible_bits": 0.7477275019806153,
+          "gap_bits": 0.0,
+          "none_mass": 0.3784397484020387
+        }
+      }
+    },
+    {
+      "eps": "5/8",
+      "rung": "r4",
+      "n_windows": 394824,
+      "n_states": 1801,
+      "total_bits": 0.628668823151384,
+      "irreducible_bits": 0.628668823151384,
+      "gap_bits": 0.0,
+      "none_mass": 0.6001286025809356,
+      "by_endpoint": {
+        "2": {
+          "U": 0,
+          "total_bits": 0.5042951315704414,
+          "irreducible_bits": 0.5042951315704414,
+          "gap_bits": 0.0,
+          "none_mass": 0.8044685081199364
+        },
+        "4": {
+          "U": 0,
+          "total_bits": 0.5995062785095792,
+          "irreducible_bits": 0.5995062785095792,
+          "gap_bits": 0.0,
+          "none_mass": 0.6920554488590714
+        },
+        "6": {
+          "U": 0,
+          "total_bits": 0.6303538508158238,
+          "irreducible_bits": 0.6303538508158238,
+          "gap_bits": 0.0,
+          "none_mass": 0.6392810072292855
+        },
+        "8": {
+          "U": 0,
+          "total_bits": 0.6265111353589228,
+          "irreducible_bits": 0.6265111353589228,
+          "gap_bits": 0.0,
+          "none_mass": 0.61869280056641
+        },
+        "10": {
+          "U": 0,
+          "total_bits": 0.5817824782536308,
+          "irreducible_bits": 0.5817824782536308,
+          "gap_bits": 0.0,
+          "none_mass": 0.5556693012480989
+        },
+        "12": {
+          "U": 0,
+          "total_bits": 0.7105053855707147,
+          "irreducible_bits": 0.7105053855707147,
+          "gap_bits": 0.0,
+          "none_mass": 0.5122934036414997
+        },
+        "14": {
+          "U": 0,
+          "total_bits": 0.7477275019806153,
+          "irreducible_bits": 0.7477275019806153,
+          "gap_bits": 0.0,
+          "none_mass": 0.3784397484020387
+        }
+      }
+    }
+  ]
+}
