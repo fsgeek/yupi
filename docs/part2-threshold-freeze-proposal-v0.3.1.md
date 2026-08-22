@@ -165,3 +165,37 @@ Part II v0.2.5 and stamp it."*
    with T_ep; that was backwards — truthsayer round 2.)*
 4. A′ removes Q4's irreducible term from δ_sync's reach by fiat; the alternative (some
    δ_sync ≥ 0.6) is not seriously arguable, but the amendment should be visible as one.
+
+---
+
+## PI decision — reaffirmed after the corrected-kernel sweep rerun (2026-08-21)
+
+Recorded 2026-08-21 20:51 PDT. Context: the 2026-08-20 direct-handoff kernel
+erratum forced a rerun of all three §C sweeps before this proposal could be
+enacted; the comparison is [sweep-rerun-comparison-2026-08-21.md] (commit
+36e8434, stamped cafd407): every decision-bearing quantity cited above is
+unchanged under the corrected kernel.
+
+Tony, verbatim, in-session, in response to that comparison's recommendation
+("reaffirm v0.3.1 with the §C wording amendment"):
+
+> "Let's reaffirm it then. If I'm wrong in doing so, I'll likely be around to
+> pay the price."
+
+**Interpretation (the instance's, on record, attackable):** this adopts the §F
+confirmation form — §6 amended per A′ (Q4 by its gap part) and B1
+(truncation-conditional mean, co-reports); δ = 0.01, δ_sync = 0.01, Δ_τ = 0.01
+bind; δ_p reported as the axis {0, 10⁻⁴, 10⁻³, 10⁻², 3·10⁻²} with the exact
+anchor — together with the comparison's §4 wording amendment to §C's evidence
+sentence, which now reads:
+
+> *At δ_p = 10⁻², over Δ_τ ∈ [10⁻³, 3·10⁻²], the pair_prob surface across the
+> sixteen L = 2 cells is exactly flat in 7, flat to ≤0.5% in 12, and within
+> 4.2% in all; within 27% at (14,4,2) (corrected kernel; the v0.1 sentence's
+> "twelve exactly flat / within 4%" was print-precision reading, see
+> sweep-rerun-comparison-2026-08-21.md §4).*
+
+The §F formula was not recited verbatim; the informal reaffirmation is quoted
+as given, per house practice. Enacted as Part II v0.2.5 in the same commit.
+
+[sweep-rerun-comparison-2026-08-21.md]: sweep-rerun-comparison-2026-08-21.md
