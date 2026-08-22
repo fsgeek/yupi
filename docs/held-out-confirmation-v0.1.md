@@ -40,8 +40,7 @@ they are different facts.
 Sweeps on those artifacts (`YUPI_ARTIFACT_TAG=heldout`):
 `c1-sync-sweep-{F2,F3}-heldout-2026-08-21.json`,
 `c1-delta-sweep-{F2,F3}-heldout-2026-08-21.json`,
-`c1-tv-sweep-14-{2,4}-2-F2-heldout-2026-08-21.json` (L=4 in flight at
-writing; §5 will be appended).
+`c1-tv-sweep-14-{2,4}-2-F2-heldout-2026-08-21.json` (L=4 appended in §5).
 
 Code: `src/yupi/eps_grid.py` (`YUPI_EPS`), 9 witnesses; defaults verified
 byte-identical to three committed corrected artifacts before use (commit
@@ -126,7 +125,33 @@ the exact corner is 5e-8 — a near-empty corner makes any jump large. The
 proposal generalized a one-cell ratio to a law it had never applied to.
 (14,4,2) appended in §5 when the run lands.
 
-## 5. (14,4,2) TV sweep — pending
+## 5. (14,4,2) TV sweep — appended 2026-08-22 03:09 PDT
+
+pair_prob at Δ_τ = 0.01; columns: δ_p = 0 exact corner, δ_p = 10⁻⁴, ratio.
+
+| ε | rung | δ_p=0 | δ_p=10⁻⁴ | ratio | source |
+|---|---|---|---|---|---|
+| 1/4 | r1 | 4.75e-04 | 9.31e-04 | 2.0 | held-out |
+| 1/4 | r2 | 5.62e-04 | 9.68e-04 | 1.7 | held-out |
+| 1/4 | r3 | 5.55e-04 | 9.85e-04 | 1.8 | held-out |
+| 1/4 | r4 | 5.72e-04 | 9.85e-04 | 1.7 | held-out |
+| 5/8 | r1 | 7.76e-04 | 1.09e-03 | 1.4 | held-out |
+| 5/8 | r2 | 8.76e-04 | 1.20e-03 | 1.4 | held-out |
+| 5/8 | r3 | 1.03e-03 | 1.36e-03 | 1.3 | held-out |
+| 5/8 | r4 | 1.12e-03 | 1.36e-03 | 1.2 | held-out |
+| 1 | r1 | 1.15e-03 | 1.20e-03 | 1.0 | baseline |
+| 1 | r2 | 1.31e-03 | 1.48e-03 | 1.1 | baseline |
+| 1 | r3 | 1.69e-03 | 1.88e-03 | 1.1 | baseline |
+| 1 | r4 | 2.03e-03 | 2.07e-03 | 1.0 | baseline |
+| 1/2 | r1 | 7.51e-04 | 1.11e-03 | 1.5 | baseline |
+| 1/2 | r2 | 8.86e-04 | 1.20e-03 | 1.3 | baseline |
+| 1/2 | r3 | 9.57e-04 | 1.25e-03 | 1.3 | baseline |
+| 1/2 | r4 | 1.02e-03 | 1.25e-03 | 1.2 | baseline |
+
+
+P5a holds at (14,4,2) (all corners > 0; the class is ~100× more prevalent
+at L = 4 than at L = 2, as in the baseline). P5b fails here too: 1.2–2.0×
+held-out against 1.0–1.5× baseline. Verdicts in §0 are unchanged.
 
 ## 6. What this round establishes, and what it does not
 
