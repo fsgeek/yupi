@@ -1,0 +1,23 @@
+{
+ "purpose": "Selection E draw for held-out Tier 1 F2 epsilon pair",
+ "grid_lo": [
+  "1/8",
+  "1/4",
+  "1/3",
+  "3/8"
+ ],
+ "grid_hi": [
+  "5/8",
+  "2/3",
+  "3/4",
+  "7/8"
+ ],
+ "seed": 14333822706737515044,
+ "rng": "random.Random(seed); choice(lo) then choice(hi)",
+ "drawn": {
+  "lo": "1/4",
+  "hi": "5/8"
+ },
+ "drawn_at": "2026-08-21 22:53 PDT",
+ "note": "drawn before any ceiling at any F-law; commit stamps it"
+}
