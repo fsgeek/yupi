@@ -214,3 +214,26 @@ world plus Tier-1-sized compute. The writing is the cost.
 **Decision rights (unchanged).** The PI decides the tiers, the E1
 enactment, and whether Tier 2 is opened now or after Tier 1 reports.
 Nothing below runs before the stamp.
+
+---
+
+## PI decision (2026-08-21 22:51 PDT) — Tier 2 deferred; Tier 1 enacted by this commit's stamp
+
+Tony, verbatim: "Defer Tier 2 then. If it turns out to be necessary,
+building Tier 2 later isn't compromised by the choice. My instinct right
+now says that the parallel world could be interesting, but isn't necessary
+for us to understand loss across the boundary that originally motivated
+this work."
+
+**Enacted by the stamp on this commit:** Tier 1 = F2 + F3′ as listed in
+v0.3, with the ε pair drawn under Selection E (grid and seed recorded in
+the next section, written before any ceiling). F1 (T_ep = 16) remains
+conditional on D4 erratum E1, which this decision does not address; it
+stays proposed and F1 does not run until E1 is enacted or refused.
+Tier 2 is deferred, not rejected; its design (v0.3) is preserved here for
+whoever takes it up.
+
+**Instance's reading of the reason, recorded:** the motivating question is
+loss across the observation boundary in *one* owned world; a second world
+tests threshold transfer, which is a different question and can be asked
+later without being compromised by the order.
