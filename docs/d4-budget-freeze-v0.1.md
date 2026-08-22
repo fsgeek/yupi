@@ -92,3 +92,40 @@ D9's: largest ε satisfying budget and rung separation; if none, shrink C1.
 4. The enumerator's O(H²) copying means deep-horizon validation is
    disproportionately expensive; validation designs should prefer
    branching-rich shallow histories, which are also the informative ones.
+
+## Erratum E1 (2026-08-21 22:45 PDT) — B4 scope and the T_ep = 16 admission — PROPOSED, not enacted
+
+**What B4 says.** "Enumeration budget (validation path): ≤ 10⁶ paths per
+posterior check at horizons ≤ 24." Its consequence clause: if support exceeds
+B1/B4 at needed horizons, the world shrinks, not the ladder.
+
+**What was measured (tonight, before any curve at T_ep = 16).** C1 at
+T_ep = 16: **1,315,454 paths**, 42 s wall (ε = 1; 67 s at ε = ½), **1.70 GB
+peak RSS** (`/usr/bin/time -v`, single process). B2 (8 GB) has 4.7× headroom;
+B3 is not implicated — this is the path-aggregation ceilings path, not the
+per-step filter.
+
+**The scope question.** B4 was written for the *validation path* — an
+enumerator check against a filter posterior, bounded so suites stay under
+~15 min. The per-endpoint ceilings scripts (`c1_query_ceilings.py`,
+`c1_q4_ceilings.py`, `c1_support_at_law.py`) enumerate once per (ε, T) and
+aggregate; they are not posterior checks and no validation suite runs at
+T_ep = 16. Read on its text, B4 does not govern them. Read on its intent
+(bound enumerator cost before results could argue for raising it), it does,
+and the honest course is to amend rather than reinterpret.
+
+**Proposed amendment.** Add **B4′ — Aggregation budget: ≤ 1.5 × 10⁶ paths
+per (ε, T) aggregation pass, peak RSS ≤ 2 GB per process,** admitting
+T_ep = 16 for ceilings and explicitly *not* admitting T_ep = 18 (~6 M paths
+by the measured 4.5×/2-tick growth). B4 itself is unchanged: validation
+suites at T_ep = 16 remain out of budget and are not run. The "world
+shrinks, not the ladder" clause is untouched because no support bound is
+exceeded — the breach was path count on a path that B4 did not name.
+
+**Why this is not "just this once."** The admission is bounded by a new
+numeric line (1.5 M / 2 GB), measured before any T_ep = 16 curve existed, and
+refuses the next step up. A later request to admit T_ep = 18 would need its
+own erratum with its own measurement.
+
+**Status.** Proposed by the instance; enactment is the PI's. Until enacted,
+no ceiling at T_ep = 16 is computed (see `held-out-laws-proposal-v0.1.md` §5).

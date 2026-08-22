@@ -161,3 +161,56 @@ condition, tightens the lineage bound to 0.003, drops the theorem.
 
 **Criticism 3 — a frozen budget overridden in a notes field.** v0.2 excludes
 T_ep = 16 pending an appended B4 erratum, and flags the unmeasured runtime.
+
+---
+
+## v0.3 (2026-08-21 22:45 PDT) — two tiers, selection by seed, B4 erratum proposed
+
+*Appended; v0.2 above stands as written. What changed and why.*
+
+**Why v0.2's framing of option B was wrong.** The discussion record: v0.2
+(and the decision-space walk that followed it) presented a cross-world
+confirmation as "robust but more work, paper 2." Two of the reasons were
+real and one was not. Real: (i) a different world can have different
+synchronization horizons, so a cross-world failure cannot distinguish
+"threshold does not generalize" from "world differs" — within-world
+confirmation is therefore *necessary* for the C1 exit claims; (ii) the cut
+says hold the frozen world. Not real: the cut is about papers, not
+enumerations, and the instance sized the options to what one session
+could close. An instance-horizon bias is a planning defect in a project
+that carries work across instances by design. Recorded so the next reader
+can see it.
+
+**The confirmatory set, v0.3.**
+
+- **Tier 1 — within-world (required for M1 exit).**
+  - F2: (14, L ∈ {2,…,14} even, 2), ε ∈ {¼, ¾}.
+  - F3′: (14, L ∈ {1,3,…,13} odd, **1**), ε ∈ {1, ½} — L values the
+    sweeps could not express; replaces v0.2's (12, ·, 1). Inherits
+    conditional rows at even endpoints only.
+  - F1: (16, L even, 2), ε ∈ {1, ½} — **conditional on D4 erratum E1**
+    (appended tonight to `d4-budget-freeze-v0.1.md`, proposed). Runs
+    first as a kernel-validation pass regardless: ticks 15–16 of the
+    corrected kernel are unobserved since the deadlock fix (d69fa87).
+  - Predictions P1–P5 of v0.2 apply; P4 restated for F3′: L\* at every
+    rung unchanged from the (14, ·, 2) sweep values.
+- **Tier 2 — cross-world (threshold-as-principle; not required for M1
+  exit, reported separately).** One C1′: same machine shape (4T/2CPU/2L/1D),
+  a different program set, support measured against D4 before any
+  ceiling, the 13 C1 witnesses re-run. P1–P5 restated for C1′ *before*
+  enumeration. A Tier-2 failure is reported as "δ/δ_sync/Δ_τ do not
+  transfer," never as an M1 failure; a Tier-2 pass is what would make
+  0.01 bits a threshold rather than a C1 constant.
+- **Selection (E).** The ε pair, the odd-L set, and the C1′ program draw
+  are fixed by a committed seed over a declared grid (grid and seed
+  recorded in the enacting commit), so the instance's hand is off the
+  choice. Over a grid this small it is largely ceremony; it answers
+  criticism 2 fully where v0.2 answered it partly.
+
+**Cost.** Tier 1: ~60 ceiling runs, ~7 min each at T_ep = 14, ~45 min at
+16; about two hours on 64 cores. Tier 2: roughly one instance-day for the
+world plus Tier-1-sized compute. The writing is the cost.
+
+**Decision rights (unchanged).** The PI decides the tiers, the E1
+enactment, and whether Tier 2 is opened now or after Tier 1 reports.
+Nothing below runs before the stamp.
