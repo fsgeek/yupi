@@ -31,9 +31,12 @@ import glob
 import json
 import os
 import sys
+from yupi.eps_grid import eps_grid
 
 DOCS = os.path.join(os.path.dirname(__file__), "..", "docs")
 LAWS = [(12, 2, 2), (14, 2, 2), (14, 4, 2), (12, 12, 2)]
+if os.environ.get("YUPI_LAWS"):  # held-out mode: "14,2,2;14,4,2"
+    LAWS = [tuple(int(x) for x in law.split(",")) for law in os.environ["YUPI_LAWS"].split(";")]
 RUNGS = ("r1", "r2", "r3", "r4")
 PAIRS = [("r1", "r2"), ("r2", "r3"), ("r3", "r4")]
 DELTA_GRID = [1e-4, 3e-4, 1e-3, 3e-3, 1e-2, 3e-2, 1e-1, 3e-1]
@@ -41,7 +44,7 @@ DELTA_GRID = [1e-4, 3e-4, 1e-3, 3e-3, 1e-2, 3e-2, 1e-1, 3e-1]
 
 def load_latest(prefix):
     """Latest docs/{prefix}-corrected-*.json, or (None, None)."""
-    hits = sorted(glob.glob(os.path.join(DOCS, prefix + "-corrected-*.json")))
+    hits = sorted(glob.glob(os.path.join(DOCS, prefix + "-" + os.environ.get("YUPI_ARTIFACT_TAG", "corrected") + "-*.json")))
     if not hits:
         return None, None
     with open(hits[-1]) as f:
@@ -80,7 +83,7 @@ def main():
         print(f"\n=== law (T_ep={T}, L={L}, B={B})  Q4 W available: {sorted(q4s)}")
         print(f"    reading {qc_name}" +
               "".join(f" + {n}" for n in q4_names.values()))
-        for eps in ("1", "1/2"):
+        for eps in [str(e) for e in eps_grid()]:
             qnames = list(rows[(eps, "r1")]["queries"].keys())
             for a, b in PAIRS:
                 ra, rb = rows[(eps, a)], rows[(eps, b)]

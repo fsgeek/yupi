@@ -31,6 +31,7 @@ import sys
 from collections import defaultdict
 from fractions import Fraction
 
+from yupi.eps_grid import eps_grid
 from yupi.config import WorldConfig
 from yupi.enumerator import paths
 from yupi.forecast import q4_mixture
@@ -79,7 +80,7 @@ def main():
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
     out = dict(law=dict(T_ep=T_ep, L=L, B=B), m=M, W=W,
                dp_grid=DP_GRID, dt_grid=DT_GRID, cdf_grid=CDF_GRID, rows=[])
-    for eps in (Fraction(1), Fraction(1, 2)):
+    for eps in eps_grid():
         cfg = WorldConfig.c1(epsilon=eps)
         progs = c1_programs()
         w_T = endpoint_prior(law)

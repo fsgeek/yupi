@@ -15,6 +15,7 @@ import json
 import sys
 from fractions import Fraction
 
+from yupi.eps_grid import eps_grid
 from yupi.config import WorldConfig
 from yupi.enumerator import paths
 from yupi.forecast import NONE_WITHIN_W, q4_forward, q4_mixture, split_entropy
@@ -29,7 +30,7 @@ def main():
     T_ep, L, B, W = (int(a) for a in sys.argv[1:5])
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
     out = dict(law=dict(T_ep=T_ep, L=L, B=B), W=W, rows=[])
-    for eps in (Fraction(1), Fraction(1, 2)):
+    for eps in eps_grid():
         cfg = WorldConfig.c1(epsilon=eps)
         progs = c1_programs()
         w_T = endpoint_prior(law)

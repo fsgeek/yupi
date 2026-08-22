@@ -29,6 +29,7 @@ import glob
 import json
 import os
 import sys
+from yupi.eps_grid import eps_grid
 
 DOCS = os.path.join(os.path.dirname(__file__), "..", "docs")
 RUNGS = ("r1", "r2", "r3", "r4")
@@ -37,7 +38,7 @@ DSYNC_GRID = [0.3, 0.1, 0.03, 0.01, 0.003, 0.001]
 
 def load_latest(prefix):
     """Latest docs/{prefix}-corrected-*.json, or (None, None)."""
-    hits = sorted(glob.glob(os.path.join(DOCS, prefix + "-corrected-*.json")))
+    hits = sorted(glob.glob(os.path.join(DOCS, prefix + "-" + os.environ.get("YUPI_ARTIFACT_TAG", "corrected") + "-*.json")))
     if not hits:
         return None, None
     with open(hits[-1]) as f:
@@ -75,7 +76,7 @@ def main():
     Ls = sorted(data)
     out = dict(T_ep=T_ep, B=B, Ls=Ls, inputs=inputs,
                dsync_grid=DSYNC_GRID, curves=[], horizons=[])
-    for eps in ("1", "1/2"):
+    for eps in [str(e) for e in eps_grid()]:
         for rung in RUNGS:
             # gather curves
             curves = {}     # query -> [H at each L]
