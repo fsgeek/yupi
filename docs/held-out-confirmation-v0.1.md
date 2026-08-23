@@ -180,3 +180,22 @@ All artifacts named above are appended under `-heldout-2026-08-21` /
 `-2026-08-22` and never overwrite. Raws, sweeps, score JSON, scorer, and
 this note are committed together; the stamp on that commit is the
 confirmation's timestamp. Truthsayer pass owed.
+
+---
+
+## v0.1.1 (2026-08-23 09:52 PDT) — truthsayer corrections (four), verified
+
+1. **P1's mechanism was wrong even though its criterion passed.** P1 was
+   derived with the same "ε = tracing coverage" reading that killed P2. P1
+   is a successful prediction; it is not confirmation of its stated
+   mechanism. §2's "Mechanism (post hoc…)" line for the ε = ¼ observation
+   stands as exploratory only.
+2. **P5 was one conjunctive prediction and failed overall.** "P5a pass" is a
+   useful sub-result, not a second prediction; the §0 table's two rows
+   should be read as one FAIL with a surviving component. Score: 1 pass
+   (P1), 3 fail (P2, P3, P5), 1 ill-posed (P4).
+3. **§6 "r1 later" is too broad.** At F3′, ε = ½, measure (b), all four
+   rungs have L\* = 11. The confirmed sentence is: r2 = r3 = r4 at every
+   fresh cell; r1 strictly later at every cell *except* (F3′, ε = ½, b).
+4. **"≤ 0.0037 bits" is numerically false** (max is 0.0037277…). Read
+   "< 0.0038 bits", or simply "< δ".

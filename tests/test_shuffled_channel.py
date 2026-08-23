@@ -17,6 +17,7 @@ per-record filter exactly (identity serialization).
 from dataclasses import replace
 from fractions import Fraction
 from itertools import permutations
+from math import factorial
 
 import pytest
 
@@ -30,6 +31,14 @@ from yupi.shuffled import (channel_likelihood, multiset_key, run_buckets,
                            step_bucket, step_ordered_bucket)
 
 
+def _literal_likelihood(latent, visible):
+    """Test-side channel likelihood by literal permutation count (the
+    statute's definition), independent of yupi.shuffled.channel_likelihood."""
+    n = len(latent)
+    m = sum(1 for perm in permutations(range(n)) if [latent[i] for i in perm] == list(visible))
+    return Fraction(m, factorial(n))
+
+
 def _bucket_posterior_by_paths(cfg, progs, visible_buckets, rung, B):
     """Independent path-summation side of the two-path gate: enumerate every
     latent path of length B*len(buckets); weight = path prob × Π channel
@@ -40,7 +49,7 @@ def _bucket_posterior_by_paths(cfg, progs, visible_buckets, rung, B):
         w = p
         for b, vis in enumerate(visible_buckets):
             latent = [project(r, rung) for r in recs[b * B:(b + 1) * B]]
-            w *= channel_likelihood(latent, vis)
+            w *= _literal_likelihood(latent, vis)
             if w == 0:
                 break
         if w:
@@ -119,23 +128,39 @@ def _find_noncommuting_bucket(cfg, progs, rung, B, H):
     return None
 
 
-def test_c0b_shuffled_channel_is_information_free_at_eps_1():
-    """NEGATIVE witness (measured 2026-08-23): Part I's C0b paragraph says
-    C0b 'supplies a candidate bucket containing two noncommuting events'.
-    At ε = 1 it does not, for any B ≤ 4 and H ≤ 8, either discipline: C0b has
-    no locks (no wait-queue order) and no cursor (ε = 1), so every same-
-    multiset reordering of a realizable bucket reaches the same state.
-    This test pins the refutation; if it ever fails, the statute line was
-    right and this note is wrong."""
+def test_c0b_shuffled_channel_is_null_at_r4_only():
+    """Scoped negative witness (corrected 2026-08-23 after truthsayer review):
+    at r4 — lineage visible — no C0b bucket's order changes a posterior for
+    B ≤ 4, H ≤ 8, either discipline. The v0.1 note over-generalized this to
+    "C0b has no noncommuting bucket"; it has them at r1–r3 (next test)."""
     for disc in ("stochastic", "fifo"):
         cfg, progs = WorldConfig.c0b(discipline=disc), c0b_programs()
         for B in (2, 3, 4):
             assert _find_noncommuting_bucket(cfg, progs, "r4", B=B, H=8) is None, (disc, B)
 
 
-def test_w7_noncommuting_bucket_in_c1_at_B3_and_order_mode_changes_posterior():
-    """Witness 7, relocated to C1 (as witnesses 1–2 were): at ε = 1 the first
-    noncommuting bucket is BLOCK·DISPATCH·BLOCK on one lock — order fixes
+@pytest.mark.parametrize("disc", ["fifo", "stochastic"])
+@pytest.mark.parametrize("rung", ["r1", "r2", "r3"])
+def test_w7_c0b_supplies_noncommuting_bucket_at_masked_lineage(disc, rung):
+    """Witness 7 in C0b, as Part I says: at r1–r3 the bucket
+    [IO_COMPLETE T0, IO_ISSUE T1, IDLE] at B = 3 is order-sensitive —
+    completion-before-issue vs issue-before-completion changes request-id
+    allocation (lowest-free) and hence status/dev_q, while the masked
+    lineage hides which happened. At r4 the lineage values disambiguate."""
+    cfg, progs = WorldConfig.c0b(discipline=disc), c0b_programs()
+    found = _find_noncommuting_bucket(cfg, progs, rung, B=3, H=6)
+    assert found is not None
+    prefix, latent = found
+    assert {r.kind for r in latent} >= {"IO_COMPLETE", "IO_ISSUE"}
+    belief = run_buckets(cfg, progs, prefix, rung, 3, mode="ordered") if prefix else initial_belief(cfg)
+    o = step_ordered_bucket(belief, latent, rung, cfg, progs)
+    sh = step_bucket(belief, latent, rung, cfg, progs)
+    assert set(o) <= set(sh) and o != sh
+
+
+def test_w7_c1_r4_wait_queue_bucket_at_B3():
+    """Witness 7 in C1 at r4: at ε = 1 the first r4 noncommuting bucket is
+    BLOCK·DISPATCH·BLOCK on one lock — order fixes
     the wait-queue (I2). Same-lock BLOCKs are never adjacent (dispatch fills
     the freed CPU first), so B = 2 can never expose it; B = 3 aligned at
     ticks 7–9 does."""
@@ -153,9 +178,10 @@ def test_w7_noncommuting_bucket_in_c1_at_B3_and_order_mode_changes_posterior():
 
 
 def test_at_eps_half_B2_channel_carries_only_cursor_information():
-    """At ε = ½ the B = 2 channel differs from ordered already at bucket 0
+    """At ε = ½, r4, B = 2 the channel differs from ordered already at bucket 0
     ([DISPATCH T0, DISPATCH T1]): the two dispatches commute except through
-    rr_cursor. The state marginal *without* the cursor must agree."""
+    rr_cursor. The state marginal *without* the cursor must agree. Scoped to
+    this bucket at r4; not a claim about the ladder."""
     cfg, progs = WorldConfig.c1(epsilon=Fraction(1, 2)), c1_programs()
     found = _find_noncommuting_bucket(cfg, progs, "r4", B=2, H=4)
     assert found is not None

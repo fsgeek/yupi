@@ -89,3 +89,60 @@ state, not $B!$: the filter never enumerates permutations. The D6 audit's
 "$B!/\prod$ dup" line describes the channel, not the update; both grow
 fast enough that B ≤ 3 is the practical regime in C1, which is also the
 interface-design fact §4 says to report.
+
+---
+
+## v0.1.1 (2026-08-23 09:52 PDT) — truthsayer round: headline withdrawn, erratum request withdrawn, claims rescoped
+
+*Appended; v0.1 stands above as written. Findings via Tony, each verified
+before adoption.*
+
+**1. C0b does supply witness 7 — the v0.1 headline is withdrawn.** The
+negative test checked r4 only. At r1–r3, B = 3, H = 6, both disciplines,
+the bucket `[IO_COMPLETE T0, IO_ISSUE T1, IDLE]` is order-sensitive:
+completion-before-issue vs issue-before-completion changes lowest-free
+request-id allocation and hence status/dev_q, and masked LINEAGE hides
+which occurred; at r4 the lineage values disambiguate. Verified by the
+note's own helper. **Part I's C0b sentence is not refuted; no erratum is
+requested.** The two-path gate had already run the positive condition
+(C0b/r2/B=3/H=6) without the instance noticing what it implied. Tests now:
+`test_c0b_shuffled_channel_is_null_at_r4_only` (scoped) and
+`test_w7_c0b_supplies_noncommuting_bucket_at_masked_lineage` (6 cells).
+
+**2. "Cursor and wait-queue only" is an r4 claim, not a ladder claim.** Every
+v0.1 test establishing it used r4. The allocator/device-lifecycle mechanism
+in (1) is a third coordinate family visible at coarse rungs — the
+allocator side channel again. Reviewer additionally reports, by independent
+from-reset enumeration at C1 ε = 1: B = 2, H = 12, r1–r3 → 52 shuffled
+histories ambiguous in status/dev_q; B = 3, H = 12, r1 → 266 wait-queue
+cases, 44 status/device-queue, 8 also involving PC and lock ownership.
+**Not reproduced here:** this note's bucket-by-bucket helper finds no B = 2
+difference at C1 ε = 1 for r1/r3/r4 up to H = 8; the reviewer's cases are at
+H = 12 by a different method. Recorded as reported; to be reproduced before
+it is cited. §3's "at ε = 1, B = 2 … erases nothing" is therefore **scoped to
+r4 and H ≤ 8**.
+
+**3. The §4 decomposition is reformulated.** Marginal entropy differences do
+not add under correlated coordinates, and the coarse-rung remainder is
+already nonzero by (1). Define the quantity first as
+$\mathbb E[H(S\mid O_{\mathrm{shuf}}) - H(S\mid O_{\mathrm{ord}})] = I(S; O_{\mathrm{ord}} \mid O_{\mathrm{shuf}})$
+under the joint channel law; attribute to coordinates by a **predeclared
+chain-rule order** (or a symmetric attribution), with "all remaining state"
+kept as an empirical remainder. **Zero is tested, not asserted.**
+
+**4. Firewall narrowed, then repaired.** The path-summation side had called
+the production `channel_likelihood`; it now uses a test-side literal
+permutation count (`_literal_likelihood`), so the gate checks the
+likelihood implementation as well as the recursion. 18 witnesses.
+
+**5. Status corrected: D8 is core-built, not statute-complete.** Present:
+exact bucket update, ordered-mode identity, local two-path gate. Absent:
+a shuffled observation generator/emitter; integration with the
+offset-unanchored `WindowLaw` mixture; TIME_CLASS and schema-level RESET
+handling; a two-path gate on the statutory window law. "Shuffled filter
+kernel built and locally witnessed" is the accurate sentence.
+
+**What survives, narrower and better:** the exact shuffled updater works;
+both C0b and C1 contain order witnesses whose mechanism depends on rung,
+B, ε, allocator visibility, device lifecycle, and lock contention. That is
+a richer account than two coordinates, and it needs no Part I correction.
