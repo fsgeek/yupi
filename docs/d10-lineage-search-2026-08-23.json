@@ -1,0 +1,552 @@
+{
+ "prereg": "d10-lineage-search-prereg-v0.1.md@080f937",
+ "B": 2,
+ "tep_star": 6,
+ "horizons": [
+  6,
+  8,
+  10
+ ],
+ "laws": [
+  {
+   "T_ep": 6,
+   "L": 2,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 38
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.06584362139917696,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.06584362139917696,
+      "e_g_given_pos": 1.0,
+      "max_g": 1.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 44
+    }
+   },
+   "delta_interaction_Q3": 0.06584362139917696
+  },
+  {
+   "T_ep": 6,
+   "L": 4,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 48
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 60
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 6,
+   "L": 6,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 48
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 60
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 8,
+   "L": 2,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0292738518994902,
+      "e_g_given_pos": 0.19489167155003068,
+      "max_g": 0.20454253300245384
+     },
+     "Q3thr": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0292738518994902,
+      "e_g_given_pos": 0.19489167155003068,
+      "max_g": 0.20454253300245384
+     },
+     "two_path_windows_checked": 42
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.08452966416250889,
+      "e_g_given_pos": 0.5627591340134153,
+      "max_g": 0.618420649520536
+     },
+     "Q3thr": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.013199074313400495,
+      "e_g_given_pos": 0.0878732892645567,
+      "max_g": 0.08792584046219343
+     },
+     "two_path_windows_checked": 44
+    }
+   },
+   "delta_interaction_Q3": 0.055255812263018685
+  },
+  {
+   "T_ep": 8,
+   "L": 4,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 106
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0438957475994513,
+      "n_informative_histories": 8,
+      "n_histories": 59,
+      "delta": 0.0438957475994513,
+      "e_g_given_pos": 1.0,
+      "max_g": 1.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 138
+    }
+   },
+   "delta_interaction_Q3": 0.0438957475994513
+  },
+  {
+   "T_ep": 8,
+   "L": 6,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 124
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 176
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 8,
+   "L": 8,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 124
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 176
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 10,
+   "L": 2,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0356840513165685,
+      "e_g_given_pos": 0.21526577849209816,
+      "max_g": 0.23250287334195785
+     },
+     "Q3thr": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0356840513165685,
+      "e_g_given_pos": 0.21526577849209816,
+      "max_g": 0.23250287334195785
+     },
+     "two_path_windows_checked": 42
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.07600843521559543,
+      "e_g_given_pos": 0.4585245894166253,
+      "max_g": 0.515387831913414
+     },
+     "Q3thr": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.011140274874184057,
+      "e_g_given_pos": 0.06720425105693417,
+      "max_g": 0.06982669288493826
+     },
+     "two_path_windows_checked": 44
+    }
+   },
+   "delta_interaction_Q3": 0.04032438389902693
+  },
+  {
+   "T_ep": 10,
+   "L": 4,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 53,
+      "delta": 0.023021578962568588,
+      "e_g_given_pos": 0.16227393594049475,
+      "max_g": 0.20454253300245384
+     },
+     "Q3thr": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 53,
+      "delta": 0.023021578962568588,
+      "e_g_given_pos": 0.16227393594049475,
+      "max_g": 0.20454253300245384
+     },
+     "two_path_windows_checked": 114
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 59,
+      "delta": 0.062040570394452765,
+      "e_g_given_pos": 0.4373100369123384,
+      "max_g": 0.618420649520536
+     },
+     "Q3thr": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 59,
+      "delta": 0.011316595390642363,
+      "e_g_given_pos": 0.07976813747099758,
+      "max_g": 0.08792584046219343
+     },
+     "two_path_windows_checked": 138
+    }
+   },
+   "delta_interaction_Q3": 0.03901899143188418
+  },
+  {
+   "T_ep": 10,
+   "L": 6,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 200
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.023411065386374028,
+      "n_informative_histories": 12,
+      "n_histories": 143,
+      "delta": 0.023411065386374028,
+      "e_g_given_pos": 1.0,
+      "max_g": 1.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 143,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 200
+    }
+   },
+   "delta_interaction_Q3": 0.023411065386374028
+  },
+  {
+   "T_ep": 10,
+   "L": 8,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 200
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 200
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 10,
+   "L": 10,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 200
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0
+     },
+     "two_path_windows_checked": 200
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  }
+ ]
+}
