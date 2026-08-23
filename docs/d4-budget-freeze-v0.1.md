@@ -129,3 +129,21 @@ own erratum with its own measurement.
 
 **Status.** Proposed by the instance; enactment is the PI's. Until enacted,
 no ceiling at T_ep = 16 is computed (see `held-out-laws-proposal-v0.1.md` §5).
+
+### E1 decision (2026-08-23 10:29 PDT) — ENACTED
+
+Tony, verbatim: "Good - we are pushing back against an initial ceiling that
+was a rough approximation. We've good reason, we understand the (future)
+risk and the approximate resource costs along with the benefits for
+amending in this particular case. The middle option feels unsatisfying
+because it neither resolves the rationale for the expansion nor addresses
+the lost benefit relative to the cost associated with changing the ceiling.
+Rules are not inviolate, they are tripwires that force us to revisit prior
+reasoning and see if there is sufficient benefit to amending. That dynamic
+balance of ayni in a microcosm. So I accept your recommendation for E1."
+
+B4′ is in force as proposed: aggregation passes ≤ 1.5×10⁶ paths and ≤ 2 GB
+RSS per process; T_ep = 16 admitted; T_ep = 18 refused pending its own
+erratum; B4 (validation path) unchanged. F1 = (16, L even, 2), ε ∈ {1, ½}
+may now run under `held-out-laws-proposal-v0.1.md` v0.3, doubling as the
+corrected kernel's first enumeration of ticks 15–16.
