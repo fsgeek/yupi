@@ -1,5 +1,10 @@
 # Held-out Tier 1 confirmation — v0.1
 
+> **⚠ CORRECTED — read v0.1.1 at the end of this file first.** P1 passed on a
+> wrong mechanism; P5 is one conjunctive FAIL (1 pass / 3 fail / 1 ill-posed);
+> "r1 later" is false at (F3′, ε=½, measure b); "≤ 0.0037" reads "< 0.0038".
+> The body below is preserved as written.
+
 > **Status (2026-08-22 03:08 PDT): measured, not yet truthsayer-reviewed.**
 > First confirmatory round at the v0.2.5 thresholds (δ = δ_sync = Δ_τ =
 > 0.01). Laws enacted by stamp `7564482` (Tier 1, PI decision 22:51 PDT);

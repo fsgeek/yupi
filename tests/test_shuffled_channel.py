@@ -219,3 +219,18 @@ def test_shuffled_filter_matches_enumerator_bit_for_bit(cfg, progs, rung, B, H):
     assert checked == min(40, len(paths(cfg, progs, H)))
 
 
+
+
+@pytest.mark.parametrize("rung", ["r1", "r2", "r3"])
+def test_c1_B2_allocator_bucket_appears_at_H12_at_masked_lineage(rung):
+    """Reproduced 2026-08-23 (truthsayer residual): at C1 ε = 1, B = 2 the
+    coarse rungs acquire an order-sensitive bucket [IO_COMPLETE T0,
+    IO_ISSUE T3] by H = 12 — the allocator mechanism — while none exists at
+    H ≤ 8. The earlier null was a horizon boundary, not a property of B = 2.
+    r4 remains null at H = 12 (lineage disambiguates; ~50 s, not asserted
+    here)."""
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1)), c1_programs()
+    assert _find_noncommuting_bucket(cfg, progs, rung, B=2, H=8) is None
+    found = _find_noncommuting_bucket(cfg, progs, rung, B=2, H=12)
+    assert found is not None
+    assert {r.kind for r in found[1]} == {"IO_COMPLETE", "IO_ISSUE"}

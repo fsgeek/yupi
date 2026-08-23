@@ -1,5 +1,13 @@
 # D8 shuffled channel — built, witnessed, and its premise measured — v0.1
 
+> **⚠ SUPERSEDED HEADLINE — read v0.1.1 at the end of this file first.** The
+> v0.1 claims that C0b has no noncommuting bucket, that Part I needs an
+> erratum, and that the channel carries only cursor + wait-queue information
+> were **withdrawn** after truthsayer review (C0b supplies witness 7 at r1–r3
+> via the allocator; the two-coordinate claim is r4-only; C1 B=2 coarse-rung
+> order sensitivity appears at H = 12 — reproduced). v0.1 is preserved below
+> as written; it is not the current account.
+
 > **Status (2026-08-23 09:30 PDT): exploratory; witness 7 green; one Part I sentence
 > refuted by measurement; D8's premise narrowed, not refuted.** Code:
 > `src/yupi/shuffled.py`; witnesses: `tests/test_shuffled_channel.py`
@@ -116,10 +124,12 @@ allocator side channel again. Reviewer additionally reports, by independent
 from-reset enumeration at C1 ε = 1: B = 2, H = 12, r1–r3 → 52 shuffled
 histories ambiguous in status/dev_q; B = 3, H = 12, r1 → 266 wait-queue
 cases, 44 status/device-queue, 8 also involving PC and lock ownership.
-**Not reproduced here:** this note's bucket-by-bucket helper finds no B = 2
-difference at C1 ε = 1 for r1/r3/r4 up to H = 8; the reviewer's cases are at
-H = 12 by a different method. Recorded as reported; to be reproduced before
-it is cited. §3's "at ε = 1, B = 2 … erases nothing" is therefore **scoped to
+**Reproduced (same day, second round):** this note's own helper returns the
+order-sensitive bucket `[IO_COMPLETE T0, IO_ISSUE T3]` at C1 ε = 1, B = 2,
+H = 12 for r1, r2, r3 (≈2 s each) and null for r4 (≈50 s); the H ≤ 8 null
+was a horizon boundary, not a method disagreement. Regression:
+`test_c1_B2_allocator_bucket_appears_at_H12_at_masked_lineage`. The exact
+52/44/8 census counts remain pending a committed producer. §3's "at ε = 1, B = 2 … erases nothing" is therefore **scoped to
 r4 and H ≤ 8**.
 
 **3. The §4 decomposition is reformulated.** Marginal entropy differences do
