@@ -89,6 +89,8 @@ def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
         List of invariant names that are violated (empty if all valid).
     """
     violations = []
+    if not (0 <= state.rr_cursor < cfg.n_threads):
+        violations.append("KAPPA_RANGE")   # v0.2.6 Clause 1 addendum
 
     # I1: running set ↔ RUNNING status
     running_from_status = frozenset(

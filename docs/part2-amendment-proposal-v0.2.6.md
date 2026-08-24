@@ -1,5 +1,11 @@
 # Part II amendment proposal — v0.2.6 (cursor into the tuple; σ as an M1 condition)
 
+> **⚠ r2 (2026-08-24): Clause 2 below is superseded by the revised Clause 2′
+> at the end of this file, after cross-family review verified that naming is
+> inferentially live (a uniformly-named referent's Q2 entropy is 1.208 bits
+> where structural threads have 1.000/1.483) even though dynamically inert.
+> Clause 1 stands as written (reviewer: accept).**
+
 > **Status (2026-08-24 13:59 PDT): PROPOSED — awaiting cross-family review, then PI
 > enactment.** Process per the E-via-D decision (2026-08-24, this
 > conversation's walk item 3): one small consolidated amendment, reviewed
@@ -88,3 +94,45 @@ exactly the blind spot a naming-focused reviewer would catch); (iii)
 whether the invariants I1–I6 need κ mentioned (proposer: no — none
 constrains it). Enactment after review is the PI's; the enacting commit's
 stamp versions Part II to v0.2.6.
+
+---
+
+## r2 (2026-08-24 14:11 PDT) — review round applied; Clause 2 revised
+
+Reviewer (Codex, via Tony): Clause 1 accept; Clause 2 amend — the original
+justification confused dynamical with inferential relevance. Verified
+exactly by this instance before adoption: at C1 tick 4, prior Q2 status
+entropy is 1.000 bits for structural threads 0–2, 1.483 for thread 3, and
+**1.208 bits for a surface name uniformly bound over threads** — so
+conditioning on a canonical naming changes a Q2 ceiling although no kernel
+rule reads σ. "No Q1–Q5 query reads names" was insufficient: queries take
+named entities as *arguments*, and C1's programs give structural threads
+asymmetric roles.
+
+### Clause 2′ (replaces Clause 2)
+
+**Canonical-naming structural characterization.** M1's exact
+characterization track is computed under a **declared canonical injection
+σ₀** (not "identity" — structural entities and the ≥50-token surface pools
+are different sets). Results on this track are **structural-characterization
+quantities under σ = σ₀**: exact for the world with naming held canonical.
+They are **not Bayes ceilings for the random-σ corpus process** and **do
+not establish D3 binding generalization**. The claims "every committed
+exact measurement becomes statutory" and "no number changes" are
+withdrawn; the accurate statement is that the committed record is the
+canonical-name structural track, now named as such.
+
+**Bridge requirement (before any corpus-facing ceiling claim):** either
+(a) implement naming-aware exact inference (posterior over σ jointly with
+state), or (b) prove, per metric, that the observation/query process is
+equivariant under renaming, and validate that proof exhaustively on a
+small naming orbit. Until a bridge exists, no canonical-track number is
+cited as a random-naming ceiling.
+
+**D8 connection (recorded for the attribution prereg):** σ/binding is a
+candidate *additional* attribution coordinate at the corpus layer — order
+can affect how surface names become associated with structural roles even
+though names never affect dynamics.
+
+**Robustness addendum to Clause 1:** `check_invariants` gains the range
+check 0 ≤ κ < n_T (no semantic change; reviewer suggestion).

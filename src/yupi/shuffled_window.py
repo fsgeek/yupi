@@ -1,4 +1,11 @@
-"""D8 shuffled channel × the offset-unanchored WindowLaw (Part II §2 + §4).
+"""Statutory posterior semantics for shuffled windows (Part II §2 + §4),
+using RESET and TIME_CLASS-equivalent conditioning.
+
+Scope note: this is the exact posterior machinery — NOT the schema/emitter
+implementation. Physical RESET/TIME_CLASS records and the corpus emitter
+do not exist yet; RESET enters as the flag (as in the ordered machinery)
+and the anchored condition as component selection on U, which is what
+unmasked absolute bucket indices reveal under a fixed law.
 
 Composes the within-bucket permutation channel with the statutory window
 mixture: an observed window is a sequence of delivered buckets (size B,
