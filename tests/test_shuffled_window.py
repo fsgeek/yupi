@@ -84,15 +84,18 @@ def test_compatible_endpoint_mixture_matches_ordered_semantics():
 def test_anchored_conditioning_is_component_selection():
     """Anchored (TIME_CLASS-unmasked) = conditioning on U: the anchored
     posterior at offset u is the u-component's belief, renormalized."""
-    cfg, progs = WorldConfig.c0b(discipline="stochastic"), c0b_programs()
+    # C1: 211 multi-component windows at this law. C0b has ZERO — even
+    # shuffled, its window content pins the offset (measured 2026-08-24);
+    # offset mixing needs C1's richer record repertoire at r1.
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1)), c1_programs()
     law = WindowLaw(T_ep=8, L=4, B=2)   # endpoints 6 and 8 both give U > 0
-    for buckets, reset in _visible_windows(cfg, progs, law, "r2"):
-        post = shuffled_window_filter(cfg, progs, law, buckets, "r2", reset)
+    for buckets, reset in _visible_windows(cfg, progs, law, "r1"):
+        post = shuffled_window_filter(cfg, progs, law, buckets, "r1", reset)
         if len(post.components) > 1:
             from yupi.shuffled_window import shuffled_window_by_paths
-            e = shuffled_window_by_paths(cfg, progs, law, buckets, "r2", reset)
+            e = shuffled_window_by_paths(cfg, progs, law, buckets, "r1", reset)
             for u, (w, belief) in post.components.items():
                 assert sum(belief.values()) == 1            # component = anchored posterior
                 assert e.components[u][1] == belief         # both paths agree per component
             return
-    pytest.fail("no multi-component window found at (8,4,2)")
+    pytest.fail("no multi-component C1 window found at (8,4,2)")
