@@ -1,0 +1,2726 @@
+{
+ "prereg": "d10-lineage-search-prereg-v0.1.md@080f937",
+ "B": 2,
+ "tep_star": 6,
+ "horizons": [
+  6,
+  8,
+  10
+ ],
+ "laws": [
+  {
+   "T_ep": 6,
+   "L": 2,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.3333333333333333,
+       "2": 0.3333333333333333,
+       "4": 0.3333333333333333
+      }
+     },
+     "two_path_windows_checked": 38
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.06584362139917696,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.06584362139917696,
+      "e_g_given_pos": 1.0,
+      "max_g": 1.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 1.0
+      },
+      "r4_child_fraction_secondary": 0.32
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.06584362139917696,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.3333333333333333,
+       "2": 0.3333333333333333,
+       "4": 0.3333333333333333
+      }
+     },
+     "two_path_windows_checked": 44
+    }
+   },
+   "delta_interaction_Q3": 0.06584362139917696
+  },
+  {
+   "T_ep": 6,
+   "L": 4,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.6666666666666666,
+       "2": 0.33333333333333337
+      }
+     },
+     "two_path_windows_checked": 48
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.6666666666666666,
+       "2": 0.3333333333333333
+      }
+     },
+     "two_path_windows_checked": 60
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 6,
+   "L": 6,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 24,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 1.0
+      }
+     },
+     "two_path_windows_checked": 48
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 30,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.9999999999999996
+      }
+     },
+     "two_path_windows_checked": 60
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 8,
+   "L": 2,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0292738518994902,
+      "e_g_given_pos": 0.19489167155003068,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.18707527136542346,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.34782608695652173
+     },
+     "Q3thr": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0292738518994902,
+      "e_g_given_pos": 0.19489167155003068,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.18707527136542346,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.34782608695652173
+     },
+     "Q2[T0]": {
+      "prevalence": 0.07510288065843622,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.0146369259497451,
+      "e_g_given_pos": 0.19489167155003068,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.17391304347826086
+     },
+     "Q2[T1]": {
+      "prevalence": 0.07510288065843622,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.0146369259497451,
+      "e_g_given_pos": 0.19489167155003068,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.17391304347826086
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.011569028088139179,
+      "I_U_given_H3": 0.017704823811351043,
+      "offset_mass": {
+       "0": 0.25,
+       "2": 0.24999999999999997,
+       "4": 0.24999999999999997,
+       "6": 0.25
+      }
+     },
+     "two_path_windows_checked": 42
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.08452966416250889,
+      "e_g_given_pos": 0.5627591340134153,
+      "max_g": 0.618420649520536,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.517677906577896,
+       "99": 0.618420649520536
+      },
+      "r4_child_fraction_secondary": 0.32
+     },
+     "Q3thr": {
+      "prevalence": 0.15020576131687244,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.013199074313400495,
+      "e_g_given_pos": 0.0878732892645567,
+      "max_g": 0.08792584046219343,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.08780840462257666,
+       "99": 0.08792584046219343
+      },
+      "r4_child_fraction_secondary": 0.32
+     },
+     "Q2[T0]": {
+      "prevalence": 0.07510288065843622,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.006599537156700247,
+      "e_g_given_pos": 0.0878732892645567,
+      "max_g": 0.08792584046219343,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.08792584046219343
+      },
+      "r4_child_fraction_secondary": 0.16
+     },
+     "Q2[T1]": {
+      "prevalence": 0.07510288065843622,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.006599537156700247,
+      "e_g_given_pos": 0.0878732892645567,
+      "max_g": 0.08792584046219343,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.08792584046219343
+      },
+      "r4_child_fraction_secondary": 0.16
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.07772672834228786,
+      "I_U_given_H3": 0.006802935820221028,
+      "offset_mass": {
+       "0": 0.25,
+       "2": 0.24999999999999997,
+       "4": 0.25,
+       "6": 0.25
+      }
+     },
+     "two_path_windows_checked": 44
+    }
+   },
+   "delta_interaction_Q3": 0.055255812263018685
+  },
+  {
+   "T_ep": 8,
+   "L": 4,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.5,
+       "2": 0.25,
+       "4": 0.24999999999999992
+      }
+     },
+     "two_path_windows_checked": 106
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0438957475994513,
+      "n_informative_histories": 8,
+      "n_histories": 59,
+      "delta": 0.0438957475994513,
+      "e_g_given_pos": 1.0,
+      "max_g": 1.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 1.0
+      },
+      "r4_child_fraction_secondary": 0.20253164556962025
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0438957475994513,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.5,
+       "2": 0.24999999999999997,
+       "4": 0.24999999999999992
+      }
+     },
+     "two_path_windows_checked": 138
+    }
+   },
+   "delta_interaction_Q3": 0.0438957475994513
+  },
+  {
+   "T_ep": 8,
+   "L": 6,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.7500000000000001,
+       "2": 0.24999999999999992
+      }
+     },
+     "two_path_windows_checked": 124
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.7500000000000002,
+       "2": 0.24999999999999997
+      }
+     },
+     "two_path_windows_checked": 176
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 8,
+   "L": 8,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 62,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 1.0000000000000007
+      }
+     },
+     "two_path_windows_checked": 124
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 88,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 1.0000000000000007
+      }
+     },
+     "two_path_windows_checked": 176
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 10,
+   "L": 2,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0356840513165685,
+      "e_g_given_pos": 0.21526577849209816,
+      "max_g": 0.23250287334195785,
+      "g_quantiles": {
+       "50": 0.0,
+       "90": 0.20176998095063425,
+       "99": 0.23250287334195785
+      },
+      "r4_child_fraction_secondary": 0.34782608695652173
+     },
+     "Q3thr": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.0356840513165685,
+      "e_g_given_pos": 0.21526577849209816,
+      "max_g": 0.23250287334195785,
+      "g_quantiles": {
+       "50": 0.0,
+       "90": 0.20176998095063425,
+       "99": 0.23250287334195785
+      },
+      "r4_child_fraction_secondary": 0.34782608695652173
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0828837067520195,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.01784202565828425,
+      "e_g_given_pos": 0.21526577849209816,
+      "max_g": 0.23250287334195785,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.23250287334195785
+      },
+      "r4_child_fraction_secondary": 0.17391304347826086
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0828837067520195,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.01784202565828425,
+      "e_g_given_pos": 0.21526577849209816,
+      "max_g": 0.23250287334195785,
+      "g_quantiles": {
+       "50": 0.0,
+       "90": -0.0,
+       "99": 0.23250287334195785
+      },
+      "r4_child_fraction_secondary": 0.17391304347826086
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.016369455892987043,
+      "I_U_given_H3": 0.021301845176319084,
+      "offset_mass": {
+       "0": 0.2,
+       "2": 0.2,
+       "4": 0.2,
+       "6": 0.19999999999999996,
+       "8": 0.19999999999999998
+      }
+     },
+     "two_path_windows_checked": 42
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.07600843521559543,
+      "e_g_given_pos": 0.4585245894166253,
+      "max_g": 0.515387831913414,
+      "g_quantiles": {
+       "50": 0.0,
+       "90": 0.4140034670945494,
+       "99": 0.515387831913414
+      },
+      "r4_child_fraction_secondary": 0.32
+     },
+     "Q3thr": {
+      "prevalence": 0.165767413504039,
+      "n_informative_histories": 4,
+      "n_histories": 19,
+      "delta": 0.011140274874184057,
+      "e_g_given_pos": 0.06720425105693417,
+      "max_g": 0.06982669288493826,
+      "g_quantiles": {
+       "50": 0.0,
+       "90": 0.06515100807815588,
+       "99": 0.06982669288493826
+      },
+      "r4_child_fraction_secondary": 0.32
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0828837067520195,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.0055701374370920285,
+      "e_g_given_pos": 0.06720425105693417,
+      "max_g": 0.06982669288493826,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.06982669288493826
+      },
+      "r4_child_fraction_secondary": 0.16
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0828837067520195,
+      "n_informative_histories": 2,
+      "n_histories": 19,
+      "delta": 0.0055701374370920285,
+      "e_g_given_pos": 0.06720425105693417,
+      "max_g": 0.06982669288493826,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.06982669288493826
+      },
+      "r4_child_fraction_secondary": 0.16
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 19,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.07119392894199396,
+      "I_U_given_H3": 0.005540005931767821,
+      "offset_mass": {
+       "0": 0.2,
+       "2": 0.2,
+       "4": 0.2,
+       "6": 0.2,
+       "8": 0.19999999999999998
+      }
+     },
+     "two_path_windows_checked": 44
+    }
+   },
+   "delta_interaction_Q3": 0.04032438389902693
+  },
+  {
+   "T_ep": 10,
+   "L": 4,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 53,
+      "delta": 0.023021578962568588,
+      "e_g_given_pos": 0.16227393594049475,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.12934215808234473,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.26229508196721313
+     },
+     "Q3thr": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 53,
+      "delta": 0.023021578962568588,
+      "e_g_given_pos": 0.16227393594049475,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.12934215808234473,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.26229508196721313
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0709343087943911,
+      "n_informative_histories": 4,
+      "n_histories": 53,
+      "delta": 0.011510789481284294,
+      "e_g_given_pos": 0.16227393594049475,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.13114754098360656
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0709343087943911,
+      "n_informative_histories": 4,
+      "n_histories": 53,
+      "delta": 0.011510789481284294,
+      "e_g_given_pos": 0.16227393594049475,
+      "max_g": 0.20454253300245384,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.20454253300245384
+      },
+      "r4_child_fraction_secondary": 0.13114754098360656
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 53,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.008577639520580632,
+      "I_U_given_H3": 0.01444393944198796,
+      "offset_mass": {
+       "0": 0.39999999999999997,
+       "2": 0.2,
+       "4": 0.20000000000000004,
+       "6": 0.19999999999999996
+      }
+     },
+     "two_path_windows_checked": 114
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 59,
+      "delta": 0.062040570394452765,
+      "e_g_given_pos": 0.4373100369123384,
+      "max_g": 0.618420649520536,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.3209032520296047,
+       "99": 0.618420649520536
+      },
+      "r4_child_fraction_secondary": 0.20253164556962025
+     },
+     "Q3thr": {
+      "prevalence": 0.1418686175887822,
+      "n_informative_histories": 8,
+      "n_histories": 59,
+      "delta": 0.011316595390642363,
+      "e_g_given_pos": 0.07976813747099758,
+      "max_g": 0.08792584046219343,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.06999854756639601,
+       "99": 0.08792584046219343
+      },
+      "r4_child_fraction_secondary": 0.20253164556962025
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0709343087943911,
+      "n_informative_histories": 4,
+      "n_histories": 59,
+      "delta": 0.005658297695321181,
+      "e_g_given_pos": 0.07976813747099758,
+      "max_g": 0.08792584046219343,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.08792584046219343
+      },
+      "r4_child_fraction_secondary": 0.10126582278481013
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0709343087943911,
+      "n_informative_histories": 4,
+      "n_histories": 59,
+      "delta": 0.005658297695321181,
+      "e_g_given_pos": 0.07976813747099758,
+      "max_g": 0.08792584046219343,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 0.08792584046219343
+      },
+      "r4_child_fraction_secondary": 0.10126582278481013
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 59,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0556674644373784,
+      "I_U_given_H3": 0.006373105957074349,
+      "offset_mass": {
+       "0": 0.39999999999999997,
+       "2": 0.19999999999999996,
+       "4": 0.2,
+       "6": 0.19999999999999998
+      }
+     },
+     "two_path_windows_checked": 138
+    }
+   },
+   "delta_interaction_Q3": 0.03901899143188418
+  },
+  {
+   "T_ep": 10,
+   "L": 6,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": 0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 117,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.6,
+       "2": 0.20000000000000004,
+       "4": 0.19999999999999987
+      }
+     },
+     "two_path_windows_checked": 234
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.023411065386374028,
+      "n_informative_histories": 12,
+      "n_histories": 143,
+      "delta": 0.023411065386374028,
+      "e_g_given_pos": 1.0,
+      "max_g": 1.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": 1.0
+      },
+      "r4_child_fraction_secondary": 0.12972972972972974
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 143,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 143,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 143,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 143,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 143,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 143,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.023411065386374028,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.6000000000000001,
+       "2": 0.19999999999999996,
+       "4": 0.19999999999999996
+      }
+     },
+     "two_path_windows_checked": 328
+    }
+   },
+   "delta_interaction_Q3": 0.023411065386374028
+  },
+  {
+   "T_ep": 10,
+   "L": 8,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.8000000000000006,
+       "2": 0.1999999999999999
+      }
+     },
+     "two_path_windows_checked": 260
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 0.8000000000000005,
+       "2": 0.1999999999999998
+      }
+     },
+     "two_path_windows_checked": 396
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  },
+  {
+   "T_ep": 10,
+   "L": 10,
+   "disciplines": {
+    "fifo": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 130,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 1.0000000000000018
+      }
+     },
+     "two_path_windows_checked": 260
+    },
+    "stochastic": {
+     "Q3": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q3thr": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q2[T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T0,T1]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5[T1,T0]": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "Q5joint": {
+      "prevalence": 0.0,
+      "n_informative_histories": 0,
+      "n_histories": 198,
+      "delta": 0.0,
+      "e_g_given_pos": 0.0,
+      "max_g": 0.0,
+      "g_quantiles": {
+       "50": -0.0,
+       "90": -0.0,
+       "99": -0.0
+      },
+      "r4_child_fraction_secondary": 0.0
+     },
+     "anchored_Q3": {
+      "anchored_delta": 0.0,
+      "I_U_given_H3": 0.0,
+      "offset_mass": {
+       "0": 1.0000000000000016
+      }
+     },
+     "two_path_windows_checked": 396
+    }
+   },
+   "delta_interaction_Q3": 0.0
+  }
+ ]
+}

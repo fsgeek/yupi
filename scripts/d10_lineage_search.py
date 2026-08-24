@@ -19,7 +19,7 @@ from yupi.enumerator import paths
 from yupi.interfaces import project
 from yupi.kernel import enabled
 from yupi.programs import c0b_programs
-from yupi.queries import q3_inflight, q3_inflight_ids
+from yupi.queries import all_queries, q3_inflight, q3_inflight_ids
 from yupi.state import initial_state
 from yupi.window import WindowLaw
 from yupi.window_enumerator import posterior_by_window_paths
@@ -100,11 +100,16 @@ def classes_for(cfg, progs, law):
             assert tuple(project(r, "r3") for r in w4) == w3, "gate 3"
             k3, k4 = (u == 0, w3), (u == 0, w4)
             node = out.setdefault(k3, {}).setdefault(
-                k4, {"mass": Fraction(0), "targets": {n: {} for n in TARGETS}})
+                k4, {"mass": Fraction(0), "targets": {n: {} for n in TARGETS},
+                     "by_u": {}})
             node["mass"] += prob
+            bu = node["by_u"].setdefault(u, {"mass": Fraction(0),
+                                             "targets": {n: {} for n in TARGETS}})
+            bu["mass"] += prob
             for name, q in TARGETS.items():
                 v = q(final)
                 node["targets"][name][v] = node["targets"][name].get(v, Fraction(0)) + prob
+                bu["targets"][name][v] = bu["targets"][name].get(v, Fraction(0)) + prob
     return out
 
 
@@ -133,6 +138,15 @@ def analyze(classes, total_mass):
                              n_children=len(children)))
         inf = [r for r in rows if r["informative"]]
         pm = sum((r["mass"] for r in inf), Fraction(0))
+        # mass-weighted quantiles of g over ALL coarse histories (prereg §3)
+        srt = sorted(rows, key=lambda r: r["g"]); acc = Fraction(0); qs = {}
+        for r in srt:
+            acc += r["mass"]
+            for q in (50, 90, 99):
+                if q not in qs and acc >= total_mass * Fraction(q, 100):
+                    qs[q] = r["g"]
+        n_children = sum(r["n_children"] for r in rows)
+        n_inf_children = sum(r["n_children"] for r in inf)
         res[name] = dict(
             prevalence=float(pm / total_mass),
             n_informative_histories=len(inf),
@@ -140,8 +154,50 @@ def analyze(classes, total_mass):
             delta=sum(float(r["mass"] / total_mass) * r["g"] for r in rows),
             e_g_given_pos=(sum(float(r["mass"] / pm) * r["g"] for r in inf) if inf else 0.0),
             max_g=max((r["g"] for r in inf), default=0.0),
+            g_quantiles={str(q): qs.get(q, 0.0) for q in (50, 90, 99)},
+            r4_child_fraction_secondary=(n_inf_children / n_children if n_children else 0.0),
         )
     return res
+
+
+def anchored_decomposition(classes, total_mass, name="Q3"):
+    """Per prereg-correction round (Codex, 2026-08-24): chain-rule split of
+    the unanchored gain. Per coarse history h: I(Z;Λ|H₃=h) [unanchored],
+    I(Z;Λ|H₃=h,U) [anchored], I(U;Λ|H₃=h); law means of each; and
+    per-generating-endpoint mass contributions."""
+    anch = 0.0; iu = 0.0; by_u_mass = {}
+    for k3, children in classes.items():
+        m3 = sum(c["mass"] for c in children.values())
+        w3 = float(m3 / total_mass)
+        # I(U;Λ|H₃=h): H(U|h) - Σ_λ P(λ|h) H(U|h,λ)
+        u_par = {}
+        for c in children.values():
+            for u, bu in c["by_u"].items():
+                u_par[u] = u_par.get(u, Fraction(0)) + bu["mass"]
+        h_u = entropy(u_par)
+        h_u_given = sum(float(c["mass"] / m3) *
+                        entropy({u: bu["mass"] for u, bu in c["by_u"].items()})
+                        for c in children.values())
+        iu += w3 * (h_u - h_u_given)
+        # anchored: within each (h, u)
+        for u in u_par:
+            mu = u_par[u]
+            par = {}
+            kids = []
+            for c in children.values():
+                bu = c["by_u"].get(u)
+                if bu is None:
+                    continue
+                kids.append(bu)
+                for v, m in bu["targets"][name].items():
+                    par[v] = par.get(v, Fraction(0)) + m
+            ga = entropy(par) - sum(float(b["mass"] / mu) * entropy(b["targets"][name])
+                                    for b in kids)
+            anch += float(m3 / total_mass) * float(mu / m3) * max(ga, 0.0)
+        for u, mu in u_par.items():
+            by_u_mass[u] = by_u_mass.get(u, 0.0) + float(mu / total_mass)
+    return dict(anchored_delta=anch, I_U_given_H3=iu,
+                offset_mass={str(u): m for u, m in sorted(by_u_mass.items())})
 
 
 def gate2_two_path(cfg, progs, law, classes, limit=None):
@@ -170,14 +226,19 @@ def main():
             law = WindowLaw(T_ep=T_ep, L=L, B=B)
             row = dict(T_ep=T_ep, L=L, disciplines={})
             for cfg in (cfg_f, cfg_s):
+                global TARGETS
+                TARGETS = {"Q3": lambda s: q3_inflight_ids(s, 0),
+                           "Q3thr": lambda s: q3_inflight(s, 0)}
+                TARGETS.update({n: q for n, q in all_queries(cfg)
+                                if n not in ("Q3[D0]", "Q3thr[D0]")})
                 cls = classes_for(cfg, progs, law)
                 total = sum(c["mass"] for ch in cls.values() for c in ch.values())
                 r = analyze(cls, total)
+                r["anchored_Q3"] = anchored_decomposition(cls, total, "Q3")
                 if L == T_ep:                                      # gate 1
                     for name in TARGETS:
                         assert r[name]["n_informative_histories"] == 0, (cfg.discipline, name)
-                gates = gate2_two_path(cfg, progs, law, cls,
-                                       limit=200 if T_ep > T0 else None)
+                gates = gate2_two_path(cfg, progs, law, cls)
                 r["two_path_windows_checked"] = gates
                 row["disciplines"][cfg.discipline] = r
             row["delta_interaction_Q3"] = (

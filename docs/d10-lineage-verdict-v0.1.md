@@ -1,5 +1,13 @@
 # D10 truncated-window lineage verdict — v0.1
 
+> **⚠ CORRECTED — read v0.1.1 at the end of this file.** As committed: the
+> gate-2 cap contradicted "all six gates passed" (now uncapped, all 396
+> windows verified); several preregistered outputs were missing (now in the
+> v2 artifact); 54–63 % of the FIFO gain is offset-mixture amplification,
+> separated in v0.1.1; the "C1 sits in the dead region" sentence is false
+> (C1's cells are informative and collapsed); "order of magnitude over δ"
+> reads 8.45×δ global / 100×δ per-history.
+
 > **Status (2026-08-23 10:47 PDT): measured under preregistration
 > `d10-lineage-search-prereg-v0.1.md` (stamp 080f937, before any
 > posterior); truthsayer pass owed.** Producer:
@@ -65,3 +73,62 @@ question — exploratory, outside this preregistration.
 None in analysis rules. One cap: gate-2 two-path checks limited to 200
 windows per (law, discipline) at padded horizons (full coverage at T\*=6);
 recorded here per §7.
+
+---
+
+## v0.1.1 (2026-08-24 08:37 PDT) — Codex correction round, all findings verified before adoption
+
+**1. "All six gates passed" was not true of the committed producer.** The
+script capped gate-2 two-path checks at 200 windows at padded horizons
+while the prereg requires every distinct window. Cap removed; the uncapped
+run verifies **all** windows (per-cell counts now in the v2 artifact, e.g.
+328 at (10, 6)); every delta reproduces unchanged. The v0.1 sentence
+should have said "gates passed with a recorded cap"; the deviation section
+said so, the headline did not. Producer and artifact:
+`scripts/d10_lineage_search.py` (uncapped) →
+`d10-lineage-search-v2-2026-08-24.json`.
+
+**2. Missing preregistered outputs emitted.** The v2 artifact adds
+per-generating-endpoint mass, g-quantiles {50, 90, 99}, the secondary
+r4-child fraction, and the remaining statutory queries per cell
+(never substituted for Q3, per prereg §2).
+
+**3. Offset-mixture amplification separated from truncation.** Anchored
+gain I(Z; Λ | H₃, U) vs unanchored, FIFO informative cells (this note's
+implementation agrees with Codex's independent computation to all
+decimals):
+
+| cell | unanchored Δ | anchored Δ | I(U; Λ | H₃) |
+|---|---|---|---|
+| (8,2) | 0.02927 | 0.01157 | 0.01770 |
+| (10,2) | 0.03568 | 0.01637 | 0.02130 |
+| (10,4) | 0.02302 | 0.00858 | 0.01444 |
+
+54–63 % of the reported FIFO gain is offset-mixture amplification —
+lineage disambiguating the unanchored endpoint mixture, not the truncated
+prefix alone. Stochastic gains are mostly anchored (e.g. 0.0777 of 0.0845
+at (8,2)). **The frontiers survive anchoring unchanged** (stoch L ≤ T−4,
+FIFO L ≤ T−6), so the truncated-history crossover is real; the unanchored
+clock mixture amplifies it, most strongly under FIFO. Chain-rule caution:
+unanchored = anchored + I(U;Λ|H₃) holds at (8,2) by coincidence of
+structure, not in general — the exact identity runs through
+I(ZU; Λ | H₃) = I(U; Λ | H₃) + I(Z; Λ | H₃, U); the residual
+I(U; Λ | H₃, Z) is not separately emitted. "Padding grew prevalence" in
+v0.1 bundled these; endpoint-mixture growth is the mechanism now on
+record.
+
+**4. The C1 sentence was false and is withdrawn.** C1's r3→r4 cells are
+**informative and collapsed** (positive exact gains up to ~0.0037 bits at
+T_ep = 14, 0.0066 at 16 — nonempty classes below δ), and the C0b frontier
+is world-specific and cannot classify C1 geometry. Corrected conclusion:
+*C1 already contains nonempty lineage-information classes; their law-level
+gain remains below δ. Open: why C1 suppresses the larger C0b effect, and
+whether C1 shows the same discipline-dependent frontier.*
+
+**5. Magnitudes restated:** global Δ reaches **8.45×δ** (0.08453 bits);
+individual informative histories reach **1 bit ≈ 100×δ**. "An order of
+magnitude over δ" conflated the two.
+
+**6. Executable regressions added:** `tests/test_d10_witnesses.py` (6)
+pins witness-3 positive, FIFO T\*=6 null, FIFO (8,2) positive,
+full-context zeros, and the exact mechanism split. Suite 151.
