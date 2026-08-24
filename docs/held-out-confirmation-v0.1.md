@@ -204,3 +204,32 @@ confirmation's timestamp. Truthsayer pass owed.
    fresh cell; r1 strictly later at every cell *except* (F3′, ε = ½, b).
 4. **"≤ 0.0037 bits" is numerically false** (max is 0.0037277…). Read
    "< 0.0038 bits", or simply "< δ".
+
+---
+
+## 8. F1 (16, L even, 2) — appended 2026-08-23 19:06 PDT after E1 enactment
+
+14 ceiling raws (`…-16-L-2[-W4]-heldout-2026-08-23.json`) + sync sweep
+(`c1-sync-sweep-F1-heldout-2026-08-23.json`). Gate: first corrected-kernel
+enumeration of ticks 15–16 (multi-waiter regime), validators live, no
+invariant violation. Measure-(b) L\* at δ_sync = 0.01:
+
+| ε | r1 | r2 | r3 | r4 | baseline (14,·,2) was |
+|---|---|---|---|---|---|
+| ½ | 12 | 10 | 10 | 10 | 12 / 10 / 10 / 10 — **identical** |
+| 1 | 12 | **12** | **12** | **12** | 12 / 10 / 10 / 10 — pack rose +2 |
+
+- **At ε = ½ the sync horizons are horizon-stable**: L\* unchanged from
+  T_ep = 14 — the strongest evidence yet that they are world properties.
+- **At ε = 1 the pack (r2–r4) rose to meet r1 at 12**: measure-(b) rung
+  separation *vanishes* at (16, ε = 1). Collapse horizon r2→r3 rose 8 → 10.
+  The r1 advantage is horizon-dependent at ε = 1 and stable at ε = ½ —
+  exploratory, mechanism unassigned (no prediction covered T_ep = 16).
+- **Max r3→r4 gap = 0.0066 bits at (16, 2, 2) ε = 1** — still < δ but
+  ~1.8× the (14,·,2) maximum (0.0037). Read with the D10 frontiers
+  (`d10-lineage-verdict-v0.1.md`): lineage grip grows with horizon at
+  short L; C1's trajectory toward an informative cell now has a measured
+  trend, not just a C0b analogy.
+
+δ and TV sweeps at the 16-laws not yet run (TV at T_ep = 16 is a
+ceilings-scale computation); queued, exploratory when run.
