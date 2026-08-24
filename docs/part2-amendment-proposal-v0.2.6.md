@@ -146,3 +146,30 @@ though names never affect dynamics.
 
 **Robustness addendum to Clause 1:** `check_invariants` gains the range
 check 0 ≤ κ < n_T (no semantic change; reviewer suggestion).
+
+
+---
+
+## Decision record — PI enactment (recorded 2026-08-24 15:09 PDT)
+
+Context: Codex's final round (via Tony, 2026-08-24) recommended enactment of
+Clause 1 plus Clause 2′, explicitly excluding the superseded Clause 2, with
+three items; all three were closed at commit `735edc7` (status line above;
+`tests/test_naming_counterexample.py`; C0b B = 3 census gates). The instance
+then asked for the enactment as a one-word decision, naming it as "writing
+Clause 1 + Clause 2′ into Part II as v0.2.6."
+
+Tony, verbatim, in-session:
+
+> "Approved.  Let's keep this project moving forward."
+
+**Interpretation (the instance's, on record, attackable):** this enacts
+Clause 1 and Clause 2′ as Part II v0.2.6 — κ joins S_t with the I7 range
+check; the committed characterization record is named the canonical-naming
+structural track under σ₀, with the bridge requirement binding before any
+corpus-facing ceiling claim. Clause 2 (original) is not enacted. The §F-style
+formula was not recited; the informal approval is quoted as given, per house
+practice (as at v0.2.5). Enacted in the same commit as this record; the
+commit's stamp versions Part II to v0.2.6. Measurements before that stamp
+keep their existing labels (all are canonical-track); the D8 attribution
+prereg that follows targets the v0.2.6 statutory object.
