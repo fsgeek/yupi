@@ -6,8 +6,18 @@
 > where structural threads have 1.000/1.483) even though dynamically inert.
 > Clause 1 stands as written (reviewer: accept).**
 
-> **Status (2026-08-24 13:59 PDT): PROPOSED — awaiting cross-family review, then PI
-> enactment.** Process per the E-via-D decision (2026-08-24, this
+> **Status (2026-08-24 15:06 PDT): REVIEW COMPLETE — awaiting PI enactment.**
+> Codex's final round (via Tony, 2026-08-24) recommends enactment. **Enacting
+> instruction: Part II v0.2.6 = Clause 1 plus Clause 2′ only; the original
+> Clause 2 is superseded and must not enter Part II.** The two executable
+> debts the reviewer named before the attribution measurement are paid in
+> the same commit as this status line: `tests/test_naming_counterexample.py`
+> (the 1.208-bit result pinned as exact Q2 distributions and the inequality,
+> at both statutory ε) and the complete C0b B = 3 census gates in
+> `tests/test_shuffled_window.py` (reviewer's independent (6,3,3) counts
+> 90/90 and 102/102 reproduced; (6,6,3) 420/492 added).
+> *(Original status line, 13:59 PDT: "PROPOSED — awaiting cross-family review,
+> then PI enactment.")* Process per the E-via-D decision (2026-08-24, this
 > conversation's walk item 3): one small consolidated amendment, reviewed
 > before enactment like every prior version bump, closing the two
 > state-definition open items adjudicated 2026-08-20

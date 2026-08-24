@@ -133,3 +133,27 @@ def test_kappa_range_invariant():
     assert check_invariants(s0, cfg) == []
     bad = replace(s0, rr_cursor=cfg.n_threads)
     assert "KAPPA_RANGE" in check_invariants(bad, cfg)
+
+
+@pytest.mark.parametrize("law,disc,rung,expected", [
+    (WindowLaw(T_ep=6, L=3, B=3), "stochastic", "r2", 90),
+    (WindowLaw(T_ep=6, L=3, B=3), "fifo", "r4", 102),
+    (WindowLaw(T_ep=6, L=6, B=3), "stochastic", "r2", 420),
+    (WindowLaw(T_ep=6, L=6, B=3), "fifo", "r4", 492),
+])
+def test_two_path_gate_complete_census_c0b_B3(law, disc, rung, expected):
+    """B = 3 statutory gate (Codex, 2026-08-24, item 3): the decisive C1
+    attribution measurement uses B = 3 while the B = 2 census above was the
+    only committed window-composition gate. Complete census of every
+    genuinely possible shuffled observation, both paths bit-for-bit. The
+    (6,3,3) counts (90, 102) were obtained independently by the reviewer
+    before this test asserted them; the (6,6,3) whole-episode counts were
+    added by this instance for two-bucket coverage at B = 3."""
+    cfg, progs = WorldConfig.c0b(discipline=disc), c0b_programs()
+    n = 0
+    for buckets, reset in _visible_windows(cfg, progs, law, rung):
+        f = shuffled_window_filter(cfg, progs, law, buckets, rung, reset)
+        e = shuffled_window_by_paths(cfg, progs, law, buckets, rung, reset)
+        assert f == e
+        n += 1
+    assert n == expected
