@@ -26,6 +26,17 @@ def test_benchmark_cell_records_cost_only_and_prices_the_known_census():
     assert out["admitted"] and out["refused_by"] == []
     assert out["projected_gate2_wall_s"] > 0 and out["max_frontier_shuf"] >= out["max_support_shuf"] > 0
     assert out["sample_k"] == 4 and out["t_step_shuf_s"] > 0
+    assert out["stage"] == "B" and out["wall_stageA_estimate_s"] > 0
+
+
+def test_stage_A_refuses_on_its_estimate_without_building_the_visible_table(monkeypatch):
+    import yupi.d8_benchmark as b
+    monkeypatch.setattr(b, "WALL_CAP_S", 1e-9)
+    monkeypatch.setattr(b, "visible_table", lambda *a: (_ for _ in ()).throw(AssertionError("built")))
+    cell = dict(world="c0b", discipline="stochastic", eps="1", law=WindowLaw(6, 3, 3), rung="r2")
+    out = b.benchmark_cell(cell, {}, sample_k=2)
+    assert out["stage"] == "A" and out["n_vis"] is None and not out["admitted"]
+    assert out["refused_by"] == ["WALL_CAP"] and out["n_lat"] > 0 and out["wall_stageA_estimate_s"] > 0
 
 
 def test_verdict_names_every_breached_line():

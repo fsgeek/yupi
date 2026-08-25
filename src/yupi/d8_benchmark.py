@@ -85,6 +85,46 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
     tracemalloc.start()
     t0 = time.perf_counter()
     lat = latent_table(cfg, progs, law, rung, path_cache)
+    # Stage A (cheap): the shuffled census is at least as large as the ordered
+    # one (n_vis >= n_lat), so n_lat · (t_ord + t_shuf), timed on samples,
+    # estimates a floor on the gate-2 wall up to sampling noise in the filter
+    # timings; if it already exceeds the cap, refuse before building the
+    # visible table. Visible samples here are the identity permutation of
+    # sampled latent windows — valid observations of the channel. This is a
+    # cost decision under the same rule; it reads nothing but cost.
+    st_a_s, st_a_o = {}, {}
+    ta_s, ta_o = [], []
+    for (reset, win) in _sample(lat.keys(), sample_k):
+        t = time.perf_counter()
+        filter_window_with_evidence(cfg, progs, law, list(win), rung, reset, st_a_o)
+        ta_o.append(time.perf_counter() - t)
+        buckets = [list(win[k * law.B:(k + 1) * law.B]) for k in range(len(win) // law.B)]
+        t = time.perf_counter()
+        shuffled_window_filter_with_evidence(cfg, progs, law, buckets, rung, reset, st_a_s)
+        ta_s.append(time.perf_counter() - t)
+    med = lambda xs: sorted(xs)[len(xs) // 2] if xs else 0.0
+    wall_lb = len(lat) * (med(ta_o) + med(ta_s))
+    if wall_lb > WALL_CAP_S:
+        _, peak = tracemalloc.get_traced_memory()
+        tracemalloc.stop()
+        n_paths = {T: len(path_cache[T]) for T in law.endpoints()}
+        n_buckets = law.L // law.B
+        out = dict(
+            world=cell["world"], discipline=cell["discipline"], eps=cell["eps"],
+            T_ep=law.T_ep, L=law.L, B=law.B, rung=rung, stage="A",
+            n_paths_max=max(n_paths.values()), n_paths=n_paths,
+            n_lat=len(lat), n_vis=None, entries_lat=sum(len(j) for j in lat.values()), entries_vis=None,
+            t_build_s=time.perf_counter() - t0, peak_build_bytes=peak,
+            max_support_shuf=st_a_s.get("max_support", 0), max_frontier_shuf=st_a_s.get("max_frontier", 0),
+            max_support_ord=st_a_o.get("max_support", 0),
+            t_shuf_med_s=med(ta_s), t_ord_med_s=med(ta_o),
+            t_step_shuf_s=(med(ta_s) / n_buckets if n_buckets else 0.0),
+            t_step_ord_s=(med(ta_o) / law.L if law.L else 0.0),
+            sample_k=min(sample_k, len(lat)), wall_stageA_estimate_s=wall_lb,
+            projected_gate2_wall_s=wall_lb)
+        out.update(verdict(out))
+        assert not any(bad in k for k in out for bad in COST_KEYS_FORBIDDEN)
+        return out
     vis, src = visible_table(lat, law.B)
     t_build = time.perf_counter() - t0
     _, peak = tracemalloc.get_traced_memory()
@@ -108,7 +148,7 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
     n_buckets = law.L // law.B
     out = dict(
         world=cell["world"], discipline=cell["discipline"], eps=cell["eps"],
-        T_ep=law.T_ep, L=law.L, B=law.B, rung=rung,
+        T_ep=law.T_ep, L=law.L, B=law.B, rung=rung, stage="B",
         n_paths_max=max(n_paths.values()), n_paths=n_paths,
         n_lat=len(lat), n_vis=len(vis), entries_lat=entries_lat, entries_vis=entries_vis,
         t_build_s=t_build, peak_build_bytes=peak,
@@ -119,6 +159,7 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
         t_step_ord_s=(med(to) / law.L if law.L else 0.0),
         sample_k=min(sample_k, len(vis)),
     )
+    out["wall_stageA_estimate_s"] = wall_lb
     out["projected_gate2_wall_s"] = len(vis) * med(ts) + len(lat) * med(to)
     out.update(verdict(out))
     assert not any(bad in k for k in out for bad in COST_KEYS_FORBIDDEN)
