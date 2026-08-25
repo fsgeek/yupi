@@ -65,6 +65,17 @@ def shuffled_window_filter(cfg: WorldConfig, programs, law: WindowLaw,
                            buckets: List[List[Record]], rung: str,
                            reset_observed: bool) -> WindowPosterior:
     """Exact posterior over (U, S_T) for a shuffled-mode window."""
+    return shuffled_window_filter_with_evidence(
+        cfg, programs, law, buckets, rung, reset_observed)[0]
+
+
+def shuffled_window_filter_with_evidence(cfg: WorldConfig, programs, law: WindowLaw,
+                                         buckets: List[List[Record]], rung: str,
+                                         reset_observed: bool) -> Tuple[WindowPosterior, Fraction]:
+    """The posterior AND the law mass of the shuffled observation:
+    P(v) = Σ_u P(T = u + n) · P(v | U = u), uniform endpoint prior
+    (D8 attribution prereg §5 gate 2: mass on both sides)."""
+    from yupi.window import endpoint_prior
     for b in buckets:
         if len(b) != law.B:
             raise ValueError(f"bucket of size {len(b)} under B={law.B}")
@@ -90,8 +101,9 @@ def shuffled_window_filter(cfg: WorldConfig, programs, law: WindowLaw,
     grand = sum((w for w, _ in components.values()), Fraction(0))
     if grand == 0:
         raise ZeroProbabilityWindow("window has probability zero at every endpoint")
-    return WindowPosterior(components={
+    post = WindowPosterior(components={
         u: (w / grand, belief) for u, (w, belief) in components.items()})
+    return post, grand * endpoint_prior(law)
 
 
 def shuffled_window_by_paths(cfg: WorldConfig, programs, law: WindowLaw,

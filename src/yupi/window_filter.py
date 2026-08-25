@@ -65,15 +65,16 @@ def _step_unnorm(
     return out, total
 
 
-def filter_window(
+def _components_unnorm(
     cfg: WorldConfig,
     programs,
     law: WindowLaw,
     obs_seq: List[Record],
     rung: str,
     reset_observed: bool,
-) -> WindowPosterior:
-    """Exact posterior over (U, S_T) for an observed window, offset-unanchored.
+) -> Dict[int, Tuple[Fraction, Belief]]:
+    """Per-offset (unnormalized evidence weight P(window | U = u), normalized
+    belief) for every surviving compatible component — offset-unanchored.
 
     Length and RESET conditioning first (the compatible-endpoint rule),
     then per-step mixture filtering: each component's belief updates by
@@ -108,11 +109,41 @@ def filter_window(
         if not dead:
             components[u] = (weight, belief)
 
+    return components
+
+
+def filter_window(
+    cfg: WorldConfig,
+    programs,
+    law: WindowLaw,
+    obs_seq: List[Record],
+    rung: str,
+    reset_observed: bool,
+) -> WindowPosterior:
+    """Exact posterior over (U, S_T) for an observed window, offset-unanchored
+    (mixture semantics documented on `_components_unnorm`)."""
+    return filter_window_with_evidence(cfg, programs, law, obs_seq, rung, reset_observed)[0]
+
+
+def filter_window_with_evidence(
+    cfg: WorldConfig,
+    programs,
+    law: WindowLaw,
+    obs_seq: List[Record],
+    rung: str,
+    reset_observed: bool,
+) -> Tuple[WindowPosterior, Fraction]:
+    """The posterior AND the law mass of the observation:
+    P(window) = Σ_u P(T = u + n) · P(window | U = u), uniform endpoint prior
+    (D8 attribution prereg §5 gate 2: mass on both sides)."""
+    from yupi.window import endpoint_prior
+    components = _components_unnorm(cfg, programs, law, obs_seq, rung, reset_observed)
     total = sum((w for w, _ in components.values()), Fraction(0))
     if total == 0:
         raise ZeroProbabilityWindow(
             "window has probability zero under every compatible offset"
         )
-    return WindowPosterior(
+    post = WindowPosterior(
         components={u: (w / total, b) for u, (w, b) in components.items()}
     )
+    return post, total * endpoint_prior(law)
