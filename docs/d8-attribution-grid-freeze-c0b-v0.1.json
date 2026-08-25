@@ -1,0 +1,12111 @@
+{
+"benchmark": "d8-attribution-benchmark-c0b-2026-08-25.jsonl",
+"prereg": "d8-attribution-prereg-v0.1.md@a39f555",
+"rule": {
+"B1_support": 20000,
+"B1_frontier": 70000,
+"B3_step_s": 1.0,
+"B4p_paths": 1500000,
+"wall_cap_s": 1200
+},
+"frozen_at": "2026-08-25 11:21 PDT",
+"admitted": [
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 6,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 7,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 8,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 9,
+"L": 9,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 10,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 11,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 13,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 1,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c0b",
+"discipline": "stochastic",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r4"
+}
+],
+"refused": []
+}

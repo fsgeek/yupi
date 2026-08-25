@@ -57,6 +57,14 @@ def docs(tmp_path):
                    stochastic=dict(Q3=dict(prevalence=0.1, delta=0.05, max_g=1.0),
                                    anchored_Q3=dict(anchored_delta=0.05, I_U_given_H3=0.0),
                                    two_path_windows_checked=4)))]))
+    _write(d, "d8-attribution-c0b-2026-08-25.json", dict(prereg="p", freeze="f", cells=[
+        dict(world="c0b", discipline="fifo", eps="1", T_ep=6, L=6, B=3, rung="r2",
+             gates=dict(all_passed=True), delta_un=0.3, delta_an=0.2, offset_term=0.1,
+             chain_semantic_an=dict(kappa=0.0, WQ=0.0, DQ=0.05, REQ=0.1, rho=0.05),
+             per_endpoint_an={"3": 0.0, "6": 0.4}, collapsed_an=False, prevalence=0.5,
+             cost=dict(t_gate2_s=1.0), wall_s=2.0, prereg="p"),
+        dict(world="c0b", discipline="fifo", eps="1", T_ep=6, L=3, B=3, rung="r2",
+             gates=dict(all_passed=False, failed="two_path_shuffled: ..."))]))
     _write(d, "held-out-selection-e-draw-2026-08-21.json", dict(seed=1))
     _write(d, "mystery-family-2026-08-24.json", dict(rows=[]))
     # filename variants seen in the record: a per-endpoint raw variant, an
@@ -73,7 +81,14 @@ def docs(tmp_path):
 def test_adapters_flatten_known_families(docs):
     cells, unknown = load_artifacts(docs)
     fam = {c["family"] for c in cells}
-    assert fam == {"c1-query-ceilings", "c1-q4-ceilings", "d10-lineage-search", "c1-support-exact"}
+    assert fam == {"c1-query-ceilings", "c1-q4-ceilings", "d10-lineage-search", "c1-support-exact",
+                   "d8-attribution"}
+    d8 = [c for c in cells if c["family"] == "d8-attribution"]
+    assert {c["quantity"] for c in d8} >= {"delta_an", "chain_semantic_an.REQ", "per_endpoint_an",
+                                           "gates.all_passed", "collapsed_an"}
+    assert [c["T"] for c in d8 if c["quantity"] == "per_endpoint_an"] == [3, 6]
+    assert any(c["quantity"] == "gates.all_passed" and c["value"] == 0 and c["L"] == 3 for c in d8)
+    assert not any(c["quantity"] == "delta_an" and c["L"] == 3 for c in d8)   # failed cell: no numbers
     assert unknown == ["mystery-family-2026-08-24.json"]
     assert any(p in "held-out-selection-e-draw-2026-08-21.json" for p in NON_MEASUREMENT_PREFIXES)
     q = [c for c in cells if c["quantity"] == "Q1[L0].mean_bits" and c["eps"] == "1"]

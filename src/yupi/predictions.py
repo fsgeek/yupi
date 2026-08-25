@@ -34,6 +34,7 @@ Cell = Dict[str, Any]
 NON_MEASUREMENT_PREFIXES = (
     "artifact-status", "held-out-selection-e-draw", "d4-pricing", "c1-budget",
     "c1-heldout-tier1-score", "c1-sweep-rerun-comparison",
+    "d8-attribution-benchmark", "d8-attribution-grid-freeze", "d8-attribution-predictions",
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);
@@ -69,6 +70,7 @@ def _family(name: str) -> str:
     stem = re.sub(r"(-\d+)+$", "", stem)          # strip law numbers
     stem = re.sub(r"-h\d+$", "", stem)            # c1-multiwaiter-census-h14
     stem = re.sub(r"-v\d+$", "", stem)            # d10-lineage-search-v2
+    stem = re.sub(r"-(c0a|c0b|c0c|c1)$", "", stem)  # d8-attribution-c0b
     return stem
 
 
@@ -204,7 +206,40 @@ ADAPTERS = {
     "c1-multiwaiter-census": _multiwaiter,
     "c1-sync-sweep": _sync_sweep,
     "d10-lineage-search": _d10,
+    "d8-attribution": lambda n, f, d: _d8(n, f, d),
 }
+
+
+_D8_META = {"world", "discipline", "eps", "T_ep", "L", "B", "rung", "gates", "cost", "wall_s",
+            "prereg", "prevalence_exact"}
+
+
+def _d8(name, family, d):
+    """d8-attribution-<world>-<date>.json: {prereg, freeze, cells: [...]}. Every
+    numeric field of a cell becomes a quantity; per_endpoint_* fan out on T;
+    gate-failed cells contribute only gates.all_passed = 0."""
+    cells = []
+    for c in d["cells"]:
+        law = dict(T_ep=c["T_ep"], L=c["L"], B=c["B"])
+        meta = dict(discipline=c["discipline"], eps=c["eps"], rung=c["rung"], world=c["world"])
+        cells.append(_base(name, family, law, quantity="gates.all_passed",
+                           value=int(bool(c["gates"].get("all_passed"))), **meta))
+        if not c["gates"].get("all_passed"):
+            continue
+        for k, v in c.items():
+            if k in _D8_META:
+                continue
+            if isinstance(v, bool):
+                v = int(v)                              # collapsed_* flags as 0/1 quantities
+            if k.startswith("per_endpoint_"):
+                for T, val in v.items():
+                    cells.append(_base(name, family, law, T=int(T), quantity=k, value=val, **meta))
+                continue
+            flat = {}
+            _flat(k, v, flat)
+            for q, val in flat.items():
+                cells.append(_base(name, family, law, quantity=q, value=val, **meta))
+    return cells
 
 
 def load_artifacts(docs_dir: str) -> Tuple[List[Cell], List[str]]:

@@ -1,0 +1,123 @@
+[
+ {
+  "id": "P1",
+  "note": "prereg §6 P1 (source test_w7_c0b_supplies_noncommuting_bucket_at_masked_lineage, C0b both disc, r1-r3, B=3, H=6 from reset): delta_an > 0 at C0b (6,6,3), r1-r3, both disciplines",
+  "select": {
+   "family": "d8-attribution",
+   "world": "c0b",
+   "T_ep": 6,
+   "L": 6,
+   "B": 3,
+   "rung": [
+    "r1",
+    "r2",
+    "r3"
+   ],
+   "quantity": "delta_an"
+  },
+  "relation": ">",
+  "value": 0
+ },
+ {
+  "id": "P1-mech",
+  "note": "prereg §6 P1 mechanism (the allocator): at C0b (6,6,3), r1-r3, at least one of the anchored semantic-chain terms REQ or rho is > 0 somewhere in the selection (existence; the REQ/rho split is explicitly not predicted)",
+  "select": {
+   "family": "d8-attribution",
+   "world": "c0b",
+   "T_ep": 6,
+   "L": 6,
+   "B": 3,
+   "rung": [
+    "r1",
+    "r2",
+    "r3"
+   ],
+   "quantity": [
+    "chain_semantic_an.REQ",
+    "chain_semantic_an.rho"
+   ]
+  },
+  "relation": ">",
+  "value": 0,
+  "quantifier": "any"
+ },
+ {
+  "id": "P2",
+  "note": "prereg §6 P2 (source test_c0b_shuffled_channel_is_null_at_r4_only, C0b r4, B<=4, H<=8 from reset): delta_an = delta_un = 0 at every C0b r4 cell with T_ep <= 8, B in {2,3}",
+  "select": {
+   "family": "d8-attribution",
+   "world": "c0b",
+   "rung": "r4",
+   "T_ep": {
+    "le": 8
+   },
+   "B": [
+    2,
+    3
+   ],
+   "quantity": [
+    "delta_an",
+    "delta_un"
+   ]
+  },
+  "relation": "==",
+  "value": 0
+ },
+ {
+  "id": "P3a",
+  "note": "prereg §6 P3 (source test_c1_B2_allocator_bucket_appears_at_H12_at_masked_lineage): delta_an = 0 at C1 eps=1, B=2, r1-r3, T_ep <= 8, L = T_ep",
+  "select": {
+   "family": "d8-attribution",
+   "world": "c1",
+   "eps": "1",
+   "B": 2,
+   "rung": [
+    "r1",
+    "r2",
+    "r3"
+   ],
+   "T_ep": {
+    "le": 8
+   },
+   "L": "T_ep",
+   "quantity": "delta_an"
+  },
+  "relation": "==",
+  "value": 0
+ },
+ {
+  "id": "P3b",
+  "note": "prereg §6 P3: delta_an > 0 at C1 eps=1, B=2, r1-r3, T_ep = 12, L = T_ep",
+  "select": {
+   "family": "d8-attribution",
+   "world": "c1",
+   "eps": "1",
+   "B": 2,
+   "rung": [
+    "r1",
+    "r2",
+    "r3"
+   ],
+   "T_ep": 12,
+   "L": "T_ep",
+   "quantity": "delta_an"
+  },
+  "relation": ">",
+  "value": 0
+ },
+ {
+  "id": "P4",
+  "note": "prereg §6 P4: recorded as having no in-grid check (source condition T_ep = 4 is below the grid) — expected NO_CHECK",
+  "select": {
+   "family": "d8-attribution",
+   "world": "c1",
+   "eps": "1/2",
+   "B": 2,
+   "rung": "r4",
+   "T_ep": 4,
+   "quantity": "delta_an"
+  },
+  "relation": ">",
+  "value": 0
+ }
+]
