@@ -72,6 +72,7 @@ def _components_unnorm(
     obs_seq: List[Record],
     rung: str,
     reset_observed: bool,
+    stats: dict = None,
 ) -> Dict[int, Tuple[Fraction, Belief]]:
     """Per-offset (unnormalized evidence weight P(window | U = u), normalized
     belief) for every surviving compatible component — offset-unanchored.
@@ -100,6 +101,8 @@ def _components_unnorm(
         belief = prior_belief
         dead = False
         for obs in obs_seq:
+            if stats is not None:
+                stats["max_support"] = max(stats.get("max_support", 0), len(belief))
             belief, lik = _step_unnorm(belief, obs, rung, cfg, programs)
             if lik == 0:
                 dead = True
@@ -132,12 +135,13 @@ def filter_window_with_evidence(
     obs_seq: List[Record],
     rung: str,
     reset_observed: bool,
+    stats: dict = None,
 ) -> Tuple[WindowPosterior, Fraction]:
     """The posterior AND the law mass of the observation:
     P(window) = Σ_u P(T = u + n) · P(window | U = u), uniform endpoint prior
     (D8 attribution prereg §5 gate 2: mass on both sides)."""
     from yupi.window import endpoint_prior
-    components = _components_unnorm(cfg, programs, law, obs_seq, rung, reset_observed)
+    components = _components_unnorm(cfg, programs, law, obs_seq, rung, reset_observed, stats)
     total = sum((w for w, _ in components.values()), Fraction(0))
     if total == 0:
         raise ZeroProbabilityWindow(

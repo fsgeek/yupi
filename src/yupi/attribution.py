@@ -41,14 +41,22 @@ SEMANTIC_ORDER = COORDS                                # prereg §3 item 1
 
 # ---------------------------------------------------------------- tables
 
-def latent_table(cfg: WorldConfig, programs, law: WindowLaw, rung: str
-                 ) -> Dict[LatentKey, Joint]:
-    """(reset, ordered projected window) -> joint law mass over (U, S_T)."""
+def latent_table(cfg: WorldConfig, programs, law: WindowLaw, rung: str,
+                 path_cache: Dict[int, list] = None) -> Dict[LatentKey, Joint]:
+    """(reset, ordered projected window) -> joint law mass over (U, S_T).
+    `path_cache` ({T: paths(cfg, programs, T)}) lets one enumeration per
+    (world, ε, T) serve every L and rung; filled on demand if given."""
     w_T = endpoint_prior(law)
     table: Dict[LatentKey, Joint] = {}
     for T in law.endpoints():
         u = law.offset(T)
-        for recs, prob, final in paths(cfg, programs, T):
+        if path_cache is not None:
+            if T not in path_cache:
+                path_cache[T] = paths(cfg, programs, T)
+            plist = path_cache[T]
+        else:
+            plist = paths(cfg, programs, T)
+        for recs, prob, final in plist:
             key = (u == 0, tuple(project(r, rung) for r in recs[u:]))
             j = table.setdefault(key, {})
             j[(u, final)] = j.get((u, final), Fraction(0)) + w_T * prob

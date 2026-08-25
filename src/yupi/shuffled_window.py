@@ -40,11 +40,16 @@ from yupi.window_filter import ZeroProbabilityWindow, state_marginal_at
 
 
 def _bucket_step_unnorm(belief: Belief, visible: List[Record], rung: str,
-                        cfg: WorldConfig, programs) -> Tuple[Belief, Fraction]:
+                        cfg: WorldConfig, programs, stats: dict = None
+                        ) -> Tuple[Belief, Fraction]:
     """One shuffled-bucket update, unnormalized: returns (new belief summing
-    to the evidence likelihood of the bucket, that likelihood)."""
+    to the evidence likelihood of the bucket, that likelihood). `stats`, if
+    given, records max_support (input belief size) and max_frontier (largest
+    latent-continuation frontier) — the D4 B1 quantities for this step."""
     B = len(visible)
     frontier = [(s, m, []) for s, m in belief.items() if m]
+    if stats is not None:
+        stats["max_support"] = max(stats.get("max_support", 0), len(frontier))
     for _ in range(B):
         nxt = []
         for s, m, recs in frontier:
@@ -52,6 +57,8 @@ def _bucket_step_unnorm(belief: Belief, visible: List[Record], rung: str,
                 nxt.append((t.next_state, m * p,
                             recs + [project(record_of(t), rung)]))
         frontier = nxt
+        if stats is not None:
+            stats["max_frontier"] = max(stats.get("max_frontier", 0), len(frontier))
     unnorm: Belief = {}
     for s, m, recs in frontier:
         lik = channel_likelihood(recs, visible)
@@ -71,7 +78,8 @@ def shuffled_window_filter(cfg: WorldConfig, programs, law: WindowLaw,
 
 def shuffled_window_filter_with_evidence(cfg: WorldConfig, programs, law: WindowLaw,
                                          buckets: List[List[Record]], rung: str,
-                                         reset_observed: bool) -> Tuple[WindowPosterior, Fraction]:
+                                         reset_observed: bool, stats: dict = None
+                                         ) -> Tuple[WindowPosterior, Fraction]:
     """The posterior AND the law mass of the shuffled observation:
     P(v) = Σ_u P(T = u + n) · P(v | U = u), uniform endpoint prior
     (D8 attribution prereg §5 gate 2: mass on both sides)."""
@@ -90,7 +98,7 @@ def shuffled_window_filter_with_evidence(cfg: WorldConfig, programs, law: Window
         weight = Fraction(1)
         dead = False
         for vis in buckets:
-            unnorm, lik = _bucket_step_unnorm(belief, vis, rung, cfg, programs)
+            unnorm, lik = _bucket_step_unnorm(belief, vis, rung, cfg, programs, stats)
             if lik == 0:
                 dead = True
                 break
