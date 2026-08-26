@@ -39,6 +39,36 @@ def test_stage_A_refuses_on_its_estimate_without_building_the_visible_table(monk
     assert out["refused_by"] == ["WALL_CAP"] and out["n_lat"] > 0 and out["wall_stageA_estimate_s"] > 0
 
 
+def test_n_vis_upper_bound_never_understates_the_real_census():
+    """The n_vis pre-check bounds the shuffled census from the latent table
+    alone: sum over latent windows of the product of distinct within-bucket
+    orderings. Collisions make the true n_vis smaller, so the bound is >=
+    n_vis at every cell — safe for a REFUSAL guard (it can be conservative,
+    never wrongly admit)."""
+    from yupi.attribution import latent_table, visible_table
+    from yupi.d8_benchmark import n_vis_upper_bound, world_of
+    for law, rung in [(WindowLaw(6, 4, 2), "r2"), (WindowLaw(8, 4, 2), "r1"),
+                      (WindowLaw(9, 3, 3), "r1"), (WindowLaw(6, 3, 3), "r4")]:
+        cfg, progs = world_of(dict(world="c1", discipline="fifo", eps="1", law=law, rung=rung))
+        lat = latent_table(cfg, progs, law, rung, {})
+        vis, _ = visible_table(lat, law.B)
+        assert n_vis_upper_bound(lat, law.B) >= len(vis)
+
+
+def test_stage_A_refuses_a_huge_census_on_the_n_vis_bound_before_building(monkeypatch):
+    """The failure the C1 benchmark hit: a B=3 cell whose n_vis is millions,
+    cheap to enumerate latently but hours to build/gate. The n_vis bound must
+    refuse it from the latent table, without visible_table ever running, even
+    though the sampled filter timings are fast (small n_lat)."""
+    import yupi.d8_benchmark as b
+    monkeypatch.setattr(b, "N_VIS_CAP", 500)
+    monkeypatch.setattr(b, "visible_table", lambda *a: (_ for _ in ()).throw(AssertionError("built")))
+    cell = dict(world="c1", discipline="fifo", eps="1", law=WindowLaw(9, 3, 3), rung="r1")
+    out = b.benchmark_cell(cell, {}, sample_k=2)
+    assert out["stage"] == "A" and out["n_vis"] is None and not out["admitted"]
+    assert "N_VIS_CAP" in out["refused_by"] and out["n_vis_upper_bound"] > 500
+
+
 def test_verdict_names_every_breached_line():
     base = dict(n_paths_max=1, peak_build_bytes=1, max_support_shuf=1, max_support_ord=1,
                 max_frontier_shuf=1, t_step_shuf_s=0.0, t_step_ord_s=0.0, projected_gate2_wall_s=0.0)

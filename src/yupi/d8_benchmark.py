@@ -22,7 +22,9 @@ import tracemalloc
 from fractions import Fraction
 from typing import Dict, List, Tuple
 
-from yupi.attribution import latent_table, mass, visible_table
+from math import prod
+
+from yupi.attribution import distinct_orders, latent_table, mass, visible_table
 from yupi.config import WorldConfig
 from yupi.programs import c0b_programs, c1_programs
 from yupi.shuffled_window import shuffled_window_filter_with_evidence
@@ -35,6 +37,11 @@ B3_STEP_S = 1.0
 B4P_PATHS = 1_500_000
 B4P_RSS_BYTES = 2 * 1024 ** 3
 WALL_CAP_S = 20 * 60          # pre-stated grid rule (prereg §4): per-cell gate-2 wall
+# A cell whose shuffled census exceeds this cannot be built and gate-2'd within
+# WALL_CAP_S; the bound is checked from the latent table so such a cell is
+# refused before visible_table runs. Refusal-only: it never admits a cell the
+# wall rule would refuse, only makes that refusal cheap (D8 C1 benchmark, 2026-08-26).
+N_VIS_CAP = 3_000_000
 SAMPLE_K = 8
 RUNGS = ("r1", "r2", "r3", "r4")
 COST_KEYS_FORBIDDEN = ("bits", "entropy", "delta", "loss", "gain", "shapley")
@@ -78,6 +85,16 @@ def _sample(keys, k):
     return sorted(keys, key=repr)[:k]
 
 
+def n_vis_upper_bound(latent, B: int) -> int:
+    """Upper bound on the shuffled census size from the latent table alone:
+    Σ over latent windows of Π (distinct within-bucket orderings). Cross-window
+    collisions make the true n_vis <= this, so it is safe for a refusal guard."""
+    total = 0
+    for reset, win in latent:
+        total += prod(len(distinct_orders(win[k * B:(k + 1) * B])) for k in range(len(win) // B))
+    return total
+
+
 def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMPLE_K) -> dict:
     """Price one cell. Returns cost fields only (see module docstring)."""
     cfg, progs = world_of(cell)
@@ -85,6 +102,7 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
     tracemalloc.start()
     t0 = time.perf_counter()
     lat = latent_table(cfg, progs, law, rung, path_cache)
+    nvis_bound = n_vis_upper_bound(lat, law.B)
     # Stage A (cheap): the shuffled census is at least as large as the ordered
     # one (n_vis >= n_lat), so n_lat · (t_ord + t_shuf), timed on samples,
     # estimates a floor on the gate-2 wall up to sampling noise in the filter
@@ -104,7 +122,7 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
         ta_s.append(time.perf_counter() - t)
     med = lambda xs: sorted(xs)[len(xs) // 2] if xs else 0.0
     wall_lb = len(lat) * (med(ta_o) + med(ta_s))
-    if wall_lb > WALL_CAP_S:
+    if wall_lb > WALL_CAP_S or nvis_bound > N_VIS_CAP:
         _, peak = tracemalloc.get_traced_memory()
         tracemalloc.stop()
         n_paths = {T: len(path_cache[T]) for T in law.endpoints()}
@@ -121,8 +139,11 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
             t_step_shuf_s=(med(ta_s) / n_buckets if n_buckets else 0.0),
             t_step_ord_s=(med(ta_o) / law.L if law.L else 0.0),
             sample_k=min(sample_k, len(lat)), wall_stageA_estimate_s=wall_lb,
-            projected_gate2_wall_s=wall_lb)
+            n_vis_upper_bound=nvis_bound, projected_gate2_wall_s=wall_lb)
         out.update(verdict(out))
+        if nvis_bound > N_VIS_CAP and "N_VIS_CAP" not in out["refused_by"]:
+            out["refused_by"] = out["refused_by"] + ["N_VIS_CAP"]
+            out["admitted"] = False
         assert not any(bad in k for k in out for bad in COST_KEYS_FORBIDDEN)
         return out
     vis, src = visible_table(lat, law.B)
@@ -160,6 +181,7 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
         sample_k=min(sample_k, len(vis)),
     )
     out["wall_stageA_estimate_s"] = wall_lb
+    out["n_vis_upper_bound"] = nvis_bound
     out["projected_gate2_wall_s"] = len(vis) * med(ts) + len(lat) * med(to)
     out.update(verdict(out))
     assert not any(bad in k for k in out for bad in COST_KEYS_FORBIDDEN)

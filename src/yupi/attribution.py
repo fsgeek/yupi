@@ -196,16 +196,51 @@ def joint_entropy(table: Dict[Hashable, Joint]) -> float:
     return fsum(float(mass(j)) * entropy_bits(j.values()) for j in table.values())
 
 
+def _prep_rows(table: Dict[Hashable, Joint], cache: CoordCache):
+    """One walk per observation: its exact total mass and its (coordinate dict,
+    exact mass) items. Reused across all 2^n subsets so `losses` walks each
+    observation once per subset instead of re-fetching coordinates every time."""
+    return [(sum((m for _, m in items), Fraction(0)), items)
+            for items in ([(cache.get(k), m) for k, m in joint.items()] for joint in table.values())]
+
+
+def _subset_entropy_prepped(rows, subset: Tuple[str, ...]) -> float:
+    """Same quantity and same float recipe as `subset_entropy`, on prepped rows:
+    exact Fraction bucket sums (so identical partitions give identical floats),
+    then normalize by the row's known exact z with float(m)/float(z), and fsum
+    over sorted terms. Inlines `entropy_bits` so z is divided once (already
+    summed in _prep_rows) rather than re-summed per subset — the ~3x win."""
+    terms = []
+    for z, items in rows:
+        groups: Dict[Hashable, Fraction] = {}
+        for c, m in items:
+            key = tuple(c[p] for p in subset)
+            groups[key] = groups.get(key, Fraction(0)) + m
+        ms = sorted(m for m in groups.values() if m > 0)
+        ps = [float(m / z) for m in ms]          # float(m/z): the exact entropy_bits recipe
+        terms.append(float(z) * -fsum(p * log2(p) for p in ps))
+    return fsum(terms)
+
+
 def losses(latent: Dict[LatentKey, Joint], visible: Dict[VisibleKey, Joint],
            players: Tuple[str, ...] = COORDS) -> Dict[FrozenSet[str], float]:
-    """F(A) for every subset A of `players` (2^n values)."""
+    """F(A) for every subset A of `players` (2^n values).
+
+    Bit-for-bit identical to computing `subset_entropy(visible, A) -
+    subset_entropy(latent, A)` per subset (regression-pinned in
+    `tests/test_attribution.py::test_losses_fast_path_is_bit_for_bit_the_reference`),
+    but ~3x faster: coordinates are fetched once per observation via
+    `_prep_rows` instead of once per (observation, subset). The bucket sums
+    stay exact Fractions so the structural-zero gates keep reading exact 0.0.
+    """
     cache = CoordCache()
+    lat_rows, vis_rows = _prep_rows(latent, cache), _prep_rows(visible, cache)
     out: Dict[FrozenSet[str], float] = {}
     n = len(players)
     for bits in range(1 << n):
         A = tuple(p for i, p in enumerate(players) if bits >> i & 1)
-        out[frozenset(A)] = (subset_entropy(visible, A, cache) - subset_entropy(latent, A, cache)
-                             if A else 0.0)
+        out[frozenset(A)] = (_subset_entropy_prepped(vis_rows, A)
+                             - _subset_entropy_prepped(lat_rows, A)) if A else 0.0
     return out
 
 

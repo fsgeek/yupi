@@ -146,3 +146,29 @@ def test_Z2_WQ_term_exactly_zero_at_c0b_under_every_prefix():
     for A in F:
         if "WQ" not in A:
             assert F[A | {"WQ"}] == F[A]
+
+
+@pytest.mark.parametrize("cfg,progs,law,rung", [
+    (WorldConfig.c0b(discipline="stochastic"), c0b_programs(), WindowLaw(6, 3, 3), "r2"),
+    (WorldConfig.c1(epsilon=Fraction(1, 2)), c1_programs(), WindowLaw(8, 4, 2), "r1"),
+    (WorldConfig.c1(epsilon=Fraction(1)), c1_programs(), WindowLaw(8, 4, 2), "r3"),
+])
+def test_losses_fast_path_is_bit_for_bit_the_reference(cfg, progs, law, rung):
+    """The optimized losses() must equal a from-scratch computation built on
+    the reference `subset_entropy` for EVERY subset — not close, identical —
+    so the structural-zero gates (Z1/Z2/Z3) that read exact 0.0 differences
+    cannot break. A float-normalized fast path was 6.3x faster and broke Z1;
+    the shipped path keeps exact Fraction bucket sums (2.9x, bit-for-bit)."""
+    lat, vis, _ = _tables(cfg, progs, law, rung)
+    fast = losses(lat, vis)
+    cache = CoordCache()
+    n = len(COORDS)
+    ref = {}
+    for bits in range(1 << n):
+        A = tuple(p for i, p in enumerate(COORDS) if bits >> i & 1)
+        ref[frozenset(A)] = (subset_entropy(vis, A, cache) - subset_entropy(lat, A, cache)) if A else 0.0
+    assert fast.keys() == ref.keys()
+    for k in ref:
+        assert fast[k] == ref[k], (sorted(k), fast[k], ref[k])   # bit-for-bit
+    # and the exact gates the speed must not break
+    assert all(fast[A | {"kappa"}] == fast[A] for A in fast if "kappa" not in A) or cfg.epsilon != 1
