@@ -147,3 +147,75 @@ RSS per process; T_ep = 16 admitted; T_ep = 18 refused pending its own
 erratum; B4 (validation path) unchanged. F1 = (16, L even, 2), ε ∈ {1, ½}
 may now run under `held-out-laws-proposal-v0.1.md` v0.3, doubling as the
 corrected kernel's first enumeration of ticks 15–16.
+
+## Erratum E2 (2026-08-27 08:04 PDT) — B4′ build RSS 2 GB → 4 GB for D8 attribution table builds — ENACTED by the researcher under the PI's decision rule
+
+**What tripped the wire.** The D8 attribution grid freeze for C1
+(`d8-attribution-grid-freeze-c1-v0.2.md`, commit d46a6b9) refuses the cell
+(12, 12, 2) — prereg P3's Δ > 0 cell — on two lines: the D8 wall cap
+(1427–1456 s vs 1200 s) and B4′'s 2 GB build RSS (2.28 GB at r1–r3, 2.17 GB
+at r4). Raising the wall cap alone (the researcher's v0.3 decision) does not
+reach it.
+
+**The PI's rule (Tony, 2026-08-27 08:04 PDT, verbatim).** "I want yupi to be an instrument
+that allows us to better understand the impact of the interface on what
+happens inside the model and what we see outside the model … Binding us to
+choices *in advance* on what it takes to do that becomes its own form of
+theater. If the instrument we have will allow us to understand the interface
+costs, don't expand the model space. If the instrument we will have won't
+permit us to measure the interface costs, expand the model space. If we
+expand it, we explain why — we're allowed to be wrong, to change our minds,
+but we need to have a coherent reason and acknowledge that the risk is we're
+injecting bias into the process."
+
+**Applying it — a census, not a result.** `scripts/d8_bucket_census.py`
+(artifact `d8-bucket-census-c1-2026-08-27.json`; reads no entropy, Δ, or
+posterior value — it enumerates which noncommuting bucket kinds the channel
+admits from reset and at which ticks) shows, at C1 ε = 1, r1:
+
+- B = 3, H = 9 (admitted): **48 cases, all** `BLOCK+BLOCK+DISPATCH` — the
+  wait-queue mechanism, first at ticks 7–9. Nothing else. Same at r4.
+- B = 2, H = 10 (admitted, the largest admitted full-context B = 2 law):
+  **0 cases.**
+- B = 2, H = 12 (refused): 104 cases, all `IO_COMPLETE+IO_ISSUE` — the
+  allocator/device mechanism, first at ticks 11–12.
+- B = 3, H = 12 (refused): 1416 cases — 1312 wait-queue, **104
+  `DISPATCH+IO_COMPLETE+IO_ISSUE`** (allocator), first at ticks 10–12.
+
+The allocator mechanism is the *entire* loss in C0b (`d8-attribution-c0b-note-v0.1.md`,
+REQ share 1.000 at B = 3 r1–r3). In C1 at ε = 1 it first exists at ticks
+10–12, and **every full-context cell that contains it is refused under
+v0.2.** So the instrument as frozen measures C1's wait-queue interface cost
+and cannot measure C1's allocator interface cost at all; the cross-world
+question the D8 attribution exists to answer — does C0b's mechanism appear in
+C1 under the window law, and with what share — is unmeasurable. Under the
+PI's rule: expand. (At ε = ½ the admitted grid is rich — 850 cases of 15
+kinds at (9, 9, 3) — so the ε = ½ side is measurable inside the fence; the
+gap is ε = 1.)
+
+**Amendment.** B4′ build RSS for D8 attribution visible/latent table builds:
+≤ 4 GB per process. Path line (1.5 × 10⁶ per (ε, T)) unchanged; B2 (8 GB per
+filtering process) unchanged; B4 unchanged. Workers for cells above 2 GB are
+capped so that concurrent build RSS stays under half of physical memory
+(the box reports 125 GB on 2026-08-27 08:04 PDT; the freeze above says 256 GB — the change
+is noted, not explained, and the cap is set against the smaller number).
+Applies to the D8 extension grid v0.3 (`d8-attribution-grid-freeze-c1-v0.2.md`,
+Decision section) and nothing measured under v0.2; v0.2 stands as reported.
+
+**The bias we are injecting, named.** A budget line is being moved after
+the benchmark showed which cells it excludes, and after a structural census
+showed those cells are the ones carrying the mechanism we most want to see.
+The risk is selection toward cells that make C1 look like C0b. What limits
+it: the census is committed before v0.3 is priced; the prediction for the
+reached cell (P3, Δ_an > 0 at (12, 12, 2) r1–r3) was preregistered on Aug 24
+before any of this; v0.3 cells are labeled and never cited as v0.2; and the
+next step up — (12, 12, 3), 15.7 M observations, 6 h per cell — is refused
+under E2 and would need its own erratum with its own reason. If (12, 12, 2)
+under v0.3 shows Δ_an = 0, P3 fails and the expansion bought a null; that
+outcome is reported the same way.
+
+**Who decided.** The PI supplied the rule and had, on Aug 27, placed
+research decisions with the researcher ("you lead, I follow"); the researcher
+applied the rule and enacted E2. Enactment is recorded here rather than
+awaited so that the reasoning precedes every C1 number (the v0.2 B = 3
+measurement was running, unread, when this was written).

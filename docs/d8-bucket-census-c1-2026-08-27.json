@@ -1,0 +1,257 @@
+{
+ "script": "scripts/d8_bucket_census.py",
+ "reads_results": false,
+ "conditions": [
+  {
+   "world": "c1",
+   "eps": "1",
+   "rung": "r1",
+   "B": 3,
+   "H": 9,
+   "admitted_full_context_in_v0_2": true,
+   "cases": 48,
+   "kinds": {
+    "BLOCK+BLOCK+DISPATCH": {
+     "cases": 48,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    }
+   },
+   "wall_s": 4.0
+  },
+  {
+   "world": "c1",
+   "eps": "1",
+   "rung": "r4",
+   "B": 3,
+   "H": 9,
+   "admitted_full_context_in_v0_2": true,
+   "cases": 48,
+   "kinds": {
+    "BLOCK+BLOCK+DISPATCH": {
+     "cases": 48,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    }
+   },
+   "wall_s": 3.8
+  },
+  {
+   "world": "c1",
+   "eps": "1",
+   "rung": "r1",
+   "B": 2,
+   "H": 10,
+   "admitted_full_context_in_v0_2": true,
+   "cases": 0,
+   "kinds": {},
+   "wall_s": 9.0
+  },
+  {
+   "world": "c1",
+   "eps": "1",
+   "rung": "r1",
+   "B": 3,
+   "H": 12,
+   "admitted_full_context_in_v0_2": false,
+   "cases": 1416,
+   "kinds": {
+    "BLOCK+BLOCK+DISPATCH": {
+     "cases": 1312,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "DISPATCH+IO_COMPLETE+IO_ISSUE": {
+     "cases": 104,
+     "first_bucket_index": 3,
+     "first_ticks": [
+      10,
+      12
+     ]
+    }
+   },
+   "wall_s": 49.2
+  },
+  {
+   "world": "c1",
+   "eps": "1",
+   "rung": "r1",
+   "B": 2,
+   "H": 12,
+   "admitted_full_context_in_v0_2": false,
+   "cases": 104,
+   "kinds": {
+    "IO_COMPLETE+IO_ISSUE": {
+     "cases": 104,
+     "first_bucket_index": 5,
+     "first_ticks": [
+      11,
+      12
+     ]
+    }
+   },
+   "wall_s": 52.1
+  },
+  {
+   "world": "c1",
+   "eps": "1/2",
+   "rung": "r1",
+   "B": 3,
+   "H": 9,
+   "admitted_full_context_in_v0_2": true,
+   "cases": 850,
+   "kinds": {
+    "ACQUIRE+DISPATCH+DISPATCH": {
+     "cases": 154,
+     "first_bucket_index": 1,
+     "first_ticks": [
+      4,
+      6
+     ]
+    },
+    "BLOCK+DISPATCH+IO_ISSUE": {
+     "cases": 136,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "DISPATCH+DISPATCH+STEP": {
+     "cases": 122,
+     "first_bucket_index": 1,
+     "first_ticks": [
+      4,
+      6
+     ]
+    },
+    "BLOCK+DISPATCH+DISPATCH": {
+     "cases": 108,
+     "first_bucket_index": 1,
+     "first_ticks": [
+      4,
+      6
+     ]
+    },
+    "BLOCK+DISPATCH+STEP": {
+     "cases": 86,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "DISPATCH+IO_ISSUE+STEP": {
+     "cases": 58,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "BLOCK+BLOCK+DISPATCH": {
+     "cases": 48,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "ACQUIRE+BLOCK+DISPATCH": {
+     "cases": 38,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "ACQUIRE+DISPATCH+IO_ISSUE": {
+     "cases": 26,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "DISPATCH+DISPATCH+IO_ISSUE": {
+     "cases": 18,
+     "first_bucket_index": 1,
+     "first_ticks": [
+      4,
+      6
+     ]
+    },
+    "DISPATCH+STEP+STEP": {
+     "cases": 16,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "ACQUIRE+DISPATCH+STEP": {
+     "cases": 16,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "DISPATCH+IO_ISSUE+RELEASE": {
+     "cases": 12,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "DISPATCH+RELEASE+STEP": {
+     "cases": 8,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    },
+    "BLOCK+DISPATCH+RELEASE": {
+     "cases": 4,
+     "first_bucket_index": 2,
+     "first_ticks": [
+      7,
+      9
+     ]
+    }
+   },
+   "wall_s": 5.2
+  },
+  {
+   "world": "c1",
+   "eps": "1/2",
+   "rung": "r1",
+   "B": 2,
+   "H": 10,
+   "admitted_full_context_in_v0_2": true,
+   "cases": 6,
+   "kinds": {
+    "DISPATCH+DISPATCH": {
+     "cases": 6,
+     "first_bucket_index": 0,
+     "first_ticks": [
+      1,
+      2
+     ]
+    }
+   },
+   "wall_s": 11.5
+  }
+ ]
+}

@@ -66,6 +66,17 @@ total 16.81 h single-process.
 
 ## Decision: extension grid v0.3 (taken now, before any C1 number exists)
 
+> *(2026-08-27 08:04 PDT, before any v0.2 number was read — the B = 3 run was in progress:
+> D4 erratum E2 is ENACTED (`d4-budget-freeze-v0.1.md`, E2), so v0.3's rule
+> is (wall ≤ 3600 s, build RSS ≤ 4 GB), which reaches (12, 12, 2) at both ε
+> and (14, 14, 1) ε = 1 r1–r3. The reason is a structural census
+> (`scripts/d8_bucket_census.py` → `d8-bucket-census-c1-2026-08-27.json`):
+> at ε = 1 the allocator mechanism — C0b's entire loss — first exists in C1
+> at ticks 10–12 and every full-context cell containing it is refused under
+> v0.2, so the instrument as frozen cannot measure that interface cost. The
+> paragraphs below are preserved as written at freeze time; where they say
+> "proposed to the PI" and "(3600 s, 2 GB)", E2 supersedes them.)*
+
 A separately stamped extension grid will be priced and frozen **after** the
 v0.2 measurement is complete and its note written, under a rule stated
 here: the v0.1 lines with the gate-2 wall cap raised to **3600 s per cell**;
