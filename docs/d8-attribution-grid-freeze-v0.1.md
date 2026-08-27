@@ -32,6 +32,8 @@ this grid, so the freeze admits it whole.
 
 ## C1 — NOT frozen here
 
+> *(2026-08-27: C1 is now frozen in `d8-attribution-grid-freeze-c1-v0.2.md`; 716 of 1344 admitted. The paragraph below is preserved as written on Aug 25.)*
+
 The C1 benchmark is running (launched 11:15 PDT; at (9,9,3) r1 the census is
 already 341,334 observations at ~414 s projected wall, so the wall cap will
 refuse cells at larger T_ep). Its admitted set will be frozen in a separate

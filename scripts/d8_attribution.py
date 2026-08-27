@@ -1,6 +1,6 @@
 """D8 order-mode attribution measurement runner (prereg a39f555).
 
-(run: python scripts/d8_attribution.py FREEZE.json OUT.jsonl [--workers N] [--only c0b|c1]
+(run: python scripts/d8_attribution.py FREEZE.json OUT.jsonl [--workers N] [--only c0b|c1] [--B 3]
       python scripts/d8_attribution.py --consolidate OUT.jsonl OUT.json)
 
 FREEZE.json is the stamped grid freeze (list of admitted cells). The runner
@@ -73,6 +73,7 @@ def main():
     ap.add_argument("out")
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--only", choices=["c0b", "c1"])
+    ap.add_argument("--B", type=int, help="run only admitted cells with this bucket size (prereg §4 order: C1 B=3 first)")
     ap.add_argument("--consolidate", nargs=2, metavar=("JSONL", "OUT_JSON"))
     ap.add_argument("--freeze-ref", default="")
     a = ap.parse_args()
@@ -89,7 +90,8 @@ def main():
                 done.add(cell_key(r))
     todo = [c for c in candidate_cells()
             if cell_key(c) in admitted and cell_key(c) not in done
-            and (not a.only or c["world"] == a.only)]
+            and (not a.only or c["world"] == a.only)
+            and (a.B is None or c["law"].B == a.B)]
     refused = [c for c in candidate_cells() if cell_key(c) not in admitted]
     print(f"freeze {a.freeze}: {len(admitted)} admitted; {len(refused)} candidate cells refused by the "
           f"freeze and NOT run; {len(done)} done; {len(todo)} to run", flush=True)
