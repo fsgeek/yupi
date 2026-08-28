@@ -1,0 +1,140 @@
+{
+ "unknown": [
+  "d8-bucket-census-c1-2026-08-27.json"
+ ],
+ "results": [
+  {
+   "id": "P1",
+   "status": "PASS",
+   "quantifier": "all",
+   "n_matched": 6,
+   "n_fail": 0,
+   "failures": [],
+   "relation": ">",
+   "value": 0
+  },
+  {
+   "id": "P1-mech",
+   "status": "PASS",
+   "quantifier": "any",
+   "n_matched": 12,
+   "n_fail": 0,
+   "failures": [],
+   "relation": ">",
+   "value": 0
+  },
+  {
+   "id": "P2",
+   "status": "FAIL",
+   "quantifier": "all",
+   "n_matched": 36,
+   "n_fail": 4,
+   "failures": [
+    {
+     "artifact": "d8-attribution-c0b-2026-08-25.json",
+     "family": "d8-attribution",
+     "tag": null,
+     "superseded": false,
+     "kernel": "fixed",
+     "T_ep": 8,
+     "L": 2,
+     "B": 2,
+     "eps": "1",
+     "rung": "r4",
+     "discipline": "fifo",
+     "W": null,
+     "T": null,
+     "quantity": "delta_un",
+     "value": 0.0008716868829681257,
+     "world": "c0b"
+    },
+    {
+     "artifact": "d8-attribution-c0b-2026-08-25.json",
+     "family": "d8-attribution",
+     "tag": null,
+     "superseded": false,
+     "kernel": "fixed",
+     "T_ep": 8,
+     "L": 2,
+     "B": 2,
+     "eps": "1",
+     "rung": "r4",
+     "discipline": "fifo",
+     "W": null,
+     "T": null,
+     "quantity": "delta_an",
+     "value": 0.00045051124201916926,
+     "world": "c0b"
+    },
+    {
+     "artifact": "d8-attribution-c0b-2026-08-25.json",
+     "family": "d8-attribution",
+     "tag": null,
+     "superseded": false,
+     "kernel": "fixed",
+     "T_ep": 8,
+     "L": 2,
+     "B": 2,
+     "eps": "1",
+     "rung": "r4",
+     "discipline": "stochastic",
+     "W": null,
+     "T": null,
+     "quantity": "delta_un",
+     "value": 0.0009628679817164087,
+     "world": "c0b"
+    },
+    {
+     "artifact": "d8-attribution-c0b-2026-08-25.json",
+     "family": "d8-attribution",
+     "tag": null,
+     "superseded": false,
+     "kernel": "fixed",
+     "T_ep": 8,
+     "L": 2,
+     "B": 2,
+     "eps": "1",
+     "rung": "r4",
+     "discipline": "stochastic",
+     "W": null,
+     "T": null,
+     "quantity": "delta_an",
+     "value": 0.00045392533009508407,
+     "world": "c0b"
+    }
+   ],
+   "relation": "==",
+   "value": 0
+  },
+  {
+   "id": "P3a",
+   "status": "PASS",
+   "quantifier": "all",
+   "n_matched": 6,
+   "n_fail": 0,
+   "failures": [],
+   "relation": "==",
+   "value": 0
+  },
+  {
+   "id": "P3b",
+   "status": "NO_CHECK",
+   "quantifier": "all",
+   "n_matched": 0,
+   "n_fail": 0,
+   "failures": [],
+   "relation": ">",
+   "value": 0
+  },
+  {
+   "id": "P4",
+   "status": "NO_CHECK",
+   "quantifier": "all",
+   "n_matched": 0,
+   "n_fail": 0,
+   "failures": [],
+   "relation": ">",
+   "value": 0
+  }
+ ]
+}
