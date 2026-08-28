@@ -1,6 +1,12 @@
 """Blind cost benchmark over the D8 attribution candidate grid (prereg §4).
 
-(run: python scripts/d8_attribution_benchmark.py out.jsonl [--only c0b|c1] [--max-tep N])
+(run: python scripts/d8_attribution_benchmark.py out.jsonl [--only c0b|c1] [--max-tep N]
+      [--rule v0.1|v0.3] [--refused-in FREEZE.json])
+
+--rule selects the grid rule (default v0.1, the prereg rule). --refused-in
+restricts pricing to cells listed as refused in an earlier freeze JSON — the
+extension-grid path: v0.2-admitted cells are already measured and are not
+re-priced or re-admitted.
 
 Append-only JSONL, one cost record per cell; resumable (cells already in
 the file are skipped). Prints cost and verdicts only. Cells sharing
@@ -16,6 +22,7 @@ import time
 from multiprocessing import Pool
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
+from yupi import d8_benchmark  # noqa: E402
 from yupi.d8_benchmark import B4P_PATHS, benchmark_cell, candidate_cells, world_of  # noqa: E402
 from yupi.enumerator import paths  # noqa: E402
 
@@ -27,7 +34,8 @@ def cell_id(c):
 def run_group(args):
     """Price every cell of one (world, discipline, ε, T_ep) group with a
     single path enumeration; append records to `out` (one line per cell)."""
-    key, cells, out = args
+    key, cells, out, rule = args
+    d8_benchmark.set_rule(rule)
     cfg, progs = world_of(cells[0])
     T = key[3]
     t = time.perf_counter()
@@ -56,21 +64,31 @@ def main():
     ap.add_argument("--only", choices=["c0b", "c1"])
     ap.add_argument("--max-tep", type=int, default=16)
     ap.add_argument("--workers", type=int, default=1)
+    ap.add_argument("--rule", choices=sorted(d8_benchmark.RULES), default="v0.1")
+    ap.add_argument("--refused-in", help="freeze JSON; price only its refused cells")
     a = ap.parse_args()
+    rule = d8_benchmark.set_rule(a.rule)
+    print(f"grid rule {a.rule}: {rule}", flush=True)
+    only_cells = None
+    if a.refused_in:
+        fz = json.load(open(a.refused_in))
+        only_cells = {f"{r['world']}|{r['discipline']}|{r['eps']}|{r['T_ep']}|{r['L']}|{r['B']}|{r['rung']}" for r in fz["refused"]}
+        print(f"{len(only_cells)} cells refused in {a.refused_in}; pricing only those", flush=True)
     done = set()
     if os.path.exists(a.out):
         for line in open(a.out):
             r = json.loads(line)
             done.add(f"{r['world']}|{r['discipline']}|{r['eps']}|{r['T_ep']}|{r['L']}|{r['B']}|{r['rung']}")
     cells = [c for c in candidate_cells()
-             if (not a.only or c["world"] == a.only) and c["law"].T_ep <= a.max_tep]
+             if (not a.only or c["world"] == a.only) and c["law"].T_ep <= a.max_tep
+             and (only_cells is None or cell_id(c) in only_cells)]
     print(f"{len(cells)} candidate cells, {len(done)} already priced", flush=True)
     if a.workers > 1:
         groups = {}
         for c in cells:
             if cell_id(c) not in done:
                 groups.setdefault((c["world"], c["discipline"], c["eps"], c["law"].T_ep), []).append(c)
-        jobs = [(k, cs, a.out) for k, cs in sorted(groups.items(), key=lambda kv: -kv[0][3])]
+        jobs = [(k, cs, a.out, a.rule) for k, cs in sorted(groups.items(), key=lambda kv: -kv[0][3])]
         print(f"{len(jobs)} groups on {a.workers} workers", flush=True)
         with Pool(a.workers) as pool:
             for _ in pool.imap_unordered(run_group, jobs):

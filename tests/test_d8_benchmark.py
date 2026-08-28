@@ -77,3 +77,27 @@ def test_verdict_names_every_breached_line():
                projected_gate2_wall_s=WALL_CAP_S + 1)
     v = verdict(bad)
     assert not v["admitted"] and v["refused_by"] == ["B4'_paths", "B1_support", "B3_step", "WALL_CAP"]
+
+
+def test_grid_rule_versions_v01_default_and_v03_extension():
+    """v0.1 is the prereg rule and stays the default; v0.3 (grid-freeze-c1-v0.2
+    Decision + D4 erratum E2) raises only the wall cap, B4′ build RSS and the
+    proportional N_VIS_CAP guard. A cost record just over the v0.1 lines is
+    refused under v0.1 and admitted under v0.3; one over the v0.3 lines is
+    refused by both."""
+    from yupi import d8_benchmark as m
+    assert m.RULE_VERSION == "v0.1" and m.WALL_CAP_S == 1200 and m.B4P_RSS_BYTES == 2 * 1024 ** 3
+    base = dict(n_paths_max=1_315_454, max_support_shuf=10, max_support_ord=10, max_frontier_shuf=100,
+                t_step_shuf_s=0.1, t_step_ord_s=0.1)
+    just_over = dict(base, peak_build_bytes=int(2.28e9), projected_gate2_wall_s=1428.0)   # (12,12,2)-shaped
+    far_over = dict(base, peak_build_bytes=int(4.5e9), projected_gate2_wall_s=21_791.0)   # (12,12,3)-shaped
+    try:
+        assert m.verdict(just_over)["refused_by"] == ["B4'_rss", "WALL_CAP"]
+        r = m.set_rule("v0.3")
+        assert (r["wall_cap_s"], r["b4p_rss_bytes"], r["n_vis_cap"]) == (3600, 4 * 1024 ** 3, 9_000_000)
+        assert m.verdict(just_over)["admitted"]
+        assert m.verdict(far_over)["refused_by"] == ["B4'_rss", "WALL_CAP"]
+        assert m.B1_SUPPORT == 20_000 and m.B3_STEP_S == 1.0 and m.B4P_PATHS == 1_500_000
+    finally:
+        m.set_rule("v0.1")
+    assert m.WALL_CAP_S == 1200

@@ -1,7 +1,7 @@
 """Turn a blind benchmark JSONL into a grid-freeze JSON + a cost summary
 (prereg §4). Reads cost and verdicts only; prints no result-shaped field.
 
-(run: python scripts/d8_grid_freeze.py BENCH.jsonl FREEZE.json [--world c1])
+(run: python scripts/d8_grid_freeze.py BENCH.jsonl FREEZE.json [--world c1] [--rule v0.1|v0.3])
 """
 import argparse
 import json
@@ -11,8 +11,8 @@ import time
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
-from yupi.d8_benchmark import (B1_FRONTIER, B1_SUPPORT, B3_STEP_S, B4P_PATHS,  # noqa: E402
-                               COST_KEYS_FORBIDDEN, WALL_CAP_S)
+from yupi import d8_benchmark  # noqa: E402
+from yupi.d8_benchmark import B1_FRONTIER, B1_SUPPORT, B3_STEP_S, B4P_PATHS, COST_KEYS_FORBIDDEN  # noqa: E402
 
 CELL = ("world", "discipline", "eps", "T_ep", "L", "B", "rung")
 
@@ -22,8 +22,12 @@ def main():
     ap.add_argument("bench")
     ap.add_argument("out")
     ap.add_argument("--world")
+    ap.add_argument("--rule", choices=sorted(d8_benchmark.RULES), default="v0.1")
     a = ap.parse_args()
+    rule = d8_benchmark.set_rule(a.rule)
     rows = [json.loads(l) for l in open(a.bench)]
+    bad_rule = [r for r in rows if r.get("rule", "v0.1") != a.rule]
+    assert not bad_rule, f"{len(bad_rule)} records were priced under a different rule than {a.rule}"
     if a.world:
         rows = [r for r in rows if r["world"] == a.world]
     assert not any(bad in k for r in rows for k in r for bad in COST_KEYS_FORBIDDEN)
@@ -34,8 +38,9 @@ def main():
     adm = [r for r in rows if r["admitted"]]
     ref = [r for r in rows if not r["admitted"]]
     json.dump(dict(benchmark=os.path.basename(a.bench), prereg="d8-attribution-prereg-v0.1.md@a39f555",
-                   rule=dict(B1_support=B1_SUPPORT, B1_frontier=B1_FRONTIER, B3_step_s=B3_STEP_S,
-                             B4p_paths=B4P_PATHS, wall_cap_s=WALL_CAP_S),
+                   rule=dict(version=a.rule, B1_support=B1_SUPPORT, B1_frontier=B1_FRONTIER, B3_step_s=B3_STEP_S,
+                             B4p_paths=B4P_PATHS, B4p_rss_bytes=rule["b4p_rss_bytes"], wall_cap_s=rule["wall_cap_s"],
+                             n_vis_cap=rule["n_vis_cap"]),
                    frozen_at=time.strftime("%Y-%m-%d %H:%M %Z"),
                    admitted=[{k: r[k] for k in CELL} for r in adm],
                    refused=[dict({k: r[k] for k in CELL}, refused_by=r["refused_by"],

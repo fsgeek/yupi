@@ -43,6 +43,28 @@ WALL_CAP_S = 20 * 60          # pre-stated grid rule (prereg §4): per-cell gate
 # wall rule would refuse, only makes that refusal cheap (D8 C1 benchmark, 2026-08-26).
 N_VIS_CAP = 3_000_000
 SAMPLE_K = 8
+
+# Rule versions. v0.1 is the prereg §4 rule (C0b freeze v0.1, C1 freeze v0.2).
+# v0.3 is the extension-grid rule stated in d8-attribution-grid-freeze-c1-v0.2.md
+# (Decision section) and d4-budget-freeze-v0.1.md erratum E2, written before any
+# v0.2 number was read: wall cap 3600 s, B4′ build RSS 4 GB, N_VIS_CAP scaled
+# with the wall cap (refusal-only guard, same proportion); B1, B3, path line
+# unchanged. Nothing admitted under v0.3 is ever cited as v0.2.
+RULES = {
+    "v0.1": dict(wall_cap_s=20 * 60, b4p_rss_bytes=2 * 1024 ** 3, n_vis_cap=3_000_000),
+    "v0.3": dict(wall_cap_s=60 * 60, b4p_rss_bytes=4 * 1024 ** 3, n_vis_cap=9_000_000),
+}
+RULE_VERSION = "v0.1"
+
+
+def set_rule(version: str) -> dict:
+    """Select the grid rule for this process (module globals; the benchmark's
+    worker processes inherit it via fork or call it themselves)."""
+    global WALL_CAP_S, B4P_RSS_BYTES, N_VIS_CAP, RULE_VERSION
+    r = RULES[version]
+    WALL_CAP_S, B4P_RSS_BYTES, N_VIS_CAP = r["wall_cap_s"], r["b4p_rss_bytes"], r["n_vis_cap"]
+    RULE_VERSION = version
+    return dict(r, version=version)
 RUNGS = ("r1", "r2", "r3", "r4")
 COST_KEYS_FORBIDDEN = ("bits", "entropy", "delta", "loss", "gain", "shapley")
 
@@ -139,7 +161,7 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
             t_step_shuf_s=(med(ta_s) / n_buckets if n_buckets else 0.0),
             t_step_ord_s=(med(ta_o) / law.L if law.L else 0.0),
             sample_k=min(sample_k, len(lat)), wall_stageA_estimate_s=wall_lb,
-            n_vis_upper_bound=nvis_bound, projected_gate2_wall_s=wall_lb)
+            n_vis_upper_bound=nvis_bound, projected_gate2_wall_s=wall_lb, rule=RULE_VERSION)
         out.update(verdict(out))
         if nvis_bound > N_VIS_CAP and "N_VIS_CAP" not in out["refused_by"]:
             out["refused_by"] = out["refused_by"] + ["N_VIS_CAP"]
@@ -183,6 +205,7 @@ def benchmark_cell(cell: dict, path_cache: Dict[int, list], sample_k: int = SAMP
     out["wall_stageA_estimate_s"] = wall_lb
     out["n_vis_upper_bound"] = nvis_bound
     out["projected_gate2_wall_s"] = len(vis) * med(ts) + len(lat) * med(to)
+    out["rule"] = RULE_VERSION
     out.update(verdict(out))
     assert not any(bad in k for k in out for bad in COST_KEYS_FORBIDDEN)
     del lat, vis, src

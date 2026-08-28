@@ -35,6 +35,7 @@ NON_MEASUREMENT_PREFIXES = (
     "artifact-status", "held-out-selection-e-draw", "d4-pricing", "c1-budget",
     "c1-heldout-tier1-score", "c1-sweep-rerun-comparison",
     "d8-attribution-benchmark", "d8-attribution-grid-freeze", "d8-attribution-predictions",
+    "d8-bucket-census",   # structural census of order-sensitive bucket kinds (no result quantity)
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);
