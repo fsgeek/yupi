@@ -66,6 +66,8 @@ total 16.81 h single-process.
 
 ## Decision: extension grid v0.3 (taken now, before any C1 number exists)
 
+> *(2026-08-28: v0.3 is now frozen — `d8-attribution-grid-freeze-c1-v0.3.md`, 173 of the 628 v0.2-refused cells admitted, (12,12,2) among them.)*
+
 > *(2026-08-27 08:04 PDT, before any v0.2 number was read — the B = 3 run was in progress:
 > D4 erratum E2 is ENACTED (`d4-budget-freeze-v0.1.md`, E2), so v0.3's rule
 > is (wall ≤ 3600 s, build RSS ≤ 4 GB), which reaches (12, 12, 2) at both ε

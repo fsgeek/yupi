@@ -1,6 +1,7 @@
 """D8 order-mode attribution measurement runner (prereg a39f555).
 
 (run: python scripts/d8_attribution.py FREEZE.json OUT.jsonl [--workers N] [--only c0b|c1] [--B 3]
+      [--law T_ep,L] [--per-cell]
       python scripts/d8_attribution.py --consolidate OUT.jsonl OUT.json)
 
 FREEZE.json is the stamped grid freeze (list of admitted cells). The runner
@@ -74,6 +75,10 @@ def main():
     ap.add_argument("--workers", type=int, default=8)
     ap.add_argument("--only", choices=["c0b", "c1"])
     ap.add_argument("--B", type=int, help="run only admitted cells with this bucket size (prereg §4 order: C1 B=3 first)")
+    ap.add_argument("--law", help="run only admitted cells at this law, as T_ep,L (e.g. 12,12)")
+    ap.add_argument("--per-cell", action="store_true",
+                    help="one job per cell instead of one per (world, discipline, ε, T_ep) group — re-enumerates "
+                         "paths per cell (≤ ~70 s at T_ep = 16) so long groups spread across workers")
     ap.add_argument("--consolidate", nargs=2, metavar=("JSONL", "OUT_JSON"))
     ap.add_argument("--freeze-ref", default="")
     a = ap.parse_args()
@@ -91,13 +96,17 @@ def main():
     todo = [c for c in candidate_cells()
             if cell_key(c) in admitted and cell_key(c) not in done
             and (not a.only or c["world"] == a.only)
-            and (a.B is None or c["law"].B == a.B)]
+            and (a.B is None or c["law"].B == a.B)
+            and (a.law is None or (c["law"].T_ep, c["law"].L) == tuple(int(x) for x in a.law.split(",")))]
     refused = [c for c in candidate_cells() if cell_key(c) not in admitted]
     print(f"freeze {a.freeze}: {len(admitted)} admitted; {len(refused)} candidate cells refused by the "
           f"freeze and NOT run; {len(done)} done; {len(todo)} to run", flush=True)
     groups = {}
     for c in todo:
-        groups.setdefault((c["world"], c["discipline"], c["eps"], c["law"].T_ep), []).append(c)
+        key = (c["world"], c["discipline"], c["eps"], c["law"].T_ep)
+        if a.per_cell:
+            key = key + (c["law"].L, c["law"].B, c["rung"])
+        groups.setdefault(key, []).append(c)
     jobs = [(g, cs, a.out) for g, cs in sorted(groups.items(), key=lambda kv: -kv[0][3])]
     with Pool(a.workers) as pool:
         for res in pool.imap_unordered(run_group, jobs):

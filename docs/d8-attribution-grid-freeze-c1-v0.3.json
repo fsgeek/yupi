@@ -1,0 +1,8949 @@
+{
+"benchmark": "d8-attribution-benchmark-c1-v0.3-2026-08-28.jsonl",
+"prereg": "d8-attribution-prereg-v0.1.md@a39f555",
+"rule": {
+"version": "v0.3",
+"B1_support": 20000,
+"B1_frontier": 70000,
+"B3_step_s": 1.0,
+"B4p_paths": 1500000,
+"B4p_rss_bytes": 4294967296,
+"wall_cap_s": 3600,
+"n_vis_cap": 9000000
+},
+"frozen_at": "2026-08-28 18:15 PDT",
+"admitted": [
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 7,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 2,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 10,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 10,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 11,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 1,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r4"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r2"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r3"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r1"
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 2,
+"B": 2,
+"rung": "r4"
+}
+],
+"refused": [
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 4,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 5117,
+"n_vis": null,
+"projected_gate2_wall_s": 3617.633914606442
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 10699,
+"n_vis": null,
+"projected_gate2_wall_s": 4789.550309957267
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 13475,
+"n_vis": null,
+"projected_gate2_wall_s": 4465.980037762711
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 11733,
+"n_vis": null,
+"projected_gate2_wall_s": 5103.845601891051
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 12761,
+"n_vis": null,
+"projected_gate2_wall_s": 5608.175886756144
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 14851,
+"n_vis": null,
+"projected_gate2_wall_s": 4806.39705043094
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 4767,
+"n_vis": null,
+"projected_gate2_wall_s": 4993.557462115583
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 5,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 12819,
+"n_vis": null,
+"projected_gate2_wall_s": 5456.617568897142
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 47976,
+"n_vis": null,
+"projected_gate2_wall_s": 3844.0977729060687
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 23509,
+"n_vis": null,
+"projected_gate2_wall_s": 6196.575121692178
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 16223,
+"n_vis": null,
+"projected_gate2_wall_s": 5234.382017123295
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 5368,
+"n_vis": null,
+"projected_gate2_wall_s": 5636.548854648601
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 25334,
+"n_vis": null,
+"projected_gate2_wall_s": 6723.049238992564
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 48922,
+"n_vis": null,
+"projected_gate2_wall_s": 3901.4273021490953
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 16495,
+"n_vis": null,
+"projected_gate2_wall_s": 5217.680651386108
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 48988,
+"n_vis": null,
+"projected_gate2_wall_s": 3749.3615872646333
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 26516,
+"n_vis": null,
+"projected_gate2_wall_s": 6973.533392211888
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6252,
+"n_vis": null,
+"projected_gate2_wall_s": 6526.1277740659425
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 6,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 26586,
+"n_vis": null,
+"projected_gate2_wall_s": 6914.707968917792
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 31078,
+"n_vis": null,
+"projected_gate2_wall_s": 6540.239576353866
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 45002,
+"n_vis": null,
+"projected_gate2_wall_s": 6989.330733238516
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6495,
+"n_vis": null,
+"projected_gate2_wall_s": 6643.945009270246
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1661,
+"n_vis": null,
+"projected_gate2_wall_s": 3742.835594209988
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 33607,
+"n_vis": null,
+"projected_gate2_wall_s": 7127.587880118284
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 47976,
+"n_vis": null,
+"projected_gate2_wall_s": 7555.246471498045
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 13475,
+"n_vis": null,
+"projected_gate2_wall_s": 9212.733718593154
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 48922,
+"n_vis": null,
+"projected_gate2_wall_s": 7476.325399780297
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 35580,
+"n_vis": null,
+"projected_gate2_wall_s": 7619.353034875821
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 5965,
+"n_vis": null,
+"projected_gate2_wall_s": 3993.034133558249
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 48988,
+"n_vis": null,
+"projected_gate2_wall_s": 7323.978225486062
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 14851,
+"n_vis": null,
+"projected_gate2_wall_s": 10167.648266714401
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 35760,
+"n_vis": null,
+"projected_gate2_wall_s": 7427.670299692545
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2074,
+"n_vis": null,
+"projected_gate2_wall_s": 4808.755328153784
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 73804,
+"n_vis": null,
+"projected_gate2_wall_s": 5950.221511290409
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 16223,
+"n_vis": null,
+"projected_gate2_wall_s": 11043.165679046026
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 7101,
+"n_vis": null,
+"projected_gate2_wall_s": 4731.103866648395
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 61557,
+"n_vis": null,
+"projected_gate2_wall_s": 8833.343689841699
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 77832,
+"n_vis": null,
+"projected_gate2_wall_s": 6216.193088410771
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 5,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 16495,
+"n_vis": null,
+"projected_gate2_wall_s": 11114.548882386589
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2358,
+"n_vis": null,
+"projected_gate2_wall_s": 5368.747801608348
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 7660,
+"n_vis": null,
+"projected_gate2_wall_s": 5299.836602958385
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 78767,
+"n_vis": null,
+"projected_gate2_wall_s": 6320.643579709111
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 65532,
+"n_vis": null,
+"projected_gate2_wall_s": 8822.722441957332
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 31078,
+"n_vis": null,
+"projected_gate2_wall_s": 13685.002627003094
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 8,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 78845,
+"n_vis": null,
+"projected_gate2_wall_s": 6133.6671426909015
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 5267,
+"n_vis": null,
+"projected_gate2_wall_s": 7982.145131135432
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 67623,
+"n_vis": null,
+"projected_gate2_wall_s": 9289.349194609764
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 15689,
+"n_vis": null,
+"projected_gate2_wall_s": 7392.533311880587
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 33607,
+"n_vis": null,
+"projected_gate2_wall_s": 14732.882159474771
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 111922,
+"n_vis": null,
+"projected_gate2_wall_s": 5215.919099183171
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 67801,
+"n_vis": null,
+"projected_gate2_wall_s": 8834.684482838245
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 35580,
+"n_vis": null,
+"projected_gate2_wall_s": 15711.214554405597
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 115980,
+"n_vis": null,
+"projected_gate2_wall_s": 5238.735531244311
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 17475,
+"n_vis": null,
+"projected_gate2_wall_s": 8105.234613468565
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 5965,
+"n_vis": null,
+"projected_gate2_wall_s": 9029.789942724383
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 35760,
+"n_vis": null,
+"projected_gate2_wall_s": 15362.405384351732
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 109061,
+"n_vis": null,
+"projected_gate2_wall_s": 8793.117503771762
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 116252,
+"n_vis": null,
+"projected_gate2_wall_s": 5201.796529911109
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 61557,
+"n_vis": null,
+"projected_gate2_wall_s": 16500.21620824808
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 29151,
+"n_vis": 330620,
+"projected_gate2_wall_s": 3812.6374418020714
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 19524,
+"n_vis": null,
+"projected_gate2_wall_s": 9176.79693680437
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 13,
+"L": 9,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 116321,
+"n_vis": null,
+"projected_gate2_wall_s": 5151.560938681156
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 114229,
+"n_vis": null,
+"projected_gate2_wall_s": 8853.924631095404
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 7101,
+"n_vis": null,
+"projected_gate2_wall_s": 10947.191498339947
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 65532,
+"n_vis": null,
+"projected_gate2_wall_s": 17868.763392771478
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 20132,
+"n_vis": null,
+"projected_gate2_wall_s": 9146.195413488313
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6004,
+"n_vis": null,
+"projected_gate2_wall_s": 5496.318060896418
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1575,
+"n_vis": null,
+"projected_gate2_wall_s": 4966.752180600815
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 4,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 7660,
+"n_vis": null,
+"projected_gate2_wall_s": 11763.47701352759
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 30366,
+"n_vis": 344796,
+"projected_gate2_wall_s": 3999.6964431637607
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 115996,
+"n_vis": null,
+"projected_gate2_wall_s": 9213.810857775272
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 67623,
+"n_vis": null,
+"projected_gate2_wall_s": 18185.301721446667
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 116208,
+"n_vis": null,
+"projected_gate2_wall_s": 8728.032630545553
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 38332,
+"n_vis": null,
+"projected_gate2_wall_s": 12459.477055193158
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 67801,
+"n_vis": null,
+"projected_gate2_wall_s": 17744.94464011045
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 30427,
+"n_vis": 345548,
+"projected_gate2_wall_s": 4033.698809249414
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 15689,
+"n_vis": null,
+"projected_gate2_wall_s": 15943.769780291084
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6863,
+"n_vis": null,
+"projected_gate2_wall_s": 6273.138930879024
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 109061,
+"n_vis": null,
+"projected_gate2_wall_s": 16325.487233786233
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 172253,
+"n_vis": null,
+"projected_gate2_wall_s": 8181.212216206666
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 41712,
+"n_vis": null,
+"projected_gate2_wall_s": 13922.401651540305
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1788,
+"n_vis": null,
+"projected_gate2_wall_s": 5683.221625955135
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 8,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 30433,
+"n_vis": 346188,
+"projected_gate2_wall_s": 3852.977804400085
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 17475,
+"n_vis": null,
+"projected_gate2_wall_s": 18113.482781783387
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 114229,
+"n_vis": null,
+"projected_gate2_wall_s": 18230.2537735714
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 44561,
+"n_vis": null,
+"projected_gate2_wall_s": 14991.441421163472
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 178221,
+"n_vis": null,
+"projected_gate2_wall_s": 7958.5307554678875
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 8158,
+"n_vis": null,
+"projected_gate2_wall_s": 7599.42216418052
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 19524,
+"n_vis": null,
+"projected_gate2_wall_s": 20112.49883182661
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 115996,
+"n_vis": null,
+"projected_gate2_wall_s": 18118.440066393872
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 45317,
+"n_vis": null,
+"projected_gate2_wall_s": 14595.713861200333
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2259,
+"n_vis": null,
+"projected_gate2_wall_s": 7244.924934038107
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 5,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 20132,
+"n_vis": null,
+"projected_gate2_wall_s": 20494.63852121419
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 116208,
+"n_vis": null,
+"projected_gate2_wall_s": 17233.24002072774
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 179667,
+"n_vis": null,
+"projected_gate2_wall_s": 7949.888707745005
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 9117,
+"n_vis": null,
+"projected_gate2_wall_s": 8307.658099732318
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 80693,
+"n_vis": null,
+"projected_gate2_wall_s": 17624.760341430825
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 179864,
+"n_vis": null,
+"projected_gate2_wall_s": 7816.932427753811
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 38332,
+"n_vis": null,
+"projected_gate2_wall_s": 26281.792214388377
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 172253,
+"n_vis": null,
+"projected_gate2_wall_s": 14236.443457746078
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 3,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2667,
+"n_vis": null,
+"projected_gate2_wall_s": 8419.205535813613
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 86150,
+"n_vis": null,
+"projected_gate2_wall_s": 18208.701130630652
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 18270,
+"n_vis": null,
+"projected_gate2_wall_s": 12269.93093863508
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 41712,
+"n_vis": null,
+"projected_gate2_wall_s": 29099.400489050662
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 178221,
+"n_vis": null,
+"projected_gate2_wall_s": 15000.702420264293
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 249866,
+"n_vis": null,
+"projected_gate2_wall_s": 6554.951913587371
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 90166,
+"n_vis": null,
+"projected_gate2_wall_s": 19457.97842724336
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6004,
+"n_vis": null,
+"projected_gate2_wall_s": 12778.765973612317
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 179667,
+"n_vis": null,
+"projected_gate2_wall_s": 14384.43053924336
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 44561,
+"n_vis": null,
+"projected_gate2_wall_s": 30817.786204381147
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 255207,
+"n_vis": null,
+"projected_gate2_wall_s": 6925.08354186159
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 90650,
+"n_vis": null,
+"projected_gate2_wall_s": 19700.374187460693
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 20553,
+"n_vis": null,
+"projected_gate2_wall_s": 13711.046985463297
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 45317,
+"n_vis": null,
+"projected_gate2_wall_s": 31075.641378147688
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 9,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 179864,
+"n_vis": null,
+"projected_gate2_wall_s": 14016.153651229688
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 149171,
+"n_vis": null,
+"projected_gate2_wall_s": 19261.035744633715
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6863,
+"n_vis": null,
+"projected_gate2_wall_s": 14713.209374305632
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 255561,
+"n_vis": null,
+"projected_gate2_wall_s": 6626.606517750974
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 80693,
+"n_vis": null,
+"projected_gate2_wall_s": 35909.01262943765
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 249866,
+"n_vis": null,
+"projected_gate2_wall_s": 11315.008651435288
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 23084,
+"n_vis": null,
+"projected_gate2_wall_s": 15567.706040492281
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 255781,
+"n_vis": null,
+"projected_gate2_wall_s": 6668.059249221362
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 86150,
+"n_vis": null,
+"projected_gate2_wall_s": 39530.278129767976
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 156358,
+"n_vis": null,
+"projected_gate2_wall_s": 20424.457322677947
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 24559,
+"n_vis": null,
+"projected_gate2_wall_s": 16041.279710346425
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 255207,
+"n_vis": null,
+"projected_gate2_wall_s": 11489.390556543687
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 8158,
+"n_vis": null,
+"projected_gate2_wall_s": 17556.563695528108
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 90166,
+"n_vis": null,
+"projected_gate2_wall_s": 40559.631637510814
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 342872,
+"n_vis": null,
+"projected_gate2_wall_s": 4272.499529179768
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 160948,
+"n_vis": null,
+"projected_gate2_wall_s": 21755.719548994093
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 9117,
+"n_vis": null,
+"projected_gate2_wall_s": 19244.311368385388
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 255561,
+"n_vis": null,
+"projected_gate2_wall_s": 12027.426451343024
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 90650,
+"n_vis": null,
+"projected_gate2_wall_s": 39939.62844993366
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 46836,
+"n_vis": null,
+"projected_gate2_wall_s": 22541.002597545565
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 161495,
+"n_vis": null,
+"projected_gate2_wall_s": 20809.96647696469
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 255781,
+"n_vis": null,
+"projected_gate2_wall_s": 11682.499447978495
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 345760,
+"n_vis": null,
+"projected_gate2_wall_s": 4324.086313210428
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 149171,
+"n_vis": null,
+"projected_gate2_wall_s": 39504.516024160985
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 18270,
+"n_vis": null,
+"projected_gate2_wall_s": 27890.07036387833
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 51510,
+"n_vis": null,
+"projected_gate2_wall_s": 24561.96478496975
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 252355,
+"n_vis": null,
+"projected_gate2_wall_s": 20431.094093945867
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 342872,
+"n_vis": null,
+"projected_gate2_wall_s": 7277.531236874405
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 156358,
+"n_vis": null,
+"projected_gate2_wall_s": 42123.813995177654
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 345972,
+"n_vis": null,
+"projected_gate2_wall_s": 4405.704319104203
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 20553,
+"n_vis": null,
+"projected_gate2_wall_s": 31971.94467083612
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 260093,
+"n_vis": null,
+"projected_gate2_wall_s": 20613.92664773531
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 55558,
+"n_vis": null,
+"projected_gate2_wall_s": 26964.532776027103
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 160948,
+"n_vis": null,
+"projected_gate2_wall_s": 42126.498618590354
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 345760,
+"n_vis": null,
+"projected_gate2_wall_s": 7065.910909108352
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 346192,
+"n_vis": null,
+"projected_gate2_wall_s": 4138.90849565831
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 56982,
+"n_vis": null,
+"projected_gate2_wall_s": 26810.565946406045
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 8,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 161495,
+"n_vis": null,
+"projected_gate2_wall_s": 41944.5903849414
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 23084,
+"n_vis": null,
+"projected_gate2_wall_s": 35752.62588525901
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 263594,
+"n_vis": null,
+"projected_gate2_wall_s": 20725.319175032084
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 345972,
+"n_vis": null,
+"projected_gate2_wall_s": 7202.186306318734
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 252355,
+"n_vis": null,
+"projected_gate2_wall_s": 38292.81531707951
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 103044,
+"n_vis": null,
+"projected_gate2_wall_s": 34312.52572876919
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 264196,
+"n_vis": null,
+"projected_gate2_wall_s": 19791.524989460537
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 5,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 24559,
+"n_vis": null,
+"projected_gate2_wall_s": 37028.586168267095
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 11,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 346192,
+"n_vis": null,
+"projected_gate2_wall_s": 6945.211817447795
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 260093,
+"n_vis": null,
+"projected_gate2_wall_s": 39864.02131480354
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 46836,
+"n_vis": null,
+"projected_gate2_wall_s": 49310.00407072093
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 110535,
+"n_vis": null,
+"projected_gate2_wall_s": 36631.90782808568
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 383077,
+"n_vis": null,
+"projected_gate2_wall_s": 17242.0751206094
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 430933,
+"n_vis": null,
+"projected_gate2_wall_s": 5113.119159889189
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 263594,
+"n_vis": null,
+"projected_gate2_wall_s": 39737.13975150618
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 51510,
+"n_vis": null,
+"projected_gate2_wall_s": 54698.67483396942
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 116075,
+"n_vis": null,
+"projected_gate2_wall_s": 66410.76675580516
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 391049,
+"n_vis": null,
+"projected_gate2_wall_s": 17558.294451203124
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 430933,
+"n_vis": null,
+"projected_gate2_wall_s": 5228.612648085662
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 264196,
+"n_vis": null,
+"projected_gate2_wall_s": 39316.187715561886
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 117632,
+"n_vis": null,
+"projected_gate2_wall_s": 37883.29713939689
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 55558,
+"n_vis": null,
+"projected_gate2_wall_s": 58408.06411954705
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 394236,
+"n_vis": null,
+"projected_gate2_wall_s": 17898.300208001747
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 383077,
+"n_vis": null,
+"projected_gate2_wall_s": 30970.304053498126
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 430933,
+"n_vis": null,
+"projected_gate2_wall_s": 5168.851292549429
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 56982,
+"n_vis": null,
+"projected_gate2_wall_s": 58052.964667259424
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 200953,
+"n_vis": null,
+"projected_gate2_wall_s": 44161.580590785175
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 394859,
+"n_vis": null,
+"projected_gate2_wall_s": 18776.217498028724
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 430933,
+"n_vis": null,
+"projected_gate2_wall_s": 5484.103782672406
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 391049,
+"n_vis": null,
+"projected_gate2_wall_s": 31941.482584805708
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 103044,
+"n_vis": null,
+"projected_gate2_wall_s": 72975.7466831716
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 211060,
+"n_vis": null,
+"projected_gate2_wall_s": 44089.00216828362
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 539887,
+"n_vis": null,
+"projected_gate2_wall_s": 14096.498699329342
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 585840,
+"n_vis": null,
+"projected_gate2_wall_s": 4408.799259108491
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 394236,
+"n_vis": null,
+"projected_gate2_wall_s": 31715.89038673154
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 110535,
+"n_vis": null,
+"projected_gate2_wall_s": 77138.37258836495
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 218807,
+"n_vis": null,
+"projected_gate2_wall_s": 48168.04869762319
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 10,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 394859,
+"n_vis": null,
+"projected_gate2_wall_s": 31478.990262342108
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 116075,
+"n_vis": null,
+"projected_gate2_wall_s": 91351.68709158497
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 585840,
+"n_vis": null,
+"projected_gate2_wall_s": 4490.290189515799
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 545083,
+"n_vis": null,
+"projected_gate2_wall_s": 14561.038742629142
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 219989,
+"n_vis": null,
+"projected_gate2_wall_s": 53031.850673975845
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 7,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 117632,
+"n_vis": null,
+"projected_gate2_wall_s": 80743.75794543326
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 539887,
+"n_vis": null,
+"projected_gate2_wall_s": 24970.57547855786
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 585840,
+"n_vis": null,
+"projected_gate2_wall_s": 4486.768123648362
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 354119,
+"n_vis": null,
+"projected_gate2_wall_s": 47070.94512377962
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 545507,
+"n_vis": null,
+"projected_gate2_wall_s": 14933.259033584298
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 200953,
+"n_vis": null,
+"projected_gate2_wall_s": 87344.07656417463
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 545083,
+"n_vis": null,
+"projected_gate2_wall_s": 24666.16514446777
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 13,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 585840,
+"n_vis": null,
+"projected_gate2_wall_s": 4350.904211798916
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 546114,
+"n_vis": null,
+"projected_gate2_wall_s": 13738.056350035651
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 365771,
+"n_vis": null,
+"projected_gate2_wall_s": 48312.492009804
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 211060,
+"n_vis": null,
+"projected_gate2_wall_s": 91344.93072179146
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 545507,
+"n_vis": null,
+"projected_gate2_wall_s": 25490.297262808745
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 719190,
+"n_vis": null,
+"projected_gate2_wall_s": 9042.952660149022
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 218807,
+"n_vis": null,
+"projected_gate2_wall_s": 95375.30776228681
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 373844,
+"n_vis": null,
+"projected_gate2_wall_s": 51184.124879116134
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 11,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 546114,
+"n_vis": null,
+"projected_gate2_wall_s": 23987.75544293286
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 11228,
+"n_vis": 183096,
+"projected_gate2_wall_s": 5413.560175969033
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 219989,
+"n_vis": null,
+"projected_gate2_wall_s": 91668.54734358416
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 11481,
+"n_vis": 189270,
+"projected_gate2_wall_s": 5139.030179855501
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 11708,
+"n_vis": 194166,
+"projected_gate2_wall_s": 5355.618586786208
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 375066,
+"n_vis": null,
+"projected_gate2_wall_s": 48180.26348320028
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 11711,
+"n_vis": 194994,
+"projected_gate2_wall_s": 5117.030830868767
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 722483,
+"n_vis": null,
+"projected_gate2_wall_s": 9519.248883546112
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 354119,
+"n_vis": null,
+"projected_gate2_wall_s": 92875.72217010787
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 719190,
+"n_vis": null,
+"projected_gate2_wall_s": 14794.965239324374
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 11228,
+"n_vis": 183096,
+"projected_gate2_wall_s": 10440.844678051013
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 11481,
+"n_vis": 189270,
+"projected_gate2_wall_s": 11035.632631784538
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 568396,
+"n_vis": null,
+"projected_gate2_wall_s": 44322.13035382581
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 11708,
+"n_vis": null,
+"projected_gate2_wall_s": 3663.469869439723
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 6,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 11711,
+"n_vis": 194994,
+"projected_gate2_wall_s": 11563.01826092742
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 722887,
+"n_vis": null,
+"projected_gate2_wall_s": 9038.133277371991
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 365771,
+"n_vis": null,
+"projected_gate2_wall_s": 96670.09967177201
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 722483,
+"n_vis": null,
+"projected_gate2_wall_s": 14382.068091643872
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 578964,
+"n_vis": null,
+"projected_gate2_wall_s": 44679.586909623
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 723661,
+"n_vis": null,
+"projected_gate2_wall_s": 8652.51354423842
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 373844,
+"n_vis": null,
+"projected_gate2_wall_s": 97914.85255467461
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 722887,
+"n_vis": null,
+"projected_gate2_wall_s": 14597.280315459706
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 9,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 375066,
+"n_vis": null,
+"projected_gate2_wall_s": 95598.69516212284
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 585446,
+"n_vis": null,
+"projected_gate2_wall_s": 48112.00321585554
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41032,
+"n_vis": 2765961,
+"projected_gate2_wall_s": 18607.45999595309
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 7704.821142175904
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 723661,
+"n_vis": null,
+"projected_gate2_wall_s": 14795.043619630233
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 3931,
+"n_vis": null,
+"projected_gate2_wall_s": 3788.3228651976096
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 4488,
+"n_vis": null,
+"projected_gate2_wall_s": 4303.961692588404
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 4,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 4609,
+"n_vis": null,
+"projected_gate2_wall_s": 4196.403979266499
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 19887,
+"n_vis": null,
+"projected_gate2_wall_s": 8574.669894968407
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 568396,
+"n_vis": null,
+"projected_gate2_wall_s": 84624.94501623698
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 586962,
+"n_vis": null,
+"projected_gate2_wall_s": 47883.52412108958
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 21411,
+"n_vis": null,
+"projected_gate2_wall_s": 9197.091816843094
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 22428,
+"n_vis": null,
+"projected_gate2_wall_s": 9668.791473565798
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 22518,
+"n_vis": null,
+"projected_gate2_wall_s": 9480.402056588558
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 65709,
+"n_vis": null,
+"projected_gate2_wall_s": 11308.38570700957
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41032,
+"n_vis": 2765961,
+"projected_gate2_wall_s": 25354.1380453733
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 68122,
+"n_vis": null,
+"projected_gate2_wall_s": 11993.197932476673
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 68990,
+"n_vis": null,
+"projected_gate2_wall_s": 11515.11889914851
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 8855.601126579597
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 10970.782422386954
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 69096,
+"n_vis": null,
+"projected_gate2_wall_s": 11211.413039525156
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 146926,
+"n_vis": null,
+"projected_gate2_wall_s": 7914.888192292652
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 578964,
+"n_vis": null,
+"projected_gate2_wall_s": 89483.77033141942
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 148977,
+"n_vis": null,
+"projected_gate2_wall_s": 8113.1700259182835
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 841893,
+"n_vis": null,
+"projected_gate2_wall_s": 37166.23952059113
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 149073,
+"n_vis": null,
+"projected_gate2_wall_s": 8055.668490822165
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 149183,
+"n_vis": null,
+"projected_gate2_wall_s": 7847.157974466434
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 7153.7574102697545
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 11189.137792855268
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 3634.483089809917
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 585446,
+"n_vis": null,
+"projected_gate2_wall_s": 88111.21131748238
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 3514.8576765986363
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41128,
+"n_vis": 2791584,
+"projected_gate2_wall_s": 18395.236533587216
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 850235,
+"n_vis": null,
+"projected_gate2_wall_s": 37705.81707040168
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 586962,
+"n_vis": null,
+"projected_gate2_wall_s": 85303.85836264995
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 3590.223387755861
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 6976.58077025917
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 10949.211199373647
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 4058.128789261391
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41128,
+"n_vis": 2791584,
+"projected_gate2_wall_s": 25729.7152188255
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1794.283597145928
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 855044,
+"n_vis": null,
+"projected_gate2_wall_s": 51618.75660136482
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 841893,
+"n_vis": null,
+"projected_gate2_wall_s": 69773.08459932156
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 13,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 898726,
+"n_vis": null,
+"projected_gate2_wall_s": 10620.929071032908
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 7782.979825097937
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1833.858770727762
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 19887,
+"n_vis": null,
+"projected_gate2_wall_s": 3951.7792201161938
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 21411,
+"n_vis": null,
+"projected_gate2_wall_s": 4269.152264943259
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 856399,
+"n_vis": null,
+"projected_gate2_wall_s": 37686.846829142814
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 22428,
+"n_vis": null,
+"projected_gate2_wall_s": 4592.6854687391315
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 6,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 22518,
+"n_vis": null,
+"projected_gate2_wall_s": 4591.44352869771
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1867.434607700212
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 65709,
+"n_vis": null,
+"projected_gate2_wall_s": 5543.685856843818
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 68122,
+"n_vis": null,
+"projected_gate2_wall_s": 5890.224386872753
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 850235,
+"n_vis": null,
+"projected_gate2_wall_s": 68255.37617785194
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 68990,
+"n_vis": null,
+"projected_gate2_wall_s": 6032.738035051298
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41264,
+"n_vis": 2808108,
+"projected_gate2_wall_s": 19817.15619344765
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 8,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 69096,
+"n_vis": null,
+"projected_gate2_wall_s": 5661.8302982946625
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 9759.653212726524
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1740.7557243722258
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 146926,
+"n_vis": null,
+"projected_gate2_wall_s": 4387.025671976793
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 10043.922203862385
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 148977,
+"n_vis": null,
+"projected_gate2_wall_s": 4719.002603710222
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 149073,
+"n_vis": null,
+"projected_gate2_wall_s": 4507.718418472476
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 10,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 149183,
+"n_vis": null,
+"projected_gate2_wall_s": 4385.976470313239
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1150697,
+"n_vis": null,
+"projected_gate2_wall_s": 29878.53458822472
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41264,
+"n_vis": 2808108,
+"projected_gate2_wall_s": 25681.05703976861
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 2023.739298347049
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 855044,
+"n_vis": null,
+"projected_gate2_wall_s": 70144.51356738794
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 9882.924227979835
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 2038.6051559349726
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 8855.460944490507
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 2054.321102565533
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 11,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 856399,
+"n_vis": null,
+"projected_gate2_wall_s": 66066.86487900521
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 12,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 239799,
+"n_vis": null,
+"projected_gate2_wall_s": 1944.7442303032876
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1154880,
+"n_vis": null,
+"projected_gate2_wall_s": 31904.436538545415
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41271,
+"n_vis": 2814696,
+"projected_gate2_wall_s": 17500.686078657105
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1455.2932305419818
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 519.9826583254617
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 9621.44382812189
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 7240.764858733615
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 522.0730760661536
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 531.9521582763991
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1388.5134937490802
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 540.0836666079704
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1150697,
+"n_vis": null,
+"projected_gate2_wall_s": 52493.59237021796
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 9,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "B",
+"n_lat": 41271,
+"n_vis": 2814696,
+"projected_gate2_wall_s": 25154.313571559425
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1307.9030680423602
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 754.1913347758236
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1155419,
+"n_vis": null,
+"projected_gate2_wall_s": 30783.65510825692
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 752.265581402753
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 14,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1213321,
+"n_vis": null,
+"projected_gate2_wall_s": 9144.96173369167
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 753.4162545861909
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 14,
+"L": 14,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 394824,
+"n_vis": null,
+"projected_gate2_wall_s": 1494.34645913844
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 12,
+"L": 12,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 76340,
+"n_vis": null,
+"projected_gate2_wall_s": 714.2911656698561
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1154880,
+"n_vis": null,
+"projected_gate2_wall_s": 50999.54468540847
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1156927,
+"n_vis": null,
+"projected_gate2_wall_s": 28992.863641292322
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss"
+],
+"stage": "B",
+"n_lat": 1214350,
+"n_vis": 1214350,
+"projected_gate2_wall_s": 808.600454263069
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1155419,
+"n_vis": null,
+"projected_gate2_wall_s": 52346.2404682155
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1524562,
+"n_vis": null,
+"projected_gate2_wall_s": 19360.498227644828
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss"
+],
+"stage": "B",
+"n_lat": 1214350,
+"n_vis": 1214350,
+"projected_gate2_wall_s": 881.1663359119848
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1156927,
+"n_vis": null,
+"projected_gate2_wall_s": 49746.44953413731
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1525972,
+"n_vis": null,
+"projected_gate2_wall_s": 19388.753027813917
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss"
+],
+"stage": "B",
+"n_lat": 1214350,
+"n_vis": 1214350,
+"projected_gate2_wall_s": 709.9527442529507
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1524562,
+"n_vis": null,
+"projected_gate2_wall_s": 40465.147177394945
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss"
+],
+"stage": "B",
+"n_lat": 1214350,
+"n_vis": 1214350,
+"projected_gate2_wall_s": 890.04934199329
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1526269,
+"n_vis": null,
+"projected_gate2_wall_s": 19965.25908962093
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1525972,
+"n_vis": null,
+"projected_gate2_wall_s": 30982.90210492717
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss"
+],
+"stage": "B",
+"n_lat": 1214350,
+"n_vis": 1214350,
+"projected_gate2_wall_s": 748.3334765391191
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1527737,
+"n_vis": null,
+"projected_gate2_wall_s": 18511.877958149402
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1526269,
+"n_vis": null,
+"projected_gate2_wall_s": 30911.8206226256
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss"
+],
+"stage": "B",
+"n_lat": 1214350,
+"n_vis": 1214350,
+"projected_gate2_wall_s": 764.2268802999752
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 15374.497144117006
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 13,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1527737,
+"n_vis": null,
+"projected_gate2_wall_s": 29796.66773313898
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 23991,
+"n_vis": null,
+"projected_gate2_wall_s": 9405.696500778038
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 24978,
+"n_vis": null,
+"projected_gate2_wall_s": 9874.867987134901
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 25760,
+"n_vis": null,
+"projected_gate2_wall_s": 10323.369793817401
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 26133,
+"n_vis": null,
+"projected_gate2_wall_s": 9924.86720516294
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 134460,
+"n_vis": null,
+"projected_gate2_wall_s": 15754.455266758741
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 135486,
+"n_vis": null,
+"projected_gate2_wall_s": 15871.333100952994
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 15357.779500183038
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 3,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"B3_step",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1774,
+"n_vis": null,
+"projected_gate2_wall_s": 3918.3025744713086
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 33422.391219401135
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 136472,
+"n_vis": null,
+"projected_gate2_wall_s": 16471.44873717171
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 23991,
+"n_vis": null,
+"projected_gate2_wall_s": 21695.687273537944
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 24978,
+"n_vis": null,
+"projected_gate2_wall_s": 23044.22846786346
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 136532,
+"n_vis": null,
+"projected_gate2_wall_s": 15189.228690016374
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 25760,
+"n_vis": null,
+"projected_gate2_wall_s": 23545.26148583507
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 6,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 26133,
+"n_vis": null,
+"projected_gate2_wall_s": 23086.331025322404
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 134460,
+"n_vis": null,
+"projected_gate2_wall_s": 31633.685511152144
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 387863,
+"n_vis": null,
+"projected_gate2_wall_s": 11378.695329545997
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 135486,
+"n_vis": null,
+"projected_gate2_wall_s": 33192.11940605994
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 136472,
+"n_vis": null,
+"projected_gate2_wall_s": 32783.36211207742
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 9,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 136532,
+"n_vis": null,
+"projected_gate2_wall_s": 40501.75304579601
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 388468,
+"n_vis": null,
+"projected_gate2_wall_s": 11431.216698548407
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 15306.90090793815
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 23338.940482144782
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 387863,
+"n_vis": null,
+"projected_gate2_wall_s": 15097.552532770496
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 388872,
+"n_vis": null,
+"projected_gate2_wall_s": 11184.354595347773
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 388468,
+"n_vis": null,
+"projected_gate2_wall_s": 15132.268656712899
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 14655.066034843941
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 388972,
+"n_vis": null,
+"projected_gate2_wall_s": 11235.881757479801
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 23144.894825569412
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 388872,
+"n_vis": null,
+"projected_gate2_wall_s": 15682.622898380156
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 12,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 388972,
+"n_vis": null,
+"projected_gate2_wall_s": 14623.680849412689
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 6198.750760785479
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 1869779,
+"n_vis": null,
+"projected_gate2_wall_s": 22612.24338138326
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 16482.482970929268
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 8556.443614365126
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 6164.449940334889
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 20611.40108423133
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 8570.437583123567
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 16593.748630430637
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 6296.464201851486
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 8612.22866935248
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 5877.417580121692
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 21187.42664275691
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 16542.682284297334
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 15,
+"L": 15,
+"B": 3,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 704170,
+"n_vis": null,
+"projected_gate2_wall_s": 8213.498736456095
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 21005.187570859707
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 15953.430017426144
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 15,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2528535,
+"n_vis": null,
+"projected_gate2_wall_s": 20083.4531221832
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 4103.205500154931
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 5061.032296681835
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 4433.112160963356
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 5121.198613609769
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 4016.7569995449157
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 5131.593566100695
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 3973.682046362199
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 5282,
+"n_vis": null,
+"projected_gate2_wall_s": 3914.7605855751026
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6062,
+"n_vis": null,
+"projected_gate2_wall_s": 4490.060003598046
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6669,
+"n_vis": null,
+"projected_gate2_wall_s": 4785.958305940992
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 31022,
+"n_vis": null,
+"projected_gate2_wall_s": 12866.378315366688
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 34068,
+"n_vis": null,
+"projected_gate2_wall_s": 14155.458510289842
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 36432,
+"n_vis": null,
+"projected_gate2_wall_s": 15371.16705919546
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 37126,
+"n_vis": null,
+"projected_gate2_wall_s": 14803.16711472845
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 122567,
+"n_vis": null,
+"projected_gate2_wall_s": 24978.919761129713
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 1,
+"rung": "r4",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 2529804,
+"n_vis": null,
+"projected_gate2_wall_s": 4906.638346236607
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 127885,
+"n_vis": null,
+"projected_gate2_wall_s": 26869.053870304997
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 131946,
+"n_vis": null,
+"projected_gate2_wall_s": 26976.377778054506
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 4612,
+"n_vis": null,
+"projected_gate2_wall_s": 8444.282467843499
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 132522,
+"n_vis": null,
+"projected_gate2_wall_s": 25498.395018292184
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 5282,
+"n_vis": null,
+"projected_gate2_wall_s": 9672.076969177695
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6062,
+"n_vis": null,
+"projected_gate2_wall_s": 11262.431818259356
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 4,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 6669,
+"n_vis": null,
+"projected_gate2_wall_s": 11960.056541866841
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 335935,
+"n_vis": null,
+"projected_gate2_wall_s": 28710.472466363208
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 31022,
+"n_vis": null,
+"projected_gate2_wall_s": 29631.31587865521
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 34068,
+"n_vis": null,
+"projected_gate2_wall_s": 32493.679631651554
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 340542,
+"n_vis": null,
+"projected_gate2_wall_s": 29145.00850704743
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 36432,
+"n_vis": null,
+"projected_gate2_wall_s": 34681.48812227743
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 6,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 37126,
+"n_vis": null,
+"projected_gate2_wall_s": 34867.92569493837
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 343850,
+"n_vis": null,
+"projected_gate2_wall_s": 28915.93749020176
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 122567,
+"n_vis": null,
+"projected_gate2_wall_s": 50976.62316886977
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 344590,
+"n_vis": null,
+"projected_gate2_wall_s": 28084.027449301066
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 127885,
+"n_vis": null,
+"projected_gate2_wall_s": 53084.05129123879
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 131946,
+"n_vis": null,
+"projected_gate2_wall_s": 55412.00218026771
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 8,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP"
+],
+"stage": "A",
+"n_lat": 132522,
+"n_vis": null,
+"projected_gate2_wall_s": 54420.81051089591
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 676929,
+"n_vis": null,
+"projected_gate2_wall_s": 20686.498726769307
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 335935,
+"n_vis": null,
+"projected_gate2_wall_s": 55997.11970644836
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 677819,
+"n_vis": null,
+"projected_gate2_wall_s": 20831.719055149922
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 340542,
+"n_vis": null,
+"projected_gate2_wall_s": 56852.52554997179
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 343850,
+"n_vis": null,
+"projected_gate2_wall_s": 57183.53308798905
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 677954,
+"n_vis": null,
+"projected_gate2_wall_s": 20827.899407321034
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 10,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 344590,
+"n_vis": null,
+"projected_gate2_wall_s": 56328.29649606778
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 678688,
+"n_vis": null,
+"projected_gate2_wall_s": 19616.1769499504
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 676929,
+"n_vis": null,
+"projected_gate2_wall_s": 37396.310350466694
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 677819,
+"n_vis": null,
+"projected_gate2_wall_s": 37557.905378722906
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 9663.241164928884
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 677954,
+"n_vis": null,
+"projected_gate2_wall_s": 38142.908300243
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 9776.341244508862
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 12,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 678688,
+"n_vis": null,
+"projected_gate2_wall_s": 35315.45339164464
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 16751.01279996836
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 9726.791171486751
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 9203.925539894757
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 16562.40545268453
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 16459.08442010518
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 5535.620880729199
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 14,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1051282,
+"n_vis": null,
+"projected_gate2_wall_s": 15588.578754281189
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 5456.399090551655
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r1",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 7645.031583935663
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 5673.975535042759
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r2",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 7732.784222112357
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 4952.958253121178
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r3",
+"refused_by": [
+"B4'_rss",
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 7531.364801345364
+},
+{
+"world": "c1",
+"discipline": "fifo",
+"eps": "1/2",
+"T_ep": 16,
+"L": 16,
+"B": 2,
+"rung": "r4",
+"refused_by": [
+"WALL_CAP",
+"N_VIS_CAP"
+],
+"stage": "A",
+"n_lat": 1710278,
+"n_vis": null,
+"projected_gate2_wall_s": 7225.637239783973
+}
+]
+}
