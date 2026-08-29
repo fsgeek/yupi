@@ -71,6 +71,7 @@ def _family(name: str) -> str:
     stem = re.sub(r"(-\d+)+$", "", stem)          # strip law numbers
     stem = re.sub(r"-h\d+$", "", stem)            # c1-multiwaiter-census-h14
     stem = re.sub(r"-v\d+$", "", stem)            # d10-lineage-search-v2
+    stem = re.sub(r"-v\d+(?:\.\d+)+$", "", stem)   # d8-attribution-c1-v0.3 (grid-rule version; a distinct artifact, not a sibling)
     stem = re.sub(r"-(c0a|c0b|c0c|c1)$", "", stem)  # d8-attribution-c0b
     return stem
 
