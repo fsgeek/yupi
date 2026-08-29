@@ -13,6 +13,13 @@
 >
 > *(2026-08-28 22:08 PDT: v0.3 is now measured — see §6, which is the only v0.3 section; §0–§5 unchanged.)*
 
+> **Erratum v0.1.1 (2026-08-29 07:52 PDT) — truthsayer review `d8-attribution-c1-truthsayer-review-2026-08-29.md` (Codex, via Tony), all four findings verified and adopted.**
+> (1) *Per-endpoint fields were pooled by offset, not conditioned on endpoint.* `per_offset_anchored` / `per_offset_unanchored` selected joint entries by u alone; every reset-visible endpoint T ≤ L has u = 0, so full-context laws reported the law-level mean at every endpoint. Fixed (T = u + n); regression-pinned; the fields are regenerated in `d8-attribution-{c0b,c1,c1-v0.3}-corrected-2026-08-29.json` (law-level fields byte-identical to the originals, pooled values retained under `pooled_pre_2026_08_29_*`; 60 / 54 / 18 cells changed). **Every law-level number in this note is unchanged.** What changes: the §3 sentence that per-endpoint values are equal across endpoints is withdrawn, and the two "unexplained" regularities are explained by endpoint localization — see the marked paragraphs in §3, §4 and §6.
+> (2) "To the last stored digit" claims in §6 are now "to displayed precision" (one float ulp apart; REQ chain vs Shapley 3.3 × 10⁻¹⁸).
+> (3) Gate 6 was recorded by witness, not executed per cell — a preregistration deviation, now stated in §1 and §5; the artifact marker says so going forward.
+> (4) Gate-F totals are cumulative cell-state checks, not globally distinct pairs.
+> Original text is preserved below with corrections marked *[v0.1.1]*.
+
 ## 0. Headline, stated first
 
 **In C1 the order channel's loss is the scheduler cursor at ε = ½, and at
@@ -47,13 +54,16 @@ Two-path on **every** distinct observation of both channels: 15,888,849
 shuffled observations and 10,134,321 ordered windows across the 716 cells,
 posterior and law mass bit-for-bit (recursive filter vs. aggregated path
 table under a literal permutation count). Gate F bijection on 642,762
-distinct (U, S_T). Full-coordinate identity, nonnegativity, chain-sum,
+(U, S_T) cell-state checks *[v0.1.1: cumulative per-cell counts — the same pair
+is checked again across rungs and overlapping laws; not globally distinct]*. Full-coordinate identity, nonnegativity, chain-sum,
 Shapley-sum and envelope-containment identities in every cell (the most
 negative chain term anywhere is −2.2e−16). **Z1** (κ ≡ 0 at ε = 1): exact 0
 under every prefix in all 369 ε = 1 cells; not applicable at ε = ½ (347
 cells, flag recorded False, i.e. not gated). **Z2** (WQ ≡ 0) is a C0b gate
 and does not apply — WQ is live in C1. **Z3**: all 542 B = 1 cells have every
-loss exactly 0.0. Gate 6 by construction + suite witness. Cost: max support
+loss exactly 0.0. Gate 6 by construction + suite witness *[v0.1.1: prereg §5.6
+says "at every measured law"; the runner records the witness test's name and
+does not execute the identity per cell — a deviation, see §5]*. Cost: max support
 739 states, max frontier 3,572; 20.68 CPU-hours of cell wall; the B = 3 run
 took 1 h 32 min (Aug 27 07:33–09:05 PDT) and the remaining 667 cells 2 h 15
 min (Aug 28 09:47–12:02 PDT), 24 workers each. The measured/projected wall
@@ -80,7 +90,10 @@ or not at all.
 - **ε = 1, full context, B ≥ 2 (20 cells):** 16 exactly zero — (6,6,2),
   (8,8,2), (10,10,2), (6,6,3) at all four rungs. The 4 informative cells are
   (9,9,3) r1–r4, each exactly 1/108 bits, 100 % WQ (chain, Shapley, envelope
-  all agree; width 0), collapsed under δ = 0.01 by 0.0007. The rung ladder
+  all agree; width 0), collapsed under δ = 0.01 by 0.0007 *[v0.1.1: corrected
+  per-endpoint values {{3: 0, 6: 0, 9: 1/36}} — the wait-queue bit is lost only on
+  windows generated at endpoint 9, on mass 1/36, one bit each; 1/108 is that
+  averaged over three endpoints]*. The rung ladder
   does nothing here: the wait-queue order is state that no rung's records
   encode, including lineage.
 - **ε = 1, truncated, B ≥ 2 (69 cells):** 57 informative, 53 not collapsed;
@@ -99,14 +112,28 @@ or not at all.
 - **ε = ½, full context, B ≥ 2 (20 cells): all informative, none collapsed.**
   B = 2: Δ_an = 0.19333 / 0.14500 / 0.11600 at T_ep = 6 / 8 / 10 with
   prevalence exactly 1/3, 1/4, 1/5 (= 2/T_ep) and Δ_an · T_ep/2 = 0.5800 at
-  all three laws to four digits; κ share 1.000 by chain and Shapley, envelope
+  all three laws to four digits *[v0.1.1: explained — see the end of this
+  bullet]*; κ share 1.000 by chain and Shapley, envelope
   width exactly 0. B = 3: 0.22393 at (6,6,3), 0.27975 at (9,9,3); κ share
   1.000 by chain, 0.988 by Shapley at (9,9,3) with the remainder in ρ/DQ
   (envelope width 0.007). r1 = r2 = r3 = r4 to every stored digit at all 20
-  cells. The 2/T_ep regularity is reported, not explained; its
+  cells. ~~The 2/T_ep regularity is reported, not explained; its
   per-endpoint anchored values are equal across endpoints in the artifact,
   which is the pattern the offset-free (full-context) law produces when a
-  fixed fraction of each endpoint's observations is order-ambiguous.
+  fixed fraction of each endpoint's observations is order-ambiguous.~~
+  *[v0.1.1: WITHDRAWN — the equal per-endpoint values were the pooling bug.
+  Corrected per-endpoint values (`d8-attribution-c1-corrected-2026-08-29.json`)
+  at (6,6,2), (8,8,2), (10,10,2), r4: endpoint 2 carries
+  0.5799834166232181 bits and every later endpoint exactly 0. The whole
+  cursor loss is the first bucket `[DISPATCH, DISPATCH]` seen at T = 2, when
+  nothing has yet resolved who the scheduler favoured; by T = 4 it is
+  resolved. The law averages uniformly over T_ep/2 endpoints, so
+  Δ_an = C / (T_ep/2) and prevalence = 2/T_ep — the "regularity" is the
+  endpoint prior. The constant is the reviewer's closed form, verified to the
+  last digit: C = 7/16 h(1/21) + 1/8 h(1/6) + 5/24 h(1/5) + 3/16 h(4/9)
+  + 1/24 h(1/2) = 0.5799834166232181, the weights being the exact law masses
+  of the five shuffled-posterior shapes at T = 2 (the ordered full-context
+  posterior is a point mass).]*
 - **ε = ½, truncated, B ≥ 2 (65 cells):** all informative, none collapsed;
   Δ_an from 0.116 to 0.391 bits; κ dominant everywhere (chain term
   0.114–0.386), with WQ ≤ 0.0124, DQ ≤ 0.0283, ρ ≤ 0.0217 and REQ ≤ 0.00033
@@ -144,9 +171,13 @@ or not at all.
 - "Collapsed" and "informative" remain different words: 146 of 716 cells are
   informative; 138 are not collapsed (Δ_an); at ε = 1 the gap is 8 cells,
   four of them the 1/108-bit (9,9,3) family.
-- The 2/T_ep pattern at ε = ½, B = 2 full context and the exact 1/108 at
+- ~~The 2/T_ep pattern at ε = ½, B = 2 full context and the exact 1/108 at
   (9,9,3) are exact rationals from the artifact; neither is explained here.
-  Candidates for a short theorem, not claims.
+  Candidates for a short theorem, not claims.~~ *[v0.1.1: both explained by
+  endpoint localization once the per-endpoint fields were computed correctly
+  (§3). The remaining open item is a derivation of the five T = 2 posterior
+  shapes' masses in the closed form for C from the kernel; the numbers are
+  exact and verified.]*
 
 ## 5. Deviations and provenance
 
@@ -170,6 +201,23 @@ or not at all.
 - Predictions were checked by the script on the consolidated artifact, not
   by recollection; every number in §0–§3 was checked against the artifact by
   an assertion script before this note was committed (see the commit).
+- *[v0.1.1]* **Gate 6 deviation.** Prereg §5.6 requires "ordered mode equals
+  identity serialization of the per-record filter … at every measured law."
+  `measure_cell` does not execute that identity; it records the suite
+  witness's name and sets `all_passed` after the other gates. The ordered
+  path is `filter_window`, a per-record recursive step by construction, and
+  every ordered observation is compared against independent path summation
+  in the uncapped gate 2, so the reviewer found no way for it to diverge —
+  but "every §5 gate passed at every cell" was not a literal account. The
+  `gate6` field in future artifacts reads "by construction, not executed per
+  cell"; the committed artifacts carry the old string and this paragraph.
+- *[v0.1.1]* **Per-endpoint pooling bug and regeneration.** See the erratum
+  at the top. `scripts/d8_regen_per_endpoint.py` rebuilt every cell's tables
+  and recomputed both per-endpoint series; the mean of each corrected series
+  equals the stored law-level Δ within 10⁻⁹ in all 2,233 cells (the identity
+  the bug preserved by accident). The existing regression checked only that
+  mean, which is why it could not catch the bug; two new regressions pin the
+  corrected endpoint values at (6,6,2) ε = ½ r4 and (9,9,3) ε = 1 r4.
 
 ## 6. Extension grid v0.3 (2026-08-28 22:08 PDT) — the allocator reappears in C1, with C0b's exact signature, a thousand times smaller
 
@@ -181,7 +229,8 @@ or not at all.
 > on both artifacts: `d8-attribution-predictions-score-2026-08-28-v0.3.json`.
 
 **Gates.** All 173 cells passed uncapped: two-path on 41,409,418 shuffled
-observations and 18,724,170 ordered windows; bijection on 301,695 (U, S_T);
+observations and 18,724,170 ordered windows; bijection on 301,695 (U, S_T)
+cell-state checks *[v0.1.1: cumulative, not globally distinct]*;
 Z1 exact in all 99 ε = 1 cells; Z3 in all 130 B = 1 cells. 55.13 CPU-hours;
 launched Aug 28 ~18:31 PDT, done 21:59 (eight (12,12,2) cells first on 8
 workers, then 165 per-cell jobs on 24). Max support 666, frontier 5,885;
@@ -192,7 +241,10 @@ only on projection. 41 cells informative, 27 not collapsed (ε = 1: 22 / 8;
 **P3b: PASS, 3/3.** At (12,12,2), ε = 1, r1–r3: Δ_an = Δ_un = 0.000138 bits
 (1.38 × 10⁻⁴), offset term exactly 0. The attribution is **100 % REQ** by
 chain, by Shapley, and by envelope (width exactly 0) — and **r4 is exactly
-0**. That is C0b's allocator signature to the letter (REQ share 1.000,
+0**. *[v0.1.1: corrected per-endpoint values localize the whole loss to
+endpoint 12 — 0.000828 = 6 × 0.000138 there, exactly 0 at endpoints 2–10 —
+so the informative mass at T = 12 is 6 × 241/1,417,176 and every informative
+observation still loses h(¼).]* That is C0b's allocator signature to the letter (REQ share 1.000,
 order-independent, removed by lineage), in the world where it had been
 absent from every admitted full-context cell, at a magnitude ~1000× below
 C0b's B = 3 values (0.050–0.170) and ~70× below δ = 0.01: informative but
@@ -207,17 +259,23 @@ nothing else. r1, r2, r3 identical to every digit. For contrast, C0b at
 B = 3; C1's lives at B = 2 and needs T_ep ≥ 12.
 
 **(12,12,2) at ε = ½.** r1–r3: Δ_an = 0.096669 = κ 0.096664 + REQ
-5.5 × 10⁻⁶, chain and Shapley agreeing to the last digit and envelope widths
+5.5 × 10⁻⁶, chain and Shapley agreeing to displayed precision *[v0.1.1: they
+differ by 3.3 × 10⁻¹⁸; a first draft said "to the last digit"]* and envelope widths
 below 10⁻¹⁷ (zero to float precision — a first draft said "exactly 0"; the
 pre-commit check refuted it): the cursor and the allocator terms are
 *separable* here, not redundant. r4: κ only, envelope width exactly 0,
 prevalence exactly 1/6 = 2/T_ep, and **Δ_an · T_ep/2 = 0.5799834166232181 —
 the identical float** to the v0.2 r4 values at (6,6,2), (8,8,2), (10,10,2).
-The regularity §3 reported at three laws holds at a fourth; still reported,
-still not explained.
+~~The regularity §3 reported at three laws holds at a fourth; still reported,
+still not explained.~~ *[v0.1.1: explained — corrected per-endpoint values
+(`d8-attribution-c1-v0.3-corrected-2026-08-29.json`) put C = 0.5799834166232181
+at endpoint 2 and exactly 0 at endpoints 4–12 for r4; at r1–r3 endpoint 12
+additionally carries 6 × 5.5 × 10⁻⁶ (the allocator term, localized to the
+last endpoint). See §3.]*
 
 **The rest.** ε = 1: (12,10,2) r1–r3 carry **the same loss as (12,12,2) to
-the last stored digit** — 0.000138, prevalence 241/1,417,176, h(¼) per
+displayed precision** *[v0.1.1: one float ulp apart, 0.00013796312384252267 vs
+…272; a first draft said "to the last stored digit"]* — 0.000138, prevalence 241/1,417,176, h(¼) per
 informative observation, r4 = 0 — the allocator bucket at ticks 11–12 sits
 inside any window of length ≥ 2 ending at 12, and shortening the window to
 10 neither adds to nor subtracts from it. (12,6,2) and (12,8,2) ≤ 0.0076,

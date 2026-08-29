@@ -172,3 +172,40 @@ def test_losses_fast_path_is_bit_for_bit_the_reference(cfg, progs, law, rung):
         assert fast[k] == ref[k], (sorted(k), fast[k], ref[k])   # bit-for-bit
     # and the exact gates the speed must not break
     assert all(fast[A | {"kappa"}] == fast[A] for A in fast if "kappa" not in A) or cfg.epsilon != 1
+
+
+def test_per_endpoint_conditions_on_endpoint_not_offset_pooled():
+    """Truthsayer review 2026-08-29, Finding 1: per-endpoint gains must be
+    restricted to windows generated at T (prereg §7). The pre-fix code selected
+    joint entries by offset u alone, and every reset-visible endpoint T ≤ L has
+    u = 0, so full-context laws reported the law-level mean at every endpoint.
+    Corrected expectation at C1 ε = ½, (6,6,2), r4: the whole cursor loss is at
+    endpoint 2 and equals the reviewer's closed form
+    C = 7/16 h(1/21) + 1/8 h(1/6) + 5/24 h(1/5) + 3/16 h(4/9) + 1/24 h(1/2);
+    endpoints 4 and 6 are exactly 0; the mean is the law-level Δ."""
+    import math
+    from yupi.d8_measure import per_offset_unanchored
+    h = lambda p: -(p * math.log2(p) + (1 - p) * math.log2(1 - p))
+    C = 7 / 16 * h(1 / 21) + 1 / 8 * h(1 / 6) + 5 / 24 * h(1 / 5) + 3 / 16 * h(4 / 9) + 1 / 24 * h(1 / 2)
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1, 2)), c1_programs()
+    law = WindowLaw(6, 6, 2)
+    lat, vis, src = _tables(cfg, progs, law, "r4")
+    pa = per_offset_anchored(lat, vis, src, law)
+    pu = per_offset_unanchored(lat, vis, law)
+    assert set(pa) == {2, 4, 6}
+    assert abs(pa[2] - C) < 1e-15 and pa[4] == 0.0 and pa[6] == 0.0
+    assert abs(pu[2] - C) < 1e-15 and pu[4] == 0.0 and pu[6] == 0.0
+    assert len({round(v, 12) for v in pa.values()}) == 2          # {C, 0}: NOT one pooled value copied per endpoint
+    assert abs(sum(pa.values()) / 3 - C / 3) < 1e-15               # law mean = Δ_an = C / (T_ep/2)
+
+
+def test_per_endpoint_localizes_the_1_over_108_at_9_9_3_to_endpoint_9():
+    """Same finding, second regularity: C1 ε = 1, (9,9,3), r4 — the artifact's
+    law-level 1/108 is the mean of {3: 0, 6: 0, 9: 1/36}: the wait-queue bit is
+    lost only on windows generated at endpoint 9 (mass 1/36, one bit each)."""
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1)), c1_programs()
+    law = WindowLaw(9, 9, 3)
+    lat, vis, src = _tables(cfg, progs, law, "r4")
+    pa = per_offset_anchored(lat, vis, src, law)
+    assert pa[3] == 0.0 and pa[6] == 0.0 and abs(pa[9] - 1 / 36) < 1e-13
+    assert abs(sum(pa.values()) / 3 - 1 / 108) < 1e-13

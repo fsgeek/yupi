@@ -12,6 +12,19 @@
 > random-naming ceiling. C1 is not measured yet (its benchmark is running;
 > separate freeze).**
 
+> *(2026-08-29 07:52 PDT, v0.1.1 pointer) The truthsayer review of the C1 note
+> (`d8-attribution-c1-truthsayer-review-2026-08-29.md`) found that the
+> per-endpoint fields of every D8 artifact were pooled by offset rather than
+> conditioned on endpoint (all reset-visible endpoints T ≤ L share u = 0).
+> Regenerated: `d8-attribution-c0b-corrected-2026-08-29.json` — law-level fields
+> byte-identical, 60 of 1344 cells' per-endpoint fields changed, all at laws
+> with more than one endpoint at u = 0. The one per-endpoint sentence in this
+> note (§2, (8,2,2): whole gain at T = 8, u = 6) is unaffected — every offset
+> is unique there — and was re-checked against the corrected artifact. "Gate F
+> bijection on 56,384 distinct (U, S_T)" should read cumulative cell-state
+> checks; and gate 6 was recorded by witness, not executed per cell (see the
+> C1 note §5).*
+
 ## 0. Headline, stated first
 
 **In C0b the shuffled channel's loss is the allocator, and nothing else,

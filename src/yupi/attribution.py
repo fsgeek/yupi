@@ -310,25 +310,40 @@ def per_observation(latent: Dict[LatentKey, Joint], visible: Dict[VisibleKey, Jo
     return rows
 
 
+def _n_obs(key) -> int:
+    """Observation length of a table key: latent keys are (reset, window),
+    visible keys are (reset, buckets). Under the statutory law T = u + n, so
+    (u, n) identifies the endpoint."""
+    win = key[1]
+    if win and isinstance(win[0], tuple) and win[0] and not hasattr(win[0], "kind"):
+        return sum(len(b) for b in win)           # bucketed (visible) key
+    return len(win)
+
+
 def per_offset_anchored(latent: Dict[LatentKey, Joint], visible: Dict[VisibleKey, Joint],
                         sources: Dict[VisibleKey, Dict[LatentKey, Fraction]],
                         law: WindowLaw) -> Dict[int, float]:
-    """Anchored gain restricted to windows generated at each endpoint (per U):
-    E[H(S | O_shuf, U=u)] − E[H(S | O_ord, U=u)] over that endpoint's law mass."""
+    """Anchored gain restricted to windows generated at each endpoint T
+    (prereg §7): E[H(S | O_shuf, U=u)] − E[H(S | O_ord, U=u)] over the law
+    mass generated at T. A joint entry (u, s) in a key of observation length
+    n was generated at T = u + n; selecting by u alone (the shipped code
+    before 2026-08-29) pooled every reset-visible endpoint T ≤ L, since they
+    all have u = 0 — truthsayer review 2026-08-29, Finding 1."""
     out = {}
     for T in law.endpoints():
-        u = law.offset(T)
         pu = Fraction(0)
         hs = ho = 0.0
         for v, joint in visible.items():
-            comp = {s: m for (uu, s), m in joint.items() if uu == u}
+            n = _n_obs(v)
+            comp = {s: m for (uu, s), m in joint.items() if uu + n == T}
             if not comp:
                 continue
             mvu = mass(comp)
             pu += mvu
             hs += float(mvu) * entropy_bits(comp.values())
         for w, joint in latent.items():
-            comp = {s: m for (uu, s), m in joint.items() if uu == u}
+            n = _n_obs(w)
+            comp = {s: m for (uu, s), m in joint.items() if uu + n == T}
             if comp:
                 ho += float(mass(comp)) * entropy_bits(comp.values())
         out[T] = (hs - ho) / float(pu) if pu else 0.0

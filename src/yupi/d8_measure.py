@@ -15,7 +15,7 @@ from fractions import Fraction
 from math import fsum
 from typing import Dict, List
 
-from yupi.attribution import (COORDS, SEMANTIC_ORDER, CoordCache, chain_terms,
+from yupi.attribution import (_n_obs, COORDS, SEMANTIC_ORDER, CoordCache, chain_terms,
                               check_bijection, entropy_bits, envelope,
                               joint_entropy, latent_table, losses, mass,
                               normalized, per_observation, per_offset_anchored,
@@ -27,7 +27,13 @@ from yupi.window_filter import filter_window_with_evidence
 
 DELTA = 0.01                      # Part II v0.2.5 collapse threshold
 TOL = 1e-9
-GATE6_WITNESS = "tests/test_shuffled_channel.py::test_ordered_bucket_equals_per_record_filter"
+# Gate 6 (prereg §5.6) is NOT executed per cell: the ordered path here is
+# `filter_window`, a per-record recursive step by construction, and the suite
+# witness below asserts the identity at one law. The artifact records the
+# witness, not an execution — a preregistration deviation named by the
+# truthsayer review of 2026-08-29 (Finding 3) and recorded in the C1 note.
+GATE6_WITNESS = ("by construction, not executed per cell: "
+                 "tests/test_shuffled_channel.py::test_ordered_bucket_equals_per_record_filter")
 
 
 class GateFailure(AssertionError):
@@ -57,22 +63,25 @@ def _quantiles(rows, qs=(50, 90, 99)):
 
 
 def per_offset_unanchored(latent, visible, law) -> Dict[int, float]:
-    """Unanchored gain restricted to windows generated at each endpoint: the
-    observer's posterior on the merged observation (marginal over U),
-    averaged over the mass generated at T (the ceilings' by_endpoint
-    convention)."""
+    """Unanchored gain restricted to windows generated at each endpoint T
+    (prereg §7): the observer's posterior on the merged observation (marginal
+    over U), averaged over the mass generated at T. An entry (u, s) in a key
+    of observation length n was generated at T = u + n; the pre-2026-08-29
+    code selected by u alone and pooled every endpoint T ≤ L (truthsayer
+    review 2026-08-29, Finding 1)."""
     out = {}
     for T in law.endpoints():
-        u = law.offset(T)
         pu = Fraction(0)
         hs, ho = [], []
-        for joint in visible.values():
-            mu = sum((m for (uu, _), m in joint.items() if uu == u), Fraction(0))
+        for v, joint in visible.items():
+            n = _n_obs(v)
+            mu = sum((m for (uu, _), m in joint.items() if uu + n == T), Fraction(0))
             if mu:
                 pu += mu
                 hs.append(float(mu) * entropy_bits(joint.values()))
-        for joint in latent.values():
-            mu = sum((m for (uu, _), m in joint.items() if uu == u), Fraction(0))
+        for w, joint in latent.items():
+            n = _n_obs(w)
+            mu = sum((m for (uu, _), m in joint.items() if uu + n == T), Fraction(0))
             if mu:
                 ho.append(float(mu) * entropy_bits(joint.values()))
         out[T] = (fsum(hs) - fsum(ho)) / float(pu) if pu else 0.0
