@@ -124,11 +124,45 @@ reporting the fraction of windows where the field moves the posterior.
 | 4 | ctrl-irr: decoy field changes no ceiling (exact zero) | 0 | UNBUILT | no decoy field in the schema or emitters |
 | 5 | ctrl-red: lineage changes no ceiling at full context, FIFO and stochastic | 4 proxies (full-context point-mass tests; none exercises both disciplines as the control) | PARTIAL (theorem) / UNBUILT (executable control) *(v3)* | theorem in `full-context-injectivity-note-v0.1.md`; the per-discipline executable control is absent |
 | 6 | Crossover: truncated **FIFO** C0b windows, lineage changes a ceiling | 0 | UNBUILT — **this is D10 (4.6)** | no note; "crossover" appears only in the two spec docs |
-| 7 | Shuffled channel: noncommuting bucket, order mode changes a posterior; hand-computed likelihood incl. duplicate bucket | 0 | UNBUILT | needs D8 |
+| 7 | Shuffled channel: noncommuting bucket, order mode changes a posterior; hand-computed likelihood incl. duplicate bucket | 0 | UNBUILT | needs D8 | *(2026-08-29: **SATISFIED (existence), both worlds** — see the dated addendum below the table)*
 | 8 | Reachability: no lock-cycle state reachable, C0 family, exhaustive | static I6 check only (`programs.py`, `test_programs.py`) | PARTIAL | lock-order discipline validated statically; exhaustive reachability assertion not present |
 | 9 | Q4 decomposition: a history with H(Z) = H(Z\|S_t) > 0 at full observability | none as a witness | PARTIAL | measured: (12,12,2) total = irreducible = 0.6676 > 0 (`c1-q4-ceilings` P1); `test_forecast.py` tests the split machinery, not this witness |
 | 10 | Divergent histories: equal exact P-next, unequal P-horizon on some τ | none as a witness | PARTIAL | three concrete pairs in `c1-predictive-targets` §"Three divergent pairs"; grid in `c1-divergent-grid-v0.1.md`; not an executable test |
 | 11 | Predictive rung discrimination: adjacent pair distinguished by a P-horizon test while Q1–Q5 posteriors unchanged | 0 | UNBUILT | no note establishes it; ~~candidate is r3/r4 (Q1–Q5 gaps ≤0.0037 …)~~ *(v3: withdrawn — the statute says Q1–Q5 **unchanged**, and ≤0.0037 is small, not zero)*; no candidate named |
+
+### Witness 7 — adjudication addendum (2026-08-29 07:55 PDT, append-only; researcher decision under the Aug-27 PI/researcher split)
+
+**Status: SATISFIED, by existence, in C0b and in C1.** Statute wording (§9.7):
+"a bucket with two noncommuting events where order mode changes a posterior;
+filter validated against hand-computed channel likelihood, including a
+duplicate-record bucket (m > 1)." That is an existence witness with no
+magnitude threshold; δ = 0.01 governs the *collapse label* (Part II v0.2.5),
+a different clause. The two statements are kept separate, as the truthsayer
+review of 2026-08-29 asked.
+
+- **Likelihood validation:** `tests/test_shuffled_channel.py` —
+  `test_likelihood_duplicate_records_m_greater_than_one`,
+  `test_likelihood_matches_literal_permutation_count`; the shuffled filter
+  matches the enumerator bit-for-bit (`test_shuffled_filter_matches_enumerator_bit_for_bit`).
+- **C0b:** `d8-shuffled-channel-note-v0.1.md` (v0.1.1) and
+  `d8-attribution-c0b-note-v0.1.md` — at B = 3, r1–r3, all 84 cells
+  informative and not collapsed (0.050–0.170 bits), REQ share 1.000.
+- **C1, ε = 1:** `d8-attribution-c1-note-v0.1.md` (v0.1.1) — (9,9,3): 3,888
+  distinct shuffled observations with g > 0 (prereg gate 7: > 1), the
+  wait-queue bucket, 1/108 bits law-level (1/36 at endpoint 9), rung-
+  independent; v0.3 (12,12,2): 3,328 informative observations, REQ, h(¼) each,
+  r4 = 0 (P3b PASS). **Both collapsed under δ** — the existence half of the
+  witness holds; the magnitude at ε = 1 with full context is below the frozen
+  threshold and is reported as such, not rounded to zero and not promoted.
+- **C1, ε = ½:** every B ≥ 2 cell in both grids informative and **not
+  collapsed** — the cursor coordinate κ; e.g. (6,6,2) 12 informative
+  observations, (9,9,3) 59184.
+
+Consequences for this map: row 7 SATISFIED; "Unbuilt code — D8 shuffled
+channel" below is superseded (built 2026-08-22/23, measured 2026-08-25/28);
+blocking-gap item 5's D8 clause is discharged, TIME_CLASS remains. No other
+row changes here; the map itself is still the Aug-17 v3 under the kernel
+erratum banner, and a v4 rewrite is a separate task.
 
 ## Unbuilt code
 
