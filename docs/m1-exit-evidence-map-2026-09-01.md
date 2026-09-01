@@ -140,3 +140,16 @@ the Q4 corrected value read from the JSON; `Record`'s fields and the
 TIME_CLASS docstrings read from `records.py`/`window.py`; the shuffled gate's
 parameter list read from the test. Figures quoted are copied from those
 sources, not from memory. Not re-run: any measurement.
+
+---
+
+### Addendum (2026-09-01 08:49 PDT, same instance, same day)
+
+Blocking item 1 discharged: D1 Part B formal verdict appended to
+`d1-falsifier-verdict-v0.1.md` from the committed producer
+`scripts/d1_partb_collapse_horizons.py` — L\* = 2 / 8 / 10 (r3→r4 / r2→r3 /
+r1→r2), both ε, corrected kernel; all statutory gaps exactly 0.0 at L ≥ 12
+(confirming the witness-11 candidate region on the corrected artifact, not the
+buggy-kernel note text the table above cited). Item 4.4 reads Part A DONE,
+Part B DONE, Part C decided; the blocking list now starts at witness 11.
+

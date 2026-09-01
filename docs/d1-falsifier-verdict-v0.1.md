@@ -15,6 +15,10 @@
 (evidence map v3, item 4.4). Part A is adjudicated by theorem and final;
 Part B is measured but formally conditional on the second stamped
 threshold decision; Part C is a decision put to the PI, not made here.**
+
+> **Part B formally adjudicated (appended 2026-09-01 08:49 PDT):** δ = 0.01 has been frozen
+> (Part II v0.2.5, 2026-08-21) and the corrected-kernel curves exist; the formal
+> verdict is the dated section at the end of this file. Nothing above is rewritten.
 Written Aug 20 2026, 07:31 PDT (`date` read in the correcting commit; the
 draft header said "Aug 17, ~19:45 PDT" — a time written from memory of
 the conversation, days stale: the session resumed Aug 20. Same
@@ -164,3 +168,65 @@ Consequences for the record:
    table (§4) — either would require a Part II amendment at selection
    time. Exposable branches and scheduler/device entropy fit the
    existing kernel parameterization.
+
+
+---
+
+## Part B — formal verdict under the frozen δ (appended 2026-09-01 08:49 PDT; instance following Yupaq)
+
+**Basis.** Criterion: Part II v0.2.5 §6, verbatim — adjacent rungs r, r′
+collapse at context L if max over the complete statutory query set
+{Q1, Q2, Q3, Q4 (statutory; gap part), Q5 per pair} of H_r(q | L) − H_r′(q | L)
+is < δ = 0.01 bits. Data: `c1-sync-sweep-corrected-2026-08-21.json` — the
+(14, L, 2) family, L ∈ {2, 4, …, 14}, both statutory ε, **corrected kernel**
+(fix d69fa87). Producer: `scripts/d1_partb_collapse_horizons.py` (committed
+with this section; H(S) is excluded as a diagnostic, 22 statutory keys
+remain). Every number below is that script's output.
+
+**Collapse horizons L\* (smallest measured L at which the pair is collapsed):**
+
+| pair | ε = 1 | ε = ½ | cell-max at L\* (ε = 1 / ½) | cell-max at L = 2 | not collapsed for |
+|---|---|---|---|---|---|
+| r3→r4 | **2** | **2** | 0.003728 (Q3[D0]) / 0.000346 (Q3[D0]) | same | no measured L |
+| r2→r3 | **8** | **8** | 0.009985 (Q1[L0]) / 0.003418 (Q1[L0]) | 0.169182 / 0.094106 | L ≤ 6 |
+| r1→r2 | **10** | **10** | 0.006611 (Q1[L1]) / 0.004436 (Q1[L1]) | 0.115926 / 0.072716 | L ≤ 8 |
+
+At **L = 12 and L = 14, every statutory gap is exactly 0.0** for all three
+pairs at both ε (all 22 keys): the ordered content ladder is fully degenerate
+two ticks before full context, not only at it. Negative residuals in the gap
+table are ≤ 9 × 10⁻¹⁵ in magnitude — float noise, not structure.
+
+**Verdict, in the falsifier's own words ("M1 fails informatively if the rungs
+collapse — over-synchronization").** On the corrected kernel at (14, ·, 2):
+
+- **FIRED for the lineage rung at every measured L** (L\* = 2, both ε). The
+  fourth rung of the ordered ladder carries nothing the frozen δ keeps in this
+  world — consistent with D10 v0.1.1's *informative-and-collapsed* reading (the
+  classes are non-empty; their law-level gain is below δ everywhere in C1).
+- **FIRED along L for the r1/r2/r3 ladder**, with horizons L\* = 8 (r2→r3) and
+  10 (r1→r2), identical at both ε.
+- **NOT FIRED for the r1/r2/r3 ladder at short context**: three measurably
+  distinct regimes exist for L ≤ 6 (gaps 0.04–0.17 bits at ε = 1, 0.014–0.09 at
+  ε = ½), the object rung outlasting the related rung by one bucket.
+
+Part I's exit clause is therefore met in part and failed in part, exactly as
+the map records: distinct regimes across three rungs at short L; collapse of
+the fourth everywhere and of the rest by L = 10. Held-out consistency: P1
+(ladder r2 = r3 = r4, r1 later) PASS at fresh ε ∈ {¼, ⅝} and at B = 1; max
+r3→r4 gap on held-out laws 0.003255 < δ; at (16, ·, 2) 0.0066 < δ
+(`held-out-confirmation-v0.1.md`).
+
+**A marginal cell, recorded not argued.** The (14, 8, 2) ε = 1 r2→r3 cell-max
+is 0.009985 bits — 1.5 × 10⁻⁵ below δ. The v0.2.5 "empty band (0.003728,
+0.046568)" statement concerns the δ-sweep's per-cell maxima at L ∈ {2, 4}
+only (`c1-delta-sweep-corrected-2026-08-21.json`; verified empty on that
+artifact) and its proposal already noted that the L-axis maxima decay
+*through* the band. This cell is that decay passing δ; its horizon L\* = 8 is
+δ-sensitive by construction (δ = 0.0099 would read L\* = 10 at ε = 1). No
+threshold is revisited here; the sensitivity is stated because the statute
+asks for reported sensitivity, not a flat band.
+
+**Consequences.** Evidence map v4 item 4.4: Part B DONE. Part C's evidence set
+is unchanged by this section — item (a) was already satisfied by the corrected
+reruns; item (d), witness 11, remains the sole outstanding item before the
+PI's intervention selection. Not rerun: any measurement.
