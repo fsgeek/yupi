@@ -1,5 +1,11 @@
 # M1 Exit — Evidence Map (2026-08-17, v3)
 
+> **Superseded for statuses and blocking order (2026-09-01):** a full
+> re-derivation is `m1-exit-evidence-map-2026-09-01.md` (v4), written after the
+> kernel erratum, Part II v0.2.5/v0.2.6, the held-out Tier 1 round, the D10
+> verdict and the D8 channel. This file is preserved unchanged below, with its
+> addenda, as the dated record of what was believed on Aug 17 and Aug 29.
+
 > **⚠ KERNEL ERRATUM (2026-08-20):** every number in this note was computed
 > under the pre-d69fa87 kernel, whose direct-handoff defect made self-deadlock
 > states reachable (adjudication: `docs/audit-adjudication-2026-08-20.md`).
