@@ -1,5 +1,7 @@
 # Residual-ambiguity census — what an r1 observer still doesn't know at context L, and which rung field can reach it
 
+> **v0.1.1 (2026-09-03 16:37 PDT) — the "unreachable" column in §3 and the percentages in §4 item 2 understate; read §8 at the end first.** They were computed per signature (a signature counted as unreachable only if *no* window in it was split), not per window. Per window, the unreachable share at ε = 1 is 48 % / 65 % / 72 % at L = 4 / 8 / 10, not 24 % / 53 % / 64 %. Every qualitative statement stands; the body is preserved as written.
+
 **v0.1 — 2026-09-03.** Exploratory diagnostic run for the Part C
 intervention discussion, same session as `w11-predictive-rung-search-v0.1.md`
 and `partition-identity-note-v0.1.md`. Producer
@@ -151,3 +153,42 @@ more records of context would see no interface effect on any objective. The
 exposure experiments as much as for the ladder. The four new artifacts are
 committed; the lineage target's gap is ≤ 0.003 bits at every L ≥ 4 and is
 not tabulated.
+
+## 8. v0.1.1 — correction to the reachable / unreachable accounting (2026-09-03 16:37 PDT, same instance)
+
+**What was wrong.** §3 defined `unreachable` as "mass of those windows no
+rung splits" but computed it as the mass of *signatures* in which no window
+is split by r4. A signature such as `pc`-only at horizon 14 happened to have
+zero splits, so the figure coincided with the truth there; in general a
+signature with a few split windows dropped its entire mass out of the
+unreachable column, and the parenthetical explanation of why reachable +
+unreachable < amb was invented to fit the arithmetic rather than derived
+from it. The error was found when the same metric printed exactly 0.000
+at horizon 32 (`window-process-enumerator-v0.1.md`) and the PI asked
+whether I was satisfied with the result.
+
+**Corrected accounting.** `reachable` = law mass of ambiguous r1 windows
+split by r4 (Σ `split_mass.r4` over signatures — unchanged from §3);
+`unreachable` = amb − reachable. Reachable + unreachable = amb by
+construction.
+
+| L | ε | amb | reachable | unreachable (per window) | §3's figure |
+|---|---|---|---|---|---|
+| 4 | 1 | 0.670 | 0.350 | **0.320 (48 %)** | 0.164 (24 %) |
+| 4 | ½ | 0.668 | 0.285 | **0.384 (57 %)** | 0.223 (33 %) |
+| 8 | 1 | 0.165 | 0.057 | **0.108 (65 %)** | 0.088 (53 %) |
+| 8 | ½ | 0.145 | 0.049 | **0.097 (66 %)** | 0.088 (60 %) |
+| 10 | 1 | 0.040 | 0.011 | **0.029 (72 %)** | 0.026 (64 %) |
+| 10 | ½ | 0.020 | 0.008 | **0.012 (61 %)** | 0.012 (57 %) |
+
+§4 item 2's "24 % at L = 4, 53 % at L = 8, 64 % at L = 10" reads
+"48 %, 65 %, 72 %". The per-signature facts in §4 (pc-only split by no
+rung at any L; `status`+`lock_wq` never split) are unchanged; §5's
+consequences are unchanged. `tests/test_residual_ambiguity.py` now pins
+the per-window figures.
+
+**Horizon 32 (from the window-process enumerator, C1, exploratory):** at
+(32, 4, 2) the per-window unreachable share is 31 % (ε = 1) / 32 % (ε = ½)
+and at (32, 8, 2) 33 % / 28 % — lower than from reset at the same L, not
+zero. `deep-truncation-census-v0.1.md` carries those numbers with the
+caveat that horizon 32 is already a half-dead C1 world.

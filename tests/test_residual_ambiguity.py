@@ -51,10 +51,12 @@ def test_pc_only_dominates_at_L10_and_unreachable_share_rises():
     shares = []
     for L in (4, 8, 10):
         r = _row(L, "1")
-        unreach = sum(s["mass"] for s in r["signatures"] if s["split_by"]["r4"] == 0)
-        shares.append(unreach / r["ambiguous_mass"])
+        # v0.1.1: per WINDOW — ambiguous mass minus mass actually split by r4
+        # (the v0.1 per-signature figure understated: 0.24 / 0.53 / 0.64)
+        reach = sum(s["split_mass"]["r4"] for s in r["signatures"])
+        shares.append((r["ambiguous_mass"] - reach) / r["ambiguous_mass"])
     assert shares[0] < shares[1] < shares[2]
-    assert round(shares[0], 2) == 0.24 and round(shares[2], 2) == 0.64
+    assert [round(x, 2) for x in shares] == [0.48, 0.65, 0.72]
 
 
 def test_no_exhaustion_within_14_records():
