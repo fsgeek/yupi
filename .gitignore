@@ -3,3 +3,8 @@ tmp/
 
 __pycache__/
 *.pyc
+
+# don't save qhaway database if it shows up here again
+# (think it was a bug, but excluding it to avoid irritation for
+# Claude.
+qhaway.db
