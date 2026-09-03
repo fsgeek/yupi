@@ -198,3 +198,5 @@ Note `w11-predictive-rung-search-v0.1.md`, producer
   whether Q4's horizon travels with τ's. Blocking order now starts at item 3
   (TIME_CLASS). Witness table row 11: **SEARCHED — EXISTS (exact, primary) /
   NOT SATISFIED (Δ_τ, any consistent horizon)**; executable.
+
+> **Pointer (2026-09-03 10:40 PDT):** the addendum above says "the reading under which item (d) counts as ✔ or ✘ is the PI's." Withdrawn — that was a post-hoc menu, caught by the PI. Under the statute as written witness 11 is **SATISFIED (existence, exact, primary horizon)**; see `w11-predictive-rung-search-v0.1.md` §10. Item (d) reads ✔; the Part C evidence set is complete; witness-table row 11: SATISFIED (existence), sub-Δ_τ reported as sensitivity. A thresholded claim, if wanted, comes only from `w11-heldout-prereg-v0.1.md` (reading frozen before the held-out search). Nothing above is rewritten.

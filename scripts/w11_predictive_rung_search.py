@@ -1,6 +1,8 @@
 """Witness 11 — predictive rung discrimination (Part II §9 item 11).
 
-(run: python scripts/w11_predictive_rung_search.py T_ep L B [out.json])
+(run: python scripts/w11_predictive_rung_search.py T_ep L B [out.json];
+ ε from YUPI_EPS, e.g. YUPI_EPS="1/4,5/8" for the F2 held-out pair; default
+ is the statutory grid {1, ½})
 
 Statute: "an adjacent interface pair distinguished by a P-horizon test
 while all Q1–Q5 posteriors are unchanged — the D2 disjunctive clause (b)
@@ -55,13 +57,14 @@ Exact rationals throughout; floats only in the JSON presentation.
 
 from __future__ import annotations
 
+import glob
 import json
-import os
 import sys
 from fractions import Fraction
 
 from yupi.config import WorldConfig
 from yupi.enumerator import paths
+from yupi.eps_grid import eps_grid
 from yupi.forecast import q4_forward, q4_mixture
 from yupi.interfaces import project
 from yupi.predict import next_complete_lineage, next_kinds, time_to_wake
@@ -98,12 +101,21 @@ def _dist(d):
 def main():
     T_ep, L, B = (int(a) for a in sys.argv[1:4])
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
-    ceilings_path = f"docs/c1-query-ceilings-{T_ep}-{L}-{B}-corrected-2026-08-20.json"
-    ceilings = json.load(open(ceilings_path)) if os.path.exists(ceilings_path) else None
+    # window-count gate: the committed ceilings artifact for this law whose rows
+    # carry the ε being searched (corrected preferred; held-out families have
+    # their own artifacts). None if no such artifact exists.
+    eps_list = list(eps_grid())
+    ceilings, ceilings_path = None, None
+    for cand in sorted(glob.glob(f"docs/c1-query-ceilings-{T_ep}-{L}-{B}-*.json"),
+                       key=lambda p: ("corrected" not in p, p)):
+        d = json.load(open(cand))
+        if {str(e) for e in eps_list} <= {r["eps"] for r in d["rows"]}:
+            ceilings, ceilings_path = d, cand
+            break
     out: dict = dict(law=dict(T_ep=T_ep, L=L, B=B), m=M, W=[W_PRIMARY, W_SECONDARY],
-                     delta_tau=str(DELTA_TAU),
-                     ceilings_gate=ceilings_path if ceilings else None, rows=[])
-    for eps in (Fraction(1), Fraction(1, 2)):
+                     delta_tau=str(DELTA_TAU), eps=[str(e) for e in eps_list],
+                     ceilings_gate=ceilings_path, rows=[])
+    for eps in eps_list:
         cfg = WorldConfig.c1(epsilon=eps)
         progs = c1_programs()
         facts = [(n, f) for n, f in all_queries(cfg) if n.startswith(FACT_PREFIXES)]

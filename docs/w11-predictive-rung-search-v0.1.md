@@ -1,5 +1,7 @@
 # Witness 11 — predictive rung discrimination: search, verdict, mechanism
 
+> **v0.1.1 (2026-09-03 10:40 PDT) — verdict corrected; read §10 at the end first.** §6 below straddled two readings and §8 handed the choice to the PI after the numbers were in. The statute as written gives one verdict: **SATISFIED (existence, exact, primary horizon)**. The thresholded readings are sensitivity, not competing verdicts. The body is preserved as written.
+
 **v0.1 — 2026-09-03.** Instance following the one that wrote map v4 and the
 D1 Part B adjudication. Producer `scripts/w11_predictive_rung_search.py`;
 raw artifacts `docs/w11-predictive-rung-search-14-{2,4,6,8,10,12,14}-2-2026-09-03.json`;
@@ -228,3 +230,46 @@ without touching the producer (≈ 40 s), and pins §2 from the ceilings
 artifacts. Two-path filter validation was not rerun here: every window in
 this family passed it when the ceilings artifacts were produced (2026-08-20),
 and the window sets are asserted identical by count.
+
+## 10. v0.1.1 — verdict under the statute as written (2026-09-03 10:40 PDT, same instance)
+
+**Correction.** §6 recorded "EXISTS (exact, primary) / NOT SATISFIED
+(thresholded, any consistent horizon)" as if two verdicts stood side by side,
+and §8 said "the reading it should be made under is the PI's call." Both were
+wrong in method, and the PI caught it: offering a choice of readings after the
+result is known is the post-hoc move, whichever reading gets chosen. Part II
+§9 item 11 names no threshold and §5 names Q4's statutory horizon as W = 4
+with W = 8 co-reported; every other witness in the suite (3, 6, 7) has been
+adjudicated as an existence statement in exact arithmetic, with sub-δ effects
+"reported as such, not promoted." That is the reading the record already
+uses, and it is the one this witness gets.
+
+**Verdict.** Witness 11 is **SATISFIED** in C1 on the canonical track, both
+statutory ε searched, at (14, 2, 2), ε = ½, r3 → r4: on the r3 window
+[IO_COMPLETE(0), IO_COMPLETE(3)] and its mirror, every Q1–Q5 posterior
+(statutory Q4 at W = 4) is exactly unchanged across the r4 refinement and the
+next-2-EVENT_KIND distribution moves by TV = 91258/11287135. D2 clause (b) is
+exercised for the lineage rung. Prevalence: 4.6 × 10⁻⁷ of law mass; no
+candidate at L ≥ 4; none at ε = 1; none for r1→r2 or r2→r3 at any L.
+
+**What §6's other lines now are.** The Δ_τ = 0.01 comparison (max primary TV
+0.0081, below it) and the secondary-horizon figures (ttw8 0.0140 with Q4@8
+0.0125 in the same piece) are **sensitivity**, reported alongside the verdict
+as "satisfied by existence; sub-Δ_τ and secondary-horizon-entangled," in the
+same register as w7's "informative and collapsed under δ." They do not
+adjudicate anything.
+
+**The amendment.** Withdrawn as a request for a decision on this verdict. What
+remains is prospective: any future witness-11-type search (TIME_CLASS, other
+worlds, larger horizons) should have its reading — horizon, exactness or
+threshold, and whether Q4's horizon travels with τ's — stated in the freeze
+that precedes it. A thresholded *claim* about this witness is obtainable
+legitimately only by freezing the reading first and searching laws not used
+here; that is `w11-heldout-prereg-v0.1.md`, written after this section and
+before any such run.
+
+**Map v4.** The addendum's line "the reading under which item (d) counts is
+the PI's" is corrected by pointer, not rewrite: item (d) reads ✔ (witness 11
+SATISFIED, existence). The Part C evidence set is complete; the
+intervention selection is the PI's, as it always was, under the constraint in
+`partition-identity-note-v0.1.md` §"What it changes" item 2.
