@@ -215,6 +215,9 @@ ADAPTERS = {
     # not a selector here.
     "w11-predictive-rung-search": lambda n, f, d: _rows_family(
         n, f, d, skip=("pair", "candidates"), row_extra=lambda r: dict(pair=r["pair"], W=None)),
+    # residual-ambiguity census (2026-09-03): per-ε scalars only; the
+    # per-signature table is not a quantity.
+    "c1-residual-ambiguity-census": lambda n, f, d: _rows_family(n, f, d, skip=("signatures",)),
 }
 
 
