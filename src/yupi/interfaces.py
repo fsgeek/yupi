@@ -2,6 +2,9 @@
 
 Implements Part II §4 of docs/yupana-m1-part2-semantics-draft.md.
 Projection table (content rungs):
+  r0 (kind-only):      kind only, actor/obj/related/lineage → MASKED
+                       (exploratory extension below the statutory ladder,
+                       2026-09-03; not a Part II rung unless enacted)
   r1 (actor-only):     kind + actor only, obj/related/lineage → MASKED
   r2 (+object):        kind + actor + obj, related/lineage → MASKED
   r3 (+related):       kind + actor + obj + related, lineage → MASKED
@@ -22,7 +25,7 @@ def project(record: Record, rung: str) -> Record:
 
     Args:
         record: The Record to project.
-        rung: One of "r1", "r2", "r3", "r4".
+        rung: One of "r0" (exploratory), "r1", "r2", "r3", "r4".
 
     Returns:
         A new Record with fields masked according to the rung definition.
@@ -30,8 +33,18 @@ def project(record: Record, rung: str) -> Record:
     Raises:
         ValueError: If rung is not one of the known rung names.
     """
-    if rung not in ("r1", "r2", "r3", "r4"):
+    if rung not in ("r0", "r1", "r2", "r3", "r4"):
         raise ValueError(f"Unknown rung name: {rung!r}")
+
+    # r0: kind only (exploratory, below the statutory ladder)
+    if rung == "r0":
+        return Record(
+            kind=record.kind,
+            actor=MASKED,
+            obj=MASKED,
+            related=MASKED,
+            lineage=MASKED,
+        )
 
     # r1: kind + actor only
     if rung == "r1":

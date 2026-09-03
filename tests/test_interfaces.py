@@ -29,3 +29,14 @@ def test_unknown_rung_raises_valueerror():
         assert False, "Should have raised ValueError"
     except ValueError:
         pass
+
+
+def test_r0_masks_actor_too():
+    """r0 (kind-only, exploratory 2026-09-03): everything but EVENT_KIND masked;
+    the IDLE record's absent actor is still None, not MASKED-as-value confusion
+    — at r0 the actor slot is MASKED regardless of its latent value."""
+    assert project(REC, "r0") == Record("BLOCK", MASKED, MASKED, MASKED, MASKED)
+    idle = Record("IDLE", None, None, None, None)
+    assert project(idle, "r0") == Record("IDLE", MASKED, MASKED, MASKED, MASKED)
+    # refinement: r1 determines r0
+    assert project(project(REC, "r1"), "r0") == project(REC, "r0")

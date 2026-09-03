@@ -218,6 +218,10 @@ ADAPTERS = {
     # residual-ambiguity census (2026-09-03): per-ε scalars only; the
     # per-signature table is not a quantity.
     "c1-residual-ambiguity-census": lambda n, f, d: _rows_family(n, f, d, skip=("signatures",)),
+    # r0 (kind-only) ladder census (2026-09-03, exploratory, enumerator side,
+    # ungated): per-(ε, rung) scalars; the r0 residual/pricing block is not a
+    # quantity.
+    "r0-ladder-census": lambda n, f, d: _rows_family(n, f, d, skip=("support_hist",)),
 }
 
 
