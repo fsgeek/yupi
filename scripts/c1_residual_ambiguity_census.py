@@ -24,6 +24,7 @@ from yupi.eps_grid import eps_grid
 from yupi.interfaces import project
 from yupi.programs import programs_for
 from yupi.window import WindowLaw, endpoint_prior
+from yupi.window_process import window_law_aggregate
 
 RUNGS = ("r1", "r2", "r3", "r4")
 FIELDS = ("pc", "status", "running", "lock_owner", "lock_wq", "dev_q", "rr_cursor")
@@ -33,21 +34,26 @@ def main():
     T_ep, L, B = (int(a) for a in sys.argv[1:4])
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
     w_T = endpoint_prior(law)
-    out = dict(law=dict(T_ep=T_ep, L=L, B=B), programs=os.environ.get("YUPI_PROGRAMS", "c1"), rows=[])
+    out = dict(law=dict(T_ep=T_ep, L=L, B=B), programs=os.environ.get("YUPI_PROGRAMS", "c1"), aggregation=os.environ.get("YUPI_AGG", "paths"), rows=[])
     for eps in eps_grid():
         cfg = WorldConfig.c1(epsilon=eps)
         progs = programs_for()
-        agg = {r: {} for r in RUNGS}
-        parent = {r: {} for r in RUNGS[1:]}
-        for T in law.endpoints():
-            u = law.offset(T)
-            for recs, prob, final in paths(cfg, progs, T):
-                keys = {r: (u == 0, tuple(project(x, r) for x in recs[u:])) for r in RUNGS}
-                for r in RUNGS:
-                    d = agg[r].setdefault(keys[r], {})
-                    d[final] = d.get(final, Fraction(0)) + w_T * prob
-                for r in RUNGS[1:]:
-                    parent[r][keys[r]] = keys["r1"]
+        if os.environ.get("YUPI_AGG", "paths") == "window":
+            agg = {r: window_law_aggregate(cfg, progs, law, r) for r in RUNGS}
+            parent = {r: {kb: (kb[0], tuple(project(x, "r1") for x in kb[1])) for kb in agg[r]}
+                      for r in RUNGS[1:]}
+        else:
+            agg = {r: {} for r in RUNGS}
+            parent = {r: {} for r in RUNGS[1:]}
+            for T in law.endpoints():
+                u = law.offset(T)
+                for recs, prob, final in paths(cfg, progs, T):
+                    keys = {r: (u == 0, tuple(project(x, r) for x in recs[u:])) for r in RUNGS}
+                    for r in RUNGS:
+                        d = agg[r].setdefault(keys[r], {})
+                        d[final] = d.get(final, Fraction(0)) + w_T * prob
+                    for r in RUNGS[1:]:
+                        parent[r][keys[r]] = keys["r1"]
         children = {r: defaultdict(int) for r in RUNGS[1:]}
         for r in RUNGS[1:]:
             for kb, ka in parent[r].items():

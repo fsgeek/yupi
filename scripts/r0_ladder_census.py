@@ -33,6 +33,7 @@ from yupi.predict import next_complete_lineage, next_kinds, time_to_wake
 from yupi.programs import programs_for
 from yupi.queries import all_queries, entropy_bits, pushforward, state_entropy_bits
 from yupi.window import WindowLaw, endpoint_prior
+from yupi.window_process import window_law_aggregate
 from yupi.window_filter import filter_window
 
 RUNGS = ("r0", "r1", "r2", "r3", "r4")
@@ -45,22 +46,28 @@ def main():
     T_ep, L, B = (int(a) for a in sys.argv[1:4])
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
     w_T = endpoint_prior(law)
-    out: dict = dict(law=dict(T_ep=T_ep, L=L, B=B), programs=os.environ.get("YUPI_PROGRAMS", "c1"), W=4, m=2, rows=[], r0=[])
+    out: dict = dict(law=dict(T_ep=T_ep, L=L, B=B), programs=os.environ.get("YUPI_PROGRAMS", "c1"), aggregation=os.environ.get("YUPI_AGG", "paths"), W=4, m=2, rows=[], r0=[])
     for eps in eps_grid():
         cfg = WorldConfig.c1(epsilon=eps)
         progs = programs_for()
         facts = [(n, f) for n, f in all_queries(cfg) if n.startswith(FACT_PREFIXES)]
-        path_cache = {T: paths(cfg, progs, T) for T in law.endpoints()}
-        agg = {r: {} for r in RUNGS}
-        parent01 = {}
-        for T in law.endpoints():
-            u = law.offset(T)
-            for recs, prob, final in path_cache[T]:
-                keys = {r: (u == 0, tuple(project(x, r) for x in recs[u:])) for r in RUNGS}
-                for r in RUNGS:
-                    d = agg[r].setdefault(keys[r], {})
-                    d[final] = d.get(final, Fraction(0)) + w_T * prob
-                parent01[keys["r1"]] = keys["r0"]
+        if os.environ.get("YUPI_AGG", "paths") == "window":
+            # forward recursion over (state, last-L window): horizons beyond
+            # path enumeration (yupi.window_process; gated in tests)
+            agg = {r: window_law_aggregate(cfg, progs, law, r) for r in RUNGS}
+            parent01 = {k1: (k1[0], tuple(project(x, "r0") for x in k1[1])) for k1 in agg["r1"]}
+        else:
+            path_cache = {T: paths(cfg, progs, T) for T in law.endpoints()}
+            agg = {r: {} for r in RUNGS}
+            parent01 = {}
+            for T in law.endpoints():
+                u = law.offset(T)
+                for recs, prob, final in path_cache[T]:
+                    keys = {r: (u == 0, tuple(project(x, r) for x in recs[u:])) for r in RUNGS}
+                    for r in RUNGS:
+                        d = agg[r].setdefault(keys[r], {})
+                        d[final] = d.get(final, Fraction(0)) + w_T * prob
+                    parent01[keys["r1"]] = keys["r0"]
         memo_q4, memo_k, memo_w, memo_l = {}, {}, {}, {}
         fn_state = {}
 

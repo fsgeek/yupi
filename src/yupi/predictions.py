@@ -68,6 +68,7 @@ def _stem(name: str) -> str:
 def _family(name: str) -> str:
     stem = _stem(name)
     stem = re.sub(r"-W\d+$", "", stem)
+    stem = re.sub(r"-r[0-4]$", "", stem)          # window-process-pricing-32-4-2-r1 (rung suffix)
     stem = re.sub(r"(-\d+)+$", "", stem)          # strip law numbers
     stem = re.sub(r"-h\d+$", "", stem)            # c1-multiwaiter-census-h14
     stem = re.sub(r"-v\d+$", "", stem)            # d10-lineage-search-v2
@@ -222,6 +223,12 @@ ADAPTERS = {
     # ungated): per-(ε, rung) scalars; the r0 residual/pricing block is not a
     # quantity.
     "r0-ladder-census": lambda n, f, d: _rows_family(n, f, d, skip=("support_hist",)),
+    # window-process pricing (2026-09-03): per-ε scalars for one (law, rung);
+    # the per-tick pair series is not a quantity. Family name carries the rung
+    # as a trailing "-rN", which _family's law-number strip does not remove,
+    # so it is stripped here by prefix match.
+    "window-process-pricing": lambda n, f, d: _rows_family(
+        n, f, d, skip=("pairs_per_tick",), row_extra=lambda r: dict(rung=d.get("rung"))),
 }
 
 
