@@ -116,3 +116,38 @@ Anything beyond C1 at T_ep = 14; that the same shares hold at other
 horizons (the (16, ·, 2) held-out artifacts could be censused the same way
 — not done here); that a nonterminating variant will behave as §5 argues (a
 pilot would show it).
+
+## 7. Addendum (2026-09-03 11:15 PDT, same instance) — the exposure-side range check
+
+The first of the "options I failed to mention" in the Part C discussion was
+to question the metric: the ladder collapses on Q1–Q5 fact posteriors, but
+M2 trains on next-record prediction, so the goal-relevant range is on the
+predictive targets. Checked on rung-independent targets (next-2 kinds,
+time-to-next-wake ≤ 4, next-completion lineage ≤ 4; observation-gap part of
+the split, which is rung-comparable) from
+`c1-predictive-targets-14-{2,4}-2-corrected-2026-08-20.json` and four runs
+made for this section, `c1-predictive-targets-14-{6,8,10,12}-2-corrected-2026-09-03.json`
+(same producer, corrected kernel, both statutory ε):
+
+| L | ε | kinds2 gap r1 / r4 (r1 − r4) | ttw4 gap r1 / r4 (r1 − r4) | P-next gap r1 |
+|---|---|---|---|---|
+| 2 | 1 | 0.852 / 0.773 (0.079) | 0.324 / 0.290 (0.034) | 0.764 |
+| 4 | 1 | 0.388 / 0.311 (0.076) | 0.155 / 0.128 (0.027) | 0.263 |
+| 6 | 1 | 0.160 / 0.112 (0.048) | 0.065 / 0.048 (0.017) | 0.081 |
+| 8 | 1 | 0.058 / 0.035 (0.023) | 0.023 / 0.013 (0.010) | 0.021 |
+| 10 | 1 | 0.016 / 0.009 (0.007) | 0.007 / 0.002 (0.004) | 0.003 |
+| 12 | 1 | 0.000 / 0.000 (0.000) | 0.000 / 0.000 (0.000) | 0.000 |
+
+(ε = ½ is uniformly smaller: kinds2 r1 − r4 = 0.049, 0.041, 0.028, 0.015,
+0.005, 0 at the same L.) Reading: the exposure-side ceilings collapse on the
+**same horizon** as the fact ladder — the interface's share of the predictive
+gap is under δ = 0.01 bits by L = 10 and exactly zero by L = 12 — and the
+*whole* predictive observation gap is 0.003 bits at L = 10. The interface is
+a larger *fraction* of what remains at long context (9 % of the kinds2 gap at
+L = 2, 40 % at L = 8) but the remainder is vanishing. So the metric is not the
+problem: C1 synchronizes for every target, and a transformer with ten or
+more records of context would see no interface effect on any objective. The
+"question the metric" option is closed; the intervention is needed for the
+exposure experiments as much as for the ladder. The four new artifacts are
+committed; the lineage target's gap is ≤ 0.003 bits at every L ≥ 4 and is
+not tabulated.

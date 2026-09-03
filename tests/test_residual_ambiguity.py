@@ -63,3 +63,18 @@ def test_no_exhaustion_within_14_records():
         term = sum(p * sum(1 for st in s.status if st[0] == "TERMINATED")
                    for _, p, s in paths(cfg, progs, 14))
         assert round(float(term), 2) == expect
+
+
+@pytest.mark.parametrize("L,tag,r1_minus_r4,pnext_r1", [
+    (2, "2026-08-20", 0.079, 0.764), (4, "2026-08-20", 0.076, 0.263), (6, "2026-09-03", 0.048, 0.081),
+    (8, "2026-09-03", 0.023, 0.021), (10, "2026-09-03", 0.007, 0.003), (12, "2026-09-03", 0.000, 0.000)])
+def test_exposure_side_ladder_collapses_on_the_same_horizon(L, tag, r1_minus_r4, pnext_r1):
+    """Census note §7: the interface's share of the next-2-kinds observation
+    gap at ε = 1 is under δ = 0.01 by L = 10 and zero by L = 12, and the whole
+    predictive gap is gone with it."""
+    d = json.load(open(DOCS / f"c1-predictive-targets-14-{L}-2-corrected-{tag}.json"))
+    rows = {r["rung"]: r for r in d["rows"] if r["eps"] == "1"}
+    g = lambda t, r: rows[r]["means"][t]["gap"]
+    assert round(g("kinds2", "r1") - g("kinds2", "r4"), 3) == r1_minus_r4
+    assert round(g("pnext", "r1"), 3) == pnext_r1
+    assert g("kinds2", "r1") >= g("kinds2", "r2") >= g("kinds2", "r3") >= g("kinds2", "r4") - 1e-12
