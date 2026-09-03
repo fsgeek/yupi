@@ -201,3 +201,88 @@ def test_no_candidate_survives_delta_on_a_consistent_horizon(world_half):
         assert primary < DELTA_TAU
         strict = all(world_half.tv(b, parent, "Q4@8") == 0 for _, b in pieces)
         assert not strict
+
+
+# --- held-out confirmatory round (docs/w11-heldout-confirmation-v0.1.md) ---
+
+HELDOUT = {  # family -> (T_ep, B, Ls, eps list)
+    "F1": (16, 2, [2, 4, 6, 8, 10, 12, 14], ["1", "1/2"]),
+    "F2": (14, 2, [2, 4, 6, 8, 10, 12, 14], ["1/4", "5/8"]),
+    "F3": (14, 1, [1, 3, 5, 7, 9, 11, 13], ["1", "1/2"]),
+}
+
+
+def _heldout(fam, L):
+    T, B, Ls, eps = HELDOUT[fam]
+    d = json.load(open(DOCS / f"w11-predictive-rung-search-{T}-{L}-{B}-heldout-2026-09-03.json"))
+    assert d["eps"] == eps and d["ceilings_gate"]
+    return {(r["eps"], r["pair"]): r for r in d["rows"]}
+
+
+@pytest.mark.parametrize("fam,L", [("F1", 14), ("F2", 12), ("F2", 14), ("F3", 13)])
+def test_heldout_P1_no_split_at_u_le_2(fam, L):
+    assert all(r["n_split"] == 0 for r in _heldout(fam, L).values())
+
+
+def test_heldout_P3_threshold_witness_at_eps_quarter():
+    r = _heldout("F2", 2)[("1/4", "r3->r4")]
+    assert r["counts"]["primary_delta"] == 2 and r["n_candidates"] == 4 and r["n_inert"] == 0
+    wins = [c for c in r["candidates"] if c["verdict"]["primary_delta"]]
+    assert len(wins) == 2
+    for c in wins:
+        assert {(w[0], w[1]) for w in c["window_at_parent"]} == {("IO_COMPLETE", "0"), ("IO_COMPLETE", "3")}
+        assert c["parent_mass"] == "5978341/998603250204672"
+        assert c["support_differs_in"] == ["rr_cursor"]
+        tv = max(Fraction(p["tv"]["kinds2"]) for p in c["pieces"])
+        assert tv == Fraction(891594459, 79619545438) and tv >= DELTA_TAU
+    # five-eighths: exact-corner only
+    r = _heldout("F2", 2)[("5/8", "r3->r4")]
+    assert r["counts"]["primary_exact"] == 2 and r["counts"]["primary_delta"] == 0
+    assert 0 < r["max_tv"]["kinds2"] < 0.01
+
+
+def test_heldout_P2_failure_no_candidate_at_16_2_2():
+    for eps in ("1", "1/2"):
+        assert _heldout("F1", 2)[(eps, "r3->r4")]["n_candidates"] == 0
+
+
+@pytest.mark.parametrize("fam,L,expect", [("F1", 4, {"1": 216, "1/2": 202}), ("F3", 3, {"1": 30, "1/2": 24})])
+def test_heldout_P4_P6_off_shortest_candidates_are_all_inert(fam, L, expect):
+    rows = _heldout(fam, L)
+    for eps, n in expect.items():
+        r = rows[(eps, "r3->r4")]
+        assert r["n_candidates"] == r["n_inert"] == n
+        assert all(v == 0 for v in r["counts"].values())
+
+
+def test_heldout_P5_every_noninert_candidate_is_kappa_only():
+    n = 0
+    for fam, (T, B, Ls, eps) in HELDOUT.items():
+        for L in Ls:
+            for r in _heldout(fam, L).values():
+                for c in r["candidates"]:
+                    if not c["inert"]:
+                        n += 1
+                        assert c["support_differs_in"] == ["rr_cursor"], (fam, L)
+    assert n == 8
+
+
+def test_heldout_no_candidates_for_lower_pairs_anywhere():
+    for fam, (T, B, Ls, eps) in HELDOUT.items():
+        for L in Ls:
+            for (e, pair), r in _heldout(fam, L).items():
+                if pair != "r3->r4":
+                    assert r["n_candidates"] == 0, (fam, L, e, pair)
+
+
+@pytest.fixture(scope="module")
+def world_quarter():
+    return _World(Fraction(1, 4))
+
+
+def test_heldout_threshold_witness_recomputed_from_enumerator(world_quarter):
+    parent, pieces = world_quarter.window((("IO_COMPLETE", 0), ("IO_COMPLETE", 3)))
+    tv = max(world_quarter.tv(b, parent, "kinds2") for _, b in pieces)
+    assert tv == Fraction(891594459, 79619545438)
+    assert tv >= DELTA_TAU
+    assert all(world_quarter.tv(b, parent, n) == 0 for _, b in pieces for n in ("ttw4", "lin4"))
