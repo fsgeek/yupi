@@ -18,6 +18,7 @@ only. No ceiling in this output is statutory until gated.
 from __future__ import annotations
 
 import json
+import os
 import sys
 import time
 from collections import defaultdict
@@ -29,7 +30,7 @@ from yupi.eps_grid import eps_grid
 from yupi.forecast import q4_forward, q4_mixture, split_entropy
 from yupi.interfaces import project
 from yupi.predict import next_complete_lineage, next_kinds, time_to_wake
-from yupi.programs import c1_programs
+from yupi.programs import programs_for
 from yupi.queries import all_queries, entropy_bits, pushforward, state_entropy_bits
 from yupi.window import WindowLaw, endpoint_prior
 from yupi.window_filter import filter_window
@@ -44,10 +45,10 @@ def main():
     T_ep, L, B = (int(a) for a in sys.argv[1:4])
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
     w_T = endpoint_prior(law)
-    out: dict = dict(law=dict(T_ep=T_ep, L=L, B=B), W=4, m=2, rows=[], r0=[])
+    out: dict = dict(law=dict(T_ep=T_ep, L=L, B=B), programs=os.environ.get("YUPI_PROGRAMS", "c1"), W=4, m=2, rows=[], r0=[])
     for eps in eps_grid():
         cfg = WorldConfig.c1(epsilon=eps)
-        progs = c1_programs()
+        progs = programs_for()
         facts = [(n, f) for n, f in all_queries(cfg) if n.startswith(FACT_PREFIXES)]
         path_cache = {T: paths(cfg, progs, T) for T in law.endpoints()}
         agg = {r: {} for r in RUNGS}

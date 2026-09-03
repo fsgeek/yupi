@@ -13,6 +13,7 @@ one table per (ε, L). Exploratory diagnostic for the Part C intervention
 discussion (2026-09-03); no ceiling or verdict.
 """
 import json
+import os
 import sys
 from collections import defaultdict
 from fractions import Fraction
@@ -21,7 +22,7 @@ from yupi.config import WorldConfig
 from yupi.enumerator import paths
 from yupi.eps_grid import eps_grid
 from yupi.interfaces import project
-from yupi.programs import c1_programs
+from yupi.programs import programs_for
 from yupi.window import WindowLaw, endpoint_prior
 
 RUNGS = ("r1", "r2", "r3", "r4")
@@ -32,10 +33,10 @@ def main():
     T_ep, L, B = (int(a) for a in sys.argv[1:4])
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
     w_T = endpoint_prior(law)
-    out = dict(law=dict(T_ep=T_ep, L=L, B=B), rows=[])
+    out = dict(law=dict(T_ep=T_ep, L=L, B=B), programs=os.environ.get("YUPI_PROGRAMS", "c1"), rows=[])
     for eps in eps_grid():
         cfg = WorldConfig.c1(epsilon=eps)
-        progs = c1_programs()
+        progs = programs_for()
         agg = {r: {} for r in RUNGS}
         parent = {r: {} for r in RUNGS[1:]}
         for T in law.endpoints():

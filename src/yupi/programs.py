@@ -138,3 +138,40 @@ def c0a_programs() -> Tuple[Program, Program]:
     thread_0 = (acquire(0), COMPUTE, release(0), io(0))
     thread_1 = (COMPUTE, acquire(0), release(0))
     return (thread_0, thread_1)
+
+
+def c1_prime_programs() -> Tuple[Program, Program, Program, Program]:
+    """C1′ — EXPLORATORY (2026-09-03), the Part C pilot for "structured
+    nonterminating workloads with recurring lock contention".
+
+    Same world as C1 (4T / 2 CPU / 2 L / 1 D); the four contention roles
+    are kept, the bodies shortened and unrolled so that every lock is
+    re-acquired several times within a 14–16-record horizon and no thread
+    can terminate before tick 14. Unrolling (rather than a loop
+    instruction) keeps the kernel and Part II §3 untouched: programs stay
+    straight-line, I6 is checked by `validate_lock_order` as usual.
+
+    Thread 0: (acquire(0), release(0), io(0)) × 5        — recurring lock-0 holder with I/O
+    Thread 1: (acquire(0), acquire(1), release(1), release(0)) × 4 — recurring nested hold
+    Thread 2: (COMPUTE, acquire(0), release(0)) × 5      — staggered lock-0 contender
+    Thread 3: (io(0), acquire(1), release(1)) × 5        — lock-1 contender with I/O
+
+    Not a statutory configuration; nothing frozen refers to it.
+    """
+    thread_0 = (acquire(0), release(0), io(0)) * 5
+    thread_1 = (acquire(0), acquire(1), release(1), release(0)) * 4
+    thread_2 = (COMPUTE, acquire(0), release(0)) * 5
+    thread_3 = (io(0), acquire(1), release(1)) * 5
+    return (thread_0, thread_1, thread_2, thread_3)
+
+
+def programs_for(name: str = None):
+    """Program tuple by name; default from YUPI_PROGRAMS (unset → "c1").
+    Lets the census scripts run on an exploratory variant without a code
+    change; the statutory producers keep calling c1_programs() directly."""
+    import os
+    name = name or os.environ.get("YUPI_PROGRAMS", "c1")
+    table = {"c1": c1_programs, "c1prime": c1_prime_programs}
+    if name not in table:
+        raise ValueError(f"unknown program set {name!r}")
+    return table[name]()
