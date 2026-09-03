@@ -10,6 +10,8 @@ unchanged with its addenda; this file supersedes its *statuses and blocking
 order* only. When this map disagrees with a stamped note, the note governs.
 Suite at writing: 204 tests collected.
 
+> **Pointer (2026-09-03 09:42 PDT):** the witness-11 "candidate region" named below at (14,12,2) is empty a priori — at L ≥ 12 the r1 window partition already equals the r4 partition, so no functional of the belief can separate rungs there. The search was run where windows split (L ≤ 10); result and readings in `w11-predictive-rung-search-v0.1.md`; see the addendum at the end of this file. Nothing below is rewritten.
+
 **Why a v4.** v3 predates five adjudications that changed the frontier:
 the 2026-08-20 kernel erratum and corrected-kernel reruns (`audit-adjudication-2026-08-20.md`,
 `corrected-kernel-rerun-v0.1.md`, `sweep-rerun-comparison-2026-08-21.md`);
@@ -153,3 +155,46 @@ r1→r2), both ε, corrected kernel; all statutory gaps exactly 0.0 at L ≥ 12
 buggy-kernel note text the table above cited). Item 4.4 reads Part A DONE,
 Part B DONE, Part C decided; the blocking list now starts at witness 11.
 
+
+### Addendum (2026-09-03 09:42 PDT, instance following the v4 author)
+
+**Witness 11 searched — blocking item 2 discharged; item (d) of the Part C
+evidence set reads EXISTS (exact corner) / NOT SATISFIED (thresholded).**
+Note `w11-predictive-rung-search-v0.1.md`, producer
+`scripts/w11_predictive_rung_search.py`, raws
+`w11-predictive-rung-search-14-{2..14}-2-2026-09-03.json`, pins
+`tests/test_w11_witness.py` (12 tests).
+
+- **Candidate-region correction.** "Exact Q1–Q5 equality at (14,12,2)" is a
+  partition identity, not a query-class blind spot: `n_windows` is identical
+  across all four rungs at L = 12 and 14 (239799 / 394824, both ε) in the
+  committed ceilings artifacts, and r4 refines r1, so every rung holds the same
+  belief on every window there. No τ ∈ 𝒯 — no functional of any kind — can
+  separate rungs where no window splits. Executed: `n_split = 0` at L = 12, 14.
+- **Where it was searched.** Per-window splits at L ∈ {2, …, 10}, all three
+  pairs, both ε: a split is a candidate iff every Q1/Q2/Q3/Q5 pushforward and
+  the statutory Q4 (W = 4) forecast are exactly unchanged on every piece.
+  Twelve candidates exist in the whole family, all at L = 2, r3 → r4, on
+  truncated two-record windows; none at L ≥ 4; r1→r2 and r2→r3 never produce
+  one (OBJECT/RELATED always move Q1/Q5 when they split a window).
+- **Result.** ε = 1: all eight candidates belief-inert (pieces equal the
+  parent) — no witness possible. ε = ½: four candidates, each a two-state
+  support differing only in the cursor κ. Primary horizon, exact corner:
+  WITNESS — next-2 EVENT_KINDs moves by TV = 91258/11287135 ≈ 0.0081 on the
+  [IO_COMPLETE(0), IO_COMPLETE(3)] window (and mirror), law mass 4.6 × 10⁻⁷,
+  every Q1–Q5 unchanged. At the borrowed Δ_τ = 0.01: not satisfied (max
+  primary TV 0.0081). Secondary horizon (W = 8): ttw8 clears Δ_τ (0.0140) on
+  the (2,3) window but Q4@8 moves by 0.0125 in the same piece — no candidate
+  leaves Q4@8 unchanged, so no strict secondary witness at any threshold.
+- **Mechanism.** The lineage rung's predictive residue in these windows is κ
+  (v0.2.6 Clause 1): request ids → issue order → dispatch history → cursor;
+  outside every fact query, inside the kernel's future at ε < 1, constant at
+  ε = 1.
+- **Consequence for the PI's decision.** The search is done; the falsifier
+  the v4 list named ("an empty result") did not fire; the reading under which
+  item (d) counts as ✔ or ✘ is the PI's — the statute froze no threshold or
+  horizon rule for w11 and the note declines to freeze one retroactively.
+  Part II amendment PROPOSED (not enacted): name w11's reading, and say
+  whether Q4's horizon travels with τ's. Blocking order now starts at item 3
+  (TIME_CLASS). Witness table row 11: **SEARCHED — EXISTS (exact, primary) /
+  NOT SATISFIED (Δ_τ, any consistent horizon)**; executable.

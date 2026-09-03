@@ -209,6 +209,12 @@ ADAPTERS = {
     "c1-sync-sweep": _sync_sweep,
     "d10-lineage-search": _d10,
     "d8-attribution": lambda n, f, d: _d8(n, f, d),
+    # witness-11 search (2026-09-03): one row per (eps, adjacent pair); scalar
+    # counts/masses/max-TV become quantities, the per-candidate dumps are not
+    # quantities. W is a [primary, secondary] list on this family, so it is
+    # not a selector here.
+    "w11-predictive-rung-search": lambda n, f, d: _rows_family(
+        n, f, d, skip=("pair", "candidates"), row_extra=lambda r: dict(pair=r["pair"], W=None)),
 }
 
 
