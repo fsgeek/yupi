@@ -79,7 +79,8 @@ def main():
     for eps in [str(e) for e in eps_grid()]:
         for rung in RUNGS:
             # gather curves
-            curves = {}     # query -> [H at each L]
+            curves = {}     # query -> [H at each L]  (law-mass mean, §6 as written)
+            cond = {}       # query -> [E[H | U > 0] at each L]  (truncation-conditional)
             for L in Ls:
                 qc, q4 = data[L]
                 row = next(r for r in qc["rows"] if r["eps"] == eps and r["rung"] == rung)
@@ -87,9 +88,32 @@ def main():
                     if statutory(q):
                         curves.setdefault(q, []).append(v["mean_bits"])
                 curves.setdefault("H(S)", []).append(row["mean_state_entropy_bits"])
+                # truncation-conditional (§6 v0.2.5 semantics; formula per proposal
+                # v0.2.7.1 Clause 2, 2026-09-04): (H_law − H_{U=0}) / Pr(U > 0) from the
+                # artifact's per-endpoint means; equals T_ep/(T_ep−L)·H_law for r1–r4
+                # (tests/test_sync_conditional.py) and differs for r0.
+                if "by_endpoint" in row:
+                    from yupi.sync import conditional_from_by_endpoint
+                    from yupi.window import WindowLaw
+                    law = WindowLaw(T_ep=T_ep, L=L, B=B)
+                    for q in list(row["queries"]) + ["mean_state_entropy_bits"]:
+                        if q != "mean_state_entropy_bits" and not statutory(q):
+                            continue
+                        c = conditional_from_by_endpoint(row["by_endpoint"], law, q)
+                        cond.setdefault("H(S)" if q == "mean_state_entropy_bits" else q, []).append(c["E_H_given_U_pos"])
+                else:
+                    for q in [q for q in row["queries"] if statutory(q)] + ["H(S)"]:
+                        cond.setdefault(q, []).append(None)
                 if q4 is not None:
                     r4 = next(r for r in q4["rows"] if r["eps"] == eps and r["rung"] == rung)
                     curves.setdefault("Q4stat.gap", []).append(r4["gap_bits"])
+                    if "by_endpoint" in r4:
+                        from yupi.sync import conditional_from_by_endpoint
+                        from yupi.window import WindowLaw
+                        cond.setdefault("Q4stat.gap", []).append(
+                            conditional_from_by_endpoint(r4["by_endpoint"], WindowLaw(T_ep=T_ep, L=L, B=B), "gap_bits")["E_H_given_U_pos"])
+                    else:
+                        cond.setdefault("Q4stat.gap", []).append(None)
                     curves.setdefault("Q4stat.total", []).append(r4["total_bits"])
                     curves.setdefault("Q4stat.irr", []).append(r4["irreducible_bits"])
                 else:
@@ -98,13 +122,15 @@ def main():
             print(f"\n=== T_ep={T_ep} B={B} eps={eps:>3} {rung}   H (bits) vs L = {Ls}")
             for q, vals in curves.items():
                 print(f"  {q:<13} " + " ".join("   n/a  " if v is None else f"{v:8.5f}" for v in vals))
-            out["curves"].append(dict(eps=eps, rung=rung, curves=curves))
+            out["curves"].append(dict(eps=eps, rung=rung, curves=curves, conditional=cond))
             # horizons
             print(f"  --- L*(δ_sync): smallest L with H < δ_sync   (∞ = not within measured L)")
             stat_qs = [q for q in curves if q not in ("H(S)", "Q4stat.total", "Q4stat.irr")]
             hz = {}
+            hz_cond = {}
             for d in DSYNC_GRID:
                 per_q = {}
+                per_q_cond = {}
                 for q in stat_qs:
                     Lstar = None
                     for L, v in zip(Ls, curves[q]):
@@ -112,6 +138,24 @@ def main():
                             Lstar = L
                             break
                     per_q[q] = Lstar
+                    Lc = None
+                    for L, v in zip(Ls, cond.get(q, [None] * len(Ls))):
+                        if v is not None and v < d:
+                            Lc = L
+                            break
+                    per_q_cond[q] = Lc
+                # a query with no conditional series at any L (artifact lacks
+                # by_endpoint) is excluded from the conditional horizon and named
+                no_series = [q for q in stat_qs if all(v is None for v in cond.get(q, [None]))]
+                worst_c = None
+                for q, Lc in per_q_cond.items():
+                    if q in no_series:
+                        continue
+                    if Lc is None:
+                        worst_c = None
+                        break
+                    worst_c = Lc if worst_c is None else max(worst_c, Lc)
+                hz_cond[str(d)] = dict(per_query=per_q_cond, all_queries=worst_c, excluded=no_series)
                 worst = None
                 for q, Ls_ in per_q.items():
                     if Ls_ is None:
@@ -119,6 +163,9 @@ def main():
                         break
                     worst = Ls_ if worst is None else max(worst, Ls_)
                 hz[str(d)] = dict(per_query=per_q, all_queries=worst)
+                hz[str(d)]["conditional_all_queries"] = hz_cond[str(d)]["all_queries"]
+                hz[str(d)]["conditional_per_query"] = hz_cond[str(d)]["per_query"]
+                hz[str(d)]["conditional_excluded"] = hz_cond[str(d)]["excluded"]
                 binding = [q for q, v in per_q.items() if v == worst] if worst is not None else \
                           [q for q, v in per_q.items() if v is None]
                 print(f"  δ_sync={d:<6g} L*(all statutory) = {'∞' if worst is None else worst:<3}"

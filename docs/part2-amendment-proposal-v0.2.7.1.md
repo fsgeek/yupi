@@ -162,11 +162,15 @@ where the next reader meets the claim (no original text deleted):
 
 - **D2** *(per [r2-33])* — "Rungs: actor-only → +object → +related-entity
   → +lineage" becomes "Rungs: kind-only → actor-only → +object →
-  +related-entity → +lineage. The r0 → r1 adjacency is **pending** D2's
-  own form of evidence — an exhibited history class on which ACTOR changes
-  a Q1–Q5 posterior and a preregistered predictive distribution (Owed item
-  2 below); the census's aggregate gaps show such classes exist but do not
-  exhibit one. The four-rung content ladder's requirements are unchanged."
+  +related-entity → +lineage. The r0 → r1 adjacency satisfies D2 in D2's
+  own form — an **exhibited** history class on which ACTOR changes both a
+  Q1–Q5 posterior (a) and the preregistered next-2-kind distribution (b):
+  at (14, 4, 2), ε = 1, from reset, the kind-only class DISPATCH, DISPATCH,
+  ACQUIRE, DISPATCH (law mass 1/14) has Q1[L0] = ½ / ½ on threads 0 and 1,
+  and each of its 36 actor-visible refinements resolves it to a point mass;
+  its next-2-kind distribution is a five-way mixture no refinement equals.
+  Executable: `tests/test_r0_d2_witness.py` (exact rationals pinned,
+  2026-09-04). The four-rung content ladder's requirements are unchanged."
 - **D4** *(corrected per [r2-2]: the previous draft had the comparison
   reversed)* — D4's concern is posterior-support growth under the sparsest
   interface, and with r0 on the axis **r0 is the sparsest interface and its
@@ -213,13 +217,23 @@ where the next reader meets the claim (no original text deleted):
    identity-entropy decomposition, which remains open. The census note
    `r0-ladder-census-v0.1.md` §2–3 needs a correction block at enactment:
    mechanism withdrawn, table inserted.
-2. **r0 → r1 D2/§9 witness**: an executable control exhibiting a history
-   class where ACTOR changes a Q1–Q5 posterior (D2(a)) and the next-2-kind
-   distribution (D2(b)).
+2. ~~r0 → r1 D2/§9 witness~~ **Done 2026-09-04**: `tests/test_r0_d2_witness.py`
+   exhibits and pins the class (companion D2 text above).
 3. **D4 pricing of r0 on the per-pass unit** at the laws the paper will
    cite.
-4. **Producer edits** for Clause 2 (the corrected horizon formula) with a
-   regression pinning every committed r1–r4 horizon unchanged.
+4. ~~Producer edits for Clause 2~~ **Done 2026-09-04**: `yupi.sync`
+   (`conditional_from_aggregate`, `conditional_from_by_endpoint`) computes
+   (H_law − H_{U=0}) / Pr(U > 0); `scripts/c1_sync_sweep.py` now emits a
+   `conditional` curve block and `conditional_all_queries` horizons beside
+   the law-mass ones. Regression `tests/test_sync_conditional.py`: for
+   r1–r4, H_{U=0} = 0 exactly and the corrected value equals the v0.2.5
+   closed form T_ep/(T_ep − L) · H_law on every committed (14, L, 2)
+   corrected artifact; for r0 at (14, 4, 2), H_{U=0} > 0.1 bits and the
+   closed form overstates the conditional by more than 0.1 bits. The
+   law-mass horizons the edited sweep produces are identical to the
+   committed `c1-sync-sweep-corrected-2026-08-21.json` at every (ε, rung)
+   for δ_sync ∈ {0.01, 0.001} (checked before commit). No r0 horizon is
+   reported until an r0 ceilings artifact with per-endpoint means exists.
 
 ## Review-request ledger — nothing open blocks enactment *(rewritten 2026-09-04 ~12:20 PDT)*
 

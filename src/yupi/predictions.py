@@ -167,12 +167,20 @@ def _multiwaiter(name, family, d):
 def _sync_sweep(name, family, d):
     cells = []
     for c in d["curves"]:
-        for q, series in c["curves"].items():
-            for L, val in zip(d["Ls"], series):
-                if val is None:
-                    continue
-                cells.append(_base(name, family, dict(T_ep=d["T_ep"], L=L, B=d["B"]),
-                                   eps=c["eps"], rung=c["rung"], quantity=q, value=val))
+        for block, prefix in (("curves", ""), ("conditional", "conditional.")):   # conditional block added 2026-09-04
+            for q, series in c.get(block, {}).items():
+                for L, val in zip(d["Ls"], series):
+                    if val is None:
+                        continue
+                    cells.append(_base(name, family, dict(T_ep=d["T_ep"], L=L, B=d["B"]),
+                                       eps=c["eps"], rung=c["rung"], quantity=prefix + q, value=val))
+    # horizons (2026-09-04): L*(all statutory) per δ_sync, law-mass and conditional
+    for h in d.get("horizons", []):
+        for dsync, blk in h["horizons"].items():
+            for key, q in (("all_queries", "horizon.all_queries"), ("conditional_all_queries", "horizon.conditional_all_queries")):
+                if blk.get(key) is not None:
+                    cells.append(_base(name, family, dict(T_ep=d["T_ep"], L=None, B=d["B"]),
+                                       eps=h["eps"], rung=h["rung"], quantity=f"{q}@{dsync}", value=blk[key]))
     return cells
 
 
