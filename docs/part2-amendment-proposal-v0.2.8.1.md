@@ -219,14 +219,28 @@ endpoints reset-visible, first context unreachable unrolled, and an
 existing C1 (64, 8, 2) pricing to compare against. r0, if enacted, does not
 substitute for separation within r1–r4 (v0.2.7.1 Clause 4).
 
-## Review request (second round)
+## Review-request ledger — nothing open blocks enactment *(rewritten 2026-09-04 ~12:20 PDT)*
 
-(i) whether the §1 erratum's restatement ("exhausted; TERMINATED at the
-first transition that would otherwise make it RUNNABLE") matches every
-path in `_execute_one` and `_completion_transitions`; (ii) whether the
-pass rule should also cap the *materialized* aggregate size (windows ×
-support) separately from live pairs, since RSS at the end of a pass is
-dominated by the aggregates rather than the recursion dictionary; (iii)
-whether `Loop` should be a `WorldConfig` field instead of a program wrapper
-(the wrapper was chosen so that no producer signature changes and no cache
-key can conflate the two forms).
+*Each second-round question, with its status after review 2:*
+
+(i) **§1 erratum vs. every kernel path — closed.** The reviewer found the
+one case (finding 23): an invariant-clean but unreachable state with an
+exhausted QUEUE_BLOCKED thread, which the unconditional wake-all would make
+RUNNABLE. Resolved both ways: the erratum is qualified "on every reachable
+transition", and PC_RANGE now forbids an exhausted straight-line thread in
+any status but IO_BLOCKED or TERMINATED (negative test written first).
+
+(ii) **A separate cap on materialized aggregate size — closed, not
+needed** (finding 27): whole-process peak RSS is sampled after the
+projections are materialized, so the 8 GB line already covers them. A
+cardinality cap would only be needed if artifact size or downstream query
+cost were budgeted separately; neither is.
+
+(iii) **`Loop` as wrapper vs. `WorldConfig` field — closed, wrapper**
+(finding 36): looping is a property of a particular thread's program;
+keeping it in the program value keeps producer signatures and cache keys
+honest. The reviewer's condition — immutability — is met (test first).
+
+**What still gates statutory numbers on a looping world** (not enactment
+of the clause): the freeze decision for the looping exit law in its own
+stamped note, and the filter-vs-recursion gate at the chosen law.

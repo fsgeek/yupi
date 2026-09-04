@@ -1,14 +1,14 @@
 # Part II amendment proposal — v0.2.7.1 (a kind-only rung r0 below the ladder; revised after cross-family review)
 
-> **Status (2026-09-04): PROPOSED — revised from v0.2.7 after the Codex
+> **Status (2026-09-04): ADOPTED — revised from v0.2.7 after the Codex
 > review of 2026-09-04 (`part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`,
 > verdict AMEND BEFORE ENACTMENT), and again the same day after the
 > second round (`part2-v0.2.7.1-v0.2.8.1-codex-review-2-2026-09-04.md`:
 > 15 of 21 first-round findings adopted correctly, 6 adopted incorrectly,
 > 0 declined; the six and the new findings are folded in below, each marked
 > [r2-N]); awaiting a third read, then PI enactment.** Written by the
-> instance of 2026-09-04. v0.2.7 is retained
-> unchanged with a pointer to this file. Every finding the review made
+> instance of 2026-09-04. v0.2.7 is retained > unchanged with a pointer
+> to this file. Every finding the review made
 > against v0.2.7 is either adopted below or answered by an executable check
 > named below; none was declined. No transition rule, threshold, or
 > committed number changes. What changes relative to v0.2.7: the proposal
@@ -221,17 +221,44 @@ where the next reader meets the claim (no original text deleted):
 4. **Producer edits** for Clause 2 (the corrected horizon formula) with a
    regression pinning every committed r1–r4 horizon unchanged.
 
-## Review request (second round)
+## Review-request ledger — nothing open blocks enactment *(rewritten 2026-09-04 ~12:20 PDT)*
 
-(i) whether Clause 2's corrected formula is the right conditional (it
-subtracts the $U = 0$ contribution from the law-mass mean; an alternative is
-to define the horizon on $U > 0$ windows only and never mix); (ii) whether
-the companion Part I text for D4 should instead re-point the support-bound
-requirement at r0 as the new sparsest rung — the researcher's position is
-no, because r0's supports are measured smaller and the requirement's point
-is the binding constraint; (iii) anything in Clause 3's scoping list that
-is missing; (iv) whether the anonymization in statement 2 is the right
-notion of "identity-only" — it treats two states as the same situation iff
-they agree after replacing every thread by (executed-kind multiset, status,
-held locks); an alternative keeps the executed-kind *sequence*, which would
-lower the identity-only share further.
+*The PI asked whether the open questions below could invalidate the
+amendment. Reading them again: item (ii) as previously written contradicted
+the corrected D4 text above (it still said r0's supports are "measured
+smaller"; they are larger). That was a stale sentence from before the
+second round and it is withdrawn here. Each item is now stated with its
+status. The four second-round questions were:*
+
+(i) **Clause 2's conditional — closed.** "Subtract the $U = 0$
+contribution from the law-mass mean, divide by $\Pr(U > 0)$" and "define
+the horizon on $U > 0$ windows only" are the same quantity: the first is
+the conditional mean $E[H \mid U > 0]$ computed from unconditional sums,
+the second is the same conditional mean computed directly. The reviewer
+verified the identity (review 2, finding 31). Nothing turns on the choice.
+
+(ii) **Re-pointing D4 at r0 — closed, the other way from the draft.** The
+draft's "no, because r0's supports are measured smaller" was false (ε = 1
+max support: L = 8 r0 64 vs r1 28; full context 33 vs 1). The companion D4
+text above re-points the support-bound requirement at r0. There is no
+remaining question.
+
+(iii) **Clause 3's scoping list — closed.** The reviewer supplied the
+missing injectivity-note sites (theorem line 12, consequences 4 and 5,
+falsifier); Clause 3 now lists all of them.
+
+(iv) **The identity-only quotient — open, and cannot invalidate the
+clause.** A finer quotient (executed-kind *sequence* instead of multiset)
+would classify fewer supports as identity-only, lowering the share. What
+enters §4 with the rung is only the qualitative statement — the r0
+residual is not a relabeling orbit, and attribution at kind-only carries
+structural consequences — and that statement is *strengthened* by any
+finer quotient. The table in statement 2 is evidence in this proposal,
+not statute; no committed number and no clause depends on which quotient
+is used. The identity-entropy decomposition remains owed as research, not
+as a condition of enactment.
+
+**What still gates a statutory r0 number** (not enactment of the rung) is
+the owed list above: the r0 → r1 exhibited history class (D2's own form),
+D4 pricing of r0 on the per-pass unit, the corrected-formula producer
+with its r1–r4 regression, and the census-note correction block.
