@@ -234,6 +234,15 @@ ADAPTERS = {
         n, f, d, skip=("pairs_per_tick",), row_extra=lambda r: dict(rung=d.get("rung"))),
     "window-process-pricing": lambda n, f, d: _rows_family(
         n, f, d, skip=("pairs_per_tick",), row_extra=lambda r: dict(rung=d.get("rung"))),
+    # 2026-09-04: looping C1′ (v0.2.8.1) priced single-rung and per pass; the
+    # pass raw carries per_rung summaries and reachable states per tick.
+    "window-process-pricing-c1prime-loop": lambda n, f, d: _rows_family(
+        n, f, d, skip=("pairs_per_tick",), row_extra=lambda r: dict(rung=d.get("rung"))),
+    "window-process-pass-pricing-c1prime-loop": lambda n, f, d: _rows_family(
+        n, f, d, skip=("pairs_per_tick", "states_per_tick")),
+    # 2026-09-04: r0 identity-residual check (v0.2.7.1 statement 2); rows carry L.
+    "r0-identity-residual": lambda n, f, d: _rows_family(
+        n, f, dict(d, law=dict(T_ep=d["T_ep"], B=d["B"])), skip=("L",), row_extra=lambda r: dict(L=r["L"])),
 }
 
 

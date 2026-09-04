@@ -64,6 +64,7 @@ def window_law_aggregate(
     agg: Aggregate = {}
     if stats is not None:
         stats["pairs_per_tick"] = []
+        stats["states_per_tick"] = []   # reachable states at each tick (2026-09-04)
     for t in range(1, law.T_ep + 1):
         nxt: Dict[Tuple[State, Tuple[Record, ...]], Fraction] = {}
         for (s, buf), mass in dist.items():
@@ -77,6 +78,7 @@ def window_law_aggregate(
         dist = nxt
         if stats is not None:
             stats["pairs_per_tick"].append(len(dist))
+            stats["states_per_tick"].append(len({s for s, _ in dist}))
         if t in endpoints:
             reset = t <= L
             for (s, buf), mass in dist.items():
@@ -84,6 +86,7 @@ def window_law_aggregate(
                 d[s] = d.get(s, Fraction(0)) + w_T * mass
     if stats is not None:
         stats["max_pairs"] = max(stats["pairs_per_tick"])
+        stats["max_states"] = max(stats["states_per_tick"])
         stats["n_windows"] = len(agg)
     return agg
 

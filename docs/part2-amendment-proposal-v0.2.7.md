@@ -1,5 +1,15 @@
 # Part II amendment proposal — v0.2.7 (a kind-only rung r0 below the ladder)
 
+> **REVISED (2026-09-04): superseded by `part2-amendment-proposal-v0.2.7.1.md`
+> after the Codex review `part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`
+> (verdict AMEND BEFORE ENACTMENT). Retained verbatim. Known errors in this
+> version: "no frozen decision changes" (D2, D4, the exit clause and three
+> note-level theorems are touched in meaning); "D4 is not touched" (r0 was
+> never priced under an admitting rule; the census process reached 4.4 GB);
+> statement 3's "the same object" (random-naming r1 and r0 are analogous
+> mixtures, not equal); the ladder-collapse sentence lacks its from-reset
+> qualifier; §6's synchronization formula is wrong for a non-injective rung.
+
 > **Status (2026-09-03): PROPOSED — awaiting cross-family review, then PI
 > enactment.** Written by the instance that ran the r0 census
 > (`r0-ladder-census-v0.1.md`) on the day it was run. One clause. No

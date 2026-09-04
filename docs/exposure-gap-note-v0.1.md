@@ -75,3 +75,42 @@ Partial order: Q ⊑ Q′ iff every measurement in Q is realizable in Q′. Imme
 ## References
 
 Aswadi, Ma & Wei, arXiv:2607.17060 · Dalal, Misra & Parekh, arXiv:2607.19379 · Agarwal, Dalal & Misra, arXiv:2512.22471 · Dalla Riva, arXiv:2604.05469 · Xu et al., arXiv:2002.10689 · Shai et al., arXiv:2405.15943 · Mason & Anand, arXiv:2603.20531 · "Abdullah X", arXiv:2605.20824.
+
+---
+
+## Addendum 2026-09-04 — exposure is a policy, not only a property (constraint for v0.2)
+
+*Appended by the instance of 2026-09-04 after Tony quoted the GPT-6 Astra
+system card (deploymentsafety.openai.com/gpt-6-astra/gpt-6-astra.pdf, the
+"CoT controllability" section): among chains of thought 750–1,250 tokens
+long, Astra follows instructions to reshape its reasoning trace 60.9 % of
+the time, against 16.1 % (GPT-5.6 Sol) and 1.7 % (GPT-5.5 Thinking),
+including "pretending to reason about a different question". OpenAI reads
+low controllability as a capability bound on obfuscation; the bound is now
+gone for that model. Nothing in the card shows spontaneous obfuscation; it
+shows the monitor can no longer assume the trace is unoptimized.*
+
+**Consequence for this note.** G(Q) above is defined for a fixed model as
+an observational quantity relative to a query class Q. The card shows that,
+for a trained model, the mapping from internal state to exposed trace is
+itself under the model's control and improves with scale. So the exposure
+gap of a frontier model is not a fixed property of the architecture; it is
+a policy, and the policy is instructable. v0.2 of this note must therefore
+index G not only by Q but by the *condition* under which the output is
+produced (the instruction, the incentive, the observer the model believes
+is present), or the gap measured under one condition will be cited as the
+gap.
+
+**What Yupi measures under this constraint.** Yupana's models are
+pretrained on traces only — no instruction following, no preference
+optimization, no reason to conceal anything. Their G(Q) is the exposure gap
+that arises with no incentive at all: the floor. Everything a frontier
+model's training adds can only raise it. The floor is the honest claim; the
+capability-scaling question (whether the *relative* gap grows with model
+size) is Tony's intuition and is outside Yupi's scope by his decision
+(2026-09-04). Open problem 3 above (does exposure lag representation during
+training) is the floor-side form of the same question and stays.
+
+**Not claimed:** anything about Astra beyond the quoted figures; that a
+small pretrained model has an exposure policy at all (it may have none,
+which is what makes it a floor).

@@ -1,0 +1,146 @@
+{
+ "T_ep": 14,
+ "B": 2,
+ "programs": "c1",
+ "rows": [
+  {
+   "eps": "1",
+   "L": 4,
+   "ambiguous_mass": 0.9996117026295352,
+   "n_ambiguous_windows": 193,
+   "identity_only_mass": 0.17891110476717345,
+   "identity_only_share": 0.17898060246447461,
+   "n_identity_only_windows": 6,
+   "non_identity_by_feature": {
+    "dev_q+lock_wq+threads": 0.42596998654835067,
+    "lock_wq+threads": 0.250578376750975,
+    "threads": 0.11512545352151356,
+    "dev_q+threads": 0.020617117261625042,
+    "lock_wq": 0.008728463453061164
+   }
+  },
+  {
+   "eps": "1",
+   "L": 8,
+   "ambiguous_mass": 0.9888767937626526,
+   "n_ambiguous_windows": 2310,
+   "identity_only_mass": 0.20267298184155372,
+   "identity_only_share": 0.20495271313869937,
+   "n_identity_only_windows": 67,
+   "non_identity_by_feature": {
+    "threads": 0.4245588480992268,
+    "lock_wq+threads": 0.3014295348372074,
+    "dev_q+lock_wq+threads": 0.028876317117231126,
+    "dev_q+threads": 0.021734017902734073,
+    "lock_wq": 0.018448568904901267
+   }
+  },
+  {
+   "eps": "1",
+   "L": 12,
+   "ambiguous_mass": 0.9745998168555517,
+   "n_ambiguous_windows": 5013,
+   "identity_only_mass": 0.21093812267528958,
+   "identity_only_share": 0.21643562724632992,
+   "n_identity_only_windows": 234,
+   "non_identity_by_feature": {
+    "threads": 0.5155655680996675,
+    "lock_wq+threads": 0.23078520464275737,
+    "lock_wq": 0.0299638948206253,
+    "dev_q+threads": 0.0072497051906199395
+   }
+  },
+  {
+   "eps": "1",
+   "L": 14,
+   "ambiguous_mass": 0.9745998168555517,
+   "n_ambiguous_windows": 5013,
+   "identity_only_mass": 0.21093812267528958,
+   "identity_only_share": 0.21643562724632992,
+   "n_identity_only_windows": 234,
+   "non_identity_by_feature": {
+    "threads": 0.5155655680996675,
+    "lock_wq+threads": 0.23078520464275737,
+    "lock_wq": 0.0299638948206253,
+    "dev_q+threads": 0.0072497051906199395
+   }
+  },
+  {
+   "eps": "1/2",
+   "L": 4,
+   "ambiguous_mass": 0.9996327126047179,
+   "n_ambiguous_windows": 193,
+   "identity_only_mass": 0.0,
+   "identity_only_share": 0.0,
+   "n_identity_only_windows": 0,
+   "non_identity_by_feature": {
+    "cursor+dev_q+lock_wq+threads": 0.4601346997577114,
+    "cursor+lock_wq+threads": 0.2361421586276373,
+    "cursor": 0.16382145669734685,
+    "cursor+threads": 0.12330912874068552,
+    "lock_wq": 0.011068638766110035,
+    "cursor+dev_q+threads": 0.005523917410508891
+   }
+  },
+  {
+   "eps": "1/2",
+   "L": 8,
+   "ambiguous_mass": 0.9864435245119888,
+   "n_ambiguous_windows": 2338,
+   "identity_only_mass": 0.0019407717748192571,
+   "identity_only_share": 0.0019674433726749757,
+   "n_identity_only_windows": 29,
+   "non_identity_by_feature": {
+    "cursor+threads": 0.4350817407814646,
+    "cursor+lock_wq+threads": 0.30208117396866996,
+    "cursor": 0.20099206365756855,
+    "cursor+dev_q+threads": 0.0253561549260889,
+    "lock_wq": 0.01454116634244901,
+    "cursor+dev_q+lock_wq+threads": 0.013582373574332576,
+    "cursor+lock_wq": 0.00321425135266631,
+    "threads": 0.003096213932449003,
+    "lock_wq+threads": 8.741809163612806e-05
+   }
+  },
+  {
+   "eps": "1/2",
+   "L": 12,
+   "ambiguous_mass": 0.9708194534135278,
+   "n_ambiguous_windows": 5111,
+   "identity_only_mass": 0.0052909548320467506,
+   "identity_only_share": 0.005449988474626321,
+   "n_identity_only_windows": 102,
+   "non_identity_by_feature": {
+    "cursor+threads": 0.5528509417621887,
+    "cursor": 0.20886605517888204,
+    "cursor+lock_wq+threads": 0.1912538055482902,
+    "lock_wq": 0.018375062531031397,
+    "cursor+lock_wq": 0.012758688911550154,
+    "threads": 0.008487171079999295,
+    "cursor+dev_q+threads": 0.0018385988293847838,
+    "lock_wq+threads": 0.0001104753372652062,
+    "dev_q+threads": 9.2123467818032e-06
+   }
+  },
+  {
+   "eps": "1/2",
+   "L": 14,
+   "ambiguous_mass": 0.9708194534135278,
+   "n_ambiguous_windows": 5111,
+   "identity_only_mass": 0.0052909548320467506,
+   "identity_only_share": 0.005449988474626321,
+   "n_identity_only_windows": 102,
+   "non_identity_by_feature": {
+    "cursor+threads": 0.5528509417621887,
+    "cursor": 0.20886605517888204,
+    "cursor+lock_wq+threads": 0.1912538055482902,
+    "lock_wq": 0.018375062531031397,
+    "cursor+lock_wq": 0.012758688911550154,
+    "threads": 0.008487171079999295,
+    "cursor+dev_q+threads": 0.0018385988293847838,
+    "lock_wq+threads": 0.0001104753372652062,
+    "dev_q+threads": 9.2123467818032e-06
+   }
+  }
+ ]
+}

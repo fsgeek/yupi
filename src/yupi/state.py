@@ -67,8 +67,14 @@ def initial_state(cfg: WorldConfig) -> State:
     )
 
 
-def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
+def check_invariants(state: State, cfg: WorldConfig, programs=None) -> list[str]:
     """Check all state invariants and return list of violated invariant names.
+
+    PC_RANGE (Part II v0.2.8, built 2026-09-04; checked only when `programs`
+        is supplied, since the state carries no program lengths): a looping
+        thread has 0 ≤ pc < |body| and is never TERMINATED; a straight-line
+        thread has 0 ≤ pc ≤ |P| (pc = |P| is the final-IO-blocked or
+        TERMINATED position, §3.4).
 
     I1: The running set must contain exactly those threads with RUNNING status.
     I2: A thread appears in at most one of: the running set, one lock wait
@@ -91,6 +97,18 @@ def check_invariants(state: State, cfg: WorldConfig) -> list[str]:
     violations = []
     if not (0 <= state.rr_cursor < cfg.n_threads):
         violations.append("KAPPA_RANGE")   # v0.2.6 Clause 1 addendum
+
+    if programs is not None:
+        from yupi.programs import is_looping
+        for i in range(cfg.n_threads):
+            n, pc = len(programs[i]), state.pc[i]
+            if is_looping(programs[i]):
+                ok = 0 <= pc < n and state.status[i] != TERMINATED
+            else:
+                ok = 0 <= pc <= n
+            if not ok:
+                violations.append("PC_RANGE")
+                break
 
     # I1: running set ↔ RUNNING status
     running_from_status = frozenset(

@@ -95,3 +95,19 @@ def test_one_recursion_at_r4_yields_every_rung(eps, T_ep, L):
     derived = window_law_aggregates(cfg, progs, law)
     for rung in RUNGS:
         assert derived[rung] == window_law_aggregate(cfg, progs, law, rung), rung
+
+
+def test_stats_record_reachable_states_per_tick():
+    # Codex review of v0.2.8 (2026-09-04, finding 10): the reachable-state
+    # counts the proposals cite were never retained in a raw. The recursion
+    # now records them alongside the pair counts, and they must equal the
+    # enumerator's distinct final states at every tick.
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1)), c1_programs()
+    law = WindowLaw(T_ep=6, L=2, B=2)
+    stats = {}
+    window_law_aggregate(cfg, progs, law, "r4", stats)
+    assert len(stats["states_per_tick"]) == 6
+    for t in range(1, 7):
+        assert stats["states_per_tick"][t - 1] == len({final for _, _, final in paths(cfg, progs, t)})
+        assert stats["states_per_tick"][t - 1] <= stats["pairs_per_tick"][t - 1]
+    assert stats["max_states"] == max(stats["states_per_tick"])

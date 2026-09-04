@@ -1,5 +1,15 @@
 # Part II amendment proposal — v0.2.8 (looping programs: pc modulo the body)
 
+> **REVISED (2026-09-04): superseded by `part2-amendment-proposal-v0.2.8.1.md`
+> after the Codex review `part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`
+> (verdict AMEND BEFORE ENACTMENT). Retained verbatim. Known errors in this
+> version: the advance-site list (six named, "eight" claimed; there are five,
+> and completion inspects rather than advances); "admits (48, 6, 2)" (its RSS
+> is 9.7 GB, over the proposed 8 GB line, as the committed test asserts);
+> the D4 unit ("per (ε, rung) recursion") binds nothing in the one-r4
+> producer; "≈ 500×" was a bound, measured 6–7× at (48, 4, 2); "C1 ≤ 456" is
+> not a global bound (482 at tick 21); D6 does not exclude JUMP categorically.
+
 > **Status (2026-09-03): PROPOSED — awaiting cross-family review, then PI
 > enactment.** Written by the instance that built the window-process
 > enumerator and priced C1′ on it, the same day. One clause plus a

@@ -82,6 +82,20 @@ def _program_len(programs, i: int) -> int:
     return len(programs[i])
 
 
+def _advance(programs, i: int, pc: int) -> int:
+    """§3 advance rule: pc + 1, or (pc + 1) mod |body| for a looping program
+    (Part II v0.2.8 Clause 1, built 2026-09-04 behind `programs.Loop`)."""
+    from yupi.programs import is_looping
+    n = _program_len(programs, i)
+    return (pc + 1) % n if is_looping(programs[i]) else pc + 1
+
+
+def _done(programs, i: int, pc: int) -> bool:
+    """done_i ⇔ ¬loop_i ∧ pc_i = |P_i|: a looping thread is never done."""
+    from yupi.programs import is_looping
+    return (not is_looping(programs[i])) and pc == _program_len(programs, i)
+
+
 def _epsilon_policy(
     candidates: List[int], cursor: int, eps: Fraction, n_threads: int
 ) -> List[Tuple[int, Fraction, int]]:
@@ -223,7 +237,7 @@ def _completion_transitions(
         new_status = list(state.status)
         # issuer wakes: IO_BLOCKED -> RUNNABLE, unless its program is
         # already exhausted (IO was its last instruction) -> TERMINATED.
-        if state.pc[thread] == _program_len(programs, thread):
+        if _done(programs, thread, state.pc[thread]):
             new_status[thread] = TERMINATED
         else:
             new_status[thread] = RUNNABLE
@@ -318,8 +332,8 @@ def _execute_one(
 
     if kind == "COMPUTE":
         new_pc = list(state.pc)
-        new_pc[thread] = pc + 1
-        terminated = new_pc[thread] == _program_len(programs, thread)
+        new_pc[thread] = _advance(programs, thread, pc)
+        terminated = _done(programs, thread, new_pc[thread])
 
         new_status = list(state.status)
         # One-tick CPU occupancy (see module docstring / _execute_one docstring):
@@ -346,11 +360,11 @@ def _execute_one(
         owner = state.lock_owner[l]
         if owner is None:
             new_pc = list(state.pc)
-            new_pc[thread] = pc + 1
+            new_pc[thread] = _advance(programs, thread, pc)
             new_lock_owner = list(state.lock_owner)
             new_lock_owner[l] = thread
 
-            terminated = new_pc[thread] == _program_len(programs, thread)
+            terminated = _done(programs, thread, new_pc[thread])
             new_status = list(state.status)
             if terminated:
                 new_status[thread] = TERMINATED
@@ -392,7 +406,7 @@ def _execute_one(
                 f"{state.lock_owner[l]} (§3.3: only the owner releases)"
             )
         new_pc = list(state.pc)
-        new_pc[thread] = pc + 1
+        new_pc[thread] = _advance(programs, thread, pc)
         new_lock_owner = list(state.lock_owner)
         new_lock_wq = list(state.lock_wq)
 
@@ -413,11 +427,11 @@ def _execute_one(
             # ACQUIRE is complete, so its pc advances at handoff. (2026-08-20
             # audit: leaving pc on the ACQUIRE made the woken thread re-execute
             # it against itself and self-block behind its own lock.)
-            new_pc[woken] = new_pc[woken] + 1
+            new_pc[woken] = _advance(programs, woken, new_pc[woken])
         else:
             new_lock_owner[l] = None
 
-        terminated = new_pc[thread] == _program_len(programs, thread)
+        terminated = _done(programs, thread, new_pc[thread])
         new_status = list(state.status)
         if terminated:
             new_status[thread] = TERMINATED
@@ -426,7 +440,7 @@ def _execute_one(
         new_running = state.running - {thread}
         if woken is not None:
             new_status[woken] = (
-                TERMINATED if new_pc[woken] == _program_len(programs, woken)
+                TERMINATED if _done(programs, woken, new_pc[woken])
                 else RUNNABLE
             )
 
@@ -446,7 +460,7 @@ def _execute_one(
         if len(q) < cfg.queue_depth:
             req_id = _lowest_free_request_id(state, cfg)
             new_pc = list(state.pc)
-            new_pc[thread] = pc + 1
+            new_pc[thread] = _advance(programs, thread, pc)
             new_status = list(state.status)
             new_status[thread] = io_blocked(req_id)
             new_dev_q = list(state.dev_q)

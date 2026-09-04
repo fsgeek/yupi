@@ -21,6 +21,50 @@ def io(d: int) -> Tuple[str, int]:
 Program = Tuple[Tuple, ...]
 
 
+class Loop:
+    """A looping program body (Part II v0.2.8, PROPOSED 2026-09-03; built
+    2026-09-04 behind this wrapper, nothing enacted). The kernel advances a
+    looping thread's counter as pc ← (pc + 1) mod |body|, so the thread never
+    reaches pc = |body| and is never TERMINATED. Indexing, length and
+    iteration behave as the body tuple's; equality and hashing include the
+    loop flag so that a Loop and its straight-line body are distinct keys in
+    every cache keyed by programs. The body must be nonempty.
+
+    Every committed configuration is straight-line; no statutory producer
+    constructs a Loop.
+    """
+    __slots__ = ("body",)
+
+    def __init__(self, body):
+        body = tuple(body)
+        if not body:
+            raise ValueError("a looping program body must be nonempty")
+        self.body = body
+
+    def __len__(self):
+        return len(self.body)
+
+    def __getitem__(self, i):
+        return self.body[i]
+
+    def __iter__(self):
+        return iter(self.body)
+
+    def __eq__(self, other):
+        return isinstance(other, Loop) and self.body == other.body
+
+    def __hash__(self):
+        return hash(("Loop", self.body))
+
+    def __repr__(self):
+        return f"Loop({self.body!r})"
+
+
+def is_looping(program) -> bool:
+    """True iff `program` is a Loop (advance rule pc ← (pc+1) mod |body|)."""
+    return isinstance(program, Loop)
+
+
 def validate_lock_order(programs: Tuple[Program, ...]) -> bool:
     """Validate lock order discipline (I6) for all programs.
 
@@ -165,13 +209,32 @@ def c1_prime_programs() -> Tuple[Program, Program, Program, Program]:
     return (thread_0, thread_1, thread_2, thread_3)
 
 
+def c1_prime_loop_programs() -> Tuple[Loop, Loop, Loop, Loop]:
+    """C1′ with the bodies folded (v0.2.8 form) — EXPLORATORY (2026-09-04).
+
+    The same four contention roles as `c1_prime_programs`, each body
+    declared looping instead of unrolled. Dynamically the unrolled and the
+    folded worlds agree until the unrolled thread's last iteration; the
+    folded world's reachable state space does not grow with the horizon.
+
+    Not a statutory configuration; nothing frozen refers to it.
+    """
+    return (
+        Loop((acquire(0), release(0), io(0))),
+        Loop((acquire(0), acquire(1), release(1), release(0))),
+        Loop((COMPUTE, acquire(0), release(0))),
+        Loop((io(0), acquire(1), release(1))),
+    )
+
+
 def programs_for(name: str = None):
     """Program tuple by name; default from YUPI_PROGRAMS (unset → "c1").
     Lets the census scripts run on an exploratory variant without a code
     change; the statutory producers keep calling c1_programs() directly."""
     import os
     name = name or os.environ.get("YUPI_PROGRAMS", "c1")
-    table = {"c1": c1_programs, "c1prime": c1_prime_programs}
+    table = {"c1": c1_programs, "c1prime": c1_prime_programs,
+             "c1prime-loop": c1_prime_loop_programs}
     if name not in table:
         raise ValueError(f"unknown program set {name!r}")
     return table[name]()
