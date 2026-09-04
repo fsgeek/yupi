@@ -82,3 +82,16 @@ def test_matches_committed_14_L_2_ceilings(L):
         H = sum(float(sum(j.values())) * state_entropy_bits({s: m / sum(j.values()) for s, m in j.items()})
                 for j in agg.values())
         assert abs(H - ref["mean_state_entropy_bits"]) < 1e-9
+
+
+from yupi.window_process import window_law_aggregates
+
+
+@pytest.mark.parametrize("eps", [Fraction(1), Fraction(1, 2)])
+@pytest.mark.parametrize("T_ep,L", [(8, 2), (8, 4), (12, 4)])
+def test_one_recursion_at_r4_yields_every_rung(eps, T_ep, L):
+    cfg, progs = WorldConfig.c1(epsilon=eps), c1_programs()
+    law = WindowLaw(T_ep=T_ep, L=L, B=2)
+    derived = window_law_aggregates(cfg, progs, law)
+    for rung in RUNGS:
+        assert derived[rung] == window_law_aggregate(cfg, progs, law, rung), rung

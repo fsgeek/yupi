@@ -86,3 +86,33 @@ def window_law_aggregate(
         stats["max_pairs"] = max(stats["pairs_per_tick"])
         stats["n_windows"] = len(agg)
     return agg
+
+
+def window_law_aggregates(
+    cfg: WorldConfig,
+    programs,
+    law: WindowLaw,
+    rungs=("r0", "r1", "r2", "r3", "r4"),
+    stats: Optional[dict] = None,
+) -> Dict[str, Aggregate]:
+    """The aggregate for every requested rung from ONE recursion at r4.
+
+    r4 refines every other rung (each rung only masks fields), so a coarser
+    rung's aggregate is the r4 aggregate with keys re-projected and masses
+    merged. Same output as calling `window_law_aggregate` per rung, at the
+    cost of a single r4 recursion (gate: tests/test_window_process.py).
+    """
+    fine = window_law_aggregate(cfg, programs, law, "r4", stats)
+    out: Dict[str, Aggregate] = {}
+    for r in rungs:
+        if r == "r4":
+            out[r] = fine
+            continue
+        coarse: Aggregate = {}
+        for (reset, win), joint in fine.items():
+            key = (reset, tuple(project(x, r) for x in win))
+            d = coarse.setdefault(key, {})
+            for s, m in joint.items():
+                d[s] = d.get(s, Fraction(0)) + m
+        out[r] = coarse
+    return out

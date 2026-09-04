@@ -33,7 +33,7 @@ from yupi.predict import next_complete_lineage, next_kinds, time_to_wake
 from yupi.programs import programs_for
 from yupi.queries import all_queries, entropy_bits, pushforward, state_entropy_bits
 from yupi.window import WindowLaw, endpoint_prior
-from yupi.window_process import window_law_aggregate
+from yupi.window_process import window_law_aggregates
 from yupi.window_filter import filter_window
 
 RUNGS = ("r0", "r1", "r2", "r3", "r4")
@@ -54,7 +54,7 @@ def main():
         if os.environ.get("YUPI_AGG", "paths") == "window":
             # forward recursion over (state, last-L window): horizons beyond
             # path enumeration (yupi.window_process; gated in tests)
-            agg = {r: window_law_aggregate(cfg, progs, law, r) for r in RUNGS}
+            agg = window_law_aggregates(cfg, progs, law, RUNGS)   # one r4 recursion, keys projected down
             parent01 = {k1: (k1[0], tuple(project(x, "r0") for x in k1[1])) for k1 in agg["r1"]}
         else:
             path_cache = {T: paths(cfg, progs, T) for T in law.endpoints()}

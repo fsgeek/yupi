@@ -230,6 +230,8 @@ ADAPTERS = {
     # C1′ (exploratory programs) censuses, 2026-09-03: same shapes as the C1 ones
     "c1prime-residual-ambiguity-census": lambda n, f, d: _rows_family(n, f, d, skip=("signatures",)),
     "c1prime-r0-ladder-census": lambda n, f, d: _rows_family(n, f, d, skip=("support_hist",)),
+    "window-process-pricing-c1prime": lambda n, f, d: _rows_family(
+        n, f, d, skip=("pairs_per_tick",), row_extra=lambda r: dict(rung=d.get("rung"))),
     "window-process-pricing": lambda n, f, d: _rows_family(
         n, f, d, skip=("pairs_per_tick",), row_extra=lambda r: dict(rung=d.get("rung"))),
 }

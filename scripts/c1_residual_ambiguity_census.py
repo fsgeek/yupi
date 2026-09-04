@@ -24,7 +24,7 @@ from yupi.eps_grid import eps_grid
 from yupi.interfaces import project
 from yupi.programs import programs_for
 from yupi.window import WindowLaw, endpoint_prior
-from yupi.window_process import window_law_aggregate
+from yupi.window_process import window_law_aggregates
 
 RUNGS = ("r1", "r2", "r3", "r4")
 FIELDS = ("pc", "status", "running", "lock_owner", "lock_wq", "dev_q", "rr_cursor")
@@ -39,7 +39,7 @@ def main():
         cfg = WorldConfig.c1(epsilon=eps)
         progs = programs_for()
         if os.environ.get("YUPI_AGG", "paths") == "window":
-            agg = {r: window_law_aggregate(cfg, progs, law, r) for r in RUNGS}
+            agg = window_law_aggregates(cfg, progs, law, RUNGS)   # one r4 recursion, keys projected down
             parent = {r: {kb: (kb[0], tuple(project(x, "r1") for x in kb[1])) for kb in agg[r]}
                       for r in RUNGS[1:]}
         else:

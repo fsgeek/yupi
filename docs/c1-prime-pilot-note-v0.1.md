@@ -100,3 +100,5 @@ unmeasured); that the window-process recursion fits the budget at L = 12
 and T = 64 (to be priced); anything about C1′ beyond the throughput
 table — its ladder was not censused because the census would have measured
 C1 with different labels.
+
+> **Pointer (2026-09-04 00:25 PDT):** the pilot did run, once the window-process enumerator existed: C1′ live-world census at (48, 4, 2) in `c1-prime-live-census-v0.1.md`, with the pricing that says context 8 needs the looping kernel proposed in `part2-amendment-proposal-v0.2.8.md`. §2–§4 above are preserved as written.
