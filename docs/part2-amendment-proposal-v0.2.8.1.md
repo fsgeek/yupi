@@ -1,6 +1,6 @@
 # Part II amendment proposal — v0.2.8.1 (looping programs: pc modulo the body; revised after cross-family review, with the clause built and priced)
 
-> **Status (2026-09-04): PROPOSED — revised from v0.2.8 after the Codex
+> **Status (2026-09-04): ADOPTED — revised from v0.2.8 after the Codex
 > review of 2026-09-04 (`part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`,
 > verdict AMEND BEFORE ENACTMENT), and again the same day after the
 > second round (`part2-v0.2.7.1-v0.2.8.1-codex-review-2-2026-09-04.md`;
