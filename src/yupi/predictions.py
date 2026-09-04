@@ -227,6 +227,9 @@ ADAPTERS = {
     # the per-tick pair series is not a quantity. Family name carries the rung
     # as a trailing "-rN", which _family's law-number strip does not remove,
     # so it is stripped here by prefix match.
+    # C1′ (exploratory programs) censuses, 2026-09-03: same shapes as the C1 ones
+    "c1prime-residual-ambiguity-census": lambda n, f, d: _rows_family(n, f, d, skip=("signatures",)),
+    "c1prime-r0-ladder-census": lambda n, f, d: _rows_family(n, f, d, skip=("support_hist",)),
     "window-process-pricing": lambda n, f, d: _rows_family(
         n, f, d, skip=("pairs_per_tick",), row_extra=lambda r: dict(rung=d.get("rung"))),
 }
