@@ -73,8 +73,9 @@ def check_invariants(state: State, cfg: WorldConfig, programs=None) -> list[str]
     PC_RANGE (Part II v0.2.8, built 2026-09-04; checked only when `programs`
         is supplied, since the state carries no program lengths): a looping
         thread has 0 ≤ pc < |body| and is never TERMINATED; a straight-line
-        thread has 0 ≤ pc ≤ |P| (pc = |P| is the final-IO-blocked or
-        TERMINATED position, §3.4).
+        thread has 0 ≤ pc ≤ |P|, and at pc = |P| (exhausted) its status
+        is IO_BLOCKED (final IO in flight) or TERMINATED — nothing else
+        (§3.4; strengthened per Codex review 2, finding 23).
 
     I1: The running set must contain exactly those threads with RUNNING status.
     I2: A thread appears in at most one of: the running set, one lock wait
@@ -104,8 +105,12 @@ def check_invariants(state: State, cfg: WorldConfig, programs=None) -> list[str]
             n, pc = len(programs[i]), state.pc[i]
             if is_looping(programs[i]):
                 ok = 0 <= pc < n and state.status[i] != TERMINATED
+            elif pc == n:
+                # exhausted straight-line thread (§1 erratum, v0.2.8.1): only a
+                # final IO in flight or TERMINATED may hold pc = |P|
+                ok = state.status[i] == TERMINATED or state.status[i][0] == "IO_BLOCKED"
             else:
-                ok = 0 <= pc <= n
+                ok = 0 <= pc < n
             if not ok:
                 violations.append("PC_RANGE")
                 break

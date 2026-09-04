@@ -214,3 +214,27 @@ def test_c1_prime_loop_never_terminates_and_reaches_far_fewer_states():
     # the unrolled world's reachable set at tick 48 was 14370 (live census); the
     # folded world's ENTIRE reachable set must be smaller than that
     assert len(loop_states) < 14370
+
+
+# ---- second-round controls (Codex review 2, 2026-09-04, findings 23 and 36) ----
+
+def test_pc_range_requires_exhausted_straight_line_thread_to_be_io_blocked_or_terminated():
+    # §1 erratum: pc = |P| means exhausted; the only statuses an exhausted
+    # straight-line thread can hold are IO_BLOCKED (final IO in flight) or
+    # TERMINATED. An exhausted RUNNABLE / RUNNING / QUEUE_BLOCKED thread is
+    # outside the machine and must fail PC_RANGE.
+    from dataclasses import replace
+    from yupi.state import RUNNING, io_blocked, queue_blocked
+    cfg, progs = _cfg(1), ((io(0),),)
+    s = replace(initial_state(cfg), pc=(1,))
+    assert "PC_RANGE" not in check_invariants(replace(s, status=(TERMINATED,)), cfg, progs)
+    assert "PC_RANGE" not in check_invariants(replace(s, status=(io_blocked(0),)), cfg, progs)
+    for bad in (RUNNABLE, RUNNING, queue_blocked(0)):
+        assert "PC_RANGE" in check_invariants(replace(s, status=(bad,)), cfg, progs), bad
+
+
+def test_loop_body_is_immutable():
+    lp = Loop((COMPUTE,))
+    with pytest.raises(AttributeError):
+        lp.body = (COMPUTE, COMPUTE)
+    assert tuple(lp) == (COMPUTE,)

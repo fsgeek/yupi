@@ -2,8 +2,12 @@
 
 > **Status (2026-09-04): PROPOSED — revised from v0.2.7 after the Codex
 > review of 2026-09-04 (`part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`,
-> verdict AMEND BEFORE ENACTMENT); awaiting a second review, then PI
-> enactment.** Written by the instance of 2026-09-04. v0.2.7 is retained
+> verdict AMEND BEFORE ENACTMENT), and again the same day after the
+> second round (`part2-v0.2.7.1-v0.2.8.1-codex-review-2-2026-09-04.md`:
+> 15 of 21 first-round findings adopted correctly, 6 adopted incorrectly,
+> 0 declined; the six and the new findings are folded in below, each marked
+> [r2-N]); awaiting a third read, then PI enactment.** Written by the
+> instance of 2026-09-04. v0.2.7 is retained
 > unchanged with a pointer to this file. Every finding the review made
 > against v0.2.7 is either adopted below or answered by an executable check
 > named below; none was declined. No transition rule, threshold, or
@@ -35,16 +39,23 @@ finding number in brackets):
    `r0-ladder-census-14-14-2-2026-09-03.json`; 5,696 r0 classes against
    394,824 for each of r1–r4). Part I's "truncation is the only door" is a
    statement about r1 and above.
-2. *(measured per [4], 2026-09-04; replaces the census's mechanism)* The r0
-   residual is **attribution, and mostly not relabeling**. The owed
-   permutation-orbit computation was run in the only form that is
-   meaningful for C1 (no two threads run the same program, so kernel
-   symmetries are trivial): each support state is anonymized — threads
-   replaced by their executed-kind multiset, status and held locks; queue
-   members and the live cursor by those signatures — and a support is
-   *identity-only* if all its states share one anonymized form. Raw
+2. *(measured per [4], 2026-09-04; wording per [r2-4], [r2-29], [r2-30])*
+   The r0 residual is **not a relabeling orbit**. A kernel permutation-orbit
+   computation is trivial for C1 (no two threads run the same program), so
+   the check run is a **coarse thread-signature quotient**: each support
+   state is anonymized — threads replaced by (executed-kind *multiset*,
+   status, held locks); queue members and the live cursor by those
+   signatures — and a support is classed *identity-only* if all its states
+   share one anonymized form. The metric is the share of **ambiguous law
+   mass carried by identity-only supports**. It is a support
+   classification, not a decomposition of the residual entropy: a
+   non-identity-only support can still hold identity entropy, and the
+   multiset discards per-thread order and (at ε = ½) the cursor's circular
+   order, so the identity-only share is an operational figure under this
+   quotient, not an exact identity fraction. Raw
    `r0-identity-residual-14-2-2026-09-04.json`, pinned in
-   `tests/test_r0_identity_residual.py`:
+   `tests/test_r0_identity_residual.py` (ε = 1, L = 8 row reproduced
+   independently by the reviewer):
 
    | ε | L | ambiguous mass | identity-only share | largest non-identity class |
    |---|---|---|---|---|
@@ -55,19 +66,20 @@ finding number in brackets):
    | ½ | 8 | 0.9864 | 0.002 | cursor+threads 0.435 |
    | ½ | 12 = full | 0.9708 | 0.005 | cursor+threads 0.553 |
 
-   So the census's "permutation entropy over kind-indistinguishable roles"
-   is a **minority** of the residual (about a fifth at ε = 1, near zero at
-   ε = ½ where the round-robin cursor is live and itself unattributable).
-   The majority differs in the anonymized `threads` multiset: which thread
-   has executed which kinds — the observer saw an ACQUIRE and cannot say
-   whether thread 0 or thread 1 issued it, and those threads do different
-   things next. That is attribution of visible actions to role-asymmetric
-   threads, and it carries object / owner / lineage consequences. The
-   r0 census §3's separation "r0 measures identity, the ladder measures
-   object / owner / lineage" is therefore **withdrawn** as a clean split:
-   the ACTOR field's information is structural in a world whose programs
-   differ by thread. Thread-naming queries (Q1, Q2, Q5) inherit the
-   residual either way.
+   What follows: the census's clean mechanism — "the residual is a
+   permutation entropy over kind-indistinguishable roles" — is
+   **withdrawn**, because about four fifths of the ambiguous mass at ε = 1
+   (and nearly all at ε = ½) sits in supports whose states differ even
+   under this coarse quotient, typically in the anonymized `threads`
+   multiset: which thread has executed which kinds. The observer saw an
+   ACQUIRE and cannot say whether thread 0 or thread 1 issued it, and those
+   threads do different things next; that is attribution of visible
+   actions to role-asymmetric threads, and it carries object / owner /
+   lineage consequences. What does **not** follow is that only a fifth of
+   the residual *entropy* is identity-related; that decomposition has not
+   been computed. The r0 census §3's separation "r0 measures identity, the
+   ladder measures object / owner / lineage" is withdrawn as a clean split.
+   Thread-naming queries (Q1, Q2, Q5) inherit the residual either way.
 3. *(rewritten as analogy per [5])* r0 is the rung at which the
    canonical-naming caveat (v0.2.6 Clause 2′) bites hardest. An r0 ceiling
    on a thread-naming query is the observer's mixture over role bindings.
@@ -112,9 +124,13 @@ the horizon must use the corrected form before any r0 horizon is reported.
 Enactment applies the following scoping edits, each a correction placed
 where the next reader meets the claim (no original text deleted):
 
-- `full-context-injectivity-note-v0.1.md`, consequence 3 ("the interface
-  axis is degenerate at full context, everywhere") — true for r1–r4; false
-  with r0 on the axis. Add the qualifier.
+- `full-context-injectivity-note-v0.1.md` *(list completed per [r2-6])*:
+  the theorem statement's "every rung" (line 12), consequence 3 ("the
+  interface axis is degenerate at full context, everywhere", line 92),
+  consequence 4 ("every informational witness", line 99), consequence 5
+  ("any full-context configuration", line 107) and the falsifier's "any
+  rung" (line 113) — each true for r1–r4 and false or unqualified with r0
+  on the axis. Add the r1–r4 qualifier at each.
 - `partition-identity-note-v0.1.md` — the identity
   $n_r(T_{ep}, L, B)$ constant across rungs holds for r1–r4 (measured, every
   committed law); it fails for r0 (5,696 vs 394,824 at (14, 14, 2)). Add the
@@ -130,7 +146,11 @@ where the next reader meets the claim (no original text deleted):
   ladder and stays so. r0 → r1 enters D2 as an added adjacency and is
   reported alongside, never as a substitute: "r0 never collapses" is a
   property of C1's programs (four distinct programs whose actions are
-  unattributable at kind-only), not of the rung.
+  unattributable at kind-only), not of the rung. *(per [r2-35])* Part I's
+  D1 text says long contexts might "collapse every interface"; with r0
+  statutory that sentence can never fire. The companion Part I amendment
+  therefore revises D1 to read "collapse every content rung r1–r4", so the
+  preserved verdict is statutory, not interpretive.
 - **Exit.** Part I's exit clause reads "measurably distinct observability
   regimes across rungs"; the "three rungs distinct" phrasing is a later
   gloss in the D1 verdict, not statute. The researcher's recommendation is
@@ -140,18 +160,37 @@ where the next reader meets the claim (no original text deleted):
 
 ## Companion Part I amendment (text proposed; Part I is the PI's document) *(per [2])*
 
-- **D2** — "Rungs: actor-only → +object → +related-entity → +lineage"
-  becomes "Rungs: kind-only → actor-only → +object → +related-entity →
-  +lineage. The r0 → r1 adjacency satisfies both (a) and (b) by measurement
-  (r0 census); the four-rung content ladder's requirements are unchanged."
-- **D4** — the support-bound requirement remains stated on the actor-only
-  interface as the binding constraint for r1–r4. Add: "r0's reachable
-  supports are smaller than r1's at every measured C1 context (max 282,
-  shrinking with L); r0 is priced under the D4 rule at M1 scale when M1
-  scale is priced, on the per-pass unit of the v0.2.8 erratum." The claim
-  "D4 is not touched" in v0.2.7 is **withdrawn**: the r0 census's process
-  reached 4.4 GB at L = 14 on the recursion, and the recursion's unit is not
-  B4′'s path unit; r0 has not been priced under any admitting rule.
+- **D2** *(per [r2-33])* — "Rungs: actor-only → +object → +related-entity
+  → +lineage" becomes "Rungs: kind-only → actor-only → +object →
+  +related-entity → +lineage. The r0 → r1 adjacency is **pending** D2's
+  own form of evidence — an exhibited history class on which ACTOR changes
+  a Q1–Q5 posterior and a preregistered predictive distribution (Owed item
+  2 below); the census's aggregate gaps show such classes exist but do not
+  exhibit one. The four-rung content ladder's requirements are unchanged."
+- **D4** *(corrected per [r2-2]: the previous draft had the comparison
+  reversed)* — D4's concern is posterior-support growth under the sparsest
+  interface, and with r0 on the axis **r0 is the sparsest interface and its
+  supports are larger than r1's** at every measured C1 context (ε = 1, max
+  support: L = 8 r0 64 vs r1 28; full context r0 33 vs r1 1; raws
+  `r0-ladder-census-14-{8,14}-2-2026-09-03.json`). The companion text
+  therefore **re-points D4's support-bound requirement at r0**: "measure
+  reachable-support growth of the exact filter under the kind-only
+  interface (the sparsest rung) on the base configuration; if it exceeds
+  the enumeration budget, the world shrinks — not the ladder." r0 is priced
+  under that rule at M1 scale when M1 scale is priced, on the per-pass unit
+  of v0.2.8.1's erratum. The claim "D4 is not touched" in v0.2.7 is
+  **withdrawn**: the r0 census's process reached 4.4 GB at L = 14 on the
+  recursion, and r0 has not been priced under any admitting rule.
+- **Scope of r0 across the deliverables** *(per [r2-34]; researcher's
+  decision, recorded here)* — r0 joins the ladder wherever the ladder is
+  the variable: deliverable 4's per-interface characterization, the
+  D8 order-mode cross (Part II §4 order modes), the §9 controls, and
+  synchronization reporting (under Clause 2's corrected formula). Every
+  producer that hard-codes r1–r4 today (`scripts/c1_query_ceilings.py`,
+  `d8_benchmark.py`, the sweeps) is extended at the time it is next run
+  under a stamped rule; **every committed r1–r4 artifact stays as
+  measured and is labelled r1–r4**, and no committed D8 attribution number
+  is re-derived. Nothing in deliverables 1–3 or 5 changes.
 - **Exit clause** — wording unchanged; interpretive note per Clause 4,
   resolved by the PI.
 
@@ -167,10 +206,13 @@ where the next reader meets the claim (no original text deleted):
 
 ## Owed before the numbers can be cited as statutory
 
-1. ~~Permutation-orbit check~~ **Done 2026-09-04** (statement 2's table;
+1. ~~Permutation-orbit check~~ **Run 2026-09-04 as a coarse
+   thread-signature quotient** (statement 2's table;
    `scripts/r0_identity_residual.py`, 94 s for four contexts and both ε).
-   The census note `r0-ladder-census-v0.1.md` §2–3 needs a correction
-   block at enactment: mechanism withdrawn, table inserted.
+   It settles the mechanism question in the negative; it does not give an
+   identity-entropy decomposition, which remains open. The census note
+   `r0-ladder-census-v0.1.md` §2–3 needs a correction block at enactment:
+   mechanism withdrawn, table inserted.
 2. **r0 → r1 D2/§9 witness**: an executable control exhibiting a history
    class where ACTOR changes a Q1–Q5 posterior (D2(a)) and the next-2-kind
    distribution (D2(b)).

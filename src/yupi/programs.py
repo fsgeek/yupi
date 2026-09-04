@@ -28,18 +28,26 @@ class Loop:
     reaches pc = |body| and is never TERMINATED. Indexing, length and
     iteration behave as the body tuple's; equality and hashing include the
     loop flag so that a Loop and its straight-line body are distinct keys in
-    every cache keyed by programs. The body must be nonempty.
+    every cache keyed by programs. The body must be nonempty, and the
+    wrapper is immutable (it is hashed, and hashed values must not rebind).
 
     Every committed configuration is straight-line; no statutory producer
     constructs a Loop.
     """
-    __slots__ = ("body",)
+    __slots__ = ("_body",)
 
     def __init__(self, body):
         body = tuple(body)
         if not body:
             raise ValueError("a looping program body must be nonempty")
-        self.body = body
+        object.__setattr__(self, "_body", body)
+
+    @property
+    def body(self):
+        return self._body
+
+    def __setattr__(self, name, value):
+        raise AttributeError("Loop is immutable (it is a hashed cache key)")
 
     def __len__(self):
         return len(self.body)
