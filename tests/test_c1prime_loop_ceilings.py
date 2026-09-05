@@ -68,3 +68,22 @@ def test_q4_and_predictive_targets_at_the_same_gated_law_pinned():
     d = s["divergent"]
     assert d["pairs"] == 15247291009 and d["windows"] == 1196345 and round(d["mass"], 4) == 0.6698
     assert round(d["pair_prob"], 6) == 0.008817 and round(d["tv_pair_prob"], 6) == 0.004691
+
+
+def test_r4_eps_half_three_artifacts_pinned():
+    """The same three producers at (40,8,2) r4, ε = ½, under the r4 ε = ½
+    sharded gate (raws filed 2026-09-05)."""
+    q = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r4-2026-09-05-eps1_2.json"))
+    (r,) = q["rows"]
+    assert r["eps"] == "1/2" and r["n_windows"] == 1524612
+    assert r["gate"].count("full-eps1_2-shard") == 8
+    assert round(r["mean_state_entropy_bits"], 4) == 0.1658
+    for k, v in (("Q1[L0]", 0.0032), ("Q1[L1]", 0.0209), ("Q2[T0]", 0.0186), ("Q3[D0]", 0.0098), ("Q5joint", 0.0243)):
+        assert round(r["queries"][k]["mean_bits"], 4) == v, k
+    q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r4-W4-2026-09-05-eps1_2.json"))["rows"][0]
+    assert q4["eps"] == "1/2" and q4["n_states"] == 4231
+    assert (round(q4["total_bits"], 4), round(q4["irreducible_bits"], 4), round(q4["gap_bits"], 4), round(q4["none_mass"], 4)) == (0.7573, 0.7205, 0.0368, 0.4144)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r4-2026-09-05-eps1_2.json"))["rows"][0]
+    assert t["eps"] == "1/2" and t["n_pnext_classes"] == 87421
+    assert round(t["means"]["pnext"]["gap"], 4) == 0.0561 and round(t["means"]["kinds2"]["gap"], 4) == 0.0683
+    assert t["divergent"]["pairs"] == 7280573310 and t["divergent"]["windows"] == 1182875 and round(t["divergent"]["mass"], 4) == 0.7184
