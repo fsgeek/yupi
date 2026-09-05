@@ -109,3 +109,22 @@ def test_r1_eps1_three_artifacts_pinned_and_r1_to_r4_gap_is_above_delta():
     t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r1-2026-09-05.json"))["rows"][0]
     assert t["rung"] == "r1" and t["n_pnext_classes"] == 37879 and round(t["means"]["kinds2"]["gap"], 4) == 0.1858
     assert t["divergent"]["windows"] == 630007 and round(t["divergent"]["mass"], 4) == 0.6085
+
+
+def test_r1_eps_half_three_artifacts_pinned_and_gap_to_r4():
+    """r1 at (40,8,2) ε = ½ under the r1 ε = ½ gate (raws 2026-09-05): the
+    r1 → r4 gap on Q1[L0] is 0.0764 bits, seven times δ."""
+    q1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05-eps1_2.json"))
+    (r,) = q1["rows"]
+    assert r["eps"] == "1/2" and r["rung"] == "r1" and r["n_windows"] == 819073 and r["gate"].count("eps1_2-shard") == 8
+    assert round(r["mean_state_entropy_bits"], 4) == 0.2963
+    for k, v in (("Q1[L0]", 0.0796), ("Q1[L1]", 0.0682), ("Q2[T0]", 0.0453), ("Q3[D0]", 0.0247), ("Q5joint", 0.0576)):
+        assert round(r["queries"][k]["mean_bits"], 4) == v, k
+    r4 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r4-2026-09-05-eps1_2.json"))["rows"][0]
+    assert round(r["queries"]["Q1[L0]"]["mean_bits"] - r4["queries"]["Q1[L0]"]["mean_bits"], 4) == 0.0764
+    assert all(r["queries"][k]["mean_bits"] >= r4["queries"][k]["mean_bits"] - 1e-12 for k in r["queries"])
+    q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r1-W4-2026-09-05-eps1_2.json"))["rows"][0]
+    assert (round(q4["total_bits"], 4), round(q4["irreducible_bits"], 4), round(q4["gap_bits"], 4)) == (0.7908, 0.7205, 0.0703)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r1-2026-09-05-eps1_2.json"))["rows"][0]
+    assert t["n_pnext_classes"] == 78472 and round(t["means"]["kinds2"]["gap"], 4) == 0.1154
+    assert t["divergent"]["windows"] == 619385 and round(t["divergent"]["mass"], 4) == 0.6598
