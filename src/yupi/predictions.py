@@ -201,6 +201,11 @@ def _d10(name, family, d):
 
 ADAPTERS = {
     "c1-query-ceilings": lambda n, f, d: _rows_family(n, f, d),
+    # looping C1′ producers on the recursion under the sharded gate (2026-09-04);
+    # rows carry string fields (aggregation, gate) that are not quantities.
+    "c1prime-loop-query-ceilings": lambda n, f, d: _rows_family(n, f, d),
+    "c1prime-loop-q4-ceilings": lambda n, f, d: _rows_family(n, f, d),
+    "c1prime-loop-predictive-targets": lambda n, f, d: _rows_family(n, f, d),
     "c1-q4-ceilings": lambda n, f, d: _rows_family(n, f, d),
     "c1-predictive-targets": lambda n, f, d: _rows_family(n, f, d),
     "c1-offset-vs-state": lambda n, f, d: _rows_family(n, f, d),
