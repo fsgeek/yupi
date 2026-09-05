@@ -191,3 +191,12 @@ mismatches and the shard window counts sum to the recursion's total. No
 ceiling under this law is called statutory until the (rung, ε) it needs is
 gated. PIDs are recorded and killed by PID only; every shard runs under
 `ulimit -v 20 GB`.
+
+**Gated (running ledger; pinned in `tests/test_window_gate_full.py`):**
+
+| rung | ε | windows | mismatches | shards | wall (max shard) | raws |
+|---|---|---|---|---|---|---|
+| r4 | 1 | 1,524,612 | **0** | 8/8, counts sum exactly | 4.66 h | `window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard{0..7}.json` |
+
+*(2026-09-04 22:48 PDT: r4 ε = 1 gated — every window at the finest rung of
+the frozen law is exact through the filter. ε = ½ running.)*
