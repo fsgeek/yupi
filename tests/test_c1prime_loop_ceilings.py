@@ -87,3 +87,25 @@ def test_r4_eps_half_three_artifacts_pinned():
     assert t["eps"] == "1/2" and t["n_pnext_classes"] == 87421
     assert round(t["means"]["pnext"]["gap"], 4) == 0.0561 and round(t["means"]["kinds2"]["gap"], 4) == 0.0683
     assert t["divergent"]["pairs"] == 7280573310 and t["divergent"]["windows"] == 1182875 and round(t["divergent"]["mass"], 4) == 0.7184
+
+
+def test_r1_eps1_three_artifacts_pinned_and_r1_to_r4_gap_is_above_delta():
+    """r1 at (40,8,2) ε = 1 under the r1 ε = 1 sharded gate (raws 2026-09-05),
+    and the first statutory-query rung gap in a live world at context 8:
+    r1 → r4 on Q1[L0] is 0.1439 bits, fourteen times δ = 0.01 (exploratory
+    until enactment; adjacent pairs await the r2 and r3 gates)."""
+    q1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05.json"))
+    (r,) = q1["rows"]
+    assert r["eps"] == "1" and r["rung"] == "r1" and r["n_windows"] == 819073 and r["gate"].count("-r1-2026-09-05-full-shard") == 8
+    assert round(r["mean_state_entropy_bits"], 4) == 0.6008
+    for k, v in (("Q1[L0]", 0.1609), ("Q1[L1]", 0.1021), ("Q2[T0]", 0.0996), ("Q3[D0]", 0.0313), ("Q5joint", 0.1177)):
+        assert round(r["queries"][k]["mean_bits"], 4) == v, k
+    r4 = _row()
+    gap = r["queries"]["Q1[L0]"]["mean_bits"] - r4["queries"]["Q1[L0]"]["mean_bits"]
+    assert round(gap, 4) == 0.1439 and gap > 10 * 0.01
+    assert all(r["queries"][k]["mean_bits"] >= r4["queries"][k]["mean_bits"] - 1e-12 for k in r["queries"])   # refinement
+    q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r1-W4-2026-09-05.json"))["rows"][0]
+    assert q4["rung"] == "r1" and (round(q4["total_bits"], 4), round(q4["irreducible_bits"], 4), round(q4["gap_bits"], 4)) == (0.9642, 0.8361, 0.1281)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r1-2026-09-05.json"))["rows"][0]
+    assert t["rung"] == "r1" and t["n_pnext_classes"] == 37879 and round(t["means"]["kinds2"]["gap"], 4) == 0.1858
+    assert t["divergent"]["windows"] == 630007 and round(t["divergent"]["mass"], 4) == 0.6085
