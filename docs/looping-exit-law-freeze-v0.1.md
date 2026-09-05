@@ -197,6 +197,9 @@ gated. PIDs are recorded and killed by PID only; every shard runs under
 | rung | ε | windows | mismatches | shards | wall (max shard) | raws |
 |---|---|---|---|---|---|---|
 | r4 | 1 | 1,524,612 | **0** | 8/8, counts sum exactly | 4.66 h | `window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard{0..7}.json` |
+| r4 | ½ | 1,524,612 | **0** | 8/8, counts sum exactly | 6.81 h (128 ms/window) | `window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard{0..7}.json` |
 
 *(2026-09-04 22:48 PDT: r4 ε = 1 gated — every window at the finest rung of
-the frozen law is exact through the filter. ε = ½ running.)*
+the frozen law is exact through the filter. 2026-09-05 06:03 PDT: r4 ε = ½
+gated; the primary law's finest rung is now exact at both statutory ε. The
+driver continues with r1.)*

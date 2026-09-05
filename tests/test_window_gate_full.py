@@ -14,6 +14,7 @@ DOCS = pathlib.Path(__file__).parent.parent / "docs"
 # (rung, eps) → (n_windows_total, date the raws carry)
 GATED = {
     ("r4", "1"): (1524612, "2026-09-04"),
+    ("r4", "1/2"): (1524612, "2026-09-05"),
 }
 
 
@@ -36,4 +37,10 @@ def test_gated_pair_partitions_every_window_with_zero_mismatches(rung, eps):
 def test_r4_eps1_cost_pinned():
     r = json.load(open(DOCS / "window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard0.json"))["rows"][0]
     assert r["n"] == 190577 and round(r["mean_seconds_per_window"], 3) == 0.087
+    assert r["max_support"] == 101 and r["peak_rss_kb"] < 8e6
+
+
+def test_r4_eps_half_cost_pinned():
+    r = json.load(open(DOCS / "window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard0.json"))["rows"][0]
+    assert r["n"] == 190577 and round(r["mean_seconds_per_window"], 3) == 0.129
     assert r["max_support"] == 101 and r["peak_rss_kb"] < 8e6

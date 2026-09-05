@@ -43,7 +43,7 @@ NON_MEASUREMENT_PREFIXES = (
 KERNEL_FIX_DATE = "2026-08-20"
 
 _TAG_RE = re.compile(r"-(raw|corrected|heldout|F[0-9][^-]*-heldout)(?=-|$)")
-_DATE_RE = re.compile(r"-(20\d\d-\d\d-\d\d)(-[A-Za-z0-9.]+)*\.json$")
+_DATE_RE = re.compile(r"-(20\d\d-\d\d-\d\d)(-[A-Za-z0-9._]+)*\.json$")   # "_" allowed in suffixes (eps1_2 gate raws, 2026-09-05)
 
 
 def _tag(name: str):
