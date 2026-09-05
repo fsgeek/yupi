@@ -48,3 +48,23 @@ def test_statutory_query_means_pinned():
                  ("Q2[T2]", 0.0456), ("Q2[T3]", 0.0117), ("Q3[D0]", 0.0141), ("Q5joint", 0.0606)):
         assert round(q[k]["mean_bits"], 4) == v, k
     assert round(q["Q1[L0]"]["resolved_mass"], 3) == 0.983
+
+
+def test_q4_and_predictive_targets_at_the_same_gated_law_pinned():
+    """Q4 (W = 4) and the τ family at (40,8,2) r4 ε = 1, produced on the
+    recursion; they carry no gate of their own and are covered by the r4
+    ε = 1 sharded gate (their docstrings say so). Raws filed 2026-09-05."""
+    q = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r4-W4-2026-09-05.json"))
+    assert q["aggregation"] == "window" and q["programs"] == "c1prime-loop" and q["W"] == 4
+    (r,) = q["rows"]
+    assert r["eps"] == "1" and r["rung"] == "r4" and r["n_windows"] == 1524612 and r["n_states"] == 1973
+    assert (round(r["total_bits"], 4), round(r["irreducible_bits"], 4), round(r["gap_bits"], 4), round(r["none_mass"], 4)) == (0.9122, 0.8361, 0.0761, 0.4454)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r4-2026-09-05.json"))
+    assert t["aggregation"] == "window" and t["m"] == 2 and t["W"] == 4
+    (s,) = t["rows"]
+    assert s["n_windows"] == 1524612 and s["n_pnext_classes"] == 37523
+    assert round(s["means"]["pnext"]["gap"], 4) == 0.1026 and round(s["means"]["kinds2"]["gap"], 4) == 0.1191
+    assert round(s["means"]["ttw4"]["gap"], 4) == 0.0572 and round(s["means"]["lineage4"]["gap"], 4) == 0.0226
+    d = s["divergent"]
+    assert d["pairs"] == 15247291009 and d["windows"] == 1196345 and round(d["mass"], 4) == 0.6698
+    assert round(d["pair_prob"], 6) == 0.008817 and round(d["tv_pair_prob"], 6) == 0.004691
