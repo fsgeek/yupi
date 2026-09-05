@@ -1,0 +1,116 @@
+{
+ "law": {
+  "T_ep": 40,
+  "L": 8,
+  "B": 2
+ },
+ "rung": "r0",
+ "top": 40,
+ "programs": "c1prime-loop",
+ "rows": [
+  {
+   "n": 40,
+   "n_windows_total": 12739,
+   "mismatches": [],
+   "seconds": 175.47275972366333,
+   "max_support": 401,
+   "slowest": [
+    {
+     "seconds": 6.254548788070679,
+     "support": 314
+    },
+    {
+     "seconds": 6.097183704376221,
+     "support": 224
+    },
+    {
+     "seconds": 6.046091079711914,
+     "support": 218
+    },
+    {
+     "seconds": 5.999936819076538,
+     "support": 262
+    },
+    {
+     "seconds": 5.976377725601196,
+     "support": 210
+    },
+    {
+     "seconds": 4.588937282562256,
+     "support": 234
+    },
+    {
+     "seconds": 4.483803749084473,
+     "support": 215
+    },
+    {
+     "seconds": 4.4088850021362305,
+     "support": 248
+    },
+    {
+     "seconds": 4.370035886764526,
+     "support": 401
+    },
+    {
+     "seconds": 4.369760990142822,
+     "support": 326
+    }
+   ],
+   "mean_seconds_per_window": 4.379346585273742,
+   "eps": "1",
+   "peak_rss_kb": 728180
+  },
+  {
+   "n": 40,
+   "n_windows_total": 12739,
+   "mismatches": [],
+   "seconds": 472.3687288761139,
+   "max_support": 578,
+   "slowest": [
+    {
+     "seconds": 13.831692934036255,
+     "support": 578
+    },
+    {
+     "seconds": 13.788797616958618,
+     "support": 351
+    },
+    {
+     "seconds": 13.627600193023682,
+     "support": 404
+    },
+    {
+     "seconds": 13.453051328659058,
+     "support": 290
+    },
+    {
+     "seconds": 13.282686471939087,
+     "support": 362
+    },
+    {
+     "seconds": 13.079731702804565,
+     "support": 311
+    },
+    {
+     "seconds": 13.064857482910156,
+     "support": 292
+    },
+    {
+     "seconds": 13.025545835494995,
+     "support": 357
+    },
+    {
+     "seconds": 12.856417179107666,
+     "support": 460
+    },
+    {
+     "seconds": 12.802658557891846,
+     "support": 342
+    }
+   ],
+   "mean_seconds_per_window": 11.769777113199234,
+   "eps": "1/2",
+   "peak_rss_kb": 861284
+  }
+ ]
+}

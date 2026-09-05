@@ -36,17 +36,48 @@ class ZeroProbabilityWindow(Exception):
     """Raised when a window has probability zero under the law."""
 
 
+# Exact cross-call cache of the forward marginals (2026-09-04): μ_t is a pure
+# function of (cfg, programs, t) and the filter recomputed it from reset for
+# every compatible offset of every window — 14.7 of 17 s per window at
+# (40,4,2) on the looping C1′ (profile in the commit). The cache stores the
+# whole prefix μ_0 … μ_T per (cfg, programs) and extends it incrementally;
+# a lookup below the reached T costs nothing. Arithmetic unchanged, exact
+# rationals, copies returned (tests/test_marginal_cache.py).
+_MARGINALS: Dict[Tuple[WorldConfig, object], List[Belief]] = {}
+
+
+def marginal_cache_clear() -> None:
+    _MARGINALS.clear()
+
+
+# Second exact memo (2026-09-04): the first Bayes step of a component runs
+# the kernel over the whole marginal μ_u and depends only on
+# (cfg, programs, rung, u, first record). Unnormalized belief and likelihood
+# are stored; every later step is unchanged (tests/test_first_step_cache.py).
+_FIRST_STEP: Dict[Tuple, Tuple[Belief, Fraction]] = {}
+
+
+def first_step_cache_clear() -> None:
+    _FIRST_STEP.clear()
+
+
 def state_marginal_at(cfg: WorldConfig, programs, t: int) -> Belief:
     """μ_t: the exact unconditional state distribution after t ticks,
-    by forward belief propagation from the known reset state."""
-    belief: Belief = {initial_state(cfg): Fraction(1)}
-    for _ in range(t):
+    by forward belief propagation from the known reset state (cached
+    across calls per (cfg, programs); see `_MARGINALS`)."""
+    key = (cfg, programs)
+    seq = _MARGINALS.get(key)
+    if seq is None:
+        seq = [{initial_state(cfg): Fraction(1)}]
+        _MARGINALS[key] = seq
+    while len(seq) <= t:
+        belief = seq[-1]
         nxt: Belief = {}
         for s, mass in belief.items():
             for tr, p in enabled(s, cfg, programs):
                 nxt[tr.next_state] = nxt.get(tr.next_state, Fraction(0)) + mass * p
-        belief = nxt
-    return belief
+        seq.append(nxt)
+    return dict(seq[t])
 
 
 def _step_unnorm(
@@ -96,14 +127,24 @@ def _components_unnorm(
     # weight; the constant cancels in the final normalization.
     components: Dict[int, Tuple[Fraction, Belief]] = {}
     for _, u in compatible:
-        prior_belief = state_marginal_at(cfg, programs, u)
         weight = Fraction(1)
-        belief = prior_belief
+        belief = None          # μ_u is only materialized if the first step is not memoized
         dead = False
-        for obs in obs_seq:
-            if stats is not None:
-                stats["max_support"] = max(stats.get("max_support", 0), len(belief))
-            belief, lik = _step_unnorm(belief, obs, rung, cfg, programs)
+        for k, obs in enumerate(obs_seq):
+            if k == 0:
+                key = (cfg, programs, rung, u, obs)
+                hit = _FIRST_STEP.get(key)
+                if hit is None:
+                    prior_belief = state_marginal_at(cfg, programs, u)
+                    if stats is not None:
+                        stats["max_support"] = max(stats.get("max_support", 0), len(prior_belief))
+                    hit = _step_unnorm(prior_belief, obs, rung, cfg, programs)
+                    _FIRST_STEP[key] = hit
+                belief, lik = hit
+            else:
+                if stats is not None:
+                    stats["max_support"] = max(stats.get("max_support", 0), len(belief))
+                belief, lik = _step_unnorm(belief, obs, rung, cfg, programs)
             if lik == 0:
                 dead = True
                 break

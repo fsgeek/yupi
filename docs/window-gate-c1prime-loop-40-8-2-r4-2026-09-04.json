@@ -1,0 +1,116 @@
+{
+ "law": {
+  "T_ep": 40,
+  "L": 8,
+  "B": 2
+ },
+ "rung": "r4",
+ "top": 40,
+ "programs": "c1prime-loop",
+ "rows": [
+  {
+   "n": 40,
+   "n_windows_total": 1524612,
+   "mismatches": [],
+   "seconds": 166.2277810573578,
+   "max_support": 101,
+   "slowest": [
+    {
+     "seconds": 8.066003322601318,
+     "support": 42
+    },
+    {
+     "seconds": 5.860264301300049,
+     "support": 64
+    },
+    {
+     "seconds": 5.833827257156372,
+     "support": 48
+    },
+    {
+     "seconds": 5.831789255142212,
+     "support": 101
+    },
+    {
+     "seconds": 5.742920875549316,
+     "support": 39
+    },
+    {
+     "seconds": 5.657196044921875,
+     "support": 80
+    },
+    {
+     "seconds": 3.933624744415283,
+     "support": 41
+    },
+    {
+     "seconds": 3.929823160171509,
+     "support": 41
+    },
+    {
+     "seconds": 3.9039580821990967,
+     "support": 41
+    },
+    {
+     "seconds": 3.894911050796509,
+     "support": 41
+    }
+   ],
+   "mean_seconds_per_window": 4.153508085012436,
+   "eps": "1",
+   "peak_rss_kb": 6764740
+  },
+  {
+   "n": 40,
+   "n_windows_total": 1524612,
+   "mismatches": [],
+   "seconds": 454.3819098472595,
+   "max_support": 101,
+   "slowest": [
+    {
+     "seconds": 14.191926002502441,
+     "support": 64
+    },
+    {
+     "seconds": 13.924333333969116,
+     "support": 49
+    },
+    {
+     "seconds": 13.904168605804443,
+     "support": 41
+    },
+    {
+     "seconds": 13.15730333328247,
+     "support": 41
+    },
+    {
+     "seconds": 12.801038980484009,
+     "support": 41
+    },
+    {
+     "seconds": 12.756629705429077,
+     "support": 49
+    },
+    {
+     "seconds": 12.65080189704895,
+     "support": 42
+    },
+    {
+     "seconds": 12.649293422698975,
+     "support": 48
+    },
+    {
+     "seconds": 12.64171576499939,
+     "support": 48
+    },
+    {
+     "seconds": 12.447704315185547,
+     "support": 48
+    }
+   ],
+   "mean_seconds_per_window": 11.357168918848037,
+   "eps": "1/2",
+   "peak_rss_kb": 6785456
+  }
+ ]
+}

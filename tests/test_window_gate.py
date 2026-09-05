@@ -54,3 +54,11 @@ def test_gate_detects_a_corrupted_aggregate(monkeypatch):
     monkeypatch.setattr(_mod, "window_law_aggregate", corrupted)
     r = gate(cfg, progs, law, "r1")
     assert len(r["mismatches"]) == 1
+
+
+def test_stride_takes_every_kth_window_in_support_order():
+    cfg, progs, law = WorldConfig.c1(epsilon=Fraction(1)), c1_programs(), WindowLaw(T_ep=8, L=4, B=2)
+    r_all = gate(cfg, progs, law, "r1")
+    r_s = gate(cfg, progs, law, "r1", stride=7)
+    assert r_s["n"] == -(-r_all["n_windows_total"] // 7) and r_s["mismatches"] == []
+    assert r_s["max_support"] == r_all["max_support"]        # the largest support is index 0
