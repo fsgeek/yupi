@@ -65,6 +65,7 @@ def window_law_aggregate(
     if stats is not None:
         stats["pairs_per_tick"] = []
         stats["states_per_tick"] = []   # reachable states at each tick (2026-09-04)
+        stats["mass_T"] = {}            # window key -> {T: law mass generated at endpoint T} (2026-09-04)
     for t in range(1, law.T_ep + 1):
         nxt: Dict[Tuple[State, Tuple[Record, ...]], Fraction] = {}
         for (s, buf), mass in dist.items():
@@ -81,9 +82,13 @@ def window_law_aggregate(
             stats["states_per_tick"].append(len({s for s, _ in dist}))
         if t in endpoints:
             reset = t <= L
+            mT = stats["mass_T"] if stats is not None else None
             for (s, buf), mass in dist.items():
                 d = agg.setdefault((reset, buf), {})
                 d[s] = d.get(s, Fraction(0)) + w_T * mass
+                if mT is not None:
+                    e = mT.setdefault((reset, buf), {})
+                    e[t] = e.get(t, Fraction(0)) + w_T * mass
     if stats is not None:
         stats["max_pairs"] = max(stats["pairs_per_tick"])
         stats["max_states"] = max(stats["states_per_tick"])
@@ -106,16 +111,29 @@ def window_law_aggregates(
     cost of a single r4 recursion (gate: tests/test_window_process.py).
     """
     fine = window_law_aggregate(cfg, programs, law, "r4", stats)
+    fine_mT = stats.get("mass_T") if stats is not None else None
     out: Dict[str, Aggregate] = {}
+    mT_by_rung: Dict[str, Dict] = {}
     for r in rungs:
         if r == "r4":
             out[r] = fine
+            if fine_mT is not None:
+                mT_by_rung[r] = fine_mT
             continue
         coarse: Aggregate = {}
+        coarse_mT: Dict = {}
         for (reset, win), joint in fine.items():
             key = (reset, tuple(project(x, r) for x in win))
             d = coarse.setdefault(key, {})
             for s, m in joint.items():
                 d[s] = d.get(s, Fraction(0)) + m
+            if fine_mT is not None:            # per-endpoint mass projects the same way (2026-09-04)
+                e = coarse_mT.setdefault(key, {})
+                for T, m in fine_mT[(reset, win)].items():
+                    e[T] = e.get(T, Fraction(0)) + m
         out[r] = coarse
+        if fine_mT is not None:
+            mT_by_rung[r] = coarse_mT
+    if stats is not None:
+        stats["mass_T_by_rung"] = mT_by_rung
     return out

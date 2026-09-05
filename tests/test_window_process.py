@@ -111,3 +111,38 @@ def test_stats_record_reachable_states_per_tick():
         assert stats["states_per_tick"][t - 1] == len({final for _, _, final in paths(cfg, progs, t)})
         assert stats["states_per_tick"][t - 1] <= stats["pairs_per_tick"][t - 1]
     assert stats["max_states"] == max(stats["states_per_tick"])
+
+
+def test_stats_record_per_endpoint_mass_per_window():
+    # For the ceilings producer on the recursion (2026-09-04): by_endpoint
+    # (per-endpoint means, needed by the §6 truncation-conditional formula)
+    # requires each window's law mass split by the endpoint T that generated
+    # it. The recursion records it in stats["mass_T"] and it must equal the
+    # path side's split exactly.
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1)), c1_programs()
+    law = WindowLaw(T_ep=8, L=4, B=2)
+    stats = {}
+    agg = window_law_aggregate(cfg, progs, law, "r2", stats)
+    w_T = endpoint_prior(law)
+    by_paths = {}
+    for T in law.endpoints():
+        u = law.offset(T)
+        for recs, prob, final in paths(cfg, progs, T):
+            key = (u == 0, tuple(project(r, "r2") for r in recs[u:]))
+            d = by_paths.setdefault(key, {})
+            d[T] = d.get(T, Fraction(0)) + w_T * prob
+    assert stats["mass_T"] == by_paths
+    for key, joint in agg.items():
+        assert sum(stats["mass_T"][key].values(), Fraction(0)) == sum(joint.values(), Fraction(0))
+
+
+def test_aggregates_project_per_endpoint_mass_to_every_rung():
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1, 2)), c1_programs()
+    law = WindowLaw(T_ep=8, L=4, B=2)
+    stats = {}
+    aggs = window_law_aggregates(cfg, progs, law, RUNGS, stats)
+    for rung in RUNGS:
+        single = {}
+        window_law_aggregate(cfg, progs, law, rung, single)
+        assert stats["mass_T_by_rung"][rung] == single["mass_T"], rung
+        assert set(stats["mass_T_by_rung"][rung]) == set(aggs[rung])
