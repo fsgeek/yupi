@@ -29,7 +29,7 @@ from yupi.window_filter import filter_window_with_evidence
 from yupi.window_process import window_law_aggregate
 
 
-def gate(cfg, progs, law, rung, top=None, stride=None):
+def gate(cfg, progs, law, rung, top=None, stride=None, shard=None):
     """Run the gate; returns a dict with n, mismatches (list of window
     descriptions), seconds, max_support, and per-window seconds for the
     slowest ten. Exact comparison; no tolerance. `top` takes the N largest
@@ -41,6 +41,9 @@ def gate(cfg, progs, law, rung, top=None, stride=None):
         items = items[:top]
     if stride is not None:
         items = items[::stride]
+    if shard is not None:                      # (i, n): windows i, i+n, i+2n, … in support order
+        i, n = shard
+        items = items[i::n]
     mismatches = []
     timings = []
     t0 = time.time()
@@ -72,14 +75,20 @@ def main():
         i = args.index("--stride")
         stride = int(args[i + 1])
         args = args[:i] + args[i + 2:]
+    shard = None
+    if "--shard" in args:                      # --shard i/n : the i-th of n interleaved shards (full gate, sharded)
+        i = args.index("--shard")
+        a, b = args[i + 1].split("/")
+        shard = (int(a), int(b))
+        args = args[:i] + args[i + 2:]
     T_ep, L, B = (int(a) for a in args[:3])
     rung = args[3]
     law = WindowLaw(T_ep=T_ep, L=L, B=B)
-    out = dict(law=dict(T_ep=T_ep, L=L, B=B), rung=rung, top=top, stride=stride,
+    out = dict(law=dict(T_ep=T_ep, L=L, B=B), rung=rung, top=top, stride=stride, shard=list(shard) if shard else None,
                programs=os.environ.get("YUPI_PROGRAMS", "c1"), rows=[])
     for eps in eps_grid():
         cfg = WorldConfig.c1(epsilon=eps)
-        r = gate(cfg, programs_for(), law, rung, top, stride)
+        r = gate(cfg, programs_for(), law, rung, top, stride, shard)
         r["eps"] = str(eps)
         r["peak_rss_kb"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
         out["rows"].append(r)
@@ -88,7 +97,7 @@ def main():
         print(f"eps={str(eps):>3} {rung} ({T_ep},{L},{B}): gated {r['n']}/{n_total} windows, "
               f"mismatches={len(r['mismatches'])}, {r['seconds']:.1f}s, max support {r['max_support']}, "
               f"mean {r['mean_seconds_per_window']:.4f}s/window → full run ≈ {est/3600:.2f} h at this rate "
-              f"({'stride sample' if stride else 'top-N is the slowest tail'}), rss={r['peak_rss_kb']/1e6:.2f}GB", flush=True)
+              f"({'stride sample' if stride else 'shard ' + '/'.join(map(str, shard)) if shard else 'top-N is the slowest tail'}), rss={r['peak_rss_kb']/1e6:.2f}GB", flush=True)
     if len(args) > 4:
         json.dump(out, open(args[4], "w"), indent=1)
         print(f"raw JSON -> {args[4]}", flush=True)

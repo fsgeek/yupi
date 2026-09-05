@@ -1,0 +1,65 @@
+{
+ "law": {
+  "T_ep": 40,
+  "L": 8,
+  "B": 2
+ },
+ "rung": "r4",
+ "top": null,
+ "stride": 100,
+ "programs": "c1prime-loop",
+ "rows": [
+  {
+   "n": 15247,
+   "n_windows_total": 1524612,
+   "mismatches": [],
+   "seconds": 1285.8313810825348,
+   "max_support": 101,
+   "slowest": [
+    {
+     "seconds": 2.4983327388763428,
+     "support": 3
+    },
+    {
+     "seconds": 2.372403144836426,
+     "support": 3
+    },
+    {
+     "seconds": 2.366323709487915,
+     "support": 1
+    },
+    {
+     "seconds": 2.318265199661255,
+     "support": 1
+    },
+    {
+     "seconds": 2.289897918701172,
+     "support": 1
+    },
+    {
+     "seconds": 2.2887229919433594,
+     "support": 2
+    },
+    {
+     "seconds": 1.5561459064483643,
+     "support": 1
+    },
+    {
+     "seconds": 1.5320525169372559,
+     "support": 6
+    },
+    {
+     "seconds": 1.5038204193115234,
+     "support": 1
+    },
+    {
+     "seconds": 1.497767686843872,
+     "support": 2
+    }
+   ],
+   "mean_seconds_per_window": 0.08427420833380236,
+   "eps": "1",
+   "peak_rss_kb": 6758036
+  }
+ ]
+}

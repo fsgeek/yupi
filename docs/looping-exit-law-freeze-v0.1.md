@@ -159,3 +159,35 @@ That the exit clause is satisfied at (40,8,2); any statutory query gap;
 that the H(S) steps above survive the query set; that (44,8,2) is refused;
 that the 14.35 GB ε = ½ figure at (48,8,2) is an isolated-process peak
 (it is a cumulative high-water mark, and is over the line either way).
+
+---
+
+## Addendum 2026-09-04 17:50 PDT — the gate priced, and scheduled
+
+§5 item 2 said "every window through the filter; price it on the 40
+largest supports first." Done, in three steps, each on the trace:
+
+1. **Top-40 by support, filter as it stood** (raws
+   `window-gate-c1prime-loop-40-8-2-{r4,r0}-2026-09-04.json`): 160/160
+   exact, at 4.2–11.8 s per window. With 1,524,612 r4 windows that is
+   hundreds of hours per ε — the policy was infeasible as written.
+2. **Profile, then two exact memos** in the filter (commit `1451418`): the
+   forward marginal μ_u was recomputed per offset per window (14.7 of 17 s),
+   and after caching it the first Bayes step over all of μ_u dominated; both
+   are pure functions of exact inputs and are now cached, with bit-identity
+   and kernel-call-count tests. Nothing approximate entered the filter.
+3. **A 1-in-100 stride sample at (40,8,2) r4 ε = 1 with the memos** (raw
+   `…-r4-2026-09-04-stride100.json`): **15,247 / 15,247 exact, 84.3 ms per
+   window**, 6.76 GB. Full r4 gate at this rate: 35.7 h per ε in one
+   process.
+
+**Schedule (researcher's decision):** the full gate runs sharded, 8
+interleaved shards per (rung, ε) (`--shard i/8`, each shard rebuilding the
+recursion — 22 min — and gating windows i, i+8, …), in the order r4 ε = 1,
+r4 ε = ½, then r1, r2, r3, r0 at both ε; 8 × 6.8 GB fits the box with
+headroom. Expected wall: r4 ≈ 5 h per ε; the whole ladder ≈ 2 days. Each
+shard writes its own raw; a (rung, ε) is gated iff every shard reports zero
+mismatches and the shard window counts sum to the recursion's total. No
+ceiling under this law is called statutory until the (rung, ε) it needs is
+gated. PIDs are recorded and killed by PID only; every shard runs under
+`ulimit -v 20 GB`.

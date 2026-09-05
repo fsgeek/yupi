@@ -62,3 +62,11 @@ def test_stride_takes_every_kth_window_in_support_order():
     r_s = gate(cfg, progs, law, "r1", stride=7)
     assert r_s["n"] == -(-r_all["n_windows_total"] // 7) and r_s["mismatches"] == []
     assert r_s["max_support"] == r_all["max_support"]        # the largest support is index 0
+
+
+def test_shards_partition_every_window_exactly_once():
+    cfg, progs, law = WorldConfig.c1(epsilon=Fraction(1)), c1_programs(), WindowLaw(T_ep=8, L=4, B=2)
+    total = gate(cfg, progs, law, "r1")["n_windows_total"]
+    ns = [gate(cfg, progs, law, "r1", shard=(i, 3))["n"] for i in range(3)]
+    assert sum(ns) == total and max(ns) - min(ns) <= 1
+    assert all(gate(cfg, progs, law, "r1", shard=(i, 3))["mismatches"] == [] for i in range(3))
