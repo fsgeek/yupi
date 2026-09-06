@@ -232,8 +232,10 @@ where the next reader meets the claim (no original text deleted):
    prices one pass with projections r0–r4 in a fresh process per ε
    (frontier 1,964,919; 7.21 / 7.23 GB). r0 is priced wherever the pass
    is. *(The recursion gained per-endpoint instrumentation after that raw;
-   the freeze note's §5 item 4 re-price is running on 2026-09-06 and is
-   reported there.)*
+   the freeze note's §5 item 4 re-price of 2026-09-06 found the pass at
+   13.03 / 13.25 GB — refused on memory under E3 — so r0 is priced, and
+   the law it was priced on is currently refused; see the freeze note's
+   2026-09-06 addendum. This bears on the freeze, not on this clause.)*
 4. ~~Producer edits for Clause 2~~ **Done 2026-09-04**: `yupi.sync`
    (`conditional_from_aggregate`, `conditional_from_by_endpoint`) computes
    (H_law − H_{U=0}) / Pr(U > 0); `scripts/c1_sync_sweep.py` now emits a

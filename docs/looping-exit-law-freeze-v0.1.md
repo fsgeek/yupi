@@ -260,3 +260,52 @@ Two corrections, made in place above: the grand total (finding 2) and the
    (`window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-06-reprice.json`);
    result appended below when it lands. Until then the law's admission
    rests on the Sep 4 raw and is so labelled.
+
+**Re-price result (landed 2026-09-06 11:29 PDT; raw
+`window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-06-reprice.json`,
+one subprocess per ε, `rss_isolated_per_eps: true`):**
+
+| ε | frontier $\max_t$ | reachable states (max) | wall | peak RSS | verdict under E3 |
+|---|---|---|---|---|---|
+| 1 | 1,964,919 (identical to Sep 4) | 1,953 | 1,444 s | **13.03 GB** | frontier admitted (1.8 % margin); **memory refused** (8 GB line) |
+| ½ | 1,964,919 (identical) | 4,173 | 1,798 s | **13.25 GB** | frontier admitted; **memory refused** |
+
+**The frozen law is refused on memory by the rule enacted this morning, on
+the instrument as it runs today.** The frontier did not move, as predicted
+(`mass_T` lives outside `dist`); peak RSS went from 7.21 / 7.23 GB to
+13.03 / 13.25 GB, and the only change to the recursion between the two
+pricings is the per-endpoint mass instrumentation of `06541a2` and its
+per-rung projections, which the statutory producers need for `by_endpoint`
+means. Nothing about the world changed. Consequences, stated plainly:
+
+- This note is **not enactable as written** until the pass is under the
+  line or the PI rules otherwise; it moves from the PI's desk back to the
+  researcher's.
+- The thirty producer artifacts at (40,8,2) stay **exploratory**: gated
+  (every window exact through the filter), but produced by a pass the
+  admitting rule refuses.
+- The 2 × 10⁶ / 8 GB line is **not moved**. The enactment record of
+  v0.2.8.1 says a refusal is answered by a re-freeze argued from
+  measurement, never a taller line; the first refusal is not the occasion
+  to test that sentence.
+
+**Researcher's next step (decided 2026-09-06 11:35 PDT):** profile the pass
+stage by stage (recursion; each rung's projection of the aggregate and of
+`mass_T`; after freeing) — running as this is written — and then reduce
+memory only by exact means (a compact per-window representation of the
+per-endpoint mass; projecting one rung at a time and freeing; nothing
+approximate enters the recursion), gated by bit-for-bit equality of every
+window's aggregate against the current recursion at the frozen law itself
+(one pass each, both ε) and by the existing (14,4,2) row-for-row
+reproductions. Then re-price. If the pass fits under 8 GB, this note
+returns to the desk with the new raw; if it does not, the choice between a
+smaller law and a rule change goes to the PI with the profile in hand, and
+the line is argued from what the statutory producer measurably needs, not
+from which law it admits.
+
+**(48,8,2) ε = ½ isolated pass** (launched 10:32, landed 11:22; raw
+`window-process-pass-pricing-c1prime-loop-48-8-2-2026-09-06-eps1_2-isolated.json`):
+frontier 2,223,674, states 4,231, wall 2,995 s, **peak RSS 16.26 GB in a
+fresh process**. The withdrawn memory refusal is reinstated with evidence:
+(48,8,2) is refused on both lines at ε = ½. §6's remaining parenthetical
+on the 14.35 GB figure is superseded by this row.

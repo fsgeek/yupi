@@ -179,7 +179,7 @@ The two worlds' r1 window counts are close (7,289 vs 7,041). The looping
 | world | law | unit | ε | max live pairs | reachable states (max) | wall | peak RSS | verdict |
 |---|---|---|---|---|---|---|---|---|
 | C1′-loop | (48,8,2) | pass (r4 → r0–r4) | 1 | 2,223,674 | 1,973 | 2,302 s | 7.40 GB (cumulative-process run); **7.41 GB in an isolated fresh-process rerun** (`…-48-8-2-2026-09-04-eps1.json`) | **refused** (frontier 11 % over 2 × 10⁶; RSS under) |
-| C1′-loop | (48,8,2) | pass (r4 → r0–r4) | ½ | 2,223,674 | 4,231 | 2,820 s | 14.35 GB cumulative, same process after the ε = 1 pass (two-row raw `…-48-8-2-2026-09-04.json`). *Per [r3-3]* this is **not evidence under the fresh-process unit** — "14.35 ≥ 8 either way" was invalid once the unit became an isolated process. An isolated ε = ½ pass was launched 2026-09-06 10:32 PDT; its raw is appended below when it lands. | **refused on frontier** (11 % over, ε-independent); memory verdict withheld until the isolated raw |
+| C1′-loop | (48,8,2) | pass (r4 → r0–r4) | ½ | 2,223,674 | 4,231 | 2,820 s | 14.35 GB cumulative, same process after the ε = 1 pass (two-row raw `…-48-8-2-2026-09-04.json`). *Per [r3-3]* this is **not evidence under the fresh-process unit** — "14.35 ≥ 8 either way" was invalid once the unit became an isolated process. **Isolated ε = ½ pass, 2026-09-06 (fresh process, `…-48-8-2-2026-09-06-eps1_2-isolated.json`): frontier 2,223,674, wall 2,995 s, peak RSS 16.26 GB.** | **refused on both lines** — frontier 11 % over (ε-independent) and memory 16.26 GB against 8, now measured in isolation |
 | C1′-loop | (48,8,2) | **r1 single-rung** | 1 | 1,623,016 | — | 1,761 s | 5.15 GB (fresh process) | **admitted** — r1 only (`window-process-pricing-c1prime-loop-48-8-2-r1-2026-09-04.json`) |
 
 *(The (48, 8, 2) runs predate the per-ε subprocess isolation in the script;
@@ -309,7 +309,12 @@ v0.2.6 — and the PI told that one word reverts it. Enacted the same hour;
 Part II title moves to v0.2.8.1 (proposal numbers follow authoring order;
 v0.2.7.1 is next on the desk and not yet enacted).
 
-Evidence still landing, neither of which is clause text: the isolated
-(48,8,2) ε = ½ pass (replaces a cumulative memory figure in a table whose
-verdict rests on the frontier) and the (40,8,2) re-price owed by the
-freeze note's §5 item 4.
+Evidence that landed after enactment (11:22 and 11:29 PDT), neither of it
+clause text: the isolated (48,8,2) ε = ½ pass — 16.26 GB in a fresh
+process, so that row is refused on both lines with evidence (table above)
+— and the (40,8,2) re-price owed by the freeze note's §5 item 4, which
+**refused the frozen law on memory** (13.03 / 13.25 GB against the 8 GB
+line; frontier identical). The rule did its job within the hour of its
+enactment; the consequence and the researcher's next step are recorded in
+`looping-exit-law-freeze-v0.1.md`'s 2026-09-06 addendum. The line is not
+moved.
