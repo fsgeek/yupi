@@ -1,0 +1,55 @@
+{
+  "law": {
+    "T_ep": 40,
+    "L": 8,
+    "B": 2
+  },
+  "m": 2,
+  "W": 4,
+  "aggregation": "window",
+  "programs": "c1prime-loop",
+  "rows": [
+    {
+      "eps": "1",
+      "rung": "r3",
+      "n_windows": 991585,
+      "n_pnext_classes": 28685,
+      "means": {
+        "kinds2": {
+          "total": 1.3985079678656858,
+          "irreducible": 1.2746378519673096,
+          "gap": 0.12387011589834108
+        },
+        "ttw4": {
+          "total": 1.3248138600388082,
+          "irreducible": 1.2641156507979712,
+          "gap": 0.06069820924075212
+        },
+        "lineage4": {
+          "total": 0.5400895891683202,
+          "irreducible": 0.5111673064941078,
+          "gap": 0.028922282674154035
+        },
+        "pnext": {
+          "total": 1.1693786016217378,
+          "irreducible": 1.0633662241964874,
+          "gap": 0.10601237742518697
+        }
+      },
+      "divergent": {
+        "pairs": 6538335183,
+        "class_pairs": 1568777,
+        "windows": 799106,
+        "mass": 0.7113273752117036,
+        "pair_prob": 0.008861143589933887,
+        "tv_pair_prob": 0.004717704617151517,
+        "separated_by": {
+          "kinds2": 6289039381,
+          "ttw4": 5775134398,
+          "lineage4": 3861512963
+        }
+      },
+      "aggregation": "window"
+    }
+  ]
+}

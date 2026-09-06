@@ -179,3 +179,32 @@ def test_r2_eps_half_three_artifacts_pinned_and_adjacent_pair_clears_delta():
     t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r2-2026-09-05-eps1_2.json"))["rows"][0]
     assert t["n_pnext_classes"] == 75278 and round(t["means"]["kinds2"]["gap"], 4) == 0.0916
     assert t["divergent"]["windows"] == 732715 and round(t["divergent"]["mass"], 4) == 0.6902
+
+
+def test_r3_eps1_pinned_and_every_adjacent_pair_is_above_delta_at_eps1():
+    """r3 at (40,8,2) ε = 1 under the r3 ε = 1 gate (raws 2026-09-06)
+    completes the r1–r4 ladder at ε = 1. Every adjacent pair on the complete
+    statutory query set is above δ = 0.01 bits: r1 → r2 0.0477 (Q1[L1]),
+    r2 → r3 0.1100 (Q1[L0]), r3 → r4 0.0142 (Q3[D0]); the lineage step is
+    carried by the device query and is the thinnest at 1.4× δ. Every query
+    refines monotonically down the ladder. Exploratory until enactment."""
+    files = {"r1": "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05.json", "r2": "c1prime-loop-query-ceilings-40-8-2-r2-2026-09-05.json",
+             "r3": "c1prime-loop-query-ceilings-40-8-2-r3-2026-09-06.json", "r4": "c1prime-loop-query-ceilings-40-8-2-r4-2026-09-04.json"}
+    R = {r: json.load(open(DOCS / f))["rows"][0] for r, f in files.items()}
+    r3 = R["r3"]
+    assert r3["eps"] == "1" and r3["rung"] == "r3" and r3["n_windows"] == 991585 and r3["gate"].count("-r3-2026-09-06-full-shard") == 8
+    assert round(r3["mean_state_entropy_bits"], 4) == 0.4046
+    for k, v in (("Q1[L0]", 0.0170), ("Q1[L1]", 0.0404), ("Q2[T0]", 0.0584), ("Q3[D0]", 0.0283), ("Q5joint", 0.0642)):
+        assert round(r3["queries"][k]["mean_bits"], 4) == v, k
+    stat = [k for k in R["r1"]["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
+    expected = {("r1", "r2"): ("Q1[L1]", 0.0477), ("r2", "r3"): ("Q1[L0]", 0.1100), ("r3", "r4"): ("Q3[D0]", 0.0142)}
+    for (a, b), (q, v) in expected.items():
+        g = {k: R[a]["queries"][k]["mean_bits"] - R[b]["queries"][k]["mean_bits"] for k in stat}
+        assert max(g, key=g.get) == q and round(max(g.values()), 4) == v, (a, b)
+        assert max(g.values()) > 0.01                       # δ, frozen v0.2.5
+        assert all(x >= -1e-12 for x in g.values()), (a, b)  # refinement
+    q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r3-W4-2026-09-06.json"))["rows"][0]
+    assert q4["rung"] == "r3" and (round(q4["total_bits"], 4), round(q4["gap_bits"], 4)) == (0.9156, 0.0795)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r3-2026-09-06.json"))["rows"][0]
+    assert t["rung"] == "r3" and t["n_pnext_classes"] == 28685 and round(t["means"]["kinds2"]["gap"], 4) == 0.1239
+    assert t["divergent"]["windows"] == 799106 and round(t["divergent"]["mass"], 4) == 0.7113
