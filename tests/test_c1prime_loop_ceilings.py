@@ -263,3 +263,32 @@ def test_r3_eps_half_pinned_and_every_adjacent_pair_is_above_delta_at_eps_half()
     t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r3-2026-09-06-eps1_2.json"))["rows"][0]
     assert t["rung"] == "r3" and t["n_pnext_classes"] == 67620 and round(t["means"]["kinds2"]["gap"], 4) == 0.0716
     assert t["divergent"]["windows"] == 787304 and round(t["divergent"]["mass"], 4) == 0.7642
+
+
+def test_r0_eps_half_pinned_and_the_whole_r0_to_r4_ladder_is_on_the_trace_at_both_eps():
+    """r0 at (40,8,2) ε = ½ under the r0 ε = ½ gate (raws 2026-09-06): the
+    last of the ten (rung, ε) artifacts. r0 → r1 at ε = ½: Q2[T0] 0.9957,
+    Q5joint 0.9016, Q1[L0] 0.7295; reset part 0.5551, corrected
+    E[H | U > 0] 3.5200 vs closed form 4.2138."""
+    (r0,) = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r0-2026-09-06-eps1_2.json"))["rows"]
+    assert r0["eps"] == "1/2" and r0["rung"] == "r0" and r0["n_windows"] == 12739 and r0["gate"].count("-r0-2026-09-06-full-eps1_2-shard") == 8
+    assert round(r0["mean_state_entropy_bits"], 4) == 3.3711
+    for k, v in (("Q1[L0]", 0.8090), ("Q1[L1]", 0.5279), ("Q2[T0]", 1.0409), ("Q3[D0]", 0.1697), ("Q5joint", 0.9592)):
+        assert round(r0["queries"][k]["mean_bits"], 4) == v, k
+    r1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05-eps1_2.json"))["rows"][0]
+    stat = [k for k in r0["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
+    g = {k: r0["queries"][k]["mean_bits"] - r1["queries"][k]["mean_bits"] for k in stat}
+    assert max(g, key=g.get) == "Q2[T0]" and round(max(g.values()), 4) == 0.9957 and all(v >= -1e-12 for v in g.values())
+    c = conditional_from_by_endpoint(r0["by_endpoint"], WindowLaw(T_ep=40, L=8, B=2), "mean_state_entropy_bits")
+    assert round(c["H_U0"], 4) == 0.5551 and round(c["E_H_given_U_pos"], 4) == 3.5200
+    q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r0-W4-2026-09-06-eps1_2.json"))["rows"][0]
+    assert (round(q4["total_bits"], 4), round(q4["gap_bits"], 4)) == (1.4366, 0.7161)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r0-2026-09-06-eps1_2.json"))["rows"][0]
+    assert t["n_pnext_classes"] == 4651 and round(t["means"]["kinds2"]["gap"], 4) == 0.7973 and t["divergent"]["windows"] == 6614
+    # every (rung, eps) artifact of the three producers exists
+    for rung, d in (("r0", "06"), ("r1", "05"), ("r2", "05"), ("r3", "06")):
+        for tag in ("", "-eps1_2"):
+            assert (DOCS / f"c1prime-loop-query-ceilings-40-8-2-{rung}-2026-09-{d}{tag}.json").exists()
+            assert (DOCS / f"c1prime-loop-q4-ceilings-40-8-2-{rung}-W4-2026-09-{d}{tag}.json").exists()
+            assert (DOCS / f"c1prime-loop-predictive-targets-40-8-2-{rung}-2026-09-{d}{tag}.json").exists()
+    assert (DOCS / "c1prime-loop-query-ceilings-40-8-2-r4-2026-09-04.json").exists() and (DOCS / "c1prime-loop-query-ceilings-40-8-2-r4-2026-09-05-eps1_2.json").exists()
