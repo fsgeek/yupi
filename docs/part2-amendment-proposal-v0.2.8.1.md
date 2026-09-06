@@ -1,6 +1,6 @@
 # Part II amendment proposal — v0.2.8.1 (looping programs: pc modulo the body; revised after cross-family review, with the clause built and priced)
 
-> **Status (2026-09-06): PROPOSED, review amendments incorporated *(status
+> **Status (2026-09-06): ENACTED as Part II v0.2.8.1, as written — PI confirmation quoted verbatim in the decision record at the end of this file; the Part II edits (§1, I8, §2, §3.3/§3.4, §7 ledger) and `d4-budget-freeze-v0.1.md` E3 carry the clause. Earlier the same day: PROPOSED, review amendments incorporated *(status
 > word corrected per [r3-6]: the earlier "ADOPTED" pre-recorded an enactment
 > that had not happened)* — revised from v0.2.8 after the Codex
 > review of 2026-09-04 (`part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`,
@@ -282,3 +282,34 @@ The reviewer also checked for any change to what M1 succeeding means that
 is not flagged as a decision, and found none. Clauses unchanged; version
 number kept, since nothing normative moved — the corrections above are
 dated in place.
+
+## Decision record (2026-09-06)
+
+The enacting instance put a decision brief to the PI: the two questions the
+proposal asks (looping programs; the per-pass admitting rule), why the
+decision is the PI's (the statute defines what every ceiling is a ceiling
+of, and evaluating the exit clause in a world that never dies changes the
+shape of the question; the author of a rule who also measures under it
+should not be its enactor; the budget line binds future laws), the
+recommendation (enact as written), and five alternatives with their
+defects (enact Clause 1 only; a higher line to admit (48,8,2); a lower
+line; keep unrolling and buy memory; a JUMP instruction). It also verified
+and reported that the 2 × 10⁶ / 8 GB line was committed in v0.2.8 on
+2026-09-03 19:37, before any looping-world law was priced, and stated that
+enacting the rule commits us to a re-freeze argued from measurement, never
+a taller line, if the running (40,8,2) re-price comes in over it.
+
+The PI's reply, verbatim:
+
+> *"It commits the ayllu to that discipline.  Being the ~idiot~ user has the benefit of being able to disclaim responsibility.  However, in this instance I choose to represent the interests of the ayllu, and while you did not argue this point, you made a compelling case for your recommendation when I use "what is the best option for the ayllu" as my focus."*
+
+Read by the enacting instance as confirmation of the recommendation — the
+reading the trace applied to the informal reaffirmation that enacted
+v0.2.6 — and the PI told that one word reverts it. Enacted the same hour;
+Part II title moves to v0.2.8.1 (proposal numbers follow authoring order;
+v0.2.7.1 is next on the desk and not yet enacted).
+
+Evidence still landing, neither of which is clause text: the isolated
+(48,8,2) ε = ½ pass (replaces a cumulative memory figure in a table whose
+verdict rests on the frontier) and the (40,8,2) re-price owed by the
+freeze note's §5 item 4.

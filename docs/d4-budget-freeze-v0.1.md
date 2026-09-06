@@ -219,3 +219,11 @@ research decisions with the researcher ("you lead, I follow"); the researcher
 applied the rule and enacted E2. Enactment is recorded here rather than
 awaited so that the reasoning precedes every C1 number (the v0.2 B = 3
 measurement was running, unread, when this was written).
+
+## Erratum E3 (2026-09-06) — the window-process recursion's unit: one pass per ε, frontier ≤ 2 × 10⁶, RSS ≤ 8 GB — ENACTED by the PI as Part II v0.2.8.1
+
+**What.** B4/B4′ count paths per rung on the path side. The window-process recursion (`src/yupi/window_process.py`, 2026-09-03) has no per-rung unit: `window_law_aggregates()` runs one r4 recursion per (law, ε) and projects every coarser rung from it. The admitting rule for a window law on the recursion is therefore stated on the pass: one `window_law_aggregates()` pass per ε in a fresh process, $\max_t |\mathrm{frontier}_t| \le 2 \times 10^6$ and peak RSS (`ru_maxrss`, KiB) $\le 8 \times 10^6$ KiB, priced with `scripts/window_process_pass_pricing.py` before any ceiling on that law is statutory. A single-rung pass is admitted under the same numbers and admits only that rung. Path-side gates keep B4′ and E2 where they run. Full text and pricing tables: `part2-amendment-proposal-v0.2.8.1.md`; version-history entry in Part II.
+
+**Provenance of the line.** Proposed in v0.2.8 (commit `a73ece8`, 2026-09-03 19:37) from the unrolled world's measured cost, before any looping-world law was priced ((48,4,2) loop: 2026-09-04 10:11; (40,8,2): 2026-09-04 15:56). Not moved when (48,8,2) came in 11 % over (`looping-exit-law-freeze-v0.1.md` §4).
+
+**Who decided.** The researcher proposed and priced; three cross-family review rounds; the PI enacted on 2026-09-06 (confirmation quoted in Part II's v0.2.8.1 entry). A re-price is owed whenever a producer or instrumentation change touches the recursion; the first such re-price, at (40,8,2) after `06541a2` added per-endpoint mass instrumentation, is recorded in the freeze note's 2026-09-06 addendum.
