@@ -202,6 +202,7 @@ gated. PIDs are recorded and killed by PID only; every shard runs under
 | r1 | ½ | 819,073 | **0** | 8/8, counts sum exactly | 4.76 h (166 ms/window) | `window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard{0..7}.json` |
 | r2 | 1 | 923,461 | **0** | 8/8, counts sum exactly | 3.26 h (101 ms/window) | `window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard{0..7}.json` |
 | r2 | ½ | 923,461 | **0** | 8/8, counts sum exactly | 4.97 h (154.1 ms/window) | `window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard{0..7}.json` |
+| r3 | 1 | 991,585 | **0** | 8/8, counts sum exactly | 3.35 h (96.3 ms/window) | `window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard{0..7}.json` |
 
 *(2026-09-04 22:48 PDT: r4 ε = 1 gated — every window at the finest rung of
 the frozen law is exact through the filter. 2026-09-05 06:03 PDT: r4 ε = ½
