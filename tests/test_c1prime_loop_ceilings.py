@@ -128,3 +128,30 @@ def test_r1_eps_half_three_artifacts_pinned_and_gap_to_r4():
     t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r1-2026-09-05-eps1_2.json"))["rows"][0]
     assert t["n_pnext_classes"] == 78472 and round(t["means"]["kinds2"]["gap"], 4) == 0.1154
     assert t["divergent"]["windows"] == 619385 and round(t["divergent"]["mass"], 4) == 0.6598
+
+
+def test_r2_eps1_three_artifacts_pinned_and_first_adjacent_pair_clears_delta():
+    """r2 at (40,8,2) ε = 1 under the r2 ε = 1 gate (raws 2026-09-05). The
+    first ADJACENT rung pair in a live world at context 8 on the statutory
+    set: r1 → r2 max gap 0.0477 bits (Q1[L1]), 4.8× δ; Q1[L0] 0.0339,
+    Q5joint 0.0263; r2 → r4 on Q1[L0] 0.1100. Exploratory until enactment."""
+    q2 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r2-2026-09-05.json"))
+    (r2,) = q2["rows"]
+    assert r2["eps"] == "1" and r2["rung"] == "r2" and r2["n_windows"] == 923461 and r2["gate"].count("-r2-2026-09-05-full-shard") == 8
+    assert round(r2["mean_state_entropy_bits"], 4) == 0.5277
+    for k, v in (("Q1[L0]", 0.1270), ("Q1[L1]", 0.0544), ("Q2[T0]", 0.0906), ("Q3[D0]", 0.0312), ("Q5joint", 0.0914)):
+        assert round(r2["queries"][k]["mean_bits"], 4) == v, k
+    r1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05.json"))["rows"][0]
+    r4 = _row()
+    stat = [k for k in r1["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
+    gaps12 = {k: r1["queries"][k]["mean_bits"] - r2["queries"][k]["mean_bits"] for k in stat}
+    assert max(gaps12, key=gaps12.get) == "Q1[L1]" and round(max(gaps12.values()), 4) == 0.0477
+    assert round(gaps12["Q1[L0]"], 4) == 0.0339 and round(gaps12["Q5joint"], 4) == 0.0263
+    assert max(gaps12.values()) > 4 * 0.01
+    assert all(r1["queries"][k]["mean_bits"] >= r2["queries"][k]["mean_bits"] - 1e-12 >= r4["queries"][k]["mean_bits"] - 2e-12 for k in stat)
+    assert round(r2["queries"]["Q1[L0]"]["mean_bits"] - r4["queries"]["Q1[L0]"]["mean_bits"], 4) == 0.1100
+    q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r2-W4-2026-09-05.json"))["rows"][0]
+    assert q4["rung"] == "r2" and (round(q4["total_bits"], 4), round(q4["gap_bits"], 4)) == (0.9447, 0.1086)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r2-2026-09-05.json"))["rows"][0]
+    assert t["rung"] == "r2" and t["n_pnext_classes"] == 34844 and round(t["means"]["kinds2"]["gap"], 4) == 0.1572
+    assert t["divergent"]["windows"] == 743375 and round(t["divergent"]["mass"], 4) == 0.6377
