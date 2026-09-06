@@ -158,7 +158,11 @@ counts toward the clause is the PI's decision at enactment of v0.2.7.1
 That the exit clause is satisfied at (40,8,2); any statutory query gap;
 that the H(S) steps above survive the query set; that (44,8,2) is refused;
 that the 14.35 GB ε = ½ figure at (48,8,2) is an isolated-process peak
-(it is a cumulative high-water mark, and is over the line either way).
+(it is a cumulative high-water mark, ~~and is over the line either way~~ —
+*corrected 2026-09-06 per review 3 on v0.2.8.1 [r3-3]: under the
+fresh-process unit a cumulative figure carries no memory verdict; (48,8,2)
+stays refused on the frontier, which is ε-independent; an isolated ε = ½
+pass is running*).
 
 ---
 
@@ -208,10 +212,51 @@ gated. PIDs are recorded and killed by PID only; every shard runs under
 | r0 | ½ | 12,739 | **0** | 8/8, counts sum exactly | 0.33 h (726.8 ms/window; support ≤ 578) | `window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard{0..7}.json` |
 
 *(2026-09-06 09:03 PDT: the driver finished. **Every rung r0–r4 is gated at
-both statutory ε at (40, 8, 2)** — 5,542,940 window posteriors through the
-exact filter, zero mismatches. The gate the freeze owed is closed.)*
+both statutory ε at (40, 8, 2)** — ~~5,542,940~~ **8,542,940** window
+posteriors through the exact filter, zero mismatches. The gate the freeze
+owed is closed.)* *(Total corrected 2026-09-06 per review 3 finding 2: the
+ten per-pair counts in the table were always right and sum to 4,271,470
+per ε, so 8,542,940 over both; the 5.54 M figure was an addition slip,
+recomputed from all 80 shard raws before correcting. The same wrong total
+appears in the commit messages of `ab71afe` and `ad6b3c5` and in the
+memory titles of that morning; those stay as written, corrected here.)*
 
 *(2026-09-04 22:48 PDT: r4 ε = 1 gated — every window at the finest rung of
 the frozen law is exact through the filter. 2026-09-05 06:03 PDT: r4 ε = ½
 gated; the primary law's finest rung is now exact at both statutory ε. The
 driver continues with r1.)*
+
+---
+
+## Addendum 2026-09-06 — third-round read, and the §5 ledger
+
+Cross-family review of this note (never reviewed before today; `part2-v0.2.7.1-v0.2.8.1-freeze-codex-review-3-2026-09-06.md`)
+verified: the governing (40,8,2) raw is compliant on both lines under the
+clause's definitions, with `rss_isolated_per_eps: true` on both rows; all
+ten (rung, ε) pairs have eight shards, zero mismatches, sums matching; all
+thirty producer raws exist with correct metadata and are pinned; §3's
+exit-clause rule matches v0.2.7.1 Clause 4; nothing is claimed beyond §6.
+Two corrections, made in place above: the grand total (finding 2) and the
+§6 parenthetical on the cumulative memory figure.
+
+**§5 ledger as of 2026-09-06:**
+
+1. **Enactment** — on the PI's desk today, in the order v0.2.8.1 →
+   v0.2.7.1 → this note.
+2. **The two-path gate** — paid: every rung r0–r4 at both ε, 8,542,940
+   windows, zero mismatches (table above; `tests/test_window_gate_full.py`).
+3. **Statutory producers on the recursion** — paid: thirty artifacts,
+   three producers × five rungs × two ε, each pinned in
+   `tests/test_c1prime_loop_ceilings.py` (commits `06541a2`, `9e82408` for
+   the producers; the per-(rung, ε) artifact commits of Sep 4–6).
+4. **A re-price** — **owed and running.** The (40,8,2) pricing raw of
+   2026-09-04 predates commit `06541a2`, which added per-endpoint mass
+   instrumentation (`stats["mass_T"]`, `mass_T_by_rung`) to
+   `window_process.py`; the producers and the pricing script both build it.
+   The frontier is untouched by construction (`mass_T` is populated at
+   endpoints, outside `dist`), so the 1.8 % frontier margin stands; peak RSS
+   is what may have moved against the 8 GB line. Re-price launched
+   2026-09-06 10:33 PDT on the instrument as it runs today
+   (`window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-06-reprice.json`);
+   result appended below when it lands. Until then the law's admission
+   rests on the Sep 4 raw and is so labelled.

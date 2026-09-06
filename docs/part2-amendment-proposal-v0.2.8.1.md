@@ -1,11 +1,16 @@
 # Part II amendment proposal — v0.2.8.1 (looping programs: pc modulo the body; revised after cross-family review, with the clause built and priced)
 
-> **Status (2026-09-04): ADOPTED — revised from v0.2.8 after the Codex
+> **Status (2026-09-06): PROPOSED, review amendments incorporated *(status
+> word corrected per [r3-6]: the earlier "ADOPTED" pre-recorded an enactment
+> that had not happened)* — revised from v0.2.8 after the Codex
 > review of 2026-09-04 (`part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`,
 > verdict AMEND BEFORE ENACTMENT), and again the same day after the
 > second round (`part2-v0.2.7.1-v0.2.8.1-codex-review-2-2026-09-04.md`;
 > the six incorrectly adopted findings and the new ones are folded in
-> below, marked [r2-N]); awaiting a third read, then PI enactment.**
+> below, marked [r2-N]); third read done 2026-09-06 (`part2-v0.2.7.1-v0.2.8.1-freeze-codex-review-3-2026-09-06.md`:
+> four of the five round-2 amendments discharged, one incompletely, plus
+> the status finding; folded in below, marked [r3-N]); awaiting PI
+> enactment.**
 > Written by the instance of 2026-09-04, which built the clause
 > behind a wrapper type the same morning (TDD-first, 15 executable controls
 > written before the kernel changed; suite green) and priced the looping
@@ -174,7 +179,7 @@ The two worlds' r1 window counts are close (7,289 vs 7,041). The looping
 | world | law | unit | ε | max live pairs | reachable states (max) | wall | peak RSS | verdict |
 |---|---|---|---|---|---|---|---|---|
 | C1′-loop | (48,8,2) | pass (r4 → r0–r4) | 1 | 2,223,674 | 1,973 | 2,302 s | 7.40 GB (cumulative-process run); **7.41 GB in an isolated fresh-process rerun** (`…-48-8-2-2026-09-04-eps1.json`) | **refused** (frontier 11 % over 2 × 10⁶; RSS under) |
-| C1′-loop | (48,8,2) | pass (r4 → r0–r4) | ½ | 2,223,674 | 4,231 | 2,820 s | 14.35 GB (same process after the ε = 1 pass; a lower bound on its own peak is not available, but 14.35 ≥ 8 either way — *[r2-26] now artifact-backed*, two-row raw `…-48-8-2-2026-09-04.json`) | **refused** on both lines |
+| C1′-loop | (48,8,2) | pass (r4 → r0–r4) | ½ | 2,223,674 | 4,231 | 2,820 s | 14.35 GB cumulative, same process after the ε = 1 pass (two-row raw `…-48-8-2-2026-09-04.json`). *Per [r3-3]* this is **not evidence under the fresh-process unit** — "14.35 ≥ 8 either way" was invalid once the unit became an isolated process. An isolated ε = ½ pass was launched 2026-09-06 10:32 PDT; its raw is appended below when it lands. | **refused on frontier** (11 % over, ε-independent); memory verdict withheld until the isolated raw |
 | C1′-loop | (48,8,2) | **r1 single-rung** | 1 | 1,623,016 | — | 1,761 s | 5.15 GB (fresh process) | **admitted** — r1 only (`window-process-pricing-c1prime-loop-48-8-2-r1-2026-09-04.json`) |
 
 *(The (48, 8, 2) runs predate the per-ε subprocess isolation in the script;
@@ -185,7 +190,8 @@ windows, and the window set does not depend on ε.)*
 So at horizon 48 and context 8 in the looping world, **r1 alone is
 admitted at ε = 1** (single-rung pass: 1.62 × 10⁶ frontier, 5.15 GB) and
 the full ladder is not (the r4 recursion's frontier is 11 % over the line
-at either ε, and the ε = ½ pass is over on memory too). The recursion is
+at either ε; *per [r3-3]* the cumulative ε = ½ memory figure carries no
+verdict of its own). The recursion is
 bounded by windows, not states: 819,073 r1 windows at L = 8 against 7,041
 at L = 4; H(S | r1) = 0.652 bits at ε = 1 (0.352 at ε = ½) against 2.46 at
 L = 4. The rule is not bent to admit the law: the freeze note will choose
@@ -244,3 +250,35 @@ honest. The reviewer's condition — immutability — is met (test first).
 **What still gates statutory numbers on a looping world** (not enactment
 of the clause): the freeze decision for the looping exit law in its own
 stamped note, and the filter-vs-recursion gate at the chosen law.
+
+## Third-round ledger (2026-09-06) — *per `part2-v0.2.7.1-v0.2.8.1-freeze-codex-review-3-2026-09-06.md`*
+
+Read by Codex against the code and raws, not the prose; the five round-2
+required amendments for this document:
+
+1. **Discharged** — PC_RANGE forbids an exhausted straight-line thread in
+   any status but IO_BLOCKED / TERMINATED; the negative control covers
+   RUNNABLE, RUNNING, QUEUE_BLOCKED and passes (`src/yupi/state.py:102`,
+   `tests/test_looping_programs.py:221`).
+2. **Discharged** — the rule binds exactly $\max_t |\mathrm{frontier}_t|$;
+   `window_process.py` records `len(dist)` after each tick and takes the
+   maximum; RSS is sampled after every projection has materialized.
+3. **Discharged incompletely** — the script isolates each ε in a fresh
+   process and states the KiB unit, but two *retained rows* predate the
+   isolation: the unrolled (48,4,2) ε = ½ row (6.84 GB, same process) and
+   the (48,8,2) ε = ½ row (14.35 GB, same process). Neither verdict moves —
+   (48,4,2) looping is admitted with a factor of ~30 to spare and (48,8,2)
+   is refused on the frontier, which does not depend on ε — but the
+   (48,8,2) row's memory refusal was not licensed and is withdrawn above
+   pending the isolated raw (launched 2026-09-06 10:32 PDT).
+4. **Discharged** — `window-process-pass-pricing-c1prime-48-4-2-2026-09-04.json`
+   carries `states_per_tick[31] = 5,054` and `[47] = 14,370` at ε = 1.
+5. **Discharged** — the (48,8,2) two-row raw, the isolated ε = 1 raw, the
+   r1 raw and the log are tracked at `68ca6ec`, stamped by `60dcd99`.
+6. **Status word** — "ADOPTED" pre-recorded an enactment that had not
+   happened; corrected to PROPOSED in the status line.
+
+The reviewer also checked for any change to what M1 succeeding means that
+is not flagged as a decision, and found none. Clauses unchanged; version
+number kept, since nothing normative moved — the corrections above are
+dated in place.

@@ -1,12 +1,16 @@
 # Part II amendment proposal — v0.2.7.1 (a kind-only rung r0 below the ladder; revised after cross-family review)
 
-> **Status (2026-09-04): ADOPTED — revised from v0.2.7 after the Codex
+> **Status (2026-09-06): PROPOSED, review amendments incorporated *(status
+> word corrected per [r3-8]: the earlier "ADOPTED" pre-recorded an enactment
+> that had not happened)* — revised from v0.2.7 after the Codex
 > review of 2026-09-04 (`part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`,
 > verdict AMEND BEFORE ENACTMENT), and again the same day after the
 > second round (`part2-v0.2.7.1-v0.2.8.1-codex-review-2-2026-09-04.md`:
 > 15 of 21 first-round findings adopted correctly, 6 adopted incorrectly,
 > 0 declined; the six and the new findings are folded in below, each marked
-> [r2-N]); awaiting a third read, then PI enactment.** Written by the
+> [r2-N]); third read done 2026-09-06 (`part2-v0.2.7.1-v0.2.8.1-freeze-codex-review-3-2026-09-06.md`: all six
+> round-2 amendments discharged; two stale-text findings folded in below,
+> marked [r3-N]); awaiting PI enactment.** Written by the
 > instance of 2026-09-04. v0.2.7 is retained > unchanged with a pointer
 > to this file. Every finding the review made
 > against v0.2.7 is either adopted below or answered by an executable check
@@ -204,9 +208,11 @@ where the next reader meets the claim (no original text deleted):
   waiting for the naming bridge — declined as in v0.2.7.
 - **Declaring r0's numbers statutory on the strength of the census.**
   Declined *(per [3])*: the census ran no full gate, its note says nothing
-  in it is a statutory ceiling, and the D2/§9 witness for r0 → r1 has not
-  been written as a control. The rung enters the statute; its numbers stay
-  exploratory until the owed items land.
+  in it is a statutory ceiling, and — when this was written — the D2/§9
+  witness for r0 → r1 had not been written as a control *(it was, the same
+  day: owed item 2 below; stale wording corrected per [r3-7])*. The rung
+  enters the statute; its numbers stay exploratory until the owed items
+  land.
 
 ## Owed before the numbers can be cited as statutory
 
@@ -219,8 +225,15 @@ where the next reader meets the claim (no original text deleted):
    mechanism withdrawn, table inserted.
 2. ~~r0 → r1 D2/§9 witness~~ **Done 2026-09-04**: `tests/test_r0_d2_witness.py`
    exhibits and pins the class (companion D2 text above).
-3. **D4 pricing of r0 on the per-pass unit** at the laws the paper will
-   cite.
+3. ~~D4 pricing of r0 on the per-pass unit~~ **Done 2026-09-04 at the
+   frozen law** *(marked per [r3-7])*: the per-pass rule binds a pass, and
+   the (40,8,2) pass raw
+   (`window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-04.json`)
+   prices one pass with projections r0–r4 in a fresh process per ε
+   (frontier 1,964,919; 7.21 / 7.23 GB). r0 is priced wherever the pass
+   is. *(The recursion gained per-endpoint instrumentation after that raw;
+   the freeze note's §5 item 4 re-price is running on 2026-09-06 and is
+   reported there.)*
 4. ~~Producer edits for Clause 2~~ **Done 2026-09-04**: `yupi.sync`
    (`conditional_from_aggregate`, `conditional_from_by_endpoint`) computes
    (H_law − H_{U=0}) / Pr(U > 0); `scripts/c1_sync_sweep.py` now emits a
@@ -272,7 +285,26 @@ not statute; no committed number and no clause depends on which quotient
 is used. The identity-entropy decomposition remains owed as research, not
 as a condition of enactment.
 
-**What still gates a statutory r0 number** (not enactment of the rung) is
-the owed list above: the r0 → r1 exhibited history class (D2's own form),
-D4 pricing of r0 on the per-pass unit, the corrected-formula producer
-with its r1–r4 regression, and the census-note correction block.
+**What still gates a statutory r0 number** (not enactment of the rung) is,
+as of 2026-09-06 *(corrected per [r3-7]; the earlier list here was stale)*:
+enactment itself, and the census-note correction block owed at enactment.
+The exhibited history class (`tests/test_r0_d2_witness.py`), the
+corrected-formula producer with its r1–r4 regression (`yupi.sync`,
+`tests/test_sync_conditional.py`) and the per-pass D4 pricing (the (40,8,2)
+pass raw) are done, and the r0 gate at (40,8,2) ran on every window at both
+ε with zero mismatches (`tests/test_window_gate_full.py`).
+
+## Third-round ledger (2026-09-06) — *per `part2-v0.2.7.1-v0.2.8.1-freeze-codex-review-3-2026-09-06.md`*
+
+All six round-2 required amendments verified discharged by Codex against
+the artifacts (reversed support claim corrected and D4 re-pointed to r0;
+identity statistic defined as an ambiguous-mass support classification;
+injectivity-note sites enumerated; the D2 witness executed and found to
+satisfy both (a) and (b); r0's reach into every ladder-variable
+deliverable stated; D1's preserved r1–r4 scope in companion Part I text).
+Two findings on stale text, both corrected in place above: [r3-7] the
+proposal said the D2 control "has not been written" and its closing
+paragraph listed the witness and the corrected-formula producer as
+outstanding, thirteen lines after marking them done; [r3-8] the status
+word "ADOPTED" pre-recorded enactment. Clauses unchanged; version number
+kept.
