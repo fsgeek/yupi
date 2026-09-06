@@ -208,3 +208,31 @@ def test_r3_eps1_pinned_and_every_adjacent_pair_is_above_delta_at_eps1():
     t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r3-2026-09-06.json"))["rows"][0]
     assert t["rung"] == "r3" and t["n_pnext_classes"] == 28685 and round(t["means"]["kinds2"]["gap"], 4) == 0.1239
     assert t["divergent"]["windows"] == 799106 and round(t["divergent"]["mass"], 4) == 0.7113
+
+
+def test_r0_eps1_pinned_identity_step_and_nonzero_reset_part():
+    """r0 (kind-only) at (40,8,2) ε = 1 under the r0 ε = 1 gate (raws
+    2026-09-06). The r0 → r1 step is the largest on the axis by an order of
+    magnitude: Q2[T0] 1.0769 bits, Q5joint 0.9394, Q1[L0] 0.8337; every
+    query refines. And r0 is the first rung whose reset-anchored part of
+    H(S) is not zero (0.5395 bits), so v0.2.7.1 Clause 2's corrected
+    synchronization formula changes a number here for the first time:
+    E[H | U > 0] = 4.2598 against the v0.2.5 closed form's 4.9342."""
+    (r0,) = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r0-2026-09-06.json"))["rows"]
+    assert r0["eps"] == "1" and r0["rung"] == "r0" and r0["n_windows"] == 12739 and r0["gate"].count("-r0-2026-09-06-full-shard") == 8
+    assert round(r0["mean_state_entropy_bits"], 4) == 3.9474
+    for k, v in (("Q1[L0]", 0.9946), ("Q1[L1]", 0.6154), ("Q2[T0]", 1.1765), ("Q2[T3]", 0.8303), ("Q3[D0]", 0.1949), ("Q5joint", 1.0571)):
+        assert round(r0["queries"][k]["mean_bits"], 4) == v, k
+    r1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05.json"))["rows"][0]
+    stat = [k for k in r0["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
+    g = {k: r0["queries"][k]["mean_bits"] - r1["queries"][k]["mean_bits"] for k in stat}
+    assert max(g, key=g.get) == "Q2[T0]" and round(max(g.values()), 4) == 1.0769 and all(v >= -1e-12 for v in g.values())
+    assert round(g["Q1[L0]"], 4) == 0.8337 and round(g["Q5joint"], 4) == 0.9394
+    c = conditional_from_by_endpoint(r0["by_endpoint"], WindowLaw(T_ep=40, L=8, B=2), "mean_state_entropy_bits")
+    assert round(c["H_U0"], 4) == 0.5395 and round(c["E_H_given_U_pos"], 4) == 4.2598
+    assert round(c["H_law"] * 40 / 32, 4) == 4.9342 and c["E_H_given_U_pos"] < c["H_law"] * 40 / 32 - 0.5
+    q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r0-W4-2026-09-06.json"))["rows"][0]
+    assert q4["rung"] == "r0" and (round(q4["total_bits"], 4), round(q4["irreducible_bits"], 4), round(q4["gap_bits"], 4)) == (1.5390, 0.8361, 0.7029)
+    t = json.load(open(DOCS / "c1prime-loop-predictive-targets-40-8-2-r0-2026-09-06.json"))["rows"][0]
+    assert t["rung"] == "r0" and t["n_pnext_classes"] == 4417 and round(t["means"]["kinds2"]["gap"], 4) == 0.7544
+    assert t["divergent"]["windows"] == 6732 and round(t["divergent"]["mass"], 4) == 0.2018
