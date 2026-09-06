@@ -22,7 +22,13 @@ GATED = {
     ("r3", "1"): (991585, "2026-09-06"),
     ("r3", "1/2"): (991585, "2026-09-06"),
     ("r0", "1"): (12739, "2026-09-06"),
+    ("r0", "1/2"): (12739, "2026-09-06"),
 }
+
+
+def test_every_rung_is_gated_at_both_statutory_eps():
+    assert {r for r, _ in GATED} == {"r0", "r1", "r2", "r3", "r4"}
+    assert all((r, e) in GATED for r in ("r0", "r1", "r2", "r3", "r4") for e in ("1", "1/2"))
 
 
 @pytest.mark.parametrize("rung,eps", sorted(GATED))
