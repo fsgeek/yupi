@@ -9,6 +9,8 @@ by this note.
 
 ## Claim
 
+*(Scope, Part II v0.2.7.1 enacted 2026-09-11: every "rung" in this note means a content rung **r1–r4**. The kind-only rung r0 masks ACTOR, on which the theorem rests, and is not injective at full context — mean r0 posterior entropy from reset at (14, 14, 2) is 2.577 bits at ε = 1 / 2.375 at ε = ½, `r0-ladder-census-14-14-2-2026-09-03.json`. The five sites the qualifier touches are marked [r1–r4] below.)*
+
 **Theorem (full-context injectivity).** For every `WorldConfig` and every
 program tuple, the map from length-n transition sequences out of
 `initial_state` to their r1 projections (EVENT_KIND + ACTOR per tick) is
@@ -89,15 +91,15 @@ plausible failure point — multi-waiter wake ambiguity:
 2. **C1 at full context is a predicted fourth zero.** Do not build C1
    expecting full-context rung separation; assert the point-mass expectation
    as a test there too (C0c precedent).
-3. **The interface axis is degenerate at full context, everywhere.** All
-   rung differences are exactly zero for every config — the interface
+3. **The interface axis is degenerate at full context, everywhere** [r1–r4]. All
+   content-rung differences are exactly zero for every config — the interface
    ladder separates only under truncation, windowing, or the D8 shuffled
    channel (which breaks the induction by hiding within-bucket order — the
    one interface manipulation that attacks the induction step rather than
    the base). This sharpens proposal §6.2: full context is the zero of the
    context axis *and*, provably, of the interface axis.
 4. **Part II §2's truncation machinery is now formally the critical
-   path.** Every informational witness in the program waits on it.
+   path.** Every informational witness in the program waits on it [r1–r4; the r0 → r1 witness does not, `tests/test_r0_d2_witness.py`].
    *(Correction, v0.1.1 — same-day review: the original wording called
    this an "open item," which was drift from a stale memory. Part II §2
    v0.2 already rules the truncation prior derived-not-stipulated and the
@@ -105,14 +107,14 @@ plausible failure point — multi-waiter wake ambiguity:
    is implementing that statute, not deciding it. See
    window-prior-experiment-note v0.3.)*
 5. **The nondegeneracy gate (consequence 4 of the losslessness memory)
-   cannot be discharged by any full-context configuration.** The bit-for-bit
+   cannot be discharged by any full-context configuration** [r1–r4]. The bit-for-bit
    filter gate will carry its first support>1 belief only when window/
    truncation machinery exists. Until then the filter's fat-belief paths
    remain green-but-unexercised — the same genus, one level up.
 
 ## What would falsify this note
 
-A kernel-expressible configuration and observation prefix with full-context
+*(r1–r4: an r0 counterexample does not falsify it, since r0 is outside the theorem's hypothesis.)* A kernel-expressible configuration and observation prefix with full-context
 support > 1 at any rung; or a review finding a hole in the induction (the
 BLOCK disambiguation and the ε<1 cursor argument are the two joints a
 reviewer should attack first).

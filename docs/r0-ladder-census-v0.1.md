@@ -53,6 +53,19 @@ Three things the table says:
 
 ## 2. What the r0 range is made of
 
+> **Correction block (Part II v0.2.7.1, enacted 2026-09-11; measured 2026-09-04).** The mechanism stated below — "the plateau is a permutation entropy over kind-indistinguishable roles" — is **withdrawn**. A coarse thread-signature quotient (`scripts/r0_identity_residual.py`, raw `r0-identity-residual-14-2-2026-09-04.json`, pinned in `tests/test_r0_identity_residual.py`; each support state anonymized to (executed-kind multiset, status, held locks), queue members and the live cursor to those signatures) classes a support *identity-only* if all its states share one anonymized form. The share of ambiguous law mass carried by identity-only supports:
+>
+> | ε | L | ambiguous mass | identity-only share | largest non-identity class |
+> |---|---|---|---|---|
+> | 1 | 4 | 0.9996 | 0.179 | dev_q+lock_wq+threads 0.426 |
+> | 1 | 8 | 0.9889 | 0.205 | threads 0.425 |
+> | 1 | 12 = full | 0.9746 | 0.216 | threads 0.516 |
+> | ½ | 4 | 0.9996 | 0.000 | cursor+dev_q+lock_wq+threads 0.460 |
+> | ½ | 8 | 0.9864 | 0.002 | cursor+threads 0.435 |
+> | ½ | 12 = full | 0.9708 | 0.005 | cursor+threads 0.553 |
+>
+> About four fifths of the ambiguous mass at ε = 1 (nearly all at ε = ½) sits in supports whose states differ even under this coarse quotient, typically in which thread has executed which kinds: attribution of visible actions to role-asymmetric threads, carrying object / owner / lineage consequences. This is a support classification, not a decomposition of the residual entropy; the identity-entropy decomposition remains open. §3's clean split "r0 measures identity, the ladder measures object / owner / lineage" is withdrawn with it. The original text is preserved below as written.
+
 The r0 residual census (fields on which the r0 support disagrees; whether
 r1 splits the window) at L = 12, ε = 1: `status`+`running` 0.334 of law
 mass, `pc`+`status`+`running`+`lock_owner` 0.276,

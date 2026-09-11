@@ -1,6 +1,6 @@
 # Part II amendment proposal — v0.2.7.1 (a kind-only rung r0 below the ladder; revised after cross-family review)
 
-> **Status (2026-09-06): PROPOSED, review amendments incorporated *(status
+> **Status (2026-09-11): ENACTED as Part II v0.2.7.1, as written — PI confirmation quoted verbatim in the decision record at the end of this file; the Part II edits (§4 table, §6 formula, version history), the Part I companion text (D1, D2, D4), the scope lines on the injectivity and partition notes, and the r0 census correction block carry the clauses. Earlier: PROPOSED, review amendments incorporated *(status
 > word corrected per [r3-8]: the earlier "ADOPTED" pre-recorded an enactment
 > that had not happened)* — revised from v0.2.7 after the Codex
 > review of 2026-09-04 (`part2-v0.2.7-v0.2.8-codex-review-2026-09-04.md`,
@@ -310,3 +310,35 @@ paragraph listed the witness and the corrected-formula producer as
 outstanding, thirteen lines after marking them done; [r3-8] the status
 word "ADOPTED" pre-recorded enactment. Clauses unchanged; version number
 kept.
+
+## Decision record (2026-09-11)
+
+The enacting instance put the decision brief to the PI on 2026-09-06 and
+again, compressed, on 2026-09-11 after a five-day gap: the question (a
+fifth rung r0 as statute and everything that follows from a rung that is
+not injective at full context), why it is the PI's (Part I is the
+constitution; the ladder is the paper's central variable; D4 is a founding
+constraint with teeth; the D1 text change makes the exit-clause reading
+statutory), the recommendation (enact as written), and five alternatives
+with their defects (r0 exploratory outside the statute; a designed r0′
+masking ACTOR on some kinds; wait for the naming bridge; Clause 1 only;
+reject r0). The exit-clause reading — "across rungs" means r1–r4, r0
+reported beside — was the researcher's decision of 2026-09-06 and was
+stated as not on the PI's desk.
+
+The PI's reply, verbatim:
+
+> *"For 0.2.7.1 - thanks for the review.  The recommendation is really the only choice here that makes sense."*
+
+Read as confirmation of the recommendation, as for v0.2.6 and v0.2.8.1.
+Enacted the same hour. Edits: Part II status line, version-history entry,
+§4 projection table (r0 row), §6 synchronization formula; Part I status
+line and D1 / D2 / D4 (original text struck and preserved in place);
+`full-context-injectivity-note-v0.1.md` (scope paragraph plus the five
+[r1–r4] marks); `partition-identity-note-v0.1.md` (scope paragraph);
+`r0-ladder-census-v0.1.md` §2 correction block (mechanism withdrawn, table
+inserted). `c1-divergent-grid-v0.1.md` G1: no edit, per Clause 3.
+
+Still exploratory after enactment: every r0 number, until produced under a
+law the per-pass rule admits (the (40,8,2) pass is refused on memory as of
+2026-09-06; see the freeze note's addendum).

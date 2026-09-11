@@ -10,6 +10,8 @@ changed by this note.
 
 ## Claim (measured, every committed law)
 
+*(Scope, Part II v0.2.7.1 enacted 2026-09-11: the identity below is over the content rungs r1–r4. It fails for the kind-only rung r0 — 5,696 r0 classes against 394,824 for each of r1–r4 at (14, 14, 2), `r0-ladder-census-14-14-2-2026-09-03.json` — because r0 masks ACTOR and is not injective at full context.)*
+
 Let `n_r(T_ep, L, B)` be the number of distinct (RESET-observed, r-projected
 window) classes under the window law — the `n_windows` field of every
 `c1-query-ceilings-*.json`. Because each rung only adds fields
