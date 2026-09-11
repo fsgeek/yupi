@@ -1,0 +1,9 @@
+[      0s] cur=0.01 GB peak=0.01 GB  start
+[   2484s] cur=8.83 GB peak=9.32 GB  after r4 recursion: fine agg + mass_T(r4) live
+  r4 windows 1524612 agg entries 2248814 mass_T entries 9995214
+[   2625s] cur=9.04 GB peak=9.32 GB  after projecting r3: agg 991585 windows, mass_T entries 7433505
+[   2725s] cur=11.61 GB peak=11.59 GB  after projecting r2: agg 923461 windows, mass_T entries 7094476
+[   2870s] cur=14.46 GB peak=14.44 GB  after projecting r1: agg 819073 windows, mass_T entries 6490210
+[   2941s] cur=14.53 GB peak=14.52 GB  after projecting r0: agg 12739 windows, mass_T entries 122630
+[   2973s] cur=14.33 GB peak=14.52 GB  after deleting mass_T and every mass_T projection (agg + agg projections only)
+[   2989s] cur=9.15 GB peak=14.52 GB  after deleting agg projections (fine agg only)

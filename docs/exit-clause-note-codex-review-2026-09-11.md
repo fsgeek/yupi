@@ -1,0 +1,48 @@
+Verdict: **AMEND BEFORE FILING**
+
+The measured conclusion survives, but the note misstates the statutory query set, decision authority, mechanism evidence, and chronology.
+
+1. **VERIFIED — The statutory query set is misstated.** Part II includes Q4 itself, by total entropy or equivalently its gap part, and Q5 only per ordered pair. It does not name `Q5joint`. Note §1 instead includes `Q5joint` and relegates Q4 outside the maximum. The pin test repeats this incomplete set, so “the pin test’s own definition” does not cure the conflict. Correct set: Q1[L0,L1], Q2[T0..T3], Q3[D0], Q4(W=4), and twelve Q5 pairs. [Part II:165–190](/home/tony/projects/yupi/docs/yupana-m1-part2-semantics-draft.md:165), [note:29–37](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:29), [pin:199–205](/home/tony/projects/yupi/tests/test_c1prime_loop_ceilings.py:199). This does not change any maximum: Q4’s adjacent differences are 0.0195/0.0148, 0.0291/0.0160, and 0.0034/0.0027, all below the reported carriers.
+
+2. **VERIFIED — The r1–r4 reading is permissible but not enacted, and its attribution is wrong.** Part II records it as the researcher’s September 6 decision and explicitly says it was “not a term of this enactment.” The proposal’s decision record says it was “not on the PI’s desk.” Note lines 43–46 nevertheless call it “the PI’s decision,” then immediately say the researcher decided it. Amend to: researcher’s interpretive decision, recorded but not ratified as statutory meaning by v0.2.7.1. [note:38–48](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:38), [Part II:19](/home/tony/projects/yupi/docs/yupana-m1-part2-semantics-draft.md:19), [proposal:146–163](/home/tony/projects/yupi/docs/part2-amendment-proposal-v0.2.7.1.md:146), [proposal:314–327](/home/tony/projects/yupi/docs/part2-amendment-proposal-v0.2.7.1.md:314).
+
+3. **VERIFIED — The core arithmetic is otherwise reproduced.** Direct extraction found exactly thirty artifacts; all reported entropy ladders, adjacent maxima, r1→r4 ranges, r0→r1 rows, predictive gaps, and divergent masses match. All 80 gate raws sum to 8,542,940 windows with zero mismatches. Pricing gives frontier 1,964,919; September 4 RSS 7.21/7.23 GB; reprice 13.03/13.25 GB. Running `conditional_from_by_endpoint` reproduced §7 exactly. The two pin files pass read-only: **26 passed**. [tables:12–205](/home/tony/projects/yupi/docs/exit-clause-tables-40-8-2-2026-09-11.md:12), [gate test:14–47](/home/tony/projects/yupi/tests/test_window_gate_full.py:14), [pricing:18](/home/tony/projects/yupi/docs/window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-06-reprice.json:18), [pin:213–287](/home/tony/projects/yupi/tests/test_c1prime_loop_ceilings.py:213).
+
+4. **VERIFIED — Three numerical prose claims need correction.**
+
+   - δ = 0.015 collapses r3→r4 at **both** ε, since 0.014232 and 0.011266 are both below 0.015—not only at ε=½. [note:87–90](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:87)
+   - r0→r1 is not an order of magnitude larger than the “whole content ladder” at ε=1: 1.0769/0.1439 = 7.48. It is approximately an order larger than each individual adjacency. [note:119–127](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:119)
+   - “Between three fifths and three quarters” excludes the reported 0.7642; say approximately 0.61–0.76. [note:191–198](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:191)
+
+5. **VERIFIED — §4 materially overclaims the per-query evidence.** For OBJECT, not “every Q5 pair” moves 0.003–0.011: five pairs are exactly zero, several others are below 0.003, and ε=½ contains the same problem. For LINEAGE, “nothing else moves by more than 0.001” is false: Q2[T0] moves 0.0082/0.0069, Q5[T0,T1] 0.0025/0.0025, and `Q5joint` 0.0036/0.0045. Q2[T0] moves more than the highlighted Q2[T3]. “Resolves” is also too strong because the finer-rung entropies remain nonzero; use “reduces uncertainty.” “Already legible from actors” is causal interpretation, not established by the gap alone. [note:101–115](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:101), [per-query gaps:39–68](/home/tony/projects/yupi/docs/exit-clause-tables-40-8-2-2026-09-11.md:39), [half-ε gaps:139–168](/home/tony/projects/yupi/docs/exit-clause-tables-40-8-2-2026-09-11.md:139).
+
+6. **VERIFIED — §6’s collapse horizons and (32,8,2) comparison match their sources, but its window description does not.** Under `(14,8,2)`, endpoints are `{2,4,…,14}` and `U=max(0,T−8)`; genuinely reset-visible windows have T≤8, not “eight to ten records from birth.” The law mixes U=0 and U>0 windows. Replace the causal paragraph with that exact mixture distinction. [note:149–166](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:149), [window law:40–59](/home/tony/projects/yupi/src/yupi/window.py:40), [D1:186–197](/home/tony/projects/yupi/docs/d1-falsifier-verdict-v0.1.md:186), [deep census:62–73](/home/tony/projects/yupi/docs/deep-truncation-census-v0.1.md:62).
+
+7. **VERIFIED — §8 omits the statute’s required headline prevalence.** Part II says `pair_prob`, not law-mass coverage, is the prevalence headline. Content-rung `pair_prob` is only 0.0040–0.0089, despite mass coverage 0.61–0.76. Positive pair probability establishes existence, so deliverable 5 remains supported, but “abundant” needs both measures. [Part II:175–178](/home/tony/projects/yupi/docs/yupana-m1-part2-semantics-draft.md:175), [note:186–200](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:186), [representative raw:43–45](/home/tony/projects/yupi/docs/c1prime-loop-predictive-targets-40-8-2-r3-2026-09-06.json:43).
+
+8. **VERIFIED — §9 properly conditions satisfaction, but §10’s status and order are wrong.** No unconditional clause satisfaction is claimed in §9. However, “before the freeze note was enacted” implies an enactment that never occurred, and “Statutory after the fact” is misleading while the pass remains refused. Actual order: `a73ece8` Sep 3 → `b7adebe` Sep 4 → gates/producers Sep 4–6 → v0.2.8.1 enactment `9cab199` Sep 6 10:49 → refusal/reprice `501bcf4` Sep 6 11:32 → v0.2.7.1 enactment `67e2b12` Sep 11 10:06 → exit note `316c321` Sep 11 10:17. [note:202–233](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:202), [freeze status:3–10](/home/tony/projects/yupi/docs/looping-exit-law-freeze-v0.1.md:3), [refusal:264–286](/home/tony/projects/yupi/docs/looping-exit-law-freeze-v0.1.md:264).
+
+9. **PLAUSIBLE — §5 extrapolates its r0 mechanism across laws.** The cited identity-residual artifact is straight-line C1 at horizon 14, not looping C1′ at `(40,8,2)`. It supports the general caveat but does not decompose the measured r0→r1 step at the frozen law. State that limitation explicitly. [note:142–147](/home/tony/projects/yupi/docs/exit-clause-40-8-2-note-v0.1.md:142), [source:1–12](/home/tony/projects/yupi/docs/r0-identity-residual-14-2-2026-09-04.json:1).
+
+No files were modified.
+
+---
+
+## Prompt given to the reviewer
+
+```
+You are the cross-family reviewer for Project Yupi (repo: /home/tony/projects/yupi). Read-only; do not modify files. HEAD is the commit "Exit-clause note v0.1".
+
+Review docs/exit-clause-40-8-2-note-v0.1.md adversarially. It is an EXPLORATORY reading of the Part I exit clause (docs/yupana-m1-spec-draft.md, "Deliverables and exit criteria") at the frozen law (40,8,2) on the looping C1′, both statutory ε, δ = 0.01 (Part II §6, docs/yupana-m1-part2-semantics-draft.md).
+
+Verify, against the files and not the prose:
+1. Every number in §2–§8 against its source: the thirty artifacts docs/c1prime-loop-{query-ceilings,q4-ceilings…-W4,predictive-targets}-40-8-2-<rung>-<date>[-eps1_2].json (see docs/exit-clause-tables-40-8-2-2026-09-11.md for the extraction and tests/test_c1prime_loop_ceilings.py for the pins); the gate totals against tests/test_window_gate_full.py and the 80 shard raws docs/window-gate-c1prime-loop-40-8-2-*-full*-shard*.json; the pricing rows against docs/window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-04.json and …-2026-09-06-reprice.json; the §7 conditional by running yupi.sync.conditional_from_by_endpoint (use .venv/bin/python) on the r0 and r1 ceilings artifacts; the from-reset collapse horizons against docs/d1-falsifier-verdict-v0.1.md Part B and the (32,8,2) numbers against docs/deep-truncation-census-v0.1.md §3.
+2. §1's three readings: is the statutory query set the one Part II / the pin test define? Is "across rungs = r1–r4" consistent with what Part II v0.2.7.1 (enacted 2026-09-11, see the Part II version history and docs/part2-amendment-proposal-v0.2.7.1.md Clause 4) actually enacts, and is the note honest that this was a researcher's decision, not the PI's?
+3. §4's mechanism claims: does each "what the field buys" statement follow from the per-query gaps in the tables, or does it assert more than the numbers show?
+4. §9 and §10: is anything claimed as satisfied or statutory that the note's own §2 (pass refused on memory; freeze unenacted) forbids? Is the stamp order in §10 correct (check git log dates of a73ece8, b7adebe, and the enactment commits)?
+5. Anything the note should say and does not, or says and should not.
+
+Output: a verdict (CONFIRM AS WRITTEN / AMEND BEFORE FILING / REJECT) with numbered findings, each tagged VERIFIED or PLAUSIBLE, with file:line pointers. Be adversarial; unverified agreement is worthless here. Under 2,000 words.
+```
+
+*(Filed verbatim by the instance of 2026-09-11; `codex exec --sandbox read-only`, HEAD 316c321. Findings folded into `exit-clause-40-8-2-note-v0.1.md` the same day, marked [rv-N] in its review ledger.)*

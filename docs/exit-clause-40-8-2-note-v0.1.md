@@ -30,22 +30,31 @@ Three readings are fixed before the numbers are looked at:
   2026-08-21): an adjacent pair is collapsed at context $L$ iff the maximum
   over the complete statutory query set of the coarser rung's mean
   conditional entropy minus the finer rung's is below **δ = 0.01 bits**;
-  distinct otherwise. The statutory set is every query the ceilings
-  artifact carries except the Q4 proxies and `Q3thr[D0]`: Q1[L0], Q1[L1],
-  Q2[T0..T3], Q3[D0], the twelve Q5 pairs, Q5joint (the pin test's own
-  definition). The predictive side — the Q4 gap at $W = 4$, the next-2-kind
-  gap, the P-next gap — is reported beside, not in the maximum.
+  distinct otherwise. The statutory set is Part II §5's: Q1[L0], Q1[L1],
+  Q2[T0..T3], Q3[D0], **Q4 at $W = 4$ entering by its gap part (v0.2.5
+  §A′)**, and the twelve ordered Q5 pairs. *(Corrected per [rv-1]: the first
+  draft, following `tests/test_c1prime_loop_ceilings.py`, put Q5joint in
+  the set and Q4 outside it. Neither changes any maximum below — Q4's
+  adjacent differences are 0.0195 / 0.0291 / 0.0034 at ε = 1 and 0.0148 /
+  0.0160 / 0.0027 at ε = ½, all below the carriers, and Q5joint never
+  carries one — but the pin test's label is wrong and is owed a
+  correction.)* Q5joint, the next-2-kind gap and the P-next gap are
+  reported beside the maximum, not in it.
 - **"Across rungs" means the content ladder r1–r4.** The clause was
   written for that ladder; r0 (kind-only) was added by Part II v0.2.7.1
   (enacted 2026-09-11) for the D2 witness and the identity result, and the
   same amendment revises D1's falsifier to "every content rung r1–r4". The
   r0 → r1 step is reported **beside** the ladder, never inside the
-  maximum. This was the PI's decision under v0.2.7.1 Clause 4; on
-  2026-09-06 the PI placed it with the researcher ("this is your project,
-  it is your decision to make"), and the researcher decided it that day,
-  before writing this note, with the reasons in §5. The "three rungs
-  distinct" phrasing in `d1-falsifier-verdict-v0.1.md` is a gloss, not
-  statute, and is not used.
+  maximum. This is the **researcher's interpretive decision** of
+  2026-09-06 *(wording per [rv-2])*: v0.2.7.1 Clause 4 had reserved it to
+  the PI, the PI placed it with the researcher that morning ("this is your
+  project, it is your decision to make"), and the researcher decided it
+  before any of this note was written, with the reasons in §5. It is
+  recorded in Part II's v0.2.7.1 entry as "not a term of this enactment":
+  the statute does not ratify it as the clause's meaning, and a PI who
+  reads "across rungs" to include r0 changes nothing below except by
+  adding a hundred-δ adjacency. The "three rungs distinct" phrasing in
+  `d1-falsifier-verdict-v0.1.md` is a gloss, not statute, and is not used.
 - **"Within tractable support bounds"** is E3: the pass that produced these
   numbers must be admitted. It is not, today (§2). The clause's first
   condition therefore cannot be called satisfied by this note, whatever
@@ -86,7 +95,8 @@ with the query that carries each:
 
 **Every adjacent content pair is above δ at both statutory ε.** The r3 → r4
 step is thin — 1.42× δ at ε = 1 and 1.13× δ at ε = ½ — and is reported as
-thin: a δ of 0.015 would collapse it at ε = ½, a δ of 0.02 at both. δ was
+thin: a δ of 0.015 would collapse it at both ε (0.0142 and 0.0113 are both
+below it; *corrected per [rv-4]*). δ was
 frozen on 2026-08-21 from the three sweeps, before the looping world
 existed; the thinness is a fact about lineage at context 8, not about the
 threshold's placement. The other two steps are comfortably clear.
@@ -100,19 +110,28 @@ P-next 0.1503 → 0.1346 → 0.1060 → 0.1026; monotone at both ε.
 
 ## 4. What each field buys, read off the carrying queries
 
-- **OBJECT (r1 → r2)** resolves the owner of lock 1 (Q1[L1], 0.048 / 0.037)
-  and, with it, the thread-pair relations that run through that lock (every
-  Q5 pair moves 0.003–0.011). The lock-0 owner barely moves (0.034 / 0.024
-  on Q1[L0]) — lock 0's contention pattern is already legible from actors.
-- **RELATED (r2 → r3)** resolves the owner of lock 0 (Q1[L0], 0.110 / 0.052,
-  the largest content step at both ε) and the thread statuses (Q2[T0..T2]
-  each 0.02–0.03 at ε = 1). This is the step the live world makes large:
-  from reset at (14, L, 2) it collapsed by L = 8.
-- **LINEAGE (r3 → r4)** resolves the device's in-flight request (Q3[D0],
-  0.014 / 0.011 — the whole step) and thread 3's status (Q2[T3], 0.0045 /
-  0.0028; thread 3 is the double-issuer). Nothing else moves by more than
-  0.001. At context 8 in a live world, lineage buys the device and almost
-  nothing about locks or threads.
+*(Rewritten per [rv-5]: "reduces uncertainty about", not "resolves" — the
+finer rung's entropy stays positive in every row; every figure is a
+per-query gap from the tables; no causal gloss.)*
+
+- **OBJECT (r1 → r2)** reduces uncertainty about the owner of lock 1 most
+  (Q1[L1], 0.048 / 0.037, the carrier at both ε), then the lock-0 owner
+  (Q1[L0], 0.034 / 0.024), then the Q5 pair relations: seven of the twelve
+  ordered pairs move at ε = 1 (0.0034–0.0106; the largest Q5[T2,T1] and
+  Q5[T0,T1]), five are exactly 0 at every rung (the pairs C1′'s programs
+  never put in a wait relation). Statuses move ≤ 0.01.
+- **RELATED (r2 → r3)** reduces uncertainty about the owner of lock 0 most
+  (Q1[L0], 0.110 / 0.052, the largest content step at both ε), then the
+  statuses of threads 0–2 (Q2[T0..T2], 0.02–0.034 at ε = 1; 0.008–0.018 at
+  ε = ½), then Q1[L1] (0.014 / 0.011). This is the step the live world
+  makes large: from reset at (14, L, 2) it collapsed by L = 8.
+- **LINEAGE (r3 → r4)** reduces uncertainty about the device's in-flight
+  request most (Q3[D0], 0.0142 / 0.0113, the carrier), then thread 0's
+  status (Q2[T0], 0.0082 / 0.0069), thread 3's (Q2[T3], 0.0045 / 0.0028;
+  thread 3 is the double-issuer), Q5joint (0.0036 / 0.0045) and one pair
+  (Q5[T0,T1], 0.0025 / 0.0025); every other statutory query moves ≤ 0.001.
+  At context 8 in a live world, lineage buys the device and a little
+  status, and nothing about lock owners.
 
 ## 5. The r0 → r1 step, beside the ladder
 
@@ -123,8 +142,9 @@ P-next 0.1503 → 0.1346 → 0.1060 → 0.1026; monotone at both ε.
 | H(S) step | 3.3465 | 3.0748 |
 | Q4 gap / next-2-kinds / P-next steps | 0.575 / 0.569 / 0.292 | 0.646 / 0.682 / 0.332 |
 
-The naming step is an order of magnitude larger than the whole content
-ladder. It is not counted toward the clause, for four reasons recorded when
+The naming step is 7.5× the whole content ladder's range at ε = 1 (13×
+at ε = ½) and an order of magnitude above each adjacency *(per [rv-4])*.
+It is not counted toward the clause, for four reasons recorded when
 the decision was taken (2026-09-06):
 
 1. The clause predates r0 and was written for the ladder r1–r4; r0 entered
@@ -139,12 +159,15 @@ the decision was taken (2026-09-06):
    choice that hindsight cannot have favoured, and it means a contested
    r3 → r4 step cannot be rescued by r0.
 
-What the step *is*: per the identity-residual check
-(`r0-identity-residual-14-2-2026-09-04.json`, v0.2.7.1 statement 2), about
-four fifths of r0's ambiguous mass at ε = 1 sits in supports whose states
-differ even under a coarse thread-signature quotient. The residual is
-attribution of visible actions to role-asymmetric threads, not a relabeling
-orbit; the identity-entropy decomposition remains open.
+What the step *is*, as far as it has been measured: the identity-residual
+check (`r0-identity-residual-14-2-2026-09-04.json`, v0.2.7.1 statement 2)
+was run on the straight-line C1 at horizon 14, **not on C1′ at (40, 8, 2)**
+*(limitation stated per [rv-9])*; there, about four fifths of r0's
+ambiguous mass at ε = 1 sits in supports whose states differ even under a
+coarse thread-signature quotient. That supports the general caveat — the
+residual is attribution of visible actions to role-asymmetric threads, not
+a relabeling orbit — but it does not decompose the 1.08-bit step measured
+here; the identity-entropy decomposition remains open at every law.
 
 ## 6. From reset versus mid-episode
 
@@ -156,12 +179,16 @@ context 8, only the object step survived, and lineage never separated at
 any measured context.
 
 At (40, 8, 2) mid-episode the same three steps are 4.8× / 11× / 1.4× δ
-(ε = 1). The interface did not change; the window's starting prior did. A
-from-reset window at (14, 8, 2) sees a world eight to ten records from
-birth, with most of its threads' futures determined by their programs; a
-mid-episode window at (40, 8, 2) sees a world that has been contending for
-up to thirty-two records, whose lock owners and device state are live
-questions. The deep-truncation census at (32, 8, 2) found the same at ε = 1
+(ε = 1). The interface did not change; the endpoint mixture did *(exact
+statement per [rv-6])*. Under (14, 8, 2) the endpoints are $T \in \{2, 4,
+\dots, 14\}$ and $U = \max(0, T - 8)$: four of seven endpoints are
+reset-visible ($U = 0$, the window begins at the RESET record) and the other
+three begin two, four or six records after it. Under (40, 8, 2) four of
+twenty endpoints are reset-visible and the other sixteen begin two to
+thirty-two records in, in a world (v0.2.8.1) whose threads never
+terminate. The from-reset law is mostly windows that see the birth of a
+deterministic world; the frozen law is mostly windows that open on a
+contended one. The deep-truncation census at (32, 8, 2) found the same at ε = 1
 with two steps at threshold at ε = ½ (0.009, 0.010); at (40, 8, 2) both ε
 clear δ on every pair. The exit clause, read in a world that stays alive,
 comes out the other way from the world that dies.
@@ -193,11 +220,23 @@ field `divergent.mass` of the predictive-targets artifacts):
 | 1 | 0.2018 | 0.6085 | 0.6377 | 0.7113 | 0.6698 |
 | ½ | 0.2024 | 0.6598 | 0.6902 | 0.7642 | 0.7184 |
 
-Between three fifths and three quarters of the law's mass at every content
-rung lies in pairs that agree on the immediate prediction and diverge at
-the horizon: the raw material of the exposure experiments is abundant
-mid-episode, at every ε. At r0 it is a fifth — kind-only histories mostly
-cannot be told apart even at the horizon.
+The statute's prevalence headline is `pair_prob` (v0.2.4 §D; *added per
+[rv-7]*), the probability that a random pair of windows is divergent:
+
+| ε | r0 | r1 | r2 | r3 | r4 |
+|---|---|---|---|---|---|
+| 1 | 0.0185 | 0.0069 | 0.0072 | 0.0089 | 0.0088 |
+| ½ | 0.0195 | 0.0040 | 0.0043 | 0.0052 | 0.0052 |
+
+Read together: divergent pairs are **rare as pairs** (under one percent of
+window pairs at every content rung) and **cover most of the law's mass**
+(0.61–0.76 at r1–r4; *range per [rv-4]*) — most windows have at least one immediate-agree,
+later-diverge partner, but few partners each. Positive `pair_prob` at every
+rung establishes existence, which is what deliverable 5 asks; "abundant" is
+the mass statement, not the pair statement. At r0 the mass share is a fifth
+while `pair_prob` is highest — kind-only windows are few (12,739) and
+coarse, so pairs are more often divergent but the divergent ones carry
+less mass.
 
 ## 9. Reading, and what would reverse it
 
@@ -215,15 +254,18 @@ and the clause is re-read there); a change to δ (not proposed; it was
 frozen before this world existed). Not reversed by the PI counting r0 —
 that can only add.
 
-## 10. Statutory after the fact — the disclosure
+## 10. Order of fixing, and what would be after the fact — the disclosure
 
-The thirty artifacts were produced before the freeze note was enacted and
-before the pass was re-priced. The order of fixing, from the stamps: the
-budget line (v0.2.8, `a73ece8`, 2026-09-03 19:37) → the law (freeze note,
-`b7adebe`, 2026-09-04 15:56) → the gate and the producers (Sep 4–6) →
-v0.2.8.1 and v0.2.7.1 enacted (Sep 6, Sep 11) → the re-price refusing the
-pass (Sep 6). δ (v0.2.5, 2026-08-21) and the statutory query set predate
-all of it. The one decision made with these numbers in hand is the r0
+The thirty artifacts were produced before the freeze note's enactment,
+which has not occurred, and before the pass was re-priced *(per [rv-8]:
+nothing here is statutory; this section records what the order of stamps
+would license if the freeze is enacted after the pass is admitted)*. The
+order, from the commits: the budget line (v0.2.8, `a73ece8`, Sep 3 19:37)
+→ the law (freeze note, `b7adebe`, Sep 4 15:56) → the gates and producers
+(Sep 4–6) → v0.2.8.1 enacted (`9cab199`, Sep 6 10:49) → the re-price
+refusing the pass (`501bcf4`, Sep 6 11:32) → v0.2.7.1 enacted (`67e2b12`,
+Sep 11 10:06) → this note (`316c321`, Sep 11 10:17). δ (v0.2.5, 2026-08-21)
+and the statutory query set (Part II §5) predate all of it. The one decision made with these numbers in hand is the r0
 reading (§5), and it resolved in the direction that cannot have been
 favoured by seeing them. The researcher's decision of 2026-09-06 (enact
 with disclosure; no re-run of exact arithmetic to launder a timestamp; the
@@ -257,4 +299,20 @@ alone and checked against the pin test's asserted values (all match).
 
 ## Review ledger
 
-*(cross-family read requested 2026-09-11; findings folded in here.)*
+Cross-family read, Codex, 2026-09-11 (`exit-clause-note-codex-review-2026-09-11.md`),
+verdict AMEND BEFORE FILING, nine findings, every one adopted the same day:
+
+- [rv-1] statutory set corrected to Part II §5's (Q4 in by gap part, Q5joint
+  out); no maximum changes; the pin test's label is owed a correction.
+- [rv-2] the r1–r4 reading is the researcher's interpretive decision, not
+  ratified as statutory meaning; wording corrected.
+- [rv-3] every number in §2–§8 reproduced by the reviewer from the
+  artifacts, the 80 shard raws, the two pricing raws and `yupi.sync`.
+- [rv-4] three prose figures corrected (δ = 0.015 collapses r3 → r4 at both
+  ε; 7.5× not "an order of magnitude"; 0.61–0.76).
+- [rv-5] §4 rewritten to the per-query gaps with no causal gloss.
+- [rv-6] §6's window description replaced by the exact endpoint mixture.
+- [rv-7] `pair_prob` added as the statute's prevalence headline.
+- [rv-8] §10 retitled and its order corrected to the commits; no
+  enactment implied.
+- [rv-9] the identity-residual check's law stated as a limitation.
