@@ -1,0 +1,7 @@
+new pass done 542s peak(cumulative) 4.97 GB max_pairs 1964919
+old pass done 1456s peak(cumulative) 16.94 GB max_pairs 1964919
+Traceback (most recent call last):
+  File "/home/tony/.cache/yupi-scratch/mem-2026-09-12/gate_40_v2.py", line 30, in <module>
+    assert all(list(ma[k].keys())==list(mb[k].keys()) for k in ma), f"{r}: inner endpoint order differs"  # [rv-3]
+           ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: r0: inner endpoint order differs

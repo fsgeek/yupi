@@ -333,7 +333,7 @@ access). Nothing approximate; no consumer touched.
 `==` on the aggregate, on the per-endpoint mass, and on key order):**
 `window-gate-interning-only-40-8-2-2026-09-12{,-eps1_2}.json` (shared
 objects alone) and `window-gate-interned-40-8-2-2026-09-12{,-eps1_2}.json`
-(the committed module) — ALL RUNGS EQUAL. The full suite (435) passes.
+(the committed module) — ALL RUNGS EQUAL. The full suite (441) passes.
 The thirty producer artifacts are therefore what the instrument under the
 line produces (the note's §4 gives the reasoning and invites a re-run as a
 check).

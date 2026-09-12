@@ -63,9 +63,11 @@ Three readings are fixed before the numbers are looked at:
   adding a hundred-δ adjacency. The "three rungs distinct" phrasing in
   `d1-falsifier-verdict-v0.1.md` is a gloss, not statute, and is not used.
 - **"Within tractable support bounds"** is E3: the pass that produced these
-  numbers must be admitted. It is not, today (§2). The clause's first
-  condition therefore cannot be called satisfied by this note, whatever
-  the gaps say.
+  numbers must be admitted. It is not, today (§2) *(2026-09-12: the pass
+  is admitted at 4.97 / 5.12 GB; the freeze that would make the admission
+  statutory is on the PI's desk, so the next sentence still holds until
+  enactment)*. The clause's first condition therefore cannot be called
+  satisfied by this note, whatever the gaps say.
 
 ## 2. The law, the gate, and the pass
 
@@ -84,7 +86,7 @@ under the admitting rule, before any ceiling existed at it.
 
 The producers ran on the Sep 6 instrument. The frontier line binds the
 world's cost and is met; the memory line binds the implementation's and is
-not. The freeze note's addendum records the researcher's path (profile,
+not *(as of Sep 6; met on Sep 12, table row above)*. The freeze note's addendum records the researcher's path (profile,
 exact-only reduction, bit-for-bit gate against the current recursion at
 this law, re-price) and the commitment that the line is not moved to admit
 the law.

@@ -1,0 +1,142 @@
+{
+ "law": {
+  "T_ep": 40,
+  "L": 8,
+  "B": 2
+ },
+ "programs": "c1prime-loop",
+ "eps": "1",
+ "wall_new_s": 532.4514954090118,
+ "wall_old_s": 1472.0896031856537,
+ "max_pairs": 1964919,
+ "rungs": {
+  "r0": {
+   "n_windows": 12739,
+   "agg_entries": 255043,
+   "mass_T_entries": 122630,
+   "equal": true,
+   "same_key_order": true,
+   "same_inner_state_order": true,
+   "same_inner_endpoint_order": false
+  },
+  "r1": {
+   "n_windows": 819073,
+   "agg_entries": 1631167,
+   "mass_T_entries": 6490210,
+   "equal": true,
+   "same_key_order": true,
+   "same_inner_state_order": true,
+   "same_inner_endpoint_order": false
+  },
+  "r2": {
+   "n_windows": 923461,
+   "agg_entries": 1631167,
+   "mass_T_entries": 7094476,
+   "equal": true,
+   "same_key_order": true,
+   "same_inner_state_order": true,
+   "same_inner_endpoint_order": false
+  },
+  "r3": {
+   "n_windows": 991585,
+   "agg_entries": 1631167,
+   "mass_T_entries": 7433505,
+   "equal": true,
+   "same_key_order": true,
+   "same_inner_state_order": true,
+   "same_inner_endpoint_order": false
+  },
+  "r4": {
+   "n_windows": 1524612,
+   "agg_entries": 2248814,
+   "mass_T_entries": 9995214,
+   "equal": true,
+   "same_key_order": true,
+   "same_inner_state_order": true,
+   "same_inner_endpoint_order": true
+  }
+ },
+ "mass_T_denominators": {
+  "2": {
+   "bits": 8,
+   "width_bytes": 1
+  },
+  "4": {
+   "bits": 11,
+   "width_bytes": 2
+  },
+  "6": {
+   "bits": 16,
+   "width_bytes": 2
+  },
+  "8": {
+   "bits": 21,
+   "width_bytes": 3
+  },
+  "10": {
+   "bits": 26,
+   "width_bytes": 4
+  },
+  "12": {
+   "bits": 31,
+   "width_bytes": 4
+  },
+  "14": {
+   "bits": 35,
+   "width_bytes": 5
+  },
+  "16": {
+   "bits": 40,
+   "width_bytes": 5
+  },
+  "18": {
+   "bits": 47,
+   "width_bytes": 6
+  },
+  "20": {
+   "bits": 52,
+   "width_bytes": 7
+  },
+  "22": {
+   "bits": 56,
+   "width_bytes": 7
+  },
+  "24": {
+   "bits": 61,
+   "width_bytes": 8
+  },
+  "26": {
+   "bits": 66,
+   "width_bytes": 9
+  },
+  "28": {
+   "bits": 71,
+   "width_bytes": 9
+  },
+  "30": {
+   "bits": 76,
+   "width_bytes": 10
+  },
+  "32": {
+   "bits": 81,
+   "width_bytes": 11
+  },
+  "34": {
+   "bits": 86,
+   "width_bytes": 11
+  },
+  "36": {
+   "bits": 92,
+   "width_bytes": 12
+  },
+  "38": {
+   "bits": 97,
+   "width_bytes": 13
+  },
+  "40": {
+   "bits": 102,
+   "width_bytes": 13
+  }
+ },
+ "verdict": "ALL RUNGS EQUAL"
+}

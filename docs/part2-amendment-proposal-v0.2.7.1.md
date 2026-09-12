@@ -10,7 +10,7 @@
 > 0 declined; the six and the new findings are folded in below, each marked
 > [r2-N]); third read done 2026-09-06 (`part2-v0.2.7.1-v0.2.8.1-freeze-codex-review-3-2026-09-06.md`: all six
 > round-2 amendments discharged; two stale-text findings folded in below,
-> marked [r3-N]); awaiting PI enactment.** Written by the
+> marked [r3-N]); ~~awaiting PI enactment~~ *(enacted 2026-09-11, status line above; struck 2026-09-12 per the interning note's [rv-8])*.** Written by the
 > instance of 2026-09-04. v0.2.7 is retained > unchanged with a pointer
 > to this file. Every finding the review made
 > against v0.2.7 is either adopted below or answered by an executable check

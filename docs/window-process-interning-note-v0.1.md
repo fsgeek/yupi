@@ -32,7 +32,10 @@ a `__dict__`, tuples and frozensets — for one of 1,971 values, and every
 window held its own `Record` objects for one of 39. The cause is in the
 kernel's interface: `enabled(s)` builds fresh `Transition` and `State`
 objects on every call, and the recursion called it once per frontier pair
-per tick (about 80 million calls at (40,8,2) for 1,953 reachable states),
+per tick (23,113,252 calls per ε at (40,8,2) — one plus the sum of the
+frontier sizes over ticks 1–39, from the pricing raw's tick series — for
+1,953 reachable states; *corrected per [rv-7]: the first draft said "about
+80 million"*),
 so no two frontier entries shared a state object even when they shared a
 state. The projections did the same with records: `project(x, r)` returns
 a fresh `Record`, so each coarse window carried eight private copies of one
@@ -52,7 +55,12 @@ projected records are interned (one object per value); a window reached
 from several states within a tick is one tuple; projections intern their
 projected records. The arithmetic is untouched: the same Fractions are
 added in the same order, and every dictionary is built by the same
-sequence of insertions, so key order is unchanged (the gate checks this).
+sequence of insertions, so key order is unchanged — outer (window) order
+and inner state order alike; the decoded per-endpoint mass lists
+endpoints in increasing T, which at coarse rungs is not the old
+first-seen order (§4 says why this cannot reach a consumer). *Per [rv-3]:
+the first gate checked outer order only; the full-order gate of §4 checks
+inner order too, and found this.*
 Side effect: the recursion is 4× faster, because the kernel is no longer
 re-run per pair.
 
@@ -67,12 +75,21 @@ denominators of every window's mass at T. Every numerator is at most
 accumulations are unchanged line for line. Coarser rungs share `D` and
 `width`: a coarse numerator is a sum of fine numerators over the same
 denominator. `MassT` is a `Mapping`; `==` against the old dict decodes and
-compares. The per-tick common denominator is small — at (40,8,2) on the
-looping C1′ it is 2³⁴·3⁴⁰ (98 bits) at ε = 1 and 2⁷²·3³⁸ (133 bits) at
-ε = ½ (`window-process-frontier-denominators-c1prime-loop-40-2026-09-12.log`)
-— so a numerator is at most 17 bytes.
+compares. The denominators are small. The *frontier's* per-tick common
+denominator at (40,8,2) on the looping C1′ is 2³⁴·3⁴⁰ (98 bits) at ε = 1
+and 2⁷²·3³⁸ (133 bits) at ε = ½
+(`window-process-frontier-denominators-c1prime-loop-40-2026-09-12.log`,
+which measures the state marginal before endpoint weighting); `MassT`'s
+own `D[T]` also carries the endpoint prior 1/20, so it has a factor 5 the
+frontier's does not. *Corrected per [rv-7]: the first draft presented the
+frontier figures as `MassT`'s.* The measured `D[T]` and widths are in the
+full-order gate raws (§4): `D[40]` is 102 bits at ε = 1 and 137 bits at ε = ½, so the widest numerator is 13 / 18 bytes (`mass_T_denominators` in those raws, every endpoint listed).
 
 Nothing approximate enters. No rule, unit, line or law is touched.
+Scope ([rv-2]): the endpoint mask is 8 bytes, so a law with more than 64
+endpoints is refused by `MassT` with a `ValueError` (no committed law has
+more than 24); `add_endpoint` refuses an endpoint out of increasing order
+or repeated. Both were `assert`s in the first commit and are raises now.
 
 ## 3. Why (a) alone was not enough
 
@@ -102,14 +119,44 @@ keys in order.
 | (40,8,2) | ½ | r0–r4 | equal | same | equal | `window-gate-interning-only-40-8-2-2026-09-12-eps1_2.json` (shared objects only; new 518 s, old 1,813 s) |
 | (40,8,2) | 1 | r0–r4 | equal | same | equal | `window-gate-interned-40-8-2-2026-09-12.json` (the committed module; new 531 s, old 1482 s) |
 | (40,8,2) | ½ | r0–r4 | equal | same | equal | `window-gate-interned-40-8-2-2026-09-12-eps1_2.json` (the committed module; new 556 s, old 1842 s) |
+| (40,8,2) | 1 | r0–r4 | equal | same; inner state order same | equal; endpoint order sorted at r0–r3, same at r4 | `window-gate-interned-full-order-40-8-2-2026-09-12.json` (amended module; new 532 s, old 1472 s) |
+| (40,8,2) | ½ | r0–r4 | equal | same; inner state order same | equal; endpoint order sorted at r0–r3, same at r4 | `window-gate-interned-full-order-40-8-2-2026-09-12-eps1_2.json` (amended module; new 549 s, old 1803 s) |
 
+The first four rows check `list(keys)` of the two outer mappings; the
+last two (added after the Codex read, [rv-3]) also check, for every
+window, the order of the state keys in the aggregate (asserted equal) and
+report the order of the endpoint keys in the decoded per-endpoint mass.
+**That order differs at the coarse rungs**: `MassT` decodes endpoints in
+increasing T, while the 2026-09-04 coarse dictionaries held them in
+first-seen order (a coarse window gathers its fine windows' endpoints in
+fine-window order). At r4 the two agree (the recursion visits endpoints
+in increasing t). The first full-order run asserted this and stopped at
+r0 (`window-gate-interned-full-order-40-8-2-2026-09-12-eps1-first-run-crashed.log`);
+the check was changed to assert equal endpoint *sets* and report the
+order, and re-run. The difference is consumer-irrelevant: each endpoint's
+sum in `by_endpoint` runs over windows, and the order of endpoints within
+one window's decoded dict changes which accumulator is touched first, not
+any accumulator's sequence of addends — which the byte-identical
+reproductions of two r0 artifacts (a coarse rung) confirm. So the
+claim in §2 is exact as follows: outer order and inner state order are
+identical; inner endpoint order at coarse rungs is sorted rather than
+first-seen. They were run on the amended module (validation raises instead of asserts, [rv-2]; no arithmetic line
+changed — `git diff ad7b736 -- src/yupi/window_process.py`). The
+"interning-only" rows were produced by `gate_40.py` against an
+uncommitted working-tree stage; a reconstruction of that stage is filed as
+`window_process_interning_only.py` beside it and is not claimed
+byte-identical to what ran ([rv-4]). Those rows support §3's number; the
+committed module's rows are the gate.
 Plus the module's own gates on the committed tree: the (8, L, 2) and
 C0b path-aggregation equalities and the (14, L, 2) artifact reproductions
 (`tests/test_window_process.py`), the paths-vs-window aggregation equality
 (`tests/test_aggregation.py`), the ceilings, Q4 and predictive-targets
 reproductions on the recursion (`tests/test_ceilings_on_recursion.py`,
-`tests/test_q4_and_targets_on_recursion.py`), and the full suite: **435
-passed**. The per-rung summaries of the new pricing raw (windows, mean
+`tests/test_q4_and_targets_on_recursion.py`), and the full suite: **441
+passed** at the first commit *(435 in the first draft, before the six pins
+of `tests/test_window_process_interning_2026_09_12.py` were counted,
+[rv-8])*, **444** at the amendment commit (the full-order raws and the
+amended re-price added as parametrizations). The per-rung summaries of the new pricing raw (windows, mean
 state entropy, ambiguous mass, max support) are identical to the Sep 4
 and Sep 6 raws' at both ε, and the frontier and states per tick are
 identical tick for tick.
@@ -119,10 +166,17 @@ produced from the aggregate and the per-endpoint mass by consumers that
 this change does not touch; the aggregate is equal and in the same order,
 the per-endpoint mass decodes to the same Fractions, and the consumers'
 float accumulations run over the same values in the same sequence. The
-artifacts are therefore what the instrument under the line produces. They
-are not re-run; this reasoning is stated here so a reader can reject it.
-A re-run of any one of them is a legitimate check and would be expected
-to reproduce the file byte for byte.
+artifacts are therefore what the instrument under the line produces. The
+first draft left this as reasoning; per [rv-6] three were re-run on the
+amended module and compared byte for byte with the committed files:
+`c1prime-loop-query-ceilings-40-8-2-r4-2026-09-04.json` (1,524,612
+windows, sha256 `ded3f094…`), `c1prime-loop-query-ceilings-40-8-2-r0-2026-09-06.json`
+and `c1prime-loop-q4-ceilings-40-8-2-r0-W4-2026-09-06.json` — each
+re-produced with `YUPI_AGG=window YUPI_GATE=external YUPI_EPS=1` on the
+amended module and **byte-identical** (`cmp`) to the committed file; the
+producers' console logs are filed as `reproduction-2026-09-12-*.log`. The
+reasoning stands, and now has a check under it; the other twenty-seven
+are covered by the same reasoning and not re-run.
 
 ## 5. Re-price (E3's unit: one `window_law_aggregates()` pass per ε, all five rungs, fresh process)
 
@@ -135,6 +189,10 @@ to reproduce the file byte for byte.
 | (40,8,2) | ½ | 1,964,919 | 4,173 | 557 s | **5.12 GB** | 7.23 GB / 1,637 s | 13.25 GB / 1,797 s |
 | (32,8,2) | 1 | 1,335,771 | 1,733 | 285 s | 4.18 GB | 6.77 GB / 623 s | — |
 | (32,8,2) | ½ | 1,335,771 | 3,645 | 300 s | 4.28 GB | 6.81 GB / 762 s | — |
+
+Re-priced again on the amended module (raises instead of asserts, [rv-2];
+`…-2026-09-12-interned-amended.json`): 4.97 / 5.11 GB, 542 / 532 s, same
+frontier, same per-rung summaries.
 
 The frontier line (2 × 10⁶) is met as before, 1.8 % margin; the memory
 line (8 GB) is met with 36 % margin at ε = ½. The unit is E3's as
@@ -154,6 +212,16 @@ entries is recorded (§3's log) and not interpreted.
 
 ## 7. Ledger
 
-- 2026-09-12: written after the gates and the re-price landed
-  (commit carrying this note). Cross-family read requested after filing;
-  its findings, if any, will be appended here with [rv-N] marks.
+- 2026-09-12: written after the gates and the re-price landed (commit
+  `ad7b736`, stamped `244d3c7`).
+- 2026-09-12, Codex read (`window-process-interning-note-codex-review-2026-09-12.md`):
+  **AMEND BEFORE FILING**, eight findings, all adopted the same day —
+  [rv-1] MassT exactness VERIFIED (no change); [rv-2] domain restrictions
+  made explicit and enforced by raises, scope stated in §2; [rv-3] the
+  order claim narrowed and then discharged by the full-order gate (§4);
+  [rv-4] interning-only provenance stated, reconstruction filed; [rv-5]
+  re-price VERIFIED against E3's unit (no change); [rv-6] three artifacts
+  re-run and compared byte for byte (§4); [rv-7] two wrong figures
+  corrected in place (§1, §2); [rv-8] stale "awaiting enactment" and
+  present-tense "refused" sentences in four documents corrected in place
+  with dated brackets; 435 → 441.

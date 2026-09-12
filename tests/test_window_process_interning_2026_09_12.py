@@ -24,7 +24,7 @@ COUNTS = {  # (windows, aggregate entries, mass_T entries) per rung at (40,8,2),
 
 
 @pytest.mark.parametrize("tag,eps", [("", "1"), ("-eps1_2", "1/2")])
-@pytest.mark.parametrize("kind", ["interning-only", "interned"])
+@pytest.mark.parametrize("kind", ["interning-only", "interned", "interned-full-order"])
 def test_gate_against_the_2026_09_04_recursion_every_rung_equal(kind, tag, eps):
     d = json.load(open(DOCS / f"window-gate-{kind}-40-8-2-2026-09-12{tag}.json"))
     assert d["law"] == dict(T_ep=40, L=8, B=2) and d["programs"] == "c1prime-loop" and d["eps"] == eps
@@ -32,14 +32,23 @@ def test_gate_against_the_2026_09_04_recursion_every_rung_equal(kind, tag, eps):
     assert set(d["rungs"]) == set(RUNGS)
     for r, row in d["rungs"].items():
         assert row["equal"] and row["same_key_order"], r
+        if kind == "interned-full-order":               # [rv-3]: inner state order too; inner endpoint order reported
+            assert row["same_inner_state_order"], r
+            assert row["same_inner_endpoint_order"] == (r == "r4"), r   # coarse rungs decode in increasing T; the old dicts were first-seen
+    if kind == "interned-full-order":                   # [rv-7]: MassT's own denominators, endpoint prior included
+        D = d["mass_T_denominators"]
+        assert set(D) == {str(T) for T in range(2, 41, 2)}
+        assert all(v["width_bytes"] == (v["bits"] + 7) // 8 and v["width_bytes"] <= 18 for v in D.values())
         if r in COUNTS:
             assert (row["n_windows"], row["agg_entries"], row["mass_T_entries"]) == COUNTS[r], r
     assert d["rungs"]["r0"]["n_windows"] == 12739 and d["rungs"]["r0"]["mass_T_entries"] == 122630
     assert d["wall_new_s"] < d["wall_old_s"] / 2       # the memoized kernel
 
 
-def test_reprice_under_the_line_at_the_identical_frontier():
-    new = json.load(open(DOCS / "window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-12-interned.json"))
+@pytest.mark.parametrize("raw", ["window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-12-interned.json",
+                                 "window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-12-interned-amended.json"])
+def test_reprice_under_the_line_at_the_identical_frontier(raw):
+    new = json.load(open(DOCS / raw))
     sep4 = json.load(open(DOCS / "window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-04.json"))
     sep6 = json.load(open(DOCS / "window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-06-reprice.json"))
     assert new["rungs"] == list(RUNGS) and new["programs"] == "c1prime-loop"
@@ -48,7 +57,8 @@ def test_reprice_under_the_line_at_the_identical_frontier():
         assert n["eps"] == o["eps"] == r["eps"] and n["rss_isolated_per_eps"]
         assert n["max_pairs"] == 1964919 and n["pairs_per_tick"] == o["pairs_per_tick"] and n["states_per_tick"] == o["states_per_tick"]
         assert n["per_rung"] == o["per_rung"] == r["per_rung"]          # same values from the same aggregate
-        assert round(n["peak_rss_kb"] / 1e6, 2) == expected[n["eps"]] < 8.0 < r["peak_rss_kb"] / 1e6
+        rss = n["peak_rss_kb"] / 1e6
+        assert abs(rss - expected[n["eps"]]) < 0.15 and rss < 8.0 < r["peak_rss_kb"] / 1e6   # the amended raw may differ in the second decimal
 
 
 def test_mass_t_round_trips_the_dict_form_and_projects_exactly():

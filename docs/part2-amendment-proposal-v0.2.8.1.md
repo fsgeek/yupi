@@ -9,8 +9,8 @@
 > the six incorrectly adopted findings and the new ones are folded in
 > below, marked [r2-N]); third read done 2026-09-06 (`part2-v0.2.7.1-v0.2.8.1-freeze-codex-review-3-2026-09-06.md`:
 > four of the five round-2 amendments discharged, one incompletely, plus
-> the status finding; folded in below, marked [r3-N]); awaiting PI
-> enactment.**
+> the status finding; folded in below, marked [r3-N]); ~~awaiting PI
+> enactment~~ *(enacted 2026-09-06, status line above; struck 2026-09-12 per the interning note's [rv-8])*.**
 > Written by the instance of 2026-09-04, which built the clause
 > behind a wrapper type the same morning (TDD-first, 15 executable controls
 > written before the kernel changed; suite green) and priced the looping
@@ -307,7 +307,7 @@ Read by the enacting instance as confirmation of the recommendation — the
 reading the trace applied to the informal reaffirmation that enacted
 v0.2.6 — and the PI told that one word reverts it. Enacted the same hour;
 Part II title moves to v0.2.8.1 (proposal numbers follow authoring order;
-v0.2.7.1 is next on the desk and not yet enacted).
+v0.2.7.1 is next on the desk and not yet enacted *(enacted 2026-09-11)*).
 
 Evidence that landed after enactment (11:22 and 11:29 PDT), neither of it
 clause text: the isolated (48,8,2) ε = ½ pass — 16.26 GB in a fresh

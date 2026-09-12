@@ -75,7 +75,8 @@ class MassT(Mapping):
     def __init__(self, endpoints: Iterable[int], D: Optional[Dict[int, int]] = None,
                  width: Optional[Dict[int, int]] = None):
         self._endpoints = tuple(endpoints)
-        assert len(self._endpoints) <= 64, "endpoint mask is 8 bytes"
+        if len(self._endpoints) > 64 or len(set(self._endpoints)) != len(self._endpoints):
+            raise ValueError(f"MassT: the endpoint mask is 8 bytes — at most 64 distinct endpoints; got {len(self._endpoints)}")
         self._rows: Dict[WindowKey, bytearray] = {}
         self._D: Dict[int, int] = {} if D is None else D
         self._width: Dict[int, int] = {} if width is None else width
@@ -85,7 +86,8 @@ class MassT(Mapping):
         """Record every window's mass at endpoint T (called once per T, in
         increasing T; `masses` iterates in first-seen window order so the
         row order equals the 2026-09-04 dict's)."""
-        assert T not in self._D
+        if T not in self._endpoints or (self._D and T <= max(self._D)):
+            raise ValueError(f"MassT.add_endpoint: endpoints must be added once each in increasing order; got T={T} after {sorted(self._D)}")
         D = 1
         for m in masses.values():
             D = D * m.denominator // gcd(D, m.denominator)
