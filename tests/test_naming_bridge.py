@@ -171,24 +171,45 @@ def test_pattern_partition_refines_down_the_ladder(eps):
 UNSEEN = "?"
 
 
-def quotient(state, binding):
-    """The state re-expressed in the window's names: threads with a pattern
-    index keep their fields under that index; threads the window never
-    named are an unordered multiset; every thread reference (running, lock
-    owner, wait queues, device queue, cursor) is mapped to its pattern index
-    or to UNSEEN. This is the finest description of the state an observer
-    of the surface trace could ever state in its own terms."""
-    name = {t: k for k, t in enumerate(binding)}
-    nm = lambda t: name.get(t, UNSEEN) if t is not None else None
+def quotient(state, binding, cfg):
+    """The state re-expressed in the window's names — the corpus-track
+    state (v0.2.9 §2, amended per the Codex read of 2026-09-12 [rv-4] [rv-5]).
+
+    Named threads keep their fields under their pattern index. Unnamed
+    threads are canonicalized: their fields, and every reference to them,
+    are written under anonymous labels a0, a1, … chosen as the
+    lexicographically least representation over all orderings of the
+    unnamed threads, so relational structure among anonymous threads
+    (which anonymous thread owns a lock, which waits, whether two
+    references are the same thread) is kept while their structural
+    identity is not. A field the kernel never writes under the
+    configuration is excluded: the round-robin cursor is constant at
+    ε = 1 (Part II §1, v0.2.6) and mapping it through the binding would
+    inject binding entropy into the state ([rv-5]); at ε < 1 it is live
+    and is mapped like any other thread reference. Program role is not a
+    field of the state and is deliberately absent: which program a named
+    thread runs is the binding's business, so role uncertainty lives in
+    H(S, β | q, w), not in q."""
+    import itertools
     n = len(state.pc)
-    seen = tuple((state.pc[t], state.status[t]) for t in binding)
-    unseen = tuple(sorted((state.pc[t], state.status[t]) for t in range(n) if t not in name))
-    return (seen, unseen,
-            frozenset(nm(t) for t in state.running),
-            tuple(nm(o) for o in state.lock_owner),
-            tuple(tuple(nm(t) for t in q) for q in state.lock_wq),
-            tuple(tuple((nm(t), r) for t, r in q) for q in state.dev_q),
-            nm(state.rr_cursor))
+    named = {t: k for k, t in enumerate(binding)}
+    unnamed = [t for t in range(n) if t not in named]
+    best = None
+    for perm in itertools.permutations(unnamed):
+        lab = dict(named)
+        for j, t in enumerate(perm):
+            lab[t] = f"a{j}"
+        nm = lambda t: (lab[t] if t is not None else None)
+        rep = (tuple((state.pc[t], state.status[t]) for t in binding),
+               tuple((state.pc[t], state.status[t]) for t in perm),
+               tuple(sorted(str(nm(t)) for t in state.running)),
+               tuple(str(nm(o)) for o in state.lock_owner),
+               tuple(tuple(str(nm(t)) for t in q) for q in state.lock_wq),
+               tuple(tuple((str(nm(t)), r) for t, r in q) for q in state.dev_q),
+               (str(nm(state.rr_cursor)) if cfg.epsilon < 1 else None))
+        if best is None or rep < best:
+            best = rep
+    return best
 
 
 def _H(dist):
@@ -216,7 +237,7 @@ def corpus_track_entropies(cfg, progs, rung):
         for (st, bind), m in joint.items():
             s[st] = s.get(st, Fraction(0)) + m
             b[bind] = b.get(bind, Fraction(0)) + m
-            qq = quotient(st, bind)
+            qq = quotient(st, bind, cfg)
             q[qq] = q.get(qq, Fraction(0)) + m
             sbq[(st, bind, qq)] = sbq.get((st, bind, qq), Fraction(0)) + m
         H_joint = _H(joint)
@@ -235,24 +256,64 @@ def corpus_track_entropies(cfg, progs, rung):
     return out
 
 
-# Documentary pins (law-mass means, bits, C1 (8,4,2)): the canonical track
-# H(S | window) against the corpus track's H(quotient | pattern window) and
-# H(binding | pattern window). The gap is role: a canonical name says which
-# program a thread runs; a pattern name does not. Exploratory (no gate).
+# Documentary pins (law-mass means, bits, C1 (8,4,2)), corrected 2026-09-12 after the
+# Codex read: the first pins (H_quotient 1.8216 / 1.6567 / 1.2709 / 1.0941) mapped the
+# ε = 1 cursor through the binding and collapsed anonymous threads to one symbol
+# ([rv-4] [rv-5]); they are preserved in the proposal's ledger, not here. H_quotient
+# and H_canonical are DIFFERENT targets (the state in the window's names vs the
+# structural state under σ₀); the comparison is informative, not a decomposition
+# ([rv-6]). At ε = ½ the cursor is live and mapped; its contribution dominates
+# H_quotient there, so the figure without the cursor coordinate is pinned beside it.
 PINNED = {
-    (Fraction(1), "r1"): dict(H_canonical=0.5230, H_quotient=1.8216, H_binding=2.4238, H_S=2.3808, H_joint=2.9468),
-    (Fraction(1), "r3"): dict(H_canonical=0.4452, H_quotient=1.6567, H_binding=2.3343, H_S=2.2393, H_joint=2.7795),
-    (Fraction(1, 2), "r1"): dict(H_canonical=0.2597, H_quotient=1.2709, H_binding=2.0093, H_S=2.2681, H_joint=2.2690),
-    (Fraction(1, 2), "r3"): dict(H_canonical=0.2316, H_quotient=1.0941, H_binding=1.8583, H_S=2.0890, H_joint=2.0899),
+    (Fraction(1), "r1"): dict(H_canonical=0.5230, H_quotient=0.6238, H_binding=2.4238, H_S=2.3808, H_joint=2.9468),
+    (Fraction(1), "r3"): dict(H_canonical=0.4452, H_quotient=0.4565, H_binding=2.3343, H_S=2.2393, H_joint=2.7795),
+    (Fraction(1, 2), "r1"): dict(H_canonical=0.2597, H_quotient=1.3078, H_binding=2.0093, H_S=2.2681, H_joint=2.2690),
+    (Fraction(1, 2), "r3"): dict(H_canonical=0.2316, H_quotient=1.1287, H_binding=1.8583, H_S=2.0890, H_joint=2.0899),
 }
+PINNED_WITHOUT_CURSOR = {(Fraction(1, 2), "r1"): 0.4729, (Fraction(1, 2), "r3"): 0.2939}   # ε = ½ only; at ε = 1 the cursor is already excluded
 
 
 @pytest.mark.parametrize("eps,rung", sorted(PINNED, key=str))
 def test_corpus_track_state_entropy_and_chain_rule(eps, rung):
     cfg, progs = WorldConfig.c1(epsilon=eps), c1_programs()
     e = corpus_track_entropies(cfg, progs, rung)
-    assert e["chain_rule_gap"] < 1e-9                                   # H(S,b|w) = H(q|w) + H(S,b|q,w), exactly
+    assert e["chain_rule_gap"] < 1e-9                                   # H(S,b|w) = H(q|w) + H(S,b|q,w): an identity for any deterministic q, checked in floats
     assert e["H_quotient"] <= e["H_joint"] + 1e-9 and e["H_S"] <= e["H_joint"] + 1e-9
-    assert e["H_canonical"] < e["H_quotient"]                            # the canonical track understates the corpus gap
     for k, v in PINNED[(eps, rung)].items():
         assert round(e[k], 4) == v, (k, e[k])
+    if (eps, rung) in PINNED_WITHOUT_CURSOR:
+        import test_naming_bridge as tb
+        orig = tb.quotient
+        try:
+            tb.quotient = lambda st, b, c: orig(st, b, c)[:-1] + (None,)
+            e2 = corpus_track_entropies(cfg, progs, rung)
+        finally:
+            tb.quotient = orig
+        assert round(e2["H_quotient"], 4) == PINNED_WITHOUT_CURSOR[(eps, rung)]
+
+
+# ---- 5. the 1.208-bit counterexample is the empty-window case ------------------------
+
+def test_fresh_token_query_is_the_uniform_mixture_of_the_counterexample():
+    """Clause 2′'s counterexample (tests/test_naming_counterexample.py): at
+    C1 tick 4 with no observation, a uniformly bound name's Q2 distribution
+    is the mixture of the four structural threads' and has 1.208 bits. In
+    the pattern framework that is the query about a token the (empty)
+    window never named: the UNSEEN class, whose answer is the mixture over
+    the unnamed threads under the prior. Same distribution, exactly
+    ([rv-2] of the 2026-09-12 Codex read)."""
+    from yupi.enumerator import paths as _paths
+    from yupi.queries import entropy_bits
+    cfg, progs = WorldConfig.c1(epsilon=Fraction(1)), c1_programs()
+    prior = {}
+    for _, prob, final in _paths(cfg, progs, 4):
+        prior[final] = prior.get(final, Fraction(0)) + prob
+    # pattern side: empty window, binding () — every thread is unnamed; a fresh token is UNSEEN,
+    # i.e. one of the n unnamed threads uniformly (σ is a uniform injection)
+    unseen = {}
+    for s, m in prior.items():
+        for t in range(cfg.n_threads):
+            a = q2_status(s, t)
+            unseen[a] = unseen.get(a, Fraction(0)) + m / cfg.n_threads
+    assert unseen == {"RUNNING": Fraction(23, 48), "RUNNABLE": Fraction(23, 48), "IO_BLOCKED": Fraction(1, 24)}
+    assert round(entropy_bits(unseen), 3) == 1.208
