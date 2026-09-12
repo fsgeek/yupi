@@ -317,4 +317,7 @@ process, so that row is refused on both lines with evidence (table above)
 line; frontier identical). The rule did its job within the hour of its
 enactment; the consequence and the researcher's next step are recorded in
 `looping-exit-law-freeze-v0.1.md`'s 2026-09-06 addendum. The line is not
-moved.
+moved. *(2026-09-12: the pass was brought under the line by exact means —
+4.97 / 5.12 GB, gated equal on every rung at both ε; the line still not
+moved. `window-process-interning-note-v0.1.md`, freeze note addendum
+2026-09-12.)*

@@ -1,0 +1,11 @@
+[      0s] cur=0.02 GB peak=0.02 GB  start
+[    132s] cur=2.15 GB peak=2.57 GB  INTERNED r4 recursion done: windows 1393018 agg entries 2050796 mass_T entries 5014270 max_pairs 1335771 states 1974 projected records 39
+[    252s] cur=6.08 GB peak=6.08 GB  INTERNED projections r3..r0 done (120s): windows r3=961842 r2=896979 r1=794808 r0=12549
+[    262s] cur=6.08 GB peak=6.08 GB  after gc
+[    811s] cur=11.11 GB peak=11.84 GB  ORIGINAL r4 recursion done (550s vs interned 132s)
+[    825s] cur=11.11 GB peak=11.84 GB  GATE r4: agg and mass_T equal
+[    861s] cur=11.93 GB peak=11.93 GB  GATE r3: agg and mass_T equal
+[    906s] cur=11.82 GB peak=11.93 GB  GATE r2: agg and mass_T equal
+[    955s] cur=11.64 GB peak=11.93 GB  GATE r1: agg and mass_T equal
+[    989s] cur=11.1 GB peak=11.93 GB  GATE r0: agg and mass_T equal
+ALL GATES PASSED

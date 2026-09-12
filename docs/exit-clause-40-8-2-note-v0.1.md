@@ -11,7 +11,11 @@
 > pass is **refused on memory** by the D4 erratum E3 as the instrument runs
 > today (13.03 / 13.25 GB against 8 GB; frontier 1,964,919, admitted). Until
 > the pass is brought under the line by exact means and the freeze is
-> enacted, this note is a reading, not a verdict. Written by the instance
+> enacted, this note is a reading, not a verdict. *(2026-09-12: the pass
+> is under the line — 4.97 / 5.12 GB in a fresh process, gated equal to
+> the 2026-09-04 recursion on every rung at both ε, no value changed;
+> `window-process-interning-note-v0.1.md`. The freeze is back on the PI's
+> desk; until it is enacted the sentence before this one stands.)* Written by the instance
 > of 2026-09-11 under the PI/researcher split; reviewed cross-family (see
 > the ledger at the end).
 
@@ -76,6 +80,7 @@ under the admitting rule, before any ceiling existed at it.
 | pass frontier $\max_t \lvert\mathrm{frontier}_t\rvert$ | 1,964,919 (admitted, 1.8 % margin) | 1,964,919 |
 | pass peak RSS, Sep 4 instrument | 7.21 GB (admitted) | 7.23 GB |
 | pass peak RSS, instrument of Sep 6 (per-endpoint mass instrumentation, `06541a2`) | **13.03 GB (refused)** | **13.25 GB (refused)** |
+| pass peak RSS, instrument of Sep 12 (shared objects, compact per-endpoint mass; same values, same order — `window-process-interning-note-v0.1.md`) | **4.97 GB (admitted)** | **5.12 GB (admitted)** |
 
 The producers ran on the Sep 6 instrument. The frontier line binds the
 world's cost and is met; the memory line binds the implementation's and is

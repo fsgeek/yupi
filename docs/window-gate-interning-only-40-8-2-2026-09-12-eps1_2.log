@@ -1,0 +1,8 @@
+new pass done 518s peak(cumulative) 9.04 GB max_pairs 1964919
+old pass done 1813s peak(cumulative) 22.25 GB max_pairs 1964919
+GATE r0: 12739 windows, 308661 agg entries, 122630 mass_T entries — equal, same key order
+GATE r1: 819073 windows, 1631167 agg entries, 6490210 mass_T entries — equal, same key order
+GATE r2: 923461 windows, 1631167 agg entries, 7094476 mass_T entries — equal, same key order
+GATE r3: 991585 windows, 1631167 agg entries, 7433505 mass_T entries — equal, same key order
+GATE r4: 1524612 windows, 2248814 agg entries, 9995214 mass_T entries — equal, same key order
+ALL GATES PASSED 1/2

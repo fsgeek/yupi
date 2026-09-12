@@ -1,0 +1,8 @@
+[      0s] cur=0.02 GB peak=0.02 GB  start
+[    511s] cur=4.04 GB peak=4.88 GB  ORIGINAL r4 recursion, no mass_T: windows 1393018 entries 2050796
+[    524s] cur=4.21 GB peak=4.88 GB  census: state objects 2050796 distinct values 1971; record objects 2190899 distinct values 39; window tuples 1393018; fractions 2050796 mean bits 93.2
+[    549s] cur=4.46 GB peak=4.88 GB  projected r3: windows 961842 entries 1559002
+[    577s] cur=5.82 GB peak=5.82 GB  projected r2: windows 896979 entries 1559002
+[    596s] cur=7.09 GB peak=7.09 GB  projected r1: windows 794808 entries 1559002
+[    616s] cur=7.14 GB peak=7.14 GB  projected r0: windows 12549 entries 246515
+[    625s] cur=4.3 GB peak=7.14 GB  projections freed

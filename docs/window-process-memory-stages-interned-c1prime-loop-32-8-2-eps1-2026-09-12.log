@@ -1,0 +1,23 @@
+[      0s] cur=0.02 GB peak=0.02 GB  start
+[    135s] cur=2.17 GB peak=2.59 GB  NEW r4 recursion + fine mass_T: windows 1393018 agg entries 2050796 mass_T entries 5014270
+[    136s] cur=2.17 GB peak=2.59 GB  fine agg fractions mean bits 93.2
+[    154s] cur=2.41 GB peak=2.59 GB  projection map r3 built (35 distinct records)
+[    168s] cur=2.78 GB peak=2.77 GB  projection map r2 built (24 distinct records)
+[    184s] cur=3.15 GB peak=3.14 GB  projection map r1 built (21 distinct records)
+[    198s] cur=3.52 GB peak=3.51 GB  projection map r0 built (7 distinct records)
+[    208s] cur=3.97 GB peak=3.97 GB  coarse agg r3: windows 961842 entries 1559002
+[    215s] cur=4.43 GB peak=4.42 GB  coarse agg r2: windows 896979 entries 1559002
+[    222s] cur=4.86 GB peak=4.86 GB  coarse agg r1: windows 794808 entries 1559002
+[    229s] cur=4.89 GB peak=4.89 GB  coarse agg r0: windows 12549 entries 246515
+[    238s] cur=5.67 GB peak=5.67 GB  coarse mass_T r3: entries 3967757
+[    247s] cur=6.42 GB peak=6.42 GB  coarse mass_T r2: entries 3834042
+[    255s] cur=7.11 GB peak=7.11 GB  coarse mass_T r1: entries 3571339
+[    264s] cur=7.12 GB peak=7.12 GB  coarse mass_T r0: entries 74740
+[    272s] cur=7.66 GB peak=7.66 GB  compact mass_T r4 built (int numerators over per-T lcm; lcm bits max 81)
+[    276s] cur=8.07 GB peak=8.07 GB  compact mass_T r3 built (int numerators over per-T lcm; lcm bits max 81)
+[    279s] cur=8.46 GB peak=8.46 GB  compact mass_T r2 built (int numerators over per-T lcm; lcm bits max 81)
+[    286s] cur=8.82 GB peak=8.82 GB  compact mass_T r1 built (int numerators over per-T lcm; lcm bits max 81)
+[    287s] cur=8.83 GB peak=8.83 GB  compact mass_T r0 built (int numerators over per-T lcm; lcm bits max 81)
+[    294s] cur=8.43 GB peak=8.83 GB  projection maps freed
+[    302s] cur=6.31 GB peak=8.83 GB  dict-of-Fraction coarse mass_T freed (compact kept)
+[    308s] cur=6.27 GB peak=8.83 GB  fine dict-of-Fraction mass_T freed (compact kept)

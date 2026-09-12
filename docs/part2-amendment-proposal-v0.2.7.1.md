@@ -235,7 +235,9 @@ where the next reader meets the claim (no original text deleted):
    the freeze note's §5 item 4 re-price of 2026-09-06 found the pass at
    13.03 / 13.25 GB — refused on memory under E3 — so r0 is priced, and
    the law it was priced on is currently refused; see the freeze note's
-   2026-09-06 addendum. This bears on the freeze, not on this clause.)*
+   2026-09-06 addendum. This bears on the freeze, not on this clause.
+   2026-09-12: re-priced at 4.97 / 5.12 GB after an exact instrument
+   change, gated; the freeze is back on the PI's desk.)*
 4. ~~Producer edits for Clause 2~~ **Done 2026-09-04**: `yupi.sync`
    (`conditional_from_aggregate`, `conditional_from_by_endpoint`) computes
    (H_law − H_{U=0}) / Pr(U > 0); `scripts/c1_sync_sweep.py` now emits a

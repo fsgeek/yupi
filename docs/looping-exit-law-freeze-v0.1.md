@@ -270,6 +270,9 @@ one subprocess per ε, `rss_isolated_per_eps: true`):**
 | 1 | 1,964,919 (identical to Sep 4) | 1,953 | 1,444 s | **13.03 GB** | frontier admitted (1.8 % margin); **memory refused** (8 GB line) |
 | ½ | 1,964,919 (identical) | 4,173 | 1,798 s | **13.25 GB** | frontier admitted; **memory refused** |
 
+*(Superseded by the 2026-09-12 addendum below: 4.97 / 5.12 GB after an
+exact instrument change; the rows above stay as the record of the refusal.)*
+
 **The frozen law is refused on memory by the rule enacted this morning, on
 the instrument as it runs today.** The frontier did not move, as predicted
 (`mass_T` lives outside `dist`); peak RSS went from 7.21 / 7.23 GB to
@@ -309,3 +312,48 @@ frontier 2,223,674, states 4,231, wall 2,995 s, **peak RSS 16.26 GB in a
 fresh process**. The withdrawn memory refusal is reinstated with evidence:
 (48,8,2) is refused on both lines at ε = ½. §6's remaining parenthetical
 on the 14.35 GB figure is superseded by this row.
+
+---
+
+## Addendum 2026-09-12 — the pass is under the line; this note returns to the PI's desk
+
+The researcher's path of 2026-09-06 was walked to its end
+(`window-process-interning-note-v0.1.md`, with raws and logs of the same
+date). The cost was found to be object identity, not rationals: the
+2026-09-04 recursion held one `State` object per aggregate entry for two
+thousand distinct values and one `Record` object per window slot for a
+few dozen, because the kernel builds fresh objects on every call and was
+called once per frontier pair per tick. Two exact changes to
+`src/yupi/window_process.py`: shared objects with the kernel memoized per
+state inside a recursion, and a compact per-endpoint mass (numerators over
+a per-endpoint common denominator, decoded to the same Fractions on
+access). Nothing approximate; no consumer touched.
+
+**Gate (against the 2026-09-04 recursion at this law, both ε, every rung,
+`==` on the aggregate, on the per-endpoint mass, and on key order):**
+`window-gate-interning-only-40-8-2-2026-09-12{,-eps1_2}.json` (shared
+objects alone) and `window-gate-interned-40-8-2-2026-09-12{,-eps1_2}.json`
+(the committed module) — ALL RUNGS EQUAL. The full suite (435) passes.
+The thirty producer artifacts are therefore what the instrument under the
+line produces (the note's §4 gives the reasoning and invites a re-run as a
+check).
+
+**Re-price (E3's unit, unchanged: one `window_law_aggregates()` pass per ε,
+all five rungs, per-endpoint mass included, fresh process;
+`window-process-pass-pricing-c1prime-loop-40-8-2-2026-09-12-interned.json`):**
+
+| ε | frontier $\max_t$ | reachable states (max) | wall | peak RSS | verdict under E3 |
+|---|---|---|---|---|---|
+| 1 | 1,964,919 (identical) | 1,953 | 537 s | **4.97 GB** | frontier admitted (1.8 % margin); **memory admitted** (38 % margin) |
+| ½ | 1,964,919 (identical) | 4,173 | 557 s | **5.12 GB** | frontier admitted; **memory admitted** (36 % margin) |
+
+Per-rung summaries identical to the Sep 4 and Sep 6 raws; frontier and
+states identical tick for tick. The 2 × 10⁶ / 8 GB line is **not moved**
+and was not argued; the pass moved.
+
+**Consequence.** §5 is discharged in full: enactment of v0.2.8.1 and
+v0.2.7.1 (done 2026-09-06 and 2026-09-11), the two-path gate (done), the
+statutory producers (done), and the re-price (this addendum). This note is
+**enactable as written** and goes back to the PI's desk. Until the PI
+enacts it, the thirty artifacts and the exit-clause note stay exploratory,
+as they say.
