@@ -4,7 +4,8 @@ the recursion under the external sharded gate). Pins: the gate field names
 the eight all-exact shard raws; the law-mass H(S) equals the pass-pricing
 raw's r4 value (two independent runs of the recursion); the U = 0 part of
 H(S) is exactly zero (reset-anchored r4 windows are injective in the
-looping world too); the statutory query means. Exploratory until Part II
+looping world too); the statutory query means. Statutory set per Part II
+§5 (`statutory_queries`; corrected 2026-09-12). Exploratory until Part II
 v0.2.8.1 / v0.2.7.1 are enacted; gated regardless."""
 import json
 import pathlib
@@ -13,6 +14,39 @@ from yupi.sync import conditional_from_by_endpoint
 from yupi.window import WindowLaw
 
 DOCS = pathlib.Path(__file__).parent.parent / "docs"
+
+STATUTORY = ("Q1[L0]", "Q1[L1]", "Q2[T0]", "Q2[T1]", "Q2[T2]", "Q2[T3]", "Q3[D0]")
+
+
+def statutory_queries(queries):
+    """Part II §5's statutory query set as keyed in the query-ceilings
+    artifacts: Q1[L0], Q1[L1], Q2[T0..T3], Q3[D0], and the twelve ordered
+    Q5 pairs. NOT in the set: Q3thr[D0] and Q4proxy (proxies) and Q5joint
+    (reported beside the maximum, v0.2.5). Q4 enters by its gap part at
+    W = 4 (v0.2.5 §A′) from the q4 artifacts — see `statutory_gaps`.
+    Corrected 2026-09-12 per the exit-clause note's [rv-1]: until then the
+    `stat` lists below held Q5joint and lacked Q4. No pinned maximum
+    changed (Q4's adjacent differences are 0.0195 / 0.0291 / 0.0034 at
+    ε = 1 and 0.0148 / 0.0160 / 0.0027 at ε = ½, below every carrier)."""
+    keys = [k for k in queries if k in STATUTORY or k.startswith("Q5[")]
+    assert len(keys) == 19, keys
+    return keys
+
+
+def q4_gap_bits(rung, eps):
+    """Q4's gap part at W = 4 for (rung, ε) from the pinned q4 artifact."""
+    pat = f"c1prime-loop-q4-ceilings-40-8-2-{rung}-W4-????-??-??" + ("" if eps == "1" else "-eps1_2") + ".json"
+    (f,) = DOCS.glob(pat)
+    (r,) = json.load(open(f))["rows"]
+    assert r["rung"] == rung and r["eps"] == eps
+    return r["gap_bits"]
+
+
+def statutory_gaps(coarse, fine):
+    """Coarser row minus finer row, per statutory query, Q4 by its gap part."""
+    g = {k: coarse["queries"][k]["mean_bits"] - fine["queries"][k]["mean_bits"] for k in statutory_queries(coarse["queries"])}
+    g["Q4gap[W4]"] = q4_gap_bits(coarse["rung"], coarse["eps"]) - q4_gap_bits(fine["rung"], fine["eps"])
+    return g
 
 
 def _row():
@@ -143,10 +177,11 @@ def test_r2_eps1_three_artifacts_pinned_and_first_adjacent_pair_clears_delta():
         assert round(r2["queries"][k]["mean_bits"], 4) == v, k
     r1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05.json"))["rows"][0]
     r4 = _row()
-    stat = [k for k in r1["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
-    gaps12 = {k: r1["queries"][k]["mean_bits"] - r2["queries"][k]["mean_bits"] for k in stat}
+    stat = statutory_queries(r1["queries"])
+    gaps12 = statutory_gaps(r1, r2)
     assert max(gaps12, key=gaps12.get) == "Q1[L1]" and round(max(gaps12.values()), 4) == 0.0477
-    assert round(gaps12["Q1[L0]"], 4) == 0.0339 and round(gaps12["Q5joint"], 4) == 0.0263
+    assert round(gaps12["Q1[L0]"], 4) == 0.0339 and round(gaps12["Q4gap[W4]"], 4) == 0.0195
+    assert round(r1["queries"]["Q5joint"]["mean_bits"] - r2["queries"]["Q5joint"]["mean_bits"], 4) == 0.0263   # beside the set
     assert max(gaps12.values()) > 4 * 0.01
     assert all(r1["queries"][k]["mean_bits"] >= r2["queries"][k]["mean_bits"] - 1e-12 >= r4["queries"][k]["mean_bits"] - 2e-12 for k in stat)
     assert round(r2["queries"]["Q1[L0]"]["mean_bits"] - r4["queries"]["Q1[L0]"]["mean_bits"], 4) == 0.1100
@@ -168,10 +203,11 @@ def test_r2_eps_half_three_artifacts_pinned_and_adjacent_pair_clears_delta():
         assert round(r2["queries"][k]["mean_bits"], 4) == v, k
     r1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05-eps1_2.json"))["rows"][0]
     r4 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r4-2026-09-05-eps1_2.json"))["rows"][0]
-    stat = [k for k in r1["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
-    g12 = {k: r1["queries"][k]["mean_bits"] - r2["queries"][k]["mean_bits"] for k in stat}
+    stat = statutory_queries(r1["queries"])
+    g12 = statutory_gaps(r1, r2)
     assert max(g12, key=g12.get) == "Q1[L1]" and round(max(g12.values()), 4) == 0.0366 and max(g12.values()) > 3 * 0.01
-    assert round(g12["Q1[L0]"], 4) == 0.0241 and round(g12["Q5joint"], 4) == 0.0178
+    assert round(g12["Q1[L0]"], 4) == 0.0241 and round(g12["Q4gap[W4]"], 4) == 0.0148
+    assert round(r1["queries"]["Q5joint"]["mean_bits"] - r2["queries"]["Q5joint"]["mean_bits"], 4) == 0.0178   # beside the set
     assert round(r2["queries"]["Q1[L0]"]["mean_bits"] - r4["queries"]["Q1[L0]"]["mean_bits"], 4) == 0.0523
     assert all(r1["queries"][k]["mean_bits"] >= r2["queries"][k]["mean_bits"] - 1e-12 >= r4["queries"][k]["mean_bits"] - 2e-12 for k in stat)
     q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r2-W4-2026-09-05-eps1_2.json"))["rows"][0]
@@ -196,10 +232,10 @@ def test_r3_eps1_pinned_and_every_adjacent_pair_is_above_delta_at_eps1():
     assert round(r3["mean_state_entropy_bits"], 4) == 0.4046
     for k, v in (("Q1[L0]", 0.0170), ("Q1[L1]", 0.0404), ("Q2[T0]", 0.0584), ("Q3[D0]", 0.0283), ("Q5joint", 0.0642)):
         assert round(r3["queries"][k]["mean_bits"], 4) == v, k
-    stat = [k for k in R["r1"]["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
+    stat = statutory_queries(R["r1"]["queries"])
     expected = {("r1", "r2"): ("Q1[L1]", 0.0477), ("r2", "r3"): ("Q1[L0]", 0.1100), ("r3", "r4"): ("Q3[D0]", 0.0142)}
     for (a, b), (q, v) in expected.items():
-        g = {k: R[a]["queries"][k]["mean_bits"] - R[b]["queries"][k]["mean_bits"] for k in stat}
+        g = statutory_gaps(R[a], R[b])
         assert max(g, key=g.get) == q and round(max(g.values()), 4) == v, (a, b)
         assert max(g.values()) > 0.01                       # δ, frozen v0.2.5
         assert all(x >= -1e-12 for x in g.values()), (a, b)  # refinement
@@ -224,10 +260,9 @@ def test_r0_eps1_pinned_identity_step_and_nonzero_reset_part():
     for k, v in (("Q1[L0]", 0.9946), ("Q1[L1]", 0.6154), ("Q2[T0]", 1.1765), ("Q2[T3]", 0.8303), ("Q3[D0]", 0.1949), ("Q5joint", 1.0571)):
         assert round(r0["queries"][k]["mean_bits"], 4) == v, k
     r1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05.json"))["rows"][0]
-    stat = [k for k in r0["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
-    g = {k: r0["queries"][k]["mean_bits"] - r1["queries"][k]["mean_bits"] for k in stat}
+    g = statutory_gaps(r0, r1)
     assert max(g, key=g.get) == "Q2[T0]" and round(max(g.values()), 4) == 1.0769 and all(v >= -1e-12 for v in g.values())
-    assert round(g["Q1[L0]"], 4) == 0.8337 and round(g["Q5joint"], 4) == 0.9394
+    assert round(g["Q1[L0]"], 4) == 0.8337 and round(r0["queries"]["Q5joint"]["mean_bits"] - r1["queries"]["Q5joint"]["mean_bits"], 4) == 0.9394
     c = conditional_from_by_endpoint(r0["by_endpoint"], WindowLaw(T_ep=40, L=8, B=2), "mean_state_entropy_bits")
     assert round(c["H_U0"], 4) == 0.5395 and round(c["E_H_given_U_pos"], 4) == 4.2598
     assert round(c["H_law"] * 40 / 32, 4) == 4.9342 and c["E_H_given_U_pos"] < c["H_law"] * 40 / 32 - 0.5
@@ -252,10 +287,10 @@ def test_r3_eps_half_pinned_and_every_adjacent_pair_is_above_delta_at_eps_half()
     assert round(r3["mean_state_entropy_bits"], 4) == 0.1774
     for k, v in (("Q1[L0]", 0.0032), ("Q1[L1]", 0.0210), ("Q2[T0]", 0.0255), ("Q3[D0]", 0.0210), ("Q5joint", 0.0288)):
         assert round(r3["queries"][k]["mean_bits"], 4) == v, k
-    stat = [k for k in R["r1"]["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
+    stat = statutory_queries(R["r1"]["queries"])
     expected = {("r1", "r2"): ("Q1[L1]", 0.0366), ("r2", "r3"): ("Q1[L0]", 0.0523), ("r3", "r4"): ("Q3[D0]", 0.0113)}
     for (a, b), (q, v) in expected.items():
-        g = {k: R[a]["queries"][k]["mean_bits"] - R[b]["queries"][k]["mean_bits"] for k in stat}
+        g = statutory_gaps(R[a], R[b])
         assert max(g, key=g.get) == q and round(max(g.values()), 4) == v, (a, b)
         assert max(g.values()) > 0.01 and all(x >= -1e-12 for x in g.values()), (a, b)
     q4 = json.load(open(DOCS / "c1prime-loop-q4-ceilings-40-8-2-r3-W4-2026-09-06-eps1_2.json"))["rows"][0]
@@ -276,8 +311,7 @@ def test_r0_eps_half_pinned_and_the_whole_r0_to_r4_ladder_is_on_the_trace_at_bot
     for k, v in (("Q1[L0]", 0.8090), ("Q1[L1]", 0.5279), ("Q2[T0]", 1.0409), ("Q3[D0]", 0.1697), ("Q5joint", 0.9592)):
         assert round(r0["queries"][k]["mean_bits"], 4) == v, k
     r1 = json.load(open(DOCS / "c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05-eps1_2.json"))["rows"][0]
-    stat = [k for k in r0["queries"] if not k.startswith("Q4proxy") and k != "Q3thr[D0]"]
-    g = {k: r0["queries"][k]["mean_bits"] - r1["queries"][k]["mean_bits"] for k in stat}
+    g = statutory_gaps(r0, r1)
     assert max(g, key=g.get) == "Q2[T0]" and round(max(g.values()), 4) == 0.9957 and all(v >= -1e-12 for v in g.values())
     c = conditional_from_by_endpoint(r0["by_endpoint"], WindowLaw(T_ep=40, L=8, B=2), "mean_state_entropy_bits")
     assert round(c["H_U0"], 4) == 0.5551 and round(c["E_H_given_U_pos"], 4) == 3.5200

@@ -38,7 +38,10 @@ Three readings are fixed before the numbers are looked at:
   adjacent differences are 0.0195 / 0.0291 / 0.0034 at ε = 1 and 0.0148 /
   0.0160 / 0.0027 at ε = ½, all below the carriers, and Q5joint never
   carries one — but the pin test's label is wrong and is owed a
-  correction.)* Q5joint, the next-2-kind gap and the P-next gap are
+  correction. *Discharged 2026-09-12: `statutory_queries` /
+  `statutory_gaps` in the pin test now build Part II §5's set, Q4 by its
+  gap part from the q4 artifacts, Q5joint asserted beside; every pinned
+  maximum unchanged, 13 tests pass.*)* Q5joint, the next-2-kind gap and the P-next gap are
   reported beside the maximum, not in it.
 - **"Across rungs" means the content ladder r1–r4.** The clause was
   written for that ladder; r0 (kind-only) was added by Part II v0.2.7.1
@@ -303,7 +306,8 @@ Cross-family read, Codex, 2026-09-11 (`exit-clause-note-codex-review-2026-09-11.
 verdict AMEND BEFORE FILING, nine findings, every one adopted the same day:
 
 - [rv-1] statutory set corrected to Part II §5's (Q4 in by gap part, Q5joint
-  out); no maximum changes; the pin test's label is owed a correction.
+  out); no maximum changes; the pin test's label is owed a correction
+  *(discharged 2026-09-12, the commit carrying this line)*.
 - [rv-2] the r1–r4 reading is the researcher's interpretive decision, not
   ratified as statutory meaning; wording corrected.
 - [rv-3] every number in §2–§8 reproduced by the reviewer from the
