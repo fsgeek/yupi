@@ -1,6 +1,6 @@
 # Part II amendment proposal — v0.2.9 (the naming bridge: observation on equality patterns, the corpus track, and keyed rendering)
 
-> **Status (2026-09-12): PROPOSAL, researcher's brief to the PI. Not enacted.
+> **Status (2026-09-13): ENACTED as Part II v0.2.9, as amended — PI's words quoted verbatim in the decision record at the end of this file; Part II's title, §2 corpus-track paragraph and version-history entry carry the clauses; Clause 3's owed list is open and keeps every corpus-track number exploratory until discharged. Earlier (2026-09-12): PROPOSAL, researcher's brief to the PI.
 > Codex read the same day (`part2-v0.2.9-codex-review-2026-09-12.md`):
 > AMEND BEFORE FILING, nine findings, every one adopted below and marked
 > [rv-N]; the lemma survived (rv-1), the first quotient and its table did
@@ -268,3 +268,37 @@ canonical one.
   binding is 1.26 bits open at r4, ε = 1, and the state-in-names ladder
   (pc dropped) steps 0.34 / 0.20 / 0.02 where the canonical one steps
   0.07 / 0.12 / 0.02.
+- 2026-09-13: ENACTED (decision record below).
+
+## Decision record (2026-09-13)
+
+The researcher gave the PI, on request, an assessment of the project's
+strengths and weaknesses and the plan that follows from it: enact the
+freeze; stop adding exact measurements the learner does not need; decide
+the observer question now, because it defines the evaluation; build the
+corpus generator and a one-million-parameter model within two weeks; let
+the identity axis be the headline if the data says so. The PI's reply,
+verbatim:
+
+> *"Good - that's what I needed to know.  As far as I am concerned, it _is_ yours, so that's the decision; it could be my bias but I also think it is the right decision.  One downside to project by committee is that it can turn into a perennial focus on mollifying Reviewer #2.  That's not my goal."*
+
+Read as confirmation of the plan, of which enacting this proposal is an
+item, and as the PI's delegation of the enactment itself. The enacting
+instance records that the split (the party who produced the numbers does
+not enact them) was preserved for the *content* by the two Codex reads
+this proposal received; the PI collapsed it for the *decision*, in his
+own words, and that collapse is recorded here rather than assumed. If the
+PI meant less than this, the entries are reversed in place.
+
+**Observer decision** (the researcher's, under the delegation): paper 1
+reports both tracks, labelled — the canonical track's thirty gated
+artifacts as structural-characterization quantities under σ₀, the corpus
+track as the comparison point for a trained model, whose evaluation poses
+queries with pattern-indexed arguments.
+
+Edits: Part II title (v0.2.9), §2 corpus-track paragraph, version-history
+entry; this status line; `corpus-track-40-8-2-note-v0.1.md` status line.
+Still owed under Clause 3 before any corpus-track number is cited as a
+ceiling: lock/device/request naming in the lemma and the producer; the
+pattern forms of Q1/Q3/Q4/Q5; several distinct unseen tokens. The
+(40,8,2) corpus-track measurement stays exploratory on that account.

@@ -15,7 +15,17 @@
 > is under the line — 4.97 / 5.12 GB in a fresh process, gated equal to
 > the 2026-09-04 recursion on every rung at both ε, no value changed;
 > `window-process-interning-note-v0.1.md`. The freeze is back on the PI's
-> desk; until it is enacted the sentence before this one stands.)* Written by the instance
+> desk; until it is enacted the sentence before this one stands.)*
+> **(2026-09-13: the freeze is ENACTED — `looping-exit-law-freeze-v0.1.md`,
+> addendum of that date, the PI's words quoted. The thirty artifacts are
+> statutory and this note is read as the verdict it states: on the
+> canonical track, every adjacent content pair r1–r4 is above δ at both
+> statutory ε, and deliverable 5's divergent classes are exhibited (§8);
+> the first exit condition is met as this note reads it (§1), with the
+> r1–r4 reading the researcher's interpretive decision and the r0 → r1
+> step beside. The corpus track — Part II v0.2.9, enacted the same day —
+> is a different observer and is reported beside this reading
+> (`corpus-track-40-8-2-note-v0.1.md`), not folded into it.)** Written by the instance
 > of 2026-09-11 under the PI/researcher split; reviewed cross-family (see
 > the ledger at the end).
 
@@ -327,3 +337,5 @@ verdict AMEND BEFORE FILING, nine findings, every one adopted the same day:
 - [rv-8] §10 retitled and its order corrected to the commits; no
   enactment implied.
 - [rv-9] the identity-residual check's law stated as a limitation.
+- 2026-09-13: the freeze enacted; this note is the verdict as stated
+  (status block). The corpus track (v0.2.9) reported beside.

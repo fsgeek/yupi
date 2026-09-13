@@ -1,7 +1,10 @@
 # The corpus track at the frozen law — (40, 8, 2), looping C1′, thread naming, both statutory ε (v0.1, 2026-09-13)
 
-> **Status: EXPLORATORY.** Every number below is produced under Part II
-> **v0.2.9 as proposed, not enacted** (`part2-amendment-proposal-v0.2.9.md`),
+> **Status: EXPLORATORY.** *(2026-09-13, later the same day: v0.2.9 is
+> ENACTED; the numbers stay exploratory under its Clause 3 — thread naming
+> only, and the pattern forms of Q1/Q3/Q4/Q5 are owed — and are not cited
+> as corpus-track ceilings until that list is discharged.)* Every number
+> below is produced under Part II **v0.2.9** (`part2-amendment-proposal-v0.2.9.md`),
 > by `scripts/c1_corpus_track.py` from the same gated window-process pass
 > that produced the thirty canonical artifacts (external gate: the sharded
 > raws of Sep 4–6, every rung, both ε), re-keyed by the equality pattern Π

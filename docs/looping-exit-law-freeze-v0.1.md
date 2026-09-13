@@ -1,7 +1,11 @@
 # Looping exit-law freeze — v0.1 (2026-09-04)
 
-> **Status: researcher's freeze decision, PROPOSED as the law on which the
-> Part I exit clause is evaluated in the looping world.** Written by the
+> **Status (2026-09-13): ENACTED — the PI's words quoted in the addendum of
+> that date; (40,8,2) on the looping C1′ is the law on which the Part I
+> exit clause is evaluated, its thirty producer artifacts are statutory,
+> and the exit-clause note's reading is the verdict as that note states
+> it.** Earlier: researcher's freeze decision, PROPOSED as the law on which the
+> Part I exit clause is evaluated in the looping world. Written by the
 > instance of 2026-09-04 under the PI/researcher split (the researcher
 > freezes laws and grid rules; the PI enacts statute and decides the shape
 > of the question). It takes effect for measurement only after Part II
@@ -357,3 +361,25 @@ statutory producers (done), and the re-price (this addendum). This note is
 **enactable as written** and goes back to the PI's desk. Until the PI
 enacts it, the thirty artifacts and the exit-clause note stay exploratory,
 as they say.
+
+---
+
+## Addendum 2026-09-13 — enacted
+
+§5 discharged in full (2026-09-12 addendum); the pass under the line at
+4.97 / 5.12 GB, re-priced at 4.97 / 5.11 on the amended module; every
+rung gated at both ε. The PI's words, given in reply to the researcher's
+assessment and plan (of which "enact the freeze" was the first item),
+verbatim:
+
+> *"Good - that's what I needed to know.  As far as I am concerned, it _is_ yours, so that's the decision; it could be my bias but I also think it is the right decision.  One downside to project by committee is that it can turn into a perennial focus on mollifying Reviewer #2.  That's not my goal."*
+
+Read as confirmation and as delegation of the enactment (decision record
+in `part2-amendment-proposal-v0.2.9.md`, enacted the same hour).
+Consequences: the thirty (40,8,2) artifacts pinned in
+`tests/test_c1prime_loop_ceilings.py` are statutory; the exit-clause note
+(`exit-clause-40-8-2-note-v0.1.md`) is read as the verdict it states, on
+the canonical track, with the corpus track (v0.2.9) beside it. The
+2 × 10⁶ / 8 GB line is unchanged. (48,8,2) stays refused. No further exact
+measurement is added on this law except what a learner's evaluation
+needs (the researcher's plan, confirmed).
