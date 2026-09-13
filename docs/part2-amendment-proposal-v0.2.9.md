@@ -260,3 +260,11 @@ canonical one.
   demoted to a consistency check; [rv-8] rendering made exactly uniform,
   idealized-key assumption stated; [rv-9] who/what framing qualified.
   Eleven tests.
+- 2026-09-13: lemma extended to every rung (17 tests); `yupi.naming`;
+  producer `scripts/c1_corpus_track.py`; the corpus track measured at
+  the frozen law — `corpus-track-40-8-2-note-v0.1.md` (exploratory). The
+  quotient gained a pc-dropped form: pc is a second role channel after
+  the cursor. The open measurement of §2 is now on the trace: the
+  binding is 1.26 bits open at r4, ε = 1, and the state-in-names ladder
+  (pc dropped) steps 0.34 / 0.20 / 0.02 where the canonical one steps
+  0.07 / 0.12 / 0.02.

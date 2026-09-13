@@ -1,0 +1,212 @@
+{
+  "law": {
+    "T_ep": 40,
+    "L": 8,
+    "B": 2
+  },
+  "programs": "c1prime-loop",
+  "aggregation": "window",
+  "track": "corpus (thread naming only)",
+  "status": "EXPLORATORY (Part II v0.2.9 proposal, not enacted)",
+  "rows": [
+    {
+      "eps": "1/2",
+      "rung": "r0",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard0.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard1.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard2.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard3.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard4.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard5.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard6.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-eps1_2-shard7.json",
+      "n_windows_canonical": 12739,
+      "n_pattern_classes": 12739,
+      "canonical": {
+        "mean_state_entropy_bits": 3.3710775745379635,
+        "Q2": {
+          "T0": 1.0409355779337566,
+          "T1": 0.936632221052161,
+          "T2": 0.9109286186145112,
+          "T3": 0.7741938547997943
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 3.3710775745379635,
+        "H_quotient_given_pattern": 3.0766224876282613,
+        "H_quotient_no_pc_given_pattern": 2.5324307287477836,
+        "H_binding_given_pattern": 0.0,
+        "H_state_binding_given_pattern": 3.3710775745379635,
+        "Q2": {
+          "named0": 1.3693980554075103,
+          "named1": 1.3693980554075103,
+          "named2": 1.3693980554075103,
+          "named3": 1.3693980554075103
+        },
+        "Q2_unseen": 1.3693980554075103,
+        "law_mass_by_named_count": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "wall_rekey_s": 30.595484018325806
+    },
+    {
+      "eps": "1/2",
+      "rung": "r1",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard0.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard1.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard2.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard3.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard4.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard5.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard6.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-eps1_2-shard7.json",
+      "n_windows_canonical": 819073,
+      "n_pattern_classes": 316444,
+      "canonical": {
+        "mean_state_entropy_bits": 0.296259334879133,
+        "Q2": {
+          "T0": 0.04528396913953233,
+          "T1": 0.015155896531301895,
+          "T2": 0.049724021331709646,
+          "T3": 0.006219491487706217
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 1.4658513255768093,
+        "H_quotient_given_pattern": 1.2746813231092433,
+        "H_quotient_no_pc_given_pattern": 1.079621107711488,
+        "H_binding_given_pattern": 1.1877361055421318,
+        "H_state_binding_given_pattern": 1.4839954404212627,
+        "Q2": {
+          "named0": 0.02861323668665291,
+          "named1": 0.028084874296396965,
+          "named2": 0.04396292086090008,
+          "named3": 0.1440139465959288
+        },
+        "Q2_unseen": 0.14036142706079716,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.00025636402057277013,
+          "2": 0.08710940664884927,
+          "3": 0.3893282350908761,
+          "4": 0.5233059942397018
+        }
+      },
+      "wall_rekey_s": 101.92583060264587
+    },
+    {
+      "eps": "1/2",
+      "rung": "r2",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard0.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard1.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard2.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard3.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard4.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard5.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard6.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-eps1_2-shard7.json",
+      "n_windows_canonical": 923461,
+      "n_pattern_classes": 499899,
+      "canonical": {
+        "mean_state_entropy_bits": 0.24000252777628445,
+        "Q2": {
+          "T0": 0.0414796529625862,
+          "T1": 0.011016261580873847,
+          "T2": 0.03960845755563212,
+          "T3": 0.006204129850504433
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 1.1800678917900502,
+        "H_quotient_given_pattern": 0.9777511567327072,
+        "H_quotient_no_pc_given_pattern": 0.801536900450108,
+        "H_binding_given_pattern": 0.945487215680643,
+        "H_state_binding_given_pattern": 1.1854897434569605,
+        "Q2": {
+          "named0": 0.005606472432008979,
+          "named1": 0.005545092574184074,
+          "named2": 0.02279328576930311,
+          "named3": 0.09098047629945166
+        },
+        "Q2_unseen": 0.09098047629945166,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.00025636402057277013,
+          "2": 0.08710940664884927,
+          "3": 0.3893282350908761,
+          "4": 0.5233059942397018
+        }
+      },
+      "wall_rekey_s": 105.7486481666565
+    },
+    {
+      "eps": "1/2",
+      "rung": "r3",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard0.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard1.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard2.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard3.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard4.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard5.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard6.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-eps1_2-shard7.json",
+      "n_windows_canonical": 991585,
+      "n_pattern_classes": 569985,
+      "canonical": {
+        "mean_state_entropy_bits": 0.1774427218738968,
+        "Q2": {
+          "T0": 0.025532232747645645,
+          "T1": 0.0033824200620626273,
+          "T2": 0.02206413110141016,
+          "T3": 0.00593160560284095
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 1.0365918077264855,
+        "H_quotient_given_pattern": 0.8342586452893249,
+        "H_quotient_no_pc_given_pattern": 0.658044389006727,
+        "H_binding_given_pattern": 0.8645545101396699,
+        "H_state_binding_given_pattern": 1.0419972320136013,
+        "Q2": {
+          "named0": 0.0,
+          "named1": 0.00030143128082381007,
+          "named2": 0.0038126401426084515,
+          "named3": 0.0654692837683409
+        },
+        "Q2_unseen": 0.06538096525987983,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.0002553957730729477,
+          "2": 0.07235436430557672,
+          "3": 0.3037411115827197,
+          "4": 0.6236491283386306
+        }
+      },
+      "wall_rekey_s": 103.44942784309387
+    },
+    {
+      "eps": "1/2",
+      "rung": "r4",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard0.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard1.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard2.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard3.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard4.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard5.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard6.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-05-full-eps1_2-shard7.json",
+      "n_windows_canonical": 1524612,
+      "n_pattern_classes": 908234,
+      "canonical": {
+        "mean_state_entropy_bits": 0.165793924058239,
+        "Q2": {
+          "T0": 0.01861235979037196,
+          "T1": 0.003374531152122142,
+          "T2": 0.022035019016755076,
+          "T3": 0.003134458200387629
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 1.0184617098746647,
+        "H_quotient_given_pattern": 0.8160685107633261,
+        "H_quotient_no_pc_given_pattern": 0.6406033785602394,
+        "H_binding_given_pattern": 0.8579794571847841,
+        "H_state_binding_given_pattern": 1.0237733812430572,
+        "Q2": {
+          "named0": 0.0,
+          "named1": 0.0002976125893864998,
+          "named2": 0.0030469545362171355,
+          "named3": 0.052482216764520646
+        },
+        "Q2_unseen": 0.05239389825605952,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.0002553957730729477,
+          "2": 0.07235436430557672,
+          "3": 0.3037411115827197,
+          "4": 0.6236491283386306
+        }
+      },
+      "wall_rekey_s": 151.08548641204834
+    }
+  ],
+  "wall_pass_s": {
+    "1/2": 526.2645189762115
+  },
+  "peak_rss_kb": 6277620
+}

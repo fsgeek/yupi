@@ -48,7 +48,7 @@ def pattern(window):
 UNSEEN = "?"
 
 
-def quotient(state, binding, cfg):
+def quotient(state, binding, cfg, with_pc=True):
     """The state re-expressed in the window's names — the corpus-track
     state (v0.2.9 §2, amended per the Codex read of 2026-09-12 [rv-4] [rv-5]).
 
@@ -66,7 +66,13 @@ def quotient(state, binding, cfg):
     and is mapped like any other thread reference. Program role is not a
     field of the state and is deliberately absent: which program a named
     thread runs is the binding's business, so role uncertainty lives in
-    H(S, β | q, w), not in q."""
+    H(S, β | q, w), not in q.
+
+    `with_pc=False` drops the program counters (2026-09-13): pc is written
+    by the kernel and is state, but its value is meaningful only relative
+    to the thread's program, which is the binding's business — so pc is a
+    second coordinate (after the cursor) through which role can enter q.
+    Both forms are reported; neither is claimed as "the content"."""
     n = len(state.pc)
     named = {t: k for k, t in enumerate(binding)}
     unnamed = [t for t in range(n) if t not in named]
@@ -76,8 +82,9 @@ def quotient(state, binding, cfg):
         for j, t in enumerate(perm):
             lab[t] = f"a{j}"
         nm = lambda t: (lab[t] if t is not None else None)
-        rep = (tuple((state.pc[t], state.status[t]) for t in binding),
-               tuple((state.pc[t], state.status[t]) for t in perm),
+        pcv = (lambda t: state.pc[t]) if with_pc else (lambda t: None)
+        rep = (tuple((pcv(t), state.status[t]) for t in binding),
+               tuple((pcv(t), state.status[t]) for t in perm),
                tuple(sorted(str(nm(t)) for t in state.running)),
                tuple(str(nm(o)) for o in state.lock_owner),
                tuple(tuple(str(nm(t)) for t in q) for q in state.lock_wq),

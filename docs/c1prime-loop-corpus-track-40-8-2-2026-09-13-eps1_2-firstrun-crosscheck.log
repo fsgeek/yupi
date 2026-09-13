@@ -1,0 +1,6 @@
+eps=1/2 r0: canonical n=12739 H(S|w)=3.3711  corpus classes=12739 H(S|Πw)=3.3711 H(q|Πw)=3.0766 H(β|Πw)=0.0000  Q2 canonical T0=1.0409 corpus named0=1.3694 unseen=1.3694  (29s)
+eps=1/2 r1: canonical n=819073 H(S|w)=0.2963  corpus classes=316444 H(S|Πw)=1.4659 H(q|Πw)=1.2747 H(β|Πw)=1.1877  Q2 canonical T0=0.0453 corpus named0=0.0286 unseen=0.1404  (98s)
+eps=1/2 r2: canonical n=923461 H(S|w)=0.2400  corpus classes=499899 H(S|Πw)=1.1801 H(q|Πw)=0.9778 H(β|Πw)=0.9455  Q2 canonical T0=0.0415 corpus named0=0.0056 unseen=0.0910  (97s)
+eps=1/2 r3: canonical n=991585 H(S|w)=0.1774  corpus classes=569985 H(S|Πw)=1.0366 H(q|Πw)=0.8343 H(β|Πw)=0.8646  Q2 canonical T0=0.0255 corpus named0=0.0000 unseen=0.0654  (103s)
+eps=1/2 r4: canonical n=1524612 H(S|w)=0.1658  corpus classes=908234 H(S|Πw)=1.0185 H(q|Πw)=0.8161 H(β|Πw)=0.8580  Q2 canonical T0=0.0186 corpus named0=0.0000 unseen=0.0524  (143s)
+raw JSON -> /home/tony/.cache/yupi-scratch/mem-2026-09-12/corpus-track-40-8-2-eps1_2.json

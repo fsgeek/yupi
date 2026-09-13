@@ -1,0 +1,212 @@
+{
+  "law": {
+    "T_ep": 40,
+    "L": 8,
+    "B": 2
+  },
+  "programs": "c1prime-loop",
+  "aggregation": "window",
+  "track": "corpus (thread naming only)",
+  "status": "EXPLORATORY (Part II v0.2.9 proposal, not enacted)",
+  "rows": [
+    {
+      "eps": "1",
+      "rung": "r0",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard0.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard1.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard2.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard3.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard4.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard5.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard6.json,window-gate-c1prime-loop-40-8-2-r0-2026-09-06-full-shard7.json",
+      "n_windows_canonical": 12739,
+      "n_pattern_classes": 12739,
+      "canonical": {
+        "mean_state_entropy_bits": 3.947370849637951,
+        "Q2": {
+          "T0": 1.1764666162506663,
+          "T1": 1.0584553653486697,
+          "T2": 1.0453435619190976,
+          "T3": 0.8303107766944003
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 3.947370849637951,
+        "H_quotient_given_pattern": 3.3082434630881346,
+        "H_quotient_no_pc_given_pattern": 1.789934060790078,
+        "H_binding_given_pattern": 0.0,
+        "H_state_binding_given_pattern": 3.947370849637951,
+        "Q2": {
+          "named0": 1.36091692441758,
+          "named1": 1.36091692441758,
+          "named2": 1.36091692441758,
+          "named3": 1.36091692441758
+        },
+        "Q2_unseen": 1.36091692441758,
+        "law_mass_by_named_count": {
+          "0": 1.0,
+          "1": 0.0,
+          "2": 0.0,
+          "3": 0.0,
+          "4": 0.0
+        }
+      },
+      "wall_rekey_s": 24.40916872024536
+    },
+    {
+      "eps": "1",
+      "rung": "r1",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard0.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard1.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard2.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard3.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard4.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard5.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard6.json,window-gate-c1prime-loop-40-8-2-r1-2026-09-05-full-shard7.json",
+      "n_windows_canonical": 819073,
+      "n_pattern_classes": 316444,
+      "canonical": {
+        "mean_state_entropy_bits": 0.6008355759960454,
+        "Q2": {
+          "T0": 0.09961406882829837,
+          "T1": 0.05223460197826748,
+          "T2": 0.0889609374603705,
+          "T3": 0.017862688736782945
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 2.0964874005180034,
+        "H_quotient_given_pattern": 1.6674204050193966,
+        "H_quotient_no_pc_given_pattern": 0.7371961393811439,
+        "H_binding_given_pattern": 1.6771987751150006,
+        "H_state_binding_given_pattern": 2.27803435111149,
+        "Q2": {
+          "named0": 0.03867439690697075,
+          "named1": 0.0431631905337032,
+          "named2": 0.10224139791241506,
+          "named3": 0.23435632755937666
+        },
+        "Q2_unseen": 0.22817725626411167,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.003034896876640007,
+          "2": 0.14573982566866267,
+          "3": 0.4575583499059129,
+          "4": 0.39366692754878446
+        }
+      },
+      "wall_rekey_s": 101.31009840965271
+    },
+    {
+      "eps": "1",
+      "rung": "r2",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard0.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard1.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard2.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard3.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard4.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard5.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard6.json,window-gate-c1prime-loop-40-8-2-r2-2026-09-05-full-shard7.json",
+      "n_windows_canonical": 923461,
+      "n_pattern_classes": 499899,
+      "canonical": {
+        "mean_state_entropy_bits": 0.5277293540521433,
+        "Q2": {
+          "T0": 0.09058006556215734,
+          "T1": 0.04438912132453927,
+          "T2": 0.07949573274105638,
+          "T3": 0.01778237431866522
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 1.7173302679353142,
+        "H_quotient_given_pattern": 1.2735689656416387,
+        "H_quotient_no_pc_given_pattern": 0.4006237495746685,
+        "H_binding_given_pattern": 1.341742260798956,
+        "H_state_binding_given_pattern": 1.8694716148511326,
+        "Q2": {
+          "named0": 0.010663897349776318,
+          "named1": 0.013201843129949844,
+          "named2": 0.07167715724753203,
+          "named3": 0.17093174870401814
+        },
+        "Q2_unseen": 0.17093174870401814,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.003034896876640007,
+          "2": 0.14573982566866267,
+          "3": 0.4575583499059129,
+          "4": 0.39366692754878446
+        }
+      },
+      "wall_rekey_s": 101.10582399368286
+    },
+    {
+      "eps": "1",
+      "rung": "r3",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard0.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard1.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard2.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard3.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard4.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard5.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard6.json,window-gate-c1prime-loop-40-8-2-r3-2026-09-06-full-shard7.json",
+      "n_windows_canonical": 991585,
+      "n_pattern_classes": 569985,
+      "canonical": {
+        "mean_state_entropy_bits": 0.4046373015478944,
+        "Q2": {
+          "T0": 0.058377218828089536,
+          "T1": 0.022921220957626474,
+          "T2": 0.045805540262981836,
+          "T3": 0.016243013886262137
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 1.5264329908185303,
+        "H_quotient_given_pattern": 1.070680681202721,
+        "H_quotient_no_pc_given_pattern": 0.19773546513561827,
+        "H_binding_given_pattern": 1.2619460288641637,
+        "H_state_binding_given_pattern": 1.666583330412007,
+        "Q2": {
+          "named0": 0.0,
+          "named1": 0.004586274360908116,
+          "named2": 0.0298682364778187,
+          "named3": 0.12584855927414831
+        },
+        "Q2_unseen": 0.12569252465589018,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.002961910354561322,
+          "2": 0.1084704215418911,
+          "3": 0.38537741035622114,
+          "4": 0.5031902577473265
+        }
+      },
+      "wall_rekey_s": 105.42172193527222
+    },
+    {
+      "eps": "1",
+      "rung": "r4",
+      "status": "EXPLORATORY (v0.2.9 not enacted)",
+      "gate": "external:window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard0.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard1.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard2.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard3.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard4.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard5.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard6.json,window-gate-c1prime-loop-40-8-2-r4-2026-09-04-full-shard7.json",
+      "n_windows_canonical": 1524612,
+      "n_pattern_classes": 908234,
+      "canonical": {
+        "mean_state_entropy_bits": 0.38981145471813566,
+        "Q2": {
+          "T0": 0.05018584129093672,
+          "T1": 0.022820800777445978,
+          "T2": 0.045630794981450985,
+          "T3": 0.011717072156190202
+        }
+      },
+      "corpus": {
+        "H_S_given_pattern": 1.506454597306332,
+        "H_quotient_given_pattern": 1.0507224903222823,
+        "H_quotient_no_pc_given_pattern": 0.17937002654458264,
+        "H_binding_given_pattern": 1.2566947398031627,
+        "H_state_binding_given_pattern": 1.6465061945211827,
+        "Q2": {
+          "named0": 0.0,
+          "named1": 0.004556444178776384,
+          "named2": 0.02853880271079655,
+          "named3": 0.11082517764301927
+        },
+        "Q2_unseen": 0.11066914302476041,
+        "law_mass_by_named_count": {
+          "0": 0.0,
+          "1": 0.002961910354561322,
+          "2": 0.1084704215418911,
+          "3": 0.38537741035622114,
+          "4": 0.5031902577473265
+        }
+      },
+      "wall_rekey_s": 144.85717630386353
+    }
+  ],
+  "wall_pass_s": {
+    "1": 514.1933791637421
+  },
+  "peak_rss_kb": 6047100
+}
