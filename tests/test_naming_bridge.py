@@ -36,43 +36,13 @@ import pytest
 
 from yupi.config import WorldConfig
 from yupi.enumerator import paths
-from yupi.interfaces import MASKED, project
+from yupi.interfaces import project
 from yupi.programs import c1_programs
+from yupi.naming import UNSEEN, pattern, quotient, rename
 from yupi.queries import q2_status
-from yupi.records import Record
 from yupi.window import WindowLaw, endpoint_prior
 
 LAW = WindowLaw(T_ep=8, L=4, B=2)
-
-
-def _is_thread_field(v):
-    return v is not None and v != MASKED
-
-
-def rename(rec: Record, sigma) -> Record:
-    """Surface record: thread fields through the episode's injection σ."""
-    return Record(kind=rec.kind,
-                  actor=sigma[rec.actor] if _is_thread_field(rec.actor) else rec.actor,
-                  obj=rec.obj,
-                  related=sigma[rec.related] if _is_thread_field(rec.related) else rec.related,
-                  lineage=rec.lineage)
-
-
-def pattern(window):
-    """Equality pattern: thread fields relabeled by first appearance (actor
-    before related within a record); returns (pattern window, order), where
-    order[k] is the original label of pattern index k."""
-    idx, order, out = {}, [], []
-    def lab(v):
-        if not _is_thread_field(v):
-            return v
-        if v not in idx:
-            idx[v] = len(order); order.append(v)
-        return idx[v]
-    for r in window:
-        a = lab(r.actor); rel = lab(r.related)
-        out.append(Record(kind=r.kind, actor=a, obj=r.obj, related=rel, lineage=r.lineage))
-    return tuple(out), tuple(order)
 
 
 def _windows(cfg, progs, rung):
@@ -108,8 +78,11 @@ def _state_marginal(joint):
     return out
 
 
+RUNGS = ("r0", "r1", "r2", "r3", "r4")
+
+
 @pytest.mark.parametrize("eps", [Fraction(1), Fraction(1, 2)])
-@pytest.mark.parametrize("rung", ["r1", "r3"])
+@pytest.mark.parametrize("rung", RUNGS)        # r0 has no thread field: Π is the identity and the lemma is trivial there
 def test_surface_posterior_is_the_pattern_posterior(eps, rung):
     cfg, progs = WorldConfig.c1(epsilon=eps), c1_programs()
     pool = tuple(f"tok{j}" for j in range(cfg.n_threads + 1))
@@ -143,74 +116,33 @@ def test_surface_posterior_is_the_pattern_posterior(eps, rung):
                 patterned[a] = patterned.get(a, Fraction(0)) + m
             tot_n, tot_p = sum(named.values(), Fraction(0)), sum(patterned.values(), Fraction(0))
             assert {a: m / tot_n for a, m in named.items()} == {a: m / tot_p for a, m in patterned.items()}, (reset, sw, x)
-    # the surface partition is strictly finer than the pattern partition (tokens carry no information)
-    assert len(surface) > len(patt)
+    # the surface partition is strictly finer than the pattern partition (tokens carry no information) —
+    # except at r0, where no field is renamed and the two coincide
+    assert (len(surface) > len(patt)) == (rung != "r0")
 
 
 @pytest.mark.parametrize("eps", [Fraction(1), Fraction(1, 2)])
 def test_pattern_partition_refines_down_the_ladder(eps):
+    """Project-then-re-canonicalize is a deterministic map from the finer
+    pattern to the coarser one, along the whole ladder r4 → r3 → r2 → r1 → r0
+    ([rv-3]: Π does not commute with the projections; refinement is what holds)."""
     cfg, progs = WorldConfig.c1(epsilon=eps), c1_programs()
-    classes = {}
-    for rung in ("r1", "r3"):
-        classes[rung] = {}
-        for reset, win, mass, final in _windows(cfg, progs, rung):
-            pw, _ = pattern(win)
-            classes[rung].setdefault((reset, pw), Fraction(0))
-            classes[rung][(reset, pw)] += mass
-    # every r3 pattern class projects to exactly one r1 pattern class
-    r3_to_r1 = {}
-    for reset, win, mass, final in _windows(cfg, progs, "r3"):
-        pw3, _ = pattern(win)
-        pw1, _ = pattern(tuple(project(r, "r1") for r in win))
-        assert r3_to_r1.setdefault((reset, pw3), (reset, pw1)) == (reset, pw1)
-    assert len(classes["r3"]) >= len(classes["r1"]) and set(r3_to_r1.values()) == set(classes["r1"])
+    classes = {r: set() for r in RUNGS}
+    for reset, win, mass, final in _windows(cfg, progs, "r4"):
+        prev = None
+        for r in reversed(RUNGS):                      # r4, r3, r2, r1, r0
+            pw, _ = pattern(tuple(project(x, r) for x in win))
+            classes[r].add((reset, pw))
+    for fine, coarse in zip(reversed(RUNGS), list(reversed(RUNGS))[1:]):
+        fine_to_coarse = {}
+        for reset, win, mass, final in _windows(cfg, progs, fine):
+            pf, _ = pattern(win)
+            pc, _ = pattern(tuple(project(x, coarse) for x in win))
+            assert fine_to_coarse.setdefault((reset, pf), (reset, pc)) == (reset, pc), (fine, coarse)
+        assert len(classes[fine]) >= len(classes[coarse]) and set(fine_to_coarse.values()) == classes[coarse]
 
 
 # ---- 4. the corpus-track state: the state as the observer can name it ------------
-
-UNSEEN = "?"
-
-
-def quotient(state, binding, cfg):
-    """The state re-expressed in the window's names — the corpus-track
-    state (v0.2.9 §2, amended per the Codex read of 2026-09-12 [rv-4] [rv-5]).
-
-    Named threads keep their fields under their pattern index. Unnamed
-    threads are canonicalized: their fields, and every reference to them,
-    are written under anonymous labels a0, a1, … chosen as the
-    lexicographically least representation over all orderings of the
-    unnamed threads, so relational structure among anonymous threads
-    (which anonymous thread owns a lock, which waits, whether two
-    references are the same thread) is kept while their structural
-    identity is not. A field the kernel never writes under the
-    configuration is excluded: the round-robin cursor is constant at
-    ε = 1 (Part II §1, v0.2.6) and mapping it through the binding would
-    inject binding entropy into the state ([rv-5]); at ε < 1 it is live
-    and is mapped like any other thread reference. Program role is not a
-    field of the state and is deliberately absent: which program a named
-    thread runs is the binding's business, so role uncertainty lives in
-    H(S, β | q, w), not in q."""
-    import itertools
-    n = len(state.pc)
-    named = {t: k for k, t in enumerate(binding)}
-    unnamed = [t for t in range(n) if t not in named]
-    best = None
-    for perm in itertools.permutations(unnamed):
-        lab = dict(named)
-        for j, t in enumerate(perm):
-            lab[t] = f"a{j}"
-        nm = lambda t: (lab[t] if t is not None else None)
-        rep = (tuple((state.pc[t], state.status[t]) for t in binding),
-               tuple((state.pc[t], state.status[t]) for t in perm),
-               tuple(sorted(str(nm(t)) for t in state.running)),
-               tuple(str(nm(o)) for o in state.lock_owner),
-               tuple(tuple(str(nm(t)) for t in q) for q in state.lock_wq),
-               tuple(tuple((str(nm(t)), r) for t, r in q) for q in state.dev_q),
-               (str(nm(state.rr_cursor)) if cfg.epsilon < 1 else None))
-        if best is None or rep < best:
-            best = rep
-    return best
-
 
 def _H(dist):
     from yupi.queries import state_entropy_bits
