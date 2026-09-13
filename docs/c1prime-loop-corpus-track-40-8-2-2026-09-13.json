@@ -29,6 +29,7 @@
         "H_S_given_pattern": 3.947370849637951,
         "H_quotient_given_pattern": 3.3082434630881346,
         "H_quotient_no_pc_given_pattern": 1.789934060790078,
+        "H_quotient_no_pc_no_cursor_given_pattern": 1.789934060790078,
         "H_binding_given_pattern": 0.0,
         "H_state_binding_given_pattern": 3.947370849637951,
         "Q2": {
@@ -46,7 +47,7 @@
           "4": 0.0
         }
       },
-      "wall_rekey_s": 24.40916872024536
+      "wall_rekey_s": 25.234442949295044
     },
     {
       "eps": "1",
@@ -68,6 +69,7 @@
         "H_S_given_pattern": 2.0964874005180034,
         "H_quotient_given_pattern": 1.6674204050193966,
         "H_quotient_no_pc_given_pattern": 0.7371961393811439,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.7371961393811439,
         "H_binding_given_pattern": 1.6771987751150006,
         "H_state_binding_given_pattern": 2.27803435111149,
         "Q2": {
@@ -85,7 +87,7 @@
           "4": 0.39366692754878446
         }
       },
-      "wall_rekey_s": 101.31009840965271
+      "wall_rekey_s": 106.5114049911499
     },
     {
       "eps": "1",
@@ -107,6 +109,7 @@
         "H_S_given_pattern": 1.7173302679353142,
         "H_quotient_given_pattern": 1.2735689656416387,
         "H_quotient_no_pc_given_pattern": 0.4006237495746685,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.4006237495746685,
         "H_binding_given_pattern": 1.341742260798956,
         "H_state_binding_given_pattern": 1.8694716148511326,
         "Q2": {
@@ -124,7 +127,7 @@
           "4": 0.39366692754878446
         }
       },
-      "wall_rekey_s": 101.10582399368286
+      "wall_rekey_s": 103.71789693832397
     },
     {
       "eps": "1",
@@ -146,6 +149,7 @@
         "H_S_given_pattern": 1.5264329908185303,
         "H_quotient_given_pattern": 1.070680681202721,
         "H_quotient_no_pc_given_pattern": 0.19773546513561827,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.19773546513561827,
         "H_binding_given_pattern": 1.2619460288641637,
         "H_state_binding_given_pattern": 1.666583330412007,
         "Q2": {
@@ -163,7 +167,7 @@
           "4": 0.5031902577473265
         }
       },
-      "wall_rekey_s": 105.42172193527222
+      "wall_rekey_s": 109.99024295806885
     },
     {
       "eps": "1",
@@ -185,6 +189,7 @@
         "H_S_given_pattern": 1.506454597306332,
         "H_quotient_given_pattern": 1.0507224903222823,
         "H_quotient_no_pc_given_pattern": 0.17937002654458264,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.17937002654458264,
         "H_binding_given_pattern": 1.2566947398031627,
         "H_state_binding_given_pattern": 1.6465061945211827,
         "Q2": {
@@ -202,11 +207,11 @@
           "4": 0.5031902577473265
         }
       },
-      "wall_rekey_s": 144.85717630386353
+      "wall_rekey_s": 149.4674150943756
     }
   ],
   "wall_pass_s": {
-    "1": 514.1933791637421
+    "1": 520.7379474639893
   },
-  "peak_rss_kb": 6047100
+  "peak_rss_kb": 6136972
 }

@@ -1,8 +1,8 @@
 /home/tony/projects/yupi/scripts/c1_corpus_track.py:20: SyntaxWarning: "\p" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\p"? A raw string is also an option.
   H(q\pc | Πw)        — the same with program counters dropped (pc is meaningful only given the program = the binding)
-eps=1 r0: canonical n=12739 H(S|w)=3.9474  corpus classes=12739 H(S|Πw)=3.9474 H(q|Πw)=3.3082 H(q\pc|Πw)=1.7899 H(β|Πw)=0.0000  Q2 canonical T0=1.1765 corpus named0=1.3609 unseen=1.3609  (24s)
-eps=1 r1: canonical n=819073 H(S|w)=0.6008  corpus classes=316444 H(S|Πw)=2.0965 H(q|Πw)=1.6674 H(q\pc|Πw)=0.7372 H(β|Πw)=1.6772  Q2 canonical T0=0.0996 corpus named0=0.0387 unseen=0.2282  (101s)
-eps=1 r2: canonical n=923461 H(S|w)=0.5277  corpus classes=499899 H(S|Πw)=1.7173 H(q|Πw)=1.2736 H(q\pc|Πw)=0.4006 H(β|Πw)=1.3417  Q2 canonical T0=0.0906 corpus named0=0.0107 unseen=0.1709  (101s)
-eps=1 r3: canonical n=991585 H(S|w)=0.4046  corpus classes=569985 H(S|Πw)=1.5264 H(q|Πw)=1.0707 H(q\pc|Πw)=0.1977 H(β|Πw)=1.2619  Q2 canonical T0=0.0584 corpus named0=0.0000 unseen=0.1257  (105s)
-eps=1 r4: canonical n=1524612 H(S|w)=0.3898  corpus classes=908234 H(S|Πw)=1.5065 H(q|Πw)=1.0507 H(q\pc|Πw)=0.1794 H(β|Πw)=1.2567  Q2 canonical T0=0.0502 corpus named0=0.0000 unseen=0.1107  (145s)
-raw JSON -> /home/tony/.cache/yupi-scratch/mem-2026-09-12/corpus-track-40-8-2-eps1-v2.json
+eps=1 r0: canonical n=12739 H(S|w)=3.9474  corpus classes=12739 H(S|Πw)=3.9474 H(q|Πw)=3.3082 H(q\pc|Πw)=1.7899 H(q\pc\cur|Πw)=1.7899 H(β|Πw)=0.0000  Q2 canonical T0=1.1765 corpus named0=1.3609 unseen=1.3609  (25s)
+eps=1 r1: canonical n=819073 H(S|w)=0.6008  corpus classes=316444 H(S|Πw)=2.0965 H(q|Πw)=1.6674 H(q\pc|Πw)=0.7372 H(q\pc\cur|Πw)=0.7372 H(β|Πw)=1.6772  Q2 canonical T0=0.0996 corpus named0=0.0387 unseen=0.2282  (107s)
+eps=1 r2: canonical n=923461 H(S|w)=0.5277  corpus classes=499899 H(S|Πw)=1.7173 H(q|Πw)=1.2736 H(q\pc|Πw)=0.4006 H(q\pc\cur|Πw)=0.4006 H(β|Πw)=1.3417  Q2 canonical T0=0.0906 corpus named0=0.0107 unseen=0.1709  (104s)
+eps=1 r3: canonical n=991585 H(S|w)=0.4046  corpus classes=569985 H(S|Πw)=1.5264 H(q|Πw)=1.0707 H(q\pc|Πw)=0.1977 H(q\pc\cur|Πw)=0.1977 H(β|Πw)=1.2619  Q2 canonical T0=0.0584 corpus named0=0.0000 unseen=0.1257  (110s)
+eps=1 r4: canonical n=1524612 H(S|w)=0.3898  corpus classes=908234 H(S|Πw)=1.5065 H(q|Πw)=1.0507 H(q\pc|Πw)=0.1794 H(q\pc\cur|Πw)=0.1794 H(β|Πw)=1.2567  Q2 canonical T0=0.0502 corpus named0=0.0000 unseen=0.1107  (149s)
+raw JSON -> /home/tony/.cache/yupi-scratch/mem-2026-09-12/corpus-track-40-8-2-eps1-v3.json

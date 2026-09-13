@@ -18,6 +18,9 @@ per rung, law-mass means in bits:
   corpus     H(S | Πw)           — structural state given the pattern window
              H(q | Πw)           — the state in the window's names (yupi.naming.quotient; cursor excluded at ε = 1)
              H(q\pc | Πw)        — the same with program counters dropped (pc is meaningful only given the program = the binding)
+             H(q\pc\cur | Πw)    — the same with the cursor dropped as well where it is live (ε < 1); equals H(q\pc) at ε = 1
+  Q2[named k] is an observation-dependent protocol: ask about the k-th named thread if the window
+             names k+1 threads, otherwise about a fresh token (the UNSEEN mixture); at r0 nothing is named.
              H(β | Πw)           — the binding (who is structurally who)
              H(S, β | Πw)
   Q2[k]      status of the k-th named thread (k = 0..n−1); on a class that names
@@ -99,14 +102,14 @@ def corpus_rows(law, eps, cfg, progs, rungs, docs_dir, programs_name, gate="exte
                 d[(s, order)] = d.get((s, order), Fraction(0)) + m
         total = sum((sum(v.values(), Fraction(0)) for v in patt.values()), Fraction(0))
         assert total == 1, total
-        H_S = H_q = H_q2 = H_b = H_joint = 0.0
+        H_S = H_q = H_q2 = H_q3 = H_b = H_joint = 0.0
         Q2 = [0.0] * n
         Q2_unseen = 0.0
         named_mass = [Fraction(0)] * (n + 1)          # law mass by number of named threads
         for joint in patt.values():
             mass = sum(joint.values(), Fraction(0))
             f = float(mass)
-            s_m, b_m, q_m, q_m2 = {}, {}, {}, {}
+            s_m, b_m, q_m, q_m2, q_m3 = {}, {}, {}, {}, {}
             q2 = [dict() for _ in range(n)]
             un = {}
             for (s, order), m in joint.items():
@@ -115,9 +118,11 @@ def corpus_rows(law, eps, cfg, progs, rungs, docs_dir, programs_name, gate="exte
                 key = (s, order)
                 qq = qcache.get(key)
                 if qq is None:
-                    qq = (quotient(s, order, cfg), quotient(s, order, cfg, with_pc=False)); qcache[key] = qq
+                    qq = (quotient(s, order, cfg), quotient(s, order, cfg, with_pc=False),
+                          quotient(s, order, cfg, with_pc=False, with_cursor=False)); qcache[key] = qq
                 q_m[qq[0]] = q_m.get(qq[0], Fraction(0)) + m
                 q_m2[qq[1]] = q_m2.get(qq[1], Fraction(0)) + m
+                q_m3[qq[2]] = q_m3.get(qq[2], Fraction(0)) + m
                 unnamed = [t for t in range(n) if t not in order]
                 for k in range(n):
                     if k < len(order):
@@ -132,7 +137,7 @@ def corpus_rows(law, eps, cfg, progs, rungs, docs_dir, programs_name, gate="exte
                     un["NONE"] = un.get("NONE", Fraction(0)) + m
             k_named = len(next(iter(joint))[1])
             named_mass[k_named] += mass
-            H_S += f * _H(s_m); H_q += f * _H(q_m); H_q2 += f * _H(q_m2); H_b += f * _H(b_m); H_joint += f * _H(joint)
+            H_S += f * _H(s_m); H_q += f * _H(q_m); H_q2 += f * _H(q_m2); H_q3 += f * _H(q_m3); H_b += f * _H(b_m); H_joint += f * _H(joint)
             for k in range(n):
                 Q2[k] += f * _H(q2[k])
             Q2_unseen += f * _H(un)
@@ -140,12 +145,12 @@ def corpus_rows(law, eps, cfg, progs, rungs, docs_dir, programs_name, gate="exte
             eps=str(eps), rung=rung, status="EXPLORATORY (v0.2.9 not enacted)", gate=gate_label,
             n_windows_canonical=len(agg), n_pattern_classes=len(patt),
             canonical=dict(mean_state_entropy_bits=can_HS, Q2={f"T{i}": can_Q2[i] for i in range(n)}),
-            corpus=dict(H_S_given_pattern=H_S, H_quotient_given_pattern=H_q, H_quotient_no_pc_given_pattern=H_q2, H_binding_given_pattern=H_b,
+            corpus=dict(H_S_given_pattern=H_S, H_quotient_given_pattern=H_q, H_quotient_no_pc_given_pattern=H_q2, H_quotient_no_pc_no_cursor_given_pattern=H_q3, H_binding_given_pattern=H_b,
                         H_state_binding_given_pattern=H_joint,
                         Q2={f"named{k}": Q2[k] for k in range(n)}, Q2_unseen=Q2_unseen,
                         law_mass_by_named_count={str(k): float(named_mass[k]) for k in range(n + 1)}),
             wall_rekey_s=time.time() - t1))
-        print(f"eps={eps} {rung}: canonical n={len(agg)} H(S|w)={can_HS:.4f}  corpus classes={len(patt)} H(S|Πw)={H_S:.4f} H(q|Πw)={H_q:.4f} H(q\\pc|Πw)={H_q2:.4f} H(β|Πw)={H_b:.4f}  "
+        print(f"eps={eps} {rung}: canonical n={len(agg)} H(S|w)={can_HS:.4f}  corpus classes={len(patt)} H(S|Πw)={H_S:.4f} H(q|Πw)={H_q:.4f} H(q\\pc|Πw)={H_q2:.4f} H(q\\pc\\cur|Πw)={H_q3:.4f} H(β|Πw)={H_b:.4f}  "
               f"Q2 canonical T0={can_Q2[0]:.4f} corpus named0={Q2[0]:.4f} unseen={Q2_unseen:.4f}  ({time.time()-t1:.0f}s)", flush=True)
     return rows, wall_pass
 

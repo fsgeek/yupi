@@ -29,6 +29,7 @@
         "H_S_given_pattern": 3.3710775745379635,
         "H_quotient_given_pattern": 3.0766224876282613,
         "H_quotient_no_pc_given_pattern": 2.5324307287477836,
+        "H_quotient_no_pc_no_cursor_given_pattern": 1.5803989542653376,
         "H_binding_given_pattern": 0.0,
         "H_state_binding_given_pattern": 3.3710775745379635,
         "Q2": {
@@ -46,7 +47,7 @@
           "4": 0.0
         }
       },
-      "wall_rekey_s": 30.595484018325806
+      "wall_rekey_s": 32.70662760734558
     },
     {
       "eps": "1/2",
@@ -68,6 +69,7 @@
         "H_S_given_pattern": 1.4658513255768093,
         "H_quotient_given_pattern": 1.2746813231092433,
         "H_quotient_no_pc_given_pattern": 1.079621107711488,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.5254772307093147,
         "H_binding_given_pattern": 1.1877361055421318,
         "H_state_binding_given_pattern": 1.4839954404212627,
         "Q2": {
@@ -85,7 +87,7 @@
           "4": 0.5233059942397018
         }
       },
-      "wall_rekey_s": 101.92583060264587
+      "wall_rekey_s": 109.09908080101013
     },
     {
       "eps": "1/2",
@@ -107,6 +109,7 @@
         "H_S_given_pattern": 1.1800678917900502,
         "H_quotient_given_pattern": 0.9777511567327072,
         "H_quotient_no_pc_given_pattern": 0.801536900450108,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.26953083923145366,
         "H_binding_given_pattern": 0.945487215680643,
         "H_state_binding_given_pattern": 1.1854897434569605,
         "Q2": {
@@ -124,7 +127,7 @@
           "4": 0.5233059942397018
         }
       },
-      "wall_rekey_s": 105.7486481666565
+      "wall_rekey_s": 111.55932474136353
     },
     {
       "eps": "1/2",
@@ -146,6 +149,7 @@
         "H_S_given_pattern": 1.0365918077264855,
         "H_quotient_given_pattern": 0.8342586452893249,
         "H_quotient_no_pc_given_pattern": 0.658044389006727,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.12603832778806584,
         "H_binding_given_pattern": 0.8645545101396699,
         "H_state_binding_given_pattern": 1.0419972320136013,
         "Q2": {
@@ -163,7 +167,7 @@
           "4": 0.6236491283386306
         }
       },
-      "wall_rekey_s": 103.44942784309387
+      "wall_rekey_s": 110.74893474578857
     },
     {
       "eps": "1/2",
@@ -185,6 +189,7 @@
         "H_S_given_pattern": 1.0184617098746647,
         "H_quotient_given_pattern": 0.8160685107633261,
         "H_quotient_no_pc_given_pattern": 0.6406033785602394,
+        "H_quotient_no_pc_no_cursor_given_pattern": 0.11005435446210536,
         "H_binding_given_pattern": 0.8579794571847841,
         "H_state_binding_given_pattern": 1.0237733812430572,
         "Q2": {
@@ -202,11 +207,11 @@
           "4": 0.6236491283386306
         }
       },
-      "wall_rekey_s": 151.08548641204834
+      "wall_rekey_s": 160.7876181602478
     }
   ],
   "wall_pass_s": {
-    "1/2": 526.2645189762115
+    "1/2": 542.4294457435608
   },
-  "peak_rss_kb": 6277620
+  "peak_rss_kb": 6426144
 }

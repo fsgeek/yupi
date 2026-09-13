@@ -48,7 +48,7 @@ def pattern(window):
 UNSEEN = "?"
 
 
-def quotient(state, binding, cfg, with_pc=True):
+def quotient(state, binding, cfg, with_pc=True, with_cursor=True):
     """The state re-expressed in the window's names — the corpus-track
     state (v0.2.9 §2, amended per the Codex read of 2026-09-12 [rv-4] [rv-5]).
 
@@ -72,7 +72,10 @@ def quotient(state, binding, cfg, with_pc=True):
     by the kernel and is state, but its value is meaningful only relative
     to the thread's program, which is the binding's business — so pc is a
     second coordinate (after the cursor) through which role can enter q.
-    Both forms are reported; neither is claimed as "the content"."""
+    `with_cursor=False` also drops the cursor where it is live (ε < 1); at
+    ε = 1 it is excluded regardless. Three forms are reported; none is
+    claimed as "the content", and differences between them are conditional
+    contributions, not shares (the coordinates may interact)."""
     n = len(state.pc)
     named = {t: k for k, t in enumerate(binding)}
     unnamed = [t for t in range(n) if t not in named]
@@ -89,7 +92,7 @@ def quotient(state, binding, cfg, with_pc=True):
                tuple(str(nm(o)) for o in state.lock_owner),
                tuple(tuple(str(nm(t)) for t in q) for q in state.lock_wq),
                tuple(tuple((str(nm(t)), r) for t, r in q) for q in state.dev_q),
-               (str(nm(state.rr_cursor)) if cfg.epsilon < 1 else None))
+               (str(nm(state.rr_cursor)) if (cfg.epsilon < 1 and with_cursor) else None))
         if best is None or rep < best:
             best = rep
     return best
