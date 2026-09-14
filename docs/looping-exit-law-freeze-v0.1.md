@@ -383,3 +383,19 @@ the canonical track, with the corpus track (v0.2.9) beside it. The
 2 × 10⁶ / 8 GB line is unchanged. (48,8,2) stays refused. No further exact
 measurement is added on this law except what a learner's evaluation
 needs (the researcher's plan, confirmed).
+
+**Concordant confirmation, 2026-09-13 22:22 PDT, in a second session.** The PI, walking
+the enactment items one document per turn in the session of Sep 6–13 (the
+instance that enacted v0.2.8.1 and v0.2.7.1), received the freeze brief in
+his requested shape — the question, why it is the PI's, the recommendation
+(enact as written), the alternatives with their defects — and replied,
+verbatim, without having seen that the enactment above had already been
+recorded that afternoon in his other session:
+
+> *"I accept your recommendation and choose to avoid - for now - that we are allowed to change directions in the future, we just have to clearly establish that's what we've done.  I don't want more scope creep (an issue that I'm struggling with in tessera). Enacting should mean we have decided on the shape of our world so that the next steps towards realizing yupi's goals can be explored further."*
+
+Two rulings, one decision, both his; the enactment stands on the first and
+is confirmed by the second. The gloss is recorded as the PI's statement of
+what enactment means in this project: the shape of the world is decided;
+direction may change later only by a change that is itself clearly
+established on the trace; no scope creep.
