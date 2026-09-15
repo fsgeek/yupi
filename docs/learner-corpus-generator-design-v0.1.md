@@ -160,7 +160,12 @@ raw, pinned like the other raws.
 ## 11. Out of scope for this sub-project
 
 The trainer (sub-project 2: model, packing, checkpointing, CPU by default;
-the PI suspends the 4090's resident substrate for GPU runs on request).
+GPU runs take the 4090 through Hamut'ay's lease, with no one in the middle:
+`~/projects/hamutay/deploy/ayllu-gpu run --holder yupi --purpose "<run>"
+--ttl <h> -- <command>` acquires the card, the resident's heartbeat rests
+and records the loan, the command runs in a systemd scope the heartbeat can
+kill at expiry, and the card returns on exit; see
+`hamutay/docs/superpowers/specs/2026-09-15-gpu-lease-design.md`).
 Probes (sub-project 3). TIME_CLASS. Pattern-indexed query targets in the
 corpus (evaluation poses queries against the exact side; the corpus is
 next-record data only). The lexical holdout corpus. Anything at a law
