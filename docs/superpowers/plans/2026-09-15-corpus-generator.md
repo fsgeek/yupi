@@ -1,5 +1,7 @@
 # Corpus Generator Implementation Plan (learner sub-project 1)
 
+> **Status: executed 2026-09-15** (commits 40191b9 … f656d60, each OTS-stamped). Every task's steps ran as written except the amendments noted inline (D3 rule on the pool; run-id pin computed; short windows at T < L; gate report key). Full suite on the committed tree: 502 passed, 5 slow deselected. Executed inline in the researcher's session; on main, as the house works.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build the gated corpus generator of `docs/learner-corpus-generator-design-v0.1.md`, then produce the ten (40, 8, 2) looping-C1′ corpora (r0–r4 × ε ∈ {1, ½}) with committed manifests.
