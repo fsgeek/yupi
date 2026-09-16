@@ -14,7 +14,7 @@
 
 - **Window law (Part II §2(a), verbatim):** `T ~ Uniform{B, 2B, …, T_ep}`, `U = max(0, T − L)`; the window is `(O_0, O_1, …, O_T)` when `U = 0` and `(O_{U+1}, …, O_T)` when `U > 0`. RESET (`O_0`) is present iff `U = 0` and is not charged against `L`.
 - **Rendering (v0.2.9 Clause 4):** injection σ per episode by a keyed generator; run key recorded; exactly uniform injection ("mod pool size, first unique" is biased and forbidden); translation table stored with the run and never in the model's context.
-- **Pools (design §3, Part I D3):** threads 64, locks 32, devices 16, request ids 32; reserved trailing slices threads 8, locks 4, devices 2, request ids 4; every pool's drawable slice ≥ 8× its entity count and threads ≥ 50.
+- **Pools (design §3, Part I D3):** threads 64, locks 32, devices 16, request ids 32; reserved trailing slices threads 8, locks 4, devices 2, request ids 4; every pool ≥ 8× its entity count and threads ≥ 50 (the rule is on the pool, reserved slice included: request ids have 32 tokens for 4 ids, 28 drawable — an execution-time correction of this plan's first wording, which put the rule on the drawable slice and refused the design's own pools).
 - **Schema (design §2, Part I D5):** RESET is one token; every record is exactly five tokens `KIND ACTOR OBJECT RELATED LINEAGE`; masked field → `MASKED`; empty field → `NONE`; a window at `L` is at most `5·L + 1` tokens; vocabulary constant across rungs.
 - **Vocabulary count correction:** design §4 says 157; the count from its own definition is **156** (9 event kinds including RESET + PAD + MASKED + NONE + 144 pool tokens; the design counted RESET twice). Task 7 records this in the design's ledger in place.
 - **Refuse, never coerce (design §9):** every refusal names the statute line it enforces.
@@ -247,7 +247,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 - Consumes: `vocab.pool_tokens`, `vocab.RESERVED`, `vocab.MASKED`, `vocab.NONE`; `yupi.records.Record`; `yupi.interfaces.MASKED` (same string `"MASKED"`).
 - Produces:
   - `class RenderingRefused(ValueError)`
-  - `d3_check(entity_type: str, n_entities: int, drawable: int) -> None`
+  - `d3_check(entity_type: str, n_entities: int, pool_size: int) -> None`
   - `injection(run_key: bytes, episode_id: int, entity_type: str, n_entities: int, lift_reservation: bool = False) -> tuple[str, ...]`
   - `@dataclass(frozen=True) EpisodeTable(episode_id: int, thread: tuple, lock: tuple, device: tuple, request: tuple)` with `draw(run_key, episode_id, cfg, lift_reservation=False)`, `inverse() -> dict[str, tuple[str, int]]`, `to_json() -> dict`, `from_json(d) -> EpisodeTable`
   - `render(rec: Record, table: EpisodeTable) -> tuple[str, str, str, str, str]`
@@ -580,7 +580,7 @@ def test_window_is_the_episode_slice_projected():
     w = W.draw_window(cfg, progs, FROZEN, "r2", KEY, 42)
     ep = sample_episode(cfg, progs, 40, 42)
     assert w.records == tuple(project(r, "r2") for _, r in ep[w.U:w.T])
-    assert len(w.records) == 8 and w.T - w.U == 8
+    assert len(w.records) == w.T - w.U <= 8      # T < L gives a short window with RESET (Part II §2(a))
 
 
 @pytest.mark.parametrize("rung", ["r0", "r1", "r2", "r3", "r4"])
@@ -739,7 +739,7 @@ def _m(**kw):
 def test_new_manifest_fields_and_names():
     m = _m()
     assert m.name() == "c1prime-loop-40-8-2-r1-eps1_2"
-    assert m.run_id() == "8d969eef6ecad3c2"          # sha256(run_key)[:16] with run_key = bytes(range(32))
+    assert m.run_id() == "630dcd2966c43366"          # sha256(bytes(range(32)))[:16], computed once at execution
     assert m.max_tokens == 41 and m.epsilon == "1/2" and m.completion_p == "1/3"
     assert m.vocab_sha256 == VOCAB_SHA256 and m.generator_version == M.GENERATOR_VERSION
     cfg, progs = m.world()
@@ -920,7 +920,7 @@ def validate(m: Manifest) -> None:
 - [ ] **Step 4: Run to verify they pass**
 
 Run: `uv run pytest tests/test_corpus_manifest.py -q`
-Expected: 3 passed. If `run_id` differs from the pinned `"8d969eef6ecad3c2"`, replace the pin with the printed value once (it is sha256 of `bytes(range(32))`, a constant); do not change the function.
+Expected: 3 passed. The pin is sha256(bytes(range(32)))[:16] = 630dcd2966c43366, computed at execution time (the plan first carried a guessed value).
 
 - [ ] **Step 5: Commit**
 
@@ -1551,7 +1551,7 @@ def test_committed_gate_raw_passed_at_1e6():
     cells = {(c["eps"], c["rung"]): c for c in doc["cells"]}
     assert set(cells) == {("1", "r1"), ("1", "r3"), ("1", "r4"), ("1/2", "r1"), ("1/2", "r3")}
     for c in cells.values():
-        assert c["g2_tv"] <= c["g2_tv_bound"] and c["g2_missing_above_1e-4"] == 0 and c["g2_unknown_classes"] == 0
+        assert c["g2_tv"] <= c["g2_tv_bound"] and c["g2_missing_above_1e4"] == 0 and c["g2_unknown_classes"] == 0
         assert c["g3_reserved_hits"] == 0
         if c["g4_hq_pinned"] is not None:
             assert abs(c["g4_hq_hat"] - c["g4_hq_pinned"]) <= 0.01
