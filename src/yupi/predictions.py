@@ -38,6 +38,7 @@ NON_MEASUREMENT_PREFIXES = (
     "d8-bucket-census",   # structural census of order-sensitive bucket kinds (no result quantity)
     "window-gate-interning-only", "window-gate-interned",   # 2026-09-12 old-vs-new recursion equality verdicts (no result quantity)
     "c1prime-loop-corpus-track",   # 2026-09-13 EXPLORATORY corpus track (v0.2.9 proposed, not enacted); pinned in tests/test_corpus_track_40_8_2.py, not a prediction family
+    "corpus-gate",   # 2026-09-15 corpus-generator gate verdicts (design v0.1 §8, gates 2–4 at C1 (8,4,2)); pinned in tests/test_corpus_gate.py, not a prediction family
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);

@@ -176,3 +176,26 @@ other than the frozen one.
 - 2026-09-13: written at the handoff from the brainstorm of the same day;
   Approach A chosen over B (loader-side cropping) and C (episode LM with
   the window law at evaluation only — ruled out by Part II §2(a)).
+- 2026-09-15: §11 amended in place by commit 4dd4522 (from the Hamut'ay session):
+  GPU runs take the 4090 through Hamut'ay's lease, not the PI's hand.
+- 2026-09-15 (implementation, plan `docs/superpowers/plans/2026-09-15-corpus-generator.md`,
+  package `yupi.corpus`, scripts `corpus_generate.py` / `corpus_gate.py`):
+  (a) §4's vocabulary count is **156**, not 157 — RESET was counted both as
+  an event kind and as a special token; the pinned list has 9 kinds (RESET
+  among them) + PAD + MASKED + NONE + 144 pool tokens. (b) §3's "every
+  pool ≥ 8× its entity count" is a rule on the pool, reserved slice
+  included: request ids have 32 tokens for 4 ids, of which 28 are drawable
+  (the plan's first wording put the rule on the drawable slice and refused
+  the design's own pools; corrected at execution). (c) §8.3 as written
+  (per-injection uniformity over the real 56-token drawable slice) is
+  infeasible at 10⁵ episodes (≈ 8.8M injections); implemented as
+  per-position and first-pair marginal chi-square on the real pool plus
+  the exhaustive per-injection test on a 5-token pool
+  (`tests/test_corpus_rendering.py`). (d) The endpoint draw, which §2 left
+  as "seeded", is keyed like the injections, HMAC(run_key,
+  "<episode>:endpoint"); episode dynamics are seeded by the episode id
+  alone so the exact side regenerates the episode without the key.
+  (e) Each table line also carries T and U. (f) Committed manifest copies
+  live under `docs/corpus-manifests/`. (g) At the frozen law an endpoint
+  T < L yields a window of T records with RESET, as §2(a) says; the
+  "at most 41 tokens" in §2 is a maximum, not the length.

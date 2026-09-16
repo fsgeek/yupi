@@ -1,0 +1,53 @@
+{
+  "B": 2,
+  "L": 8,
+  "T_ep": 40,
+  "completion_p": "1/3",
+  "config": "c1",
+  "counts": {
+    "test": 10000,
+    "train": 200000,
+    "val": 10000
+  },
+  "epsilon": "1",
+  "generator_version": "0.1.0",
+  "git_commit": "8521713e88061853ac8736a08da2c7709789e630",
+  "lift_reservation": false,
+  "max_tokens": 41,
+  "pools": {
+    "device": 16,
+    "lock": 32,
+    "request": 32,
+    "thread": 64
+  },
+  "programs": "c1prime-loop",
+  "queue_depth": 2,
+  "reserved": {
+    "device": 2,
+    "lock": 4,
+    "request": 4,
+    "thread": 8
+  },
+  "run_key_hex": "de07af91a27d87f20689d681f8a40e6af465c2425304e23632f1007556f76104",
+  "rung": "r1",
+  "schema_version": 1,
+  "splits": [
+    {
+      "name": "train",
+      "seed_end": 200000,
+      "seed_start": 0
+    },
+    {
+      "name": "val",
+      "seed_end": 1010000,
+      "seed_start": 1000000
+    },
+    {
+      "name": "test",
+      "seed_end": 2010000,
+      "seed_start": 2000000
+    }
+  ],
+  "vocab_sha256": "ed9a50c5029403554cfe34d8d29758cad172f4414c2fcd06fb687f949a789604",
+  "vocab_version": 1
+}
