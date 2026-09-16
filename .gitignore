@@ -8,3 +8,6 @@ __pycache__/
 # (think it was a bug, but excluding it to avoid irritation for
 # Claude.
 qhaway.db
+
+# generated corpora (design v0.1 §5): manifests are committed under docs/corpus-manifests/, data is not
+/corpus/

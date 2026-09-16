@@ -21,3 +21,7 @@ yupi = "yupi:main"
 [build-system]
 requires = ["uv_build>=0.12.3,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+markers = ["slow: gates that sample 10^5+ windows; run with -m slow"]
+addopts = "-m 'not slow'"
