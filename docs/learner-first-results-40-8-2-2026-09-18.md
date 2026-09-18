@@ -200,3 +200,18 @@ zero). Three readings, in decreasing confidence:
 3. The r3 → r4 comparison at fixed k stays confounded by the fifth field
    (§3.4); the per-field split now in every raw is the tool for it and is
    read in the next note, not here.
+
+- 2026-09-18 13:57 PDT (from `date`), **the first 2M-window run (r1 ε=1, seed 1,
+  5 epochs = 39,060 steps).** Validation loss falls throughout (0.6243 at
+  step 6000 → 0.6119 at 39065; no overfitting) and ends below any
+  200k-window run's minimum. At k = 7, against the same ceiling table:
+  structural excess **0.0641 ± 0.0013** bits (200k, same
+  seed: 0.2621); naming 0.0028 (0.0127); KIND field
+  0.0244 (0.1008); ACTOR field
+  0.0397 (0.1612). Ten times the data
+  divides the excess by 4.1 in every field alike, and leaves it at
+  about 5 % of the ceiling's 1.377 bits. The gap at this model
+  size is data-limited and not zero. The other five 2M runs (r1 seeds 2–3,
+  r4 seeds 1–3) are running; their curves and per-field splits go in the
+  next note. Raw: `learner-eval-r1-eps1-2M-seed1-2026-09-18.json` (its test
+  split is the 2M corpus's own, 100k windows under the new key).
