@@ -106,11 +106,34 @@ compared on anything.
 
 ### 2.2 Which position the paper compares
 
-**The last record of the window** — $k = L$ for non-RESET windows, $k = T$
+> **Corrected 2026-09-18 10:53 PDT (v0.1.2), the same day, before any
+> evaluator code.** The paragraph below as first written chose $k = L$: the
+> next record *after* a full window. A model trained on windows learns
+> that after the $L$-th record comes the end of the window (§1 item 3), so
+> it is never trained to emit a record there; the quantity is undefined for
+> the learner. **The headline position is $k = L - 1$: predicting the last
+> record of the window from the preceding $L - 1$** (RESET windows with
+> $T = L$ included; RESET windows with $T < L$, law mass 3/20, have no
+> $L$-th record and enter the interior curve only). Its ceiling is the
+> *prefix* posterior of the paragraph after this one, not the full-window
+> posterior. The full-window objects — the thirty statutory artifacts, the
+> corpus-track re-keying, and the table $P^\star(\Pi r_{T+1} \mid \Pi w)$
+> produced by `scripts/pattern_ceiling.py` — remain the exact side's
+> objects for the probes (sub-project 3: the state after $L$ records is what
+> the residual stream at the last position should carry) and for the
+> predictive-state targets; they are not token-loss comparison points.
+> Consequence for the machinery: prefix ceilings at every $k \in 1..L-1$
+> are produced by the aggregate route as well (a prefix-length variant of
+> the window-process pass, gated against `pattern_enumerator`'s prefix
+> path), so no per-window filtering is needed anywhere; the per-$k$ curve
+> is the primary deliverable and $k = L - 1$ is its headline point. The
+> original text follows, preserved.
+
+~~**The last record of the window** — $k = L$ for non-RESET windows, $k = T$
 for RESET windows. There the prefix *is* the window, the pattern aggregate
 is the corpus-track re-keying of the thirty statutory artifacts, and
 $P^\star$ is a function of exactly the objects Part II §2 defines. This is
-the headline position. The state and query ceilings ($H(q \mid \Pi w)$,
+the headline position.~~ The state and query ceilings ($H(q \mid \Pi w)$,
 Q2 on named threads, Q4's gap part) are also full-window objects, so the
 probes of sub-project 3 compare at the same position.
 
@@ -247,6 +270,10 @@ trainer design (next). Probes: sub-project 3.
   positions (§2.2) use the prefix filter on a subsample. Items 2 and 3 of
   §4 are built (`yupi.pattern_filter`, `yupi.pattern_enumerator`,
   `tests/test_pattern_filter.py`); item 4 done (run note addendum).
+- 2026-09-18 10:53 PDT (from `date`), **v0.1.2 — §2.2 corrected in place** (headline
+  position $k = L - 1$; prefix ceilings by the aggregate route; the
+  full-window table kept as the probes' object). Caught while writing the
+  trainer plan, before any learner code; the error was mine, this morning.
 
 - 2026-09-18 10:24 PDT (from `date`): written before any learner code; the fresh-name
   bits computed from `law_mass_by_named_count` in the two corpus-track
