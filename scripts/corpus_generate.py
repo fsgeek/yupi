@@ -29,9 +29,13 @@ def git_commit() -> str:
         return "unknown"
 
 
-def default_splits(n_train: int, n_val: int, n_test: int):
-    return (Split("train", 0, n_train), Split("val", 1_000_000, 1_000_000 + n_val),
-            Split("test", 2_000_000, 2_000_000 + n_test))
+def default_splits(n_train: int, n_val: int, n_test: int, val_start: int = 1_000_000, test_start: int = 2_000_000):
+    """Seed ranges (design §6): train [0, n_train), val and test at the given
+    starts; validate() refuses overlaps, so a train split larger than
+    val_start needs --val-start/--test-start moved (2026-09-18: the 2M-window
+    corpora use 3e6 / 4e6)."""
+    return (Split("train", 0, n_train), Split("val", val_start, val_start + n_val),
+            Split("test", test_start, test_start + n_test))
 
 
 def main(argv=None) -> int:
@@ -44,6 +48,8 @@ def main(argv=None) -> int:
     ap.add_argument("--train", type=int, default=200_000)
     ap.add_argument("--val", type=int, default=10_000)
     ap.add_argument("--test", type=int, default=10_000)
+    ap.add_argument("--val-start", type=int, default=1_000_000)
+    ap.add_argument("--test-start", type=int, default=2_000_000)
     ap.add_argument("--run-key", help="hex; default os.urandom(32)")
     ap.add_argument("--root", default="corpus")
     ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) // 2))
@@ -57,7 +63,7 @@ def main(argv=None) -> int:
             ap.error("--law and --rung are required for a new run")
         key = bytes.fromhex(a.run_key) if a.run_key else os.urandom(32)
         m = Manifest.new(programs=a.programs, epsilon=Fraction(a.eps), T_ep=a.law[0], L=a.law[1], B=a.law[2],
-                         rung=a.rung, run_key=key, splits=default_splits(a.train, a.val, a.test),
+                         rung=a.rung, run_key=key, splits=default_splits(a.train, a.val, a.test, a.val_start, a.test_start),
                          git_commit=git_commit())
     validate(m)
     t0 = time.time()
