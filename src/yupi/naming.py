@@ -132,6 +132,35 @@ def rename_all(rec: Record, sigma: dict) -> Record:
     return Record(kind=rec.kind, actor=th(rec.actor), obj=obj, related=th(rec.related), lineage=lin)
 
 
+def extend_binding(binding, rec: Record, types=ENTITY_ORDER):
+    """One step of Π_all: (pattern record, extended binding). A field whose
+    entity is already bound keeps its pattern index; a fresh entity of a
+    renamed type takes the next index of its type (actor before related
+    within a record) and the binding grows; a type not in `types`, MASKED
+    and None pass through. pattern_all is the fold of this over a window,
+    and the pattern filter's likelihood is [extend_binding(β, r)[0] == ρ]."""
+    orders = [list(o) for o in binding]
+
+    def lab(et, v):
+        if not _is_thread_field(v) or et not in types:
+            return v
+        o = orders[ENTITY_ORDER.index(et)]
+        if v in o:
+            return o.index(v)
+        o.append(v)
+        return len(o) - 1
+
+    a = lab("thread", rec.actor)
+    if _is_thread_field(rec.obj):
+        tag, i = rec.obj
+        obj = (tag, lab("lock" if tag == "LOCK" else "device", i))
+    else:
+        obj = rec.obj
+    rel = lab("thread", rec.related)
+    lin = lab("request", rec.lineage)
+    return Record(kind=rec.kind, actor=a, obj=obj, related=rel, lineage=lin), tuple(tuple(o) for o in orders)
+
+
 def pattern_all(window, types=ENTITY_ORDER):
     """Joint equality pattern over the entity types in `types` (default all
     four): returns (pattern window, binding) with binding = (thread order,
@@ -140,26 +169,9 @@ def pattern_all(window, types=ENTITY_ORDER):
     its order is empty — the observer for whom that type is NOT renamed
     knows its identities, so its pattern is the identity.
     pattern_all(w, ("thread",)) has pattern(w)'s window and order."""
-    idx = {et: {} for et in ENTITY_ORDER}
-    order = {et: [] for et in ENTITY_ORDER}
-
-    def lab(et, v):
-        if not _is_thread_field(v) or et not in types:
-            return v
-        d = idx[et]
-        if v not in d:
-            d[v] = len(order[et]); order[et].append(v)
-        return d[v]
-
+    binding = ((), (), (), ())
     out = []
     for r in window:
-        a = lab("thread", r.actor)
-        if _is_thread_field(r.obj):
-            tag, i = r.obj
-            obj = (tag, lab("lock" if tag == "LOCK" else "device", i))
-        else:
-            obj = r.obj
-        rel = lab("thread", r.related)
-        lin = lab("request", r.lineage)
-        out.append(Record(kind=r.kind, actor=a, obj=obj, related=rel, lineage=lin))
-    return tuple(out), tuple(tuple(order[et]) for et in ENTITY_ORDER)
+        pr, binding = extend_binding(binding, r, types)
+        out.append(pr)
+    return tuple(out), binding

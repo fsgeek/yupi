@@ -211,6 +211,43 @@ trainer design (next). Probes: sub-project 3.
 
 ## 5. Ledger
 
+- 2026-09-18 ~10:50 PDT, **v0.1.1 — two implementation decisions, made
+  while building §4 items 1–4 (all four landed the same morning):**
+  (a) *How §2.1's KL is estimated.* The exact pattern-level KL needs the
+  model's probability of every pattern record in $P^\star$'s support,
+  and a fresh entity in a record stands for every unused token of its
+  type, so the exact sum needs up to thousands of forward passes per
+  record. Instead the evaluator is **realized-record, field-chained**:
+  one causal forward pass per window yields the model's conditionals at
+  all five fields of the realized next record given the realized surface
+  prefix; each is projected to the field's pattern value (a bound entity
+  → its token; a fresh entity → the sum over unused tokens of its type);
+  the per-window structural excess is $\sum_{\text{fields}} \log_2
+  P^\star(\text{pattern value} \mid \Pi\text{-prefix}) / \tilde P_M(\text{pattern
+  value} \mid \text{surface prefix})$ at the realized values, with $P^\star$'s
+  field conditionals read off `next_pattern_dist` by marginalization. Its
+  law-mass mean is a KL between the field-chained pattern conditionals
+  (the realized record is a sample from $P^\star(\cdot \mid w)$), and the
+  KIND field's term is computed as an exact KL over the nine kinds from
+  the same softmax. The **naming excess** is the remainder of the token
+  log-ratio on fresh fields ($\log_2(1/n_{\text{unused}}) - \log_2
+  P_M(\text{tok}) / \tilde P_M(\text{fresh})$), so structural + naming =
+  the raw token excess, exactly, per window. The exact pattern-level KL
+  over the support remains available as a slower mode for a subsample.
+  (b) *Where $P^\star$ comes from at (40, 8, 2).* The pattern filter
+  (`yupi.pattern_filter`, gated three ways at (8, 4, 2)) costs 0.56–0.84 s
+  per window on real test windows at the frozen law (30-window timing,
+  r4 ε=1 and r1 ε=½), i.e. hours per corpus at $10^5$ windows. The
+  headline-position ceilings are therefore produced **once per (rung, ε)
+  as an artifact** by the aggregate route — the window-process pass, the
+  re-keying by $\Pi_{\text{all}}$ (the corpus-track producer's construction
+  with `pattern_all` in place of `pattern`), one `p_next` step per
+  $(S, \beta)$ — and gated against the filter on a random sample of test
+  windows (Fraction-exact equality of $P^\star$ and law mass). Interior
+  positions (§2.2) use the prefix filter on a subsample. Items 2 and 3 of
+  §4 are built (`yupi.pattern_filter`, `yupi.pattern_enumerator`,
+  `tests/test_pattern_filter.py`); item 4 done (run note addendum).
+
 - 2026-09-18 10:24 PDT (from `date`): written before any learner code; the fresh-name
   bits computed from `law_mass_by_named_count` in the two corpus-track
   artifacts by a one-off script in the session (threads only, drawable
