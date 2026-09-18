@@ -53,11 +53,14 @@ def _git():
         return "unknown"
 
 
-def _manifest(manifests: Path, programs: str, law: WindowLaw, rung: str, eps: Fraction):
+def _manifest(manifests: Path, programs: str, law: WindowLaw, rung: str, eps: Fraction, run_id: str = None):
+    """The corpus whose test windows gate the table. Several corpora may exist per
+    (rung, ε) since 2026-09-18 (the 2M-window corpora); --gate-run-id picks one,
+    otherwise exactly one must exist — refused, never guessed."""
     tag = f"{programs}-{law.T_ep}-{law.L}-{law.B}-{rung}-eps{str(eps).replace('/', '_')}-"
-    hits = sorted(manifests.glob(tag + "*.json"))
+    hits = sorted(manifests.glob(tag + (run_id or "*") + ".json"))
     if len(hits) != 1:
-        raise SystemExit(f"expected one manifest for {tag}*, found {hits}")
+        raise SystemExit(f"expected one manifest for {tag}{run_id or '*'}, found {[h.name for h in hits]}; pass --gate-run-id")
     return Manifest.from_json(json.loads(hits[0].read_text())), hits[0].name
 
 
@@ -104,6 +107,7 @@ def main(argv=None):
     ap.add_argument("--manifests", default="docs/corpus-manifests")
     ap.add_argument("--raw")
     ap.add_argument("--prefix", type=int, default=None, help="prefix length k (contract v0.1.2); default: full windows")
+    ap.add_argument("--gate-run-id", default=None, help="run id of the corpus whose test windows gate the tables (needed when several corpora exist per cell)")
     a = ap.parse_args(argv)
     law = WindowLaw(*a.law)
     rungs = tuple(a.rungs.split(","))
@@ -132,7 +136,7 @@ def main(argv=None):
             sha = hashlib.sha256(fn.read_bytes()).hexdigest()
             H = mean_next_entropy_bits(table)
             if a.gate_n > 0:
-                m, mname = _manifest(Path(a.manifests), a.programs, law, rung, eps)
+                m, mname = _manifest(Path(a.manifests), a.programs, law, rung, eps, a.gate_run_id)
                 gate = gate_sample(table, cfg, progs, law, rung, m, Path(a.corpus), a.gate_n, a.gate_seed, a.prefix)
             else:
                 mname, gate = None, dict(n=0, all_exact=None, missing_classes=[], first_mismatch=None, wall_s=0.0)
