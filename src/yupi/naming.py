@@ -1,10 +1,13 @@
-"""Naming bridge (Part II v0.2.9 PROPOSAL, 2026-09-12; not enacted): the
-equality-pattern projection Π, the surface renaming σ, and the corpus-track
-state quotient. Exact; no kernel rule reads any of this. The lemma that
-makes Π sufficient for the corpus process is executable in
-tests/test_naming_bridge.py; the corpus-track producer is
-scripts/c1_corpus_track.py. Firewall: imports the record schema and the
-interface constant only."""
+"""Naming bridge (Part II v0.2.9, proposed 2026-09-12, ENACTED 2026-09-13):
+the equality-pattern projection Π, the surface renaming σ, and the
+corpus-track state quotient. Exact; no kernel rule reads any of this. The
+lemma that makes Π sufficient for the corpus process is executable in
+tests/test_naming_bridge.py (threads) and
+tests/test_naming_bridge_all_types.py (all four entity types, 2026-09-18);
+the corpus-track producer is scripts/c1_corpus_track.py (thread-only Π —
+its numbers are lower bounds on the four-type pattern observer's
+uncertainty, learner contract v0.1 §2.1). Firewall: imports the record
+schema and the interface constant only."""
 from __future__ import annotations
 
 import itertools
@@ -98,3 +101,65 @@ def quotient(state, binding, cfg, with_pc=True, with_cursor=True):
     return best
 
 
+
+
+# ---- Π over all four entity types (learner contract v0.1 §2.1, 2026-09-18) ----
+#
+# The corpus renames threads, locks, devices and request ids per episode
+# (design v0.1 §3); `pattern`/`rename` above cover threads only, and every
+# corpus-track artifact produced with them holds the other three types
+# canonical (a thread-naming lower bound on the pattern observer's
+# uncertainty). `pattern_all` is the joint equality pattern: first-appearance
+# relabeling per entity type, actor before related within a record, obj
+# keeping its kind tag. The binding is a 4-tuple of orders in ENTITY order
+# (thread, lock, device, request); binding[0] equals `pattern`'s order.
+# Lemma: tests/test_naming_bridge_all_types.py.
+
+ENTITY_ORDER = ("thread", "lock", "device", "request")
+
+
+def rename_all(rec: Record, sigma: dict) -> Record:
+    """Surface record under per-type injections: sigma[type][structural] -> token.
+    MASKED and None survive; obj keeps its ("LOCK"|"DEV", ·) tag."""
+    def th(v):
+        return sigma["thread"][v] if _is_thread_field(v) else v
+    if _is_thread_field(rec.obj):
+        tag, i = rec.obj
+        obj = (tag, sigma["lock"][i] if tag == "LOCK" else sigma["device"][i])
+    else:
+        obj = rec.obj
+    lin = sigma["request"][rec.lineage] if _is_thread_field(rec.lineage) else rec.lineage
+    return Record(kind=rec.kind, actor=th(rec.actor), obj=obj, related=th(rec.related), lineage=lin)
+
+
+def pattern_all(window, types=ENTITY_ORDER):
+    """Joint equality pattern over the entity types in `types` (default all
+    four): returns (pattern window, binding) with binding = (thread order,
+    lock order, device order, request order); order[k] is the structural
+    index of pattern index k. A type not in `types` is left structural and
+    its order is empty — the observer for whom that type is NOT renamed
+    knows its identities, so its pattern is the identity.
+    pattern_all(w, ("thread",)) has pattern(w)'s window and order."""
+    idx = {et: {} for et in ENTITY_ORDER}
+    order = {et: [] for et in ENTITY_ORDER}
+
+    def lab(et, v):
+        if not _is_thread_field(v) or et not in types:
+            return v
+        d = idx[et]
+        if v not in d:
+            d[v] = len(order[et]); order[et].append(v)
+        return d[v]
+
+    out = []
+    for r in window:
+        a = lab("thread", r.actor)
+        if _is_thread_field(r.obj):
+            tag, i = r.obj
+            obj = (tag, lab("lock" if tag == "LOCK" else "device", i))
+        else:
+            obj = r.obj
+        rel = lab("thread", r.related)
+        lin = lab("request", r.lineage)
+        out.append(Record(kind=r.kind, actor=a, obj=obj, related=rel, lineage=lin))
+    return tuple(out), tuple(tuple(order[et]) for et in ENTITY_ORDER)
