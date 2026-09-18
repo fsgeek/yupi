@@ -157,3 +157,46 @@ extra field until the per-field split exists.
   do not depend on the key), seeds 1–3, 5 epochs, GPU. The remaining
   40-epoch runs were stopped by SIGTERM (checkpointed, lease released).
   Raw: `learner-eval-r1-eps1-e40-seed1-2026-09-18.json`.
+
+## 7. The per-position curves (appended 2026-09-18 13:51 PDT)
+
+Structural excess (bits per record) at every prefix length k, pooled over
+the three GPU seeds per cell; raws `learner-eval-*-2026-09-18.json` (all
+33 now carry k = 1..7 and the per-field split). The exact ceiling
+$H^\star$ *falls* with k at every content rung (`pattern-ceilings-40-8-2-k*`,
+e.g. r1 ε=1: 1.83 → 2.18 → 1.84 → 1.79 → 1.63 → 1.48 → 1.38 bits); the
+learner's excess **rises**:
+
+| cell | k=1 | k=2 | k=3 | k=4 | k=5 | k=6 | k=7 | k=7 / k=1 |
+|---|---|---|---|---|---|---|---|---|
+| r0 ε=1 | 0.001 | 0.002 | 0.002 | 0.004 | 0.005 | 0.008 | 0.015 | 19 |
+| r0 ε=½ | 0.001 | 0.002 | 0.002 | 0.004 | 0.006 | 0.011 | 0.018 | 26 |
+| r1 ε=1 | 0.010 | 0.023 | 0.037 | 0.070 | 0.118 | 0.180 | 0.270 | 27 |
+| r1 ε=½ | 0.012 | 0.027 | 0.047 | 0.093 | 0.146 | 0.232 | 0.331 | 28 |
+| r2 ε=1 | 0.012 | 0.030 | 0.055 | 0.112 | 0.180 | 0.246 | 0.368 | 32 |
+| r2 ε=½ | 0.013 | 0.033 | 0.065 | 0.147 | 0.226 | 0.323 | 0.433 | 33 |
+| r3 ε=1 | 0.020 | 0.044 | 0.080 | 0.135 | 0.202 | 0.257 | 0.377 | 19 |
+| r3 ε=½ | 0.022 | 0.057 | 0.099 | 0.172 | 0.223 | 0.307 | 0.385 | 18 |
+| r4 ε=1 | 0.025 | 0.074 | 0.129 | 0.199 | 0.288 | 0.344 | 0.491 | 20 |
+| r4 ε=½ | 0.032 | 0.147 | 0.246 | 0.361 | 0.477 | 0.576 | 0.753 | 24 |
+
+Every one of the 27 content-rung runs is strictly increasing in k (the
+two exceptions are r0 runs whose k = 2 → 3 step is within 0.0005 of
+zero). Three readings, in decreasing confidence:
+
+1. **After one record the learner is near Bayes everywhere** (0.001–0.03
+   bits); after seven it is 20–30× further from the ceiling. The exact
+   posterior sharpens with evidence; the learner's excess compounds with
+   it. This is the proposal's "context as epistemic access" axis measured
+   inside one window, and the sign is the interesting part: more evidence
+   makes the exact observer more certain and the learner relatively worse.
+2. **The growth ratio is similar at every rung, r0 included** (19–33×), so
+   part of the mechanism is generic to position — a ~0.85M model trained on
+   200k windows integrates longer contexts less well whatever they
+   contain — and the *magnitude* is what the interface sets: content rungs
+   sit 20–50× above r0 at every k. Whether the ratio survives more data,
+   more parameters, or a different positional scheme is the next
+   question, and the 2M-window runs will answer the first part.
+3. The r3 → r4 comparison at fixed k stays confounded by the fifth field
+   (§3.4); the per-field split now in every raw is the tool for it and is
+   read in the next note, not here.
