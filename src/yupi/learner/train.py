@@ -84,7 +84,14 @@ def train(c: TrainConfig, resume: bool = False) -> dict:
     out = Path(c.out_dir)
     out.mkdir(parents=True, exist_ok=True)
     if c.device.startswith("cuda"):
+        # Spec §2 'Precision': deterministic algorithms on; the SDPA fused kernels' backward is not
+        # deterministic, so attention runs on the math backend on GPU; cuBLAS needs a fixed workspace.
+        import os
+        os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
         torch.use_deterministic_algorithms(True)
+        torch.backends.cuda.enable_flash_sdp(False)
+        torch.backends.cuda.enable_mem_efficient_sdp(False)
+        torch.backends.cuda.enable_math_sdp(True)
     torch.manual_seed(c.seed)
     np.random.seed(c.seed)
     X, Y, M, _ = load_split(c.corpus_dir, "train", c.model.n_pos)
