@@ -241,6 +241,110 @@ def window_law_aggregate(
     return agg
 
 
+def prefix_law_aggregate(
+    cfg: WorldConfig,
+    programs,
+    law: WindowLaw,
+    k: int,
+    rung: str,
+    stats: Optional[dict] = None,
+) -> Aggregate:
+    """Prefix-length variant (learner contract v0.1.2, 2026-09-18): for
+    every window whose law window runs at least k records (T − U ≥ k), the
+    first k records U+1..U+k and the state S_{U+k}, keyed like the full
+    aggregate by (reset_observed, records). Non-RESET offsets emit at
+    t = U + k, one endpoint each; the RESET prefix emits once at t = k with
+    weight |{T on the grid : U(T) = 0, T ≥ k}| — the observer at a prefix
+    knows the window has at least k records, not where it ends. Same
+    recursion as `window_law_aggregate` with a k-record buffer; gated
+    against path summation in tests/test_prefix_aggregate.py.
+    """
+    if not 1 <= k <= law.L:
+        raise ValueError("prefix length must lie in 1..L")
+    w_T = endpoint_prior(law)
+    emit: Dict[int, Tuple[bool, int]] = {}           # tick -> (reset_observed, multiplicity)
+    for T in law.endpoints():
+        u = law.offset(T)
+        if T - u < k:
+            continue
+        reset, mult = emit.get(u + k, (u == 0, 0))
+        assert reset == (u == 0)
+        emit[u + k] = (reset, mult + 1)
+    states: Dict[State, State] = {}
+    records: Dict[Record, Record] = {}
+    moves: Dict[State, list] = {}
+
+    def canon_state(s: State) -> State:
+        return states.setdefault(s, s)
+
+    def moves_of(s: State) -> list:
+        m = moves.get(s)
+        if m is None:
+            m = []
+            for tr, p in enabled(s, cfg, programs):
+                r = project(record_of(tr), rung)
+                m.append((canon_state(tr.next_state), records.setdefault(r, r), p))
+            moves[s] = m
+        return m
+
+    dist: Dict[Tuple[State, Tuple[Record, ...]], Fraction] = {
+        (canon_state(initial_state(cfg)), ()): Fraction(1)
+    }
+    agg: Aggregate = {}
+    if stats is not None:
+        stats["pairs_per_tick"] = []
+    for t in range(1, max(emit) + 1):
+        nxt: Dict[Tuple[State, Tuple[Record, ...]], Fraction] = {}
+        windows: Dict[Tuple[Record, ...], Tuple[Record, ...]] = {}
+        for (s, buf), mass in dist.items():
+            for ns, r, p in moves_of(s):
+                nb = buf + (r,)
+                if len(nb) > k:
+                    nb = nb[-k:]
+                key = (ns, windows.setdefault(nb, nb))
+                nxt[key] = nxt.get(key, Fraction(0)) + mass * p
+        dist = nxt
+        del windows
+        if stats is not None:
+            stats["pairs_per_tick"].append(len(dist))
+        if t in emit:
+            reset, mult = emit[t]
+            for (s, buf), mass in dist.items():
+                d = agg.setdefault((reset, buf), {})
+                d[s] = d.get(s, Fraction(0)) + w_T * mult * mass
+    if stats is not None:
+        stats["max_pairs"] = max(stats["pairs_per_tick"])
+        stats["n_windows"] = len(agg)
+    return agg
+
+
+def prefix_law_aggregates(
+    cfg: WorldConfig,
+    programs,
+    law: WindowLaw,
+    k: int,
+    rungs=("r0", "r1", "r2", "r3", "r4"),
+    stats: Optional[dict] = None,
+) -> Dict[str, Aggregate]:
+    """The prefix aggregate for every requested rung from ONE recursion at r4
+    (each rung only masks fields; keys re-projected, masses merged)."""
+    fine = prefix_law_aggregate(cfg, programs, law, k, "r4", stats)
+    out: Dict[str, Aggregate] = {}
+    for r in rungs:
+        if r == "r4":
+            out[r] = fine
+            continue
+        coarse: Aggregate = {}
+        records: Dict[Record, Record] = {}
+        for (reset, win), joint in fine.items():
+            key = (reset, tuple(records.setdefault(x, x) for x in (project(y, r) for y in win)))
+            d = coarse.setdefault(key, {})
+            for s, m in joint.items():
+                d[s] = d.get(s, Fraction(0)) + m
+        out[r] = coarse
+    return out
+
+
 def window_law_aggregates(
     cfg: WorldConfig,
     programs,

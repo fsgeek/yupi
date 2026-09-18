@@ -30,7 +30,7 @@ from yupi.naming import ENTITY_ORDER, extend_binding, pattern_all
 from yupi.queries import entropy_bits
 from yupi.records import Record, record_of
 from yupi.window import WindowLaw
-from yupi.window_process import window_law_aggregates
+from yupi.window_process import prefix_law_aggregates, window_law_aggregates
 
 Key = Tuple[bool, tuple]                     # (reset_observed, pattern window)
 Entry = Tuple[Fraction, Dict[Record, Fraction]]   # (law mass, P*(Πr | Πw))
@@ -46,8 +46,15 @@ def _moves(s, cfg, programs, rung, memo):
 
 
 def ceiling_table(cfg: WorldConfig, programs, law: WindowLaw, rungs: Iterable[str] = ("r0", "r1", "r2", "r3", "r4"),
-                  stats: dict = None, types=ENTITY_ORDER) -> Dict[str, Table]:
-    aggs = window_law_aggregates(cfg, programs, law, tuple(rungs), stats)
+                  stats: dict = None, types=ENTITY_ORDER, prefix_len: int = None) -> Dict[str, Table]:
+    """{rung: {(reset, Πw): (law mass, P*(Πr | Πw))}}. With `prefix_len = k`
+    the classes are k-record prefixes (contract v0.1.2: the headline
+    position k = L − 1 and the interior curve), from the prefix-length pass."""
+    rungs = tuple(rungs)
+    if prefix_len is None:
+        aggs = window_law_aggregates(cfg, programs, law, rungs, stats)
+    else:
+        aggs = prefix_law_aggregates(cfg, programs, law, prefix_len, rungs, stats)
     out: Dict[str, Table] = {}
     for rung in rungs:
         patt: Dict[Key, Dict[tuple, Fraction]] = {}

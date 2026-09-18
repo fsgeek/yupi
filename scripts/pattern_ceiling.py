@@ -61,28 +61,33 @@ def _manifest(manifests: Path, programs: str, law: WindowLaw, rung: str, eps: Fr
     return Manifest.from_json(json.loads(hits[0].read_text())), hits[0].name
 
 
-def gate_sample(table, cfg, progs, law, rung, m: Manifest, corpus_root: Path, n: int, seed: int):
+def gate_sample(table, cfg, progs, law, rung, m: Manifest, corpus_root: Path, n: int, seed: int, prefix: int = None):
     d = corpus_root / m.name() / m.run_id()
     wins = read_split(d, "test")
     rng = random.Random(seed)
     idx = rng.sample(range(len(wins)), min(n, len(wins)))
     t0 = time.time()
-    missing, mism = [], None
+    missing, mism, too_short = [], None, 0
     for i in idx:
         toks, tab = wins[i]
         reset, recs = deserialize(tuple(VOCAB[t] for t in toks), EpisodeTable.from_json(tab))
+        if prefix is not None:
+            if len(recs) < prefix:
+                too_short += 1
+                continue
+            recs = recs[:prefix]
         pw, _ = pattern_all(recs)
         key = (reset, pw)
         if key not in table:
             missing.append(i)
             continue
         mass, star = table[key]
-        post, m2 = filter_pattern_window(cfg, progs, law, list(pw), rung, reset)
+        post, m2 = filter_pattern_window(cfg, progs, law, list(pw), rung, reset, prefix=prefix is not None)
         s2 = next_pattern_dist(post, cfg, progs, rung)
         if not (mass == m2 and star == s2):
             mism = dict(window=i, table_mass=str(mass), filter_mass=str(m2), equal_dist=(star == s2))
             break
-    return dict(n=len(idx), seed=seed, missing_classes=missing, first_mismatch=mism,
+    return dict(n=len(idx) - too_short, seed=seed, too_short=too_short, missing_classes=missing, first_mismatch=mism,
                 all_exact=(not missing and mism is None), wall_s=time.time() - t0)
 
 
@@ -98,33 +103,37 @@ def main(argv=None):
     ap.add_argument("--corpus", default="corpus")
     ap.add_argument("--manifests", default="docs/corpus-manifests")
     ap.add_argument("--raw")
+    ap.add_argument("--prefix", type=int, default=None, help="prefix length k (contract v0.1.2); default: full windows")
     a = ap.parse_args(argv)
     law = WindowLaw(*a.law)
     rungs = tuple(a.rungs.split(","))
     progs = programs_for(a.programs)
     tables_dir = Path(a.tables); tables_dir.mkdir(parents=True, exist_ok=True)
     out = dict(law=dict(T_ep=law.T_ep, L=law.L, B=law.B), programs=a.programs, git=_git(),
-               route="window-process pass -> Π_all re-key -> one kernel step per (S, β)",
-               observer="pattern (all four entity types renamed)", position="last record of the window (contract §2.2)",
+               route=("prefix-length " if a.prefix else "") + "window-process pass -> Π_all re-key -> one kernel step per (S, β)",
+               observer="pattern (all four entity types renamed)", prefix_len=a.prefix,
+               position=(f"after {a.prefix} records of the window, predicting record {a.prefix + 1} (contract v0.1.2)" if a.prefix
+                         else "after the full window, predicting the record past it (probes' object, not a token-loss point; contract v0.1.2)"),
                tables_dir=str(tables_dir), rows=[])
     for eps_s in a.eps.split(","):
         eps = Fraction(eps_s)
         cfg = WorldConfig.c1(epsilon=eps)
         stats = {}
         t0 = time.time()
-        tables = ceiling_table(cfg, progs, law, rungs, stats)
+        tables = ceiling_table(cfg, progs, law, rungs, stats, prefix_len=a.prefix)
         wall_pass = time.time() - t0
         print(f"eps={eps}: pass+rekey+step {wall_pass:.0f}s, frontier {stats.get('max_pairs')}, "
               f"RSS {resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1e6:.2f} GB", flush=True)
         for rung in rungs:
             table = tables[rung]
-            fn = tables_dir / f"{a.programs}-{law.T_ep}-{law.L}-{law.B}-{rung}-eps{eps_s.replace('/', '_')}.jsonl"
+            fn = tables_dir / (f"{a.programs}-{law.T_ep}-{law.L}-{law.B}-{rung}-eps{eps_s.replace('/', '_')}"
+                               + (f"-k{a.prefix}" if a.prefix else "") + ".jsonl")
             save_table(table, fn)
             sha = hashlib.sha256(fn.read_bytes()).hexdigest()
             H = mean_next_entropy_bits(table)
             if a.gate_n > 0:
                 m, mname = _manifest(Path(a.manifests), a.programs, law, rung, eps)
-                gate = gate_sample(table, cfg, progs, law, rung, m, Path(a.corpus), a.gate_n, a.gate_seed)
+                gate = gate_sample(table, cfg, progs, law, rung, m, Path(a.corpus), a.gate_n, a.gate_seed, a.prefix)
             else:
                 mname, gate = None, dict(n=0, all_exact=None, missing_classes=[], first_mismatch=None, wall_s=0.0)
             row = dict(eps=str(eps), rung=rung, n_pattern_classes=len(table), mean_next_record_entropy_bits=H,
