@@ -138,3 +138,22 @@ extra field until the per-field split exists.
   first written from memory (0.4224 / 0.5015) and were wrong; corrected
   from the raws (0.5064 / 0.4176) before commit. The pooled mean and sd
   were right. Every other cell re-checked against the summary table.
+
+- 2026-09-18 13:43 PDT (from `date`), **the convergence follow-up (§5.2) is
+  answered and stopped after one run.** r1 ε=1 seed 1 at 40 epochs on the
+  same 200k windows: validation loss reaches its minimum 0.6233 at
+  step 10000 and rises to 0.6693 by step 31280 — the
+  model **overfits** the 200k-window corpus. Its k = 7 structural excess is
+  0.8945 ± 0.0081 bits (0.262 at 10 epochs), naming
+  excess 0.2623 (0.013), and the per-field split
+  (`structural_by_field`, added this afternoon) puts 0.736 of it
+  in the ACTOR field and 0.158 in KIND: the failure is *which
+  named thread acts next*. §3.3's diagnosis ("undertrained runs") was
+  wrong: the 10-epoch runs sit near their validation minimum, and the
+  between-seed spread is a spread among solutions of comparable
+  validation loss on too little data. The remedy is **data, not steps**
+  (the corpus is free: 164 s per 2M windows). Running: r1 ε=1 and r4 ε=1
+  on 2M-window corpora (new run keys; same ceiling tables — pattern classes
+  do not depend on the key), seeds 1–3, 5 epochs, GPU. The remaining
+  40-epoch runs were stopped by SIGTERM (checkpointed, lease released).
+  Raw: `learner-eval-r1-eps1-e40-seed1-2026-09-18.json`.
