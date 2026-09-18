@@ -1,0 +1,205 @@
+{
+  "law": {
+    "T_ep": 40,
+    "L": 8,
+    "B": 2
+  },
+  "programs": "c1prime-loop",
+  "git": "3956b202145a71de240d1f7b6aadab1b4ae6781b+dirty",
+  "route": "prefix-length window-process pass -> \u03a0_all re-key -> one kernel step per (S, \u03b2)",
+  "observer": "pattern (all four entity types renamed)",
+  "prefix_len": 7,
+  "position": "after 7 records of the window, predicting record 8 (contract v0.1.2)",
+  "tables_dir": "/home/tony/.cache/yupi-scratch/ceilings",
+  "rows": [
+    {
+      "eps": "1",
+      "rung": "r0",
+      "n_pattern_classes": 5540,
+      "mean_next_record_entropy_bits": 0.9994388703237116,
+      "table_file": "c1prime-loop-40-8-2-r0-eps1-k7.jsonl",
+      "table_sha256": "e8312c586c0856142566328d0deef8e943a122ced184f254d3255aba9f07463a",
+      "manifest": "c1prime-loop-40-8-2-r0-eps1-2afd80dbbcebe4cf.json",
+      "gate": {
+        "n": 91,
+        "seed": 20260918,
+        "too_short": 9,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 54.27311301231384
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r1",
+      "n_pattern_classes": 89474,
+      "mean_next_record_entropy_bits": 1.37672584109949,
+      "table_file": "c1prime-loop-40-8-2-r1-eps1-k7.jsonl",
+      "table_sha256": "a1a7903c0536d00a0bb7e11f2f143d33f4bd09841c78633f85cb802d2486c7d3",
+      "manifest": "c1prime-loop-40-8-2-r1-eps1-16e172b9297315ca.json",
+      "gate": {
+        "n": 88,
+        "seed": 20260918,
+        "too_short": 12,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 47.67343831062317
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r2",
+      "n_pattern_classes": 116624,
+      "mean_next_record_entropy_bits": 1.3592548353405987,
+      "table_file": "c1prime-loop-40-8-2-r2-eps1-k7.jsonl",
+      "table_sha256": "0c15c701bc1ed66a1a0d45579302b32d1fc03163e5a443aa988e6267a6597611",
+      "manifest": "c1prime-loop-40-8-2-r2-eps1-e5b2a4a401dac3c9.json",
+      "gate": {
+        "n": 88,
+        "seed": 20260918,
+        "too_short": 12,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 54.57839798927307
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r3",
+      "n_pattern_classes": 146455,
+      "mean_next_record_entropy_bits": 1.291635858008259,
+      "table_file": "c1prime-loop-40-8-2-r3-eps1-k7.jsonl",
+      "table_sha256": "6ce344894a2d3d53798153a617aa535f579493c261ac63a75daa1534540cceb2",
+      "manifest": "c1prime-loop-40-8-2-r3-eps1-458bf354d83628d6.json",
+      "gate": {
+        "n": 90,
+        "seed": 20260918,
+        "too_short": 10,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 44.19753575325012
+      }
+    },
+    {
+      "eps": "1",
+      "rung": "r4",
+      "n_pattern_classes": 160363,
+      "mean_next_record_entropy_bits": 1.2919665384321317,
+      "table_file": "c1prime-loop-40-8-2-r4-eps1-k7.jsonl",
+      "table_sha256": "cb3c76b33b929c61513ba3920b826068f16ef08c2155681961614c8409b2d2fd",
+      "manifest": "c1prime-loop-40-8-2-r4-eps1-a2eb56c97be43778.json",
+      "gate": {
+        "n": 84,
+        "seed": 20260918,
+        "too_short": 16,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 46.75532555580139
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r0",
+      "n_pattern_classes": 5540,
+      "mean_next_record_entropy_bits": 0.9381036895714084,
+      "table_file": "c1prime-loop-40-8-2-r0-eps1_2-k7.jsonl",
+      "table_sha256": "0958c58e1fb88852f58dbaae88cef1233af4ede1b915e16d49673fc5018b7257",
+      "manifest": "c1prime-loop-40-8-2-r0-eps1_2-a6d659d90f7d2a54.json",
+      "gate": {
+        "n": 86,
+        "seed": 20260918,
+        "too_short": 14,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 188.27955102920532
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r1",
+      "n_pattern_classes": 89474,
+      "mean_next_record_entropy_bits": 1.1691617237747491,
+      "table_file": "c1prime-loop-40-8-2-r1-eps1_2-k7.jsonl",
+      "table_sha256": "0aa5cf7db345d061a4e85ee9748c6a2851e29198de137c072913454f5468f6b9",
+      "manifest": "c1prime-loop-40-8-2-r1-eps1_2-6c3da582fc9c048d.json",
+      "gate": {
+        "n": 87,
+        "seed": 20260918,
+        "too_short": 13,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 157.13416814804077
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r2",
+      "n_pattern_classes": 116624,
+      "mean_next_record_entropy_bits": 1.1309647148922504,
+      "table_file": "c1prime-loop-40-8-2-r2-eps1_2-k7.jsonl",
+      "table_sha256": "3b638eb9d161f2cdd351b6d1f6cecf3e7441c108b66ec48d5f795f55abacc337",
+      "manifest": "c1prime-loop-40-8-2-r2-eps1_2-e46167d04cf3b9b4.json",
+      "gate": {
+        "n": 82,
+        "seed": 20260918,
+        "too_short": 18,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 126.25304436683655
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r3",
+      "n_pattern_classes": 146455,
+      "mean_next_record_entropy_bits": 1.0700130166252135,
+      "table_file": "c1prime-loop-40-8-2-r3-eps1_2-k7.jsonl",
+      "table_sha256": "4a136d099e5f65c7c979a812a67cce0e1a2575af0a454f7439e7ca388394a391",
+      "manifest": "c1prime-loop-40-8-2-r3-eps1_2-a547f05b9e4bc901.json",
+      "gate": {
+        "n": 89,
+        "seed": 20260918,
+        "too_short": 11,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 130.68991351127625
+      }
+    },
+    {
+      "eps": "1/2",
+      "rung": "r4",
+      "n_pattern_classes": 160363,
+      "mean_next_record_entropy_bits": 1.0701192029443343,
+      "table_file": "c1prime-loop-40-8-2-r4-eps1_2-k7.jsonl",
+      "table_sha256": "8cbaced0958eed795286a61402e620c14ddddadbd0e39a0319fd9bfac5571c59",
+      "manifest": "c1prime-loop-40-8-2-r4-eps1_2-cc2d2828520a39ee.json",
+      "gate": {
+        "n": 83,
+        "seed": 20260918,
+        "too_short": 17,
+        "missing_classes": [],
+        "first_mismatch": null,
+        "all_exact": true,
+        "wall_s": 117.7837553024292
+      }
+    }
+  ],
+  "wall_pass_s": {
+    "1": 236.77366185188293,
+    "1/2": 457.4523425102234
+  },
+  "frontier": {
+    "1": 828479,
+    "1/2": 828479
+  },
+  "peak_rss_kb": 3390520
+}
