@@ -185,3 +185,24 @@ def test_surface_records_pattern_equals_structural_pattern(corpus):
         reset_s, recs_s = surface_records(surf)
         reset_t, recs_t = deserialize(surf, EpisodeTable.from_json(tab))
         assert reset_s == reset_t and pattern_all(recs_s)[0] == pattern_all(recs_t)[0]
+
+
+def test_trained_decoder_end_to_end(corpus, tmp_path):
+    """A 40-step model through torch_logprobs_fn: finite excesses, identity holds,
+    and its structural excess beats the uniform model's (it learned something)."""
+    from yupi.learner.evaluate import torch_logprobs_fn
+    from yupi.learner.model import Decoder, ModelConfig
+    from yupi.learner.train import TrainConfig, train
+    import torch
+    m, d, tables = corpus
+    mc = ModelConfig(d_model=32, n_layer=1, n_head=2, d_mlp=64, n_pos=SEQ)
+    train(TrainConfig(corpus_dir=str(d), seed=3, out_dir=str(tmp_path / "r"), batch_size=32, epochs=20, warmup=5,
+                      ckpt_every=1000, val_every=20, max_steps=40, model=mc))
+    model = Decoder(mc)
+    model.load_state_dict(torch.load(tmp_path / "r" / "ckpt.pt", weights_only=False)["model"])
+    r = evaluate(torch_logprobs_fn(model), d, m.law(), tables, K_LIST, SEQ)
+    uniform = evaluate(lambda x: np.full(x.shape + (len(VOCAB),), -math.log(len(VOCAB))), d, m.law(), tables, K_LIST, SEQ)
+    for k in K_LIST:
+        pk = r["per_k"][k]
+        assert math.isfinite(pk["structural_bits"]["mean"]) and pk["identity_max_abs"] < 1e-6
+        assert pk["structural_bits"]["mean"] < uniform["per_k"][k]["structural_bits"]["mean"]
