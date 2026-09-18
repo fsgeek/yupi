@@ -19,6 +19,7 @@ predicted), from ONE forward pass over the window:
             event is scored separately.
 
   structural_bits  Σ_j log2 P*(ρ_j | ρ_<j) − log2 P̃_M(ρ_j | surface prefix)
+  structural_by_field  the five terms of that sum, reported per field (kind, actor, obj, related, lineage)
   naming_bits      Σ_{fresh j} [ −log2 n_unused_j − (log2 P_M(tok_j) − log2 P̃_M(ρ_j)) ]
   token_bits       model token cost − ceiling token cost over the five fields (given
                    continuation) == structural_bits + naming_bits, algebraically
@@ -148,6 +149,7 @@ def window_excess(lp5: np.ndarray, next_tokens: Tuple[str, ...], used: Dict[str,
     `used` is mutated: the record's fresh tokens are added as they occur."""
     ceil = field_ceiling(star, rho)
     structural = naming = ceiling_tok = model_tok = 0.0
+    by_field = {}
     for j, (f, tok) in enumerate(zip(FIELDS, next_tokens)):
         lp = lp5[j]
         if f == "kind":                                  # given continuation: renormalize over non-PAD
@@ -157,7 +159,8 @@ def window_excess(lp5: np.ndarray, next_tokens: Tuple[str, ...], used: Dict[str,
         lp_pat = _logsumexp(lp[ids])                     # log P̃_M(pattern value)
         lp_tok = float(lp[TOKEN_ID[tok]])                # log P_M(realized token)
         c = math.log2(float(ceil[j]))
-        structural += c - lp_pat / LOG2
+        by_field[f] = c - lp_pat / LOG2
+        structural += by_field[f]
         ceiling_tok += -c
         model_tok += -lp_tok / LOG2
         if n_unused is not None:
@@ -169,7 +172,8 @@ def window_excess(lp5: np.ndarray, next_tokens: Tuple[str, ...], used: Dict[str,
     lp0 = lp5[0] - _logsumexp(np.delete(lp5[0], PAD_ID))
     kind_kl = sum(float(q) * (math.log2(float(q)) - float(lp0[TOKEN_ID[k]]) / LOG2) for k, q in km.items())
     return dict(structural_bits=structural, naming_bits=naming, token_bits=model_tok - ceiling_tok,
-                kind_kl_bits=kind_kl, ceiling_token_bits=ceiling_tok, model_token_bits=model_tok)
+                kind_kl_bits=kind_kl, ceiling_token_bits=ceiling_tok, model_token_bits=model_tok,
+                structural_by_field=by_field)
 
 
 def end_excess(lp: np.ndarray, ended: bool, p_end: Fraction) -> float:
@@ -207,6 +211,7 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
     windows = [tuple(VOCAB[t] for t in w) for w, _ in rows]
     per_k = {k: {key: [] for key in ("structural_bits", "naming_bits", "token_bits", "kind_kl_bits",
                                      "ceiling_token_bits", "model_token_bits", "end_bits")} for k in k_list}
+    by_field = {k: {f: [] for f in FIELDS} for k in k_list}
     missing = {k: 0 for k in k_list}
     too_short = {k: 0 for k in k_list}
     final_end, end_total = [], []
@@ -237,6 +242,8 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
                 p0 = off + 5 * k
                 ex = window_excess(lp[i, p0:p0 + 5], tuple(toks[p0:p0 + 5]), used, star, rho)
                 ex["end_bits"] = end_excess(lp[i, p0], False, pattern_end_probability(law, k, reset))
+                for f, v in ex.pop("structural_by_field").items():
+                    by_field[k][f].append(v)
                 for key2, v in ex.items():
                     per_k[k][key2].append(v)
             # the final boundary: the window ended after n_rec records; and the whole end-of-window process
@@ -247,6 +254,7 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
     out = {"n_windows": len(windows), "per_k": {}, "final_end_bits": _stats(final_end), "end_total_bits": _stats(end_total)}
     for k in k_list:
         out["per_k"][k] = {key: _stats(v) for key, v in per_k[k].items()}
+        out["per_k"][k]["structural_by_field"] = {f: _stats(v) for f, v in by_field[k].items()}
         out["per_k"][k]["missing_classes"] = missing[k]
         out["per_k"][k]["too_short"] = too_short[k]
         if per_k[k]["structural_bits"]:

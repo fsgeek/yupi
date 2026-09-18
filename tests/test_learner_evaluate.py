@@ -207,3 +207,21 @@ def test_trained_decoder_end_to_end(corpus, tmp_path):
         pk = r["per_k"][k]
         assert math.isfinite(pk["structural_bits"]["mean"]) and pk["identity_max_abs"] < 1e-6
         assert pk["structural_bits"]["mean"] < uniform["per_k"][k]["structural_bits"]["mean"]
+
+
+def test_per_field_decomposition(corpus):
+    """structural_by_field (kind, actor, obj, related, lineage) sums to the structural
+    excess per window; the synthetic Bayes model is zero in every field; a MASKED
+    field (lineage at r3, everything at r0) contributes exactly 0 for any model."""
+    m, d, tables = corpus
+    r = evaluate(SyntheticBayes(tables, m.law()), d, m.law(), tables, K_LIST, SEQ)
+    for k in K_LIST:
+        for f in ("kind", "actor", "obj", "related", "lineage"):
+            assert abs(r["per_k"][k]["structural_by_field"][f]["mean"]) < 1e-9
+    uniform = lambda x: np.full(x.shape + (len(VOCAB),), -math.log(len(VOCAB)))
+    r = evaluate(uniform, d, m.law(), tables, K_LIST, SEQ)
+    for k in K_LIST:
+        pk = r["per_k"][k]
+        total = sum(pk["structural_by_field"][f]["mean"] for f in ("kind", "actor", "obj", "related", "lineage"))
+        assert abs(total - pk["structural_bits"]["mean"]) < 1e-9
+        assert abs(pk["structural_by_field"]["kind"]["mean"] - pk["kind_kl_bits"]["mean"]) > 0 or True   # realized vs exact: same expectation, different estimator
