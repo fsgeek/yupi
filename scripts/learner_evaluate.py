@@ -73,7 +73,8 @@ def main(argv=None):
         s, nm, kk = pk["structural_bits"], pk["naming_bits"], pk["kind_kl_bits"]
         print(f"k={k}: n={s['n']} structural {s['mean']:.4f} ± {s['se']:.4f}  naming {nm['mean']:.4f} ± {nm['se']:.4f}  "
               f"kindKL {kk['mean']:.4f}  end {pk['end_bits']['mean']:.4f}  missing {pk['missing_classes']}", flush=True)
-    print(f"final end-of-window excess {r['final_end_bits']['mean']:.4f} ± {r['final_end_bits']['se']:.4f}")
+    print(f"end-of-window process excess {r['end_total_bits']['mean']:.4f} ± {r['end_total_bits']['se']:.4f} "
+          f"(final-boundary branch alone {r['final_end_bits']['mean']:.4f})")
     if a.raw:
         Path(a.raw).write_text(json.dumps(r, indent=2, default=str) + "\n")
         print(f"raw -> {a.raw}")

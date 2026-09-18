@@ -147,7 +147,7 @@ def test_synthetic_bayes_has_zero_excess(corpus):
         for key in ("structural_bits", "naming_bits", "token_bits", "kind_kl_bits", "end_bits"):
             assert abs(pk[key]["mean"]) < 1e-9 and pk[key]["sd"] < 1e-9, (k, key, pk[key])
         assert pk["identity_max_abs"] < 1e-9
-    assert abs(r["final_end_bits"]["mean"]) < 1e-9
+    assert abs(r["final_end_bits"]["mean"]) < 1e-9 and abs(r["end_total_bits"]["mean"]) < 1e-9
 
 
 def test_uniform_model_excess_is_the_entropy_gap(corpus):
@@ -160,6 +160,7 @@ def test_uniform_model_excess_is_the_entropy_gap(corpus):
         assert abs(pk["token_bits"]["mean"] - expect) < 1e-9
         assert pk["identity_max_abs"] < 1e-9 and pk["kind_kl_bits"]["mean"] >= 0
         assert pk["structural_bits"]["mean"] > 0 and pk["naming_bits"]["mean"] > 0
+    assert r["end_total_bits"]["mean"] > 0                      # a KL over the end-of-window process
 
 
 def test_random_model_identity_and_nonnegative_kind_kl(corpus):

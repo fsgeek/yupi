@@ -23,8 +23,11 @@ predicted), from ONE forward pass over the window:
   token_bits       model token cost − ceiling token cost over the five fields (given
                    continuation) == structural_bits + naming_bits, algebraically
   kind_kl_bits     the exact Σ_kind P*(kind) log2 P*(kind)/P_M(kind | non-PAD)
-  end_bits         at the record boundary: −log2 P_M(realized continue/end) + log2 P*(same),
-                   with P*(end | k, RESET) from pattern_end_probability
+  end_bits         at the record boundary after k records: −log2 P_M(continue) + log2 P*(continue),
+                   with P*(end | k, RESET) from pattern_end_probability — ONE branch of the
+                   end-of-window process, so its mean alone may be negative;
+  end_total_bits   per window, the sum over every boundary (continue at k = 1..n−1, end at n):
+                   its mean is the KL of the end-of-window process and is ≥ 0 in expectation
 
 Means over windows are estimates of the corresponding expected KLs (the
 realized record is a sample from P*(· | Πw)); standard deviations and
@@ -206,7 +209,7 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
                                      "ceiling_token_bits", "model_token_bits", "end_bits")} for k in k_list}
     missing = {k: 0 for k in k_list}
     too_short = {k: 0 for k in k_list}
-    final_end = []
+    final_end, end_total = [], []
     for b0 in range(0, len(windows), batch):
         chunk = windows[b0:b0 + batch]
         x, _, _ = frame([tuple(TOKEN_ID[t] for t in w) for w in chunk], seq_len)
@@ -236,9 +239,12 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
                 ex["end_bits"] = end_excess(lp[i, p0], False, pattern_end_probability(law, k, reset))
                 for key2, v in ex.items():
                     per_k[k][key2].append(v)
-            # the final boundary: the window ended after n_rec records
-            final_end.append(end_excess(lp[i, off + 5 * n_rec], True, pattern_end_probability(law, n_rec, reset)))
-    out = {"n_windows": len(windows), "per_k": {}, "final_end_bits": _stats(final_end)}
+            # the final boundary: the window ended after n_rec records; and the whole end-of-window process
+            fe = end_excess(lp[i, off + 5 * n_rec], True, pattern_end_probability(law, n_rec, reset))
+            final_end.append(fe)
+            end_total.append(fe + sum(end_excess(lp[i, off + 5 * kk], False, pattern_end_probability(law, kk, reset))
+                                      for kk in range(1, n_rec)))
+    out = {"n_windows": len(windows), "per_k": {}, "final_end_bits": _stats(final_end), "end_total_bits": _stats(end_total)}
     for k in k_list:
         out["per_k"][k] = {key: _stats(v) for key, v in per_k[k].items()}
         out["per_k"][k]["missing_classes"] = missing[k]
