@@ -251,3 +251,44 @@ GPU seeds per cell (200k-window runs; every raw now carries
 - The uniform-over-unused naming rule aside, the learner's failure is a
   binding failure in the sense of Part I D3: it is the entity fields, and
   the kind of the next event given who holds what, that carry the excess.
+
+## 9. The data-volume axis: 2M windows (appended 2026-09-18 14:58 PDT, from `date`)
+
+r1 ε=1 and r4 ε=1 retrained on 2M-window corpora (new run keys; the same
+ceiling tables), seeds 1–3, 5 epochs (39,060 steps), validation loss still
+falling at the end in every run. Structural excess at k = 7, bits per
+record (raws `learner-eval-*-2M-seed*-2026-09-18.json`):
+
+| cell | 200k, seeds 1 / 2 / 3 | pooled (sd) | 2M, seeds 1 / 2 / 3 | pooled (sd) | ÷ |
+|---|---|---|---|---|---|
+| r1 ε=1 | 0.262 / 0.284 / 0.263 | 0.270 (0.013) | 0.064 / 0.063 / 0.052 | **0.060** (0.007) | 4.5 |
+| r4 ε=1 | 0.286 / 0.720 / 0.468 | 0.491 (0.218) | 0.056 / 0.133 / 0.066 | **0.085** (0.042) | 5.8 |
+
+Per-position curves at 2M, pooled (k = 1 → 7): r1 0.006 → 0.010 → 0.012 →
+0.017 → 0.024 → 0.037 → 0.060; r4 0.013 → 0.027 → 0.039 → 0.042 → 0.053 →
+0.061 → 0.085. Naming excess 0.002–0.005. KIND field's exact KL 0.016–0.043.
+
+Readings:
+
+1. **Ten times the data divides the excess by 4.5–5.8 and halves to
+   fifths the between-seed spread.** With 2M windows, r1 ε=1 needs 5 seeds
+   for the contract's δ/3 resolution — attainable — and the learner sits at
+   about 4 % of the ceiling's entropy. The gap is data-limited at this
+   size, and still not zero.
+2. **The r4 penalty of §3.4/§8 was a data artifact.** For seeds 1 and 3,
+   r4 costs the learner no more than r1 (0.056 / 0.066 vs 0.064 / 0.052).
+   With enough data the extra visible fields are absorbed; the exact
+   observer's verdict (r3 ≡ r4) and the learner's now agree.
+3. **Seed 2 at r4 is the outlier at both volumes** (0.720 at 200k, 0.133 at
+   2M, against ~0.06 for the others). The basin is set by initialization
+   and data order, and more data does not lift it out. Whether it is a
+   basin of the 0.84M architecture or of this seed is a question for the
+   size axis and for more seeds — both are the next runs.
+4. **The growth with k persists but flattens**: ×10–15 from k = 1 to 7 at
+   2M against ×20–30 at 200k. More data buys more at long prefixes than at
+   short ones, as it should if the failure is integrating many bound names.
+
+Consequence for the protocol: the ten-cell sweep is repeated at 2M
+windows (launched now, GPU, ~11 h), and the model-size axis (d = 64, 256)
+at r1 ε=1 follows it. The 200k sweep stands as the low-data row of the
+data axis, not as the ladder.
