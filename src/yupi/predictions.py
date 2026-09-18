@@ -39,6 +39,9 @@ NON_MEASUREMENT_PREFIXES = (
     "window-gate-interning-only", "window-gate-interned",   # 2026-09-12 old-vs-new recursion equality verdicts (no result quantity)
     "c1prime-loop-corpus-track",   # 2026-09-13 EXPLORATORY corpus track (v0.2.9 proposed, not enacted); pinned in tests/test_corpus_track_40_8_2.py, not a prediction family
     "corpus-gate",   # 2026-09-15 corpus-generator gate verdicts (design v0.1 §8, gates 2–4 at C1 (8,4,2)); pinned in tests/test_corpus_gate.py, not a prediction family
+    "pattern-ceilings",   # 2026-09-18 pattern-observer ceiling-table summaries (contract v0.1.2; tables under ~/.cache/yupi-scratch/ceilings, sha256 in the raw); a loader adapter is owed if predictions are ever registered against H*(Πr|Πw)
+    "learner-eval",   # 2026-09-18 learner-side model-vs-ceiling raws (scripts/learner_evaluate.py); summarized by scripts/learner_summary.py, not an exact-side prediction family
+    "learner-gpu-determinism",   # 2026-09-18 GPU determinism verdict (bit-identical repeat and resume on the 4090)
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);
