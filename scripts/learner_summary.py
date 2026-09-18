@@ -49,7 +49,8 @@ def main(argv=None):
         for p, r in sorted(by_cell[cell], key=lambda x: x[1]["seed"]):
             pk = r["per_k"][kh]
             s, nm, kk, e, t = pk["structural_bits"], pk["naming_bits"], pk["kind_kl_bits"], pk["end_bits"], pk["token_bits"]
-            out.append(f"| {cell} | {r['seed']} | {r['step']} | {s['n']} | {s['mean']:.4f} ± {s['se']:.4f} | {nm['mean']:.4f} ± {nm['se']:.4f} | "
+            tag = " (cpu)" if "-cpu-" in p else ""
+            out.append(f"| {cell} | {r['seed']}{tag} | {r['step']} | {s['n']} | {s['mean']:.4f} ± {s['se']:.4f} | {nm['mean']:.4f} ± {nm['se']:.4f} | "
                        f"{kk['mean']:.4f} | {e['mean']:.4f} | {t['mean']:.4f} |")
             for key, v in (("structural", s), ("naming", nm), ("kind_kl", kk), ("end", e), ("token", t)):
                 vals[key].append(v["mean"])
@@ -80,7 +81,7 @@ def main(argv=None):
                 for k in ks:
                     pk = r["per_k"].get(str(k))
                     cells.append(f"{pk['structural_bits']['mean']:.4f}" if pk and pk["structural_bits"]["mean"] is not None else "—")
-                out.append(f"| {cell} | {r['seed']} | " + " | ".join(cells) + " |")
+                out.append(f"| {cell} | {r['seed']}{' (cpu)' if '-cpu-' in p else ''} | " + " | ".join(cells) + " |")
     text = "\n".join(out) + "\n"
     print(text)
     if a.md:

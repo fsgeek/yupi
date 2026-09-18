@@ -1,0 +1,140 @@
+# The learner's first results at the frozen law — ten cells, three seeds, k = 7 (v0.1, 2026-09-18)
+
+> **Status: EXPLORATORY, interim.** The first model-versus-ceiling numbers
+> in the project, from the sweep of 2026-09-18 (trainer spec
+> `docs/superpowers/specs/2026-09-18-learner-trainer-design.md`; contract
+> `learner-model-vs-ceiling-contract-v0.1.md` v0.1.2). Every number is a
+> per-window mean over the cell's test split with its standard error, from
+> a committed raw `docs/learner-eval-<cell>-seed<s>[-cpu]-2026-09-18.json`
+> (33 raws: ten cells × three GPU seeds, plus three CPU seeds at r4 ε=1),
+> against the prefix ceiling tables of `pattern-ceilings-40-8-2-k7-2026-09-18.json`
+> (every gate exact). Two things are still running as this is written and
+> will be appended in the ledger: the per-position curves (k = 1..7) and a
+> 40-epoch convergence follow-up. Written by the instance of 2026-09-18.
+
+## 1. Setup, in one paragraph
+
+Decoder-only transformer, 838,940 parameters (d = 128, 4 layers, 4 heads,
+MLP 512), trained from scratch for 10 epochs (7,820 steps of 256 windows)
+on each of the ten (40, 8, 2) looping-C1′ corpora (200k training windows,
+all four entity types renamed per episode), AdamW with warmup and cosine,
+fp32, deterministic on both devices (`learner-gpu-determinism-2026-09-18.json`:
+repeat and resume bit-identical on the 4090). Scored on the test split
+(10⁵ windows) at the headline position k = 7 — seven records seen, the
+eighth predicted — against the pattern observer's exact next-record
+distribution $P^\star(\Pi r \mid \Pi w_{\le 7})$, by the realized-record,
+field-chained estimator of the contract (v0.1.1 (a)): the **structural
+excess** is the model's cost above the ceiling on the record's five
+pattern values; the **naming excess** is its cost above uniform on fresh
+entities' tokens; their sum is the token excess given continuation.
+Windows with fewer than eight records (RESET windows with T < 8, 15 % of
+the law) have no k = 7 position and are not in these means.
+
+## 2. The headline table
+
+Structural excess at k = 7, bits per record, mean over the cell's ~85,000
+scored windows; the within-seed standard error is ≤ 0.006 everywhere and
+is omitted; the pooled column is the mean of the three seeds with the
+**between-seed** standard deviation.
+
+| cell | seed 1 | seed 2 | seed 3 | pooled | between-seed sd | ceiling $H^\star$ |
+|---|---|---|---|---|---|---|
+| r0 ε=1 | 0.0140 | 0.0152 | 0.0153 | **0.015** | 0.0007 | 0.999 |
+| r0 ε=½ | 0.0183 | 0.0176 | 0.0191 | **0.018** | 0.0008 | 0.938 |
+| r1 ε=1 | 0.2621 | 0.2844 | 0.2625 | **0.270** | 0.013 | 1.377 |
+| r1 ε=½ | 0.3187 | 0.3574 | 0.3167 | **0.331** | 0.023 | 1.169 |
+| r2 ε=1 | 0.3750 | 0.3135 | 0.4162 | **0.368** | 0.052 | 1.359 |
+| r2 ε=½ | 0.3742 | 0.5064 | 0.4176 | **0.433** | 0.067 | 1.131 |
+| r3 ε=1 | 0.4752 | 0.3428 | 0.3121 | **0.377** | 0.087 | 1.292 |
+| r3 ε=½ | 0.3956 | 0.3437 | 0.4163 | **0.385** | 0.037 | 1.070 |
+| r4 ε=1 (GPU) | 0.2863 | 0.7203 | 0.4675 | **0.491** | 0.218 | 1.292 |
+| r4 ε=1 (CPU, same seeds) | 0.3183 | 0.6768 | 0.3364 | **0.444** | 0.202 | 1.292 |
+| r4 ε=½ | 0.6205 | 0.7220 | 0.9161 | **0.753** | 0.150 | 1.070 |
+
+(Every per-seed number: `scripts/learner_summary.py docs/learner-eval-*.json`.)
+Naming excess is 0.008–0.026 bits per record at every content rung (the
+uniform-over-unused rule is learned); exactly 0 at r0, where no entity is
+ever visible. The end-of-window process excess is ≤ 0.002 bits per window
+everywhere: the model learned the ¼ / ⅓ / ½ endpoint rule.
+
+## 3. What the table says
+
+1. **At r0 the model is on the ceiling.** 0.015–0.018 bits above an
+   exact ceiling of about a bit, tight across seeds. Kind-only traces are
+   learned to within the resolution the contract asked for.
+2. **At every content rung the model is far from the ceiling.** 0.27 to
+   0.75 bits per record above ceilings of 1.07–1.38 bits — a fifth to
+   two thirds of the irreducible entropy again in excess. The excess is
+   concentrated in the KIND field's exact KL (0.08–0.22 bits) and the
+   entity fields; the naming rule is essentially learned. This is the
+   accessible-representation-plus-exposure gap of the proposal, and at
+   this scale and budget it is large, not zero. The morning's concern that
+   the world might be too easy for the learner was right for r0 and wrong
+   for every rung where names enter: **the identity axis is where the
+   learner fails.**
+3. **The between-seed spread dwarfs the exact side's threshold.** The
+   contract set δ/3 ≈ 0.003 bits as the resolution target for the
+   learner-side ladder. Between-seed standard deviations at content rungs
+   are 0.013–0.22 bits; the seed count that target implies runs from 15
+   (r1 ε=1) to over 3,000 (r4 ε=1). Two facts locate the cause:
+   - every run's validation loss is still falling at the last step
+     (r2 ε=1: 0.8030 → 0.8003 nats per token over the last thousand
+     steps); these are undertrained runs, not converged solutions;
+   - the same seed on CPU and GPU — the same initialization and data
+     order, different floating-point paths — lands in the same basin
+     (r4 ε=1: seed 2 is the worst seed on both, 0.72 and 0.68; seed 1 the
+     best, 0.29 and 0.32) but 0.03–0.13 bits apart. At this budget the
+     excess is sensitive to the arithmetic, not only the seed.
+   The learner-side ladder r1 → r2 → r3 (0.27 → 0.37 → 0.38 at ε=1) is
+   therefore **unresolved** with three seeds: the pooled standard errors
+   (0.007, 0.030, 0.050) overlap. The contract's rule applies as written —
+   a difference smaller than the sum of the standard errors is reported
+   as unresolved, not as zero — and the remedy is not more seeds of the
+   same run but runs that converge (§5).
+4. **r4 is worse than r3 for the learner although their ceilings are
+   identical.** The pattern observer's $H^\star$ is the same at r3 and r4 to
+   three decimals at every k and both ε (`pattern-ceilings-40-8-2-k*`):
+   lineage adds nothing a naming-blind observer can use. The model at r4
+   pays 0.44–0.75 bits against 0.38 at r3. Part of this is arithmetic —
+   at r4 the lineage field is a fifth pattern value to predict (bound or
+   fresh request id) where at r3 it is MASKED and free — and the per-field
+   split that would separate that from a genuine cost of the extra field
+   is owed (§5). Part is the seed spread.
+5. **ε = ½ costs the learner more than ε = 1** at every content rung
+   (0.33 vs 0.27 at r1; 0.75 vs 0.49 at r4) while its ceilings are lower
+   (the live cursor makes the trace more predictable). The model recovers
+   less of a more structured trace. Not resolved beyond r1 with three seeds.
+
+## 4. What this does not say
+
+Nothing here is a claim about the canonical (structurally informed)
+observer, whose ladder is 0.07 / 0.12 / 0.015 bits and is the exact side's
+result. Nothing is a claim about scale (one size, one data volume, one
+training budget) or about probes. The r1 → r2 → r3 ordering of the pooled
+means is suggestive and unresolved. The r4 excess is confounded with the
+extra field until the per-field split exists.
+
+## 5. What follows, in order
+
+1. **Per-position curves** (k = 1..7) for all 33 runs — running as this
+   is written; appended below when done.
+2. **Convergence follow-up** — r1 ε=1 and r2 ε=1, seeds 1–3, 40 epochs on
+   the same data (GPU, running): does the excess fall, and does the
+   between-seed spread close, when the runs converge? If it does, the
+   sweep is rerun at the converged budget and the seed count is set from
+   the converged spread. If it does not, the spread is a property of the
+   learner at this scale and is reported as such.
+3. **Per-field decomposition** in the evaluator (kind / actor / object /
+   related / lineage), so the r3-versus-r4 question and the "where does
+   the model fail" question have exact answers instead of a KIND KL and a
+   remainder.
+4. Then the scale and data-volume axes (RQ5), and the probes (sub-project 3).
+
+## 6. Ledger
+
+- 2026-09-18 13:23 PDT (from `date`): written after the 33 k = 7 raws
+  landed; curves and the 40-epoch follow-up running.
+- 2026-09-18 13:24 PDT (from `date`): the r2 ε=½ row's seed-2 and seed-3 cells were
+  first written from memory (0.4224 / 0.5015) and were wrong; corrected
+  from the raws (0.5064 / 0.4176) before commit. The pooled mean and sd
+  were right. Every other cell re-checked against the summary table.
