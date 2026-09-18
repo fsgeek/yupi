@@ -215,3 +215,39 @@ zero). Three readings, in decreasing confidence:
   r4 seeds 1–3) are running; their curves and per-field splits go in the
   next note. Raw: `learner-eval-r1-eps1-2M-seed1-2026-09-18.json` (its test
   split is the 2M corpus's own, 100k windows under the new key).
+
+## 8. Where the excess sits: the per-field split (appended 2026-09-18 13:58 PDT, from `date`)
+
+Structural excess at k = 7 by field, bits per record, pooled over the three
+GPU seeds per cell (200k-window runs; every raw now carries
+`structural_by_field`):
+
+| cell | KIND | ACTOR | OBJECT | RELATED | LINEAGE | total |
+|---|---|---|---|---|---|---|
+| r0 ε=1 | 0.015 | — | — | — | — | 0.015 |
+| r0 ε=½ | 0.018 | — | — | — | — | 0.018 |
+| r1 ε=1 | 0.105 | 0.165 | — | — | — | 0.270 |
+| r1 ε=½ | 0.143 | 0.188 | — | — | — | 0.331 |
+| r2 ε=1 | 0.118 | 0.192 | 0.058 | — | — | 0.368 |
+| r2 ε=½ | 0.165 | 0.209 | 0.059 | — | — | 0.433 |
+| r3 ε=1 | 0.111 | 0.154 | 0.073 | 0.039 | — | 0.377 |
+| r3 ε=½ | 0.139 | 0.158 | 0.059 | 0.030 | — | 0.385 |
+| r4 ε=1 | 0.128 | 0.216 | 0.064 | 0.073 | 0.010 | 0.491 |
+| r4 ε=½ | 0.214 | 0.282 | 0.138 | 0.102 | 0.017 | 0.753 |
+
+(A MASKED field contributes exactly 0 for any model and is shown as —.)
+
+- **ACTOR is the largest term at every content rung** (0.15–0.28 bits),
+  KIND the second (0.10–0.21). *Which named thread acts next* is what the
+  learner cannot do, before anything about locks, waiters or requests.
+- **The r3 → r4 question of §3.4 is answered as far as three seeds allow:**
+  the LINEAGE field itself costs the learner only 0.010–0.017 bits. The
+  rest of r4's larger excess (0.11 bits over r3 at ε=1, 0.37 at ε=½) is
+  paid on KIND, ACTOR and RELATED — fields the r3 model also predicts —
+  so an exposed lineage field makes the *other* predictions worse, not
+  better, for this learner, although it adds nothing to the exact
+  observer. With r4 ε=1's between-seed sd of 0.22 the ε=1 difference is
+  unresolved; the ε=½ difference (0.37 against sds 0.04 / 0.15) is not.
+- The uniform-over-unused naming rule aside, the learner's failure is a
+  binding failure in the sense of Part I D3: it is the entity fields, and
+  the kind of the next event given who holds what, that carry the excess.
