@@ -292,3 +292,73 @@ Consequence for the protocol: the ten-cell sweep is repeated at 2M
 windows (launched now, GPU, ~11 h), and the model-size axis (d = 64, 256)
 at r1 ε=1 follows it. The 200k sweep stands as the low-data row of the
 data axis, not as the ladder.
+
+## 10. The ten-cell sweep at 2M windows (appended 2026-09-19 07:34 PDT, from `date`)
+
+Overnight (2026-09-18 15:00 → 20:01, GPU through the lease, babysat; all 30
+runs evaluated by 20:13; raws `learner-eval-<cell>-2M-seed<s>-2026-09-18.json`,
+manifests `c1prime-loop-40-8-2-*-<run id>.json` with train = 2,000,000).
+Structural excess at k = 7, bits per record, with the per-field split
+pooled over seeds and the 200k-window pooled value beside:
+
+| cell | seeds 1 / 2 / 3 | pooled | between-seed sd | KIND | ACTOR | OBJECT | RELATED | LINEAGE | 200k pooled |
+|---|---|---|---|---|---|---|---|---|---|
+| r0 ε=1 | 0.005 / 0.005 / 0.005 | **0.005** | 0.000 | 0.005 | — | — | — | — | 0.015 |
+| r0 ε=1/2 | 0.006 / 0.005 / 0.005 | **0.005** | 0.001 | 0.005 | — | — | — | — | 0.018 |
+| r1 ε=1 | 0.064 / 0.063 / 0.052 | **0.060** | 0.007 | 0.021 | 0.038 | — | — | — | 0.270 |
+| r1 ε=1/2 | 0.079 / 0.099 / 0.090 | **0.089** | 0.010 | 0.034 | 0.056 | — | — | — | 0.331 |
+| r2 ε=1 | 0.079 / 0.089 / 0.120 | **0.096** | 0.021 | 0.028 | 0.051 | 0.017 | — | — | 0.368 |
+| r2 ε=1/2 | 0.140 / 0.097 / 0.132 | **0.123** | 0.023 | 0.039 | 0.067 | 0.017 | — | — | 0.433 |
+| r3 ε=1 | 0.059 / 0.061 / 0.058 | **0.059** | 0.001 | 0.019 | 0.027 | 0.007 | 0.005 | — | 0.377 |
+| r3 ε=1/2 | 0.088 / 0.094 / 0.095 | **0.092** | 0.003 | 0.030 | 0.046 | 0.010 | 0.007 | 0.000 | 0.385 |
+| r4 ε=1 | 0.056 / 0.133 / 0.065 | **0.085** | 0.042 | 0.026 | 0.038 | 0.010 | 0.011 | 0.001 | 0.491 |
+| r4 ε=1/2 | 0.239 / 0.101 / 0.096 | **0.145** | 0.081 | 0.040 | 0.050 | 0.038 | 0.017 | 0.001 | 0.753 |
+
+Per-position curves, pooled:
+
+| cell | k=1 | k=2 | k=3 | k=4 | k=5 | k=6 | k=7 | k=7 / k=1 |
+|---|---|---|---|---|---|---|---|---|
+| r0 ε=1 | 0.000 | 0.001 | 0.001 | 0.001 | 0.002 | 0.003 | 0.005 | 10 |
+| r0 ε=1/2 | 0.001 | 0.001 | 0.001 | 0.002 | 0.002 | 0.003 | 0.005 | 9 |
+| r1 ε=1 | 0.006 | 0.010 | 0.012 | 0.017 | 0.024 | 0.037 | 0.060 | 11 |
+| r1 ε=1/2 | 0.008 | 0.015 | 0.019 | 0.025 | 0.037 | 0.061 | 0.089 | 11 |
+| r2 ε=1 | 0.009 | 0.015 | 0.020 | 0.030 | 0.045 | 0.065 | 0.096 | 11 |
+| r2 ε=1/2 | 0.009 | 0.018 | 0.024 | 0.037 | 0.060 | 0.092 | 0.123 | 14 |
+| r3 ε=1 | 0.013 | 0.018 | 0.024 | 0.028 | 0.036 | 0.044 | 0.059 | 5 |
+| r3 ε=1/2 | 0.014 | 0.025 | 0.031 | 0.040 | 0.055 | 0.073 | 0.092 | 6 |
+| r4 ε=1 | 0.013 | 0.027 | 0.039 | 0.042 | 0.053 | 0.061 | 0.085 | 6 |
+| r4 ε=1/2 | 0.016 | 0.057 | 0.080 | 0.077 | 0.103 | 0.113 | 0.145 | 9 |
+
+Readings, in decreasing confidence:
+
+1. **The learner-side ladder at 2M is not the exact side's ladder.** At
+   ε = 1: r0 0.005 < r1 0.060 ≈ r3 0.059 < r4 0.085 < r2 0.096. r3 costs the
+   learner no more than r1 (sd 0.001 and 0.007 — resolved); r2 costs more
+   than either (sd 0.021; pooled se 0.012 — resolved against r1 and r3 at
+   two standard errors, not three). Exposing the OBJECT field (r1 → r2)
+   makes the learner *worse*; exposing RELATED on top of it (r2 → r3)
+   makes it *better* again, back to r1's level. The exact observer's
+   ceilings fall monotonically down the same ladder. The interface that
+   helps the Bayesian observer most per bit is not the one the learner
+   handles best.
+2. **Where the excess sits is stable across data volume**: ACTOR is the
+   largest field at every content rung, KIND second, and the OBJECT
+   field's own term at r2 (≈ 0.02) does not account for r2's extra cost —
+   it is paid on KIND and ACTOR. Seeing the lock makes the learner worse
+   at predicting who acts and what happens.
+3. **ε = ½ costs the learner more than ε = 1 at every content rung**
+   (0.089 vs 0.060 at r1; 0.092 vs 0.059 at r3), resolved at r1 and r3
+   (sds ≤ 0.010); equal at r0 (0.005 both); unresolved at r2 and r4. The
+   live cursor lowers every ceiling and, where resolved, raises the
+   learner's excess.
+4. **The two cells with large between-seed spread are r4 ε=1 and r4 ε=½,
+   both carried by one outlier seed** (§9.3). r4's pooled value is not a
+   property of the rung until more seeds separate the basin question from
+   the interface question.
+5. Growth with k persists at 2M in every cell, ×5–14 from k = 1 to 7
+   against ×18–33 at 200k — and it is the rungs with more visible fields
+   (r3, r4: ×5–6) that grow least, r1 and r2 (×11–14) most. §7.2's
+   reading stands with that refinement.
+
+The 200k sweep (§2) is the low-data row of the data axis; this table is
+the one the interface question is read from, at this model size.
