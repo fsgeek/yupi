@@ -362,3 +362,42 @@ Readings, in decreasing confidence:
 
 The 200k sweep (§2) is the low-data row of the data axis; this table is
 the one the interface question is read from, at this model size.
+
+## 11. The model-size axis at 2M windows, r1 ε=1 (appended 2026-09-19 07:40 PDT, from `date`)
+
+Same corpus, same recipe (AdamW, lr 1e-3 peak, warmup 500, cosine to 1e-4, batch 256, 5 epochs),
+4 layers and 4 heads throughout; only the width changes. Raws `learner-eval-r1-eps1-2M-d{64,256}-seed*-2026-09-18.json`
+(d = 128 is §9's row).
+
+| width | parameters | seeds 1 / 2 / 3 | pooled | sd | KIND | ACTOR | naming | final val loss (nats/token) | curve k = 1..7 |
+|---|---|---|---|---|---|---|---|---|---|
+| d = 64 | 222,940 | 0.155 / 0.121 / 0.120 | **0.132** | 0.020 | 0.048 | 0.085 | 0.0033 | 0.6166 | 0.011 / 0.018 / 0.024 / 0.036 / 0.057 / 0.086 / 0.132 |
+| d = 128 | 838,940 | 0.064 / 0.063 / 0.052 | **0.060** | 0.007 | 0.021 | 0.038 | 0.0026 | 0.6119 | 0.006 / 0.010 / 0.012 / 0.017 / 0.024 / 0.037 / 0.060 |
+| d = 256 | 3,250,588 | 0.155 / 0.156 / 0.094 | **0.135** | 0.036 | 0.091 | 0.044 | 0.0042 | 0.6173 | 0.005 / 0.027 / 0.033 / 0.052 / 0.070 / 0.083 / 0.135 |
+
+Readings:
+
+1. **Not monotone in size at a fixed recipe.** d = 64 (223k) sits at 0.132,
+   d = 128 (839k) at 0.060, d = 256 (3.25M) back at 0.135 — with its
+   validation loss the worst of the three and its excess moved into the
+   KIND field (0.091 against 0.021 at d = 128). A four-fold wider model
+   trained with the same learning rate and schedule is not the same
+   experiment at a different point on the axis; it is an untuned model.
+   The size axis is **not read** from this table. It is owed a
+   learning-rate sweep per width (and, at d = 256, more steps) before any
+   capacity claim is made; until then §9–10's numbers are a statement about
+   one architecture, not about scale.
+2. What survives the confound: at every width the curve rises with k
+   (×12, ×11, ×27), the naming rule is learned (≤ 0.005), and ACTOR or KIND
+   is the field that carries the excess.
+
+## 12. State at handoff (2026-09-19 07:40 PDT)
+
+Everything above is committed and stamped; the GPU is free; no job is
+running. The learner-side questions open for the next instance, in the
+order I would take them: (a) the headline — the non-monotone
+learner-side ladder of §10 or the growth with context of §7/§10, and
+whether either needs more seeds at r2 and r4 first; (b) the size axis
+done properly (lr sweep per width) before RQ5 is touched; (c) the probes
+(sub-project 3) against the full-window tables. The 200k sweep (§2) is
+the low-data row of the data axis, not the ladder.
