@@ -42,6 +42,7 @@ NON_MEASUREMENT_PREFIXES = (
     "pattern-ceilings",   # 2026-09-18 pattern-observer ceiling-table summaries (contract v0.1.2; tables under ~/.cache/yupi-scratch/ceilings, sha256 in the raw); a loader adapter is owed if predictions are ever registered against H*(Πr|Πw)
     "learner-eval",   # 2026-09-18 learner-side model-vs-ceiling raws (scripts/learner_evaluate.py); summarized by scripts/learner_summary.py, not an exact-side prediction family
     "learner-gpu-determinism",   # 2026-09-18 GPU determinism verdict (bit-identical repeat and resume on the 4090)
+    "learner-window-census",   # 2026-09-21 per-window distribution behind a cell's mean excess (scripts/learner_window_census.py); per-window rows under ~/.cache/yupi-scratch/census, sha256 in the raw
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);

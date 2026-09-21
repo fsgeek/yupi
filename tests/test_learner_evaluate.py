@@ -225,3 +225,24 @@ def test_per_field_decomposition(corpus):
         total = sum(pk["structural_by_field"][f]["mean"] for f in ("kind", "actor", "obj", "related", "lineage"))
         assert abs(total - pk["structural_bits"]["mean"]) < 1e-9
         assert abs(pk["structural_by_field"]["kind"]["mean"] - pk["kind_kl_bits"]["mean"]) > 0 or True   # realized vs exact: same expectation, different estimator
+
+
+def test_on_window_callback_reports_every_scored_window(corpus):
+    """`on_window(i, k, key, ex)` is called once per (window, k) that is scored
+    (not too short, class present); its `ex` carries the same per-window
+    excesses the aggregates are built from, so the callback's mean over k
+    equals the aggregate mean, and `key` is the window's ceiling-table key."""
+    m, d, tables = corpus
+    uniform = lambda x: np.full(x.shape + (len(VOCAB),), -math.log(len(VOCAB)))
+    seen = []
+    r = evaluate(uniform, d, m.law(), tables, K_LIST, SEQ, on_window=lambda i, k, key, ex: seen.append((i, k, key, ex)))
+    for k in K_LIST:
+        pk = r["per_k"][k]
+        rows = [(i, key, ex) for i, kk, key, ex in seen if kk == k]
+        assert len(rows) == pk["structural_bits"]["n"]
+        assert len({i for i, _, _ in rows}) == len(rows)                    # one call per window per k
+        assert abs(np.mean([ex["structural_bits"] for _, _, ex in rows]) - pk["structural_bits"]["mean"]) < 1e-12
+        assert abs(np.mean([ex["naming_bits"] for _, _, ex in rows]) - pk["naming_bits"]["mean"]) < 1e-12
+        for _, key, ex in rows:
+            assert key in tables[k]
+            assert abs(sum(ex["structural_by_field"].values()) - ex["structural_bits"]) < 1e-12

@@ -199,12 +199,16 @@ def _stats(xs: List[float]) -> dict:
 
 def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: WindowLaw,
              tables: Dict[int, Table], k_list: Iterable[int], seq_len: int, n: Optional[int] = None,
-             batch: int = 512, split: str = "test") -> dict:
+             batch: int = 512, split: str = "test",
+             on_window: Optional[Callable[[int, int, tuple, dict], None]] = None) -> dict:
     """Per k: statistics of the per-window excesses over the split's windows
     that have at least k + 1 records. `logprobs_fn(inputs[N, seq_len]) ->
     [N, seq_len, 156]` natural-log softmax; position p predicts window
     token p (inputs are BOS + window). Missing classes are counted, never
-    coerced; the window is skipped for that k."""
+    coerced; the window is skipped for that k. `on_window(i, k, key, ex)`,
+    if given, is called once per scored (window index, k) with the window's
+    ceiling-table key and its per-window excess dict (structural_by_field
+    included) — the aggregates below are built from exactly these values."""
     rows = read_split(corpus_dir, split)
     if n is not None:
         rows = rows[:n]
@@ -242,6 +246,8 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
                 p0 = off + 5 * k
                 ex = window_excess(lp[i, p0:p0 + 5], tuple(toks[p0:p0 + 5]), used, star, rho)
                 ex["end_bits"] = end_excess(lp[i, p0], False, pattern_end_probability(law, k, reset))
+                if on_window is not None:
+                    on_window(b0 + i, k, key, dict(ex))
                 for f, v in ex.pop("structural_by_field").items():
                     by_field[k][f].append(v)
                 for key2, v in ex.items():

@@ -401,3 +401,116 @@ whether either needs more seeds at r2 and r4 first; (b) the size axis
 done properly (lr sweep per width) before RQ5 is touched; (c) the probes
 (sub-project 3) against the full-window tables. The 200k sweep (§2) is
 the low-data row of the data axis, not the ladder.
+
+## 13. The window census: what the k = 7 mean hides (appended 2026-09-21 12:20 PDT, from `date`, by the instance of 2026-09-21)
+
+The question was frivolous on its face — *which single window does the
+model get most wrong, and what is in it?* — and its literal answer is
+null, which is the finding. One evaluator pass per run at k = 7 over the
+test split (`scripts/learner_window_census.py`, the evaluator's new
+`on_window` callback; per-window rows under `~/.cache/yupi-scratch/census/`,
+sha256 in the raws `learner-window-census-<cell>-2M-seed<s>-2026-09-21.json`;
+the cuts in `learner-window-census-cuts-2026-09-21.json` from
+`scripts/learner_census_cuts.py`), for the ε = 1 ladder cells r1, r2, r3 at
+all three seeds. Every census mean reproduces its §10 aggregate to four
+decimals.
+
+**13.1 The per-window distribution is realization noise, not a tail of hard
+situations.** Per window, the structural excess is the realized-record
+estimate log₂ P*(ρ) − log₂ P̃_M(ρ) for the one record that occurred; it is
+negative on 40–43 % of windows in every cell, its median is 0.01–0.04 bits
+against means of 0.05–0.12, its 99th percentile is 1.1–1.9 bits, and the
+top 1 % of windows carry 24–36 % of the total. That looks like a tail of
+hard cases. It is not: the one-way variance split by ceiling-table class
+(25,005 / 28,722 / 32,584 classes at r1 / r2 / r3, of which 13–15 k hold two
+or more windows) puts only 15–26 % of the per-window variance between
+classes; 74–85 % is within-class, i.e. the spread of the realized record
+under P* plus whatever the model does with the names. The worst windows
+(6–15 bits) are windows where a low-P* record happened and the model had
+put even less on it. A "hardest window" is not a property of the model at
+this grain. (The class grain is too fine to read directly: ~3 windows per
+class.)
+
+**13.2 At the grain of the predicted record's kind, the r2 penalty sits on
+lock contention.** Attributing each cell's total to the kind of the record
+being predicted (a signed decomposition of the estimator's sum — shares add
+to one, but a kind's mean conditions on the outcome and is not a KL, so it
+may be negative, as IO_COMPLETE is at r2 seed 2):
+
+| cell | seed | n | mean | classes | between share (ANOVA) | BLOCK+ACQUIRE share | share by predicted kind: DISPATCH / RELEASE / BLOCK / ACQUIRE / IO_ISSUE / IO_COMPLETE / STEP |
+|---|---|---|---|---|---|---|---|
+| r1 ε=1 | 1 | 84949 | 0.064 | 25005 | 0.17 | **0.29** | 0.23 / 0.09 / 0.17 / 0.12 / 0.14 / 0.09 / 0.17 |
+| r1 ε=1 | 2 | 84949 | 0.063 | 25005 | 0.20 | **0.35** | 0.21 / 0.10 / 0.18 / 0.17 / 0.19 / 0.07 / 0.08 |
+| r1 ε=1 | 3 | 84949 | 0.052 | 25005 | 0.15 | **0.45** | 0.22 / 0.21 / 0.31 / 0.14 / 0.03 / 0.09 / -0.00 |
+| r2 ε=1 | 1 | 84987 | 0.079 | 28722 | 0.18 | **0.47** | 0.14 / 0.11 / 0.36 / 0.11 / 0.09 / 0.15 / 0.05 |
+| r2 ε=1 | 2 | 84987 | 0.089 | 28722 | 0.16 | **0.44** | 0.24 / 0.18 / 0.25 / 0.19 / 0.11 / -0.04 / 0.07 |
+| r2 ε=1 | 3 | 84987 | 0.120 | 28722 | 0.24 | **0.49** | 0.21 / 0.16 / 0.29 / 0.20 / 0.06 / 0.03 / 0.05 |
+| r3 ε=1 | 1 | 84955 | 0.059 | 32584 | 0.19 | **0.30** | 0.11 / 0.34 / 0.17 / 0.14 / 0.17 / 0.07 / 0.01 |
+| r3 ε=1 | 2 | 84955 | 0.061 | 32584 | 0.26 | **0.50** | 0.09 / 0.16 / 0.32 / 0.18 / 0.11 / 0.11 / 0.03 |
+| r3 ε=1 | 3 | 84955 | 0.058 | 32584 | 0.24 | **0.41** | 0.15 / 0.19 / 0.31 / 0.10 / 0.09 / 0.06 / 0.10 |
+
+
+Mean excess on the lock-contention records (BLOCK: a thread blocks on a
+held lock; ACQUIRE: it takes a free one), with the field split, beside
+RELEASE and DISPATCH:
+
+|---|---|---|---|---|---|---|
+| r1 ε=1 | 1 | 0.086 (0.02 / 0.06 / 0.00) | 0.071 (0.02 / 0.05 / 0.00) | 0.031 | 0.036 | 0.19 (0.14) |
+| r1 ε=1 | 2 | 0.092 (0.03 / 0.06 / 0.00) | 0.099 (0.04 / 0.05 / 0.00) | 0.033 | 0.034 | 0.23 (0.14) |
+| r1 ε=1 | 3 | 0.128 (0.07 / 0.06 / 0.00) | 0.067 (0.03 / 0.04 / 0.00) | 0.058 | 0.028 | 0.19 (0.14) |
+| r2 ε=1 | 1 | 0.224 (0.10 / 0.07 / 0.06) | 0.083 (0.01 / 0.05 / 0.03) | 0.047 | 0.027 | 0.13 (0.14) |
+| r2 ε=1 | 2 | 0.175 (0.03 / 0.07 / 0.07) | 0.160 (0.07 / 0.06 / 0.03) | 0.088 | 0.055 | 0.22 (0.14) |
+| r2 ε=1 | 3 | 0.272 (0.07 / 0.10 / 0.10) | 0.227 (0.12 / 0.07 / 0.04) | 0.103 | 0.064 | 0.15 (0.14) |
+| r3 ε=1 | 1 | 0.077 (-0.01 / 0.05 / 0.03) | 0.076 (0.02 / 0.04 / 0.02) | 0.108 | 0.016 | 0.12 (0.14) |
+| r3 ε=1 | 2 | 0.154 (0.05 / 0.05 / 0.04) | 0.104 (0.05 / 0.04 / 0.02) | 0.053 | 0.014 | 0.19 (0.14) |
+| r3 ε=1 | 3 | 0.145 (0.05 / 0.05 / 0.03) | 0.055 (-0.00 / 0.04 / 0.02) | 0.060 | 0.023 | 0.27 (0.14) |
+
+
+The seed-to-seed swing in shares is large (the totals are small and the
+per-kind sums signed), so the reading is taken from the *gap* between rungs:
+each kind's contribution frac_kind × (mean_r2 − mean_other) to the r2 − r1
+and r2 − r3 differences in total excess, per seed and pooled (mean ± sd
+over seeds; contributions sum to the gap):
+
+|---|---|---|---|---|---|---|---|---|
+| r2-r1 eps=1 | +0.036 (+0.015, +0.026, +0.068) | +0.006 ± 0.009 | +0.007 ± 0.004 | +0.015 ± 0.004 | +0.008 ± 0.008 | +0.000 ± 0.004 | -0.001 ± 0.007 | +0.001 ± 0.007 |
+| r2-r3 eps=1 | +0.037 (+0.020, +0.029, +0.062) | +0.012 ± 0.007 | +0.001 ± 0.011 | +0.012 ± 0.009 | +0.008 ± 0.009 | +0.001 ± 0.003 | -0.001 ± 0.009 | +0.003 ± 0.002 |
+
+Readings, in decreasing confidence:
+
+1. **BLOCK is the one kind whose contribution to the r2 − r1 gap is
+   resolved across seeds**: +0.015 ± 0.004 of +0.036, with BLOCK's mean
+   excess at r2 (0.18–0.27) above r1 (0.09–0.13) at every seed and the
+   excess spread over the kind, actor and object fields. BLOCK and ACQUIRE
+   together carry about two-thirds of the r2 − r1 gap. The remaining third
+   is diffuse and mostly the outlier seed 3, whose extra 0.04–0.05 bits sit
+   on every kind — the seed question of §10 reading 4 is still open and
+   still owed more seeds.
+2. Against r3 the picture is less resolved (BLOCK +0.012 ± 0.009,
+   DISPATCH +0.012 ± 0.007); BLOCK's mean at r3 (0.08–0.15) is below r2 at
+   every seed and the two ranges do not overlap; the pooled sd comes from the other kinds.
+3. **Mechanism, as a hypothesis for the probes, not a claim.** At r2 the
+   surface names the lock but not its owner; to predict a BLOCK (and on
+   whom, and on which lock) the model must have tracked ownership from
+   earlier ACQUIRE / RELEASE records. At r3 the RELATED field prints the
+   owner on every BLOCK and the woken thread on every RELEASE, and the
+   BLOCK excess falls even though the model now predicts one field more.
+   That is consistent with the learner paying not for bits of interface
+   but for state it must compute unassisted — inferred ownership is what
+   it fails at; given ownership it handles. The probe that tests this is
+   the one already planned (sub-project 3): is lock ownership linearly
+   present in the residual stream at r2, and is it less present than at
+   r3? A cheaper first check is exact: split the r2 BLOCK windows by
+   whether the observer's posterior on the blocked lock's owner is
+   concentrated or spread, and see whether the model's BLOCK excess
+   tracks that.
+4. Fresh-actor records (14 % of windows) carry 12–27 % of each cell's
+   total — modestly over their share, not consistently across seeds; not a
+   headline.
+
+What this does not say: nothing about r4 or ε = ½ (not censused), nothing
+about the canonical observer, and the per-kind means are attributions of
+a realized-record sum, not per-kind KLs. §10 reading 2 ("the OBJECT
+field's own term does not account for r2's extra cost — it is paid on KIND
+and ACTOR") stands, with the refinement that the KIND and ACTOR excess is
+paid on the lock-contention records.
