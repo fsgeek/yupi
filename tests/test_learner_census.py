@@ -100,3 +100,18 @@ def test_record_features_of_the_predicted_record():
     assert f == dict(kind="STEP", actor="bound", nthreads=2, kind_actor="STEP/bound")
     f = record_features((R("IDLE", None),), R("DISPATCH", "T03"))       # IDLE has no actor
     assert f["nthreads"] == 0 and f["actor"] == "fresh"
+
+
+def test_seed_contrast_by_kind_sums_to_the_gap():
+    """contrast(cells, high, low): per kind, frac × (mean over high seeds − mean over
+    low seeds) using each group's pooled per-kind means; contributions sum to the
+    gap between the groups' total means."""
+    from yupi.learner.census import contrast
+    def cell(seed, total, a, b):
+        return dict(seed=seed, mean=total, attribution=dict(kind=dict(A=dict(frac=0.5, mean=a), B=dict(frac=0.5, mean=b))))
+    cells = [cell(1, 0.10, 0.12, 0.08), cell(2, 0.30, 0.40, 0.20), cell(3, 0.12, 0.14, 0.10)]
+    c = contrast(cells, high=(2,), low=(1, 3))
+    assert c["gap"] == pytest.approx(0.30 - 0.11)
+    assert c["by_kind"]["A"] == pytest.approx(0.5 * (0.40 - 0.13))
+    assert c["by_kind"]["B"] == pytest.approx(0.5 * (0.20 - 0.09))
+    assert sum(c["by_kind"].values()) == pytest.approx(c["gap"])

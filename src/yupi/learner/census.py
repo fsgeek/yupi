@@ -113,3 +113,28 @@ def record_features(prefix, nxt) -> dict:
     seen = {r.actor for r in prefix if r.actor not in (None, "MASKED")}
     actor = "bound" if nxt.actor in seen else "fresh"
     return dict(kind=nxt.kind, actor=actor, nthreads=len(seen), kind_actor=f"{nxt.kind}/{actor}")
+
+
+def contrast(cells: Sequence[dict], high: Sequence[int], low: Sequence[int]) -> dict:
+    """Seed-group contrast within one cell: per predicted kind, frac × (pooled
+    mean over `high` seeds − pooled mean over `low` seeds); the contributions
+    sum to the gap between the groups' mean totals. `cells` are the cuts
+    script's per-seed entries (seed, mean, attribution.kind)."""
+    hi = [c for c in cells if c["seed"] in set(high)]
+    lo = [c for c in cells if c["seed"] in set(low)]
+    if not hi or not lo:
+        raise ValueError("both seed groups must be non-empty")
+    kinds = sorted({k for c in hi + lo for k in c["attribution"]["kind"]})
+    def pooled(group, k, key):
+        vals = [c["attribution"]["kind"][k][key] for c in group if k in c["attribution"]["kind"]]
+        return sum(vals) / len(vals) if vals else None
+    by_kind = {}
+    for k in kinds:
+        fh, fl = pooled(hi, k, "frac"), pooled(lo, k, "frac")
+        mh, ml = pooled(hi, k, "mean"), pooled(lo, k, "mean")
+        if None in (fh, fl, mh, ml):
+            continue
+        by_kind[k] = fh * mh - fl * ml
+    gap = sum(c["mean"] for c in hi) / len(hi) - sum(c["mean"] for c in lo) / len(lo)
+    return dict(high=list(high), low=list(low), gap=gap, high_mean=sum(c["mean"] for c in hi) / len(hi),
+                low_mean=sum(c["mean"] for c in lo) / len(lo), by_kind=by_kind)

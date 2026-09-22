@@ -17,7 +17,7 @@ from pathlib import Path
 
 from yupi.corpus.vocab import VOCAB
 from yupi.corpus.writer import read_split
-from yupi.learner.census import attribute, record_features, variance_split
+from yupi.learner.census import attribute, contrast, record_features, variance_split
 from yupi.learner.evaluate import surface_records
 
 KINDS_ORDER = ("DISPATCH", "RELEASE", "BLOCK", "ACQUIRE", "IO_ISSUE", "IO_COMPLETE", "STEP", "IDLE")
@@ -118,10 +118,14 @@ def main(argv=None):
     ap.add_argument("raws", nargs="+")
     ap.add_argument("--raw", required=True)
     ap.add_argument("--md", action="store_true")
+    ap.add_argument("--contrast", default=None, help="seed-group contrast within one cell, e.g. 'high=2,5 low=1,3,4,6'")
     a = ap.parse_args(argv)
     cells = [one(Path(p)) for p in sorted(a.raws)]
     cells.sort(key=lambda c: (c["rung"], c["eps"], c["seed"]))
     out = dict(cells=cells, gaps=gaps(cells), inputs=sorted(a.raws))
+    if a.contrast:
+        groups = {kv.split("=")[0]: [int(x) for x in kv.split("=")[1].split(",")] for kv in a.contrast.split()}
+        out["contrast"] = contrast(cells, groups["high"], groups["low"])
     Path(a.raw).write_text(json.dumps(out, indent=2, default=str) + "\n")
     print(f"raw -> {a.raw}", file=sys.stderr)
     if a.md:
@@ -129,6 +133,14 @@ def main(argv=None):
         print(markdown(back))
         print()
         print(markdown_gaps(back["gaps"]))
+        if "contrast" in back:
+            c = back["contrast"]
+            print()
+            print(f"| contrast seeds {c['high']} ({c['high_mean']:.3f}) − seeds {c['low']} ({c['low_mean']:.3f}) | gap | " +
+                  " | ".join(KINDS_ORDER[:7]) + " |")
+            print("|---|---|" + "---|" * 7)
+            print(f"| frac × Δmean by predicted kind | {c['gap']:+.3f} | " +
+                  " | ".join(f"{c['by_kind'][k]:+.3f}" if k in c["by_kind"] else "—" for k in KINDS_ORDER[:7]) + " |")
     return 0
 
 

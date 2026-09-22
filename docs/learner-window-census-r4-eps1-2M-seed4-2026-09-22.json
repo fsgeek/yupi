@@ -1,0 +1,1349 @@
+{
+  "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r4-eps1-2M-s4",
+  "step": 39065,
+  "seed": 4,
+  "corpus": "corpus/c1prime-loop-40-8-2-r4-eps1/ee9475787e67a1cc",
+  "rung": "r4",
+  "eps": "1",
+  "law": {
+    "T_ep": 40,
+    "L": 8,
+    "B": 2
+  },
+  "programs": "c1prime-loop",
+  "k": 7,
+  "split": "test",
+  "n": null,
+  "git": "93b2c427bbb097da85599d977d51422a36445775+dirty",
+  "checkpoint_sha256": "0390c5ec2367cb90e28844c5e8a9b0971bf9b7acbe97da87e4c8437195b5a104",
+  "table_sha256": "cb3c76b33b929c61513ba3920b826068f16ef08c2155681961614c8409b2d2fd",
+  "aggregate": {
+    "structural": {
+      "n": 84972,
+      "mean": 0.05368233419627221,
+      "sd": 0.3331513123356347,
+      "se": 0.0011428878299317876
+    },
+    "missing_classes": 0,
+    "too_short": 15028
+  },
+  "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1-2M-s4-k7-test.jsonl",
+  "per_window_sha256": "8185f3bd941e653673eb9be4ded3764abb74d2c36bdcf1643c9a1be79d1f417b",
+  "classes_labels": null,
+  "summary": {
+    "n": 84972,
+    "mean": 0.05368233419627221,
+    "sd": 0.3331513123356347,
+    "total": 4561.495301325643,
+    "max": 11.18313625021096,
+    "min": -3.6089445549816803,
+    "negative_share": 0.4167843524925858,
+    "quantiles": {
+      "0.5": 0.02152496642136832,
+      "0.9": 0.32803500815105113,
+      "0.99": 1.1644676035832513,
+      "0.999": 2.874661297688071
+    },
+    "tail_share": {
+      "0.01": 0.35346213026921686,
+      "0.05": 0.8918620922361364,
+      "0.1": 1.2669540246218403
+    },
+    "n_classes": 32755,
+    "classes": [
+      {
+        "key": 1200,
+        "n": 48,
+        "mean": 0.3092511509505018,
+        "se": 0.15691464941496372,
+        "sum": 14.844055245624087,
+        "share": 0.0032542081631236515,
+        "by_field": {
+          "kind": -0.0023766855464613518,
+          "actor": 0.28663215510282136,
+          "obj": 0.004999013427144698,
+          "related": 0.019268980403446167,
+          "lineage": 0.0007276875635510558
+        },
+        "label": "DISPATCH/t0 BLOCK/t0/L0/r=t1 RELEASE/t1/L0/r=t0 DISPATCH/t0 DISPATCH/t1 RELEASE/t0/L0 DISPATCH/t0"
+      },
+      {
+        "key": 18747,
+        "n": 3,
+        "mean": 3.8496808765785464,
+        "se": 3.6669734270352463,
+        "sum": 11.54904262973564,
+        "share": 0.002531854549182437,
+        "by_field": {
+          "kind": 0.17509051730885714,
+          "actor": 3.67374276197031,
+          "obj": 0.0006405957782296979,
+          "related": 0.0002069996727331506,
+          "lineage": 1.8484170275328384e-09
+        },
+        "label": "DISPATCH/t0 BLOCK/t1/L0/r=t0 DISPATCH/t2 RELEASE/t0/L1 DISPATCH/t0 RELEASE/t0/L0/r=t1 DISPATCH/t3"
+      },
+      {
+        "key": 2502,
+        "n": 17,
+        "mean": 0.5494327869633694,
+        "se": 0.2076864412244005,
+        "sum": 9.340357378377279,
+        "share": 0.0020476525264999886,
+        "by_field": {
+          "kind": 0.42512487850928915,
+          "actor": 0.08774262027664216,
+          "obj": 0.024617519950301647,
+          "related": 0.011633311856985122,
+          "lineage": 0.00031445637015126035
+        },
+        "label": "DISPATCH/t0 BLOCK/t0/L0/r=t1 DISPATCH/t1 RELEASE/t1/L0/r=t0 DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t0"
+      },
+      {
+        "key": 25945,
+        "n": 1,
+        "mean": 9.06497842339275,
+        "se": 0.0,
+        "sum": 9.06497842339275,
+        "share": 0.0019872822012462284,
+        "by_field": {
+          "kind": 2.407385667606853,
+          "actor": 6.497125830901815,
+          "obj": 0.01035492460271478,
+          "related": 0.15011198605058215,
+          "lineage": 1.4230785225636214e-08
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0 DISPATCH/t2 ACQUIRE/t2/L0 DISPATCH/t2 BLOCK/t0/L0/r=t2 DISPATCH/t1"
+      },
+      {
+        "key": 1706,
+        "n": 37,
+        "mean": 0.23444711847781002,
+        "se": 0.08756015938889834,
+        "sum": 8.674543383678971,
+        "share": 0.0019016885496205623,
+        "by_field": {
+          "kind": 0.0764228379203685,
+          "actor": 0.14803912943954628,
+          "obj": 0.0008600451554756464,
+          "related": 0.009125022538804742,
+          "lineage": 8.34236148590483e-08
+        },
+        "label": "BLOCK/t0/L0/r=t1 DISPATCH/t2 IO_ISSUE/t2/D0/l=t0 IO_COMPLETE/t2/D0/l=t0 DISPATCH/t2 ACQUIRE/t2/L1 DISPATCH/t2"
+      },
+      {
+        "key": 2033,
+        "n": 90,
+        "mean": 0.095864345741332,
+        "se": 0.03700504759114789,
+        "sum": 8.62779111671988,
+        "share": 0.001891439220426799,
+        "by_field": {
+          "kind": 0.027393432610744214,
+          "actor": 0.03781214035913257,
+          "obj": 9.066347589105465e-06,
+          "related": 0.029674497397483006,
+          "lineage": 0.0009752090263830769
+        },
+        "label": "IO_ISSUE/t0/D0/l=t0 IO_COMPLETE/t0/D0/l=t0 DISPATCH/t0 ACQUIRE/t0/L0 DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t0"
+      },
+      {
+        "key": 985,
+        "n": 33,
+        "mean": 0.24024277101265823,
+        "se": 0.08400503577373504,
+        "sum": 7.928011443417722,
+        "share": 0.0017380290715445254,
+        "by_field": {
+          "kind": -0.0020084851900503075,
+          "actor": 0.1088309647312503,
+          "obj": 0.0011890805936049331,
+          "related": 0.13223116702323937,
+          "lineage": 4.3854613954811905e-08
+        },
+        "label": "RELEASE/t0/L0/r=t1 DISPATCH/t0 DISPATCH/t1 RELEASE/t0/L1/r=t2 DISPATCH/t0 BLOCK/t0/L1/r=t2 DISPATCH/t2"
+      },
+      {
+        "key": 1407,
+        "n": 18,
+        "mean": 0.42275058294140433,
+        "se": 0.09803772556840383,
+        "sum": 7.609510492945278,
+        "share": 0.0016682052682886318,
+        "by_field": {
+          "kind": 0.19241248535295044,
+          "actor": 0.22142387361556606,
+          "obj": 0.0009985633341249788,
+          "related": 0.007904942088815807,
+          "lineage": 1.0718549946969804e-05
+        },
+        "label": "BLOCK/t0/L0/r=t1 DISPATCH/t2 RELEASE/t2/L1 DISPATCH/t2 IO_ISSUE/t2/D0/l=t0 IO_COMPLETE/t2/D0/l=t0 DISPATCH/t2"
+      },
+      {
+        "key": 20440,
+        "n": 2,
+        "mean": 3.676160279473216,
+        "se": 3.5610710563537356,
+        "sum": 7.352320558946432,
+        "share": 0.0016118224558533977,
+        "by_field": {
+          "kind": 0.06922326035849447,
+          "actor": 3.5638791019483578,
+          "obj": 0.030660903456528346,
+          "related": 0.012396596857462343,
+          "lineage": 4.168523731141442e-07
+        },
+        "label": "ACQUIRE/t0/L0 DISPATCH/t1 IO_ISSUE/t1/D0/l=t0 DISPATCH/t0 IO_COMPLETE/t1/D0/l=t0 STEP/t2 DISPATCH/t3"
+      },
+      {
+        "key": 5114,
+        "n": 72,
+        "mean": 0.10197453988356364,
+        "se": 0.04670397962906786,
+        "sum": 7.342166871616582,
+        "share": 0.0016095964999641307,
+        "by_field": {
+          "kind": 0.0007720928701036778,
+          "actor": 0.07753382762088584,
+          "obj": 0.004230674661476261,
+          "related": 0.018713918304874667,
+          "lineage": 0.0007240264262232117
+        },
+        "label": "DISPATCH/t0 BLOCK/t1/L0/r=t0 RELEASE/t0/L0/r=t1 DISPATCH/t1 DISPATCH/t0 RELEASE/t1/L0 DISPATCH/t1"
+      },
+      {
+        "key": 472,
+        "n": 44,
+        "mean": 0.1647905143899586,
+        "se": 0.08321858006748344,
+        "sum": 7.2507826331581775,
+        "share": 0.0015895626662272315,
+        "by_field": {
+          "kind": 0.00188515173854017,
+          "actor": 0.10319825995461886,
+          "obj": 0.0021623206575193767,
+          "related": 0.05710674122939457,
+          "lineage": 0.00043804080988557137
+        },
+        "label": "DISPATCH/t0 ACQUIRE/t0/L0 DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t0 ACQUIRE/t1/L0 DISPATCH/t1"
+      },
+      {
+        "key": 2108,
+        "n": 6,
+        "mean": 1.1469246152620645,
+        "se": 0.5704381189223944,
+        "sum": 6.881547691572387,
+        "share": 0.0015086166348943736,
+        "by_field": {
+          "kind": 0.02285019106000415,
+          "actor": 0.009240502511010837,
+          "obj": 1.1124506649495565,
+          "related": 0.002383254276264454,
+          "lineage": 2.4652286839432644e-09
+        },
+        "label": "DISPATCH/t0 IO_ISSUE/t1/D0/l=t0 IO_COMPLETE/t1/D0/l=t0 DISPATCH/t1 BLOCK/t1/L0/r=t2 DISPATCH/t2 BLOCK/t0/L1/r=t2"
+      },
+      {
+        "key": 5402,
+        "n": 1,
+        "mean": 6.871441035844569,
+        "se": 0.0,
+        "sum": 6.871441035844569,
+        "share": 0.0015064009895719107,
+        "by_field": {
+          "kind": -0.3515508044849529,
+          "actor": 7.217432089882378,
+          "obj": 0.005447533367131875,
+          "related": 0.00011216920038929365,
+          "lineage": 4.787962262673071e-08
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0/r=t2 DISPATCH/t2 IO_ISSUE/t0/D0/l=t0 DISPATCH/t1 RELEASE/t2/L0 DISPATCH/t3"
+      },
+      {
+        "key": 15063,
+        "n": 2,
+        "mean": 3.353956999587002,
+        "se": 3.2165372950801463,
+        "sum": 6.707913999174004,
+        "share": 0.001470551552957772,
+        "by_field": {
+          "kind": 1.9775672928746286,
+          "actor": 1.3737259465662255,
+          "obj": 0.0012551620126486458,
+          "related": 0.0013596364055632523,
+          "lineage": 4.8961727936544e-05
+        },
+        "label": "STEP/t0 IO_COMPLETE/t1/D0/l=t0 DISPATCH/t0 BLOCK/t0/L0/r=t2 DISPATCH/t3 RELEASE/t2/L1 DISPATCH/t2"
+      },
+      {
+        "key": 6544,
+        "n": 25,
+        "mean": 0.26264172080419157,
+        "se": 0.07303408819320457,
+        "sum": 6.566043020104789,
+        "share": 0.0014394496949709874,
+        "by_field": {
+          "kind": 0.12910252787043894,
+          "actor": 0.05389266610417611,
+          "obj": 0.01784828596213457,
+          "related": 0.06137062736705917,
+          "lineage": 0.0004276135003827801
+        },
+        "label": "DISPATCH/t0 ACQUIRE/t1/L0 DISPATCH/t2 BLOCK/t0/L0/r=t1 DISPATCH/t1 RELEASE/t1/L0/r=t0 DISPATCH/t1"
+      },
+      {
+        "key": 26461,
+        "n": 1,
+        "mean": 6.5114253091415755,
+        "se": 0.0,
+        "sum": 6.5114253091415755,
+        "share": 0.0014274760531374992,
+        "by_field": {
+          "kind": 0.04453698202986084,
+          "actor": -0.20782524887292742,
+          "obj": 6.674484736273946,
+          "related": 0.00022882666486253887,
+          "lineage": 1.3045832967937096e-08
+        },
+        "label": "RELEASE/t0/L0/r=t1 DISPATCH/t0 STEP/t0 IO_COMPLETE/t2/D0/l=t0 DISPATCH/t1 ACQUIRE/t1/L1 DISPATCH/t2"
+      },
+      {
+        "key": 490,
+        "n": 41,
+        "mean": 0.15696379641155384,
+        "se": 0.0586707766030719,
+        "sum": 6.435515652873707,
+        "share": 0.0014108346556892088,
+        "by_field": {
+          "kind": 0.07435167714415944,
+          "actor": 0.06682871536633923,
+          "obj": 0.0007402922750581909,
+          "related": 0.015043001219893225,
+          "lineage": 1.1040610372923084e-07
+        },
+        "label": "IO_ISSUE/t0/D0/l=t0 DISPATCH/t1 IO_COMPLETE/t0/D0/l=t0 BLOCK/t1/L0/r=t2 DISPATCH/t0 ACQUIRE/t0/L1 DISPATCH/t0"
+      },
+      {
+        "key": 18690,
+        "n": 2,
+        "mean": 3.1880915954269344,
+        "se": 3.2071993199180735,
+        "sum": 6.376183190853869,
+        "share": 0.001397827416154709,
+        "by_field": {
+          "kind": 3.181771664369735,
+          "actor": 0.004890605681101812,
+          "obj": 0.00127699274470972,
+          "related": 0.0001523179303754471,
+          "lineage": 1.470101213140626e-08
+        },
+        "label": "DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t1 RELEASE/t1/L1 DISPATCH/t1 ACQUIRE/t2/L1 DISPATCH/t2"
+      },
+      {
+        "key": 2518,
+        "n": 81,
+        "mean": 0.07869127177829088,
+        "se": 0.042346940702281316,
+        "sum": 6.373993014041561,
+        "share": 0.001397347271669704,
+        "by_field": {
+          "kind": 0.005402075397281336,
+          "actor": 0.06651867523225193,
+          "obj": 0.004893019136312494,
+          "related": 0.0012185731668853397,
+          "lineage": 0.0006589288455597837
+        },
+        "label": "DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t0 ACQUIRE/t1/L0 DISPATCH/t1 RELEASE/t1/L0 DISPATCH/t1"
+      },
+      {
+        "key": 1357,
+        "n": 21,
+        "mean": 0.2923426605387789,
+        "se": 0.10912822968261801,
+        "sum": 6.139195871314357,
+        "share": 0.001345873549300864,
+        "by_field": {
+          "kind": 0.07277785127007508,
+          "actor": 0.204060067804168,
+          "obj": 0.031996439482462745,
+          "related": -0.01719301127185905,
+          "lineage": 0.000701313253932056
+        },
+        "label": "DISPATCH/t0 BLOCK/t1/L0/r=t2 DISPATCH/t2 RELEASE/t2/L0/r=t1 DISPATCH/t1 RELEASE/t1/L0 DISPATCH/t1"
+      },
+      {
+        "key": 745,
+        "n": 32,
+        "mean": 0.19181894806136415,
+        "se": 0.08576548937637311,
+        "sum": 6.138206337963653,
+        "share": 0.0013456566175086913,
+        "by_field": {
+          "kind": 0.12338452597312116,
+          "actor": 0.06356303462877914,
+          "obj": 0.0035900603593209484,
+          "related": 0.0009890184711375072,
+          "lineage": 0.00029230862900542416
+        },
+        "label": "DISPATCH/t0 RELEASE/t0/L0/r=t1 DISPATCH/t0 BLOCK/t0/L0/r=t1 DISPATCH/t1 RELEASE/t1/L0/r=t2 DISPATCH/t2"
+      },
+      {
+        "key": 8137,
+        "n": 4,
+        "mean": 1.5254758761971623,
+        "se": 1.531978284055828,
+        "sum": 6.101903504788649,
+        "share": 0.001337698079622123,
+        "by_field": {
+          "kind": 0.024474465239315735,
+          "actor": 0.833471601538365,
+          "obj": 0.0029628088807086995,
+          "related": 0.6644143257095922,
+          "lineage": 0.00015267482918086988
+        },
+        "label": "RELEASE/t0/L0 DISPATCH/t0 IO_ISSUE/t0/D0/l=t0 DISPATCH/t1 IO_COMPLETE/t0/D0/l=t0 ACQUIRE/t2/L0 DISPATCH/t2"
+      },
+      {
+        "key": 1481,
+        "n": 28,
+        "mean": 0.215714751680289,
+        "se": 0.08506458554585647,
+        "sum": 6.040013047048092,
+        "share": 0.0013241300600030802,
+        "by_field": {
+          "kind": 0.19231897052009592,
+          "actor": 0.0004426807732576164,
+          "obj": 0.03761318609580182,
+          "related": -0.014691582355676119,
+          "lineage": 3.149664680973124e-05
+        },
+        "label": "ACQUIRE/t0/L0 DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t0 IO_ISSUE/t1/D0/l=t0 IO_COMPLETE/t1/D0/l=t0 DISPATCH/t1"
+      },
+      {
+        "key": 20949,
+        "n": 1,
+        "mean": 5.959474097808358,
+        "se": 0.0,
+        "sum": 5.959474097808358,
+        "share": 0.0013064737995184257,
+        "by_field": {
+          "kind": 5.914084353353861,
+          "actor": 0.04360656231536792,
+          "obj": 0.001783124407707482,
+          "related": 4.9801269066057784e-08,
+          "lineage": 7.930152763781829e-09
+        },
+        "label": "RELEASE/t0/L0/r=t1 DISPATCH/t1 DISPATCH/t0 RELEASE/t0/L1/r=t2 DISPATCH/t2 RELEASE/t2/L1 DISPATCH/t0"
+      },
+      {
+        "key": 8173,
+        "n": 9,
+        "mean": 0.6620717484202971,
+        "se": 0.29173003085655935,
+        "sum": 5.9586457357826745,
+        "share": 0.0013062922007287825,
+        "by_field": {
+          "kind": 0.14967346253627484,
+          "actor": 0.4574249095493216,
+          "obj": 0.003742410257288451,
+          "related": 0.0511365062316039,
+          "lineage": 9.445984580838303e-05
+        },
+        "label": "BLOCK/t0/L0/r=t1 DISPATCH/t1 RELEASE/t1/L0/r=t0 DISPATCH/t1 IO_ISSUE/t2/D0/l=t0 DISPATCH/t0 IO_COMPLETE/t2/D0/l=t0"
+      },
+      {
+        "key": 12102,
+        "n": 5,
+        "mean": 1.1869776239239274,
+        "se": 1.1002193109465659,
+        "sum": 5.934888119619637,
+        "share": 0.0013010839050727214,
+        "by_field": {
+          "kind": 0.059281469858087375,
+          "actor": 1.1248043021734337,
+          "obj": 0.0026559135917937275,
+          "related": 3.904832816292371e-05,
+          "lineage": 0.00019688997244949927
+        },
+        "label": "DISPATCH/t0 ACQUIRE/t0/L0 DISPATCH/t1 IO_ISSUE/t1/D0/l=t0 DISPATCH/t0 BLOCK/t2/L0/r=t0 DISPATCH/t3"
+      },
+      {
+        "key": 10796,
+        "n": 3,
+        "mean": 1.9628143263579805,
+        "se": 1.936918538242738,
+        "sum": 5.888442979073941,
+        "share": 0.0012909019060838814,
+        "by_field": {
+          "kind": 0.18665726071914276,
+          "actor": 1.7718589286573225,
+          "obj": 0.002284446532834199,
+          "related": 0.0011468814515841897,
+          "lineage": 0.0008668089970968442
+        },
+        "label": "DISPATCH/t0 BLOCK/t0/L0/r=t1 DISPATCH/t1 BLOCK/t1/L1/r=t2 DISPATCH/t2 RELEASE/t2/L1/r=t1 DISPATCH/t2"
+      },
+      {
+        "key": 1275,
+        "n": 52,
+        "mean": 0.10944293796301399,
+        "se": 0.10311534525010675,
+        "sum": 5.691032774076728,
+        "share": 0.001247624385894429,
+        "by_field": {
+          "kind": 0.004656474007784493,
+          "actor": 0.07703424498691568,
+          "obj": 0.005043600066642168,
+          "related": 0.022062814352618674,
+          "lineage": 0.0006458045490529912
+        },
+        "label": "DISPATCH/t0 BLOCK/t0/L0/r=t1 RELEASE/t1/L0/r=t0 DISPATCH/t1 DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t0"
+      },
+      {
+        "key": 6365,
+        "n": 18,
+        "mean": 0.31616584985547347,
+        "se": 0.12348202420834978,
+        "sum": 5.690985297398522,
+        "share": 0.001247613977755196,
+        "by_field": {
+          "kind": 0.0830975533448688,
+          "actor": 0.02310335394659977,
+          "obj": 0.20493321776394205,
+          "related": 7.176922806236715e-05,
+          "lineage": 0.004959955572000479
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0/r=t2 DISPATCH/t1 IO_ISSUE/t1/D0/l=t0 DISPATCH/t2 ACQUIRE/t2/L1 DISPATCH/t2"
+      },
+      {
+        "key": 6286,
+        "n": 4,
+        "mean": 1.4191113086840235,
+        "se": 1.0131680801898482,
+        "sum": 5.676445234736094,
+        "share": 0.001244426412778816,
+        "by_field": {
+          "kind": 0.0001714408019891433,
+          "actor": 1.4189398417453245,
+          "obj": 2.5013735774690788e-08,
+          "related": 4.873454426181681e-10,
+          "lineage": 6.356291723345033e-10
+        },
+        "label": "DISPATCH/t0 IO_ISSUE/t0/D0/l=t0 IO_COMPLETE/t0/D0/l=t0 DISPATCH/t0 BLOCK/t0/L0/r=t1 DISPATCH/t2 RELEASE/t2/L1"
+      }
+    ],
+    "worst": [
+      {
+        "i": 97325,
+        "key": 18747,
+        "structural": 11.18313625021096,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.5358202037258124,
+          "actor": 10.647316042257774,
+          "obj": 1.2532896845918007e-09,
+          "related": 7.407305526855175e-10,
+          "lineage": 2.233354637236207e-09
+        },
+        "label": "DISPATCH/t0 BLOCK/t1/L0/r=t0 DISPATCH/t2 RELEASE/t0/L1 DISPATCH/t0 RELEASE/t0/L0/r=t1 DISPATCH/t3",
+        "episode": 4097325,
+        "T": 16,
+        "U": 8,
+        "records": [
+          "  DISPATCH T53 - - -",
+          "  BLOCK T07 L16 T53 -",
+          "  DISPATCH T46 - - -",
+          "  RELEASE T53 L20 - -",
+          "  DISPATCH T53 - - -",
+          "  RELEASE T53 L16 T07 -",
+          "  DISPATCH T39 - - -",
+          "> STEP T46 - - -"
+        ]
+      },
+      {
+        "i": 66973,
+        "key": 25945,
+        "structural": 9.06497842339275,
+        "naming": 0.08626108130021759,
+        "by_field": {
+          "kind": 2.407385667606853,
+          "actor": 6.497125830901815,
+          "obj": 0.01035492460271478,
+          "related": 0.15011198605058215,
+          "lineage": 1.4230785225636214e-08
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0 DISPATCH/t2 ACQUIRE/t2/L0 DISPATCH/t2 BLOCK/t0/L0/r=t2 DISPATCH/t1",
+        "episode": 4066973,
+        "T": 18,
+        "U": 10,
+        "records": [
+          "  DISPATCH T18 - - -",
+          "  RELEASE T00 L07 - -",
+          "  DISPATCH T34 - - -",
+          "  ACQUIRE T34 L07 - -",
+          "  DISPATCH T34 - - -",
+          "  BLOCK T18 L07 T34 -",
+          "  DISPATCH T00 - - -",
+          "> BLOCK T34 L08 T48 -"
+        ]
+      },
+      {
+        "i": 45544,
+        "key": 20440,
+        "structural": 7.2372313358269516,
+        "naming": -0.2548658045294232,
+        "by_field": {
+          "kind": 0.07282310651155322,
+          "actor": 7.133576351379931,
+          "obj": 0.006195208698631414,
+          "related": 0.024636657892175465,
+          "lineage": 1.1344660705347323e-08
+        },
+        "label": "ACQUIRE/t0/L0 DISPATCH/t1 IO_ISSUE/t1/D0/l=t0 DISPATCH/t0 IO_COMPLETE/t1/D0/l=t0 STEP/t2 DISPATCH/t3",
+        "episode": 4045544,
+        "T": 40,
+        "U": 32,
+        "records": [
+          "  ACQUIRE T33 L12 - -",
+          "  DISPATCH T46 - - -",
+          "  IO_ISSUE T46 D09 - R20",
+          "  DISPATCH T33 - - -",
+          "  IO_COMPLETE T46 D09 - R20",
+          "  STEP T22 - - -",
+          "  DISPATCH T18 - - -",
+          "> BLOCK T33 L27 T18 -"
+        ]
+      },
+      {
+        "i": 7701,
+        "key": 5402,
+        "structural": 6.871441035844569,
+        "naming": 0.03790446449643081,
+        "by_field": {
+          "kind": -0.3515508044849529,
+          "actor": 7.217432089882378,
+          "obj": 0.005447533367131875,
+          "related": 0.00011216920038929365,
+          "lineage": 4.787962262673071e-08
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0/r=t2 DISPATCH/t2 IO_ISSUE/t0/D0/l=t0 DISPATCH/t1 RELEASE/t2/L0 DISPATCH/t3",
+        "episode": 4007701,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T08 - - -",
+          "  RELEASE T32 L04 T00 -",
+          "  DISPATCH T00 - - -",
+          "  IO_ISSUE T08 D13 - R01",
+          "  DISPATCH T32 - - -",
+          "  RELEASE T00 L04 - -",
+          "  DISPATCH T45 - - -",
+          "> RELEASE T32 L22 - -"
+        ]
+      },
+      {
+        "i": 28831,
+        "key": 15063,
+        "structural": 6.5704942946671485,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 3.822856952968376,
+          "actor": 2.7458492574735396,
+          "obj": 0.0017879845567334814,
+          "related": 7.765821469827159e-09,
+          "lineage": 9.190267879016483e-08
+        },
+        "label": "STEP/t0 IO_COMPLETE/t1/D0/l=t0 DISPATCH/t0 BLOCK/t0/L0/r=t2 DISPATCH/t3 RELEASE/t2/L1 DISPATCH/t2",
+        "episode": 4028831,
+        "T": 38,
+        "U": 30,
+        "records": [
+          "  STEP T11 - - -",
+          "  IO_COMPLETE T16 D00 - R27",
+          "  DISPATCH T11 - - -",
+          "  BLOCK T11 L04 T18 -",
+          "  DISPATCH T19 - - -",
+          "  RELEASE T18 L21 - -",
+          "  DISPATCH T18 - - -",
+          "> ACQUIRE T19 L21 - -"
+        ]
+      },
+      {
+        "i": 69249,
+        "key": 26461,
+        "structural": 6.5114253091415755,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.04453698202986084,
+          "actor": -0.20782524887292742,
+          "obj": 6.674484736273946,
+          "related": 0.00022882666486253887,
+          "lineage": 1.3045832967937096e-08
+        },
+        "label": "RELEASE/t0/L0/r=t1 DISPATCH/t0 STEP/t0 IO_COMPLETE/t2/D0/l=t0 DISPATCH/t1 ACQUIRE/t1/L1 DISPATCH/t2",
+        "episode": 4069249,
+        "T": 40,
+        "U": 32,
+        "records": [
+          "  RELEASE T17 L04 T50 -",
+          "  DISPATCH T17 - - -",
+          "  STEP T17 - - -",
+          "  IO_COMPLETE T41 D07 - R03",
+          "  DISPATCH T50 - - -",
+          "  ACQUIRE T50 L07 - -",
+          "  DISPATCH T41 - - -",
+          "> BLOCK T41 L04 T50 -"
+        ]
+      },
+      {
+        "i": 39784,
+        "key": 18690,
+        "structural": 6.395290915345009,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 6.386674285301761,
+          "actor": 0.007631485972778131,
+          "obj": 0.0006805126801436306,
+          "related": 0.00030463003495077406,
+          "lineage": 1.3553742379245277e-09
+        },
+        "label": "DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t1 RELEASE/t1/L1 DISPATCH/t1 ACQUIRE/t2/L1 DISPATCH/t2",
+        "episode": 4039784,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T05 - - -",
+          "  RELEASE T05 L24 - -",
+          "  DISPATCH T25 - - -",
+          "  RELEASE T25 L27 - -",
+          "  DISPATCH T25 - - -",
+          "  ACQUIRE T41 L27 - -",
+          "  DISPATCH T41 - - -",
+          "> BLOCK T25 L27 T41 -"
+        ]
+      },
+      {
+        "i": 72284,
+        "key": 8137,
+        "structural": 6.120796190610391,
+        "naming": 0.008581166914041205,
+        "by_field": {
+          "kind": 0.10283619202924843,
+          "actor": 3.355300399669116,
+          "obj": 0.005016812708215903,
+          "related": 2.6576427605059747,
+          "lineage": 2.5697836250252013e-08
+        },
+        "label": "RELEASE/t0/L0 DISPATCH/t0 IO_ISSUE/t0/D0/l=t0 DISPATCH/t1 IO_COMPLETE/t0/D0/l=t0 ACQUIRE/t2/L0 DISPATCH/t2",
+        "episode": 4072284,
+        "T": 38,
+        "U": 30,
+        "records": [
+          "  RELEASE T16 L20 - -",
+          "  DISPATCH T16 - - -",
+          "  IO_ISSUE T16 D02 - R11",
+          "  DISPATCH T48 - - -",
+          "  IO_COMPLETE T16 D02 - R11",
+          "  ACQUIRE T51 L20 - -",
+          "  DISPATCH T51 - - -",
+          "> RELEASE T48 L17 - -"
+        ]
+      },
+      {
+        "i": 47344,
+        "key": 20949,
+        "structural": 5.959474097808358,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 5.914084353353861,
+          "actor": 0.04360656231536792,
+          "obj": 0.001783124407707482,
+          "related": 4.9801269066057784e-08,
+          "lineage": 7.930152763781829e-09
+        },
+        "label": "RELEASE/t0/L0/r=t1 DISPATCH/t1 DISPATCH/t0 RELEASE/t0/L1/r=t2 DISPATCH/t2 RELEASE/t2/L1 DISPATCH/t0",
+        "episode": 4047344,
+        "T": 28,
+        "U": 20,
+        "records": [
+          "  RELEASE T44 L26 T41 -",
+          "  DISPATCH T41 - - -",
+          "  DISPATCH T44 - - -",
+          "  RELEASE T44 L17 T02 -",
+          "  DISPATCH T02 - - -",
+          "  RELEASE T02 L17 - -",
+          "  DISPATCH T44 - - -",
+          "> ACQUIRE T44 L17 - -"
+        ]
+      },
+      {
+        "i": 40602,
+        "key": 10796,
+        "structural": 5.826518797859808,
+        "naming": 0.4481022442186888,
+        "by_field": {
+          "kind": 0.1643797462399197,
+          "actor": 5.659975027475182,
+          "obj": 0.0008704204351152568,
+          "related": 1.6656466518385623e-08,
+          "lineage": 0.0012935870531239077
+        },
+        "label": "DISPATCH/t0 BLOCK/t0/L0/r=t1 DISPATCH/t1 BLOCK/t1/L1/r=t2 DISPATCH/t2 RELEASE/t2/L1/r=t1 DISPATCH/t2",
+        "episode": 4040602,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T09 - - -",
+          "  BLOCK T09 L16 T29 -",
+          "  DISPATCH T29 - - -",
+          "  BLOCK T29 L07 T25 -",
+          "  DISPATCH T25 - - -",
+          "  RELEASE T25 L07 T29 -",
+          "  DISPATCH T25 - - -",
+          "> IO_ISSUE T10 D06 - R15"
+        ]
+      },
+      {
+        "i": 26918,
+        "key": 12102,
+        "structural": 5.586959787099232,
+        "naming": 0.1323463806688867,
+        "by_field": {
+          "kind": 0.13621830003757762,
+          "actor": 5.444693768802697,
+          "obj": 0.006046495610883503,
+          "related": 1.194604976855666e-06,
+          "lineage": 2.8043097745306967e-08
+        },
+        "label": "DISPATCH/t0 ACQUIRE/t0/L0 DISPATCH/t1 IO_ISSUE/t1/D0/l=t0 DISPATCH/t0 BLOCK/t2/L0/r=t0 DISPATCH/t3",
+        "episode": 4026918,
+        "T": 28,
+        "U": 20,
+        "records": [
+          "  DISPATCH T15 - - -",
+          "  ACQUIRE T15 L01 - -",
+          "  DISPATCH T43 - - -",
+          "  IO_ISSUE T43 D10 - R22",
+          "  DISPATCH T15 - - -",
+          "  BLOCK T19 L01 T15 -",
+          "  DISPATCH T30 - - -",
+          "> RELEASE T30 L14 - -"
+        ]
+      },
+      {
+        "i": 47112,
+        "key": 16107,
+        "structural": 5.268955640019829,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.008692201573269144,
+          "actor": -0.1027816351585199,
+          "obj": 0.0009157596460172121,
+          "related": 5.362129298787574,
+          "lineage": 1.5171489348084065e-08
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0/r=t2 DISPATCH/t1 RELEASE/t1/L1/r=t3 DISPATCH/t2 BLOCK/t0/L1/r=t3 DISPATCH/t3",
+        "episode": 4047112,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T03 - - -",
+          "  RELEASE T45 L17 T32 -",
+          "  DISPATCH T45 - - -",
+          "  RELEASE T45 L25 T40 -",
+          "  DISPATCH T32 - - -",
+          "  BLOCK T03 L25 T40 -",
+          "  DISPATCH T40 - - -",
+          "> RELEASE T32 L17 - -"
+        ]
+      },
+      {
+        "i": 71085,
+        "key": 15186,
+        "structural": 5.1174477838313175,
+        "naming": 0.5123459401987054,
+        "by_field": {
+          "kind": 0.035135894562819514,
+          "actor": 5.7489423938175594,
+          "obj": 0.015846113632221676,
+          "related": -0.6824766265869755,
+          "lineage": 8.405692455986638e-09
+        },
+        "label": "IO_ISSUE/t0/D0/l=t0 DISPATCH/t1 IO_COMPLETE/t0/D0/l=t0 ACQUIRE/t2/L0 DISPATCH/t0 BLOCK/t0/L0/r=t2 DISPATCH/t2",
+        "episode": 4071085,
+        "T": 40,
+        "U": 32,
+        "records": [
+          "  IO_ISSUE T27 D11 - R12",
+          "  DISPATCH T35 - - -",
+          "  IO_COMPLETE T27 D11 - R12",
+          "  ACQUIRE T02 L17 - -",
+          "  DISPATCH T27 - - -",
+          "  BLOCK T27 L17 T02 -",
+          "  DISPATCH T02 - - -",
+          "> BLOCK T02 L00 T44 -"
+        ]
+      },
+      {
+        "i": 11200,
+        "key": 7391,
+        "structural": 5.0569544791808925,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.13450531597939663,
+          "actor": 0.009440366858891571,
+          "obj": 4.913008627655943,
+          "related": 9.831012542222147e-09,
+          "lineage": 1.5885564899821663e-07
+        },
+        "label": "RELEASE/t0/L0 DISPATCH/t0 RELEASE/t1/L1 DISPATCH/t2 IO_ISSUE/t2/D0/l=t0 IO_COMPLETE/t2/D0/l=t0 DISPATCH/t2",
+        "episode": 4011200,
+        "T": 38,
+        "U": 30,
+        "records": [
+          "  RELEASE T52 L02 - -",
+          "  DISPATCH T52 - - -",
+          "  RELEASE T29 L01 - -",
+          "  DISPATCH T08 - - -",
+          "  IO_ISSUE T08 D05 - R27",
+          "  IO_COMPLETE T08 D05 - R27",
+          "  DISPATCH T08 - - -",
+          "> ACQUIRE T08 L01 - -"
+        ]
+      },
+      {
+        "i": 55816,
+        "key": 23240,
+        "structural": 5.027794005825423,
+        "naming": 0.0,
+        "by_field": {
+          "kind": -0.07405741873864369,
+          "actor": -0.30854277256246965,
+          "obj": 5.410141186202469,
+          "related": 0.000252759469241914,
+          "lineage": 2.514548254383926e-07
+        },
+        "label": "ACQUIRE/t0/L0 DISPATCH/t1 BLOCK/t2/L1/r=t0 DISPATCH/t3 IO_ISSUE/t1/D0/l=t0 IO_COMPLETE/t1/D0/l=t0 DISPATCH/t1",
+        "episode": 4055816,
+        "T": 28,
+        "U": 20,
+        "records": [
+          "  ACQUIRE T18 L09 - -",
+          "  DISPATCH T20 - - -",
+          "  BLOCK T11 L20 T18 -",
+          "  DISPATCH T00 - - -",
+          "  IO_ISSUE T20 D13 - R20",
+          "  IO_COMPLETE T20 D13 - R20",
+          "  DISPATCH T20 - - -",
+          "> BLOCK T00 L09 T18 -"
+        ]
+      },
+      {
+        "i": 29455,
+        "key": 15301,
+        "structural": 4.981800428622509,
+        "naming": 0.0,
+        "by_field": {
+          "kind": -0.015290753339506413,
+          "actor": 4.171633953060187,
+          "obj": 0.8252561932199313,
+          "related": 0.0002010021096216695,
+          "lineage": 3.3572275841350074e-08
+        },
+        "label": "BLOCK/t0/L0/r=t1 DISPATCH/t2 RELEASE/t3/L1/r=t1 DISPATCH/t3 IO_ISSUE/t3/D0/l=t0 IO_COMPLETE/t3/D0/l=t0 DISPATCH/t3",
+        "episode": 4029455,
+        "T": 34,
+        "U": 26,
+        "records": [
+          "  BLOCK T55 L16 T13 -",
+          "  DISPATCH T37 - - -",
+          "  RELEASE T09 L15 T13 -",
+          "  DISPATCH T09 - - -",
+          "  IO_ISSUE T09 D09 - R07",
+          "  IO_COMPLETE T09 D09 - R07",
+          "  DISPATCH T09 - - -",
+          "> BLOCK T09 L15 T13 -"
+        ]
+      },
+      {
+        "i": 37041,
+        "key": 1200,
+        "structural": 4.957306461216964,
+        "naming": 0.05058033757093039,
+        "by_field": {
+          "kind": 0.10581354334459481,
+          "actor": 4.796653370999534,
+          "obj": 0.010890643380722645,
+          "related": 0.04394887472963059,
+          "lineage": 2.876248225151172e-08
+        },
+        "label": "DISPATCH/t0 BLOCK/t0/L0/r=t1 RELEASE/t1/L0/r=t0 DISPATCH/t0 DISPATCH/t1 RELEASE/t0/L0 DISPATCH/t0",
+        "episode": 4037041,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T48 - - -",
+          "  BLOCK T48 L04 T10 -",
+          "  RELEASE T10 L04 T48 -",
+          "  DISPATCH T48 - - -",
+          "  DISPATCH T10 - - -",
+          "  RELEASE T48 L04 - -",
+          "  DISPATCH T48 - - -",
+          "> RELEASE T48 L24 T20 -"
+        ]
+      },
+      {
+        "i": 17135,
+        "key": 1275,
+        "structural": 4.916772929311683,
+        "naming": 0.4266563899942515,
+        "by_field": {
+          "kind": 0.07370201643507546,
+          "actor": 4.793409413569719,
+          "obj": 0.007539360879049195,
+          "related": 0.042122124615701695,
+          "lineage": 1.3812137428487715e-08
+        },
+        "label": "DISPATCH/t0 BLOCK/t0/L0/r=t1 RELEASE/t1/L0/r=t0 DISPATCH/t1 DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t0",
+        "episode": 4017135,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T47 - - -",
+          "  BLOCK T47 L27 T30 -",
+          "  RELEASE T30 L27 T47 -",
+          "  DISPATCH T30 - - -",
+          "  DISPATCH T47 - - -",
+          "  RELEASE T47 L27 - -",
+          "  DISPATCH T47 - - -",
+          "> RELEASE T47 L05 T27 -"
+        ]
+      },
+      {
+        "i": 71972,
+        "key": 27097,
+        "structural": 4.722186621811852,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 1.1522774422090634,
+          "actor": 3.567588923985586,
+          "obj": 0.0020126085962388113,
+          "related": 0.0003076463806885229,
+          "lineage": 6.402743010004659e-10
+        },
+        "label": "DISPATCH/t0 ACQUIRE/t0/L0 DISPATCH/t1 RELEASE/t2/L1 DISPATCH/t2 ACQUIRE/t1/L1 DISPATCH/t1",
+        "episode": 4071972,
+        "T": 24,
+        "U": 16,
+        "records": [
+          "  DISPATCH T30 - - -",
+          "  ACQUIRE T30 L19 - -",
+          "  DISPATCH T18 - - -",
+          "  RELEASE T55 L15 - -",
+          "  DISPATCH T55 - - -",
+          "  ACQUIRE T18 L15 - -",
+          "  DISPATCH T18 - - -",
+          "> BLOCK T55 L15 T18 -"
+        ]
+      },
+      {
+        "i": 5234,
+        "key": 3877,
+        "structural": 4.672315609676155,
+        "naming": 0.5220707459516358,
+        "by_field": {
+          "kind": 2.006827621009135,
+          "actor": 2.6556326679903495,
+          "obj": 0.008249221001301262,
+          "related": 0.0016059982248292205,
+          "lineage": 1.0145053953705521e-07
+        },
+        "label": "RELEASE/t0/L0 DISPATCH/t1 IO_ISSUE/t1/D0/l=t0 DISPATCH/t0 IO_COMPLETE/t1/D0/l=t0 IO_ISSUE/t0/D0/l=t0 DISPATCH/t2",
+        "episode": 4005234,
+        "T": 38,
+        "U": 30,
+        "records": [
+          "  RELEASE T21 L16 - -",
+          "  DISPATCH T46 - - -",
+          "  IO_ISSUE T46 D07 - R02",
+          "  DISPATCH T21 - - -",
+          "  IO_COMPLETE T46 D07 - R02",
+          "  IO_ISSUE T21 D07 - R02",
+          "  DISPATCH T13 - - -",
+          "> RELEASE T17 L08 - -"
+        ]
+      },
+      {
+        "i": 28844,
+        "key": 15070,
+        "structural": 4.642114586950946,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.8680369910376591,
+          "actor": 3.7698676991765314,
+          "obj": 0.004208406673833871,
+          "related": 1.4583917729558401e-06,
+          "lineage": 3.167114924876875e-08
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0/r=t2 DISPATCH/t2 RELEASE/t2/L0 DISPATCH/t2 RELEASE/t2/L1 DISPATCH/t2",
+        "episode": 4028844,
+        "T": 38,
+        "U": 30,
+        "records": [
+          "  DISPATCH T13 - - -",
+          "  RELEASE T17 L07 T15 -",
+          "  DISPATCH T15 - - -",
+          "  RELEASE T15 L07 - -",
+          "  DISPATCH T15 - - -",
+          "  RELEASE T15 L00 - -",
+          "  DISPATCH T15 - - -",
+          "> ACQUIRE T15 L00 - -"
+        ]
+      },
+      {
+        "i": 79061,
+        "key": 8514,
+        "structural": 4.602743183665667,
+        "naming": -0.29655722781770777,
+        "by_field": {
+          "kind": 0.3858485605973416,
+          "actor": 3.4641205015544174,
+          "obj": 0.7510453042461568,
+          "related": 0.00172730488972422,
+          "lineage": 1.5123780269713757e-06
+        },
+        "label": "DISPATCH/t0 ACQUIRE/t0/L0 DISPATCH/t1 BLOCK/t1/L0/r=t0 DISPATCH/t0 BLOCK/t0/L1/r=t2 DISPATCH/t2",
+        "episode": 4079061,
+        "T": 16,
+        "U": 8,
+        "records": [
+          "  DISPATCH T27 - - -",
+          "  ACQUIRE T27 L14 - -",
+          "  DISPATCH T40 - - -",
+          "  BLOCK T40 L14 T27 -",
+          "  DISPATCH T27 - - -",
+          "  BLOCK T27 L21 T34 -",
+          "  DISPATCH T34 - - -",
+          "> BLOCK T12 L14 T27 -"
+        ]
+      },
+      {
+        "i": 52136,
+        "key": 11301,
+        "structural": 4.505810079615045,
+        "naming": -0.1301500573106802,
+        "by_field": {
+          "kind": 0.10742873237045902,
+          "actor": 4.396115145248248,
+          "obj": 0.0009399509906831868,
+          "related": 1.1282263723710027e-08,
+          "lineage": 0.0013262397233899474
+        },
+        "label": "DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t1 RELEASE/t2/L1/r=t3 DISPATCH/t3 RELEASE/t3/L1 DISPATCH/t0",
+        "episode": 4052136,
+        "T": 28,
+        "U": 20,
+        "records": [
+          "  DISPATCH T17 - - -",
+          "  RELEASE T17 L24 - -",
+          "  DISPATCH T49 - - -",
+          "  RELEASE T13 L13 T14 -",
+          "  DISPATCH T14 - - -",
+          "  RELEASE T14 L13 - -",
+          "  DISPATCH T17 - - -",
+          "> IO_ISSUE T49 D01 - R24"
+        ]
+      },
+      {
+        "i": 57952,
+        "key": 15829,
+        "structural": 4.495411996092254,
+        "naming": -0.2628708459163649,
+        "by_field": {
+          "kind": 4.4791433801829,
+          "actor": 0.008898737589809339,
+          "obj": 0.007296648260935069,
+          "related": 7.322080706874923e-05,
+          "lineage": 9.251540881667603e-09
+        },
+        "label": "DISPATCH/t0 RELEASE/t1/L0/r=t2 DISPATCH/t2 RELEASE/t2/L0 DISPATCH/t1 ACQUIRE/t1/L0 DISPATCH/t2",
+        "episode": 4057952,
+        "T": 24,
+        "U": 16,
+        "records": [
+          "  DISPATCH T40 - - -",
+          "  RELEASE T47 L02 T21 -",
+          "  DISPATCH T21 - - -",
+          "  RELEASE T21 L02 - -",
+          "  DISPATCH T47 - - -",
+          "  ACQUIRE T47 L02 - -",
+          "  DISPATCH T21 - - -",
+          "> RELEASE T40 L27 - -"
+        ]
+      },
+      {
+        "i": 84197,
+        "key": 29702,
+        "structural": 4.402682562009871,
+        "naming": 0.05801421897501502,
+        "by_field": {
+          "kind": 0.6511735501432852,
+          "actor": 3.718114642612707,
+          "obj": 0.03339167541382472,
+          "related": 2.682200635918095e-06,
+          "lineage": 1.1639419507950796e-08
+        },
+        "label": "DISPATCH/t0 BLOCK/t1/L0/r=t0 DISPATCH/t2 IO_ISSUE/t2/D0/l=t0 DISPATCH/t3 RELEASE/t0/L0/r=t1 DISPATCH/t0",
+        "episode": 4084197,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T20 - - -",
+          "  BLOCK T14 L05 T20 -",
+          "  DISPATCH T06 - - -",
+          "  IO_ISSUE T06 D13 - R24",
+          "  DISPATCH T48 - - -",
+          "  RELEASE T20 L05 T14 -",
+          "  DISPATCH T20 - - -",
+          "> RELEASE T20 L06 - -"
+        ]
+      },
+      {
+        "i": 15537,
+        "key": 6286,
+        "structural": 4.395213769472519,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.00017917659056524628,
+          "actor": 4.395034558651437,
+          "obj": 3.3587184587951814e-08,
+          "related": 2.55746515937347e-10,
+          "lineage": 3.875854557283572e-10
+        },
+        "label": "DISPATCH/t0 IO_ISSUE/t0/D0/l=t0 IO_COMPLETE/t0/D0/l=t0 DISPATCH/t0 BLOCK/t0/L0/r=t1 DISPATCH/t2 RELEASE/t2/L1",
+        "episode": 4015537,
+        "T": 22,
+        "U": 14,
+        "records": [
+          "  DISPATCH T41 - - -",
+          "  IO_ISSUE T41 D02 - R08",
+          "  IO_COMPLETE T41 D02 - R08",
+          "  DISPATCH T41 - - -",
+          "  BLOCK T41 L27 T33 -",
+          "  DISPATCH T46 - - -",
+          "  RELEASE T46 L13 - -",
+          "> DISPATCH T33 - - -"
+        ]
+      },
+      {
+        "i": 91410,
+        "key": 13374,
+        "structural": 4.391851942221994,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.02562245338041147,
+          "actor": 0.0006117882628802086,
+          "obj": 4.363768297320103,
+          "related": 0.0018494021373887278,
+          "lineage": 1.1212101675496524e-09
+        },
+        "label": "DISPATCH/t0 IO_COMPLETE/t1/D0/l=t0 DISPATCH/t1 IO_COMPLETE/t2/D0/l=t1 BLOCK/t1/L0/r=t0 DISPATCH/t2 BLOCK/t2/L1/r=t0",
+        "episode": 4091410,
+        "T": 24,
+        "U": 16,
+        "records": [
+          "  DISPATCH T05 - - -",
+          "  IO_COMPLETE T36 D02 - R19",
+          "  DISPATCH T36 - - -",
+          "  IO_COMPLETE T07 D02 - R11",
+          "  BLOCK T36 L01 T05 -",
+          "  DISPATCH T07 - - -",
+          "  BLOCK T07 L16 T05 -",
+          "> RELEASE T05 L01 T36 -"
+        ]
+      },
+      {
+        "i": 50313,
+        "key": 18147,
+        "structural": 4.323551929594593,
+        "naming": 0.21903260355133547,
+        "by_field": {
+          "kind": 0.12565423348257232,
+          "actor": 4.165459109373313,
+          "obj": 0.025788978097006875,
+          "related": 0.006649600118844979,
+          "lineage": 8.522854896592426e-09
+        },
+        "label": "IO_ISSUE/t0/D0/l=t0 DISPATCH/t1 RELEASE/t2/L0 DISPATCH/t3 IO_COMPLETE/t0/D0/l=t0 ACQUIRE/t3/L0 DISPATCH/t3",
+        "episode": 4050313,
+        "T": 38,
+        "U": 30,
+        "records": [
+          "  IO_ISSUE T23 D11 - R22",
+          "  DISPATCH T29 - - -",
+          "  RELEASE T30 L19 - -",
+          "  DISPATCH T48 - - -",
+          "  IO_COMPLETE T23 D11 - R22",
+          "  ACQUIRE T48 L19 - -",
+          "  DISPATCH T48 - - -",
+          "> BLOCK T48 L15 T29 -"
+        ]
+      },
+      {
+        "i": 53266,
+        "key": 22570,
+        "structural": 4.314978250930092,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 0.286056913424528,
+          "actor": 0.6937721657938822,
+          "obj": 3.3351486185193737,
+          "related": 5.433456830496095e-07,
+          "lineage": 9.846625081867316e-09
+        },
+        "label": "DISPATCH/t0 RELEASE/t0/L0 DISPATCH/t1 STEP/t1 DISPATCH/t2 RELEASE/t2/L1 DISPATCH/t2",
+        "episode": 4053266,
+        "T": 20,
+        "U": 12,
+        "records": [
+          "  DISPATCH T18 - - -",
+          "  RELEASE T18 L07 - -",
+          "  DISPATCH T41 - - -",
+          "  STEP T41 - - -",
+          "  DISPATCH T44 - - -",
+          "  RELEASE T44 L05 - -",
+          "  DISPATCH T44 - - -",
+          "> ACQUIRE T44 L05 - -"
+        ]
+      },
+      {
+        "i": 94026,
+        "key": 23335,
+        "structural": 4.246405616949114,
+        "naming": 0.0,
+        "by_field": {
+          "kind": 4.214310263304827,
+          "actor": 0.030605905945940096,
+          "obj": 0.0014894281796959726,
+          "related": 3.7152895267122533e-09,
+          "lineage": 1.5803362336094503e-08
+        },
+        "label": "RELEASE/t0/L0/r=t1 DISPATCH/t0 DISPATCH/t1 RELEASE/t0/L1/r=t2 DISPATCH/t2 RELEASE/t2/L1 DISPATCH/t0",
+        "episode": 4094026,
+        "T": 28,
+        "U": 20,
+        "records": [
+          "  RELEASE T52 L20 T14 -",
+          "  DISPATCH T52 - - -",
+          "  DISPATCH T14 - - -",
+          "  RELEASE T52 L11 T50 -",
+          "  DISPATCH T50 - - -",
+          "  RELEASE T50 L11 - -",
+          "  DISPATCH T52 - - -",
+          "> ACQUIRE T52 L11 - -"
+        ]
+      }
+    ]
+  },
+  "wall_s": 99.70794677734375
+}

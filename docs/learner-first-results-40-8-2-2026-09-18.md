@@ -597,3 +597,54 @@ whether the r4 basins are a property of the rung or of the recipe (a
 learning-rate or warmup change could remove or multiply them), and nothing
 about why seed 3 at r2 is high — its census (§13) put its extra cost on
 every kind.
+
+## 15. The r4 basins by kind (appended 2026-09-22 10:22 PDT, from `date` in the writing command, by the instance of 2026-09-21)
+
+Census (§13's instrument) of all six r4 ε=1 seeds at k = 7; raws
+`learner-window-census-r4-eps1-2M-seed{1..6}-2026-09-22.json`, cuts and
+the seed-group contrast in `learner-window-census-cuts-r4-2026-09-22.json`
+(`scripts/learner_census_cuts.py --contrast "high=2,5 low=1,3,4,6"`).
+
+| cell | seed | n | mean | classes | between share (ANOVA) | BLOCK+ACQUIRE share | share by predicted kind: DISPATCH / RELEASE / BLOCK / ACQUIRE / IO_ISSUE / IO_COMPLETE / STEP |
+|---|---|---|---|---|---|---|---|
+| r4 ε=1 | 1 | 84972 | 0.056 | 32755 | 0.20 | **0.34** | 0.19 / 0.25 / 0.19 / 0.15 / 0.10 / -0.01 / 0.13 |
+| r4 ε=1 | 2 | 84972 | 0.133 | 32755 | 0.32 | **0.48** | 0.18 / 0.24 / 0.31 / 0.17 / 0.06 / -0.02 / 0.06 |
+| r4 ε=1 | 3 | 84972 | 0.065 | 32755 | 0.21 | **0.51** | 0.12 / 0.21 / 0.35 / 0.16 / 0.06 / 0.08 / 0.02 |
+| r4 ε=1 | 4 | 84972 | 0.054 | 32755 | 0.18 | **0.32** | 0.13 / 0.39 / 0.19 / 0.13 / 0.03 / 0.09 / 0.04 |
+| r4 ε=1 | 5 | 84972 | 0.086 | 32755 | 0.27 | **0.40** | 0.20 / 0.12 / 0.24 / 0.16 / 0.19 / 0.06 / 0.03 |
+| r4 ε=1 | 6 | 84972 | 0.060 | 32755 | 0.23 | **0.45** | 0.14 / 0.04 / 0.25 / 0.20 / 0.25 / 0.13 / -0.02 |
+
+| cell | seed | mean on BLOCK (kind / actor / obj) | mean on ACQUIRE (kind / actor / obj) | mean on RELEASE | mean on DISPATCH | fresh-actor share (frac of windows) |
+
+| r4 ε=1 | 1 | 0.088 (-0.00 / 0.05 / 0.03) | 0.081 (0.02 / 0.04 / 0.02) | 0.074 | 0.027 | 0.20 (0.14) |
+| r4 ε=1 | 2 | 0.331 (0.08 / 0.09 / 0.08) | 0.213 (0.10 / 0.09 / 0.03) | 0.174 | 0.060 | 0.17 (0.14) |
+| r4 ε=1 | 3 | 0.187 (0.08 / 0.06 / 0.03) | 0.097 (0.02 / 0.06 / 0.02) | 0.075 | 0.019 | 0.18 (0.14) |
+| r4 ε=1 | 4 | 0.083 (0.01 / 0.04 / 0.03) | 0.066 (0.01 / 0.04 / 0.02) | 0.112 | 0.018 | 0.15 (0.14) |
+| r4 ε=1 | 5 | 0.167 (0.03 / 0.07 / 0.05) | 0.133 (0.04 / 0.07 / 0.02) | 0.054 | 0.043 | 0.15 (0.14) |
+| r4 ε=1 | 6 | 0.121 (0.03 / 0.05 / 0.03) | 0.116 (0.06 / 0.04 / 0.02) | 0.013 | 0.021 | 0.26 (0.14) |
+
+| gap | total gap (per seed) | DISPATCH | RELEASE | BLOCK | ACQUIRE | IO_ISSUE | IO_COMPLETE | STEP |
+
+| frac × Δmean by predicted kind | +0.051 | +0.012 | +0.009 | +0.016 | +0.009 | +0.005 | -0.003 | +0.003 |
+
+Readings:
+
+1. **The high basin is a general degradation with lock contention
+   over-represented, not a lock-only failure.** Of the +0.051 bits between
+   the two high seeds and the four low ones, BLOCK carries +0.016 (31 % of
+   the gap on 13 % of windows) and ACQUIRE +0.009; DISPATCH (+0.012) and
+   RELEASE (+0.009) carry nearly as much between them. Seed 2's BLOCK mean
+   (0.331) is the largest per-kind excess in any cell censused so far, and
+   its excess on BLOCK is spread over kind, actor and object alike.
+2. This is consistent with §13's ownership hypothesis and does not confirm
+   it: the high basin pays most on the records that need lock state, but
+   it also pays on DISPATCH and RELEASE, where ownership is not what is
+   being predicted. A basin that had failed only at ownership tracking
+   would not look like this. The probe question stands as the test.
+3. Between-class variance share is higher in the high seeds (0.32, 0.27)
+   than the low ones (0.18–0.23): a worse model is more class-dependent,
+   as it should be — the classes it fails on become visible above the
+   realization noise.
+4. Within the low group, seed 3 has an r2-like BLOCK mean (0.187) at an
+   r1-like total (0.065): the per-kind composition varies between seeds
+   even when the total does not.
