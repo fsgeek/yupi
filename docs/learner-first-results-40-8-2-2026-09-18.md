@@ -514,3 +514,86 @@ a realized-record sum, not per-kind KLs. §10 reading 2 ("the OBJECT
 field's own term does not account for r2's extra cost — it is paid on KIND
 and ACTOR") stands, with the refinement that the KIND and ACTOR excess is
 paid on the lock-contention records.
+
+## 14. Six seeds at r2 and r4, ε = 1 (appended 2026-09-22 10:16 PDT, from `date`, by the instance of 2026-09-21)
+
+Seeds 4–6 at r2 ε=1 and r4 ε=1, same corpora and recipe as seeds 1–3
+(2M windows, 5 epochs, d = 128), trained 2026-09-21 12:33–14:02 PDT through
+the lease (12–13 min per run on the 4090), evaluated k = 1..7; raws
+`learner-eval-{r2,r4}-eps1-2M-seed{4,5,6}-2026-09-21.json`. Tables from
+`scripts/learner_summary.py` over the six raws of each cell:
+
+| cell | seed | step | n | structural (bits) ± se | naming ± se | kind KL | end | token |
+|---|---|---|---|---|---|---|---|---|
+| r2 eps=1 | 1 | 39065 | 84987 | 0.0790 ± 0.0014 | 0.0030 ± 0.0003 | 0.0226 | 0.0000 | 0.0820 |
+| r2 eps=1 | 2 | 39065 | 84987 | 0.0894 ± 0.0015 | 0.0037 ± 0.0004 | 0.0269 | 0.0001 | 0.0931 |
+| r2 eps=1 | 3 | 39065 | 84987 | 0.1201 ± 0.0017 | 0.0041 ± 0.0004 | 0.0322 | 0.0000 | 0.1242 |
+| r2 eps=1 | 4 | 39065 | 84987 | 0.0804 ± 0.0014 | 0.0034 ± 0.0004 | 0.0224 | 0.0001 | 0.0838 |
+| r2 eps=1 | 5 | 39065 | 84987 | 0.0758 ± 0.0014 | 0.0031 ± 0.0004 | 0.0230 | 0.0000 | 0.0789 |
+| r2 eps=1 | 6 | 39065 | 84987 | 0.0740 ± 0.0014 | 0.0035 ± 0.0003 | 0.0204 | 0.0001 | 0.0775 |
+
+| cell | seeds | structural mean | between-seed sd | pooled se | within-seed se | seeds for se ≤ δ/3 | naming mean | kind KL | end |
+|---|---|---|---|---|---|---|---|---|---|
+| r2 eps=1 | 6 | 0.0864 | 0.0173 | 0.0071 | 0.0015 | 27 | 0.0035 | 0.0246 | 0.0001 |
+
+
+| cell | seed | k=1 | k=2 | k=3 | k=4 | k=5 | k=6 | k=7 |
+|---|---|---|---|---|---|---|---|---|
+| r2 eps=1 | 1 | 0.0080 | 0.0144 | 0.0185 | 0.0264 | 0.0381 | 0.0532 | 0.0790 |
+| r2 eps=1 | 2 | 0.0083 | 0.0150 | 0.0192 | 0.0260 | 0.0403 | 0.0608 | 0.0894 |
+| r2 eps=1 | 3 | 0.0096 | 0.0167 | 0.0231 | 0.0362 | 0.0564 | 0.0811 | 0.1201 |
+| r2 eps=1 | 4 | 0.0094 | 0.0138 | 0.0187 | 0.0258 | 0.0386 | 0.0534 | 0.0804 |
+| r2 eps=1 | 5 | 0.0092 | 0.0141 | 0.0192 | 0.0250 | 0.0370 | 0.0521 | 0.0758 |
+| r2 eps=1 | 6 | 0.0086 | 0.0129 | 0.0173 | 0.0239 | 0.0338 | 0.0466 | 0.0740 |
+
+
+| cell | seed | step | n | structural (bits) ± se | naming ± se | kind KL | end | token |
+|---|---|---|---|---|---|---|---|---|
+| r4 eps=1 | 1 | 39065 | 84972 | 0.0563 ± 0.0012 | 0.0038 ± 0.0003 | 0.0151 | 0.0000 | 0.0601 |
+| r4 eps=1 | 2 | 39065 | 84972 | 0.1331 ± 0.0018 | 0.0046 ± 0.0004 | 0.0425 | 0.0001 | 0.1377 |
+| r4 eps=1 | 3 | 39065 | 84972 | 0.0655 ± 0.0013 | 0.0037 ± 0.0004 | 0.0179 | 0.0001 | 0.0692 |
+| r4 eps=1 | 4 | 39065 | 84972 | 0.0537 ± 0.0011 | 0.0028 ± 0.0003 | 0.0163 | 0.0001 | 0.0565 |
+| r4 eps=1 | 5 | 39065 | 84972 | 0.0862 ± 0.0014 | 0.0037 ± 0.0004 | 0.0253 | 0.0000 | 0.0899 |
+| r4 eps=1 | 6 | 39065 | 84972 | 0.0599 ± 0.0012 | 0.0036 ± 0.0003 | 0.0171 | 0.0000 | 0.0634 |
+
+| cell | seeds | structural mean | between-seed sd | pooled se | within-seed se | seeds for se ≤ δ/3 | naming mean | kind KL | end |
+|---|---|---|---|---|---|---|---|---|---|
+| r4 eps=1 | 6 | 0.0758 | 0.0304 | 0.0124 | 0.0013 | 84 | 0.0037 | 0.0224 | 0.0001 |
+
+
+| cell | seed | k=1 | k=2 | k=3 | k=4 | k=5 | k=6 | k=7 |
+|---|---|---|---|---|---|---|---|---|
+| r4 eps=1 | 1 | 0.0128 | 0.0196 | 0.0256 | 0.0287 | 0.0364 | 0.0406 | 0.0563 |
+| r4 eps=1 | 2 | 0.0139 | 0.0430 | 0.0647 | 0.0663 | 0.0844 | 0.0964 | 0.1331 |
+| r4 eps=1 | 3 | 0.0136 | 0.0184 | 0.0266 | 0.0303 | 0.0395 | 0.0467 | 0.0655 |
+| r4 eps=1 | 4 | 0.0126 | 0.0182 | 0.0237 | 0.0260 | 0.0326 | 0.0413 | 0.0537 |
+| r4 eps=1 | 5 | 0.0138 | 0.0202 | 0.0319 | 0.0375 | 0.0515 | 0.0624 | 0.0862 |
+| r4 eps=1 | 6 | 0.0130 | 0.0185 | 0.0253 | 0.0288 | 0.0394 | 0.0447 | 0.0599 |
+
+
+Readings, in decreasing confidence:
+
+1. **r2 > r1 ≈ r3 is resolved without the outlier.** Five of the six r2
+   seeds lie in 0.074–0.089 (mean 0.080, sd 0.006 with seed 3 dropped;
+   0.086 ± 0.017 with it); the lowest r2 seed (0.074) is above the highest
+   r1 seed (0.064) and the highest r3 seed (0.061). Exposing the OBJECT
+   field costs this learner about 0.02 bits per record at k = 7 relative
+   to r1, and §13 locates most of that on BLOCK and ACQUIRE records. The
+   §10 reading 1 ladder stands: r0 0.005 < r1 0.060 ≈ r3 0.059 < r2.
+2. **r4 is not a one-basin cell.** Four of six seeds land at 0.054–0.066,
+   inside the r1 / r3 range; two land high (seed 2 at 0.133, seed 5 at
+   0.086), and their per-position curves are elevated from k = 2–3 onward,
+   not late — a different solution from early training, not a late
+   divergence. r4's pooled value (0.076 ± 0.030) is therefore a mixture,
+   and its place on the ladder is "r1's level, with a worse basin the
+   optimizer finds one time in three." Where r4 sits relative to r2 is
+   not a question with a single answer at this recipe.
+3. The between-seed sd at r2 (0.006 without seed 3) and at r1 / r3
+   (0.001–0.007) is now the binding resolution for ladder claims between
+   those rungs; r4's (0.013 without its top seed) is not.
+
+What this does not say: nothing about ε = ½ (three seeds), nothing about
+whether the r4 basins are a property of the rung or of the recipe (a
+learning-rate or warmup change could remove or multiply them), and nothing
+about why seed 3 at r2 is high — its census (§13) put its extra cost on
+every kind.
