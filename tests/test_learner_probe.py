@@ -149,3 +149,16 @@ def test_bilinear_readout_recovers_a_token_coded_posterior():
     A0, C0, P0 = make(3000, False); At0, Ct0, Pt0 = make(1500, False)
     pr0 = fit_bilinear(A0, C0, P0, E, l2=1e-2)
     assert bilinear_ce(pr0, At0, Ct0, Pt0, E) > base - 0.1
+
+
+def test_collapse_targets_from_the_owner_posterior():
+    """collapse(p, target, actor_index): 'held' folds t0..t3 and unseen into one
+    class; 'owner-is-actor' folds them into {actor, other}; 'none' is kept; the
+    masses sum to 1 and the class lists are fixed per target."""
+    from yupi.learner.probe import CLASS_ID, TARGETS, collapse
+    p = np.zeros(len(CLASSES)); p[CLASS_ID["none"]] = 0.5; p[CLASS_ID["t1"]] = 0.3; p[CLASS_ID["unseen"]] = 0.2
+    assert TARGETS["held"] == ("none", "held") and TARGETS["owner-is-actor"] == ("none", "actor", "other")
+    assert list(collapse(p, "held", actor_index=1)) == pytest.approx([0.5, 0.5])
+    assert list(collapse(p, "owner-is-actor", actor_index=1)) == pytest.approx([0.5, 0.3, 0.2])
+    assert list(collapse(p, "owner-is-actor", actor_index=0)) == pytest.approx([0.5, 0.0, 0.5])
+    assert list(collapse(p, "owner", actor_index=0)) == pytest.approx(list(p))

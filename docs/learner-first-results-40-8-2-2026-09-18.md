@@ -648,3 +648,90 @@ Readings:
 4. Within the low group, seed 3 has an r2-like BLOCK mean (0.187) at an
    r1-like total (0.065): the per-kind composition varies between seeds
    even when the total does not.
+
+## 16. Probe v0.1–v0.3: lock ownership in the residual stream (appended 2026-09-23 13:39 PDT, from `date` in the writing command, by the instance of 2026-09-21)
+
+Sub-project 3's first target, motivated by §13–15. Design and amendments:
+`docs/superpowers/specs/2026-09-23-probe-lock-owner-design.md`. Exact
+owner posteriors P*(Z | prefix) for every lock visible after k = 7 records
+(`yupi.learner.probe.owner_posterior` over the pattern filter's joint
+belief on (state, binding); `scripts/learner_probe_labels.py`; val split
+for fitting, first 30k test windows for evaluation), probes fit per layer
+from the residual stream at the record-boundary position p0 (the state
+after k records), scored by OIR = (H(Z) − CE) / (H(Z) − H(Z | h)) (proposal
+§8.3), λ chosen on a held-out fifth of the fit split. Raws
+`learner-probe-owner-<cell>-seed<s>[-<target>]-2026-09-23.json`; tables
+from `scripts/learner_probe_summary.py` (lock index 0; lock 1 agrees).
+
+**16.1 Two dead ends, and what each showed.** (a) The v0.1 probe, an
+affine map to the pattern observer's classes {none, t0..t3, unseen}, scores
+0.36 / 0.43 / 0.39 at r2 / r3 / r4 (table below) — but a control with the
+same family on Z′ = pattern index of the actor of record k, a fact the model
+has just read, scores 0.15 (r2 seed 1, layers 3–4). First-appearance
+indices are not the model's coordinates; v0.1's owner numbers do not
+measure ownership. (b) The v0.2 readout decodes the owner as a thread
+*token* through the model's own embedding matrix (bilinear, learned
+directions for none / unseen). Thread embeddings are not collapsed
+(pairwise cosine ≈ 0.05; nearest-embedding decode of E_t + pos_p 88 %),
+and at the actor token's own input position the readout recovers the actor
+with held-out CE 0.002 at layers 0 and 3. At p0, three positions later, it
+recovers nothing on the same control (held-out CE at baseline for every λ;
+train CE falls, so it memorizes). **Entity identities are fetched by
+attention when needed, not held in the stream at the record boundary.** A
+single-position probe cannot read "which thread owns lock l" at any rung.
+(An off-by-three in the first diagnostic — window index p0 − 4 is the
+actor, its *input* position is p0 − 3 — was caught before it was read.)
+
+**16.2 The fact in coordinate-free form.** Folding the owner posterior into
+Z = held (is lock l owned by anyone) and Z = owner-is-actor (is its owner
+the thread that just acted), linear readout at p0, best layer of 1–4:
+
+| cell | target | readout | seeds | best-layer OIR per seed | pooled OIR ± sd | layer(s) | CE determined subset | H(Z|h) | acc |
+|---|---|---|---|---|---|---|---|---|---|
+| r2-eps1 | held | linear | 3 | 0.56 / 0.58 / 0.56 | **0.57** ± 0.01 | 3,3,4 | 0.268 (0.260–0.272) | 0.100 | 0.88 |
+| r3-eps1 | held | linear | 3 | 0.76 / 0.82 / 0.78 | **0.79** ± 0.03 | 3,2,2 | 0.168 (0.145–0.187) | 0.000 | 0.95 |
+| r4-eps1 | held | linear | 6 | 0.74 / 0.72 / 0.74 / 0.73 / 0.73 / 0.75 | **0.73** ± 0.01 | 2,2,3,3,2,3 | 0.210 (0.196–0.221) | 0.000 | 0.94 |
+
+| cell | target | readout | seeds | best-layer OIR per seed | pooled OIR ± sd | layer(s) | CE determined subset | H(Z|h) | acc |
+|---|---|---|---|---|---|---|---|---|---|
+| r2-eps1 | owner-is-actor | linear | 3 | 0.45 / 0.47 / 0.44 | **0.46** ± 0.02 | 3,3,4 | 0.677 (0.663–0.693) | 0.173 | 0.73 |
+| r3-eps1 | owner-is-actor | linear | 3 | 0.55 / 0.58 / 0.51 | **0.55** ± 0.03 | 3,2,2 | 0.653 (0.610–0.701) | 0.000 | 0.80 |
+| r4-eps1 | owner-is-actor | linear | 6 | 0.57 / 0.50 / 0.54 / 0.56 / 0.51 / 0.56 | **0.54** ± 0.03 | 3,4,4,3,2,4 | 0.660 (0.622–0.714) | 0.000 | 0.80 |
+
+v0.1 (pattern classes, lock 0):
+| cell | target | readout | seeds | best-layer OIR per seed | pooled OIR ± sd | layer(s) | CE determined subset | H(Z|h) | acc |
+|---|---|---|---|---|---|---|---|---|---|
+| r2-eps1 | owner | linear | 3 | 0.36 / 0.37 / 0.35 | **0.36** ± 0.01 | 3,3,4 | 1.536 (1.506–1.553) | 0.234 | 0.51 |
+| r3-eps1 | owner | linear | 3 | 0.43 / 0.44 / 0.44 | **0.43** ± 0.01 | 3,2,3 | 1.277 (1.260–1.294) | 0.000 | 0.61 |
+| r4-eps1 | owner | linear | 6 | 0.38 / 0.36 / 0.40 / 0.40 / 0.37 / 0.40 | **0.39** ± 0.02 | 3,2,3,3,2,3 | 1.383 (1.342–1.434) | 0.000 | 0.58 |
+
+Readings:
+
+1. **"Is the lock held" is less accessible at r2 than at r3 or r4**: OIR
+   0.57 ± 0.01 against 0.79 ± 0.03 and 0.73 ± 0.01, seeds tightly clustered,
+   best layers 2–4. The cleaner comparison is the cross-entropy on
+   the examples the prefix *determines* (H(Z | h) = 0 for the example): r2
+   0.27 against r3 0.17 and r4 0.21 bits. Where the surface fixes whether
+   the lock is held, the r2 model's boundary state carries it less.
+2. The same ordering, smaller, for owner-is-actor (0.46 / 0.55 / 0.54).
+3. **r4's two basins do not differ in lock-state access**: seeds 2 and 5
+   (the high basin, §14–15) score 0.72 and 0.73 on held against 0.73–0.75
+   for the low basin. The high basin's extra cost is not less accessible
+   lock state at the boundary; the r4 leg of §13's hypothesis fails in this
+   form.
+4. Caveat on the ceilings: at r3 and r4 every visible lock's owner is
+   determined by the prefix (the owner is printed on BLOCK, and ACQUIRE /
+   RELEASE are visible), so their OIR measures retention of a printed fact;
+   at r2 ownership is uncertain for a third of the (window, lock) examples
+   (mean posterior entropy 0.23–0.26 bits) and the OIR measures retention of
+   an inferred one. The normalization makes the numbers comparable in units,
+   not in kind; reading 1's determined-subset CE is the like-for-like
+   comparison.
+
+What this does not say: nothing causal (§8.5 patching is not done); nothing
+about *which* thread owns the lock, which needs a probe that reads at the
+entity token's position (v0.4, designed but not built); nothing about r1 (no
+locks in the pattern observer's names) or ε = ½. The ownership hypothesis
+of §13 survives at r2 vs r3 in the form "the boundary state at r2 carries
+less of the lock's held/free status, even where the prefix determines it,"
+and fails for r4's basins.

@@ -171,3 +171,35 @@ def bilinear_ce(probe: dict, A, cands, P, E) -> float:
         p = np.asarray(p, dtype=np.float64)
         tot += -(p * lq[i, :len(p)]).sum()
     return float(tot / len(P) / LOG2)
+
+
+# ---- v0.3: coordinate-free targets at the record boundary (2026-09-23) ------------------
+#
+# At the record-boundary position the residual stream does not carry entity
+# identities in embedding coordinates (the actor token three positions back is
+# unrecoverable there, though perfectly recoverable at its own position), so
+# an entity-valued target cannot be read from a single position. These targets
+# fold the owner posterior into facts that need no entity coordinates.
+
+TARGETS = {
+    "owner": CLASSES,
+    "held": ("none", "held"),
+    "owner-is-actor": ("none", "actor", "other"),
+}
+
+
+def collapse(p: np.ndarray, target: str, actor_index: int) -> np.ndarray:
+    """Fold a posterior over CLASSES into the target's classes. `actor_index` is
+    the pattern index of the record-k actor (for 'owner-is-actor')."""
+    p = np.asarray(p, dtype=np.float64)
+    if target == "owner":
+        return p
+    none = p[CLASS_ID["none"]]
+    thr = {i: p[CLASS_ID[f"t{i}"]] for i in range(4)}
+    unseen = p[CLASS_ID["unseen"]]
+    if target == "held":
+        return np.array([none, sum(thr.values()) + unseen])
+    if target == "owner-is-actor":
+        actor = thr.get(actor_index, 0.0)
+        return np.array([none, actor, sum(thr.values()) - actor + unseen])
+    raise ValueError(target)

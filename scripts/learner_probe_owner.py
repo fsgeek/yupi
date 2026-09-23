@@ -36,7 +36,7 @@ from yupi.corpus.vocab import VOCAB, token_type
 from yupi.corpus.writer import read_split
 from yupi.learner.data import frame
 from yupi.learner.model import Decoder, ModelConfig
-from yupi.learner.probe import CLASSES, CLASS_ID, bilinear_ce, bilinear_logq, fit_bilinear, fit_probe, oir, probe_ce, probe_logq
+from yupi.learner.probe import CLASSES, CLASS_ID, TARGETS, bilinear_ce, bilinear_logq, collapse, fit_bilinear, fit_probe, oir, probe_ce, probe_logq
 
 N_LAYERS = 5
 
@@ -115,6 +115,18 @@ def to_candidates(rows, split_rows, idx, P):
     return cands, Pc
 
 
+def actor_index(rows, split_rows, idx):
+    """Pattern index (first-appearance order) of the record-k actor, per example."""
+    out = []
+    for j in idx:
+        r = rows[j]
+        ids = split_rows[r["i"]][0]
+        order = thread_order(ids, r["k"], r["reset"])
+        a = ids[r["p0"] - 4]                      # window index of record k's actor token
+        out.append(order.index(a) if a in order else -1)
+    return np.array(out)
+
+
 def entropy_bits(p):
     p = p[p > 0]
     return float(-(p * np.log2(p)).sum())
@@ -138,6 +150,7 @@ def main(argv=None):
     ap.add_argument("--device", default="cpu")
     ap.add_argument("--l2", default="1e-4,1e-3,1e-2,1e-1")
     ap.add_argument("--readout", default="linear", choices=("linear", "bilinear"))
+    ap.add_argument("--target", default="owner", choices=tuple(TARGETS), help="owner (v0.1/v0.2) or a folded, coordinate-free fact (v0.3, linear readout)")
     ap.add_argument("--raw")
     a = ap.parse_args(argv)
     run = Path(a.run)
@@ -162,6 +175,11 @@ def main(argv=None):
         ei, Pe = examples(eval_rows, l)
         if len(fi) < 50 or len(ei) < 50:
             continue
+        if a.target != "owner":
+            assert a.readout == "linear", "folded targets use the linear readout"
+            af = actor_index(fit_rows, fit_split_rows, fi); ae = actor_index(eval_rows, eval_split_rows, ei)
+            Pf = np.array([collapse(p, a.target, i) for p, i in zip(Pf, af)])
+            Pe = np.array([collapse(p, a.target, i) for p, i in zip(Pe, ae)])
         h_z_h = float(np.mean([entropy_bits(p) for p in Pe]))
         det = np.array([entropy_bits(p) == 0.0 for p in Pe])
         rng = np.random.default_rng(0)
@@ -209,9 +227,9 @@ def main(argv=None):
                labels_fit=a.labels_fit, labels_fit_sha256=hashlib.sha256(Path(a.labels_fit).read_bytes()).hexdigest(),
                labels_eval=a.labels_eval, labels_eval_sha256=hashlib.sha256(Path(a.labels_eval).read_bytes()).hexdigest(),
                checkpoint_sha256=hashlib.sha256((run / "ckpt.pt").read_bytes()).hexdigest(), git=_git(),
-               classes=list(CLASSES), l2_grid=l2s, readout=a.readout, results=results, wall_s=time.time() - t0)
+               classes=list(TARGETS[a.target]), target=a.target, l2_grid=l2s, readout=a.readout, results=results, wall_s=time.time() - t0)
     fmt = lambda v: "—" if v is None else f"{v:.3f}"
-    print(f"run {run.name} k={a.k} readout={a.readout}: {len(fit_rows)} fit / {len(eval_rows)} eval windows")
+    print(f"run {run.name} k={a.k} readout={a.readout} target={a.target}: {len(fit_rows)} fit / {len(eval_rows)} eval windows")
     for r in results.values():
         print(f"  lock {r['lock']} layer {r['layer']}: n={r['n_eval']}  H(Z)={r['h_z']:.3f}  H(Z|h)={r['h_z_given_h']:.3f}  "
               f"CE={r['ce']:.3f}  OIR={fmt(r['oir'])}  acc={r['acc']:.3f}  det {r['frac_determined']:.2f}: CE {fmt(r['ce_determined'])}  "
