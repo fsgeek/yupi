@@ -284,3 +284,25 @@ def test_actor_dists_share_pattern_classes_and_the_exact_one_is_the_star_conditi
     md, off = model_actor_dist(np.log(p / p.sum()), seen)
     assert md[0] == pytest.approx(4 / 7, abs=1e-6) and md[1] == pytest.approx(2 / 7, abs=1e-6) and md["fresh"] == pytest.approx(1 / 7, abs=1e-6)
     assert off == pytest.approx(0.3, abs=1e-6)
+
+
+def test_kind_belief_and_kind_output_reproduce_the_evaluator_kind_kl():
+    """kind_belief is kind_marginal as a KINDS vector summing to 1; kl_bits_vec(kind_belief,
+    kind_output) equals window_excess's kind_kl_bits on the same star and logit row."""
+    from fractions import Fraction
+    from yupi.corpus.vocab import KINDS, TOKEN_ID, VOCAB
+    from yupi.learner.evaluate import PAD_ID
+    from yupi.learner.evaluate import kind_belief, kind_output, kl_bits_vec, kind_marginal
+    from yupi.records import Record
+    R = lambda kind, actor: Record(kind=kind, actor=actor, obj=None, related=None, lineage=None)
+    star = {R("STEP", 0): Fraction(1, 2), R("RELEASE", 1): Fraction(1, 4), R("DISPATCH", 2): Fraction(1, 4)}
+    b = kind_belief(star)
+    assert b.sum() == pytest.approx(1.0) and b[KINDS.index("STEP")] == 0.5 and b[KINDS.index("RELEASE")] == 0.25
+    rng = np.random.default_rng(0)
+    logits = rng.normal(size=len(VOCAB)); logits[PAD_ID] = 3.0          # PAD mass must be renormalized away
+    lp = logits - np.log(np.exp(logits).sum())
+    q, off = kind_output(lp)
+    assert 0 < off < 1 and q.sum() == pytest.approx(1 - off)
+    lp0 = lp - np.log(np.exp(np.delete(lp, PAD_ID)).sum())
+    ref = sum(float(m) * (math.log2(float(m)) - lp0[TOKEN_ID[k]] / math.log(2)) for k, m in kind_marginal(star).items())
+    assert kl_bits_vec(b, q) == pytest.approx(ref, abs=1e-9)

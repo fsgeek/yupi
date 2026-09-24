@@ -163,3 +163,15 @@ def test_release_actor_group_stats():
     assert s["n"] == 2 and s["actor_excess"] == pytest.approx(0.2) and s["h_actor"] == 1.0
     assert s["exposure_ratio"] == pytest.approx(0.8) and s["kind_excess"] == pytest.approx(0.1)
     assert ra.group_stats([(0.0, 0.0, 0.0)])["exposure_ratio"] is None and ra.group_stats([]) is None
+
+
+def test_belief_kind_geometry_alignment_helpers():
+    """Pairwise-distance alignment is 1 for an isometric copy, near 0 for an unrelated cloud."""
+    import learner_belief_kind as bk
+    rng = np.random.default_rng(2)
+    P = rng.dirichlet(np.ones(9), size=300)
+    Q = P @ np.linalg.qr(rng.normal(size=(9, 9)))[0]            # rotation: distances preserved
+    assert bk.pairwise_distance_alignment(P, Q, n=200) == pytest.approx(1.0, abs=1e-9)
+    R = rng.dirichlet(np.ones(9), size=300)
+    assert abs(bk.pairwise_distance_alignment(P, R, n=200)) < 0.1
+    assert bk.spearman(np.arange(10.0), np.arange(10.0) ** 2) == pytest.approx(1.0)

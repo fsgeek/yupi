@@ -1236,3 +1236,85 @@ What this does not say: no census, probe or exposure analysis has been run at ε
 the ladder statement at ε = ½ is about means over six seeds, not a seed-wise
 separation. The GPU chain's part B (the r1 size-axis learning-rate sweep) follows in
 §21 when it lands.
+
+## 21. Belief geometry, coordinate-free: the next-kind belief at the boundary (appended 2026-09-24 11:52 PDT, from `date` in the writing command, by the instance of 2026-09-23)
+
+Paper 1's belief-geometry slice of Milestone 5 (proposal §8.2), in the form
+§16–§19 taught: no entity coordinates, exact targets from the ceiling tables, and
+the output at the same position measured beside the representation. Design
+`docs/superpowers/specs/2026-09-24-belief-geometry-design.md` v0.1;
+`scripts/learner_belief_kind.py` (raw prefix `learner-belief-kind`, raws
+`learner-belief-kind-<cell>-seed<s>-2026-09-24.json`). Target: P*(kind_{k+1} | prefix),
+the ceiling table's kind marginal for the window's class, a point on the 9-simplex
+of event kinds (`yupi.learner.evaluate.kind_belief`, tested). Probe: affine map
+from the residual stream at p0 (layers 0–4) to logits over the 9 kinds, expected
+cross-entropy against the soft target (the §16 `fit_probe`), λ ∈ {1e-6 … 1e-2} on
+a held-out fifth, fit on test windows 30,000–84,986 and evaluated on the first
+30,000. Reported per layer: OIR = (H(Z̄) − CE)/(H(Z̄) − H(Z | h)); KL_repr, the mean
+per-window KL(P* ‖ probe); beside it KL_out, the mean KL(P* ‖ P̃_M(kind | non-PAD))
+at p0 from the same forward pass, the evaluator's `kind_kl_bits` (gate: its eval-set
+mean must match the run's learner-eval raw); a class-disjoint evaluation (eval
+windows whose class is absent from the fit set); and the geometry item, the
+Spearman correlation between pairwise Euclidean distances of exact beliefs and of
+probe outputs on 1,000 sampled windows. Cells r1–r4 ε = 1, every seed with census
+rows. H(Z | h), the exact observer's mean residual uncertainty about the next kind:
+r1 0.996, r2 0.952, r3 0.914, r4 0.907 bits; H(Z̄) = 2.43.
+
+| cell | seed | OIR L0 / L1 / L2 / L3 / L4 | KL_repr L3 / L4 | KL_out (gate: evaluator) | geometry L1 / L3 / L4 | class-disjoint OIR L3 / L4 | k = 7 excess |
+|---|---|---|---|---|---|---|---|
+| r1-eps1 | 1 | 0.017 / 0.837 / 0.859 / 0.938 / 0.983 | 0.089 / 0.0246 | 0.0241 (0.0240) | 0.895 / 0.966 / 0.989 | 0.915 / 0.967 | 0.064 |
+| r1-eps1 | 2 | 0.017 / 0.843 / 0.859 / 0.913 / 0.981 | 0.125 / 0.0271 | 0.0249 (0.0252) | 0.901 / 0.944 / 0.988 | 0.879 / 0.964 | 0.063 |
+| r1-eps1 | 3 | 0.017 / 0.834 / 0.855 / 0.943 / 0.987 | 0.082 / 0.0182 | 0.0160 (0.0162) | 0.894 / 0.961 / 0.991 | 0.914 / 0.977 | 0.052 |
+| r2-eps1 | 1 | 0.016 / 0.817 / 0.831 / 0.938 / 0.984 | 0.092 / 0.0237 | 0.0225 (0.0226) | 0.891 / 0.963 / 0.989 | 0.916 / 0.973 | 0.079 |
+| r2-eps1 | 2 | 0.016 / 0.810 / 0.831 / 0.901 / 0.981 | 0.146 / 0.0277 | 0.0269 (0.0269) | 0.881 / 0.945 / 0.988 | 0.870 / 0.970 | 0.089 |
+| r2-eps1 | 3 | 0.016 / 0.812 / 0.834 / 0.835 / 0.977 | 0.245 / 0.0336 | 0.0321 (0.0322) | 0.888 / 0.903 / 0.986 | 0.804 / 0.962 | 0.120 |
+| r3-eps1 | 1 | 0.015 / 0.801 / 0.821 / 0.939 / 0.988 | 0.093 / 0.0177 | 0.0183 (0.0186) | 0.882 / 0.969 / 0.992 | 0.924 / 0.981 | 0.059 |
+| r3-eps1 | 2 | 0.015 / 0.799 / 0.879 / 0.912 / 0.987 | 0.133 / 0.0198 | 0.0195 (0.0195) | 0.886 / 0.954 / 0.992 | 0.885 / 0.977 | 0.061 |
+| r3-eps1 | 3 | 0.015 / 0.799 / 0.833 / 0.891 / 0.988 | 0.165 / 0.0184 | 0.0174 (0.0173) | 0.880 / 0.934 / 0.993 | 0.868 / 0.979 | 0.058 |
+| r4-eps1 | 1 | 0.045 / 0.772 / 0.813 / 0.941 / 0.990 | 0.089 / 0.0151 | 0.0148 (0.0151) | 0.855 / 0.964 / 0.993 | 0.925 / 0.984 | 0.056 |
+| r4-eps1 | 2 | 0.045 / 0.783 / 0.833 / 0.886 / 0.972 | 0.174 / 0.0429 | 0.0424 (0.0425) | 0.871 / 0.927 / 0.983 | 0.858 / 0.953 | 0.133 |
+| r4-eps1 | 3 | 0.045 / 0.776 / 0.812 / 0.880 / 0.988 | 0.182 / 0.0178 | 0.0177 (0.0179) | 0.863 / 0.929 / 0.993 | 0.858 / 0.982 | 0.065 |
+| r4-eps1 | 4 | 0.045 / 0.785 / 0.808 / 0.923 / 0.989 | 0.117 / 0.0163 | 0.0160 (0.0163) | 0.871 / 0.955 / 0.994 | 0.901 / 0.984 | 0.054 |
+| r4-eps1 | 5 | 0.045 / 0.785 / 0.821 / 0.827 / 0.984 | 0.263 / 0.0247 | 0.0253 (0.0253) | 0.867 / 0.893 / 0.990 | 0.799 / 0.974 | 0.086 |
+| r4-eps1 | 6 | 0.045 / 0.787 / 0.821 / 0.892 / 0.989 | 0.165 / 0.0161 | 0.0169 (0.0171) | 0.872 / 0.936 / 0.993 | 0.871 / 0.983 | 0.060 |
+
+Gate: KL_out over the 30k eval windows agrees with the run's evaluator kind KL over
+all 85k to within 0.0005 in every run (bracketed column).
+
+Readings:
+
+1. **The exact next-kind belief is linearly present from the first block on, and
+   its geometry is preserved.** Nothing at the embedding (OIR 0.02–0.05: the input
+   token alone says nothing about the next kind), 0.77–0.84 after one block,
+   0.81–0.88 after two, 0.83–0.94 after three, 0.97–0.99 at the last residual.
+   Pairwise distances between exact beliefs are reproduced by the probe with rank
+   correlation 0.86–0.90 at layer 1 and 0.98–0.99 at layer 4. Class-disjoint
+   windows score within 0.02–0.04 of the pooled OIR at every layer: this is a
+   representation of the belief, not a table of prefixes.
+2. **At the last layer, representation equals exposure.** KL_repr at layer 4 is
+   0.015–0.043 bits against KL_out 0.015–0.042, run for run (the logits are an
+   affine read of that layer; the probe, fit separately without the final norm,
+   recovers the same map). At the kind grain, at the boundary, there is no gap 3:
+   what the final residual holds linearly, the output emits.
+3. **The gap is in depth, and it tracks the seed's quality.** Layer 3 holds 83–94 %
+   of the belief; the last block supplies the rest. The seeds with the least at
+   layer 3 are the seeds with the most excess: r2 seed 3 (0.835; excess 0.120),
+   r4 seeds 5 and 2 (0.827, 0.886; the high basin, 0.086 and 0.133), r3 seed 3
+   (0.891). Across the 15 runs, Spearman between layer-3 OIR and k = 7 excess is
+   -0.66, and with KL_out -0.54. The worse solutions form the
+   next-kind belief later in the network; their final block does more of the work,
+   and does it less well. This is the first quantity on which r4's high basin
+   differs from its low basin *inside* the model rather than at its output
+   (§15, §16, §17 found none; §18–19 found the output difference).
+4. **No rung ordering in accessibility.** Best-seed layer-3 OIR is 0.94 at r1, r2,
+   r3 and r4 alike; the rungs differ in the exact observer's own uncertainty
+   (H(Z | h) 1.00 → 0.91 as the interface grows) and in their worst seeds, not in
+   how accessibly a given model holds the belief it has.
+
+What this does not say: one target (the next kind), one position, one k; a linear
+probe is a lower bound on accessibility; reading 3 is a correlation over 15 runs
+(3 / 3 / 3 / 6 per cell), not a within-cell result; nothing causal. What follows
+within the cut: the same at k = 1..6 (layerwise emergence over context, §8.2's
+"layerwise emergence during training" needs checkpoints we did not keep), the
+folded actor class as a second coordinate-free target, and the horizon-2 kind
+belief if the exact side prices it.

@@ -161,6 +161,28 @@ def model_actor_dist(lp_row: np.ndarray, seen_tokens: Sequence[str]) -> Tuple[Di
     return {k: v / on_threads for k, v in out.items()} if on_threads > 0 else out, 1.0 - on_threads
 
 
+def kind_belief(star: Dict[Record, Fraction]) -> np.ndarray:
+    """P*(kind_{k+1} | prefix) as a vector over KINDS (the exact next-kind belief; the
+    belief-geometry target of docs/superpowers/specs/2026-09-24-belief-geometry-design.md)."""
+    km = kind_marginal(star)
+    return np.array([float(km.get(k, Fraction(0))) for k in KINDS], dtype=np.float64)
+
+
+def kind_output(lp_row: np.ndarray) -> Tuple[np.ndarray, float]:
+    """The model's next-kind distribution at a boundary row: P_M(kind | non-PAD) over
+    KINDS (the evaluator's kind_kl convention: renormalized over non-PAD only, so mass
+    on non-kind tokens is not redistributed) and the mass it put on non-kind tokens."""
+    lp = lp_row - _logsumexp(np.delete(lp_row, PAD_ID))
+    p = np.exp(np.array([lp[TOKEN_ID[k]] for k in KINDS]))
+    return p, float(1.0 - p.sum())
+
+
+def kl_bits_vec(p: np.ndarray, q: np.ndarray) -> float:
+    """Σ_i p_i log2(p_i / q_i) over the support of p (q floored at 1e-300)."""
+    m = p > 0
+    return float((p[m] * (np.log2(p[m]) - np.log2(np.maximum(q[m], 1e-300)))).sum())
+
+
 # ---- the model side ----------------------------------------------------------------
 
 def _consistent_ids(field: str, tok: str, used: Dict[str, set]) -> Tuple[np.ndarray, Optional[int], Optional[str]]:

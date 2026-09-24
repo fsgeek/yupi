@@ -48,6 +48,7 @@ NON_MEASUREMENT_PREFIXES = (
     "learner-probe-link",   # 2026-09-24 per-window link of probe CE to model excess (scripts/learner_probe_link.py); correlational, not a prediction family
     "learner-release-actor",   # 2026-09-24 ACTOR-field excess vs H*(actor | kind) by realized kind (scripts/learner_release_actor.py); exposure ratio, not a prediction family
     "learner-actor-shape",   # 2026-09-24 model vs exact actor distribution on owner-uncertain RELEASE windows (scripts/learner_actor_shape.py); not a prediction family
+    "learner-belief-kind",   # 2026-09-24 belief-geometry slice: linear probe from p0 to the exact next-kind belief vs the output at p0 (scripts/learner_belief_kind.py); not a prediction family
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);
