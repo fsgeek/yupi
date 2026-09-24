@@ -1371,11 +1371,16 @@ observer's mean residual uncertainty about the next kind at that k.
    falling with k (1.24–1.38 at k ≤ 2, 0.82–1.00 at k ≥ 6); the belief is *easier*
    in principle at long context and *less accessible* in the model. The geometry
    holds throughout (pairwise-distance alignment 0.96–1.00 at layer 3).
-7. **A small rung ordering appears at layer 1 and only there:** at k = 7 the
-   first block's OIR is 0.837 / 0.817 / 0.801 / 0.772 at r1 / r2 / r3 / r4. The more
-   fields the interface exposes, the less of the next-kind belief one block can
-   integrate linearly; by layer 3 the rungs are level again (0.938–0.941). One seed
-   per rung; a description, not a finding, until the other seeds are run.
+7. **A rung ordering appears at layer 1 and only there, and it is seed-resolved:**
+   at k = 7 the first block's OIR is 0.834–0.843 at r1 (3 seeds), 0.810–0.817 at r2
+   (3), 0.799–0.801 at r3 (3) and 0.772–0.787 at r4 (6), ranges that do not overlap
+   (from the §21 raws, checked after this subsection was first written with seed 1
+   alone). The more fields the interface exposes, the less of the next-kind belief
+   one block integrates linearly — the opposite direction from the exact side, where
+   more fields mean less residual uncertainty. By layer 3 the rungs are level again
+   (best seeds 0.938–0.943). This is the one place in the note where the interface
+   orders the *representation* monotonically; at the output (§10, §14) the order is
+   not monotone.
 
 ## 22. The size axis with the learning rate swept (appended 2026-09-24 13:48 PDT, from `date` in the writing command, by the instance of 2026-09-23)
 
