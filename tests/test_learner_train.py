@@ -67,3 +67,19 @@ def test_resume_with_different_config_is_refused(small_corpus, tmp_path):
     train(_cfg(small_corpus, tmp_path / "c", max_steps=10))
     with pytest.raises(RuntimeError):
         train(_cfg(small_corpus, tmp_path / "c", max_steps=20, lr=5e-4), resume=True)
+
+
+def test_cli_lr_min_defaults_to_a_tenth_of_lr_and_is_overridable():
+    """The size-axis learning-rate sweep (note §11, §17.5) scales the cosine floor with
+    the peak: --lr 3e-3 gives lr_min 3e-4 unless --lr-min is passed; the historical
+    recipe (--lr 1e-3, no flag) still yields lr_min 1e-4."""
+    import argparse, sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+    import learner_train as lt
+    ns = lambda **kw: argparse.Namespace(**{**dict(corpus_dir="c", seed=1, out="o", device="cpu", batch_size=256, epochs=5, lr=1e-3, lr_min=None,
+                                                 warmup=500, ckpt_every=2000, val_every=1000, max_steps=None, d_model=128, n_layer=4, n_head=4), **kw})
+    assert lt.build_config(ns()).lr_min == pytest.approx(1e-4)
+    c = lt.build_config(ns(lr=3e-3, d_model=64))
+    assert c.lr_min == pytest.approx(3e-4) and c.model.d_mlp == 256
+    assert lt.build_config(ns(lr=3e-3, lr_min=5e-5)).lr_min == pytest.approx(5e-5)

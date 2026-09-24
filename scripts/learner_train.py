@@ -15,6 +15,15 @@ from yupi.learner.model import ModelConfig
 from yupi.learner.train import TrainConfig, train
 
 
+def build_config(a) -> TrainConfig:
+    """TrainConfig from parsed arguments; d_mlp = 4 d_model; lr_min defaults to lr / 10."""
+    model = ModelConfig(d_model=a.d_model, n_layer=a.n_layer, n_head=a.n_head, d_mlp=4 * a.d_model)
+    lr_min = a.lr / 10 if a.lr_min is None else a.lr_min
+    return TrainConfig(corpus_dir=a.corpus_dir, seed=a.seed, out_dir=a.out, device=a.device, batch_size=a.batch_size,
+                       epochs=a.epochs, lr=a.lr, lr_min=lr_min, warmup=a.warmup, ckpt_every=a.ckpt_every, val_every=a.val_every,
+                       max_steps=a.max_steps, model=model)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--corpus-dir", required=True)
@@ -24,6 +33,7 @@ def main(argv=None):
     ap.add_argument("--epochs", type=int, default=10)
     ap.add_argument("--batch-size", type=int, default=256)
     ap.add_argument("--lr", type=float, default=1e-3)
+    ap.add_argument("--lr-min", type=float, default=None, help="cosine floor; default lr / 10 (the recipe's 1e-3 -> 1e-4)")
     ap.add_argument("--warmup", type=int, default=500)
     ap.add_argument("--ckpt-every", type=int, default=500)
     ap.add_argument("--val-every", type=int, default=250)
@@ -33,10 +43,7 @@ def main(argv=None):
     ap.add_argument("--n-head", type=int, default=4)
     ap.add_argument("--resume", action="store_true")
     a = ap.parse_args(argv)
-    model = ModelConfig(d_model=a.d_model, n_layer=a.n_layer, n_head=a.n_head, d_mlp=4 * a.d_model)
-    cfg = TrainConfig(corpus_dir=a.corpus_dir, seed=a.seed, out_dir=a.out, device=a.device, batch_size=a.batch_size,
-                      epochs=a.epochs, lr=a.lr, warmup=a.warmup, ckpt_every=a.ckpt_every, val_every=a.val_every,
-                      max_steps=a.max_steps, model=model)
+    cfg = build_config(a)
     print(json.dumps(train(cfg, resume=a.resume), indent=2))
     return 0
 
