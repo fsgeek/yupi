@@ -1198,3 +1198,41 @@ be the one acting. Same script, `--kind BLOCK`, raws
    they were not (19.2). Reading 2 stands as stated for RELEASE; across the two
    kinds the honest summary is that the r2 deficit is present on both kinds of
    prefix and not confined to either.
+
+## 20. Six seeds at ε = ½ for r2 and r4 (appended 2026-09-24 11:21 PDT, from `date` in the writing command, by the instance of 2026-09-23)
+
+Owed since §14 (which resolved the ε = 1 ladder on six seeds and left ε = ½ on
+three). Seeds 4–6 at r2 ε = ½ and r4 ε = ½, 2M windows, the recipe of seeds 1–3
+(5 epochs, d = 128, lr 1e-3 → 1e-4), trained and evaluated on the 4090 through the
+Hamut'ay lease (`scripts/learner_gpu_2026-09-24.sh`, part A; raws
+`learner-eval-<rung>-eps1_2-2M-seed{4,5,6}-2026-09-24.json`). Structural excess at
+k = 7, bits per record, ε = 1 beside for the ladder:
+
+| cell | ε = 1 seeds | k = 7 excess per seed | mean | range | ε = ½ seeds | per seed | mean | range |
+|---|---|---|---|---|---|---|---|---|
+| r0 | 3 | 0.005 / 0.005 / 0.005 | **0.005** | 0.005–0.005 | 3 | 0.006 / 0.005 / 0.005 | **0.005** | 0.005–0.006 |
+| r1 | 3 | 0.064 / 0.063 / 0.052 | **0.060** | 0.052–0.064 | 3 | 0.079 / 0.099 / 0.090 | **0.089** | 0.079–0.099 |
+| r2 | 6 | 0.079 / 0.089 / 0.120 / 0.080 / 0.076 / 0.074 | **0.086** | 0.074–0.120 | 6 | 0.140 / 0.097 / 0.132 / 0.120 / 0.095 / 0.158 | **0.124** | 0.095–0.158 |
+| r3 | 3 | 0.059 / 0.061 / 0.058 | **0.059** | 0.058–0.061 | 3 | 0.088 / 0.094 / 0.095 | **0.092** | 0.088–0.095 |
+| r4 | 6 | 0.056 / 0.133 / 0.065 / 0.054 / 0.086 / 0.060 | **0.076** | 0.054–0.133 | 6 | 0.239 / 0.101 / 0.096 / 0.078 / 0.105 / 0.086 | **0.118** | 0.078–0.239 |
+
+Readings:
+
+1. **At ε = ½ the ladder holds in the mean and not seed-wise.** r0 0.005 < r1 0.089 ≈
+   r3 0.092 < r4 0.118 < r2 0.124, the same order as ε = 1; but the lowest r2 seeds
+   (0.095, 0.098) sit inside r1's (0.079–0.099) and r3's (0.088–0.095) ranges, where
+   at ε = 1 §14 had min r2 above max r1 and max r3. The seed spread at ε = ½ is
+   larger than ε = 1's (r2 sd 0.025 against 0.017; r4 0.060 against 0.030 with each
+   cell's outlier seed, 0.011 against 0.013 without).
+2. **r4 at ε = ½ is again a mixture:** five seeds in 0.078–0.106, one at 0.239
+   (seed 1, the outlier §10 already had). Its five-seed core (mean 0.093) sits at the
+   r1 / r3 level, as at ε = 1 (§14).
+3. Every cell is worse at ε = ½ than at ε = 1 (r1 ×1.5, r2 ×1.4, r3 ×1.6, r4 ×1.6
+   in the mean; r0 unchanged), consistent with §10: the noisier scheduler makes the
+   exact observer's next record less certain and the learner falls relatively
+   further behind.
+
+What this does not say: no census, probe or exposure analysis has been run at ε = ½;
+the ladder statement at ε = ½ is about means over six seeds, not a seed-wise
+separation. The GPU chain's part B (the r1 size-axis learning-rate sweep) follows in
+§21 when it lands.
