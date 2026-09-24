@@ -154,3 +154,12 @@ def tiny_r2_link():
                      git_commit="test")
     d, _ = generate(m, root, workers=2)
     return m, d
+
+
+def test_release_actor_group_stats():
+    """Exposure ratio 1 − mean excess / mean H*; None when H* is 0; se from the sample."""
+    import learner_release_actor as ra
+    s = ra.group_stats([(0.1, 1.0, 0.0), (0.3, 1.0, 0.2)])
+    assert s["n"] == 2 and s["actor_excess"] == pytest.approx(0.2) and s["h_actor"] == 1.0
+    assert s["exposure_ratio"] == pytest.approx(0.8) and s["kind_excess"] == pytest.approx(0.1)
+    assert ra.group_stats([(0.0, 0.0, 0.0)])["exposure_ratio"] is None and ra.group_stats([]) is None

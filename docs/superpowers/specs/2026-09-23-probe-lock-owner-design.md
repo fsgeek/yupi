@@ -98,3 +98,29 @@ in the note's §17.3):* (i) the join restricted to the windows whose realized re
 (`scripts/learner_class_frequency.py`, `--class-freq`), added to control the shared-difficulty confound named in
 §17.4, and a between-class analysis on class means (≥ 3 windows). The pre-specified all-window test is reported
 first and unchanged.
+
+## Amendment v0.5 (2026-09-24, by the instance of 2026-09-23): the which-thread question is an exposure question
+
+§17.2 put the need on the owner's *identity* (0.073 of 0.121 bits per window at r2). Where would a model hold it?
+The record layout is kind, actor, object, related, lineage. At the boundary p0 the model predicts the kind, and
+the owner's identity matters there only through "held by someone other than the candidate actor", which is the
+held / owner-is-actor fold already read in v0.3. The identity itself is needed one position later: having read
+kind = RELEASE (or, at r3/r4, when emitting the related field of a BLOCK), the model must name the owner as the
+actor. Its own output distribution at that position **is** the readout, and the evaluator already scores it: the
+ACTOR-field excess on windows whose realized record k + 1 is a RELEASE (window census rows, `by_field.actor`).
+A position-pair probe would ask whether identity is linearly present at a place the model has no reason to keep it;
+the field excess at the point of need asks whether the model *uses* it, against the ceiling's own uncertainty.
+
+Design: `scripts/learner_release_actor.py`. Per run (census rows of §13, k = 7) and per window whose realized
+record k + 1 has kind ∈ {RELEASE, BLOCK, ACQUIRE}: the ACTOR-field excess from the census row; from the k = 7
+ceiling table, H*(actor | kind, prefix) (the exact observer's residual uncertainty about the actor given the kind)
+and P*(kind | prefix); for RELEASE records at r2, whether the released lock's owner is determined by the prefix
+(H(owner | prefix) = 0 from the §16 labels) or not. Report per (cell, seed, kind): n, mean actor excess, mean
+H*(actor | kind), and the exposure ratio 1 − excess / H* (the field-level analogue of the OIR: 1 = the model's
+actor distribution matches the ceiling's, 0 = it carries none of the trace-available information about the actor);
+for r2 RELEASE, the same split by owner-determined / uncertain. Cells r1–r4 ε = 1, every seed with census rows.
+Gate: the ceiling table's star for a window's class reproduces `kind_marginal`'s P*(kind) and H*(actor | kind)
+is ≤ log2(#threads seen + 1). Raw prefix `learner-release-actor` (non-measurement).
+
+The position-pair probe is withdrawn from the plan unless this measurement says the model exposes less identity
+than the boundary probe's held-bit deficit would explain.

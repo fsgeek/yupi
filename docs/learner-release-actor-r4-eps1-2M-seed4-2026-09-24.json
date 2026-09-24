@@ -1,0 +1,112 @@
+{
+  "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r4-eps1-2M-s4",
+  "seed": 4,
+  "rung": "r4",
+  "eps": "1",
+  "k": 7,
+  "census": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1-2M-s4-k7-test.jsonl",
+  "census_sha256": "8185f3bd941e653673eb9be4ded3764abb74d2c36bdcf1643c9a1be79d1f417b",
+  "table": "/home/tony/.cache/yupi-scratch/ceilings/c1prime-loop-40-8-2-r4-eps1-k7.jsonl",
+  "table_sha256": "cb3c76b33b929c61513ba3920b826068f16ef08c2155681961614c8409b2d2fd",
+  "labels": "/home/tony/.cache/yupi-scratch/probes/c1prime-loop-40-8-2-r4-eps1-k7-test.jsonl",
+  "git": "6e0774b61e41e0d0e56b272c8df0aaccd016b371+dirty",
+  "n_windows": 84972,
+  "n_missing": 0,
+  "by_kind": {
+    "RELEASE": {
+      "n": 15934,
+      "actor_excess": 0.019026529370376122,
+      "actor_excess_se": 0.0017678080946367796,
+      "h_actor": 0.3001166150623675,
+      "exposure_ratio": 0.9366028789628251,
+      "kind_excess": 0.06835274163606081,
+      "frac": 0.18752059501953586
+    },
+    "BLOCK": {
+      "n": 10492,
+      "actor_excess": 0.03966220461159646,
+      "actor_excess_se": 0.0029183030478900068,
+      "h_actor": 0.3761727662498184,
+      "exposure_ratio": 0.8945638595611236,
+      "kind_excess": 0.008267699691966307,
+      "frac": 0.12347596855434731
+    },
+    "ACQUIRE": {
+      "n": 8933,
+      "actor_excess": 0.03776105610713627,
+      "actor_excess_se": 0.0029892868298333547,
+      "h_actor": 0.4775824380051016,
+      "exposure_ratio": 0.9209329047674636,
+      "kind_excess": 0.011998789664466714,
+      "frac": 0.10512874829355552
+    },
+    "DISPATCH": {
+      "n": 33792,
+      "actor_excess": 0.021698581631796814,
+      "actor_excess_se": 0.0010494233839868886,
+      "h_actor": 0.8911309843098192,
+      "exposure_ratio": 0.9756505137697548,
+      "kind_excess": -0.004172951725903401,
+      "frac": 0.3976839429459116
+    },
+    "IO_ISSUE": {
+      "n": 6147,
+      "actor_excess": 0.03152545787234196,
+      "actor_excess_se": 0.00357011235246334,
+      "h_actor": 0.30095446837376433,
+      "exposure_ratio": 0.895248414011951,
+      "kind_excess": -0.01830385890934899,
+      "frac": 0.07234147719248693
+    },
+    "IO_COMPLETE": {
+      "n": 6400,
+      "actor_excess": 0.009892680245172716,
+      "actor_excess_se": 0.001229559887311146,
+      "h_actor": 0.07558312601610612,
+      "exposure_ratio": 0.8691152276096034,
+      "kind_excess": 0.052613720702765675,
+      "frac": 0.07531892858824084
+    },
+    "STEP": {
+      "n": 3274,
+      "actor_excess": 0.03488896089372263,
+      "actor_excess_se": 0.005137991517921517,
+      "h_actor": 0.28952814469660293,
+      "exposure_ratio": 0.8794971696783301,
+      "kind_excess": 0.01835958056127413,
+      "frac": 0.03853033940592195
+    }
+  },
+  "by_kind_owner": {
+    "BLOCK": {
+      "determined": {
+        "n": 2613,
+        "actor_excess": 0.04218016736520089,
+        "actor_excess_se": 0.00492565127422424,
+        "h_actor": 0.37113496817134717,
+        "exposure_ratio": 0.8863481725448006,
+        "kind_excess": -0.0012500917545496364
+      }
+    },
+    "RELEASE": {
+      "determined": {
+        "n": 4233,
+        "actor_excess": 0.011135295674390778,
+        "actor_excess_se": 0.002086140917984418,
+        "h_actor": 0.2786938063397929,
+        "exposure_ratio": 0.9600446962900415,
+        "kind_excess": 0.062219586117384026
+      }
+    },
+    "ACQUIRE": {
+      "determined": {
+        "n": 940,
+        "actor_excess": 0.058429854555319655,
+        "actor_excess_se": 0.010811972402027768,
+        "h_actor": 0.34505698096576864,
+        "exposure_ratio": 0.830666070305889,
+        "kind_excess": 0.013589263553094453
+      }
+    }
+  }
+}

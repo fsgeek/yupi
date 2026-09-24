@@ -246,3 +246,16 @@ def test_on_window_callback_reports_every_scored_window(corpus):
         for _, key, ex in rows:
             assert key in tables[k]
             assert abs(sum(ex["structural_by_field"].values()) - ex["structural_bits"]) < 1e-12
+
+
+def test_actor_entropy_given_kind_is_the_conditional_entropy_of_the_actor():
+    """H*(actor | kind) from a hand-built star: RELEASE split 3:1 over two actors is
+    0.811 bits; BLOCK with one actor is 0; a kind with no mass is None."""
+    from fractions import Fraction
+    from yupi.learner.evaluate import actor_entropy_given_kind
+    from yupi.records import Record
+    R = lambda kind, actor: Record(kind=kind, actor=actor, obj=None, related=None, lineage=None)
+    star = {R("RELEASE", 0): Fraction(3, 8), R("RELEASE", 1): Fraction(1, 8), R("BLOCK", 2): Fraction(1, 4), R("STEP", 2): Fraction(1, 4)}
+    assert actor_entropy_given_kind(star, "RELEASE") == pytest.approx(0.8112781, abs=1e-6)
+    assert actor_entropy_given_kind(star, "BLOCK") == 0.0
+    assert actor_entropy_given_kind(star, "ACQUIRE") is None

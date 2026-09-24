@@ -120,6 +120,20 @@ def kind_marginal(star: Dict[Record, Fraction]) -> Dict[str, Fraction]:
     return out
 
 
+def actor_entropy_given_kind(star: Dict[Record, Fraction], kind: str) -> Optional[float]:
+    """H*(actor | kind, prefix) in bits: the exact observer's residual uncertainty
+    about who acts, given that the next record has this kind (the ceiling the
+    ACTOR-field excess on such records is measured against). None if P*(kind) = 0."""
+    acc: Dict = {}
+    for r, m in star.items():
+        if r.kind == kind:
+            acc[r.actor] = acc.get(r.actor, Fraction(0)) + m
+    tot = sum(acc.values(), Fraction(0))
+    if tot == 0:
+        return None
+    return float(-sum(float(q / tot) * math.log2(float(q / tot)) for q in acc.values() if q > 0))
+
+
 # ---- the model side ----------------------------------------------------------------
 
 def _consistent_ids(field: str, tok: str, used: Dict[str, set]) -> Tuple[np.ndarray, Optional[int], Optional[str]]:

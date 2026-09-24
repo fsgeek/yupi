@@ -902,6 +902,9 @@ within-class effect of a few hundredths would not be seen at this n.
 **17.5 What follows, in my order.** (a) The which-thread readout (v0.4 proper) now
 has a need argument: 0.073 of the 0.121 bits is identity, which the boundary does
 not hold, so it reads at an entity token's position with a positive control there.
+*(Same day, §18: answered without a probe — the identity is needed, and emitted, one
+position after the boundary, and the evaluator's ACTOR-field excess on RELEASE
+records against H*(actor | RELEASE) measures it; the probe is withdrawn.)*
 (b) Causal patching is the only route from this association to a mechanism. (c) The
 owed GPU items, through the lease.
 
@@ -916,3 +919,128 @@ refit with per-example rows; best-layer OIRs agree with the 09-23 raws to within
 `learner-probe-link-<cell>-seed<s>-held-2026-09-24.json`; per-window,
 per-example and class-frequency rows under `~/.cache/yupi-scratch/probes/`
 (sha256 in the raws).
+
+## 18. Which thread: exposure at the point of need (appended 2026-09-24 09:31 PDT, from `date` in the writing command, by the instance of 2026-09-23)
+
+§17.2 put most of the owner's value on *which thread* holds the lock. The
+which-thread probe was designed in words as a readout at an entity token's
+position. Thinking it through changed the plan (probe design amendment v0.5): the
+record layout is kind, actor, object, related, lineage, and the owner's identity is
+needed one position after the boundary, when the model has read kind = RELEASE and
+must name the releaser as the actor. Its own output distribution at that position
+*is* the readout, and the window census already scores it: the ACTOR-field excess
+on windows whose realized record k + 1 is a RELEASE. What was missing is the
+ceiling beside it, H*(actor | kind, prefix), the exact observer's residual
+uncertainty about the actor given the kind, so the excess can be read as a share.
+
+**18.1 Setup.** `scripts/learner_release_actor.py` (raw prefix `learner-release-actor`,
+raws `learner-release-actor-<cell>-seed<s>-2026-09-24.json`): for every census
+window (§13 rows, k = 7, the whole test split, 85k windows) whose realized record
+k + 1 has kind K, the ACTOR-field excess from the census row (a realized-record
+estimate of KL(P*(actor | K, prefix) ‖ P̃(actor | K, prefix))), H*(actor | K, prefix)
+from the k = 7 ceiling table (`yupi.learner.evaluate.actor_entropy_given_kind`,
+tested), and the *exposure ratio* 1 − excess / H*: 1 when the model's actor
+distribution matches the ceiling's, 0 when it carries none of the trace-available
+information about the actor. On the 30k windows with §16 labels, RELEASE / BLOCK /
+ACQUIRE windows are split by whether the prefix determines the owner of the
+record's lock. Cells r1–r4 ε = 1, every seed with census rows (3 / 3 / 3 / 6).
+Tables from `scripts/learner_release_actor_summary.py`.
+
+**18.2 Tables.**
+
+**RELEASE** (record k + 1 realized as RELEASE; ACTOR-field excess vs the ceiling's H*(actor | RELEASE), bits):
+
+| cell | seeds | share of windows | actor excess per seed | pooled ± sd | H*(actor | kind) | exposure ratio per seed | pooled |
+|---|---|---|---|---|---|---|---|
+| r1-eps1 | 3 | 0.185 | 0.030 / 0.036 / 0.033 | **0.033** ± 0.003 | 0.424 | 0.93 / 0.92 / 0.92 | **0.92** |
+| r2-eps1 | 3 | 0.185 | 0.034 / 0.041 / 0.068 | **0.047** ± 0.018 | 0.386 | 0.91 / 0.89 / 0.82 | **0.88** |
+| r3-eps1 | 3 | 0.187 | 0.020 / 0.020 / 0.018 | **0.019** ± 0.001 | 0.296 | 0.93 / 0.93 / 0.94 | **0.94** |
+| r4-eps1 | 6 | 0.188 | 0.016 / 0.039 / 0.023 / 0.019 / 0.028 / 0.018 | **0.024** ± 0.008 | 0.300 | 0.95 / 0.87 / 0.92 / 0.94 / 0.91 / 0.94 | **0.92** |
+
+By whether the prefix determines the lock's owner (RELEASE windows with §16 labels):
+
+| cell | seed | determined: n / actor excess / H* / exposure | uncertain: n / actor excess / H* / exposure |
+|---|---|---|---|
+| r2-eps1 | 1 | 2742 / 0.024 / 0.324 / 0.93 | 1364 / 0.042 / 0.479 / 0.91 |
+| r2-eps1 | 2 | 2742 / 0.000 / 0.324 / 1.00 | 1364 / 0.086 / 0.479 / 0.82 |
+| r2-eps1 | 3 | 2742 / 0.019 / 0.324 / 0.94 | 1364 / 0.130 / 0.479 / 0.73 |
+| r3-eps1 | 1 | 4175 / 0.018 / 0.279 / 0.93 | — |
+| r3-eps1 | 2 | 4175 / 0.017 / 0.279 / 0.94 | — |
+| r3-eps1 | 3 | 4175 / 0.010 / 0.279 / 0.97 | — |
+| r4-eps1 | 1 | 4233 / 0.011 / 0.279 / 0.96 | — |
+| r4-eps1 | 2 | 4233 / 0.021 / 0.279 / 0.93 | — |
+| r4-eps1 | 3 | 4233 / 0.015 / 0.279 / 0.95 | — |
+| r4-eps1 | 4 | 4233 / 0.011 / 0.279 / 0.96 | — |
+| r4-eps1 | 5 | 4233 / 0.017 / 0.279 / 0.94 | — |
+| r4-eps1 | 6 | 4233 / 0.012 / 0.279 / 0.96 | — |
+
+**BLOCK** (record k + 1 realized as BLOCK; ACTOR-field excess vs the ceiling's H*(actor | BLOCK), bits):
+
+| cell | seeds | share of windows | actor excess per seed | pooled ± sd | H*(actor | kind) | exposure ratio per seed | pooled |
+|---|---|---|---|---|---|---|---|
+| r1-eps1 | 3 | 0.125 | 0.062 / 0.063 / 0.058 | **0.061** ± 0.003 | 0.474 | 0.87 / 0.87 / 0.88 | **0.87** |
+| r2-eps1 | 3 | 0.126 | 0.066 / 0.075 / 0.103 | **0.081** ± 0.019 | 0.426 | 0.85 / 0.82 / 0.76 | **0.81** |
+| r3-eps1 | 3 | 0.126 | 0.053 / 0.048 / 0.051 | **0.051** ± 0.002 | 0.379 | 0.86 / 0.87 / 0.86 | **0.87** |
+| r4-eps1 | 6 | 0.123 | 0.046 / 0.094 / 0.060 / 0.040 / 0.071 / 0.046 | **0.059** ± 0.020 | 0.376 | 0.88 / 0.75 / 0.84 / 0.89 / 0.81 / 0.88 | **0.84** |
+
+**ACQUIRE** (record k + 1 realized as ACQUIRE; ACTOR-field excess vs the ceiling's H*(actor | ACQUIRE), bits):
+
+| cell | seeds | share of windows | actor excess per seed | pooled ± sd | H*(actor | kind) | exposure ratio per seed | pooled |
+|---|---|---|---|---|---|---|---|
+| r1-eps1 | 3 | 0.107 | 0.054 / 0.054 / 0.042 | **0.050** ± 0.007 | 0.518 | 0.90 / 0.90 / 0.92 | **0.90** |
+| r2-eps1 | 3 | 0.108 | 0.046 / 0.057 / 0.070 | **0.058** ± 0.012 | 0.511 | 0.91 / 0.89 / 0.86 | **0.89** |
+| r3-eps1 | 3 | 0.105 | 0.038 / 0.041 / 0.040 | **0.040** ± 0.002 | 0.471 | 0.92 / 0.91 / 0.91 | **0.92** |
+| r4-eps1 | 6 | 0.105 | 0.039 / 0.086 / 0.057 / 0.038 / 0.065 / 0.039 | **0.054** ± 0.019 | 0.478 | 0.92 / 0.82 / 0.88 / 0.92 / 0.86 / 0.92 | **0.89** |
+
+Readings:
+
+1. **The model exposes most of the trace-available identity everywhere.** On
+   RELEASE records the exposure ratio is 0.88–0.94 pooled at every rung; the
+   exact observer's own uncertainty about the releaser is 0.30–0.42 bits and the
+   model's excess against it is 0.02–0.05. On BLOCK it is lower (0.81–0.87) and on
+   ACQUIRE 0.89–0.92. Naming the actor is not where the learner mainly fails.
+2. **r2 is the lowest rung on every kind** (RELEASE 0.88 against 0.92 / 0.94 /
+   0.92; BLOCK 0.81 against 0.87 / 0.87 / 0.84), with the widest seed spread
+   (seed 3 lowest throughout). The identity-field version of the ladder.
+3. **At r2 the deficit sits on the windows whose owner the prefix does not
+   determine.** On RELEASE windows with a prefix-determined owner the r2 model's
+   excess is 0.024 / 0.000 / 0.019 bits against H* = 0.324 (exposure 0.93 / 1.00 /
+   0.94), indistinguishable from r3 and r4 on their determined windows (0.93–0.97).
+   On the uncertain third it is 0.042 / 0.086 / 0.130 against H* = 0.479 (0.91 /
+   0.82 / 0.73). The r2 model fetches a determined owner as well as a model that
+   has it printed; what it does worse is reproduce the exact *posterior* over the
+   owner when the ACQUIRE lies outside the window. The same shape on BLOCK
+   (determined 0.82–0.88, uncertain 0.62–0.82); ACQUIRE is mixed.
+4. **r4's basins separate here.** The high basin (seeds 2, 5) exposes less identity
+   on every kind: RELEASE 0.87 / 0.91 against 0.92–0.95, BLOCK 0.75 / 0.81 against
+   0.84–0.90, ACQUIRE 0.82 / 0.86 against 0.88–0.92 — all on determined windows,
+   since r4 has no others. The first per-record quantity on which the basins
+   differ (§15 found a general degradation with contention over-represented; §16
+   and §17 found no difference).
+
+**18.3 What this says against §16 and §17.** The boundary probe found less
+*held/free* information at p0 at r2 than at r3 even where the prefix determines
+it (§16.2). At the point of need, the r2 model exposes a determined owner's
+identity as well as r3 does (reading 3). The two are compatible: the boundary
+does not hold what attention fetches a position later, and the fetch works when
+the fact is in the window. The r2 deficit that survives is on the uncertain
+windows, where the ceiling is a posterior the model must have learned as a
+distribution over the four candidate threads from the prefix's shape alone. That
+is the same third of examples that carry all of §17.2's value-of-information
+(I(next; owner) is zero where the owner is determined). So the which-thread gap
+at r2 is a calibration-to-posterior gap, not a retrieval gap, and the
+position-pair probe is withdrawn from the plan.
+
+**18.4 What this does not say.** Exposure ratios are means of realized-record
+estimates over windows of one kind; the per-window noise floor of §13 applies,
+though at n ≈ 9–16k per (cell, seed, kind) the standard errors are 0.002–0.005
+bits. The owner split covers the 30k labelled windows (n = 4,106 RELEASE per r2
+seed), the pooled rows all 85k. Nothing causal. The ceiling H*(actor | K) is the
+pattern observer's; the model's excess is measured after the naming rule, as
+everywhere in this note.
+
+**18.5 What follows.** (a) The uncertain-owner windows at r2 are the target: does
+the model's actor distribution there track the exact posterior's shape (KL per
+window against H(owner | prefix) from the §16 labels), or collapse toward the
+most recent actor? (b) Causal patching. (c) The GPU items now running under the
+lease (ε = ½ seeds 4–6 at r2 / r4; the r1 size-axis learning-rate sweep).

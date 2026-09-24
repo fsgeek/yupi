@@ -1,0 +1,136 @@
+{
+  "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r2-eps1-2M-s3",
+  "seed": 3,
+  "rung": "r2",
+  "eps": "1",
+  "k": 7,
+  "census": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r2-eps1-2M-s3-k7-test.jsonl",
+  "census_sha256": "cda522d93a752736b73d633f7579c9363cbe7ac74e6182b675ec02cc0ac6869c",
+  "table": "/home/tony/.cache/yupi-scratch/ceilings/c1prime-loop-40-8-2-r2-eps1-k7.jsonl",
+  "table_sha256": "0c15c701bc1ed66a1a0d45579302b32d1fc03163e5a443aa988e6267a6597611",
+  "labels": "/home/tony/.cache/yupi-scratch/probes/c1prime-loop-40-8-2-r2-eps1-k7-test.jsonl",
+  "git": "6e0774b61e41e0d0e56b272c8df0aaccd016b371+dirty",
+  "n_windows": 84987,
+  "n_missing": 0,
+  "by_kind": {
+    "RELEASE": {
+      "n": 15752,
+      "actor_excess": 0.06781821625236449,
+      "actor_excess_se": 0.0030392075017918246,
+      "h_actor": 0.38586239088675756,
+      "exposure_ratio": 0.8242424816357194,
+      "kind_excess": 0.008184766237481154,
+      "frac": 0.18534599409321426
+    },
+    "BLOCK": {
+      "n": 10716,
+      "actor_excess": 0.10258555056444471,
+      "actor_excess_se": 0.004156494075181345,
+      "h_actor": 0.4257944307808363,
+      "exposure_ratio": 0.7590725872663016,
+      "kind_excess": 0.06850939063049861,
+      "frac": 0.12608987256874582
+    },
+    "ACQUIRE": {
+      "n": 9148,
+      "actor_excess": 0.07034256743275016,
+      "actor_excess_se": 0.0043744137521284894,
+      "h_actor": 0.5105181062530575,
+      "exposure_ratio": 0.8622133738820181,
+      "kind_excess": 0.11883143236948834,
+      "frac": 0.10763999199877629
+    },
+    "DISPATCH": {
+      "n": 33737,
+      "actor_excess": 0.05547113018999299,
+      "actor_excess_se": 0.0017682056699908442,
+      "h_actor": 0.8952976394664157,
+      "exposure_ratio": 0.9380416883227203,
+      "kind_excess": 0.008507934203879514,
+      "frac": 0.39696659489098335
+    },
+    "IO_ISSUE": {
+      "n": 5957,
+      "actor_excess": 0.06535681691196699,
+      "actor_excess_se": 0.004797642779097635,
+      "h_actor": 0.40907848140161085,
+      "exposure_ratio": 0.8402340384954073,
+      "kind_excess": 0.028329373237641127,
+      "frac": 0.07009307305823244
+    },
+    "IO_COMPLETE": {
+      "n": 6549,
+      "actor_excess": 0.014963938985749754,
+      "actor_excess_se": 0.0026700619418001613,
+      "h_actor": 0.08900071844944182,
+      "exposure_ratio": 0.8318672113388585,
+      "kind_excess": 0.032223650643914095,
+      "frac": 0.07705884429383318
+    },
+    "STEP": {
+      "n": 3128,
+      "actor_excess": 0.07680549417627362,
+      "actor_excess_se": 0.0063953789243556425,
+      "h_actor": 0.33081708264576115,
+      "exposure_ratio": 0.767830930730633,
+      "kind_excess": 0.10245002066204345,
+      "frac": 0.036805629096214716
+    }
+  },
+  "by_kind_owner": {
+    "BLOCK": {
+      "determined": {
+        "n": 1652,
+        "actor_excess": 0.07365857005079662,
+        "actor_excess_se": 0.009387972199853729,
+        "h_actor": 0.4205740844245294,
+        "exposure_ratio": 0.8248618429459735,
+        "kind_excess": 0.049826606879686174
+      },
+      "uncertain": {
+        "n": 915,
+        "actor_excess": 0.1562400733184146,
+        "actor_excess_se": 0.017201100328198646,
+        "h_actor": 0.4121411502946667,
+        "exposure_ratio": 0.6209063977069305,
+        "kind_excess": 0.13114347690963882
+      }
+    },
+    "RELEASE": {
+      "uncertain": {
+        "n": 1364,
+        "actor_excess": 0.13016458599014535,
+        "actor_excess_se": 0.011945930808563397,
+        "h_actor": 0.478685989416514,
+        "exposure_ratio": 0.7280793905231961,
+        "kind_excess": 0.009702542190000314
+      },
+      "determined": {
+        "n": 2742,
+        "actor_excess": 0.018781032602254576,
+        "actor_excess_se": 0.0044017788124088575,
+        "h_actor": 0.32421844482366274,
+        "exposure_ratio": 0.9420729051597626,
+        "kind_excess": -0.002427295138555476
+      }
+    },
+    "ACQUIRE": {
+      "uncertain": {
+        "n": 464,
+        "actor_excess": 0.11787447456927548,
+        "actor_excess_se": 0.023819109077331237,
+        "h_actor": 0.4623344751291125,
+        "exposure_ratio": 0.745045024954374,
+        "kind_excess": 0.13415939224384366
+      },
+      "determined": {
+        "n": 503,
+        "actor_excess": 0.10180746115109342,
+        "actor_excess_se": 0.019915111856246264,
+        "h_actor": 0.4013455970773504,
+        "exposure_ratio": 0.7463346754207141,
+        "kind_excess": 0.15857534399313292
+      }
+    }
+  }
+}
