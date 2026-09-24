@@ -1,0 +1,182 @@
+{
+  "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r2-eps1-2M-s2",
+  "seed": 2,
+  "rung": "r2",
+  "eps": "1",
+  "k": 7,
+  "kind": "BLOCK",
+  "labels": "/home/tony/.cache/yupi-scratch/probes/c1prime-loop-40-8-2-r2-eps1-k7-test.jsonl",
+  "labels_sha256": "ef88690e22ef98ef45ffac6434c7018e1010b3a997fbfb2d8f294f4be2d5194e",
+  "table": "/home/tony/.cache/yupi-scratch/ceilings/c1prime-loop-40-8-2-r2-eps1-k7.jsonl",
+  "table_sha256": "0c15c701bc1ed66a1a0d45579302b32d1fc03163e5a443aa988e6267a6597611",
+  "git": "366e0deec4a4170b86caa1b22736cc2f01a6011a+dirty",
+  "n_selected": 3160,
+  "groups": {
+    "all-determined": {
+      "n": 1858,
+      "kl": 0.07051480474776016,
+      "kl_se": 0.0039261960880235345,
+      "h_exact": 0.42744410263261157,
+      "h_model": 0.5234178958694969,
+      "argmax_agree": 0.8654467168998924,
+      "realized_estimate": 0.06391906725738941,
+      "realized_is_top": 0.8132400430570506,
+      "mass_recent_exact": 0.3879997280159502,
+      "mass_recent_model": 0.3936344002056633,
+      "mass_on_exact_argmax_model": 0.7924849010526854,
+      "mass_on_exact_argmax_exact": 0.8280425670851481,
+      "off_thread": 0.0004554706895312914,
+      "by_h_exact": [
+        {
+          "h_exact_range": [
+            0.0,
+            0.5
+          ],
+          "n": 1065,
+          "kl": 0.07002672925048253,
+          "h_exact": 0.06506763338030074,
+          "h_model": 0.20469521953113964,
+          "argmax_agree": 0.9821596244131455
+        },
+        {
+          "h_exact_range": [
+            0.5,
+            1.0
+          ],
+          "n": 649,
+          "kl": 0.07689136992651618,
+          "h_exact": 0.8950602667817751,
+          "h_model": 0.9390702529687608,
+          "argmax_agree": 0.7642526964560863
+        },
+        {
+          "h_exact_range": [
+            1.0,
+            1.5
+          ],
+          "n": 144,
+          "kl": 0.04538570477267698,
+          "h_exact": 1.0,
+          "h_model": 1.0073156079731653,
+          "argmax_agree": 0.4583333333333333
+        }
+      ]
+    },
+    "all": {
+      "n": 3160,
+      "kl": 0.07640063864980387,
+      "kl_se": 0.0032997250611393105,
+      "h_exact": 0.4234196022417371,
+      "h_model": 0.5147622250089272,
+      "argmax_agree": 0.8806962025316456,
+      "realized_estimate": 0.06971275547223017,
+      "realized_is_top": 0.8287974683544304,
+      "mass_recent_exact": 0.4116363144221072,
+      "mass_recent_model": 0.41163970106921627,
+      "mass_on_exact_argmax_model": 0.8021859184847068,
+      "mass_on_exact_argmax_exact": 0.8353801894652498,
+      "off_thread": 0.0005022626134413707,
+      "by_h_exact": [
+        {
+          "h_exact_range": [
+            0.0,
+            0.5
+          ],
+          "n": 1802,
+          "kl": 0.06507591523406919,
+          "h_exact": 0.06972093978084982,
+          "h_model": 0.2105229753998756,
+          "argmax_agree": 0.9866814650388457
+        },
+        {
+          "h_exact_range": [
+            0.5,
+            1.0
+          ],
+          "n": 1113,
+          "kl": 0.09945084697544719,
+          "h_exact": 0.8691543662163501,
+          "h_model": 0.8967050189630794,
+          "argmax_agree": 0.8023360287511231
+        },
+        {
+          "h_exact_range": [
+            1.0,
+            1.5
+          ],
+          "n": 245,
+          "kl": 0.054981331420060446,
+          "h_exact": 1.0,
+          "h_model": 1.0173614010274554,
+          "argmax_agree": 0.45714285714285713
+        }
+      ]
+    },
+    "some-uncertain": {
+      "n": 1279,
+      "kl": 0.08561010894248755,
+      "kl_se": 0.005813860399920547,
+      "h_exact": 0.41638916268790976,
+      "h_model": 0.5023780930843174,
+      "argmax_agree": 0.9038311180609852,
+      "realized_estimate": 0.08018169966774046,
+      "realized_is_top": 0.8514464425332291,
+      "mass_recent_exact": 0.4426004200992179,
+      "mass_recent_model": 0.4342233030569445,
+      "mass_on_exact_argmax_model": 0.8161345380789982,
+      "mass_on_exact_argmax_exact": 0.8463056608796246,
+      "off_thread": 0.0005695530452981789,
+      "by_h_exact": [
+        {
+          "h_exact_range": [
+            0.0,
+            0.5
+          ],
+          "n": 728,
+          "kl": 0.058416734691370785,
+          "h_exact": 0.0773902526580647,
+          "h_model": 0.22046797132989487,
+          "argmax_agree": 0.9931318681318682
+        },
+        {
+          "h_exact_range": [
+            0.5,
+            1.0
+          ],
+          "n": 452,
+          "kl": 0.13314250377981138,
+          "h_exact": 0.8345611396963838,
+          "h_model": 0.8403300590237383,
+          "argmax_agree": 0.8561946902654868
+        },
+        {
+          "h_exact_range": [
+            1.0,
+            1.5
+          ],
+          "n": 99,
+          "kl": 0.06856095730958482,
+          "h_exact": 1.0,
+          "h_model": 1.032441527757058,
+          "argmax_agree": 0.46464646464646464
+        }
+      ]
+    },
+    "no-lock": {
+      "n": 23,
+      "kl": 0.039747024982619894,
+      "kl_se": 0.01000067936348324,
+      "h_exact": 0.4892635354200091,
+      "h_model": 0.5041999759931579,
+      "argmax_agree": 0.8260869565217391,
+      "realized_estimate": -0.04442232813139952,
+      "realized_is_top": 0.8260869565217391,
+      "mass_recent_exact": 0.5991878962314633,
+      "mass_recent_model": 0.6103102255116927,
+      "mass_on_exact_argmax_model": 0.810194871858491,
+      "mass_on_exact_argmax_exact": 0.8205812522149729,
+      "off_thread": 0.0005403031473574431,
+      "by_h_exact": []
+    }
+  }
+}

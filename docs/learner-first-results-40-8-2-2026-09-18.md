@@ -1163,3 +1163,34 @@ patching on the near-determined RELEASE windows: does patching the boundary
 activation from an r3 model's representation of the same prefix sharpen the r2
 model's releaser? That is the first intervention this note would license.
 (c) The GPU items running under the lease.
+
+**19.6 The same at BLOCK (appended 2026-09-24 10:05 PDT, from `date` in the writing command).** The
+actor of a BLOCK is the blocker, not the owner; the owner enters through who cannot
+be the one acting. Same script, `--kind BLOCK`, raws
+`learner-actor-shape-<cell>-seed<s>-BLOCK-2026-09-24.json`:
+
+| cell | seed | n | KL bits | realized est. | H*(actor \| BLOCK) | H̃ | exposure | all-determined: KL / exposure | some-uncertain: KL / exposure | H* < 0.5 bin: KL / H* / H̃ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| r2-eps1 | 1 | 3160 | 0.0637 ± 0.0029 | 0.0638 | 0.423 | 0.511 | **0.85** | 0.0595 / 0.86 | 0.0704 / 0.83 | 0.0570 / 0.070 / 0.193 |
+| r2-eps1 | 2 | 3160 | 0.0764 ± 0.0033 | 0.0697 | 0.423 | 0.515 | **0.82** | 0.0705 / 0.84 | 0.0856 / 0.79 | 0.0651 / 0.070 / 0.211 |
+| r2-eps1 | 3 | 3160 | 0.1090 ± 0.0046 | 0.0965 | 0.423 | 0.579 | **0.74** | 0.0953 / 0.78 | 0.1292 / 0.69 | 0.1158 / 0.070 / 0.299 |
+| r3-eps1 | 1 | 3164 | 0.0470 ± 0.0019 | 0.0551 | 0.377 | 0.462 | **0.88** | 0.0467 / 0.88 | — | 0.0386 / 0.051 / 0.151 |
+| r3-eps1 | 2 | 3164 | 0.0527 ± 0.0032 | 0.0506 | 0.377 | 0.447 | **0.86** | 0.0516 / 0.86 | — | 0.0367 / 0.051 / 0.139 |
+| r3-eps1 | 3 | 3164 | 0.0484 ± 0.0024 | 0.0498 | 0.377 | 0.459 | **0.87** | 0.0482 / 0.87 | — | 0.0382 / 0.051 / 0.159 |
+| r4-eps1 | 1 | 3145 | 0.0474 ± 0.0023 | 0.0520 | 0.381 | 0.454 | **0.88** | 0.0472 / 0.88 | — | 0.0349 / 0.049 / 0.138 |
+| r4-eps1 | 2 | 3145 | 0.0807 ± 0.0035 | 0.0954 | 0.381 | 0.494 | **0.79** | 0.0803 / 0.79 | — | 0.0682 / 0.049 / 0.194 |
+| r4-eps1 | 5 | 3145 | 0.0716 ± 0.0038 | 0.0770 | 0.381 | 0.471 | **0.81** | 0.0714 / 0.81 | — | 0.0576 / 0.049 / 0.174 |
+| r4-eps1 | 6 | 3145 | 0.0484 ± 0.0027 | 0.0415 | 0.381 | 0.447 | **0.87** | 0.0483 / 0.87 | — | 0.0356 / 0.049 / 0.131 |
+
+6. **Same ladder, same signature, larger.** Exposure on BLOCK 0.85 / 0.82 / 0.74 at
+   r2 against 0.88 / 0.86 / 0.87 at r3 and 0.88 / 0.79 / 0.81 / 0.87 at r4 (the two
+   low values are the high basin). On the near-determined windows (H* ≈ 0.07 bits,
+   1,802 per r2 seed) the r2 model's entropy is 0.19 / 0.21 / 0.30 against 0.14–0.16
+   at r3 and 0.13–0.14 in r4's low basin: the same hedging on a blocker the exact
+   observer is sure of. The realized estimate agrees with the KL within its error
+   on every prefix-defined group (calibration check 0.829 vs 0.835 at r2).
+7. **At BLOCK the uncertain-owner prefixes are worse, by 15–35 %** (KL 0.070 /
+   0.086 / 0.129 against 0.060 / 0.071 / 0.095 at nearly equal H*), where at RELEASE
+   they were not (19.2). Reading 2 stands as stated for RELEASE; across the two
+   kinds the honest summary is that the r2 deficit is present on both kinds of
+   prefix and not confined to either.
