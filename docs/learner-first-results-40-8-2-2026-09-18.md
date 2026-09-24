@@ -1318,3 +1318,52 @@ within the cut: the same at k = 1..6 (layerwise emergence over context, §8.2's
 "layerwise emergence during training" needs checkpoints we did not keep), the
 folded actor class as a second coordinate-free target, and the horizon-2 kind
 belief if the exact side prices it.
+
+## 22. The size axis with the learning rate swept (appended 2026-09-24 13:48 PDT, from `date` in the writing command, by the instance of 2026-09-23)
+
+§11 refused to read the size axis at a fixed recipe: d = 64 and d = 256 were both
+worse than d = 128 with the same lr 1e-3 → 1e-4, and a wider model at the same rate
+is an untuned model. Owed since then: a learning-rate sweep per width. Run today on
+the 4090 through the lease (`scripts/learner_gpu_2026-09-24.sh`, part B; the trainer
+gained `--lr-min`, default lr / 10, so the cosine floor scales with the peak): r1 ε = 1,
+2M windows, 5 epochs, seed 1, at (d, lr) ∈ {(64, 3e-3), (64, 1e-2), (128, 3e-4),
+(128, 3e-3), (256, 3e-4), (256, 1e-4)}; the lr = 1e-3 rows are §9–§11's three seeds.
+Raws `learner-eval-r1-eps1-2M-d<d>-lr<lr>-seed1-2026-09-24.json`.
+
+| width (params) | lr → lr/10 | seeds | k = 7 excess per seed | mean | KIND KL | naming | k = 1 excess |
+|---|---|---|---|---|---|---|---|
+| d = 64 (223k) | 1e-3 | 3 | 0.155 / 0.121 / 0.120 | **0.132** | 0.048 | 0.0033 | 0.0114 |
+| d = 64 (223k) | 3e-3 | 1 | 0.181 | **0.181** | 0.091 | 0.0042 | 0.0120 |
+| d = 64 (223k) | 1e-2 | 1 | 0.338 | **0.338** | 0.162 | 0.0062 | 0.0156 |
+| d = 128 (839k) | 3e-4 | 1 | 0.095 | **0.095** | 0.033 | 0.0023 | 0.0074 |
+| d = 128 (839k) | 1e-3 | 3 | 0.064 / 0.063 / 0.052 | **0.060** | 0.022 | 0.0026 | 0.0056 |
+| d = 128 (839k) | 3e-3 | 1 | 0.205 | **0.205** | 0.128 | 0.0057 | 0.0094 |
+| d = 256 (3.25M) | 1e-4 | 1 | 0.211 | **0.211** | 0.131 | 0.0062 | 0.0023 |
+| d = 256 (3.25M) | 3e-4 | 1 | 0.172 | **0.172** | 0.120 | 0.0081 | 0.0016 |
+| d = 256 (3.25M) | 1e-3 | 3 | 0.155 / 0.156 / 0.094 | **0.135** | 0.091 | 0.0042 | 0.0047 |
+
+Readings:
+
+1. **lr = 1e-3 is the best rate at every width, and the bracket closes on two of
+   three.** At d = 128 both neighbours are worse (0.095 at 3e-4, 0.205 at 3e-3 against
+   0.060); at d = 256 the two lower rates are worse (0.172, 0.211 against 0.135); at
+   d = 64 the two higher rates are worse (0.181, 0.338 against 0.132) and a lower
+   rate is untested (running as the follow-up, with a three-fold budget for
+   d = 256; §22.1 when it lands). The learning rate is not the size axis's confound.
+2. **The size axis at this budget is therefore read as non-monotone**, with the
+   caveat that d = 256 may be budget-limited rather than rate-limited: d = 64 0.132,
+   d = 128 0.060, d = 256 0.135 (0.155 / 0.156 / 0.094 across seeds) at k = 7.
+3. **The wide model is not worse everywhere; it is worse with context.** At k = 1
+   d = 256 has the *lowest* excess of the three widths (0.002–0.007 against
+   0.004–0.008 at d = 128 and 0.011–0.012 at d = 64), and its curve rises the
+   steepest (§11: ×27 from k = 1 to 7 against ×11). Whatever the wide model lacks
+   at this budget, it is not short-range prediction; it is what accumulates over
+   seven records. The KIND field carries it (0.113 against 0.024).
+4. A too-high rate moves the excess into KIND (d = 64 at 1e-2: KIND KL 0.162 of
+   0.338; d = 128 at 3e-3: 0.128 of 0.205), the same field §11 saw carry d = 256's
+   excess at 1e-3 — one more reason to suspect the wide model at 1e-3 is
+   under-trained rather than over-fit, since under-training and too fast a rate
+   look alike here.
+
+What this does not say: one seed per off-recipe point; no run longer than five
+epochs yet; the size axis remains a statement about this recipe and budget.
