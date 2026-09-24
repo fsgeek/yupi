@@ -1,0 +1,132 @@
+{
+  "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r3-eps1-2M-s1",
+  "seed": 1,
+  "rung": "r3",
+  "eps": "1",
+  "k": 7,
+  "kind": "RELEASE",
+  "labels": "/home/tony/.cache/yupi-scratch/probes/c1prime-loop-40-8-2-r3-eps1-k7-test.jsonl",
+  "labels_sha256": "8e8f31fd129717701f7cd77d5da3eb04ab8caed4f5f6e2664856c1eed247f594",
+  "table": "/home/tony/.cache/yupi-scratch/ceilings/c1prime-loop-40-8-2-r3-eps1-k7.jsonl",
+  "table_sha256": "6ce344894a2d3d53798153a617aa535f579493c261ac63a75daa1534540cceb2",
+  "git": "20e14cc6f096edc674ebe0c998f46eab8fcc9b84+dirty",
+  "n_selected": 4767,
+  "groups": {
+    "all-determined": {
+      "n": 4759,
+      "kl": 0.016893678646666403,
+      "kl_se": 0.0009565054174603747,
+      "h_exact": 0.29983009786330345,
+      "h_model": 0.3268857789975143,
+      "argmax_agree": 0.9222525740701828,
+      "realized_estimate": 0.018948386178257098,
+      "realized_is_top": 0.874553477621349,
+      "mass_recent_exact": 0.485998342584198,
+      "mass_recent_model": 0.482755945594239,
+      "mass_on_exact_argmax_model": 0.8642108267838896,
+      "mass_on_exact_argmax_exact": 0.8746237772482056,
+      "off_thread": 0.0001977094959676654,
+      "by_h_exact": [
+        {
+          "h_exact_range": [
+            0.0,
+            0.5
+          ],
+          "n": 3276,
+          "kl": 0.008593696833315597,
+          "h_exact": 0.011631833861110595,
+          "h_model": 0.037987202020879296,
+          "argmax_agree": 0.9984737484737485
+        },
+        {
+          "h_exact_range": [
+            0.5,
+            1.0
+          ],
+          "n": 1023,
+          "kl": 0.042330477839988175,
+          "h_exact": 0.9079037614882334,
+          "h_model": 0.9386788843265408,
+          "argmax_agree": 0.863147605083089
+        },
+        {
+          "h_exact_range": [
+            1.0,
+            1.5
+          ],
+          "n": 460,
+          "kl": 0.019434754398338305,
+          "h_exact": 1.0,
+          "h_model": 1.0237714125276498,
+          "argmax_agree": 0.5108695652173914
+        }
+      ]
+    },
+    "all": {
+      "n": 4767,
+      "kl": 0.016875863089806365,
+      "kl_se": 0.0009549598121420405,
+      "h_exact": 0.2993269216973906,
+      "h_model": 0.3263947160947443,
+      "argmax_agree": 0.9223830501363541,
+      "realized_estimate": 0.01892712240233838,
+      "realized_is_top": 0.8747640025173065,
+      "mass_recent_exact": 0.48518273806549156,
+      "mass_recent_model": 0.48194903583134685,
+      "mass_on_exact_argmax_model": 0.8644315063206486,
+      "mass_on_exact_argmax_exact": 0.8748341841670255,
+      "off_thread": 0.0001976381739605791,
+      "by_h_exact": [
+        {
+          "h_exact_range": [
+            0.0,
+            0.5
+          ],
+          "n": 3284,
+          "kl": 0.008588055266614925,
+          "h_exact": 0.011603498090437975,
+          "h_model": 0.03797815566226431,
+          "argmax_agree": 0.9984774665042631
+        },
+        {
+          "h_exact_range": [
+            0.5,
+            1.0
+          ],
+          "n": 1023,
+          "kl": 0.042330477839988175,
+          "h_exact": 0.9079037614882334,
+          "h_model": 0.9386788843265408,
+          "argmax_agree": 0.863147605083089
+        },
+        {
+          "h_exact_range": [
+            1.0,
+            1.5
+          ],
+          "n": 460,
+          "kl": 0.019434754398338305,
+          "h_exact": 1.0,
+          "h_model": 1.0237714125276498,
+          "argmax_agree": 0.5108695652173914
+        }
+      ]
+    },
+    "no-lock": {
+      "n": 8,
+      "kl": 0.006277833702689833,
+      "kl_se": 0.005499399184096719,
+      "h_exact": 0.0,
+      "h_model": 0.03427367180942521,
+      "argmax_agree": 1.0,
+      "realized_estimate": 0.006277833702689812,
+      "realized_is_top": 1.0,
+      "mass_recent_exact": 0.0,
+      "mass_recent_model": 0.0019385906307862683,
+      "mass_on_exact_argmax_model": 0.99570824575016,
+      "mass_on_exact_argmax_exact": 1.0,
+      "off_thread": 0.0001552104949951172,
+      "by_h_exact": []
+    }
+  }
+}

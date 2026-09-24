@@ -259,3 +259,28 @@ def test_actor_entropy_given_kind_is_the_conditional_entropy_of_the_actor():
     assert actor_entropy_given_kind(star, "RELEASE") == pytest.approx(0.8112781, abs=1e-6)
     assert actor_entropy_given_kind(star, "BLOCK") == 0.0
     assert actor_entropy_given_kind(star, "ACQUIRE") is None
+
+
+def test_actor_dists_share_pattern_classes_and_the_exact_one_is_the_star_conditional():
+    """P*(actor | RELEASE) over {seen pattern indices, fresh} from a star whose RELEASE
+    actors are 0, 1 and 2 with two threads seen (2 is fresh); the model's row put on
+    the corresponding tokens reproduces the same distribution, with off-thread mass
+    reported separately."""
+    from fractions import Fraction
+    from yupi.corpus.vocab import TOKEN_ID, VOCAB, token_type
+    from yupi.learner.evaluate import actor_pattern_dist, model_actor_dist
+    from yupi.records import Record
+    R = lambda kind, actor: Record(kind=kind, actor=actor, obj=None, related=None, lineage=None)
+    star = {R("RELEASE", 0): Fraction(1, 2), R("RELEASE", 1): Fraction(1, 4), R("RELEASE", 2): Fraction(1, 8), R("STEP", 0): Fraction(1, 8)}
+    ex = actor_pattern_dist(star, "RELEASE", n_seen=2)
+    assert ex == {0: Fraction(4, 7), 1: Fraction(2, 7), "fresh": Fraction(1, 7)}
+    assert actor_pattern_dist(star, "ACQUIRE", 2) == {}
+    threads = [t for t in VOCAB if token_type(t) == "thread"]
+    seen = threads[:2]
+    p = np.full(len(VOCAB), 1e-12); p[TOKEN_ID[seen[0]]] = 0.4; p[TOKEN_ID[seen[1]]] = 0.2
+    for t in threads[2:6]:
+        p[TOKEN_ID[t]] = 0.1 / 4                      # fresh mass 0.1 spread over four unused threads
+    p[TOKEN_ID["STEP"]] = 0.3                          # off-thread mass
+    md, off = model_actor_dist(np.log(p / p.sum()), seen)
+    assert md[0] == pytest.approx(4 / 7, abs=1e-6) and md[1] == pytest.approx(2 / 7, abs=1e-6) and md["fresh"] == pytest.approx(1 / 7, abs=1e-6)
+    assert off == pytest.approx(0.3, abs=1e-6)

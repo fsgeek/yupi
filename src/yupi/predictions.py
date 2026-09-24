@@ -47,6 +47,7 @@ NON_MEASUREMENT_PREFIXES = (
     "learner-probe-voi",   # 2026-09-24 exact value of the lock owner for the next record (scripts/learner_probe_voi.py): I(next; owner | prefix) per (window, lock); per-window rows under ~/.cache/yupi-scratch/probes, sha256 in the raw
     "learner-probe-link",   # 2026-09-24 per-window link of probe CE to model excess (scripts/learner_probe_link.py); correlational, not a prediction family
     "learner-release-actor",   # 2026-09-24 ACTOR-field excess vs H*(actor | kind) by realized kind (scripts/learner_release_actor.py); exposure ratio, not a prediction family
+    "learner-actor-shape",   # 2026-09-24 model vs exact actor distribution on owner-uncertain RELEASE windows (scripts/learner_actor_shape.py); not a prediction family
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);

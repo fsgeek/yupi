@@ -922,6 +922,17 @@ per-example and class-frequency rows under `~/.cache/yupi-scratch/probes/`
 
 ## 18. Which thread: exposure at the point of need (appended 2026-09-24 09:31 PDT, from `date` in the writing command, by the instance of 2026-09-23)
 
+> **Correction (2026-09-24, same day, by the same instance; see §19).** The owner-determined / uncertain split
+> in 18.2's second tables, reading 3 and §18.3 selects windows by the *realized* record's lock, an outcome
+> correlated with the actor, so the realized-record estimator is biased on those subsets: on r2 seed 2's
+> "determined" windows the realized actor equals the exact argmax 95.0 % of the time against P*'s own 87.4 %,
+> and on the "uncertain" ones 68.1 % against 80.7 % (all labelled RELEASE windows: 83.8 % vs 84.6 %, calibrated).
+> The exact per-window KL on the same subsets (§19) shows **no difference in exposure between them**
+> (r2: 0.92 / 0.90 / 0.83 determined against 0.93 / 0.90 / 0.85 uncertain). Reading 3 and the
+> "calibration-to-posterior gap, not a retrieval gap" sentence of §18.3 are withdrawn; readings 1, 2 and 4 and
+> the pooled rows (conditioned on the realized kind only, which P*(actor | kind) also conditions on) stand.
+> The original text is preserved below.
+
 §17.2 put most of the owner's value on *which thread* holds the lock. The
 which-thread probe was designed in words as a readout at an entity token's
 position. Thinking it through changed the plan (probe design amendment v0.5): the
@@ -1044,3 +1055,111 @@ the model's actor distribution there track the exact posterior's shape (KL per
 window against H(owner | prefix) from the §16 labels), or collapse toward the
 most recent actor? (b) Causal patching. (c) The GPU items now running under the
 lease (ε = ½ seeds 4–6 at r2 / r4; the r1 size-axis learning-rate sweep).
+
+## 19. Where the identity deficit sits, by exact KL (appended 2026-09-24 09:51 PDT, from `date` in the writing command, by the instance of 2026-09-23)
+
+§18's owner split was outcome-selected and its realized-record estimates biased
+(correction at the head of §18). This section redoes the which-thread measurement
+with the exact per-window quantity and prefix-only splits.
+`scripts/learner_actor_shape.py` (raw prefix `learner-actor-shape`, raws
+`learner-actor-shape-<cell>-seed<s>-RELEASE-2026-09-24.json`): for every labelled
+window (the §16 30k) whose realized record k + 1 is a RELEASE, the model's
+distribution over the actor at the position after the kind token
+(`yupi.learner.evaluate.model_actor_dist`: mass on each seen thread token by pattern
+index, unused thread tokens summed as "fresh", renormalized over thread tokens; the
+off-thread mass is 0.0002–0.0008 and reported) against the ceiling's
+P*(actor | RELEASE, prefix) (`actor_pattern_dist`; both tested). KL(P* ‖ P̃) in bits
+per window, its mean and se, the realized-record estimate beside it, H* and H̃, argmax
+agreement, and the mass each puts on record k's actor. Splits are functions of the
+prefix: H*(actor | RELEASE) bins, and whether every lock visible in the prefix has a
+prefix-determined owner ("all-determined") or some lock's owner is uncertain
+("some-uncertain"; "no-lock" windows, 8–15 per cell, omitted from the tables).
+
+**19.1 The direct measurement.** Cells r2 (3 seeds), r3 (3), r4 (seeds 1, 2, 5, 6;
+2 and 5 are the high basin):
+
+| cell | seed | n | KL(P* ‖ P̃) bits | realized estimate | H*(actor \| RELEASE) | H̃ | exposure 1 − KL/H* | argmax agree | mass on record k's actor: exact / model |
+|---|---|---|---|---|---|---|---|---|---|
+| r2-eps1 | 1 | 4693 | 0.0321 ± 0.0011 | 0.0356 | 0.390 | 0.427 | **0.92** | 0.905 | 0.480 / 0.484 |
+| r2-eps1 | 2 | 4693 | 0.0385 ± 0.0016 | 0.0429 | 0.390 | 0.410 | **0.90** | 0.922 | 0.480 / 0.485 |
+| r2-eps1 | 3 | 4693 | 0.0664 ± 0.0025 | 0.0709 | 0.390 | 0.457 | **0.83** | 0.913 | 0.480 / 0.482 |
+| r3-eps1 | 1 | 4767 | 0.0169 ± 0.0010 | 0.0189 | 0.299 | 0.326 | **0.94** | 0.922 | 0.485 / 0.482 |
+| r3-eps1 | 2 | 4767 | 0.0190 ± 0.0012 | 0.0201 | 0.299 | 0.324 | **0.94** | 0.923 | 0.485 / 0.484 |
+| r3-eps1 | 3 | 4767 | 0.0193 ± 0.0011 | 0.0185 | 0.299 | 0.324 | **0.94** | 0.922 | 0.485 / 0.485 |
+| r4-eps1 | 1 | 4843 | 0.0189 ± 0.0013 | 0.0201 | 0.299 | 0.312 | **0.94** | 0.922 | 0.482 / 0.481 |
+| r4-eps1 | 2 | 4843 | 0.0349 ± 0.0017 | 0.0392 | 0.299 | 0.337 | **0.88** | 0.905 | 0.482 / 0.485 |
+| r4-eps1 | 5 | 4843 | 0.0280 ± 0.0021 | 0.0334 | 0.299 | 0.319 | **0.91** | 0.936 | 0.482 / 0.484 |
+| r4-eps1 | 6 | 4843 | 0.0167 ± 0.0008 | 0.0179 | 0.299 | 0.320 | **0.94** | 0.922 | 0.482 / 0.479 |
+
+The realized-record estimate agrees with the exact KL to within its own standard
+error (0.003–0.004) on every prefix-defined group, and the realized actor equals
+the exact argmax as often as P* says it should (r2 0.838 vs 0.846; r3 0.875 vs
+0.875; r4 0.870 vs 0.875), which is the calibration check the §18 subsets failed.
+
+**19.2 Prefix-only owner split at r2.**
+
+| cell | seed | all-determined: n / KL / H* / exposure | some-uncertain: n / KL / H* / exposure |
+|---|---|---|---|
+| r2-eps1 | 1 | 2227 / 0.0293 / 0.299 / 0.90 | 2456 / 0.0348 / 0.473 / 0.93 |
+| r2-eps1 | 2 | 2227 / 0.0336 / 0.299 / 0.89 | 2456 / 0.0431 / 0.473 / 0.91 |
+| r2-eps1 | 3 | 2227 / 0.0589 / 0.299 / 0.80 | 2456 / 0.0734 / 0.473 / 0.84 |
+
+**19.3 By the exact observer's own uncertainty.**
+
+| cell | seed | H* ∈ [0, 0.5): n / KL / H* / H̃ | H* ∈ [0.5, 1): n / KL / H* / H̃ / agree | H* ∈ [1, 1.5): n / KL / H* / H̃ / agree |
+|---|---|---|---|---|
+| r2-eps1 | 1 | 2779 / 0.0174 / 0.025 / 0.076 | 1656 / 0.0567 / 0.906 / 0.924 / 0.83 | 258 / 0.0334 / 1.000 / 1.015 / 0.40 |
+| r2-eps1 | 2 | 2779 / 0.0162 / 0.025 / 0.074 | 1656 / 0.0732 / 0.906 / 0.883 / 0.88 | 258 / 0.0569 / 1.000 / 0.993 / 0.36 |
+| r2-eps1 | 3 | 2779 / 0.0556 / 0.025 / 0.151 | 1656 / 0.0836 / 0.906 / 0.887 / 0.86 | 258 / 0.0711 / 1.000 / 0.993 / 0.40 |
+| r3-eps1 | 1 | 3284 / 0.0086 / 0.012 / 0.038 | 1023 / 0.0423 / 0.908 / 0.939 / 0.86 | 460 / 0.0194 / 1.000 / 1.024 / 0.51 |
+| r3-eps1 | 2 | 3284 / 0.0101 / 0.012 / 0.039 | 1023 / 0.0444 / 0.908 / 0.927 / 0.91 | 460 / 0.0257 / 1.000 / 1.022 / 0.42 |
+| r3-eps1 | 3 | 3284 / 0.0102 / 0.012 / 0.044 | 1023 / 0.0458 / 0.908 / 0.915 / 0.89 | 460 / 0.0248 / 1.000 / 1.008 / 0.44 |
+| r4-eps1 | 1 | 3335 / 0.0065 / 0.013 / 0.031 | 1023 / 0.0478 / 0.898 / 0.898 / 0.89 | 485 / 0.0433 / 1.000 / 1.010 / 0.46 |
+| r4-eps1 | 2 | 3335 / 0.0201 / 0.013 / 0.069 | 1023 / 0.0814 / 0.898 / 0.892 / 0.84 | 485 / 0.0385 / 1.000 / 1.007 / 0.41 |
+| r4-eps1 | 5 | 3335 / 0.0129 / 0.013 / 0.046 | 1023 / 0.0651 / 0.898 / 0.889 / 0.90 | 485 / 0.0535 / 1.000 / 0.990 / 0.58 |
+| r4-eps1 | 6 | 3335 / 0.0076 / 0.013 / 0.037 | 1023 / 0.0437 / 0.898 / 0.914 / 0.87 | 485 / 0.0224 / 1.000 / 1.010 / 0.50 |
+
+Readings:
+
+1. **The identity ladder by exact KL:** exposure on RELEASE 0.92 / 0.90 / 0.83 at
+   r2 against 0.94 / 0.94 / 0.94 at r3 and 0.94 / 0.88 / 0.91 / 0.94 at r4. KL
+   0.032–0.066 at r2 against 0.017–0.019 at r3 and r4's low basin. §18's pooled
+   rows are confirmed by the quantity they estimated.
+2. **The r2 deficit is not concentrated on uncertain-owner prefixes.** On prefixes
+   whose visible locks all have determined owners the exposure is 0.90 / 0.89 / 0.80;
+   on prefixes with some uncertain owner 0.93 / 0.91 / 0.85. If anything the
+   determined prefixes are worse. §18's withdrawn reading 3 said the opposite, from
+   the biased subsets.
+3. **The r2 model hedges on a releaser the exact observer is sure of.** On the
+   2,779 windows with H* < 0.5 (mean 0.025 bits: the owner is all but determined),
+   the r2 model's own entropy is 0.076 / 0.074 / 0.151 bits against 0.038–0.044 at
+   r3 and 0.031–0.037 in r4's low basin, and its KL there is 0.017 / 0.016 / 0.056
+   against 0.009–0.010 and 0.007–0.008. The excess is in every bin (mid bin 0.057 /
+   0.073 / 0.084 against 0.042–0.046 at r3; two-candidate bin 0.033 / 0.057 / 0.071
+   against 0.019–0.026), but its *ratio* to r3 is largest where the answer is
+   determined. Together with §16.2 (less held/free information at the boundary at
+   r2 even where the prefix determines it), the r2 learner represents determined
+   lock state with less confidence than a learner that has it printed, and that
+   shows at the point of need as probability spread off the right thread.
+4. **No collapse onto the recent actor.** The model's mass on record k's actor
+   matches the exact observer's to 0.005 at every cell and seed; argmax agreement is
+   0.905–0.936. The r2 deficit is diffuse hedging, not a wrong heuristic.
+5. **r4's high basin sits at r2's level.** Seeds 2 and 5: KL 0.035 / 0.028
+   (exposure 0.88 / 0.91) against 0.019 / 0.017 for seeds 1 and 6, elevated in every
+   H* bin, with the same hedging signature on near-determined windows (H̃ 0.069 /
+   0.046 against 0.031 / 0.037). Whatever the high basin's solution is, on identity
+   at the point of need it looks like the r2 learner.
+
+**19.4 What this does not say.** Correlational, one position (the actor after a
+RELEASE kind token), one k, the 30k labelled windows. "Hedging on a determined
+answer" is a description of the output distribution, not a mechanism; the boundary
+probe of §16 and this are two views of the same cell, not a causal chain. The
+model's actor distribution is read after renormalizing over thread tokens (the
+off-thread mass is negligible and reported).
+
+**19.5 What follows.** (a) The same measurement at the BLOCK kind (the actor is the
+blocker; identity of the owner enters through who *cannot* be acting). (b) Causal
+patching on the near-determined RELEASE windows: does patching the boundary
+activation from an r3 model's representation of the same prefix sharpen the r2
+model's releaser? That is the first intervention this note would license.
+(c) The GPU items running under the lease.

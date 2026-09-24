@@ -38,7 +38,7 @@ from __future__ import annotations
 
 import math
 from fractions import Fraction
-from typing import Callable, Dict, Iterable, List, Optional, Tuple
+from typing import Sequence, Callable, Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
 
@@ -132,6 +132,33 @@ def actor_entropy_given_kind(star: Dict[Record, Fraction], kind: str) -> Optiona
     if tot == 0:
         return None
     return float(-sum(float(q / tot) * math.log2(float(q / tot)) for q in acc.values() if q > 0))
+
+
+def actor_pattern_dist(star: Dict[Record, Fraction], kind: str, n_seen: int) -> Dict:
+    """P*(actor | kind, prefix) over pattern actor classes: the seen threads' pattern
+    indices 0..n_seen−1 and "fresh" (an actor not yet seen; its pattern index is
+    n_seen). {} if P*(kind) = 0."""
+    acc: Dict = {}
+    for r, m in star.items():
+        if r.kind == kind and r.actor is not None:
+            key = "fresh" if r.actor >= n_seen else int(r.actor)
+            acc[key] = acc.get(key, Fraction(0)) + m
+    tot = sum(acc.values(), Fraction(0))
+    return {k: q / tot for k, q in acc.items()} if tot else {}
+
+
+def model_actor_dist(lp_row: np.ndarray, seen_tokens: Sequence[str]) -> Tuple[Dict, float]:
+    """The model's distribution over the same classes from one natural-log softmax
+    row: mass on each seen thread token by its pattern index, the summed mass on
+    every unused thread token as "fresh", renormalized over thread tokens; second
+    value is the mass the model put outside thread tokens."""
+    p = np.exp(lp_row)
+    thread_ids = [TOKEN_ID[t] for t in VOCAB if token_type(t) == "thread"]
+    seen_ids = [TOKEN_ID[t] for t in seen_tokens]
+    on_threads = float(p[thread_ids].sum())
+    out: Dict = {i: float(p[tid]) for i, tid in enumerate(seen_ids)}
+    out["fresh"] = float(p[[tid for tid in thread_ids if tid not in set(seen_ids)]].sum())
+    return {k: v / on_threads for k, v in out.items()} if on_threads > 0 else out, 1.0 - on_threads
 
 
 # ---- the model side ----------------------------------------------------------------

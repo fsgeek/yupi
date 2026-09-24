@@ -13,7 +13,11 @@ its se, mean H*(actor | kind, prefix) from the k-record ceiling table, and the
 exposure ratio 1 - excess / H* (1: the model's actor distribution matches the
 ceiling's; 0: it carries none of the trace-available information about the actor).
 With --labels (the §16 owner posteriors), RELEASE / BLOCK / ACQUIRE windows are also
-split by whether the record's lock has a prefix-determined owner.
+split by whether the record's lock has a prefix-determined owner. **That split is
+selected on the realized record's lock, an outcome correlated with the actor, and the
+realized-record estimator is BIASED on it (first-results note §18 correction, §19);
+it is kept only so the §18 raws can be reproduced. Use scripts/learner_actor_shape.py
+(exact per-window KL, prefix-only splits) for any owner-conditioned reading.**
 """
 import argparse
 import hashlib
@@ -131,7 +135,7 @@ def main(argv=None):
         if kind in out["by_kind_owner"]:
             for which, t in out["by_kind_owner"][kind].items():
                 if t:
-                    print(f"     owner {which:10s} n={t['n']:6d}  actor excess {t['actor_excess']:.4f} ± {t['actor_excess_se']:.4f}  H* {t['h_actor']:.3f}  exposure {f(t['exposure_ratio'])}")
+                    print(f"     [outcome-selected, biased — see §18 correction] owner {which:10s} n={t['n']:6d}  actor excess {t['actor_excess']:.4f} ± {t['actor_excess_se']:.4f}  H* {t['h_actor']:.3f}  exposure {f(t['exposure_ratio'])}")
     if a.raw:
         Path(a.raw).write_text(json.dumps(out, indent=2, default=str) + "\n")
         print(f"raw -> {a.raw}")
