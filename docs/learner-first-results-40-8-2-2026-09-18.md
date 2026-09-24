@@ -1161,8 +1161,12 @@ off-thread mass is negligible and reported).
 blocker; identity of the owner enters through who *cannot* be acting). (b) Causal
 patching on the near-determined RELEASE windows: does patching the boundary
 activation from an r3 model's representation of the same prefix sharpen the r2
-model's releaser? That is the first intervention this note would license.
-(c) The GPU items running under the lease.
+model's releaser? That is the first intervention this note would license — and
+it is Milestone 5's causal-use slice, which the founding cut assigns to paper 3;
+not built in this tenure unless the PI moves the cut. (c) The GPU items running
+under the lease. (d) Within the cut and untouched: the belief-geometry slice of
+Milestone 5 (§8.2), in the coordinate-free form this note has learned to use —
+design `docs/superpowers/specs/2026-09-24-belief-geometry-design.md`.
 
 **19.6 The same at BLOCK (appended 2026-09-24 10:05 PDT, from `date` in the writing command).** The
 actor of a BLOCK is the blocker, not the owner; the owner enters through who cannot
