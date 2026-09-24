@@ -1319,6 +1319,64 @@ within the cut: the same at k = 1..6 (layerwise emergence over context, §8.2's
 folded actor class as a second coordinate-free target, and the horizon-2 kind
 belief if the exact side prices it.
 
+**21.1 Over context: k = 1..7 (appended 2026-09-24 14:50 PDT, from `date` in the writing command).** The
+same probe at every prefix length, seed 1 of each rung (raws
+`learner-belief-kind-<cell>-seed1-k<k>-2026-09-24.json` for k < 7; the k = 7 rows are
+the table above). Fit / eval split by window index as before; H(Z | h) is the exact
+observer's mean residual uncertainty about the next kind at that k.
+
+| cell (seed 1) | k | OIR L1 / L2 / L3 / L4 | KL_repr L3 | KL_out | H(Z \| h) | geometry L3 |
+|---|---|---|---|---|---|---|
+| r1 | 1 | 1.000 / 1.000 / 1.000 / 1.000 | 0.0001 | 0.0010 | 1.244 | 0.987 |
+| r1 | 2 | 0.973 / 0.973 / 1.000 / 1.000 | 0.0003 | 0.0019 | 1.377 | 0.999 |
+| r1 | 3 | 0.959 / 0.960 / 0.998 / 0.999 | 0.0022 | 0.0015 | 1.135 | 0.996 |
+| r1 | 4 | 0.921 / 0.924 / 0.991 / 0.998 | 0.0113 | 0.0040 | 1.099 | 0.992 |
+| r1 | 5 | 0.905 / 0.914 / 0.980 / 0.995 | 0.0262 | 0.0059 | 1.062 | 0.985 |
+| r1 | 6 | 0.876 / 0.891 / 0.960 / 0.990 | 0.0524 | 0.0127 | 0.896 | 0.975 |
+| r1 | 7 | 0.837 / 0.859 / 0.938 / 0.983 | 0.0887 | 0.0241 | 0.996 | 0.966 |
+| r2 | 1 | 1.000 / 1.000 / 1.000 / 1.000 | 0.0001 | 0.0010 | 1.249 | 0.985 |
+| r2 | 2 | 0.972 / 0.971 / 1.000 / 1.000 | 0.0005 | 0.0018 | 1.376 | 0.998 |
+| r2 | 3 | 0.957 / 0.957 / 0.996 / 0.999 | 0.0038 | 0.0023 | 1.144 | 0.996 |
+| r2 | 4 | 0.909 / 0.911 / 0.986 / 0.998 | 0.0178 | 0.0041 | 1.071 | 0.990 |
+| r2 | 5 | 0.891 / 0.896 / 0.973 / 0.995 | 0.0355 | 0.0067 | 1.051 | 0.983 |
+| r2 | 6 | 0.862 / 0.871 / 0.957 / 0.990 | 0.0569 | 0.0136 | 0.865 | 0.973 |
+| r2 | 7 | 0.817 / 0.831 / 0.938 / 0.984 | 0.0922 | 0.0225 | 0.952 | 0.963 |
+| r3 | 1 | 1.000 / 1.000 / 1.000 / 1.000 | 0.0001 | 0.0013 | 1.252 | 0.987 |
+| r3 | 2 | 0.955 / 0.969 / 0.999 / 1.000 | 0.0010 | 0.0021 | 1.348 | 0.998 |
+| r3 | 3 | 0.939 / 0.948 / 0.995 / 0.999 | 0.0052 | 0.0019 | 1.112 | 0.994 |
+| r3 | 4 | 0.886 / 0.896 / 0.979 / 0.998 | 0.0275 | 0.0042 | 1.025 | 0.987 |
+| r3 | 5 | 0.866 / 0.878 / 0.966 / 0.995 | 0.0458 | 0.0062 | 0.995 | 0.983 |
+| r3 | 6 | 0.839 / 0.855 / 0.951 / 0.992 | 0.0665 | 0.0111 | 0.824 | 0.966 |
+| r3 | 7 | 0.801 / 0.821 / 0.939 / 0.988 | 0.0931 | 0.0183 | 0.914 | 0.969 |
+| r4 | 1 | 1.000 / 1.000 / 1.000 / 1.000 | 0.0002 | 0.0011 | 1.252 | 0.988 |
+| r4 | 2 | 0.955 / 0.957 / 0.999 / 1.000 | 0.0011 | 0.0020 | 1.349 | 0.998 |
+| r4 | 3 | 0.928 / 0.938 / 0.995 / 0.999 | 0.0057 | 0.0022 | 1.103 | 0.994 |
+| r4 | 4 | 0.872 / 0.888 / 0.981 / 0.997 | 0.0258 | 0.0040 | 1.030 | 0.986 |
+| r4 | 5 | 0.844 / 0.873 / 0.970 / 0.996 | 0.0411 | 0.0060 | 0.998 | 0.983 |
+| r4 | 6 | 0.817 / 0.849 / 0.952 / 0.993 | 0.0656 | 0.0095 | 0.821 | 0.966 |
+| r4 | 7 | 0.772 / 0.813 / 0.941 / 0.990 | 0.0891 | 0.0148 | 0.907 | 0.964 |
+
+5. **After one record the belief is exactly linear at every layer** (OIR 1.000 at
+   layers 1–4, KL_repr 0.0001 bits, in every cell): one record's kind and shape fix
+   the next-kind distribution, and the first block already has it. **Accessibility
+   then falls monotonically with context at every layer**, steepest at layer 1
+   (1.000 → 0.77–0.84 at k = 7) and shallowest at layer 4 (→ 0.98–0.99). The
+   mid-network representation gap grows by three orders of magnitude from k = 1 to
+   k = 7 (KL_repr at layer 3: 0.0001 → 0.089–0.093) while the output gap grows by
+   one (KL_out 0.001 → 0.015–0.024). §7 found the *output* excess grows with
+   context; this is the same growth seen inside the model, and it is larger there:
+   the longer the prefix, the more of the belief's computation is left to the last
+   block.
+6. **The exact observer's own uncertainty does not drive it.** H(Z | h) is flat or
+   falling with k (1.24–1.38 at k ≤ 2, 0.82–1.00 at k ≥ 6); the belief is *easier*
+   in principle at long context and *less accessible* in the model. The geometry
+   holds throughout (pairwise-distance alignment 0.96–1.00 at layer 3).
+7. **A small rung ordering appears at layer 1 and only there:** at k = 7 the
+   first block's OIR is 0.837 / 0.817 / 0.801 / 0.772 at r1 / r2 / r3 / r4. The more
+   fields the interface exposes, the less of the next-kind belief one block can
+   integrate linearly; by layer 3 the rungs are level again (0.938–0.941). One seed
+   per rung; a description, not a finding, until the other seeds are run.
+
 ## 22. The size axis with the learning rate swept (appended 2026-09-24 13:48 PDT, from `date` in the writing command, by the instance of 2026-09-23)
 
 §11 refused to read the size axis at a fixed recipe: d = 64 and d = 256 were both
