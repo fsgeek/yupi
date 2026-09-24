@@ -1,0 +1,80 @@
+{
+  "corpus": "corpus/c1prime-loop-40-8-2-r2-eps1/125f89ba98065599",
+  "rung": "r2",
+  "eps": "1",
+  "k": 7,
+  "split": "test",
+  "n": 30000,
+  "git": "c6b0da97dc466cd92cb8c794b4fef89b5e681c50+dirty",
+  "per_window": "/home/tony/.cache/yupi-scratch/probes/c1prime-loop-40-8-2-r2-eps1-k7-test-voi.jsonl",
+  "per_window_sha256": "b38f52b49201a2c01d6f711169cf1083bcb8ea9d1f30651e80af46be96ad4ffc",
+  "summary": {
+    "n_windows": 25508,
+    "n_classes": 14185,
+    "n_examples": 38818,
+    "n_uncertain": 12945,
+    "frac_uncertain": 0.333479313720439,
+    "per_example": {
+      "h_next": 1.5543683473849688,
+      "h_kind": 0.9247352490339901,
+      "i_owner": 0.07868371470196521,
+      "i_held": 0.030908858680202163,
+      "i_kind_owner": 0.0298900736571597,
+      "i_kind_held": 0.01391144824471592,
+      "h_owner": 0.24206449295948698,
+      "p_lock": 0.19690239294969253,
+      "p_block": 0.066467423208328,
+      "p_acquire": 0.024489735942976647,
+      "p_release": 0.10594523379838787
+    },
+    "per_uncertain_example": {
+      "h_next": 1.673519432089436,
+      "h_kind": 1.0132027537477106,
+      "i_owner": 0.2359478128467274,
+      "i_held": 0.09268598503268348,
+      "i_kind_owner": 0.08963096788131521,
+      "i_kind_held": 0.04171607554757687,
+      "h_owner": 0.7258755880804454,
+      "p_lock": 0.20756016670317518,
+      "p_block": 0.07040301918442375,
+      "p_acquire": 0.034899357426522656,
+      "p_release": 0.1022577900922288
+    },
+    "per_determined_example": {
+      "h_next": 1.4947536605879477,
+      "h_kind": 0.8804724326416461,
+      "i_owner": 0.0,
+      "i_held": 0.0,
+      "i_kind_owner": 0.0,
+      "i_kind_held": 0.0,
+      "h_owner": 0.0,
+      "p_lock": 0.19157000469789207,
+      "p_block": 0.06449833226755736,
+      "p_acquire": 0.01928150535106604,
+      "p_release": 0.10779016707926867
+    },
+    "per_window_summing_locks": {
+      "h_next": 1.595859910316782,
+      "i_owner": 0.12110322498318407,
+      "i_held": 0.047572264234094115,
+      "i_kind_owner": 0.046004237707609745,
+      "i_kind_held": 0.021411307956202472,
+      "p_lock": 0.30305527495028606,
+      "p_block": 0.10230095690499491
+    },
+    "max": {
+      "h_next": 3.761254192114543,
+      "h_kind": 2.4398858072446568,
+      "i_owner": 1.3957469584714857,
+      "i_held": 0.9988016702404605,
+      "i_kind_owner": 0.9988016702404605,
+      "i_kind_held": 0.9988016702404605,
+      "h_owner": 1.584962374065746,
+      "p_lock": 1.0,
+      "p_block": 0.95758700223195,
+      "p_acquire": 1.0,
+      "p_release": 1.0
+    }
+  },
+  "wall_s": 264.7855968475342
+}

@@ -5,7 +5,8 @@ docs/superpowers/specs/2026-09-23-probe-lock-owner-design.md, v0.1 + amendment v
       --labels-fit ~/.cache/yupi-scratch/probes/<name>-k7-val.jsonl \\
       --labels-eval ~/.cache/yupi-scratch/probes/<name>-k7-test.jsonl \\
       [--readout linear|bilinear] [--device cpu] [--l2 1e-4,1e-3,1e-2,1e-1] \\
-      --raw docs/learner-probe-owner-<cell>-seed<s>[-bilinear]-<date>.json
+      --raw docs/learner-probe-owner-<cell>-seed<s>[-bilinear]-<date>.json \\
+      [--per-example ~/.cache/yupi-scratch/probes/<run>-<target>-k7-test-per-example.jsonl]
 
 Per (layer 0..4, lock index l): a probe from the residual stream at position
 p0 (the state after k records) to the owner, fit on the fit split's windows
@@ -19,6 +20,10 @@ uncertain subsets.
             embedding: logit(τ) = hᵀ W E_τ + b_tok over the prefix's thread tokens,
             plus learned directions for none / unseen; H(Z) = CE of the same
             family fit with no activation (biases only).
+  --per-example (2026-09-24) also writes one JSON line per (eval window, lock,
+            layer) with the example's soft-label cross-entropy in bits, its posterior
+            entropy, the posterior and the probe's distribution — the rows the
+            per-window link to the model's excess (scripts/learner_probe_link.py) joins on.
 """
 import argparse
 import hashlib
@@ -28,6 +33,8 @@ import sys
 import time
 from fractions import Fraction
 from pathlib import Path
+
+import math
 
 import numpy as np
 import torch
@@ -39,6 +46,7 @@ from yupi.learner.model import Decoder, ModelConfig
 from yupi.learner.probe import CLASSES, CLASS_ID, TARGETS, bilinear_ce, bilinear_logq, collapse, fit_bilinear, fit_probe, oir, probe_ce, probe_logq
 
 N_LAYERS = 5
+LOG2 = math.log(2.0)
 
 
 def _git():
@@ -152,6 +160,7 @@ def main(argv=None):
     ap.add_argument("--readout", default="linear", choices=("linear", "bilinear"))
     ap.add_argument("--target", default="owner", choices=tuple(TARGETS), help="owner (v0.1/v0.2) or a folded, coordinate-free fact (v0.3, linear readout)")
     ap.add_argument("--raw")
+    ap.add_argument("--per-example")
     a = ap.parse_args(argv)
     run = Path(a.run)
     run_json = json.loads((run / "run.json").read_text())
@@ -169,6 +178,7 @@ def main(argv=None):
     E = model.tok.weight.detach().double().cpu().numpy()
     l2s = [float(x) for x in a.l2.split(",")]
     results = {}
+    per_example = []
     n_locks = max(int(l) for r in fit_rows + eval_rows for l in r["locks"]) + 1
     for l in range(n_locks):
         fi, Pf = examples(fit_rows, l)
@@ -205,6 +215,11 @@ def main(argv=None):
                 ce = bilinear_ce(pr, A_e, Ce, Pec, E)
                 lq = bilinear_logq(pr, A_e, Ce, E)
                 acc = float(np.mean([lq[i, :len(Pec[i])].argmax() == np.argmax(Pec[i]) for i in range(len(ei))]))
+                if a.per_example:
+                    for j, i_ex in enumerate(ei):
+                        p = np.asarray(Pec[j]); l_q = lq[j, :len(p)]
+                        per_example.append(dict(i=int(eval_rows[i_ex]["i"]), lock=l, layer=L, ce=float(-(p * l_q).sum() / LOG2),
+                                                h=entropy_bits(p), p=[float(v) for v in p], q=[float(v) for v in np.exp(l_q)]))
                 ce_det = bilinear_ce(pr, A_e[det], sub(Ce, det), sub(Pec, det), E) if det.any() else None
                 ce_unc = bilinear_ce(pr, A_e[~det], sub(Ce, ~det), sub(Pec, ~det), E) if (~det).any() else None
             else:
@@ -217,6 +232,11 @@ def main(argv=None):
                 ce = probe_ce(pr, A_e, Pe)
                 logq = probe_logq(pr, A_e)
                 acc = float(np.mean(logq.argmax(1) == Pe.argmax(1)))
+                if a.per_example:
+                    ce_i = -(Pe * logq).sum(1) / LOG2
+                    for j, i_ex in enumerate(ei):
+                        per_example.append(dict(i=int(eval_rows[i_ex]["i"]), lock=l, layer=L, ce=float(ce_i[j]), h=entropy_bits(Pe[j]),
+                                                p=[float(v) for v in Pe[j]], q=[float(v) for v in np.exp(logq[j])]))
                 ce_det = probe_ce(pr, A_e[det], Pe[det]) if det.any() else None
                 ce_unc = probe_ce(pr, A_e[~det], Pe[~det]) if (~det).any() else None
             results[f"l{l}/L{L}"] = dict(lock=l, layer=L, n_fit=int(len(fi)), n_eval=int(len(ei)), l2=best[1], holdout_ce=best[0],
@@ -234,6 +254,14 @@ def main(argv=None):
         print(f"  lock {r['lock']} layer {r['layer']}: n={r['n_eval']}  H(Z)={r['h_z']:.3f}  H(Z|h)={r['h_z_given_h']:.3f}  "
               f"CE={r['ce']:.3f}  OIR={fmt(r['oir'])}  acc={r['acc']:.3f}  det {r['frac_determined']:.2f}: CE {fmt(r['ce_determined'])}  "
               f"unc: CE {fmt(r['ce_uncertain'])} vs H {fmt(r['h_z_given_h_uncertain'])}  λ={r['l2']:g}")
+    if a.per_example:
+        Path(a.per_example).parent.mkdir(parents=True, exist_ok=True)
+        with open(a.per_example, "w") as f:
+            for row in per_example:
+                f.write(json.dumps(row) + "\n")
+        out["per_example"] = a.per_example
+        out["per_example_sha256"] = hashlib.sha256(Path(a.per_example).read_bytes()).hexdigest()
+        print(f"per-example rows -> {a.per_example} ({len(per_example)})")
     if a.raw:
         Path(a.raw).write_text(json.dumps(out, indent=2, default=str) + "\n")
         print(f"raw -> {a.raw}")

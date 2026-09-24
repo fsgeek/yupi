@@ -58,3 +58,43 @@ The exact posterior's t_i maps to the i-th thread token in first-appearance orde
 surface order by construction). Fit, λ selection, splits and the OIR report as in v0.1. Control: the same readout on
 Z' = actor token of record k (expected OIR ≈ 1 if the readout works). Raw prefix unchanged; the raw records
 `readout: "bilinear"`.
+
+## Amendment v0.3 (2026-09-23, recorded 2026-09-24): coordinate-free targets
+
+Built and reported in the first-results note §16.2 before this entry was written. `--target held` (is lock l owned
+by anyone) and `--target owner-is-actor` (is its owner the thread that just acted) fold the owner posterior into
+facts that need no entity coordinates (`yupi.learner.probe.collapse`), read linearly at p0. Motivation: the v0.2
+control showed entity identities are not held in the stream at the record boundary (recoverable at the actor's own
+input position, CE 0.002; nothing at p0).
+
+## Amendment v0.4 (2026-09-24, by the instance of 2026-09-23): need, not presence — and the per-window link
+
+§16 measured whether lock state is **present** at the boundary. Two companions, both from artifacts that already
+exist, before any which-thread probe is built:
+
+1. **Value of the owner for the next record** (`yupi.learner.probe.next_dist_by_owner`, `mutual_information`;
+   `scripts/learner_probe_voi.py`; raw prefix `learner-probe-voi`). From the same joint belief the labels come from,
+   per (window, lock l): I(next record; owner of l | prefix) = H(P*(next)) − Σ_z P*(z) H(P*(next | Z = z)), in bits,
+   with the owner folded to held / none and the record coarsened to its kind as variants, plus H(next) and H(kind).
+   Exactness gate: the weighted mixture of the conditionals equals `next_pattern_dist` as Fractions
+   (tests/test_learner_probe.py). Zero wherever the prefix determines the owner, so this is r2's number; r3 and r4
+   run as zero gates. Reading: the share of the ceiling's next-record entropy that ownership accounts for, against
+   the cell's excess and the r2 − r1 gap.
+2. **Per-window link** (`scripts/learner_probe_owner.py --per-example`; `scripts/learner_probe_link.py`; raw prefix
+   `learner-probe-link`). Join the probe's per-example CE on `held` at the best layer to the window census's
+   per-window excess at the same k (the census scores the record predicted from p0). Spearman / Pearson of probe
+   CE with structural excess and with KIND-field excess; mean excess by probe-CE quartile with a 200-draw
+   permutation null on the top − bottom gap; separately on prefix-determined examples (probe CE is pure
+   representational error there) and on uncertain ones (CE − H). Correlational; no causal claim. Cells: r2, r3, r4
+   ε = 1, every seed.
+
+Not changed: v0.1–v0.3 targets, splits, λ selection, the OIR report. The which-thread probe (a readout at an entity
+token's position, with a positive control at that position) stays designed-in-words until these two say whether it
+is worth building.
+
+*Post hoc additions to v0.4 item 2 (2026-09-24, after the all-window link came back null; reported as exploratory
+in the note's §17.3):* (i) the join restricted to the windows whose realized record k + 1 is an event on lock l
+(`--corpus-dir`); (ii) residualization on 50 bins of log(1 + the class's training-corpus count)
+(`scripts/learner_class_frequency.py`, `--class-freq`), added to control the shared-difficulty confound named in
+§17.4, and a between-class analysis on class means (≥ 3 windows). The pre-specified all-window test is reported
+first and unchanged.

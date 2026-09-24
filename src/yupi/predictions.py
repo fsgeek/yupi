@@ -44,6 +44,8 @@ NON_MEASUREMENT_PREFIXES = (
     "learner-gpu-determinism",   # 2026-09-18 GPU determinism verdict (bit-identical repeat and resume on the 4090)
     "learner-window-census",   # 2026-09-21 per-window distribution behind a cell's mean excess (scripts/learner_window_census.py); per-window rows under ~/.cache/yupi-scratch/census, sha256 in the raw
     "learner-probe-owner",   # 2026-09-23 probe v0.1 raws (scripts/learner_probe_owner.py): lock-ownership OIR per layer, not a prediction family
+    "learner-probe-voi",   # 2026-09-24 exact value of the lock owner for the next record (scripts/learner_probe_voi.py): I(next; owner | prefix) per (window, lock); per-window rows under ~/.cache/yupi-scratch/probes, sha256 in the raw
+    "learner-probe-link",   # 2026-09-24 per-window link of probe CE to model excess (scripts/learner_probe_link.py); correlational, not a prediction family
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);

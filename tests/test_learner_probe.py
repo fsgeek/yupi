@@ -162,3 +162,56 @@ def test_collapse_targets_from_the_owner_posterior():
     assert list(collapse(p, "owner-is-actor", actor_index=1)) == pytest.approx([0.5, 0.3, 0.2])
     assert list(collapse(p, "owner-is-actor", actor_index=0)) == pytest.approx([0.5, 0.0, 0.5])
     assert list(collapse(p, "owner", actor_index=0)) == pytest.approx(list(p))
+
+
+# ---- need, not presence: the value of the owner for the next record (2026-09-24) ---------
+
+def _held(z):
+    return z if z in ("none", "invisible") else "held"
+
+
+def test_next_dist_by_owner_partitions_the_ceiling_exactly(tiny_r2):
+    """Σ_z P(z) P*(next | Z = z) is the ceiling next_pattern_dist exactly (Fractions);
+    the weights are owner_posterior; I(next; Z) lies in [0, H(Z)] and is 0 when the
+    prefix determines the owner; folding Z to held / projecting the record to its
+    kind cannot increase it (data processing)."""
+    from yupi.corpus.vocab import VOCAB
+    from yupi.corpus.writer import read_split
+    from yupi.learner.evaluate import surface_records
+    from yupi.learner.probe import mutual_information, next_dist_by_owner, owner_posterior
+    from yupi.naming import pattern_all
+    from yupi.pattern_filter import filter_pattern_window, next_pattern_dist
+    m, d = tiny_r2
+    cfg, progs = m.world(); law = m.law()
+    n_checked = n_uncertain = 0; max_mi = 0.0
+    for w, _ in read_split(d, "test")[:150]:
+        reset, recs = surface_records(tuple(VOCAB[t] for t in w))
+        for k in (1, 2, 3):
+            if k > len(recs):
+                continue
+            pw, beta = pattern_all(recs[:k])
+            post, _ = filter_pattern_window(cfg, progs, law, list(pw), m.rung, reset, prefix=True)
+            joint = post.joint_marginal()
+            star = next_pattern_dist(post, cfg, progs, m.rung)
+            for l in range(len(beta[1])):
+                by_z = next_dist_by_owner(joint, cfg, progs, m.rung, l)
+                assert {z: w_ for z, (w_, _) in by_z.items()} == owner_posterior(joint, l)
+                mix = {}
+                for w_, dist in by_z.values():
+                    assert sum(dist.values()) == 1
+                    for r, q in dist.items():
+                        mix[r] = mix.get(r, Fraction(0)) + w_ * q
+                assert mix == star
+                mi, h_next = mutual_information(by_z)
+                pz = np.array([float(w_) for w_, _ in by_z.values()])
+                h_z = float(-(pz * np.log2(pz)).sum())
+                assert -1e-9 <= mi <= h_z + 1e-9 and h_next >= mi - 1e-9
+                if len(by_z) == 1:
+                    assert mi == 0.0
+                else:
+                    n_uncertain += 1; max_mi = max(max_mi, mi)
+                mi_held, _ = mutual_information(by_z, fold=_held)
+                mi_kind, h_kind = mutual_information(by_z, proj=lambda r: r.kind)
+                assert mi_held <= mi + 1e-9 and mi_kind <= mi + 1e-9 and h_kind <= h_next + 1e-9
+                n_checked += 1
+    assert n_checked > 20 and n_uncertain > 0 and max_mi > 0.0

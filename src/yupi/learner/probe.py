@@ -203,3 +203,69 @@ def collapse(p: np.ndarray, target: str, actor_index: int) -> np.ndarray:
         actor = thr.get(actor_index, 0.0)
         return np.array([none, actor, sum(thr.values()) - actor + unseen])
     raise ValueError(target)
+
+
+# ---- need, not presence (2026-09-24): the value of the owner for the next record ----------
+#
+# §16 measured whether lock ownership is PRESENT in the residual stream. These
+# functions measure whether it is WORTH holding: I(next record; Z | prefix), the
+# part of the ceiling's next-record entropy that the owner of lock l accounts
+# for, exactly, from the same joint belief the labels come from. Zero wherever
+# the prefix determines the owner (r3, r4 everywhere; r2 on two thirds of the
+# (window, lock) examples), by construction.
+
+def _owner_class(s, beta, l: int) -> str:
+    if l >= len(beta[1]):
+        return "invisible"
+    o = s.lock_owner[beta[1][l]]
+    return "none" if o is None else (f"t{beta[0].index(o)}" if o in beta[0] else "unseen")
+
+
+def next_dist_by_owner(joint_belief, cfg, programs, rung: str, l: int, types=None):
+    """{z: (P*(Z = z), P*(Πr_next | Z = z))} for pattern lock l — next_pattern_dist
+    partitioned by the owner class of the support point it came from. The
+    weights are owner_posterior(joint_belief, l); the weighted mixture is
+    next_pattern_dist exactly."""
+    from yupi.interfaces import project
+    from yupi.kernel import enabled
+    from yupi.naming import ENTITY_ORDER, extend_binding
+    from yupi.records import record_of
+    types = ENTITY_ORDER if types is None else types
+    by_z: Dict[str, Dict] = {}
+    for (s, b), m in joint_belief.items():
+        d = by_z.setdefault(_owner_class(s, b, l), {})
+        for tr, p in enabled(s, cfg, programs):
+            pr, _ = extend_binding(b, project(record_of(tr), rung), types)
+            d[pr] = d.get(pr, Fraction(0)) + m * p
+    out = {}
+    for z, d in by_z.items():
+        pz = sum(d.values(), Fraction(0))
+        out[z] = (pz, {r: q / pz for r, q in d.items()})
+    return out
+
+
+def _h_bits(dist) -> float:
+    return float(-sum(float(q) * math.log2(float(q)) for q in dist.values() if q > 0))
+
+
+def mutual_information(by_z, fold=None, proj=None):
+    """(I(Y; Z'), H(Y)) in bits, where Z' = fold(Z) (default Z itself) and
+    Y = proj(next record) (default the record itself): H(Σ_z P(z) P(Y | z)) −
+    Σ_z P(z) H(Y | z). Fold merges owner classes (e.g. to held / none); proj
+    coarsens the record (e.g. to its kind). Both can only lower I."""
+    groups: Dict = {}
+    for z, (pz, dist) in by_z.items():
+        key = z if fold is None else fold(z)
+        g = groups.setdefault(key, [Fraction(0), {}])
+        g[0] += pz
+        for r, q in dist.items():
+            y = r if proj is None else proj(r)
+            g[1][y] = g[1].get(y, Fraction(0)) + pz * q
+    mix: Dict = {}
+    cond = 0.0
+    for w, d in groups.values():
+        for y, q in d.items():
+            mix[y] = mix.get(y, Fraction(0)) + q
+        cond += float(w) * _h_bits({y: q / w for y, q in d.items()})
+    h = _h_bits(mix)
+    return max(0.0, h - cond) if abs(h - cond) > 1e-12 else 0.0, h

@@ -1,0 +1,80 @@
+{
+  "corpus": "corpus/c1prime-loop-40-8-2-r3-eps1/b32b8f15767eae2f",
+  "rung": "r3",
+  "eps": "1",
+  "k": 7,
+  "split": "test",
+  "n": 30000,
+  "git": "c6b0da97dc466cd92cb8c794b4fef89b5e681c50+dirty",
+  "per_window": "/home/tony/.cache/yupi-scratch/probes/c1prime-loop-40-8-2-r3-eps1-k7-test-voi.jsonl",
+  "per_window_sha256": "26fae2bccd0cbac5fa3057de602317eba8eda175b0cec5190ebeb63948ec12ad",
+  "summary": {
+    "n_windows": 25558,
+    "n_classes": 15360,
+    "n_examples": 38926,
+    "n_uncertain": 0,
+    "frac_uncertain": 0.0,
+    "per_example": {
+      "h_next": 1.458273109795045,
+      "h_kind": 0.8727431987429229,
+      "i_owner": 0.0,
+      "i_held": 0.0,
+      "i_kind_owner": 0.0,
+      "i_kind_held": 0.0,
+      "h_owner": 0.0,
+      "p_lock": 0.19823870475463132,
+      "p_block": 0.06714352644398836,
+      "p_acquire": 0.024178108256398503,
+      "p_release": 0.10691707005424446
+    },
+    "per_uncertain_example": {
+      "h_next": null,
+      "h_kind": null,
+      "i_owner": null,
+      "i_held": null,
+      "i_kind_owner": null,
+      "i_kind_held": null,
+      "h_owner": null,
+      "p_lock": null,
+      "p_block": null,
+      "p_acquire": null,
+      "p_release": null
+    },
+    "per_determined_example": {
+      "h_next": 1.458273109795045,
+      "h_kind": 0.8727431987429229,
+      "i_owner": 0.0,
+      "i_held": 0.0,
+      "i_kind_owner": 0.0,
+      "i_kind_held": 0.0,
+      "h_owner": 0.0,
+      "p_lock": 0.19823870475463132,
+      "p_block": 0.06714352644398836,
+      "p_acquire": 0.024178108256398503,
+      "p_release": 0.10691707005424446
+    },
+    "per_window_summing_locks": {
+      "h_next": 1.5198688317176166,
+      "i_owner": 0.0,
+      "i_held": 0.0,
+      "i_kind_owner": 0.0,
+      "i_kind_held": 0.0,
+      "p_lock": 0.305089938768781,
+      "p_block": 0.10333408098520107
+    },
+    "max": {
+      "h_next": 3.7046974694300383,
+      "h_kind": 2.4398858072446568,
+      "i_owner": 0.0,
+      "i_held": 0.0,
+      "i_kind_owner": 0.0,
+      "i_kind_held": 0.0,
+      "h_owner": -0.0,
+      "p_lock": 1.0,
+      "p_block": 1.0,
+      "p_acquire": 1.0,
+      "p_release": 1.0
+    }
+  },
+  "wall_s": 258.5402355194092
+}

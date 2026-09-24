@@ -735,3 +735,184 @@ locks in the pattern observer's names) or ε = ½. The ownership hypothesis
 of §13 survives at r2 vs r3 in the form "the boundary state at r2 carries
 less of the lock's held/free status, even where the prefix determines it,"
 and fails for r4's basins.
+
+## 17. Need, not presence — and the per-window link (appended 2026-09-24 09:09 PDT, from `date` in the writing command, by the instance of 2026-09-23)
+
+§16 measured whether lock state is *present* at the record boundary. This section
+asks two companion questions from artifacts that already existed (probe design
+amendment v0.4): is the owner *worth holding* for the next record, exactly; and do
+the windows where the probe reads the lock's state worst coincide with the windows
+where the model over-pays on the record predicted from that same position.
+
+**17.1 Setup.** *Need:* `yupi.learner.probe.next_dist_by_owner` partitions the
+ceiling's next-record distribution by the owner class of the support point it came
+from; `mutual_information` gives I(next record; owner of l | prefix) = H(P*(next)) −
+Σ_z P*(z) H(P*(next | Z = z)), with the owner folded to held / none and the record
+coarsened to its kind as variants (`scripts/learner_probe_voi.py`, raws
+`learner-probe-voi-<cell>-k7-2026-09-24.json`, per-window rows under
+`~/.cache/yupi-scratch/probes/`, sha256 in the raw). Exactness gate: the weighted
+mixture of the conditionals equals `next_pattern_dist` as Fractions
+(tests/test_learner_probe.py). The same pass records the *relevance* of lock l where
+I is zero by construction: P*(record k+1 is on lock l) and P*(it is a BLOCK on l).
+*Link:* `scripts/learner_probe_owner.py --per-example` writes each eval example's
+soft-label CE on `held` at every layer; `scripts/learner_probe_link.py` joins the
+best layer's rows to the window census's per-window excess at k = 7 (§13; the
+census scores exactly the record predicted from p0) on the test-window index, and
+reports Spearman ρ, the mean excess in the top minus the bottom quartile of probe
+CE with a 200-draw permutation null, on all examples, on prefix-determined ones
+(probe CE is pure representational error there), on residuals after removing
+per-class means (windows of one class share the whole exact side), and between
+class means (≥ 3 windows). Raws `learner-probe-link-<cell>-seed<s>-held-2026-09-24.json`;
+tables from `scripts/learner_probe_link_summary.py`. Same 30k eval windows, same
+labels, same runs as §16.
+
+**17.2 Need.** Per window (summing the visible locks), bits:
+
+| cell | windows | (window, lock) | uncertain share | H(next) | I(next; owner) | I(next; held) | I(kind; owner) | I(kind; held) | uncertain ex.: I(next; owner) / H(owner) | P*(next on lock) | P*(BLOCK on lock) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| r2 | 25508 | 38818 | 0.333 | 1.596 | 0.121 | 0.048 | 0.046 | 0.021 | 0.236 / 0.726 | 0.303 | 0.102 |
+| r3 | 25558 | 38926 | 0.000 | 1.520 | 0.000 | 0.000 | 0.000 | 0.000 | — / — | 0.305 | 0.103 |
+| r4 | 25566 | 39038 | 0.000 | 1.518 | 0.000 | 0.000 | 0.000 | 0.000 | — / — | 0.308 | 0.105 |
+
+Readings:
+
+1. **At r2 the owner accounts for 0.121 of the ceiling's 1.596 bits of
+   next-record entropy per window, 7.6 %.** That is larger than the r2
+   model's whole excess at this position (0.074–0.120 bits per record across seeds,
+   §14) and three times the r2 − r1 gap (+0.036, §13). The information is not
+   negligible to the predictor. It is concentrated: zero on the two thirds of
+   (window, lock) examples the prefix determines, 0.236 bits per example on the
+   uncertain third (whose owner entropy is 0.726 bits).
+2. **Most of the owner's value is *which thread*, not *whether held*:** I(next; held)
+   is 0.048 of the 0.121. The identity of the owner carries 0.074 bits per
+   window that the held/free bit does not. §16 could only read the held bit at the
+   boundary; the thing the predictor would pay most for is the thing a
+   single-position probe cannot read (§16.1).
+3. **r3 and r4 are exactly zero** (no uncertain example among 39k; the gate the
+   amendment asked for). Their ceilings are lower than r2's by 0.076–0.077 bits
+   per window with a longer record; the exact side's version of "printing the owner
+   removes the uncertainty."
+4. **Relevance is a world property, not an interface property:** on every rung,
+   30 % of the ceiling's next-record mass is on an event on one of the visible
+   locks and 10 % on a BLOCK, to two decimals. Where the owner is determined,
+   the state still governs a third of what comes next.
+
+**17.3 Link.** On *all* windows the link is null at every grain. Pooled ρ(probe CE,
+excess) is +0.02 to +0.04 at r2 and about zero at r3 and r4; the pooled quartile
+gap at r2 (+0.03 to +0.06, p < 0.005) comes from the uncertain third, where probe CE
+carries the posterior's own entropy and the excess is higher for the same reason
+(0.11–0.16 against 0.07–0.13 bits); on the determined subset it is +0.005 to +0.016
+(p 0.10–0.25) except one (lock, seed) pair; after per-class residualization it is
+zero in 23 of 24 (lock, seed) pairs across the three cells, and between class means
+in 23 of 24. The per-window noise floor is the reason to expect this: the
+per-window excess has sd 0.42 bits at r2 and 0.34 at r3/r4 (§13 census raws)
+against effects of hundredths, and §13 already found that 75–85 % of it is the
+realized record's own spread.
+
+*Post hoc, and marked as such:* restricting to the windows whose realized record
+k + 1 is an event on lock l (ACQUIRE, BLOCK or RELEASE; 19–20 % of examples, the
+windows where the lock's state is what the prediction turns on) was added after the
+null above was read. On those windows (gaps in bits of mean excess, top minus
+bottom quartile of probe CE; p from the permutation null; bold at p ≤ 0.025; the
+training-count column removes means within 50 bins of log(1 + the class's
+frequency among the 1.70M training windows with ≥ 7 records,
+`scripts/learner_class_frequency.py`):
+
+| cell | lock | seed | layer | all determined: gap (p) | relevant n | relevant determined: gap (p) | … residual within training-count bins: gap (p) | within class: gap (p) | between classes: ρ (p) |
+|---|---|---|---|---|---|---|---|---|---|
+| r2-eps1 | 0 | 1 | 3 | +0.005 (0.24) | 4883 | **+0.045** (0.01) | **+0.062** (0.00) | +0.016 (0.20) | -0.064 (0.41) |
+| r2-eps1 | 0 | 2 | 3 | +0.011 (0.12) | 4883 | **+0.070** (0.00) | **+0.074** (0.00) | **+0.047** (0.00) | -0.043 (0.74) |
+| r2-eps1 | 0 | 3 | 4 | +0.011 (0.12) | 4883 | **+0.098** (0.00) | **+0.132** (0.00) | +0.014 (0.21) | +0.046 (0.19) |
+| r2-eps1 | 1 | 1 | 1 | **+0.041** (0.00) | 2757 | **+0.072** (0.00) | **+0.063** (0.01) | -0.016 (0.81) | **+0.224** (0.01) |
+| r2-eps1 | 1 | 2 | 3 | +0.016 (0.07) | 2757 | +0.043 (0.10) | +0.027 (0.20) | -0.016 (0.89) | **+0.201** (0.01) |
+| r2-eps1 | 1 | 3 | 4 | -0.021 (0.95) | 2757 | +0.043 (0.12) | +0.037 (0.14) | -0.018 (0.79) | +0.157 (0.23) |
+| r3-eps1 | 0 | 1 | 3 | -0.031 (1.00) | 4915 | +0.021 (0.11) | +0.024 (0.09) | -0.001 (0.55) | -0.000 (0.79) |
+| r3-eps1 | 0 | 2 | 2 | +0.003 (0.27) | 4915 | **+0.066** (0.00) | **+0.035** (0.01) | -0.018 (0.97) | **+0.135** (0.01) |
+| r3-eps1 | 0 | 3 | 2 | +0.006 (0.14) | 4915 | **+0.043** (0.00) | +0.011 (0.28) | +0.006 (0.28) | +0.106 (0.21) |
+| r3-eps1 | 1 | 1 | 2 | -0.032 (1.00) | 2787 | +0.022 (0.11) | +0.010 (0.34) | +0.001 (0.47) | -0.019 (0.33) |
+| r3-eps1 | 1 | 2 | 2 | -0.036 (1.00) | 2787 | -0.018 (0.82) | +0.021 (0.12) | -0.006 (0.76) | +0.028 (0.03) |
+| r3-eps1 | 1 | 3 | 2 | -0.036 (1.00) | 2787 | -0.038 (0.98) | -0.008 (0.69) | -0.030 (0.99) | -0.029 (0.82) |
+| r4-eps1 | 0 | 1 | 2 | **+0.011** (0.01) | 4898 | +0.027 (0.03) | +0.010 (0.27) | -0.004 (0.58) | +0.001 (0.79) |
+| r4-eps1 | 0 | 2 | 2 | -0.060 (1.00) | 4898 | +0.033 (0.08) | +0.019 (0.23) | +0.013 (0.22) | +0.021 (0.14) |
+| r4-eps1 | 0 | 3 | 3 | -0.006 (0.82) | 4898 | **+0.040** (0.01) | +0.019 (0.15) | +0.012 (0.20) | +0.047 (0.41) |
+| r4-eps1 | 0 | 4 | 3 | -0.000 (0.50) | 4898 | -0.008 (0.73) | **+0.030** (0.01) | -0.014 (0.93) | +0.109 (0.05) |
+| r4-eps1 | 0 | 5 | 2 | +0.011 (0.07) | 4898 | -0.003 (0.47) | +0.006 (0.34) | -0.010 (0.71) | -0.105 (0.94) |
+| r4-eps1 | 0 | 6 | 3 | +0.009 (0.07) | 4898 | **+0.039** (0.00) | +0.018 (0.12) | -0.026 (0.98) | +0.004 (0.51) |
+| r4-eps1 | 1 | 1 | 2 | -0.003 (0.65) | 2888 | **+0.040** (0.02) | **+0.037** (0.01) | -0.008 (0.80) | **+0.187** (0.01) |
+| r4-eps1 | 1 | 2 | 2 | -0.048 (1.00) | 2888 | **+0.083** (0.00) | +0.036 (0.09) | +0.005 (0.38) | **+0.131** (0.00) |
+| r4-eps1 | 1 | 3 | 2 | -0.008 (0.90) | 2888 | **+0.041** (0.02) | +0.033 (0.04) | -0.014 (0.88) | +0.203 (0.04) |
+| r4-eps1 | 1 | 4 | 3 | -0.017 (0.99) | 2888 | **+0.049** (0.00) | +0.028 (0.05) | -0.001 (0.53) | **+0.229** (0.01) |
+| r4-eps1 | 1 | 5 | 2 | -0.012 (0.88) | 2888 | -0.033 (0.91) | +0.005 (0.43) | -0.003 (0.57) | -0.002 (0.66) |
+| r4-eps1 | 1 | 6 | 2 | +0.005 (0.23) | 2888 | -0.009 (0.71) | +0.017 (0.22) | +0.002 (0.46) | -0.057 (0.89) |
+
+| cell | (lock, seed) pairs | relevant determined gap > 0 | p ≤ 0.025 | … after training-count residualization: gap > 0 | p ≤ 0.025 | within-class p ≤ 0.025 | between-class ρ > 0.1 and p ≤ 0.025 |
+|---|---|---|---|---|---|---|---|
+| r2-eps1 | 6 | 6 | 4 | 6 | 4 | 1 | 2 |
+| r3-eps1 | 6 | 4 | 2 | 5 | 1 | 0 | 1 |
+| r4-eps1 | 12 | 8 | 6 | 12 | 2 | 0 | 3 |
+
+Readings on the relevant windows:
+
+5. **At r2 the association is positive in every (lock, seed) pair** on the
+   determined relevant windows, +0.043 to +0.098 bits between the top and bottom
+   probe-CE quartiles, significant at p ≤ 0.025 in four of six, against mean
+   excesses of 0.08–0.17 bits on those windows: the quartile where the boundary
+   activation carries the lock's held/free status worst pays roughly half again
+   to twice what the best quartile pays. At r4, eight of twelve positive, six
+   significant, concentrated on lock 1 in seeds 1–4 (+0.040 to +0.083). At r3,
+   four of six positive, two significant, none on lock 1.
+6. **It is a between-class association.** Within class it survives in one pair of
+   twenty-four. Between class means it is carried by lock 1: ρ = +0.22 / +0.20 /
+   +0.16 at r2 (p 0.01, 0.01, 0.23) and +0.19 / +0.13 / +0.20 / +0.23 at r4 seeds
+   1–4 (p 0.01, 0.00, 0.04, 0.01), and about zero for lock 0 everywhere. Read plainly: prefix classes
+   whose boundary state carries the second lock's status poorly are classes where
+   the model over-pays on that lock's next event. The lock 0 / lock 1 asymmetry is
+   unexplained here (lock 1 is the later-appearing lock, with fewer examples and,
+   at r2, more posterior mass on an unseen owner).
+7. **r4's basins do not separate on this either:** seed 2 (high) shows the lock-1
+   link, seed 5 (high) shows nothing; low seeds 1, 3, 4 show it and seed 6 does not.
+
+8. **The training-frequency confound runs the other way.** Across the 24 (lock,
+   seed) pairs on the relevant determined windows, the class's log training count
+   correlates *positively* with probe CE (median ρ +0.09, range −0.06 to +0.20) and
+   *negatively* with excess (median −0.08, range −0.15 to +0.03): frequent prefixes
+   are predicted better and read *worse* by the linear probe. A shared-difficulty
+   story would need both signs the same. Residualizing both sides on 50 bins of
+   log count leaves the r2 association intact (6 of 6 positive, 4 significant;
+   lock 0 gaps +0.062 / +0.074 / +0.132 at p ≤ 0.005) and the r4 lock-1 gaps
+   positive but at p 0.01–0.09; r3 stays null (5 of 6 positive, 1 significant).
+
+**17.4 What this does and does not say.** The need is now quantified: at r2 the
+owner is worth 8 % of the ceiling's next-record entropy, more than the model's whole
+excess, and most of that value is the owner's identity rather than the held bit;
+lock state governs 30 % of the next record's mass on every rung. The presence
+deficit of §16 and the excess of §13 co-occur in the same cell, and on the windows
+where the lock's state is what the prediction turns on, the windows and classes
+where the boundary carries less of it are the ones where the model pays more. None
+of this is causal (§8.5 patching is not done). The relevant-window restriction was
+chosen after the pre-specified all-window test came back null, and is reported as
+exploratory. The probe's CE is a linear lower bound on accessibility, not the
+model's operative error. The association lives between classes, so a third variable
+that makes a prefix class both harder to represent and harder to predict would
+produce it; the obvious candidate, the class's frequency in the training corpus,
+is controlled (reading 8) and has the wrong sign to be it. Other class properties
+are not controlled. The per-window noise floor (sd 0.34–0.42 bits) means a
+within-class effect of a few hundredths would not be seen at this n.
+
+**17.5 What follows, in my order.** (a) The which-thread readout (v0.4 proper) now
+has a need argument: 0.073 of the 0.121 bits is identity, which the boundary does
+not hold, so it reads at an entity token's position with a positive control there.
+(b) Causal patching is the only route from this association to a mechanism. (c) The
+owed GPU items, through the lease.
+
+Ledger: `yupi.learner.probe.next_dist_by_owner`, `mutual_information`;
+`scripts/learner_probe_voi.py`, `learner_probe_owner.py --per-example`,
+`learner_probe_link.py`, `learner_probe_link_summary.py`, `learner_class_frequency.py`; tests
+`tests/test_learner_probe.py` (+1), `tests/test_learner_probe_link.py` (6); raw
+prefixes `learner-probe-voi`, `learner-probe-link` registered as non-measurement;
+raws `learner-probe-voi-r{2,3,4}-eps1-k7-2026-09-24.json`,
+`learner-probe-owner-<cell>-seed<s>-held-2026-09-24.json` (the §16 held probes
+refit with per-example rows; best-layer OIRs agree with the 09-23 raws to within 0.01, L-BFGS on CPU),
+`learner-probe-link-<cell>-seed<s>-held-2026-09-24.json`; per-window,
+per-example and class-frequency rows under `~/.cache/yupi-scratch/probes/`
+(sha256 in the raws).
