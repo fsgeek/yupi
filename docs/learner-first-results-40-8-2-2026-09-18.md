@@ -1382,6 +1382,30 @@ observer's mean residual uncertainty about the next kind at that k.
    orders the *representation* monotonically; at the output (§10, §14) the order is
    not monotone.
 
+**21.2 The other seeds at k = 1 and k = 4 (appended 2026-09-24 17:33 PDT, from `date` in the writing command).**
+Raws `learner-belief-kind-<cell>-seed<s>-k{1,4}-2026-09-24.json` for every seed not in 21.1.
+
+At k = 1 every one of the 15 runs has OIR 1.000 at layers 1, 3 and 4 (KL_repr at layer 3
+0.0001–0.0002 bits): reading 5's first sentence holds for every seed. At k = 4:
+
+| cell | seeds | k = 4: OIR L1 per seed | L3 per seed | L4 range | KL_repr L3 range | KL_out range |
+|---|---|---|---|---|---|---|
+| r1 | 3 | 0.921 / 0.920 / 0.913 | 0.991 / 0.973 / 0.987 | 0.997–0.998 | 0.0113–0.0337 | 0.0034–0.0040 |
+| r2 | 3 | 0.909 / 0.908 / 0.907 | 0.986 / 0.979 / 0.911 | 0.997–0.998 | 0.0178–0.1143 | 0.0041–0.0058 |
+| r3 | 3 | 0.886 / 0.887 / 0.882 | 0.979 / 0.969 / 0.955 | 0.997–0.998 | 0.0275–0.0596 | 0.0037–0.0042 |
+| r4 | 6 | 0.872 / 0.876 / 0.870 / 0.876 / 0.875 / 0.879 | 0.981 / 0.932 / 0.954 / 0.972 / 0.899 / 0.951 | 0.991–0.998 | 0.0258–0.1335 | 0.0040–0.0124 |
+
+8. **The layer-1 interface ordering is seed-resolved at k = 4 as at k = 7:** r1
+   0.913–0.921 > r2 0.907–0.909 > r3 0.882–0.887 > r4 0.870–0.879, no overlap. It is
+   present as soon as the belief stops being exactly linear (k ≥ 2) and grows with k
+   (the r1 − r4 gap is 0.04 at k = 4 and 0.06 at k = 7).
+9. **The depth-of-formation signature of the poor seeds (reading 3) is already
+   visible at k = 4:** layer-3 OIR 0.911 at r2 seed 3, 0.899 / 0.932 at r4 seeds 5 / 2,
+   against 0.95–0.99 for the others, with KL_repr at layer 3 three to five times the
+   good seeds' while KL_out differs by much less (0.0058 / 0.0059 / 0.0124 against
+   0.0034–0.0046). Whatever the poor solutions do differently, they do it from short
+   context on, and the last block hides most of it from the output.
+
 ## 22. The size axis with the learning rate swept (appended 2026-09-24 13:48 PDT, from `date` in the writing command, by the instance of 2026-09-23)
 
 §11 refused to read the size axis at a fixed recipe: d = 64 and d = 256 were both
