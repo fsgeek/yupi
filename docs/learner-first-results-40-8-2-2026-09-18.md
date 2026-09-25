@@ -1454,3 +1454,37 @@ Readings:
 
 What this does not say: one seed per off-recipe point; no run longer than five
 epochs yet; the size axis remains a statement about this recipe and budget.
+
+**22.1 Budget, not rate (appended 2026-09-24 17:40 PDT, from `date` in the writing command).** The
+follow-up chain (`~/.cache/yupi-scratch/runs/gpu/gpu_2026-09-24b.sh`, three leases):
+d = 64 at lr 3e-4 closed the last open bracket — 0.275 at k = 7, worse than 1e-3's
+0.155 for the same seed — so **lr = 1e-3 is the best of the swept rates at every width,
+bracketed from both sides at all three.** Then the same recipe at lr 1e-3 for 15
+epochs (117,195 steps, cosine over the longer run) at every width, seed 1, all
+evaluated on the test split (raws `learner-eval-r1-eps1-2M-d<d>-lr1e-3-e15-seed1-2026-09-24.json`):
+
+| width (params) | 5 epochs (39k steps): k = 7 excess / KIND KL / ACTOR / k = 1 | 15 epochs (117k steps): k = 7 excess / KIND KL / ACTOR / k = 1 | ratio 5 → 15 |
+|---|---|---|---|
+| d = 64 (223k) | 0.155 / 0.054 / 0.101 / 0.0106 | **0.088** / 0.029 / 0.061 / 0.0076 | ×1.75 |
+| d = 128 (839k) | 0.064 / 0.024 / 0.040 / 0.0044 | **0.047** / 0.016 / 0.031 / 0.0029 | ×1.37 |
+| d = 256 (3.25M) | 0.155 / 0.113 / 0.043 / 0.0074 | **0.070** / 0.026 / 0.044 / 0.0031 | ×2.23 |
+
+5. **Every width improves with three times the steps, the wide model most:** d = 256
+   halves its excess (0.155 → 0.070), d = 64 drops ×1.75, d = 128 ×1.37. §11's
+   suspicion that d = 256 was under-trained at 5 epochs is confirmed, and reading 4's
+   "under-training looks like too fast a rate" with it: the KIND KL that carried
+   d = 256's excess falls from 0.113 to 0.026.
+6. **The axis stays non-monotone at matched budget:** 0.088 / 0.047 / 0.070 at
+   d = 64 / 128 / 256 after 15 epochs. The wide model is closer to the middle one
+   than at 5 epochs (×1.5 against ×2.4) but has not passed it, and its k = 1 excess
+   is again the lowest of the three. Whether it would pass at 30 or 45 epochs, or
+   whether d = 128 is the optimum for this world at this data volume, is the open
+   question; one seed per point, and the budget axis now has two points.
+7. **What this licenses for RQ5.** The size axis can be read at matched budget as
+   "d = 128 best, d = 256 second, d = 64 third at 15 epochs, seed 1", with the
+   caveat that the wide model's curve has not flattened. Any capacity claim needs
+   seeds 2–3 at 15 epochs and at least one longer point for d = 256 — about 3.5
+   GPU-hours through the lease.
+
+The card was returned after each lease; three leases today, seven and a half hours
+of the 4090 in all.
