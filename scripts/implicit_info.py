@@ -35,7 +35,8 @@ def run_cell(args):
         per[m] = out.pop("per_class")
         rows[m] = out
     CACHE.mkdir(parents=True, exist_ok=True)
-    path = CACHE / f"c1prime-loop-40-8-2-{tag}-k{k}{'-kind' if tgt == 'kind' else ''}.jsonl"
+    msuf = "" if ms == (1, 2) else "-m" + "".join(map(str, ms))   # the default name is the committed k7 raws' cache
+    path = CACHE / f"c1prime-loop-40-8-2-{tag}-k{k}{'-kind' if tgt == 'kind' else ''}{msuf}.jsonl"
     with open(path, "w") as f:
         for key in table:
             f.write(json.dumps({"k": serial_key(key), **{f"iota_{m}": per[m][key] for m in ms}}) + "\n")
