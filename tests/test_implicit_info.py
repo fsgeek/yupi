@@ -74,3 +74,22 @@ def test_coarsening_merges_seen_earlier_and_fresh():
     out = implicit_info(table, m=1)
     assert out["H_star"] == pytest.approx(1.0)
     assert out["H_bar"] == pytest.approx(0.0)
+
+
+def test_kind_target_drops_naming_and_keeps_state_history():
+    # Both classes end in DISPATCH 0 and the next KIND differs by history: 1 bit each on KIND,
+    # while a pure renaming difference (same kind) gives zero on the KIND target.
+    table = {
+        (False, (R("IO_ISSUE", 0), R("DISPATCH", 0))): (F(1, 2), {R("STEP", 0): F(1)}),
+        (False, (R("BLOCK", 0), R("DISPATCH", 0))): (F(1, 2), {R("IDLE"): F(1)}),
+    }
+    out = implicit_info(table, m=1, target=lambda r: r.kind)
+    assert out["mean_iota_kl"] == pytest.approx(1.0)
+    renamed = {
+        (False, (R("DISPATCH", 0), R("DISPATCH", 1))): (F(1, 2), {R("DISPATCH", 0): F(1)}),
+        (False, (R("DISPATCH", 1), R("DISPATCH", 0))): (F(1, 2), {R("DISPATCH", 2): F(1)}),
+    }
+    whole = implicit_info(renamed, m=1)
+    kind = implicit_info(renamed, m=1, target=lambda r: r.kind)
+    assert whole["mean_iota_kl"] == pytest.approx(0.0)   # both map to "fresh thread" from the suffix view
+    assert kind["mean_iota_kl"] == pytest.approx(0.0) and kind["H_star"] == pytest.approx(0.0)

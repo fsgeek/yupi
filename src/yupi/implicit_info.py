@@ -37,10 +37,13 @@ def _kl(q: Dict[Record, Fraction], p: Dict[Record, Fraction]) -> float:
     return sum(float(a) * (log2(float(a)) - log2(float(p[r]))) for r, a in q.items() if a > 0)
 
 
-def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = False) -> dict:
+def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = False, target=None) -> dict:
     """{per_class: {key: ι_m}, H_star, H_bar, H_m, mean_iota_kl, mean_iota_ent,
     identity_diff, n_classes, n_groups, mass, mass_frac_iota_gt}; means are
-    law-mass means normalized by the table's total mass."""
+    law-mass means normalized by the table's total mass. `target`, if given,
+    maps each (suffix-keyed) next record to the quantity predicted — e.g.
+    `lambda r: r.kind` for the naming-free common target; H_star is then the
+    full-prefix entropy of that target."""
     groups: Dict[tuple, list] = {}
     laws: Dict[tuple, Dict[Record, Fraction]] = {}
     total = Fraction(0)
@@ -49,13 +52,17 @@ def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = Fals
         _, pw = key
         s, beta = suffix_view(pw, m)
         q: Dict[Record, Fraction] = {}
+        full: Dict = {}
         for rho, p in star.items():
             r, _ = extend_binding(beta, rho)
+            if target is not None:
+                full[target(rho)] = full.get(target(rho), Fraction(0)) + p
+                r = target(r)
             q[r] = q.get(r, Fraction(0)) + p
         laws[key] = q
         groups.setdefault(s, []).append(key)
         total += mass
-        h_star += float(mass) * _h(star)
+        h_star += float(mass) * _h(full if target is not None else star)
     per_class: Dict[tuple, float] = {}
     h_bar = h_m = mean_kl = gt = 0.0
     for s, keys in groups.items():
