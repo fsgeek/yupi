@@ -12,6 +12,27 @@
 > will be appended in the ledger: the per-position curves (k = 1..7) and a
 > 40-epoch convergence follow-up. Written by the instance of 2026-09-18.
 
+> **Corrections in force (2026-09-28, by the instance of 2026-09-28; found by the
+> paper-1 audit, `docs/paper1-skeleton-v0.1.md`, and reproduced here before adoption).**
+> (C1) §3 reading 4 says the pattern ceilings of r3 and r4 are "the same to three
+> decimals at every k". That is a rounding of values sitting next to each other. At
+> full precision **r4's ceiling is above r3's at every k = 1..7 and both ε**, by
+> 5e-6 to 3.9e-4 bits (k = 7: +3.3e-4 at ε = 1, +1.1e-4 at ε = ½;
+> `pattern-ceilings-40-8-2-k*-2026-09-18.json`). The r4 record has one more field to
+> predict (bound or fresh lineage), so **each rung's ceiling is the entropy of a
+> different target.** The ten-cell "ceiling ladder" in next-record entropy is not by
+> itself an observability ladder. A comparison of observability across rungs has to use
+> a common target, such as the KIND field or the r0 projection.
+> (C2) §17.2's "0.121 bits per window" is a **sum of per-lock** mutual informations
+> I(next; owner_l | prefix) over the visible locks. It is not I(next; all owners |
+> prefix), and it is averaged over the 25,508 windows that have a visible lock. Reading
+> 1's comparisons ("larger than the model's whole excess", "three times the r2 − r1
+> gap") set a per-window, summed, subset quantity against per-record excesses on the
+> whole k = 7 base. They are not on one base and are withdrawn as comparisons. The
+> ceiling drop that printing the owner actually delivers (r2 → r3, reading 3) is
+> 0.076–0.077 bits per window, and it also includes RELATED. §17's other readings
+> stand.
+
 ## 1. Setup, in one paragraph
 
 Decoder-only transformer, 838,940 parameters (d = 128, 4 layers, 4 heads,
@@ -93,7 +114,8 @@ everywhere: the model learned the ¼ / ⅓ / ½ endpoint rule.
    same run but runs that converge (§5).
 4. **r4 is worse than r3 for the learner although their ceilings are
    identical.** The pattern observer's $H^\star$ is the same at r3 and r4 to
-   three decimals at every k and both ε (`pattern-ceilings-40-8-2-k*`):
+   three decimals at every k and both ε (`pattern-ceilings-40-8-2-k*`) *[corrected
+   2026-09-28, see (C1) at the top: at full precision r4 is higher at every k]*:
    lineage adds nothing a naming-blind observer can use. The model at r4
    pays 0.44–0.75 bits against 0.38 at r3. Part of this is arithmetic —
    at r4 the lineage field is a fifth pattern value to predict (bound or
@@ -779,7 +801,8 @@ Readings:
 1. **At r2 the owner accounts for 0.121 of the ceiling's 1.596 bits of
    next-record entropy per window, 7.6 %.** That is larger than the r2
    model's whole excess at this position (0.074–0.120 bits per record across seeds,
-   §14) and three times the r2 − r1 gap (+0.036, §13). The information is not
+   §14) and three times the r2 − r1 gap (+0.036, §13) *[both comparisons withdrawn
+   2026-09-28, see (C2) at the top: 0.121 is a per-lock sum on a subset, per window]*. The information is not
    negligible to the predictor. It is concentrated: zero on the two thirds of
    (window, lock) examples the prefix determines, 0.236 bits per example on the
    uncertain third (whose owner entropy is 0.726 bits).
