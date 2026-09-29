@@ -69,14 +69,15 @@ def windows(census_raw, m_long):
     for line in open(CACHE / f"c1prime-loop-40-8-2-{tag}-k{k}-kind-m123456.jsonl"):
         d = json.loads(line)
         iota[d["k"]] = (d["iota_1"], d[f"iota_{m_long}"])
-    hk = {}
-    for key, (_, star) in load_table(TABLES / f"c1prime-loop-40-8-2-{tag}-k{k}.jsonl").items():
+    hk, lm = {}, {}
+    for key, (mass, star) in load_table(TABLES / f"c1prime-loop-40-8-2-{tag}-k{k}.jsonl").items():
         kd = {}
         for r, p in star.items():
             kd[r.kind] = kd.get(r.kind, 0.0) + float(p)
         hk[serial_key(key)] = -sum(p * log2(p) for p in kd.values() if p > 0)
+        lm[serial_key(key)] = log2(float(mass))
     id_of, key_of = {}, {}
-    y, lo, sh, h = [], [], [], []
+    y, lo, sh, h, f = [], [], [], [], []
     for r in rows:
         toks = tuple(VOCAB[t] for t in split[r["i"]][0])
         reset, recs = surface_records(toks)
@@ -84,26 +85,31 @@ def windows(census_raw, m_long):
         if id_of.setdefault(key, r["key"]) != r["key"] or key_of.setdefault(r["key"], key) != key:
             raise SystemExit(f"GATE: class id mismatch at window {r['i']} in {census_raw}")
         i1, im = iota[key]
-        y.append(r["by_field"]["kind"]); lo.append(im); sh.append(i1 - im); h.append(hk[key])
-    return c, tuple(np.asarray(v) for v in (y, lo, sh, h))
+        y.append(r["by_field"]["kind"]); lo.append(im); sh.append(i1 - im); h.append(hk[key]); f.append(lm[key])
+    return c, tuple(np.asarray(v) for v in (y, lo, sh, h, f))
 
 
-def analyse(y, lo, sh, h):
+def analyse(y, lo, sh, h, f):
     X = np.column_stack([np.ones(len(y)), lo, sh, h])
     b, se = ols_hc1(y, X)
+    Xf = np.column_stack([np.ones(len(y)), lo, sh, h, f])
+    bf, sef = ols_hc1(y, Xf)
     Xl = np.column_stack([np.ones(len(y)), lo])
     bl, sel = ols_hc1(y, Xl)
     return {"n": int(len(y)), "mean_excess": float(y.mean()),
             "full": {"terms": ["1", "iota_long", "iota_short", "H_kind"], "beta": b.tolist(), "se": se.tolist()},
             "long_only": {"beta": bl.tolist(), "se": sel.tolist()},
+            "full_plus_log2_class_mass": {"terms": ["1", "iota_long", "iota_short", "H_kind", "log2_law_mass"],
+                                          "beta": bf.tolist(), "se": sef.tolist()},
+            "corr_iota_long_log2_mass": float(np.corrcoef(lo, f)[0, 1]),
             "deciles_by_iota_long": deciles(y, lo, h)}
 
 
 def run_one(args):
     census_raw, m_long = args
-    c, (y, lo, sh, h) = windows(census_raw, m_long)
+    c, (y, lo, sh, h, f) = windows(census_raw, m_long)
     return {"census_raw": census_raw, "rung": c["rung"], "eps": c["eps"], "seed": c["seed"],
-            **analyse(y, lo, sh, h)}, (c["rung"], c["eps"], y, lo, sh, h)
+            **analyse(y, lo, sh, h, f)}, (c["rung"], c["eps"], y, lo, sh, h, f)
 
 
 def main():
@@ -116,20 +122,22 @@ def main():
     with ProcessPoolExecutor(max_workers=len(raws)) as ex:
         res = list(ex.map(run_one, [(r, a.m_long) for r in raws]))
     runs, pooled_in = [r for r, _ in res], {}
-    for _, (rung, eps, y, lo, sh, h) in res:
-        pooled_in.setdefault((rung, eps), []).append((y, lo, sh, h))
+    for _, (rung, eps, y, lo, sh, h, f) in res:
+        pooled_in.setdefault((rung, eps), []).append((y, lo, sh, h, f))
     pooled = []
     for (rung, eps), parts in sorted(pooled_in.items()):
-        cat = [np.concatenate([p[i] for p in parts]) for i in range(4)]
+        cat = [np.concatenate([p[i] for p in parts]) for i in range(5)]
         pooled.append({"rung": rung, "eps": eps, "seeds": len(parts), **analyse(*cat)})
     for r in runs + pooled:
         f = r["full"]
         t = [bb / ss for bb, ss in zip(f["beta"], f["se"])]
         lab = f"{r['rung']} eps={r['eps']} " + (f"s{r['seed']}" if "seed" in r else f"POOLED×{r['seeds']}")
-        d = r["deciles_by_iota_long"]
-        print(f"{lab:22} n={r['n']:6} β_long={f['beta'][1]:+.4f} (t {t[1]:+.1f}) β_short={f['beta'][2]:+.4f} "
-              f"(t {t[2]:+.1f}) β_H={f['beta'][3]:+.4f} (t {t[3]:+.1f}) | decile excess "
-              + " ".join(f"{q['mean_excess']:.3f}" for q in d), flush=True)
+        g = r["full_plus_log2_class_mass"]
+        tg = [bb / ss for bb, ss in zip(g["beta"], g["se"])]
+        print(f"{lab:22} n={r['n']:6} β_long={f['beta'][1]:+.4f} (t {t[1]:+.1f}) β_H={f['beta'][3]:+.4f} (t {t[3]:+.1f}) "
+              f"| +log2 mass: β_long={g['beta'][1]:+.4f} (t {tg[1]:+.1f}) β_short={g['beta'][2]:+.4f} (t {tg[2]:+.1f}) "
+              f"β_H={g['beta'][3]:+.4f} (t {tg[3]:+.1f}) β_mass={g['beta'][4]:+.4f} (t {tg[4]:+.1f}) "
+              f"corr(ι_long, log mass)={r['corr_iota_long_log2_mass']:+.2f}", flush=True)
     git = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()
     dirty = subprocess.run(["git", "status", "--porcelain", "src", "scripts"], capture_output=True, text=True).stdout.strip()
     json.dump({"status": "EXPLORATORY (paper-1 readiness item 3, all windows)", "git": git + ("+dirty" if dirty else ""),
