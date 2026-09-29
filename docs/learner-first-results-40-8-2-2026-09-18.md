@@ -1511,3 +1511,35 @@ evaluated on the test split (raws `learner-eval-r1-eps1-2M-d<d>-lr1e-3-e15-seed1
 
 The card was returned after each lease; three leases today, seven and a half hours
 of the 4090 in all.
+
+## 23. The size axis at matched budget, three seeds (appended 2026-09-28 23:20 PDT, from `date` in the prior command, by the instance of 2026-09-28)
+
+§22.1's owed items, run through the lease (`scripts/learner_gpu_2026-09-28.sh`, a981d72;
+four runs sharing the card; interrupted by a host crash at ~11:22 PDT and resumed from
+checkpoints, which the resume gate makes exact; the two affected logs each lack one
+validation line, originals kept as `log.jsonl.crash-2026-09-28`). r1 ε = 1, 2M windows,
+lr 1e-3 → 1e-4, k = 7 structural excess; seed 1 from §22.1, seeds 2–3 new
+(raws `learner-eval-r1-eps1-2M-d<d>-lr1e-3-e<E>-seed<s>-2026-09-2*.json`):
+
+| width | 15 epochs: seed 1 / 2 / 3 | mean (sd) | KIND KL per seed |
+|---|---|---|---|
+| d = 64 | 0.088 / 0.075 / 0.077 | **0.080** (0.007) | 0.029 / 0.023 / 0.023 |
+| d = 128 | 0.047 / 0.045 / 0.047 | **0.046** (0.0014) | 0.016 / 0.015 / 0.015 |
+| d = 256 | 0.070 / 0.073 / 0.066 | **0.069** (0.004) | 0.026 / 0.034 / 0.025 |
+| d = 256, 45 epochs | 0.064 (seed 1) | — | 0.020 |
+
+1. **The size axis is non-monotone and seed-resolved at matched budget:** every d = 128
+   seed (0.045–0.047) is below every d = 256 seed (0.066–0.073), which is below every
+   d = 64 seed (0.075–0.088).
+2. **Three times the steps does not rescue the wide model:** d = 256 at 45 epochs
+   (0.064) is still above every d = 128 seed at 15. At this data volume and recipe,
+   d = 128 is the best of the three widths; the wide model's deficit is not only budget.
+3. **The between-seed spread closes with budget:** r1 d = 128 goes from 0.052–0.064
+   (sd 0.007) at 5 epochs to 0.045–0.047 (sd 0.0014) at 15. The seed counts §3
+   derived from 5-epoch spreads are therefore too pessimistic; re-derive them at the
+   converged budget (paper-1 skeleton, readiness item 5).
+4. **Budget choice for the converged ladder:** d = 128, 15 epochs, pending one d = 128
+   point at 30–45 epochs to show the curve has flattened there.
+
+Scope (paper-1 skeleton D4): this is a budget control for the ladder, not a capacity
+claim; one rung, one data volume.
