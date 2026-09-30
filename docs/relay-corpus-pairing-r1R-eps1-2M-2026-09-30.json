@@ -1,0 +1,61 @@
+{
+ "design": "docs/relay-intervention-design-v0.1.md \u00a72 item 4",
+ "r1": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d",
+ "r1R": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d",
+ "git": "ae74c1b7474507bc77ef0f9568bf435312676e6a",
+ "manifests": {
+  "differing_fields": [
+   "git_commit",
+   "rung"
+  ],
+  "rungs": [
+   "r1",
+   "r1R"
+  ],
+  "passed": true
+ },
+ "splits": [
+  {
+   "split": "train",
+   "n_r1": 2000000,
+   "n_r1R": 2000000,
+   "lengths_equal": true,
+   "tables_identical": true,
+   "drop_relay_equals_r1": true,
+   "relay_recomputed_equal": true,
+   "n_windows_with_a_kind_relay": 1900230,
+   "passed": true
+  },
+  {
+   "split": "val",
+   "n_r1": 10000,
+   "n_r1R": 10000,
+   "lengths_equal": true,
+   "tables_identical": true,
+   "drop_relay_equals_r1": true,
+   "relay_recomputed_equal": true,
+   "n_windows_with_a_kind_relay": 9475,
+   "passed": true
+  },
+  {
+   "split": "test",
+   "n_r1": 100000,
+   "n_r1R": 100000,
+   "lengths_equal": true,
+   "tables_identical": true,
+   "drop_relay_equals_r1": true,
+   "relay_recomputed_equal": true,
+   "n_windows_with_a_kind_relay": 95091,
+   "passed": true
+  }
+ ],
+ "class_coverage_k7": {
+  "k": 7,
+  "table": "/home/tony/.cache/yupi-scratch/ceilings/c1prime-loop-40-8-2-r1R-eps1-k7.jsonl",
+  "n_windows": 84949,
+  "missing_classes": 0,
+  "relayed_class_mismatch": 0,
+  "passed": true
+ },
+ "all_passed": true
+}
