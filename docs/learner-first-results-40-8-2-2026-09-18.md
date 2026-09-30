@@ -1543,3 +1543,9 @@ lr 1e-3 → 1e-4, k = 7 structural excess; seed 1 from §22.1, seeds 2–3 new
 
 Scope (paper-1 skeleton D4): this is a budget control for the ladder, not a capacity
 claim; one rung, one data volume.
+
+**23.1 Flattened (appended 2026-09-30, by the instance of 2026-09-28/29).** d = 128, seed 1, 45 epochs
+(351,585 steps; raw `learner-eval-r1-eps1-2M-d128-lr1e-3-e45-seed1-2026-09-28.json`, date tag
+from the launch script): k = 7 excess **0.0476** (KIND KL 0.0143) against 0.0469 (0.0161) at 15
+epochs. Three times the steps changes nothing beyond the seed spread (sd 0.0014). **The converged
+budget for the ladder re-run is d = 128 × 15 epochs** (§23 item 4 discharged).
