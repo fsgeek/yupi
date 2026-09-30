@@ -90,7 +90,7 @@ def gate_c(progname, eps_s, k):
     t = ceiling_table(cfg, progs, law, ("r1", "r1R"), prefix_len=k)
     derived = derive_relay_table(t["r1"])
     row = dict(programs=progname, eps=eps_s, k=k, n_classes=len(derived),
-               recursion_equal=(derived == t["r1R"]), **{f"gate_{g}": v for g, v in relay_gates(t["r1"], derived).items()
+               recursion_equal=(derived == t["r1R"]), **{g: v for g, v in relay_gates(t["r1"], derived).items()
                                                         if g in ("gate_A_kind", "gate_B_record")})
     if k is None:
         from yupi.pattern_enumerator import relay_table_by_paths
@@ -98,11 +98,11 @@ def gate_c(progname, eps_s, k):
     return row
 
 
-def lag_job(eps):
+def lag_job(eps, k=7):
     """Lag profile at r1 and r1ʀ (k = 7, KIND target) and the per-class Δι_kind,4."""
     t0 = time.time()
-    r1 = load_table(TABLES / f"c1prime-loop-40-8-2-r1-{_tag(eps)}-k7.jsonl")
-    rr = load_table(TABLES / f"c1prime-loop-40-8-2-r1R-{_tag(eps)}-k7.jsonl")
+    r1 = load_table(TABLES / f"c1prime-loop-40-8-2-r1-{_tag(eps)}-k{k}.jsonl")
+    rr = load_table(TABLES / f"c1prime-loop-40-8-2-r1R-{_tag(eps)}-k{k}.jsonl")
     kind = lambda r: r.kind
     prof, per, mix4 = {}, {}, {}
     for name, table in (("r1", r1), ("r1R", rr)):
@@ -115,13 +115,13 @@ def lag_job(eps):
             prof[name][m] = out
     RELAY.mkdir(parents=True, exist_ok=True)
     IMPLICIT.mkdir(parents=True, exist_ok=True)
-    per_path = IMPLICIT / f"c1prime-loop-40-8-2-r1R-{_tag(eps)}-k7-kind-m123456.jsonl"
+    per_path = IMPLICIT / f"c1prime-loop-40-8-2-r1R-{_tag(eps)}-k{k}-kind-m123456.jsonl"
     if per_path.exists():
         raise SystemExit(f"refusing to overwrite {per_path}")
     with open(per_path, "w") as f:
         for key in rr:
             f.write(json.dumps({"k": serial_key(key), **{f"iota_{m}": per["r1R"][m][key] for m in MS}}) + "\n")
-    d_path = RELAY / f"c1prime-loop-40-8-2-r1R-{_tag(eps)}-k7-kind-diota4.jsonl"
+    d_path = RELAY / f"c1prime-loop-40-8-2-r1R-{_tag(eps)}-k{k}-kind-diota4.jsonl"
     if d_path.exists():
         raise SystemExit(f"refusing to overwrite {d_path}")
     (s1, mx1), (sr, mxr) = mix4["r1"], mix4["r1R"]
