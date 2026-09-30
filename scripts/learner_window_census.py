@@ -6,7 +6,9 @@ excess at prefix length k (contract v0.1.2 evaluator; yupi.learner.census).
       [--per-window ~/.cache/yupi-scratch/census/<run>-k<k>-<split>.jsonl] \\
       --raw docs/learner-window-census-<cell>-seed<s>-<date>.json
 
-One evaluator pass at the one k. Every scored window's excess (structural,
+One evaluator pass at the one k. The rung is the corpus manifest's: at the relay
+rung r1ʀ ("r1R") the OBJECT slot's term is by_field "relay" (relay pre-registration
+v0.1), separate from "kind"; at r0–r4 the per-window file is unchanged. Every scored window's excess (structural,
 by field, naming) and its ceiling-table class go to the per-window file
 (cache, sha256 recorded in the raw); the raw carries the summary: mean
 (must equal the cell's learner-eval raw), quantiles, negative share, the
@@ -27,6 +29,7 @@ import torch
 from yupi.corpus.manifest import Manifest
 from yupi.corpus.vocab import VOCAB
 from yupi.corpus.writer import read_split
+from yupi.interfaces import Lit
 from yupi.learner.census import summarize
 from yupi.learner.evaluate import evaluate, surface_records, torch_logprobs_fn
 from yupi.learner.model import Decoder, ModelConfig
@@ -47,6 +50,8 @@ def _ent(v):
         return "-"
     if v == "MASKED":
         return "#"
+    if isinstance(v, Lit):                       # the relay rung's literal (a KIND name)
+        return f"<{v.kind}>"
     if isinstance(v, tuple):
         return f"{v[0][0]}{v[1]}" if isinstance(v[1], int) else str(v[1])
     return f"t{v}" if isinstance(v, int) else str(v)
@@ -68,9 +73,15 @@ def class_label(key) -> str:
     return " ".join(parts)
 
 
-def render_window(toks, k):
+def _third(by_field):
+    """The OBJECT slot's term for the printout: "obj" at r0–r4, "relay" at r1R."""
+    name = "relay" if "relay" in by_field else "obj"
+    return f"{name} {by_field[name]:.2f}"
+
+
+def render_window(toks, k, rung=None):
     """The window's records as strings, the (k+1)-th marked as the one predicted."""
-    reset, recs = surface_records(toks)
+    reset, recs = surface_records(toks, rung)
     out = ["RESET"] if reset else []
     for j, r in enumerate(recs):
         s = f"{r.kind} {_ent(r.actor)} {_ent(r.obj)} {_ent(r.related)} {_ent(r.lineage)}"
@@ -113,7 +124,7 @@ def main(argv=None):
 
     t0 = time.time()
     r = evaluate(torch_logprobs_fn(model, a.device), str(corpus_dir), law, {k: table}, (k,),
-                 run_json["model"]["n_pos"], n=a.n, split=a.split, on_window=on_window)
+                 run_json["model"]["n_pos"], n=a.n, split=a.split, on_window=on_window, rung=m.rung)
     labels = {cid: class_label(key) for key, cid in keys.items()}
     s = summarize(rows, top=a.top)
     for c in s["classes"]:
@@ -124,7 +135,7 @@ def main(argv=None):
         toks = tuple(VOCAB[t] for t in toks)
         w["label"] = labels[w["key"]]
         w["episode"], w["T"], w["U"] = tab["episode"], tab["T"], tab["U"]
-        w["records"] = render_window(toks, k)
+        w["records"] = render_window(toks, k, m.rung)
 
     per_window = a.per_window or os.path.expanduser(f"~/.cache/yupi-scratch/census/{run.name}-k{k}-{a.split}.jsonl")
     Path(per_window).parent.mkdir(parents=True, exist_ok=True)
@@ -146,11 +157,11 @@ def main(argv=None):
     print(f"classes {s['n_classes']}; top by summed excess:")
     for c in s["classes"][:10]:
         print(f"  share {c['share']:.3f}  n {c['n']:6d}  mean {c['mean']:.3f} ± {c['se']:.3f}  "
-              f"kind {c['by_field']['kind']:.2f} actor {c['by_field']['actor']:.2f} obj {c['by_field']['obj']:.2f}  {c['label']}")
+              f"kind {c['by_field']['kind']:.2f} actor {c['by_field']['actor']:.2f} {_third(c['by_field'])}  {c['label']}")
     print("worst windows:")
     for w in s["worst"][:5]:
         print(f"  #{w['i']} ep {w['episode']} T={w['T']} excess {w['structural']:.2f} "
-              f"(kind {w['by_field']['kind']:.2f} actor {w['by_field']['actor']:.2f} obj {w['by_field']['obj']:.2f})")
+              f"(kind {w['by_field']['kind']:.2f} actor {w['by_field']['actor']:.2f} {_third(w['by_field'])})")
         for line in w["records"]:
             print("     " + line)
     if a.raw:

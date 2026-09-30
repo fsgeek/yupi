@@ -19,7 +19,10 @@ predicted), from ONE forward pass over the window:
             event is scored separately.
 
   structural_bits  Σ_j log2 P*(ρ_j | ρ_<j) − log2 P̃_M(ρ_j | surface prefix)
-  structural_by_field  the five terms of that sum, reported per field (kind, actor, obj, related, lineage)
+  structural_by_field  the five terms of that sum, reported per field (kind, actor, obj, related, lineage);
+                   at the relay rung r1ʀ ("r1R") the OBJECT slot carries the relay (a KIND
+                   literal, interfaces.Lit) and its term is reported as "relay", never as "obj"
+                   and never inside "kind" (relay pre-registration v0.1, frozen analysis)
   naming_bits      Σ_{fresh j} [ −log2 n_unused_j − (log2 P_M(tok_j) − log2 P̃_M(ρ_j)) ]
   token_bits       model token cost − ceiling token cost over the five fields (given
                    continuation) == structural_bits + naming_bits, algebraically
@@ -30,13 +33,19 @@ predicted), from ONE forward pass over the window:
   end_total_bits   per window, the sum over every boundary (continue at k = 1..n−1, end at n):
                    its mean is the KL of the end-of-window process and is ≥ 0 in expectation
 
+The rung is the corpus manifest's (`evaluate` reads it); a caller may pass it, and a
+disagreement is refused. At r1R a KIND token in the OBJECT slot is a Lit; at every other
+rung it is an error.
+
 Means over windows are estimates of the corresponding expected KLs (the
 realized record is a sample from P*(· | Πw)); standard deviations and
 standard errors are reported with every mean (contract §2.4).
 """
 from __future__ import annotations
 
+import json
 import math
+from pathlib import Path
 from fractions import Fraction
 from typing import Sequence, Callable, Dict, Iterable, List, Optional, Tuple
 
@@ -44,7 +53,7 @@ import numpy as np
 
 from yupi.corpus.vocab import ENTITY_TYPES, KINDS, MASKED, NONE, PAD, POOL_SIZES, RESERVED, RESET, TOKEN_ID, VOCAB, pool_tokens, token_type
 from yupi.corpus.writer import read_split
-from yupi.interfaces import MASKED as REC_MASKED
+from yupi.interfaces import MASKED as REC_MASKED, RELAY_RUNGS, Lit
 from yupi.learner.data import BOS, frame
 from yupi.naming import pattern_all
 from yupi.pattern_ceiling import Table
@@ -58,6 +67,18 @@ DRAWABLE_IDS = {et: np.array(sorted(TOKEN_ID[t] for t in DRAWABLE[et])) for et i
 KIND_IDS = np.array([TOKEN_ID[k] for k in KINDS if k != RESET])
 PAD_ID = TOKEN_ID[PAD]
 FIELDS = ("kind", "actor", "obj", "related", "lineage")
+RELAY_FIELDS = ("kind", "actor", "relay", "related", "lineage")     # reported names at a relay rung
+KIND_TOKENS = frozenset(KINDS)
+
+
+def field_names(rung: Optional[str]) -> Tuple[str, ...]:
+    """The five reported field names at a rung: FIELDS, or RELAY_FIELDS at a relay rung."""
+    return RELAY_FIELDS if rung in RELAY_RUNGS else FIELDS
+
+
+def manifest_rung(corpus_dir) -> str:
+    """The rung recorded in a corpus directory's manifest.json."""
+    return json.loads((Path(corpus_dir) / "manifest.json").read_text())["rung"]
 
 
 class MissingClass(KeyError):
@@ -74,9 +95,18 @@ def _entity(tok: str):
     return tok
 
 
-def surface_records(tokens: Iterable[str]) -> Tuple[bool, Tuple[Record, ...]]:
+def surface_records(tokens: Iterable[str], rung: Optional[str] = None) -> Tuple[bool, Tuple[Record, ...]]:
     """(reset flag, records) from a window's surface tokens; entity fields hold
-    the surface TOKENS, so `pattern_all` yields the window's Π directly."""
+    the surface TOKENS, so `pattern_all` yields the window's Π directly.
+
+    `rung` (the corpus manifest's) decides the OBJECT slot's reading: at a relay
+    rung (r1R) it must be a KIND token (-> interfaces.Lit) or NONE; at any other
+    given rung a KIND token there is an error. With no rung (callers that predate
+    the relay, among them the frozen scripts/implicit_info_bintest.py, which cannot
+    pass one) a KIND token in the OBJECT slot is read as a Lit: that is the only
+    reading it has in any corpus, and no r0–r4 corpus contains one, so their
+    records are unchanged."""
+    relay = rung in RELAY_RUNGS
     toks = list(tokens)
     reset = bool(toks) and toks[0] == RESET
     if reset:
@@ -86,7 +116,13 @@ def surface_records(tokens: Iterable[str]) -> Tuple[bool, Tuple[Record, ...]]:
     out = []
     for i in range(0, len(toks), 5):
         kind, a, o, rel, lin = toks[i:i + 5]
-        if o == MASKED:
+        if o in KIND_TOKENS:
+            if rung is not None and not relay:
+                raise ValueError(f"a KIND token {o!r} in the OBJECT slot at rung {rung!r}")
+            obj = Lit(o)
+        elif relay and o != NONE:
+            raise ValueError(f"the relay slot at rung {rung!r} holds {o!r}, not a KIND or NONE")
+        elif o == MASKED:
             obj = REC_MASKED
         elif o == NONE:
             obj = None
@@ -185,9 +221,11 @@ def kl_bits_vec(p: np.ndarray, q: np.ndarray) -> float:
 
 # ---- the model side ----------------------------------------------------------------
 
-def _consistent_ids(field: str, tok: str, used: Dict[str, set]) -> Tuple[np.ndarray, Optional[int], Optional[str]]:
-    """(token ids consistent with the field's pattern value, n_unused if fresh else None, entity type or None)."""
-    if field == "kind" or tok in (MASKED, NONE):
+def _consistent_ids(field: str, tok: str, used: Dict[str, set],
+                    relay: bool = False) -> Tuple[np.ndarray, Optional[int], Optional[str]]:
+    """(token ids consistent with the field's pattern value, n_unused if fresh else None, entity type or None).
+    With `relay`, the OBJECT slot's KIND token is a literal: its one token."""
+    if field == "kind" or tok in (MASKED, NONE) or (relay and field == "obj" and tok in KIND_TOKENS):
         return np.array([TOKEN_ID[tok]]), None, None
     et = token_type(tok)
     if et not in ENTITY_TYPES:
@@ -206,24 +244,27 @@ def _logsumexp(a: np.ndarray) -> float:
 
 
 def window_excess(lp5: np.ndarray, next_tokens: Tuple[str, ...], used: Dict[str, set],
-                  star: Dict[Record, Fraction], rho: Record) -> dict:
+                  star: Dict[Record, Fraction], rho: Record, rung: Optional[str] = None) -> dict:
     """The five-field excesses for one realized next record. `lp5` is [5, 156]
     natural-log softmax at the five positions predicting `next_tokens`;
-    `used` is mutated: the record's fresh tokens are added as they occur."""
+    `used` is mutated: the record's fresh tokens are added as they occur.
+    At a relay rung the OBJECT slot is the relay literal, reported as "relay"."""
+    relay = rung in RELAY_RUNGS
+    names = field_names(rung)
     ceil = field_ceiling(star, rho)
     structural = naming = ceiling_tok = model_tok = 0.0
     by_field = {}
-    for j, (f, tok) in enumerate(zip(FIELDS, next_tokens)):
+    for j, (f, name, tok) in enumerate(zip(FIELDS, names, next_tokens)):
         lp = lp5[j]
         if f == "kind":                                  # given continuation: renormalize over non-PAD
             cont = _logsumexp(np.delete(lp, PAD_ID))
             lp = lp - cont
-        ids, n_unused, et = _consistent_ids(f, tok, used)
+        ids, n_unused, et = _consistent_ids(f, tok, used, relay)
         lp_pat = _logsumexp(lp[ids])                     # log P̃_M(pattern value)
         lp_tok = float(lp[TOKEN_ID[tok]])                # log P_M(realized token)
         c = math.log2(float(ceil[j]))
-        by_field[f] = c - lp_pat / LOG2
-        structural += by_field[f]
+        by_field[name] = c - lp_pat / LOG2
+        structural += by_field[name]
         ceiling_tok += -c
         model_tok += -lp_tok / LOG2
         if n_unused is not None:
@@ -263,7 +304,8 @@ def _stats(xs: List[float]) -> dict:
 def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: WindowLaw,
              tables: Dict[int, Table], k_list: Iterable[int], seq_len: int, n: Optional[int] = None,
              batch: int = 512, split: str = "test",
-             on_window: Optional[Callable[[int, int, tuple, dict], None]] = None) -> dict:
+             on_window: Optional[Callable[[int, int, tuple, dict], None]] = None,
+             rung: Optional[str] = None) -> dict:
     """Per k: statistics of the per-window excesses over the split's windows
     that have at least k + 1 records. `logprobs_fn(inputs[N, seq_len]) ->
     [N, seq_len, 156]` natural-log softmax; position p predicts window
@@ -271,14 +313,21 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
     coerced; the window is skipped for that k. `on_window(i, k, key, ex)`,
     if given, is called once per scored (window index, k) with the window's
     ceiling-table key and its per-window excess dict (structural_by_field
-    included) — the aggregates below are built from exactly these values."""
+    included) — the aggregates below are built from exactly these values.
+    The rung is the corpus manifest's; a `rung` argument that disagrees with it
+    is refused (ValueError)."""
+    m_rung = manifest_rung(corpus_dir)
+    if rung is not None and rung != m_rung:
+        raise ValueError(f"rung {rung!r} disagrees with the corpus manifest's {m_rung!r}")
+    rung = m_rung
+    names = field_names(rung)
     rows = read_split(corpus_dir, split)
     if n is not None:
         rows = rows[:n]
     windows = [tuple(VOCAB[t] for t in w) for w, _ in rows]
     per_k = {k: {key: [] for key in ("structural_bits", "naming_bits", "token_bits", "kind_kl_bits",
                                      "ceiling_token_bits", "model_token_bits", "end_bits")} for k in k_list}
-    by_field = {k: {f: [] for f in FIELDS} for k in k_list}
+    by_field = {k: {f: [] for f in names} for k in k_list}
     missing = {k: 0 for k in k_list}
     too_short = {k: 0 for k in k_list}
     final_end, end_total = [], []
@@ -287,7 +336,7 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
         x, _, _ = frame([tuple(TOKEN_ID[t] for t in w) for w in chunk], seq_len)
         lp = logprobs_fn(x)
         for i, toks in enumerate(chunk):
-            reset, recs = surface_records(toks)
+            reset, recs = surface_records(toks, rung)
             off = 1 if reset else 0
             n_rec = len(recs)
             for k in k_list:
@@ -307,7 +356,7 @@ def evaluate(logprobs_fn: Callable[[np.ndarray], np.ndarray], corpus_dir, law: W
                     if tt in ENTITY_TYPES:
                         used[tt].add(t)
                 p0 = off + 5 * k
-                ex = window_excess(lp[i, p0:p0 + 5], tuple(toks[p0:p0 + 5]), used, star, rho)
+                ex = window_excess(lp[i, p0:p0 + 5], tuple(toks[p0:p0 + 5]), used, star, rho, rung)
                 ex["end_bits"] = end_excess(lp[i, p0], False, pattern_end_probability(law, k, reset))
                 if on_window is not None:
                     on_window(b0 + i, k, key, dict(ex))

@@ -31,11 +31,14 @@ def summarize(rows: Sequence[dict], top: int = 20) -> dict:
                      quantiles={str(q): float(np.quantile(xs, q)) for q in QUANTILES},
                      tail_share={str(p): float(xs[order[:max(1, math.ceil(p * n))]].sum() / total) if total else None
                                  for p in TAIL})
+    # the rows' own field names, in their order: FIELDS at r0–r4; at the relay rung
+    # r1R the OBJECT slot is reported as "relay" (yupi.learner.evaluate.RELAY_FIELDS)
+    fields = tuple(rows[0]["by_field"]) if n else FIELDS
     by_class: Dict = {}
     for r, x in zip(rows, xs):
-        c = by_class.setdefault(r["key"], dict(key=r["key"], xs=[], fields={f: 0.0 for f in FIELDS}))
+        c = by_class.setdefault(r["key"], dict(key=r["key"], xs=[], fields={f: 0.0 for f in fields}))
         c["xs"].append(float(x))
-        for f in FIELDS:
+        for f in fields:
             c["fields"][f] += float(r["by_field"][f])
     classes = []
     for c in by_class.values():
@@ -44,7 +47,7 @@ def summarize(rows: Sequence[dict], top: int = 20) -> dict:
         classes.append(dict(key=c["key"], n=m, mean=float(a.mean()),
                             se=float(a.std(ddof=1) / math.sqrt(m)) if m > 1 else 0.0,
                             sum=float(a.sum()), share=float(a.sum() / total) if total else None,
-                            by_field={f: c["fields"][f] / m for f in FIELDS}))
+                            by_field={f: c["fields"][f] / m for f in fields}))
     classes.sort(key=lambda c: -c["sum"])
     out["n_classes"] = len(classes)
     out["classes"] = classes[:top]

@@ -1,0 +1,46 @@
+{
+ "what": "no-regression gate for the relay-aware evaluator/census (relay prereg v0.1 frozen analysis): r1 eps=1 2M seed 1 re-censused on CPU at k=7 with the new code, to new per-window paths and raw names",
+ "reference_raw": "docs/learner-window-census-r1-eps1-2M-seed1-2026-09-21.json",
+ "reference_per_window_sha256": "e51674263efada7617bb1f511888f5508669a989e486305dd6484eb8decf4040",
+ "runs": [
+  {
+   "top": 20,
+   "raw": "/home/tony/.cache/yupi-scratch/relay/census-gate/census-regate-r1-eps1-2M-seed1-2026-09-30.json",
+   "raw_sha256": "341f64f1152ff2c3e0f9e67e957b3795477e4cdaf79341351030f5102bdf62d2",
+   "per_window_file": "/home/tony/.cache/yupi-scratch/relay/census-gate/r1-eps1-2M-s1-k7-test-regate-2026-09-30.jsonl",
+   "per_window_sha256": "e51674263efada7617bb1f511888f5508669a989e486305dd6484eb8decf4040",
+   "per_window_byte_identical": true,
+   "aggregate_equal": true,
+   "checkpoint_sha256_equal": true,
+   "table_sha256_equal": true,
+   "keys_differing_from_reference": [
+    "git",
+    "per_window_file",
+    "summary",
+    "wall_s"
+   ],
+   "git": "216f8fcfbd660ee369522cd264bcc37ecf3b9dcd+dirty",
+   "wall_s": 82.28170537948608
+  },
+  {
+   "top": 30,
+   "raw": "/home/tony/.cache/yupi-scratch/relay/census-gate/census-regate-top30-r1-eps1-2M-seed1-2026-09-30.json",
+   "raw_sha256": "0a4f9062f3bf3537fe626edf052d343a01d0ea2d1eeac920786a8f04b212b0ae",
+   "per_window_file": "/home/tony/.cache/yupi-scratch/relay/census-gate/r1-eps1-2M-s1-k7-test-regate-top30-2026-09-30.jsonl",
+   "per_window_sha256": "e51674263efada7617bb1f511888f5508669a989e486305dd6484eb8decf4040",
+   "per_window_byte_identical": true,
+   "aggregate_equal": true,
+   "checkpoint_sha256_equal": true,
+   "table_sha256_equal": true,
+   "keys_differing_from_reference": [
+    "git",
+    "per_window_file",
+    "wall_s"
+   ],
+   "git": "216f8fcfbd660ee369522cd264bcc37ecf3b9dcd+dirty",
+   "wall_s": 83.1593120098114
+  }
+ ],
+ "note": "the reference census was run with --top 30; the top-20 run's summary lists are the reference's first 20 entries; the top-30 run's raw differs from the reference only in git, per_window_file and wall_s",
+ "passed": true
+}
