@@ -38,7 +38,7 @@ from yupi.corpus.vocab import ENTITY_TYPES, RESERVED, VOCAB, pool_tokens
 from yupi.corpus.windows import deserialize
 from yupi.corpus.writer import generate, read_split
 from yupi.enumerator import paths
-from yupi.interfaces import project
+from yupi.interfaces import project_window
 from yupi.naming import pattern, quotient
 from yupi.programs import c1_programs
 from yupi.queries import state_entropy_bits
@@ -47,6 +47,18 @@ from yupi.window import WindowLaw, endpoint_prior
 LAW = WindowLaw(8, 4, 2)
 PINNED_HQ = {(Fraction(1), "r1"): 0.6238, (Fraction(1), "r3"): 0.4565,
              (Fraction(1, 2), "r1"): 1.3078, (Fraction(1, 2), "r3"): 1.1287}   # tests/test_naming_bridge.py
+# the relay rung's classes are r1's relayed, one to one, with the same (state, binding) joints
+# (relay design v0.1 §3), so its pinned H(q | Πw) is r1's
+PINNED_HQ[(Fraction(1), "r1R")] = PINNED_HQ[(Fraction(1), "r1")]
+PINNED_HQ[(Fraction(1, 2), "r1R")] = PINNED_HQ[(Fraction(1, 2), "r1")]
+DEFAULT_CELLS = [(Fraction(1), "r1"), (Fraction(1), "r3"), (Fraction(1), "r4"), (Fraction(1, 2), "r1"), (Fraction(1, 2), "r3")]
+
+
+def parse_cells(spec):
+    """'1:r1R,1/2:r1R' -> [(ε, rung)]; None -> the default five cells."""
+    if spec is None:
+        return DEFAULT_CELLS
+    return [(Fraction(e), r) for e, r in (c.split(":") for c in spec.split(","))]
 
 
 def exact_pattern_aggregate(cfg, progs, law, rung):
@@ -56,7 +68,7 @@ def exact_pattern_aggregate(cfg, progs, law, rung):
     for T in law.endpoints():
         u = law.offset(T)
         for recs, prob, final in paths(cfg, progs, T):
-            pw, order = pattern(tuple(project(r, rung) for r in recs[u:]))
+            pw, order = pattern(project_window(recs[u:], rung))
             d = agg.setdefault((u == 0, pw), {})
             d[(final, order)] = d.get((final, order), Fraction(0)) + w_T * prob
     return agg
@@ -138,10 +150,11 @@ def main(argv=None) -> int:
     ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) // 2))
     ap.add_argument("--root", default=os.path.expanduser("~/.cache/yupi-scratch/corpus-gate"))
     ap.add_argument("--out")
+    ap.add_argument("--cells", help="e.g. 1:r1R,1/2:r1R (default: the five pinned cells)")
     a = ap.parse_args(argv)
     date = subprocess.check_output(["date", "+%Y-%m-%d"], text=True).strip()
     out = Path(a.out or f"docs/corpus-gate-8-4-2-{date}.json")
-    cells = [(Fraction(1), "r1"), (Fraction(1), "r3"), (Fraction(1), "r4"), (Fraction(1, 2), "r1"), (Fraction(1, 2), "r3")]
+    cells = parse_cells(a.cells)
     reports = []
     for eps, rung in cells:
         r = run_gate(eps, rung, a.n, a.root, a.workers)

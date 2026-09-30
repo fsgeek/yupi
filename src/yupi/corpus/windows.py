@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from yupi.corpus.rendering import EpisodeTable, render, unrender
 from yupi.corpus.vocab import RESET
-from yupi.interfaces import project
+from yupi.interfaces import project_window
 from yupi.simulator import sample_episode
 from yupi.window import WindowLaw
 
@@ -42,7 +42,7 @@ def draw_window(cfg, programs, law: WindowLaw, rung: str, run_key: bytes, episod
     episode = sample_episode(cfg, programs, law.T_ep, episode_id)
     T = draw_endpoint(run_key, episode_id, law)
     U = law.offset(T)
-    return Window(episode_id, T, U, rung, tuple(project(r, rung) for _, r in episode[U:T]))
+    return Window(episode_id, T, U, rung, project_window([r for _, r in episode[U:T]], rung))
 
 
 def max_tokens(law: WindowLaw) -> int:

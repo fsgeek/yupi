@@ -14,7 +14,8 @@ import hmac
 import random
 from dataclasses import dataclass
 
-from yupi.corpus.vocab import ENTITY_TYPES, MASKED, NONE, RESERVED, pool_tokens
+from yupi.corpus.vocab import ENTITY_TYPES, KINDS, MASKED, NONE, RESERVED, pool_tokens
+from yupi.interfaces import Lit
 from yupi.records import Record
 
 
@@ -92,7 +93,9 @@ def _tok(v, names: tuple) -> str:
 
 def render(rec: Record, table: EpisodeTable) -> tuple:
     """Five tokens: KIND ACTOR OBJECT RELATED LINEAGE (Part I D5)."""
-    if rec.obj == MASKED:
+    if isinstance(rec.obj, Lit):                     # the relay rung: a KIND token in the OBJECT slot
+        obj = rec.obj.kind
+    elif rec.obj == MASKED:
         obj = MASKED
     elif rec.obj is None:
         obj = NONE
@@ -120,7 +123,9 @@ def unrender(tokens: tuple, table: EpisodeTable) -> Record:
         raise ValueError("a record is exactly five tokens (Part I D5)")
     inv = table.inverse()
     kind, actor, obj, related, lineage = tokens
-    if obj == MASKED:
+    if obj in KINDS:                                 # the relay rung's literal (never an entity token)
+        o = Lit(obj)
+    elif obj == MASKED:
         o = MASKED
     elif obj == NONE:
         o = None

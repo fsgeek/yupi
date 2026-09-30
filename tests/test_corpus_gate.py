@@ -43,3 +43,24 @@ def test_committed_gate_raw_passed_at_1e6():
         assert c["g3_reserved_hits"] == 0
         if c["g4_hq_pinned"] is not None:
             assert abs(c["g4_hq_hat"] - c["g4_hq_pinned"]) <= 0.01
+
+
+def test_exact_pattern_aggregate_r1R_is_the_relayed_r1_aggregate():
+    """Relay design v0.1 §3 on the gate's own construction: the r1ʀ exact aggregate is
+    the r1 one with each class relayed (same 207 classes, same (state, binding) joints)."""
+    from yupi.config import WorldConfig
+    from yupi.interfaces import relay_window
+    from yupi.programs import c1_programs
+    from yupi.window import WindowLaw
+    cfg, progs, law = WorldConfig.c1(), c1_programs(), WindowLaw(8, 4, 2)
+    r1 = Gt.exact_pattern_aggregate(cfg, progs, law, "r1")
+    rr = Gt.exact_pattern_aggregate(cfg, progs, law, "r1R")
+    assert len(rr) == 207
+    assert rr == {(reset, relay_window(pw)): v for (reset, pw), v in r1.items()}
+    assert Gt.PINNED_HQ[(Fraction(1), "r1R")] == Gt.PINNED_HQ[(Fraction(1), "r1")]
+    assert Gt.PINNED_HQ[(Fraction(1, 2), "r1R")] == Gt.PINNED_HQ[(Fraction(1, 2), "r1")]
+
+
+def test_cells_option_parses():
+    assert Gt.parse_cells("1:r1R,1/2:r1R") == [(Fraction(1), "r1R"), (Fraction(1, 2), "r1R")]
+    assert Gt.parse_cells(None) == Gt.DEFAULT_CELLS

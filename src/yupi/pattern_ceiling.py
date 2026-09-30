@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import Dict, Iterable, Tuple
 
 from yupi.config import WorldConfig
-from yupi.interfaces import MASKED, project
+from yupi.interfaces import MASKED, RELAY_RUNGS, Lit, project, relay_next, relay_window
 from yupi.kernel import enabled
 from yupi.naming import ENTITY_ORDER, extend_binding, pattern_all
 from yupi.queries import entropy_bits
@@ -49,27 +49,40 @@ def ceiling_table(cfg: WorldConfig, programs, law: WindowLaw, rungs: Iterable[st
                   stats: dict = None, types=ENTITY_ORDER, prefix_len: int = None) -> Dict[str, Table]:
     """{rung: {(reset, Πw): (law mass, P*(Πr | Πw))}}. With `prefix_len = k`
     the classes are k-record prefixes (contract v0.1.2: the headline
-    position k = L − 1 and the interior curve), from the prefix-length pass."""
+    position k = L − 1 and the interior curve), from the prefix-length pass.
+
+    A window-level rung (`interfaces.RELAY_RUNGS`, e.g. "r1R") is computed
+    from its base rung's aggregate with the relay applied to each STRUCTURAL
+    window before pattern keying, and to each next record given that window
+    — the independent route of relay design v0.1 §3 (gate C); the base
+    rungs' tables are unaffected."""
     rungs = tuple(rungs)
+    bases = tuple(dict.fromkeys(RELAY_RUNGS.get(r, r) for r in rungs))
     if prefix_len is None:
-        aggs = window_law_aggregates(cfg, programs, law, rungs, stats)
+        aggs = window_law_aggregates(cfg, programs, law, bases, stats)
     else:
-        aggs = prefix_law_aggregates(cfg, programs, law, prefix_len, rungs, stats)
+        aggs = prefix_law_aggregates(cfg, programs, law, prefix_len, bases, stats)
     out: Dict[str, Table] = {}
     for rung in rungs:
+        base = RELAY_RUNGS.get(rung, rung)
+        relay = rung in RELAY_RUNGS
         patt: Dict[Key, Dict[tuple, Fraction]] = {}
-        for (reset, win), joint in aggs[rung].items():
-            pw, binding = pattern_all(win, types)
+        for (reset, win), joint in aggs[base].items():
+            pw, binding = pattern_all(relay_window(win) if relay else win, types)
+            tag = (binding, win) if relay else binding
             d = patt.setdefault((reset, pw), {})
             for s, m in joint.items():
-                d[(s, binding)] = d.get((s, binding), Fraction(0)) + m
+                d[(s, tag)] = d.get((s, tag), Fraction(0)) + m
         moves: dict = {}
         table: Table = {}
         for key, joint in patt.items():
             mass = sum(joint.values(), Fraction(0))
             star: Dict[Record, Fraction] = {}
-            for (s, b), m in joint.items():
-                for r, p in _moves(s, cfg, programs, rung, moves):
+            for (s, tag), m in joint.items():
+                b, win = tag if relay else (tag, None)
+                for r, p in _moves(s, cfg, programs, base, moves):
+                    if relay:
+                        r = relay_next(win, r)
                     rho, _ = extend_binding(b, r, types)
                     star[rho] = star.get(rho, Fraction(0)) + m * p
             table[key] = (mass, {rho: q / mass for rho, q in star.items()})
@@ -77,6 +90,63 @@ def ceiling_table(cfg: WorldConfig, programs, law: WindowLaw, rungs: Iterable[st
         if stats is not None:
             stats.setdefault("n_pattern_classes", {})[rung] = len(table)
     return out
+
+
+# ---- the relay rung's tables by the push-forward (relay design v0.1 §3) -------------
+
+def derive_relay_table(table: Table) -> Table:
+    """r1ʀ table from an r1 table: each class (reset, Πw) maps to (reset,
+    relay(Πw)) and each next record ρ to relay_next(Πw, ρ). Both maps are
+    injective (dropping the relay inverts them), so masses carry over and
+    P*(· | class) is pushed forward without merging; a collision would be a
+    bug and is refused."""
+    out: Table = {}
+    for (reset, pw), (mass, star) in table.items():
+        key = (reset, relay_window(pw))
+        if key in out:
+            raise ValueError(f"relay class collision at {key!r}")
+        nstar: Dict[Record, Fraction] = {}
+        for rho, q in star.items():
+            r = relay_next(pw, rho)
+            if r in nstar:
+                raise ValueError(f"relay next-record collision at {key!r}: {r!r}")
+            nstar[r] = q
+        out[key] = (mass, nstar)
+    return out
+
+
+def relay_gates(base: Table, relayed: Table) -> dict:
+    """Gates A and B of relay design v0.1 §4, exact: for every base class c and
+    its relayed class, equal law mass, equal KIND marginal (A), and equal
+    multiset of next-record probabilities (B, which fixes H* per class); and
+    the relayed table has no class outside the image of the base table."""
+    def kinds(star):
+        k: Dict[str, Fraction] = {}
+        for r, q in star.items():
+            k[r.kind] = k.get(r.kind, Fraction(0)) + q
+        return k
+    a_ok = b_ok = mass_ok = True
+    missing, first_a, first_b = 0, None, None
+    image = set()
+    for (reset, pw), (mass, star) in base.items():
+        key = (reset, relay_window(pw))
+        image.add(key)
+        if key not in relayed:
+            missing += 1
+            continue
+        m2, s2 = relayed[key]
+        mass_ok &= (m2 == mass)
+        if kinds(star) != kinds(s2):
+            a_ok = False
+            first_a = first_a or serial_key(key)
+        if sorted(star.values()) != sorted(s2.values()):
+            b_ok = False
+            first_b = first_b or serial_key(key)
+    extra = sum(1 for k in relayed if k not in image)
+    ok = not missing and not extra and mass_ok
+    return {"n_classes": len(base), "n_relayed_classes": len(relayed), "missing": missing, "extra": extra,
+            "mass_equal": mass_ok, "gate_A_kind": ok and a_ok, "gate_B_record": ok and b_ok,
+            "first_A_failure": first_a, "first_B_failure": first_b}
 
 
 def mean_next_entropy_bits(table: Table) -> float:
@@ -90,6 +160,8 @@ def mean_next_entropy_bits(table: Table) -> float:
 def _f(v) -> str:
     if v is None:
         return "NONE"
+    if isinstance(v, Lit):
+        return "K:" + v.kind
     if v == MASKED:
         return "MASKED"
     if isinstance(v, tuple):
@@ -103,6 +175,8 @@ def _v(s: str):
         return None
     if s == "MASKED":
         return MASKED
+    if s.startswith("K:"):
+        return Lit(s[2:])
     if s[0] in "LD" and s[1:].isdigit():
         return ("LOCK" if s[0] == "L" else "DEV", int(s[1:]))
     return int(s)

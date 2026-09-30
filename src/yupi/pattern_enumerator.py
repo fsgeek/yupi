@@ -14,7 +14,7 @@ from typing import Dict, Optional, Tuple
 
 from yupi.config import WorldConfig
 from yupi.enumerator import paths
-from yupi.interfaces import project
+from yupi.interfaces import project, relay_next, relay_window
 from yupi.naming import ENTITY_ORDER, extend_binding, pattern_all
 from yupi.records import Record
 from yupi.window import WindowLaw, endpoint_prior
@@ -54,4 +54,26 @@ def next_pattern_aggregate_by_paths(cfg: WorldConfig, programs, law: WindowLaw, 
             rho, _ = extend_binding(binding, project(recs[T], rung), types)
             d = out.setdefault((u == 0, pw), {})
             d[rho] = d.get(rho, Fraction(0)) + w_T * prob
+    return out
+
+
+def relay_table_by_paths(cfg: WorldConfig, programs, law: WindowLaw, base: str = "r1", types=ENTITY_ORDER):
+    """{(reset, Πw): (mass, P*(Πr | Πw))} for FULL windows of the relay rung r1ʀ
+    by path summation (relay design v0.1 §3, gate C): trajectories to T + 1, the
+    window projected to `base` and relayed structurally, the next record relayed
+    given that window, both re-keyed by Π_all. Never runs the kernel on a posterior."""
+    w_T = endpoint_prior(law)
+    joint: Dict[Tuple[bool, tuple], Dict[Record, Fraction]] = {}
+    for T in law.endpoints():
+        u = law.offset(T)
+        for recs, prob, _ in paths(cfg, programs, T + 1):
+            win = tuple(project(r, base) for r in recs[u:T])
+            pw, binding = pattern_all(relay_window(win), types)
+            rho, _ = extend_binding(binding, relay_next(win, project(recs[T], base)), types)
+            d = joint.setdefault((u == 0, pw), {})
+            d[rho] = d.get(rho, Fraction(0)) + w_T * prob
+    out = {}
+    for key, d in joint.items():
+        mass = sum(d.values(), Fraction(0))
+        out[key] = (mass, {r: q / mass for r, q in d.items()})
     return out

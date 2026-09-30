@@ -37,13 +37,16 @@ def _kl(q: Dict[Record, Fraction], p: Dict[Record, Fraction]) -> float:
     return sum(float(a) * (log2(float(a)) - log2(float(p[r]))) for r, a in q.items() if a > 0)
 
 
-def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = False, target=None) -> dict:
+def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = False, target=None,
+                  keep_mix: bool = False) -> dict:
     """{per_class: {key: ι_m}, H_star, H_bar, H_m, mean_iota_kl, mean_iota_ent,
     identity_diff, n_classes, n_groups, mass, mass_frac_iota_gt}; means are
     law-mass means normalized by the table's total mass. `target`, if given,
     maps each (suffix-keyed) next record to the quantity predicted — e.g.
     `lambda r: r.kind` for the naming-free common target; H_star is then the
-    full-prefix entropy of that target."""
+    full-prefix entropy of that target. `keep_mix` adds suffix_of {key: s}
+    and mixtures {s: exact P*_m(· | s)} (relay design v0.1 §4: an exact
+    Δι = 0 between two tables is decided on the mixtures, not on floats)."""
     groups: Dict[tuple, list] = {}
     laws: Dict[tuple, Dict[Record, Fraction]] = {}
     total = Fraction(0)
@@ -65,6 +68,7 @@ def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = Fals
         h_star += float(mass) * _h(full if target is not None else star)
     per_class: Dict[tuple, float] = {}
     h_bar = h_m = mean_kl = gt = 0.0
+    mixtures = {}
     for s, keys in groups.items():
         gm = sum((table[k][0] for k in keys), Fraction(0))
         mix: Dict[Record, Fraction] = {}
@@ -73,6 +77,8 @@ def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = Fals
             for r, p in laws[k].items():
                 mix[r] = mix.get(r, Fraction(0)) + w * p
         h_m += float(gm) * _h(mix)
+        if keep_mix:
+            mixtures[s] = mix
         for k in keys:
             mk = float(table[k][0])
             iota = _kl(laws[k], mix)
@@ -89,4 +95,26 @@ def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = Fals
     out["identity_diff"] = out["mean_iota_kl"] - out["mean_iota_ent"]
     if keep_laws:
         out["laws"] = laws
+    if keep_mix:
+        out["mixtures"] = mixtures
+        out["suffix_of"] = {k: s for s, keys in groups.items() for k in keys}
+    return out
+
+
+def weighted_quantiles(pairs, qs):
+    """Law-mass quantiles of (value, mass) pairs: for each q, the smallest value
+    v whose cumulative mass (values ascending) reaches q × total. Exact in the
+    masses (Fractions); q is compared against the exact cumulative share."""
+    items = sorted(pairs, key=lambda vm: vm[0])
+    total = sum((m for _, m in items), Fraction(0))
+    order = sorted(range(len(qs)), key=lambda i: qs[i])
+    out = [items[-1][0]] * len(qs)
+    cum, j = Fraction(0), 0
+    for v, m in items:
+        cum += m
+        while j < len(order) and cum >= Fraction(qs[order[j]]) * total:
+            out[order[j]] = v
+            j += 1
+        if j == len(order):
+            break
     return out

@@ -17,7 +17,7 @@ from yupi.window import WindowLaw
 
 SCHEMA_VERSION = 1
 GENERATOR_VERSION = "0.1.0"
-RUNGS = ("r0", "r1", "r2", "r3", "r4")
+RUNGS = ("r0", "r1", "r2", "r3", "r4", "r1R")      # r1R: the relay rung (relay design v0.1 §2, 2026-09-30)
 
 
 class ManifestRefused(ValueError):

@@ -13,12 +13,14 @@ from __future__ import annotations
 import itertools
 from typing import Tuple
 
-from yupi.interfaces import MASKED
+from yupi.interfaces import MASKED, Lit
 from yupi.records import Record
 
 
 def _is_thread_field(v):
-    return v is not None and v != MASKED
+    """An entity value to rename: not None, not MASKED, not a literal (the
+    relay rung's KIND values, `interfaces.Lit`, pass through every renaming)."""
+    return v is not None and v != MASKED and not isinstance(v, Lit)
 
 
 def rename(rec: Record, sigma) -> Record:

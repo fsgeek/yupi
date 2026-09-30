@@ -93,3 +93,22 @@ def test_kind_target_drops_naming_and_keeps_state_history():
     kind = implicit_info(renamed, m=1, target=lambda r: r.kind)
     assert whole["mean_iota_kl"] == pytest.approx(0.0)   # both map to "fresh thread" from the suffix view
     assert kind["mean_iota_kl"] == pytest.approx(0.0) and kind["H_star"] == pytest.approx(0.0)
+
+
+def test_keep_mix_returns_suffix_and_exact_mixture():
+    # relay design v0.1 §4: exact Δι = 0 is decided by comparing mixtures, so they are exposed.
+    table = {
+        (False, (R("IO_ISSUE", 0), R("DISPATCH", 0))): (F(1, 4), {R("STEP", 0): F(1)}),
+        (False, (R("BLOCK", 0), R("DISPATCH", 0))): (F(3, 4), {R("IDLE"): F(1)}),
+    }
+    out = implicit_info(table, m=1, keep_mix=True)
+    s = (R("DISPATCH", 0),)
+    assert out["suffix_of"] == {k: s for k in table}
+    assert out["mixtures"] == {s: {R("STEP", 0): F(1, 4), R("IDLE"): F(3, 4)}}
+
+
+def test_weighted_quantiles_pinned():
+    from yupi.implicit_info import weighted_quantiles
+    vals = [(3.0, F(1, 4)), (0.0, F(1, 4)), (2.0, F(1, 4)), (1.0, F(1, 4))]
+    assert weighted_quantiles(vals, [0.0, 0.25, 0.5, 0.51, 0.75, 1.0]) == [0.0, 0.0, 1.0, 2.0, 2.0, 3.0]
+    assert weighted_quantiles([(5.0, F(1, 10)), (-1.0, F(9, 10))], [0.5, 0.95]) == [-1.0, 5.0]
