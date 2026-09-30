@@ -101,6 +101,39 @@ def implicit_info(table, m: int, threshold: float = 0.01, keep_laws: bool = Fals
     return out
 
 
+def kind_actor(r: Record) -> tuple:
+    """The (KIND, ACTOR) target of docs/actor-long-lag-design-prereg-v0.1.md. Applied, like
+    every target, to the next record already pushed through the suffix binding, so the actor
+    is in suffix-coarsened pattern names (an actor seen only before the suffix reads fresh)."""
+    return (r.kind, r.actor)
+
+
+def _kind_marginal(law: Dict[tuple, Fraction]) -> Dict[str, Fraction]:
+    out: Dict[str, Fraction] = {}
+    for (k, _), p in law.items():
+        out[k] = out.get(k, Fraction(0)) + p
+    return out
+
+
+def iota_actor_given_kind(q: Dict[tuple, Fraction], p: Dict[tuple, Fraction]) -> float:
+    """Σ_k q(k) KL(q(A | k) ‖ p(A | k)) in bits, for laws over (kind, actor): the per-class
+    chain-rule term ι_{(K,A)} − ι_K computed directly. Each log ratio
+    q(a | k) / p(a | k) = q(k, a) p(k) / (q(k) p(k, a)) is formed exactly (Fractions)."""
+    qk, pk = _kind_marginal(q), _kind_marginal(p)
+    return sum(float(a) * log2(float(a * pk[ka[0]] / (qk[ka[0]] * p[ka])))
+               for ka, a in q.items() if a > 0)
+
+
+def h_actor_given_kind(star: Dict[Record, Fraction]) -> float:
+    """The class's exact H(ACTOR | KIND) in bits under P*(· | c) in the class's own pattern
+    names (the analogue of H_kind): Σ p(k, a) log2(p(k) / p(k, a)), ratios exact."""
+    joint: Dict[tuple, Fraction] = {}
+    for r, p in star.items():
+        joint[(r.kind, r.actor)] = joint.get((r.kind, r.actor), Fraction(0)) + p
+    pk = _kind_marginal(joint)
+    return sum(float(p) * log2(float(pk[ka[0]] / p)) for ka, p in joint.items() if p > 0)
+
+
 def weighted_quantiles(pairs, qs):
     """Law-mass quantiles of (value, mass) pairs: for each q, the smallest value
     v whose cumulative mass (values ascending) reaches q × total. Exact in the

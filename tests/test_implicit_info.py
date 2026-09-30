@@ -112,3 +112,66 @@ def test_weighted_quantiles_pinned():
     vals = [(3.0, F(1, 4)), (0.0, F(1, 4)), (2.0, F(1, 4)), (1.0, F(1, 4))]
     assert weighted_quantiles(vals, [0.0, 0.25, 0.5, 0.51, 0.75, 1.0]) == [0.0, 0.0, 1.0, 2.0, 2.0, 3.0]
     assert weighted_quantiles([(5.0, F(1, 10)), (-1.0, F(9, 10))], [0.5, 0.95]) == [-1.0, 5.0]
+
+
+# ---- actor long-lag prereg v0.1: the (KIND, ACTOR) target and ι_{A|K},m = ι_{(K,A)},m − ι_K,m ----
+
+def _actor_table():
+    # One suffix (DISPATCH 0) and two equal-mass classes. Class a: STEP by the suffix thread
+    # 1/4, DISPATCH by it 3/4. Class b: STEP by it 3/4, DISPATCH by a thread seen only
+    # before the suffix (fresh to the order-1 observer: index 1) 1/4.
+    a = (False, (R("IO_ISSUE", 0), R("DISPATCH", 0)))
+    b = (False, (R("BLOCK", 0), R("DISPATCH", 1)))   # canonical pattern names
+    return a, b, {
+        a: (F(1, 2), {R("STEP", 0): F(1, 4), R("DISPATCH", 0): F(3, 4)}),
+        b: (F(1, 2), {R("STEP", 1): F(3, 4), R("DISPATCH", 0): F(1, 4)}),
+    }
+
+
+def test_actor_given_kind_hand_computed_and_chain_rule():
+    from math import log2
+    from yupi.implicit_info import iota_actor_given_kind, kind_actor
+    a, b, table = _actor_table()
+    # (class b's thread 0 is seen only before the suffix: its DISPATCH 0 maps to fresh index 1)
+    joint = implicit_info(table, m=1, target=kind_actor, keep_laws=True, keep_mix=True)
+    kind = implicit_info(table, m=1, target=lambda r: r.kind)
+    assert abs(joint["identity_diff"]) < 1e-12
+    mix = joint["mixtures"][joint["suffix_of"][a]]
+    assert mix == {("STEP", 0): F(1, 2), ("DISPATCH", 0): F(3, 8), ("DISPATCH", 1): F(1, 8)}
+    # P(A | DISPATCH) = (3/4, 1/4). Class a: q(A | D) = δ_0, KL = log2(4/3), weight q(D) = 3/4.
+    # Class b: q(A | D) = δ_1, KL = log2 4 = 2, weight q(D) = 1/4.
+    direct = {k: iota_actor_given_kind(joint["laws"][k], mix) for k in (a, b)}
+    assert direct[a] == pytest.approx(0.75 * log2(4 / 3), abs=1e-15)
+    assert direct[b] == pytest.approx(0.5, abs=1e-15)
+    for k in (a, b):   # the KL chain rule, per class
+        diff = joint["per_class"][k] - kind["per_class"][k]
+        assert diff == pytest.approx(direct[k], abs=1e-12)
+    # pinned: ι_K(a) = 1/4 log2(1/2) + 3/4 log2(3/2)
+    assert kind["per_class"][a] == pytest.approx(0.25 * -1 + 0.75 * log2(1.5), abs=1e-15)
+
+
+def test_actor_given_kind_zero_without_actors_and_nonnegative():
+    from yupi.implicit_info import iota_actor_given_kind, kind_actor
+    # r0-like: no actor on any record, so the joint target is the kind target and ι_{A|K} ≡ 0.
+    table = {
+        (False, (R("IDLE"), R("DISPATCH"))): (F(1, 3), {R("STEP"): F(1)}),
+        (True, (R("STEP"), R("DISPATCH"))): (F(2, 3), {R("IDLE"): F(1, 2), R("STEP"): F(1, 2)}),
+    }
+    joint = implicit_info(table, m=1, target=kind_actor, keep_laws=True, keep_mix=True)
+    kind = implicit_info(table, m=1, target=lambda r: r.kind)
+    for k in table:
+        assert joint["per_class"][k] == kind["per_class"][k]
+        assert iota_actor_given_kind(joint["laws"][k], joint["mixtures"][joint["suffix_of"][k]]) == 0.0
+
+
+def test_h_actor_given_kind_exact_pinned():
+    from yupi.implicit_info import h_actor_given_kind
+    # H(A | K): DISPATCH splits 1/2 between two threads (1 bit, weight 1/2); STEP has one actor.
+    star = {R("DISPATCH", 0): F(1, 4), R("DISPATCH", 1): F(1, 4), R("STEP", 0): F(1, 2)}
+    assert h_actor_given_kind(star) == pytest.approx(0.5, abs=1e-15)
+    # actor None (IDLE) is one actor value; objects do not enter
+    star = {R("IDLE"): F(1, 3), R("ACQUIRE", 0, ("LOCK", 0)): F(1, 3), R("ACQUIRE", 0, ("LOCK", 1)): F(1, 3)}
+    assert h_actor_given_kind(star) == 0.0
+    star = {R("STEP", 0): F(1, 8), R("STEP", 1): F(3, 8), R("STEP", 2): F(1, 2)}
+    from math import log2
+    assert h_actor_given_kind(star) == pytest.approx(-(1 / 8 * log2(1 / 8) + 3 / 8 * log2(3 / 8) + 1 / 2 * log2(1 / 2)), abs=1e-15)
