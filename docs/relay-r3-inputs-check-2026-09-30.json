@@ -1,0 +1,49 @@
+{
+ "prereg": "docs/relay-intervention-prereg-v0.1.md",
+ "prediction": "R3",
+ "eps": "1",
+ "k": 7,
+ "corpus": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d",
+ "git": "216f8fcfbd660ee369522cd264bcc37ecf3b9dcd+dirty",
+ "all_gates": true,
+ "gates": {
+  "1_frozen_sha256": true,
+  "2_files": {
+   "cache": "/home/tony/.cache/yupi-scratch/implicit/c1prime-loop-40-8-2-r1R-eps1-k7-kind-m123456.jsonl",
+   "cache_exists": true,
+   "table": "/home/tony/.cache/yupi-scratch/ceilings/c1prime-loop-40-8-2-r1R-eps1-k7.jsonl",
+   "table_exists": true,
+   "cache_sha256_equal": true,
+   "table_sha256_equal": true
+  },
+  "2_ok": true,
+  "3_iota": {
+   "n_classes_cache": 89474,
+   "n_classes_table": 89474,
+   "n_diota": 89474,
+   "iota4_equal_to_diota_table": 89474,
+   "mean_iota_minus_exact_side": {
+    "1": 1.021405182655144e-14,
+    "2": 5.662137425588298e-15,
+    "3": -6.661338147750939e-15,
+    "4": -2.275957200481571e-15,
+    "5": -9.43689570931383e-16,
+    "6": -1.734723475976807e-17
+   }
+  },
+  "3_ok": true,
+  "4_keying": {
+   "n_windows_k7": 84949,
+   "key_without_rung_equals_r1R": 84949,
+   "key_in_cache_and_table": 84949
+  },
+  "4_ok": true,
+  "5_frozen_windows": {
+   "n": 84949,
+   "iota_long_equal_first_2000": true,
+   "planted_beta_long_recovered": 0.010000000000000002,
+   "synthetic_census": "/home/tony/.cache/yupi-scratch/relay/r3-check/synthetic-census-r1R-eps1-k7-test.json"
+  },
+  "5_ok": true
+ }
+}
