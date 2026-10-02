@@ -1,5 +1,9 @@
 # Actor long-lag: verdict (v0.1, 2026-09-30)
 
+> **2026-10-02:** A4 scored **PASS 24/24** on the converged ladder (t 3.07–10.1), in
+> `docs/converged-ladder-verdict-v0.1.md`. The relay verdict (`docs/relay-intervention-verdict-v0.1.md`)
+> withdraws the causal distance reading for KIND; it was not tested for the actor. The text below is unchanged.
+
 > **Status: CONFIRMATORY result against `docs/actor-long-lag-design-prereg-v0.1.md`** (stamped in
 > 0c8bde4 before any actor-target ι was computed or any actor analysis run). The exact side is in
 > `docs/actor-iota-40-8-2-k7-2026-09-30.json`: all 60 rows gated, and a reviewer independently

@@ -1,5 +1,11 @@
 # D1 held-out test: verdict (v0.1, 2026-09-29)
 
+> **2026-10-02 correction, read first.** The result below stands as a within-cell correlation. It also holds at
+> the converged budget (`docs/converged-ladder-verdict-v0.1.md`, C1 24/24). Any *distance* (causal) reading of it
+> is withdrawn: the relay intervention found the learner's gain V-shaped in Δι, so moving information further
+> back also helped, and at 15 epochs the slope is 0 (`docs/relay-intervention-verdict-v0.1.md`). The cross-cell
+> ordering (C3) failed at ε = ½. The text below is unchanged.
+
 > **Status: CONFIRMATORY result against `docs/d1-long-lag-prereg-v0.1.md`** (stamped in commit
 > fbe0178, before any held-out census existed). The analysis script's sha256 was checked equal
 > to the pre-registered value (`c73fab6b…ad32dd7acfc`) immediately before the run. Raws:
