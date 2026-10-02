@@ -1,0 +1,116 @@
+{
+ "prereg": "docs/relay-intervention-prereg-v0.1.md",
+ "arm": "secondary",
+ "eps": "1",
+ "k": 7,
+ "git": "cdce58ce623c43779ab7c85a02f904e90094c173",
+ "inputs": {
+  "r1": [
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s1",
+    "seed": 1,
+    "checkpoint_sha256": "060fba8a5f10bf6b4e5db6bbca5ef4f777084eb8255ddbc3636bcdf24612269c",
+    "per_window_sha256": "7a0f6b570f01811c152f6d31f5e7c77caeb649483390d13644b07e44b7a34240",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s2",
+    "seed": 2,
+    "checkpoint_sha256": "70a8cc0bc00acf9a331904d30c393b5193a3f1db57c634decd81fec0e3ce3969",
+    "per_window_sha256": "463772ef176787914a10f46978194d21b25045cfec6b63f8bb8d178d7644d046",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s3",
+    "seed": 3,
+    "checkpoint_sha256": "e286def43b39a3f567e3d57a55c0fa3ced6bcc61aba9a86620de6032d463f833",
+    "per_window_sha256": "e857fbbcdb7e2e1737fb906769badd62819e4f288761c0465ec4c68be09887f1",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"
+   }
+  ],
+  "r1R": [
+   {
+    "raw": "docs/learner-window-census-r1R-eps1-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/relay/c1prime-loop-40-8-2-r1R-eps1-2M-d128-e15-s1",
+    "seed": 1,
+    "checkpoint_sha256": "a61e17cf6f7cd7bec3442861c596f4aba30b117458c7312294f9125b5d06e154",
+    "per_window_sha256": "89156061b99859d9a04ab475565b7eb6b0e84ab54b2f37c764d35d1cf1580b01",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1R-eps1-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/relay/c1prime-loop-40-8-2-r1R-eps1-2M-d128-e15-s2",
+    "seed": 2,
+    "checkpoint_sha256": "aa269127a532c2f695e6846f9b4a0c4a57c0e7369f7af609725e8a0a6a0a3de7",
+    "per_window_sha256": "e53da8541b1bbe0a0bf5b83bf2f29bb469259822b33b112e8d69880678c4d1c0",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1R-eps1-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/relay/c1prime-loop-40-8-2-r1R-eps1-2M-d128-e15-s3",
+    "seed": 3,
+    "checkpoint_sha256": "5da7feaf37c198d91d8bbbac2959984b54f0309bf8775381d75f1a637e348a49",
+    "per_window_sha256": "3eb933465e7fe764199da5b46869a4d61fdff8c8b25463030f656cf3dbbe0956",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d"
+   }
+  ],
+  "d_iota": {
+   "file": "/home/tony/.cache/yupi-scratch/relay/c1prime-loop-40-8-2-r1R-eps1-k7-kind-diota4.jsonl",
+   "sha256": "0501876cf99e4aec52cd41955ed39afadbfee8c1031573b108b24bd333dbbdc4",
+   "mean_d_iota4_law": 0.09355677541180096
+  },
+  "exact_side": "docs/relay-exact-side-2026-09-30.json"
+ },
+ "gates": "all passed (census sha256, rungs, window sets, class bijection, drop_relay pairing, \u0394\u03b9 table)",
+ "n": 84949,
+ "mean_d_excess": 0.003716694205275356,
+ "mean_d_iota": 0.0930817041939783,
+ "ols": {
+  "terms": [
+   "1",
+   "d_iota_kind_4"
+  ],
+  "beta": [
+   0.0036709508427407154,
+   0.000491432370418506
+  ],
+  "se": [
+   0.0004058092386705018,
+   0.0023558111670129423
+  ],
+  "t": [
+   9.046001157507792,
+   0.2086043131553787
+  ]
+ },
+ "slope": 0.000491432370418506,
+ "slope_se": 0.0023558111670129423,
+ "slope_t": 0.2086043131553787,
+ "intercept": 0.0036709508427407154,
+ "intercept_se": 0.0004058092386705018,
+ "R2_zero_set": {
+  "n": 8166,
+  "mean": 2.3589120009025894e-05,
+  "se": 0.0003157131837659551,
+  "minus_intercept": -0.0036473617227316896,
+  "within_2se": false
+ },
+ "R4_set": {
+  "cut": -0.05,
+  "n": 7274,
+  "mean": 0.008039540273143802,
+  "se": 0.001667746037779864,
+  "minus_intercept": 0.004368589430403087,
+  "t": 2.6194572383566497,
+  "t_with_intercept_se": 2.5451922107677536
+ },
+ "relay_field_excess_r1R": {
+  "n": 84949,
+  "mean": 0.00017311952836225426,
+  "se": 3.311767165763359e-05
+ },
+ "verdict": "secondary arm: R1, R2, R4 reported without thresholds (prereg)"
+}

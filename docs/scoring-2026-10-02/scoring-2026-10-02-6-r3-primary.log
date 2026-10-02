@@ -1,0 +1,9 @@
+r1R eps=1 s1           n= 84949 β_long=+0.0251 (t +7.5) β_H=+0.0124 (t +14.5) | +log2 mass: β_long=+0.0204 (t +6.3) β_short=+0.0013 (t +1.4) β_H=+0.0148 (t +15.8) β_mass=-0.0044 (t -10.3) corr(ι_long, log mass)=-0.14
+r1R eps=1 s2           n= 84949 β_long=+0.0170 (t +5.8) β_H=+0.0093 (t +11.6) | +log2 mass: β_long=+0.0133 (t +4.6) β_short=+0.0018 (t +2.3) β_H=+0.0112 (t +12.9) β_mass=-0.0034 (t -8.8) corr(ι_long, log mass)=-0.14
+r1R eps=1 s3           n= 84949 β_long=+0.0245 (t +7.1) β_H=+0.0109 (t +12.9) | +log2 mass: β_long=+0.0199 (t +5.9) β_short=+0.0021 (t +2.2) β_H=+0.0133 (t +14.4) β_mass=-0.0043 (t -10.3) corr(ι_long, log mass)=-0.14
+r1R eps=1 POOLED×3     n=254847 β_long=+0.0222 (t +11.8) β_H=+0.0109 (t +22.5) | +log2 mass: β_long=+0.0179 (t +9.8) β_short=+0.0017 (t +3.3) β_H=+0.0131 (t +24.9) β_mass=-0.0040 (t -17.0) corr(ι_long, log mass)=-0.14
+
+real	0m12.909s
+user	0m15.269s
+sys	0m0.273s
+exit 0

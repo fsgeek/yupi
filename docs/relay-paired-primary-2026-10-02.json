@@ -1,0 +1,137 @@
+{
+ "prereg": "docs/relay-intervention-prereg-v0.1.md",
+ "arm": "primary",
+ "eps": "1",
+ "k": 7,
+ "git": "cdce58ce623c43779ab7c85a02f904e90094c173",
+ "inputs": {
+  "r1": [
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-seed1-2026-09-21.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-s1",
+    "seed": 1,
+    "checkpoint_sha256": "580c5a67aaa3750e3b1ccc1ca861a570f79ba620f02d2a1c484229a48fa8c1a1",
+    "per_window_sha256": "e51674263efada7617bb1f511888f5508669a989e486305dd6484eb8decf4040",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-seed2-2026-09-21.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-s2",
+    "seed": 2,
+    "checkpoint_sha256": "21830e131e80b7755c146290f24d80cd1a084349c39735169adc31330e206c85",
+    "per_window_sha256": "8ea0ea0cb0636b630926f04c9e5a0553da1fff9570d1f3473adce1cb322a40ca",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-seed3-2026-09-21.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-s3",
+    "seed": 3,
+    "checkpoint_sha256": "68d2ce33fef24b16f107118bcdd8964314060fc4238e801394093201e7b222d6",
+    "per_window_sha256": "522f53f20e94f8cc2025f47724c58f7780c7e83be2a450ef4a165ad50a2b4f0e",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"
+   }
+  ],
+  "r1R": [
+   {
+    "raw": "docs/learner-window-census-r1R-eps1-2M-e5-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/relay/c1prime-loop-40-8-2-r1R-eps1-2M-d128-e5-s1",
+    "seed": 1,
+    "checkpoint_sha256": "b92329760e2158c0ebb83a5848f4e22438ca5ac39aa041ca5f9c656f29a44853",
+    "per_window_sha256": "d6aaa75d5335d672b9f52bb77cff4e0d048e1a55c55c51e6e1be88b91b13adb7",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1R-eps1-2M-e5-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/relay/c1prime-loop-40-8-2-r1R-eps1-2M-d128-e5-s2",
+    "seed": 2,
+    "checkpoint_sha256": "d8d57e048a6a2310100246b01b8f8be5b4dddae7bf5781ffbf8c768bdcad2dd2",
+    "per_window_sha256": "14126936efbbb8056f32ab8a8d26195d502d20e2a6e46b1b70d3abd9eedbbb8c",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d"
+   },
+   {
+    "raw": "docs/learner-window-census-r1R-eps1-2M-e5-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/relay/c1prime-loop-40-8-2-r1R-eps1-2M-d128-e5-s3",
+    "seed": 3,
+    "checkpoint_sha256": "2e21ff90ffa397f97541a29c24c34c1f44d8b45e29f436af94b3ed505ac80d69",
+    "per_window_sha256": "19acb52d62192cb2e7149e6a34ce5ea4f617be01fa5c939e2b549f2b63afa035",
+    "corpus": "corpus/c1prime-loop-40-8-2-r1R-eps1/fd5da4c31e43d73d"
+   }
+  ],
+  "d_iota": {
+   "file": "/home/tony/.cache/yupi-scratch/relay/c1prime-loop-40-8-2-r1R-eps1-k7-kind-diota4.jsonl",
+   "sha256": "0501876cf99e4aec52cd41955ed39afadbfee8c1031573b108b24bd333dbbdc4",
+   "mean_d_iota4_law": 0.09355677541180096
+  },
+  "exact_side": "docs/relay-exact-side-2026-09-30.json"
+ },
+ "gates": "all passed (census sha256, rungs, window sets, class bijection, drop_relay pairing, \u0394\u03b9 table)",
+ "n": 84949,
+ "mean_d_excess": 0.006095403343533828,
+ "mean_d_iota": 0.0930817041939783,
+ "ols": {
+  "terms": [
+   "1",
+   "d_iota_kind_4"
+  ],
+  "beta": [
+   0.004580645381751816,
+   0.01627342317052254
+  ],
+  "se": [
+   0.0004485702648789068,
+   0.0026080401637622935
+  ],
+  "t": [
+   10.21165632320363,
+   6.239713404968007
+  ]
+ },
+ "slope": 0.01627342317052254,
+ "slope_se": 0.0026080401637622935,
+ "slope_t": 6.239713404968007,
+ "intercept": 0.004580645381751816,
+ "intercept_se": 0.0004485702648789068,
+ "R2_zero_set": {
+  "n": 8166,
+  "mean": 0.0007563613767247535,
+  "se": 0.0002937284188769882,
+  "minus_intercept": -0.003824284005027063,
+  "within_2se": false
+ },
+ "R4_set": {
+  "cut": -0.05,
+  "n": 7274,
+  "mean": 0.011252130217648936,
+  "se": 0.0019007848852858002,
+  "minus_intercept": 0.00667148483589712,
+  "t": 3.509857894779083,
+  "t_with_intercept_se": 3.416023579833407
+ },
+ "relay_field_excess_r1R": {
+  "n": 84949,
+  "mean": 9.38448944426189e-05,
+  "se": 1.7925734922335801e-06
+ },
+ "verdict": {
+  "R1": "FAIL",
+  "R2": "FAIL",
+  "R4": "FAIL",
+  "R3": "not computed here: the frozen implicit_info_bintest.py (m = 4) on each r1R census raw"
+ },
+ "thresholds": {
+  "R1": {
+   "t_min": 3.0,
+   "band": [
+    0.0165,
+    0.066
+   ]
+  },
+  "R2": {
+   "k_se": 2.0
+  },
+  "R4": {
+   "cut": -0.05,
+   "t_max": -3.0
+  }
+ }
+}

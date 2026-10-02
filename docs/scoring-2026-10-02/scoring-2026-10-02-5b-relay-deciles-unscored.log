@@ -1,0 +1,32 @@
+== primary: slope +0.01627 intercept +0.00458
+  dec0 Δι [-2.3472,-0.0387] n= 8495 meanΔι -0.1568  meanΔexcess +0.01088 ± 0.00173
+  dec1 Δι [-0.0387,-0.0070] n= 8425 meanΔι -0.0198  meanΔexcess +0.00328 ± 0.00123
+  dec2 Δι [-0.0070,+0.0000] n= 6766 meanΔι -0.0025  meanΔexcess +0.00194 ± 0.00091
+  dec3 Δι [+0.0000,+0.0008] n=10290 meanΔι +0.0001  meanΔexcess +0.00065 ± 0.00034
+  dec4 Δι [+0.0008,+0.0121] n= 8489 meanΔι +0.0054  meanΔexcess +0.00387 ± 0.00101
+  dec5 Δι [+0.0121,+0.0376] n= 8501 meanΔι +0.0230  meanΔexcess +0.00225 ± 0.00120
+  dec6 Δι [+0.0376,+0.0881] n= 8490 meanΔι +0.0594  meanΔexcess +0.00471 ± 0.00147
+  dec7 Δι [+0.0881,+0.1865] n= 8496 meanΔι +0.1317  meanΔexcess +0.00816 ± 0.00146
+  dec8 Δι [+0.1865,+0.3728] n= 8502 meanΔι +0.2695  meanΔexcess +0.01018 ± 0.00174
+  dec9 Δι [+0.3728,+3.3558] n= 8495 meanΔι +0.6200  meanΔexcess +0.01531 ± 0.00182
+  set d_iota_lt_-0.05              n= 7274 meanΔexcess 0.01125 se 0.0019 meanΔι -0.17558807332187717
+  set d_iota_in_[-0.05,0)          n=16412 meanΔexcess 0.00313 se 0.00079 meanΔι -0.014556447724305305
+  set exact_zero                   n= 8166 meanΔexcess 0.00076 se 0.00029 meanΔι 0.0
+  set d_iota_eq_0_float_not_exact  n=    0 meanΔexcess None se None meanΔι None
+  set d_iota_gt_0                  n=53097 meanΔexcess 0.00713 se 0.00058 meanΔι 0.17747378863154034
+== secondary: slope +0.00049 intercept +0.00367
+  dec0 Δι [-2.3472,-0.0387] n= 8495 meanΔι -0.1568  meanΔexcess +0.00779 ± 0.00153
+  dec1 Δι [-0.0387,-0.0070] n= 8425 meanΔι -0.0198  meanΔexcess +0.00331 ± 0.00118
+  dec2 Δι [-0.0070,+0.0000] n= 6766 meanΔι -0.0025  meanΔexcess +0.00058 ± 0.00080
+  dec3 Δι [+0.0000,+0.0008] n=10290 meanΔι +0.0001  meanΔexcess -0.00006 ± 0.00035
+  dec4 Δι [+0.0008,+0.0121] n= 8489 meanΔι +0.0054  meanΔexcess +0.00231 ± 0.00085
+  dec5 Δι [+0.0121,+0.0376] n= 8501 meanΔι +0.0230  meanΔexcess +0.00378 ± 0.00114
+  dec6 Δι [+0.0376,+0.0881] n= 8490 meanΔι +0.0594  meanΔexcess +0.00256 ± 0.00124
+  dec7 Δι [+0.0881,+0.1865] n= 8496 meanΔι +0.1317  meanΔexcess +0.00659 ± 0.00150
+  dec8 Δι [+0.1865,+0.3728] n= 8502 meanΔι +0.2695  meanΔexcess +0.00716 ± 0.00135
+  dec9 Δι [+0.3728,+3.3558] n= 8495 meanΔι +0.6200  meanΔexcess +0.00330 ± 0.00164
+  set d_iota_lt_-0.05              n= 7274 meanΔexcess 0.00804 se 0.00167 meanΔι -0.17558807332187717
+  set d_iota_in_[-0.05,0)          n=16412 meanΔexcess 0.00241 se 0.00075 meanΔι -0.014556447724305305
+  set exact_zero                   n= 8166 meanΔexcess 2e-05 se 0.00032 meanΔι 0.0
+  set d_iota_eq_0_float_not_exact  n=    0 meanΔexcess None se None meanΔι None
+  set d_iota_gt_0                  n=53097 meanΔexcess 0.0041 se 0.00052 meanΔι 0.17747378863154034

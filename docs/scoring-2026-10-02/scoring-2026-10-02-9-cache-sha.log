@@ -1,0 +1,18 @@
+actorgk c1prime-loop-40-8-2-r0-eps1-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r1-eps1-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r2-eps1-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r3-eps1-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r4-eps1-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r0-eps1_2-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r1-eps1_2-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r2-eps1_2-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r3-eps1_2-k7-actorgk-m123456.jsonl True
+actorgk c1prime-loop-40-8-2-r4-eps1_2-k7-actorgk-m123456.jsonl True
+actorgk ok 10 / 10
+r1R eps1 iota cache True 91d4f0a2
+dIota table eps1 True 0501876c
+docs/converged-ladder-bintest-actor-2026-10-02.json {'status': 'CONFIRMATORY (docs/actor-long-lag-design-prereg-v0.1.md, all windows)', 'git': 'cdce58ce623c43779ab7c85a02f904e90094c173', 'm_long': 4, 'runs': 'list', 'pooled_by_rung': 'list'}
+docs/relay-r3-bintest-primary-2026-10-02.json {'status': 'EXPLORATORY (paper-1 readiness item 3, all windows)', 'git': 'cdce58ce623c43779ab7c85a02f904e90094c173', 'm_long': 4, 'runs': 'list', 'pooled_by_rung': 'list'}
+docs/relay-paired-primary-2026-10-02.json {'prereg': 'docs/relay-intervention-prereg-v0.1.md', 'arm': 'primary', 'eps': '1', 'k': 7, 'git': 'cdce58ce623c43779ab7c85a02f904e90094c173', 'inputs': 'dict', 'gates': 'all passed (census sha256, rungs, window sets, class bijection, drop_relay pairing, Δι table)', 'n': 84949, 'mean_d_excess': 0.006095403343533828, 'mean_d_iota': 0.0930817041939783, 'ols': 'dict', 'slope': 0.01627342317052254, 'slope_se': 0.0026080401637622935, 'slope_t': 6.239713404968007, 'intercept': 0.004580645381751816, 'intercept_se': 0.0004485702648789068, 'R2_zero_set': 'dict', 'R4_set': 'dict', 'relay_field_excess_r1R': 'dict', 'verdict': 'dict', 'thresholds': 'dict'}
+{"r1": [{"raw": "docs/learner-window-census-r1-eps1-2M-seed1-2026-09-21.json", "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-s1", "seed": 1, "checkpoint_sha256": "580c5a67aaa3750e3b1ccc1ca861a570f79ba620f02d2a1c484229a48fa8c1a1", "per_window_sha256": "e51674263efada7617bb1f511888f5508669a989e486305dd6484eb8decf4040", "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"}, {"raw": "docs/learner-window-census-r1-eps1-2M-seed2-2026-09-21.json", "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-s2", "seed": 2, "checkpoint_sha256": "21830e131e80b7755c146290f24d80cd1a084349c39735169adc31330e206c85", "per_window_sha256": "8ea0ea0cb0636b630926f04c9e5a0553da1fff9570d1f3473adce1cb322a40ca", "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"}, {"raw": "docs/learner-window-census-r1-eps1-2M-seed3-2026-09-21.json", "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-s3", "seed": 3, "checkpoint_sha256": "68d2ce33fef24b16f107118bcdd8964314060fc4238e801394093201e7b222d6", "per_window_sha256": "522f53f20e94f8cc2025f47724c58f7780c7e83be2a450ef4a165ad50a2b4f0e", "corpus": "corpus/c1prime-loop-40-8-2-r1-eps1/fd5da4c31e43d73d"}], "r1R": [{"raw": "docs/learner-window-census-r1R-eps1-2M-e5-seed1-2026-10-02.json", "run": "/home/tony/.cache/yupi-scratch/runs/relay/c1prime-loop-40-8-2-r1R-eps1-2M-d128-e5-s1", "seed": 1, "checkpoint_sha256": "b92329760e2158c0ebb83a5848f4e22438ca5ac39aa041ca5f
+"all passed (census sha256, rungs, window sets, class bijection, drop_relay pairing, \u0394\u03b9 table)"

@@ -1,0 +1,9 @@
+n=84949 slope +0.01627 ± 0.00261 (t +6.24) intercept +0.00458 ± 0.00045
+R2 zero set n=8166 mean +0.00076 ± 0.00029 (minus intercept -0.00382)
+R4 Δι<-0.05 n=7274 mean−intercept +0.00667 (t +3.51; with intercept se +3.42)
+verdict {'R1': 'FAIL', 'R2': 'FAIL', 'R4': 'FAIL', 'R3': 'not computed here: the frozen implicit_info_bintest.py (m = 4) on each r1R census raw'} -> docs/relay-paired-primary-2026-10-02.json
+
+real	0m27.999s
+user	0m33.983s
+sys	0m1.684s
+exit 0

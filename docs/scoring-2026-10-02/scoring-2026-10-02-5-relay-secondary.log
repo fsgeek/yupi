@@ -1,0 +1,9 @@
+n=84949 slope +0.00049 ± 0.00236 (t +0.21) intercept +0.00367 ± 0.00041
+R2 zero set n=8166 mean +0.00002 ± 0.00032 (minus intercept -0.00365)
+R4 Δι<-0.05 n=7274 mean−intercept +0.00437 (t +2.62; with intercept se +2.55)
+verdict secondary arm: R1, R2, R4 reported without thresholds (prereg) -> docs/relay-paired-secondary-2026-10-02.json
+
+real	0m26.268s
+user	0m30.072s
+sys	0m1.718s
+exit 0

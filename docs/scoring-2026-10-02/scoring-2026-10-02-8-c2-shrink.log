@@ -1,0 +1,19 @@
+census keys ['run', 'step', 'seed', 'corpus', 'rung', 'eps', 'law', 'programs', 'k', 'split', 'n', 'git', 'checkpoint_sha256', 'table_sha256', 'aggregate', 'per_window_file', 'per_window_sha256', 'classes_labels', 'summary', 'wall_s']
+summary {'n': 84949, 'mean': 0.04689241627967083, 'sd': 0.3483242144497026, 'total': 3983.4638705417574, 'max': 9.306210175356561, 'min': -5.652958775613461, 'negative_share': 0.45031724917303323, 'n_classes': 25005}
+r1 eps=1: beta_long 5ep 0.03266 -> 15ep 0.01558 ratio 0.477 | KIND excess 0.02134->0.01536 ratio 0.720 | total struct excess 0.05967->0.04619 ratio 0.774 | beta shrinks more than KIND: True; than total: True; se15 0.00137 se5 0.00201
+r1 eps=1/2: beta_long 5ep 0.03997 -> 15ep 0.02168 ratio 0.542 | KIND excess 0.03375->0.02132 ratio 0.632 | total struct excess 0.08931->0.06454 ratio 0.723 | beta shrinks more than KIND: True; than total: True; se15 0.00148 se5 0.00183
+r2 eps=1: beta_long 5ep 0.03850 -> 15ep 0.02233 ratio 0.580 | KIND excess 0.02849->0.01887 ratio 0.662 | total struct excess 0.09616->0.06794 ratio 0.707 | beta shrinks more than KIND: True; than total: True; se15 0.00136 se5 0.00177
+r2 eps=1/2: beta_long 5ep 0.04120 -> 15ep 0.02464 ratio 0.598 | KIND excess 0.03857->0.02929 ratio 0.759 | total struct excess 0.12324->0.09573 ratio 0.777 | beta shrinks more than KIND: True; than total: True; se15 0.00162 se5 0.00194
+r3 eps=1: beta_long 5ep 0.02402 -> 15ep 0.01317 ratio 0.548 | KIND excess 0.01921->0.01344 ratio 0.700 | total struct excess 0.05931->0.04547 ratio 0.767 | beta shrinks more than KIND: True; than total: True; se15 0.00122 se5 0.00148
+r3 eps=1/2: beta_long 5ep 0.03122 -> 15ep 0.02150 ratio 0.689 | KIND excess 0.02955->0.02178 ratio 0.737 | total struct excess 0.09232->0.07138 ratio 0.773 | beta shrinks more than KIND: True; than total: True; se15 0.00152 se5 0.00171
+r4 eps=1: beta_long 5ep 0.03643 -> 15ep 0.01412 ratio 0.388 | KIND excess 0.02595->0.01329 ratio 0.512 | total struct excess 0.08496->0.04790 ratio 0.564 | beta shrinks more than KIND: True; than total: True; se15 0.00125 se5 0.00193
+r4 eps=1/2: beta_long 5ep 0.04744 -> 15ep 0.02181 ratio 0.460 | KIND excess 0.03995->0.02304 ratio 0.577 | total struct excess 0.14519->0.08250 ratio 0.568 | beta shrinks more than KIND: True; than total: True; se15 0.00154 se5 0.00194
+UNSCORED: delta-method se of beta ratio (pooled se, not seed-clustered)
+('r1', '1') rb 0.477 se 0.051 rk 0.720 gap 0.243 = 4.7 se; 15ep t 11.4
+('r1', '1/2') rb 0.542 se 0.044 rk 0.632 gap 0.089 = 2.0 se; 15ep t 14.7
+('r2', '1') rb 0.580 se 0.044 rk 0.662 gap 0.082 = 1.9 se; 15ep t 16.4
+('r2', '1/2') rb 0.598 se 0.048 rk 0.759 gap 0.161 = 3.3 se; 15ep t 15.3
+('r3', '1') rb 0.548 se 0.061 rk 0.700 gap 0.152 = 2.5 se; 15ep t 10.8
+('r3', '1/2') rb 0.689 se 0.062 rk 0.737 gap 0.048 = 0.8 se; 15ep t 14.1
+('r4', '1') rb 0.388 se 0.040 rk 0.512 gap 0.125 = 3.1 se; 15ep t 11.3
+('r4', '1/2') rb 0.460 se 0.038 rk 0.577 gap 0.117 = 3.1 se; 15ep t 14.2

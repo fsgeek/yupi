@@ -1,0 +1,1 @@
+runs 27 ckpt sha match 27 max |eval k7 structural_by_field.kind.mean - per-window mean| 4.709774237277031e-16

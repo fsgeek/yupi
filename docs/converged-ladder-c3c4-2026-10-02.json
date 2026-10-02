@@ -1,0 +1,1254 @@
+{
+ "prereg": "docs/converged-ladder-prereg-v0.1.md",
+ "predictions": [
+  "C3",
+  "C4"
+ ],
+ "estimator": "mean of by_field.kind over the k = 7 test windows per run; cell = mean over seeds 1-3",
+ "git": "cdce58ce623c43779ab7c85a02f904e90094c173+dirty",
+ "runs": {
+  "r0-eps1": [
+   {
+    "raw": "docs/learner-window-census-r0-eps1-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r0-eps1-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r0",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r0-eps1-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "9df9245ede49153a83254490b1441ec0b2231fab1f0efa3f7cdf5f00b2c3b948",
+    "sha256_verified": true,
+    "n": 84998,
+    "mean_kind_excess": 0.0037273681870402275,
+    "se_kind_excess": 0.00034414518604462715,
+    "crosscheck": {
+     "rows": 84998,
+     "summary_n": 84998,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.0037273720996103864,
+     "structural_mean_summary": 0.0037273720996103864,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 3678,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.05453069483987859,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.1102230246251565e-16,
+     "listed_classes_weighted_mean_kind": 0.01649819046632008,
+     "listed_classes_rows_mean_kind": 0.016498190466320072,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r0-eps1-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r0-eps1-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r0",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r0-eps1-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "9659bf019023f4327fac85eb83fa43c76e6d36994df50905e005aadfddb104c4",
+    "sha256_verified": true,
+    "n": 84998,
+    "mean_kind_excess": 0.0038043987078128223,
+    "se_kind_excess": 0.0003374771993291523,
+    "crosscheck": {
+     "rows": 84998,
+     "summary_n": 84998,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.003804417639316851,
+     "structural_mean_summary": 0.003804417639316851,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 3678,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.07776653568319254,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 9.367506770274758e-17,
+     "listed_classes_weighted_mean_kind": 0.0105572955233315,
+     "listed_classes_rows_mean_kind": 0.0105572955233315,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r0-eps1-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r0-eps1-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r0",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r0-eps1-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "d938734c4ca44fa550db4e61646d8ff81a4a169c409722aa12f7e177fb5b2710",
+    "sha256_verified": true,
+    "n": 84998,
+    "mean_kind_excess": 0.0039445393888399545,
+    "se_kind_excess": 0.0003363484612657484,
+    "crosscheck": {
+     "rows": 84998,
+     "summary_n": 84998,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.003944554967412892,
+     "structural_mean_summary": 0.003944554967412892,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 3678,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.06350737664415633,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 7.546047120499111e-17,
+     "listed_classes_weighted_mean_kind": 0.013539931943449962,
+     "listed_classes_rows_mean_kind": 0.01353993194344996,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r1-eps1": [
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r1",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "7a0f6b570f01811c152f6d31f5e7c77caeb649483390d13644b07e44b7a34240",
+    "sha256_verified": true,
+    "n": 84949,
+    "mean_kind_excess": 0.01569994934980953,
+    "se_kind_excess": 0.0006988676194225236,
+    "crosscheck": {
+     "rows": 84949,
+     "summary_n": 84949,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.04689241627967083,
+     "structural_mean_summary": 0.04689241627967083,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25005,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.005520959634604292,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.1102230246251565e-16,
+     "listed_classes_weighted_mean_kind": 0.07667434552813891,
+     "listed_classes_rows_mean_kind": 0.07667434552813891,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r1",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "463772ef176787914a10f46978194d21b25045cfec6b63f8bb8d178d7644d046",
+    "sha256_verified": true,
+    "n": 84949,
+    "mean_kind_excess": 0.014635915664658269,
+    "se_kind_excess": 0.0006812319343572504,
+    "crosscheck": {
+     "rows": 84949,
+     "summary_n": 84949,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.044545805233190544,
+     "structural_mean_summary": 0.044545805233190544,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25005,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.00768696512024862,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.3877787807814457e-17,
+     "listed_classes_weighted_mean_kind": 0.07422584957634716,
+     "listed_classes_rows_mean_kind": 0.07422584957634716,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r1",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "e857fbbcdb7e2e1737fb906769badd62819e4f288761c0465ec4c68be09887f1",
+    "sha256_verified": true,
+    "n": 84949,
+    "mean_kind_excess": 0.015758977306450435,
+    "se_kind_excess": 0.0006763015037741214,
+    "crosscheck": {
+     "rows": 84949,
+     "summary_n": 84949,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.04714664753767893,
+     "structural_mean_summary": 0.04714664753767893,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25005,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.007157235517781257,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 2.220446049250313e-16,
+     "listed_classes_weighted_mean_kind": 0.136046101421859,
+     "listed_classes_rows_mean_kind": 0.13604610142185902,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r2-eps1": [
+   {
+    "raw": "docs/learner-window-census-r2-eps1-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r2-eps1-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r2",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r2-eps1-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "6a28a50ca08c7494a6ddba6897ffe12b7fbcea38eeb85612ac9def92871ff2a1",
+    "sha256_verified": true,
+    "n": 84987,
+    "mean_kind_excess": 0.015649448873193465,
+    "se_kind_excess": 0.000664044416289994,
+    "crosscheck": {
+     "rows": 84987,
+     "summary_n": 84987,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.0529030885526487,
+     "structural_mean_summary": 0.0529030885526487,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 28722,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.005177262404838387,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 6.938893903907228e-18,
+     "listed_classes_weighted_mean_kind": 0.040133051649152734,
+     "listed_classes_rows_mean_kind": 0.040133051649152734,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r2-eps1-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r2-eps1-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r2",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r2-eps1-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "55a4c011a524ca0881d830bcfc4a432170557e097096123ef7def3cf8d7c55ff",
+    "sha256_verified": true,
+    "n": 84987,
+    "mean_kind_excess": 0.017189706524093334,
+    "se_kind_excess": 0.0007228804988252638,
+    "crosscheck": {
+     "rows": 84987,
+     "summary_n": 84987,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.0641892983066642,
+     "structural_mean_summary": 0.0641892983066642,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 28722,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.004471272076905879,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.1102230246251565e-16,
+     "listed_classes_weighted_mean_kind": 0.08113824568212519,
+     "listed_classes_rows_mean_kind": 0.0811382456821252,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r2-eps1-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r2-eps1-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r2",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r2-eps1-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "64d30b8f0a73e99cee568c25b46afa6e1fe34bea21bb6bf82c35a03b3489dc97",
+    "sha256_verified": true,
+    "n": 84987,
+    "mean_kind_excess": 0.023769198912959637,
+    "se_kind_excess": 0.0007885721871149449,
+    "crosscheck": {
+     "rows": 84987,
+     "summary_n": 84987,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.08673841255439523,
+     "structural_mean_summary": 0.08673841255439523,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 28722,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.0069304717192041135,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 7.697835424647081e-18,
+     "listed_classes_weighted_mean_kind": 0.03388961055273348,
+     "listed_classes_rows_mean_kind": 0.03388961055273348,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r3-eps1": [
+   {
+    "raw": "docs/learner-window-census-r3-eps1-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r3-eps1-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r3",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r3-eps1-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "4c5501eda9afd1d27df79988518bc5d08103a4caaadbf42ad1a055bc7527b411",
+    "sha256_verified": true,
+    "n": 84955,
+    "mean_kind_excess": 0.012158976958698501,
+    "se_kind_excess": 0.0005607269825158761,
+    "crosscheck": {
+     "rows": 84955,
+     "summary_n": 84955,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.043054063132810155,
+     "structural_mean_summary": 0.043054063132810155,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 32584,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.004520040021187687,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 5.551115123125783e-17,
+     "listed_classes_weighted_mean_kind": 0.027974098295768145,
+     "listed_classes_rows_mean_kind": 0.027974098295768145,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r3-eps1-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r3-eps1-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r3",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r3-eps1-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "811bbf9eb0bb860c65590aa9cbc0847c66c8efd1a2f62413805505435cfbb43c",
+    "sha256_verified": true,
+    "n": 84955,
+    "mean_kind_excess": 0.013980005505564592,
+    "se_kind_excess": 0.0006029497931035293,
+    "crosscheck": {
+     "rows": 84955,
+     "summary_n": 84955,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.046082328776995043,
+     "structural_mean_summary": 0.046082328776995043,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 32584,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.00366076157965982,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 5.551115123125783e-17,
+     "listed_classes_weighted_mean_kind": 0.09981921507625383,
+     "listed_classes_rows_mean_kind": 0.09981921507625383,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r3-eps1-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r3-eps1-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r3",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r3-eps1-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "10f3f161434d72ce7c3d53659c3e69a5103ce4d74cdb0f88fcff70fb6f4d1d5e",
+    "sha256_verified": true,
+    "n": 84955,
+    "mean_kind_excess": 0.014180816746945286,
+    "se_kind_excess": 0.0006172112853811074,
+    "crosscheck": {
+     "rows": 84955,
+     "summary_n": 84955,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.0472594759375645,
+     "structural_mean_summary": 0.0472594759375645,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 32584,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.004578894708963569,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.0408340855860843e-17,
+     "listed_classes_weighted_mean_kind": 0.031455988511848616,
+     "listed_classes_rows_mean_kind": 0.03145598851184862,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r4-eps1": [
+   {
+    "raw": "docs/learner-window-census-r4-eps1-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r4-eps1-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r4",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "02418454e8217d6e1e07e20e954f25faffda421639fae7d8f0810ef8a65b70fa",
+    "sha256_verified": true,
+    "n": 84972,
+    "mean_kind_excess": 0.014138969266195449,
+    "se_kind_excess": 0.0006140601351913649,
+    "crosscheck": {
+     "rows": 84972,
+     "summary_n": 84972,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.04361211507597577,
+     "structural_mean_summary": 0.04361211507597577,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 32755,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.0037777150120039543,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 2.7755575615628914e-17,
+     "listed_classes_weighted_mean_kind": 0.1114147591989252,
+     "listed_classes_rows_mean_kind": 0.1114147591989252,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r4-eps1-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r4-eps1-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r4",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "280c94087e8b16516325a618f2b0f8773ec8be36ef574d5c22c0f221062e7eb0",
+    "sha256_verified": true,
+    "n": 84972,
+    "mean_kind_excess": 0.013040478623501705,
+    "se_kind_excess": 0.0006027729496756176,
+    "crosscheck": {
+     "rows": 84972,
+     "summary_n": 84972,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.04938746488087438,
+     "structural_mean_summary": 0.04938746488087438,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 32755,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.0015534529021324671,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 0.0,
+     "listed_classes_weighted_mean_kind": 0.11396779311689137,
+     "listed_classes_rows_mean_kind": 0.11396779311689137,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r4-eps1-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r4-eps1-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r4",
+    "eps": "1",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "2bca5daaa59fe11df6073ba4fbc00a8d1b0cd7804479813c0c2f17e614b9dfdf",
+    "sha256_verified": true,
+    "n": 84972,
+    "mean_kind_excess": 0.012697081459604753,
+    "se_kind_excess": 0.0006019864418759968,
+    "crosscheck": {
+     "rows": 84972,
+     "summary_n": 84972,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.05070518370780688,
+     "structural_mean_summary": 0.05070518370780688,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 32755,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.0032363602127759732,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 0.0,
+     "listed_classes_weighted_mean_kind": 0.056960704451379164,
+     "listed_classes_rows_mean_kind": 0.056960704451379164,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r0-eps1_2": [
+   {
+    "raw": "docs/learner-window-census-r0-eps1_2-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r0-eps1_2-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r0",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r0-eps1_2-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "fba9fe007e354f2a2d43a5672b345ee36481c2933469face04f10e4657518c47",
+    "sha256_verified": true,
+    "n": 84981,
+    "mean_kind_excess": 0.005316372026290068,
+    "se_kind_excess": 0.0003959473041582919,
+    "crosscheck": {
+     "rows": 84981,
+     "summary_n": 84981,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.005316396466754369,
+     "structural_mean_summary": 0.005316396466754369,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 3486,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.07273390522587402,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.0061396160665481e-16,
+     "listed_classes_weighted_mean_kind": 0.014996595559305471,
+     "listed_classes_rows_mean_kind": 0.014996595559305461,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r0-eps1_2-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r0-eps1_2-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r0",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r0-eps1_2-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "793ed6eeea19425439af55fac5660f6672c53eec3c23896b55ae3fe5b6922387",
+    "sha256_verified": true,
+    "n": 84981,
+    "mean_kind_excess": 0.004819954824655487,
+    "se_kind_excess": 0.00037293557489601536,
+    "crosscheck": {
+     "rows": 84981,
+     "summary_n": 84981,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.004819959236254694,
+     "structural_mean_summary": 0.004819959236254694,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 3486,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.03993833915816477,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.5959455978986625e-16,
+     "listed_classes_weighted_mean_kind": 0.023571818727014415,
+     "listed_classes_rows_mean_kind": 0.023571818727014415,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r0-eps1_2-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r0-eps1_2-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r0",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r0-eps1_2-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "a8cfceb92e495b6b5e330558cb4e74a1421a936cb5009ba897dcca76cf2640a5",
+    "sha256_verified": true,
+    "n": 84981,
+    "mean_kind_excess": 0.004532459005987471,
+    "se_kind_excess": 0.00038443306474001727,
+    "crosscheck": {
+     "rows": 84981,
+     "summary_n": 84981,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.0045324907810082695,
+     "structural_mean_summary": 0.0045324907810082695,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 3486,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.03685529706640308,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.8041124150158794e-16,
+     "listed_classes_weighted_mean_kind": 0.027838407047277035,
+     "listed_classes_rows_mean_kind": 0.027838407047277042,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r1-eps1_2": [
+   {
+    "raw": "docs/learner-window-census-r1-eps1_2-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r1-eps1_2-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r1",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r1-eps1_2-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "82d71e5634bf5be07d5083b4cae8efb83ae18cdf0ac0125b68c3794e382d8176",
+    "sha256_verified": true,
+    "n": 85105,
+    "mean_kind_excess": 0.019528328595981994,
+    "se_kind_excess": 0.0008142226828892934,
+    "crosscheck": {
+     "rows": 85105,
+     "summary_n": 85105,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.05866453551667768,
+     "structural_mean_summary": 0.05866453551667768,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 20248,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.012396451442335938,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 5.551115123125783e-17,
+     "listed_classes_weighted_mean_kind": 0.05189305801180719,
+     "listed_classes_rows_mean_kind": 0.0518930580118072,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1_2-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r1-eps1_2-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r1",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r1-eps1_2-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "9f2b8521dacfc319ecad9d44e6d18c828f4fd539b952559d96f946ebb7ae8bca",
+    "sha256_verified": true,
+    "n": 85105,
+    "mean_kind_excess": 0.019676817766905417,
+    "se_kind_excess": 0.0007990833342138533,
+    "crosscheck": {
+     "rows": 85105,
+     "summary_n": 85105,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.06355390170706494,
+     "structural_mean_summary": 0.06355390170706494,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 20248,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.014064978555901534,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 5.551115123125783e-17,
+     "listed_classes_weighted_mean_kind": 0.04528741208651609,
+     "listed_classes_rows_mean_kind": 0.04528741208651609,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r1-eps1_2-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r1-eps1_2-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r1",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r1-eps1_2-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "a0525e803372241dc78356a3aedece1214098f15c76413faed556488eec9703d",
+    "sha256_verified": true,
+    "n": 85105,
+    "mean_kind_excess": 0.024764366778939933,
+    "se_kind_excess": 0.0009004313482265175,
+    "crosscheck": {
+     "rows": 85105,
+     "summary_n": 85105,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.07139367234691893,
+     "structural_mean_summary": 0.07139367234691893,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 20248,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.011632689031196757,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.6653345369377348e-16,
+     "listed_classes_weighted_mean_kind": 0.06108449178414784,
+     "listed_classes_rows_mean_kind": 0.06108449178414785,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r2-eps1_2": [
+   {
+    "raw": "docs/learner-window-census-r2-eps1_2-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r2-eps1_2-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r2",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r2-eps1_2-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "418f19bafb66b8ada4675c8a08a926e0ff07c9a94d62c0efaf0a4707487410d6",
+    "sha256_verified": true,
+    "n": 84714,
+    "mean_kind_excess": 0.032410980211799285,
+    "se_kind_excess": 0.0010188909485660683,
+    "crosscheck": {
+     "rows": 84714,
+     "summary_n": 84714,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.10381929923995746,
+     "structural_mean_summary": 0.10381929923995746,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 23062,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.013882002974714923,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 5.551115123125783e-17,
+     "listed_classes_weighted_mean_kind": 0.05292666974329701,
+     "listed_classes_rows_mean_kind": 0.05292666974329701,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r2-eps1_2-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r2-eps1_2-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r2",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r2-eps1_2-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "9c10047139296c9d6d348e530b348fe337aecf1ea0268c3d43f37e798d2eef66",
+    "sha256_verified": true,
+    "n": 84714,
+    "mean_kind_excess": 0.022586795347444375,
+    "se_kind_excess": 0.0008379702689936778,
+    "crosscheck": {
+     "rows": 84714,
+     "summary_n": 84714,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.07706259964265887,
+     "structural_mean_summary": 0.07706259964265887,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 23062,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.015475600254975564,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 8.673617379884035e-18,
+     "listed_classes_weighted_mean_kind": 0.03097102402371021,
+     "listed_classes_rows_mean_kind": 0.03097102402371021,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r2-eps1_2-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r2-eps1_2-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r2",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r2-eps1_2-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "b00a36405e5f11bc7b21813c6eaf7bfc61fd0a30e9f261c92c9be9780d9c9d7a",
+    "sha256_verified": true,
+    "n": 84714,
+    "mean_kind_excess": 0.032859247180477835,
+    "se_kind_excess": 0.0010446438084390304,
+    "crosscheck": {
+     "rows": 84714,
+     "summary_n": 84714,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.10632148226670846,
+     "structural_mean_summary": 0.10632148226670846,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 23062,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.017116415232429114,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.1102230246251565e-16,
+     "listed_classes_weighted_mean_kind": 0.02652679507748311,
+     "listed_classes_rows_mean_kind": 0.02652679507748311,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r3-eps1_2": [
+   {
+    "raw": "docs/learner-window-census-r3-eps1_2-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r3-eps1_2-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r3",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r3-eps1_2-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "0ae3e0215bcf0c357f993373dd1300c2e4377137de952e1ff8314ba1fc6aa193",
+    "sha256_verified": true,
+    "n": 85071,
+    "mean_kind_excess": 0.023039827460187488,
+    "se_kind_excess": 0.0008759632144822646,
+    "crosscheck": {
+     "rows": 85071,
+     "summary_n": 85071,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.07015242776569176,
+     "structural_mean_summary": 0.07015242776569176,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25522,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.01131995627182001,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.3877787807814457e-17,
+     "listed_classes_weighted_mean_kind": 0.04883918172638722,
+     "listed_classes_rows_mean_kind": 0.048839181726387224,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r3-eps1_2-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r3-eps1_2-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r3",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r3-eps1_2-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "b75663cb242571769afb4cce56a5fbe8e1d9fd47ba654cdc52508163895da366",
+    "sha256_verified": true,
+    "n": 85071,
+    "mean_kind_excess": 0.021910927457961516,
+    "se_kind_excess": 0.0008202388522688996,
+    "crosscheck": {
+     "rows": 85071,
+     "summary_n": 85071,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.07116142379701781,
+     "structural_mean_summary": 0.07116142379701781,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25522,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.01063817282035006,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 6.938893903907228e-18,
+     "listed_classes_weighted_mean_kind": 0.03211583460267087,
+     "listed_classes_rows_mean_kind": 0.03211583460267087,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r3-eps1_2-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r3-eps1_2-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r3",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r3-eps1_2-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "bfb54d9470771d46a1ef19cca21d93bc7f6b51da6f8d0f3f5a18660e5c8c4ac5",
+    "sha256_verified": true,
+    "n": 85071,
+    "mean_kind_excess": 0.020390719107255668,
+    "se_kind_excess": 0.000796405282775007,
+    "crosscheck": {
+     "rows": 85071,
+     "summary_n": 85071,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.07283361655439392,
+     "structural_mean_summary": 0.07283361655439392,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25522,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.013518120158455878,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 1.1102230246251565e-16,
+     "listed_classes_weighted_mean_kind": 0.028297724287657273,
+     "listed_classes_rows_mean_kind": 0.02829772428765728,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ],
+  "r4-eps1_2": [
+   {
+    "raw": "docs/learner-window-census-r4-eps1_2-2M-e15-seed1-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r4-eps1_2-2M-d128-e15-s1",
+    "step": 117195,
+    "seed": 1,
+    "rung": "r4",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1_2-2M-d128-e15-s1-k7-test.jsonl",
+    "per_window_sha256": "b8b4edabf001cab40a1bf67fa53aded1ca4e133238417d53580f7f0493f39780",
+    "sha256_verified": true,
+    "n": 84841,
+    "mean_kind_excess": 0.02904354048645789,
+    "se_kind_excess": 0.0009479570261123181,
+    "crosscheck": {
+     "rows": 84841,
+     "summary_n": 84841,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.1123240656832872,
+     "structural_mean_summary": 0.1123240656832872,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25690,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.0116924600134369,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 2.7755575615628914e-17,
+     "listed_classes_weighted_mean_kind": 0.023456223437255744,
+     "listed_classes_rows_mean_kind": 0.023456223437255744,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r4-eps1_2-2M-e15-seed2-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r4-eps1_2-2M-d128-e15-s2",
+    "step": 117195,
+    "seed": 2,
+    "rung": "r4",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1_2-2M-d128-e15-s2-k7-test.jsonl",
+    "per_window_sha256": "eb60bf63dcc120d5d701bef4831f166d87d9db01a6ca77eb1373344e3f5abe1e",
+    "sha256_verified": true,
+    "n": 84841,
+    "mean_kind_excess": 0.0191121401812206,
+    "se_kind_excess": 0.0007882905029763345,
+    "crosscheck": {
+     "rows": 84841,
+     "summary_n": 84841,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.06465433283458324,
+     "structural_mean_summary": 0.06465433283458324,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25690,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.0064119942009170094,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 4.163336342344337e-17,
+     "listed_classes_weighted_mean_kind": 0.07242157752088374,
+     "listed_classes_rows_mean_kind": 0.07242157752088374,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   },
+   {
+    "raw": "docs/learner-window-census-r4-eps1_2-2M-e15-seed3-2026-10-02.json",
+    "run": "/home/tony/.cache/yupi-scratch/runs/ladder15/c1prime-loop-40-8-2-r4-eps1_2-2M-d128-e15-s3",
+    "step": 117195,
+    "seed": 3,
+    "rung": "r4",
+    "eps": "1/2",
+    "per_window_file": "/home/tony/.cache/yupi-scratch/census/c1prime-loop-40-8-2-r4-eps1_2-2M-d128-e15-s3-k7-test.jsonl",
+    "per_window_sha256": "797df6ec5ad034cea61add25eef62d916afae373ab47acb707da8f8db9202803",
+    "sha256_verified": true,
+    "n": 84841,
+    "mean_kind_excess": 0.020965482955428615,
+    "se_kind_excess": 0.0008021901097935379,
+    "crosscheck": {
+     "rows": 84841,
+     "summary_n": 84841,
+     "rows_eq_summary_n": true,
+     "structural_mean_rows": 0.07051318752724886,
+     "structural_mean_summary": 0.07051318752724886,
+     "structural_mean_abs_diff": 0.0,
+     "n_classes_total": 25690,
+     "n_classes_listed": 20,
+     "listed_classes_window_share": 0.012246437453589656,
+     "listed_classes_n_match": true,
+     "listed_classes_max_abs_diff_by_field_kind": 6.938893903907228e-18,
+     "listed_classes_weighted_mean_kind": 0.03324221748518095,
+     "listed_classes_rows_mean_kind": 0.03324221748518095,
+     "full_class_list_reconstruction": "not possible: the raw lists only the top classes"
+    }
+   }
+  ]
+ },
+ "cells": {
+  "r0-eps1": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.0037273681870402275,
+    0.0038043987078128223,
+    0.0039445393888399545
+   ],
+   "mean": 0.0038254354278976685,
+   "sd_between_seeds": 0.0001101033170105722,
+   "min": 0.0037273681870402275,
+   "max": 0.0039445393888399545,
+   "range": 0.00021717120179972705
+  },
+  "r1-eps1": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.01569994934980953,
+    0.014635915664658269,
+    0.015758977306450435
+   ],
+   "mean": 0.015364947440306078,
+   "sd_between_seeds": 0.0006320495014984572,
+   "min": 0.014635915664658269,
+   "max": 0.015758977306450435,
+   "range": 0.0011230616417921661
+  },
+  "r2-eps1": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.015649448873193465,
+    0.017189706524093334,
+    0.023769198912959637
+   ],
+   "mean": 0.01886945143674881,
+   "sd_between_seeds": 0.004312625929264519,
+   "min": 0.015649448873193465,
+   "max": 0.023769198912959637,
+   "range": 0.008119750039766171
+  },
+  "r3-eps1": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.012158976958698501,
+    0.013980005505564592,
+    0.014180816746945286
+   ],
+   "mean": 0.01343993307040279,
+   "sd_between_seeds": 0.0011138750866908945,
+   "min": 0.012158976958698501,
+   "max": 0.014180816746945286,
+   "range": 0.002021839788246785
+  },
+  "r4-eps1": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.014138969266195449,
+    0.013040478623501705,
+    0.012697081459604753
+   ],
+   "mean": 0.0132921764497673,
+   "sd_between_seeds": 0.0007531759147163779,
+   "min": 0.012697081459604753,
+   "max": 0.014138969266195449,
+   "range": 0.0014418878065906963
+  },
+  "r0-eps1_2": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.005316372026290068,
+    0.004819954824655487,
+    0.004532459005987471
+   ],
+   "mean": 0.0048895952856443416,
+   "sd_between_seeds": 0.0003965693523269797,
+   "min": 0.004532459005987471,
+   "max": 0.005316372026290068,
+   "range": 0.0007839130203025971
+  },
+  "r1-eps1_2": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.019528328595981994,
+    0.019676817766905417,
+    0.024764366778939933
+   ],
+   "mean": 0.021323171047275782,
+   "sd_between_seeds": 0.0029810876045812647,
+   "min": 0.019528328595981994,
+   "max": 0.024764366778939933,
+   "range": 0.005236038182957939
+  },
+  "r2-eps1_2": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.032410980211799285,
+    0.022586795347444375,
+    0.032859247180477835
+   ],
+   "mean": 0.029285674246573832,
+   "sd_between_seeds": 0.005805727318579773,
+   "min": 0.022586795347444375,
+   "max": 0.032859247180477835,
+   "range": 0.01027245183303346
+  },
+  "r3-eps1_2": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.023039827460187488,
+    0.021910927457961516,
+    0.020390719107255668
+   ],
+   "mean": 0.02178049134180156,
+   "sd_between_seeds": 0.0013293622349429277,
+   "min": 0.020390719107255668,
+   "max": 0.023039827460187488,
+   "range": 0.00264910835293182
+  },
+  "r4-eps1_2": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.02904354048645789,
+    0.0191121401812206,
+    0.020965482955428615
+   ],
+   "mean": 0.023040387874369034,
+   "sd_between_seeds": 0.005280823877265668,
+   "min": 0.0191121401812206,
+   "max": 0.02904354048645789,
+   "range": 0.00993140030523729
+  }
+ },
+ "C3": {
+  "eps1_2": {
+   "prediction": "r2 > r1 > r3",
+   "pairs": [
+    {
+     "higher": "r2-eps1_2",
+     "lower": "r1-eps1_2",
+     "mean_higher": 0.029285674246573832,
+     "mean_lower": 0.021323171047275782,
+     "diff": 0.00796250319929805,
+     "mean_order_holds": true,
+     "seed_resolved": false,
+     "min_higher": 0.022586795347444375,
+     "max_lower": 0.024764366778939933
+    },
+    {
+     "higher": "r1-eps1_2",
+     "lower": "r3-eps1_2",
+     "mean_higher": 0.021323171047275782,
+     "mean_lower": 0.02178049134180156,
+     "diff": -0.00045732029452577594,
+     "mean_order_holds": false,
+     "seed_resolved": false,
+     "min_higher": 0.019528328595981994,
+     "max_lower": 0.023039827460187488
+    },
+    {
+     "higher": "r2-eps1_2",
+     "lower": "r3-eps1_2",
+     "mean_higher": 0.029285674246573832,
+     "mean_lower": 0.02178049134180156,
+     "diff": 0.007505182904772274,
+     "mean_order_holds": true,
+     "seed_resolved": false,
+     "min_higher": 0.022586795347444375,
+     "max_lower": 0.023039827460187488
+    }
+   ],
+   "mean_order_holds": false
+  },
+  "eps1": {
+   "prediction": "r2 > r3 (r1 eps=1 excluded)",
+   "pairs": [
+    {
+     "higher": "r2-eps1",
+     "lower": "r3-eps1",
+     "mean_higher": 0.01886945143674881,
+     "mean_lower": 0.01343993307040279,
+     "diff": 0.005429518366346019,
+     "mean_order_holds": true,
+     "seed_resolved": true,
+     "min_higher": 0.015649448873193465,
+     "max_lower": 0.014180816746945286
+    }
+   ],
+   "mean_order_holds": true
+  }
+ },
+ "C4": {
+  "eps1_with_r1": {
+   "cell": "r0-eps1",
+   "mean": 0.0038254354278976685,
+   "compared_with": [
+    "r1-eps1",
+    "r2-eps1",
+    "r3-eps1",
+    "r4-eps1"
+   ],
+   "others_means": {
+    "r1-eps1": 0.015364947440306078,
+    "r2-eps1": 0.01886945143674881,
+    "r3-eps1": 0.01343993307040279,
+    "r4-eps1": 0.0132921764497673
+   },
+   "lowest": true,
+   "seed_resolved": true,
+   "margin_to_next": 0.009466741021869632
+  },
+  "eps1_without_r1": {
+   "cell": "r0-eps1",
+   "mean": 0.0038254354278976685,
+   "compared_with": [
+    "r2-eps1",
+    "r3-eps1",
+    "r4-eps1"
+   ],
+   "others_means": {
+    "r2-eps1": 0.01886945143674881,
+    "r3-eps1": 0.01343993307040279,
+    "r4-eps1": 0.0132921764497673
+   },
+   "lowest": true,
+   "seed_resolved": true,
+   "margin_to_next": 0.009466741021869632
+  },
+  "eps1_2": {
+   "cell": "r0-eps1_2",
+   "mean": 0.0048895952856443416,
+   "compared_with": [
+    "r1-eps1_2",
+    "r2-eps1_2",
+    "r3-eps1_2",
+    "r4-eps1_2"
+   ],
+   "others_means": {
+    "r1-eps1_2": 0.021323171047275782,
+    "r2-eps1_2": 0.029285674246573832,
+    "r3-eps1_2": 0.02178049134180156,
+    "r4-eps1_2": 0.023040387874369034
+   },
+   "lowest": true,
+   "seed_resolved": true,
+   "margin_to_next": 0.01643357576163144
+  }
+ },
+ "r4_no_prediction": {
+  "r4-eps1": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.014138969266195449,
+    0.013040478623501705,
+    0.012697081459604753
+   ],
+   "mean": 0.0132921764497673,
+   "sd_between_seeds": 0.0007531759147163779,
+   "min": 0.012697081459604753,
+   "max": 0.014138969266195449,
+   "range": 0.0014418878065906963
+  },
+  "r4-eps1_2": {
+   "seeds": [
+    1,
+    2,
+    3
+   ],
+   "seed_means": [
+    0.02904354048645789,
+    0.0191121401812206,
+    0.020965482955428615
+   ],
+   "mean": 0.023040387874369034,
+   "sd_between_seeds": 0.005280823877265668,
+   "min": 0.0191121401812206,
+   "max": 0.02904354048645789,
+   "range": 0.00993140030523729
+  }
+ }
+}

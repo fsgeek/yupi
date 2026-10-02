@@ -1,0 +1,1619 @@
+{
+ "summary": "Mechanically score stamped preregs (converged ladder C1-C4, actor A4, relay R1-R4) with frozen scripts; two-family fidelity review; one fix round",
+ "agentCount": 4,
+ "logs": [
+  "runner: C1 24/24 PASS (KIND \u03b2_long 0.0111\u20130.0293, t 5.27\u201311.29). C2 8/8 PASS (pooled \u03b2_long 0.0132\u20130.0246, all in [0.01,0.05]; roughly 40% below the 5-epoch 0.029\u20130.041). C3 FAIL: the \u03b5=1/2 chain r2>r1>r3 breaks at r1>r3 (0.02132 vs 0.02178, diff \u22120.00046, unresolved). r2>r1 holds but isn't seed-resolved. The \u03b5=1 r2>r3 passes and is seed-resolved (0.01887 vs 0.01344). C4 3/3 PASS (r0 lowest at \u03b5=1 with and without r1, and at \u03b5=1/2; all seed-resolved). A4 24/24 PASS on full_plus_log2_class_mass, the row the actor verdict scored. Min t is 3.07 (r3 \u03b5=1 s3), then 3.17 (r4 \u03b5=1/2 s3). The no-mass model also gives 24/24 (min t 4.03). Relay provenance 12/12 OK. Relay primary arm: R1 FAIL (slope 0.01627, t 6.24, just under the band's 0.0165 floor); R2 FAIL (zero-set mean minus intercept \u22120.00382, 13 se); R4 FAIL (quadrature t +3.42, opposite sign; set-se t +3.51); R3 3/3 PASS (t 6.28, 4.65, 5.89). Secondary arm, reported without thresholds: slope +0.00049 (t 0.21), intercept +0.00367, R4 +0.00437 (t +2.62 / +2.55), R3 t 4.61, 3.36, 4.29.",
+  "objections: claude 6, codex 3"
+ ],
+ "result": {
+  "card": {
+   "lines": [
+    {
+     "id": "C1/r1-eps1-s1",
+     "rule": "\u03b2_long>0 and t>=3 (full_plus_log2_class_mass)",
+     "values": "\u03b2_long 0.01747, se 0.00257, t 6.79",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[0].full_plus_log2_class_mass.beta[1]/se[1]"
+    },
+    {
+     "id": "C1/r1-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01369, t 6.07",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[1].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01558, t 6.86",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[2].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01812, t 7.48",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[3].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02046, t 8.27",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[4].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02648, t 9.58",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[5].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01610, t 7.94",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[6].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02157, t 8.98",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[7].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02932, t 11.29",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[8].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02852, t 9.92",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[9].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01922, t 7.72",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[10].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02618, t 8.73",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[11].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01360, t 6.64",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[12].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01450, t 6.44",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[13].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01140, t 5.67",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[14].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01913, t 7.25",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[15].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02545, t 9.21",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[16].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01993, t 7.93",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[17].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01110, t 5.27 (minimum t of the 24)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[18].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01596, t 7.05",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[19].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01530, t 7.30",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[20].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02820, t 10.05",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[21].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01860, t 6.96",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[22].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01863, t 7.40",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[23].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C2/r1-eps1",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.01558 (t 11.37; \u03b2_short +0.00031)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[0].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r1-eps1_2",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02168 (t 14.68; \u03b2_short -0.00024)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[1].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r2-eps1",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02233 (t 16.41; \u03b2_short +0.00122)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[2].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r2-eps1_2",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02464 (t 15.25; \u03b2_short +0.00113)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[3].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r3-eps1",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.01317 (t 10.83; \u03b2_short +0.00137, t 3.75)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[4].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r3-eps1_2",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02150 (t 14.11)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[5].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r4-eps1",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.01412 (t 11.33)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[6].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r4-eps1_2",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02181 (t 14.16)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[7].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C3/eps1_2:r2>r1",
+     "rule": "mean KIND excess r2 > r1 at eps=1/2; seed-resolution reported",
+     "values": "r2 0.02929 (seeds 0.03241 0.02259 0.03286, sd 0.00581) vs r1 0.02132 (seeds 0.01953 0.01968 0.02476, sd 0.00298); diff +0.00796; NOT seed-resolved (min r2 0.02259 < max r1 0.02476)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.pairs[0]"
+    },
+    {
+     "id": "C3/eps1_2:r1>r3",
+     "rule": "mean KIND excess r1 > r3 at eps=1/2",
+     "values": "r1 0.02132 vs r3 0.02178 (seeds 0.02304 0.02191 0.02039, sd 0.00133); diff -0.00046; NOT seed-resolved",
+     "result": "FAIL",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.pairs[1]"
+    },
+    {
+     "id": "C3/eps1_2:r2>r3 (implied by chain)",
+     "rule": "r2 > r3 at eps=1/2 (implied by r2>r1>r3, not separately stamped)",
+     "values": "0.02929 vs 0.02178, diff +0.00751; NOT seed-resolved (min r2 0.02259 < max r3 0.02304)",
+     "result": "REPORTED",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.pairs[2]"
+    },
+    {
+     "id": "C3/eps1_2:chain",
+     "rule": "r2 > r1 > r3 at eps=1/2 (means)",
+     "values": "observed r2 0.02929 > r3 0.02178 > r1 0.02132; the r1/r3 link is inverted",
+     "result": "FAIL",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.mean_order_holds"
+    },
+    {
+     "id": "C3/eps1:r2>r3",
+     "rule": "mean KIND excess r2 > r3 at eps=1 (r1 excluded)",
+     "values": "r2 0.01887 (seeds 0.01565 0.01719 0.02377, sd 0.00431) vs r3 0.01344 (seeds 0.01216 0.01398 0.01418, sd 0.00111); diff +0.00543; SEED-RESOLVED (min r2 0.01565 > max r3 0.01418)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1.pairs[0]"
+    },
+    {
+     "id": "C3/overall",
+     "rule": "both parts of C3 (eps=1/2 chain and eps=1 pair)",
+     "values": "eps=1/2 chain FAIL (r1<r3 by 0.00046), eps=1 PASS",
+     "result": "FAIL",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3"
+    },
+    {
+     "id": "C4/eps1 with r1",
+     "rule": "r0 lowest KIND excess vs r1,r2,r3,r4 at eps=1",
+     "values": "r0 0.00383 (seeds 0.00373 0.00380 0.00394, sd 0.00011); others r1 0.01536, r2 0.01887, r3 0.01344, r4 0.01329; margin +0.00947; seed-resolved",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C4.eps1_with_r1"
+    },
+    {
+     "id": "C4/eps1 without r1",
+     "rule": "r0 lowest vs r2,r3,r4 at eps=1",
+     "values": "r0 0.00383; margin +0.00947 (to r4 0.01329); seed-resolved",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C4.eps1_without_r1"
+    },
+    {
+     "id": "C4/eps1_2",
+     "rule": "r0 lowest vs r1..r4 at eps=1/2",
+     "values": "r0 0.00489 (seeds 0.00532 0.00482 0.00453, sd 0.00040); others r1 0.02132, r2 0.02929, r3 0.02178, r4 0.02304; margin +0.01643; seed-resolved",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C4.eps1_2"
+    },
+    {
+     "id": "r4/eps1 (no prediction)",
+     "rule": "report cell mean",
+     "values": "0.01329, sd 0.00075 (seeds 0.01414 0.01304 0.01270)",
+     "result": "REPORTED",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:cells.r4-eps1"
+    },
+    {
+     "id": "r4/eps1_2 (no prediction)",
+     "rule": "report cell mean",
+     "values": "0.02304, sd 0.00528 (seeds 0.02904 0.01911 0.02097)",
+     "result": "REPORTED",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:cells.r4-eps1_2"
+    },
+    {
+     "id": "A4/r1-eps1-s1",
+     "rule": "A1 on converged run: actor \u03b2_long>0, t>=3 (full_plus_log2_class_mass, as in the actor verdict)",
+     "values": "\u03b2_long 0.04172, t 9.03",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[0].full_plus_log2_class_mass.beta[1]/se[1]"
+    },
+    {
+     "id": "A4/r1-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03822, t 8.96",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[1].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03585, t 7.82",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[2].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02351, t 5.19",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[3].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03146, t 6.40",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[4].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02580, t 5.32",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[5].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03667, t 8.46",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[6].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03846, t 7.72",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[7].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.05384, t 10.14",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[8].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.04806, t 9.30",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[9].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01805, t 4.30",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[10].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03996, t 7.74",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[11].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02037, t 5.26",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[12].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01277, t 3.63",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[13].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01140, se 0.00371, t 3.07 (minimum of 24; narrow margin)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[14].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03637, t 5.08",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[15].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03380, t 5.37",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[16].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03856, t 6.05",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[17].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02172, t 5.55",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[18].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01746, t 4.00",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[19].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02686, t 6.51",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[20].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.04962, t 7.66",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[21].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02575, t 5.11",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[22].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01573, se 0.00496, t 3.17 (second-lowest; no-mass model t 6.51)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[23].full_plus_log2_class_mass"
+    },
+    {
+     "id": "Prov/primary",
+     "rule": "addendum \u00a73: primary-arm controls and r1R are 5 epochs, final step 39065",
+     "values": "6/6 OK: run.json epochs 5, steps_total 39065, log.jsonl last step 39065, census step 39065, d128, lr 1e-3->1e-4, seed match, ckpt.pt sha256 == census checkpoint_sha256; corpora r1-eps1/fd5da4c31e43d73d and r1R-eps1/fd5da4c31e43d73d",
+     "result": "PASS",
+     "source": "~/.cache/yupi-scratch/census/scoring-2026-10-02-4-provenance.log"
+    },
+    {
+     "id": "Prov/secondary",
+     "rule": "addendum \u00a73: secondary-arm controls and r1R are 15 epochs, step 117195",
+     "values": "6/6 OK (same checks); r1 e15 seed2 run.json resumed_from_step 38000 (pre-existing, reached 117195)",
+     "result": "PASS",
+     "source": "~/.cache/yupi-scratch/census/scoring-2026-10-02-4-provenance.log"
+    },
+    {
+     "id": "R1/primary",
+     "rule": "slope>0, t>=3, slope in [0.0165, 0.066]",
+     "values": "slope +0.016273, se 0.002608, t 6.24; below band lower edge 0.0165 by 0.000227 (about 0.09 se). Gates all passed",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:slope, slope_t, verdict.R1"
+    },
+    {
+     "id": "R2/primary",
+     "rule": "|mean \u0394excess(exact-zero set) - intercept| <= 2 se, se = set mean's se (addendum \u00a72)",
+     "values": "zero set n 8166 mean +0.000756 se 0.000294; intercept +0.004581 (se 0.000449, t 10.2); diff -0.003824 = 13.0 set-se (limit 2). Under the quadrature se 0.000536 it is 7.1 se, still FAIL",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:R2_zero_set, intercept"
+    },
+    {
+     "id": "R4/primary (scored: quadrature t)",
+     "rule": "\u0394\u03b9<-0.05: mean \u0394excess - intercept < 0 with t <= -3, t using set se and intercept se in quadrature (addendum \u00a72)",
+     "values": "n 7274, mean +0.011252 se 0.001901; minus intercept +0.006671; quadrature t +3.42 (wrong sign: the r1R models are BETTER there, not worse)",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:R4_set.t_with_intercept_se"
+    },
+    {
+     "id": "R4/primary (set-mean-se t, script label)",
+     "rule": "same, t = diff / set se (script's in-file verdict)",
+     "values": "t +3.51",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:R4_set.t, verdict.R4"
+    },
+    {
+     "id": "R3/primary-s1",
+     "rule": "r1R e5 own-\u03b9 frozen bintest, \u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02042, t 6.28",
+     "result": "PASS",
+     "source": "docs/relay-r3-bintest-primary-2026-10-02.json:runs[0].full_plus_log2_class_mass"
+    },
+    {
+     "id": "R3/primary-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01331, t 4.65",
+     "result": "PASS",
+     "source": "docs/relay-r3-bintest-primary-2026-10-02.json:runs[1].full_plus_log2_class_mass"
+    },
+    {
+     "id": "R3/primary-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01992, t 5.89",
+     "result": "PASS",
+     "source": "docs/relay-r3-bintest-primary-2026-10-02.json:runs[2].full_plus_log2_class_mass"
+    },
+    {
+     "id": "R1/secondary",
+     "rule": "report without threshold",
+     "values": "slope +0.000491, se 0.002356, t +0.21; intercept +0.003671 (t 9.05)",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-secondary-2026-10-02.json:ols"
+    },
+    {
+     "id": "R2/secondary",
+     "rule": "report without threshold",
+     "values": "zero set mean +0.0000236 se 0.000316; minus intercept -0.003647 (11.6 set-se)",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-secondary-2026-10-02.json:R2_zero_set"
+    },
+    {
+     "id": "R4/secondary",
+     "rule": "report without threshold",
+     "values": "n 7274 mean +0.008040 se 0.001668; minus intercept +0.004369; t +2.62, quadrature t +2.55 (same wrong-sign direction as primary)",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-secondary-2026-10-02.json:R4_set"
+    },
+    {
+     "id": "R3/secondary",
+     "rule": "report without threshold",
+     "values": "\u03b2_long s1 0.01272 (t 4.61), s2 0.00774 (t 3.36), s3 0.01070 (t 4.29); pooled 0.01039 (t 7.12)",
+     "result": "REPORTED",
+     "source": "docs/relay-r3-bintest-secondary-2026-10-02.json:runs[*].full_plus_log2_class_mass"
+    }
+   ],
+   "summary": "C1 24/24 PASS (KIND \u03b2_long 0.0111\u20130.0293, t 5.27\u201311.29). C2 8/8 PASS (pooled \u03b2_long 0.0132\u20130.0246, all in [0.01,0.05]; roughly 40% below the 5-epoch 0.029\u20130.041). C3 FAIL: the \u03b5=1/2 chain r2>r1>r3 breaks at r1>r3 (0.02132 vs 0.02178, diff \u22120.00046, unresolved). r2>r1 holds but isn't seed-resolved. The \u03b5=1 r2>r3 passes and is seed-resolved (0.01887 vs 0.01344). C4 3/3 PASS (r0 lowest at \u03b5=1 with and without r1, and at \u03b5=1/2; all seed-resolved). A4 24/24 PASS on full_plus_log2_class_mass, the row the actor verdict scored. Min t is 3.07 (r3 \u03b5=1 s3), then 3.17 (r4 \u03b5=1/2 s3). The no-mass model also gives 24/24 (min t 4.03). Relay provenance 12/12 OK. Relay primary arm: R1 FAIL (slope 0.01627, t 6.24, just under the band's 0.0165 floor); R2 FAIL (zero-set mean minus intercept \u22120.00382, 13 se); R4 FAIL (quadrature t +3.42, opposite sign; set-se t +3.51); R3 3/3 PASS (t 6.28, 4.65, 5.89). Secondary arm, reported without thresholds: slope +0.00049 (t 0.21), intercept +0.00367, R4 +0.00437 (t +2.62 / +2.55), R3 t 4.61, 3.36, 4.29.",
+   "commands": [
+    "sha256sum scripts/implicit_info_bintest.py scripts/implicit_info_bintest_actor.py scripts/relay_paired.py scripts/learner_window_census.py scripts/learner_evaluate.py   (before and after; also git diff --quiet HEAD -- scripts/ src/ -> unchanged)",
+    "per-window sha256 check of all 39 census raws (python inline) -> ~/.cache/yupi-scratch/census/scoring-2026-10-02-0-perwindow-sha.log",
+    "uv run --extra learner python scripts/implicit_info_bintest.py --m-long 4 --glob 'docs/learner-window-census-r[1-4]-eps*-2M-e15-seed*-2026-10-02.json' --raw docs/converged-ladder-bintest-kind-2026-10-02.json   > scoring-2026-10-02-1-c1c2-kind.log",
+    "uv run --extra learner python scripts/implicit_info_bintest_actor.py --m-long 4 --glob 'docs/learner-window-census-r[1-4]-eps*-2M-e15-seed*-2026-10-02.json' --raw docs/converged-ladder-bintest-actor-2026-10-02.json   > scoring-2026-10-02-2-a4-actor.log",
+    "provenance check (python inline: census raw run path -> run.json epochs/steps_total/model/lr/seed/corpus, log.jsonl last step, sha256(ckpt.pt) == checkpoint_sha256) > scoring-2026-10-02-4-provenance.log",
+    "uv run --extra learner python scripts/relay_paired.py --arm primary --eps 1 --r1 docs/learner-window-census-r1-eps1-2M-seed{1,2,3}-2026-09-21.json --r1R docs/learner-window-census-r1R-eps1-2M-e5-seed{1,2,3}-2026-10-02.json --raw docs/relay-paired-primary-2026-10-02.json   > scoring-2026-10-02-5-relay-primary.log",
+    "uv run --extra learner python scripts/relay_paired.py --arm secondary --eps 1 --r1 docs/learner-window-census-r1-eps1-2M-e15-seed{1,2,3}-2026-10-02.json --r1R docs/learner-window-census-r1R-eps1-2M-e15-seed{1,2,3}-2026-10-02.json --raw docs/relay-paired-secondary-2026-10-02.json   > scoring-2026-10-02-5-relay-secondary.log  (--eps 1 passed explicitly; it is the default)",
+    "uv run --extra learner python scripts/implicit_info_bintest.py --m-long 4 --glob 'docs/learner-window-census-r1R-eps1-2M-e5-seed*-2026-10-02.json' --raw docs/relay-r3-bintest-primary-2026-10-02.json   > scoring-2026-10-02-6-r3-primary.log",
+    "uv run --extra learner python scripts/implicit_info_bintest.py --m-long 4 --glob 'docs/learner-window-census-r1R-eps1-2M-e15-seed*-2026-10-02.json' --raw docs/relay-r3-bintest-secondary-2026-10-02.json   > scoring-2026-10-02-6-r3-secondary.log",
+    "uv run --extra learner python scripts/converged_ladder_c3c4.py --raw docs/converged-ladder-c3c4-2026-10-02.json   > scoring-2026-10-02-3-c3c4.log  (written and run AFTER all frozen runs so their raws carry a clean git field)",
+    "UNSCORED: eval k=7 kind_kl_bits / structural_by_field.kind vs census means (python inline) > scoring-2026-10-02-3b-eval-kindkl-context.log",
+    "UNSCORED: uv run --extra learner python ~/.cache/yupi-scratch/census/relay-deciles/relay_deciles_2026-10-02.py (imports frozen relay_paired functions unchanged) > scoring-2026-10-02-5b-relay-deciles-unscored.log",
+    "scorecard extraction (python inline) > scoring-2026-10-02-7-scorecard-extract.log"
+   ],
+   "files_written": [
+    "/home/tony/projects/yupi/docs/converged-ladder-bintest-kind-2026-10-02.json",
+    "/home/tony/projects/yupi/docs/converged-ladder-bintest-actor-2026-10-02.json",
+    "/home/tony/projects/yupi/docs/converged-ladder-c3c4-2026-10-02.json",
+    "/home/tony/projects/yupi/docs/relay-paired-primary-2026-10-02.json",
+    "/home/tony/projects/yupi/docs/relay-paired-secondary-2026-10-02.json",
+    "/home/tony/projects/yupi/docs/relay-r3-bintest-primary-2026-10-02.json",
+    "/home/tony/projects/yupi/docs/relay-r3-bintest-secondary-2026-10-02.json",
+    "/home/tony/projects/yupi/scripts/converged_ladder_c3c4.py",
+    "/home/tony/.cache/yupi-scratch/census/relay-deciles/relay_deciles_2026-10-02.py",
+    "/home/tony/.cache/yupi-scratch/census/relay-deciles/relay-deciles-2026-10-02.json",
+    "/home/tony/.cache/yupi-scratch/census/scoring-2026-10-02-{0-perwindow-sha,1-sha,1-c1c2-kind,2-a4-actor,3-c3c4,3b-eval-kindkl-context,4-provenance,5-sha,5-relay-primary,5-relay-secondary,5b-relay-deciles-unscored,6-sha,6-r3-primary,6-r3-secondary,7-scorecard-extract}.log"
+   ],
+   "sha_checks": "The frozen scripts matched before use and again after all runs. scripts/implicit_info_bintest.py c73fab6b76180b6a3851bcea89369f958aab81987a7f39bdd2a49ad32dd7acfc (matches the required value). scripts/implicit_info_bintest_actor.py 09ba6f42d6303c49bb60fb05587c2ef962f4d468e6de9e82ce624ce3a40c4c09 (matches). The task gave no required hashes for the other three: scripts/relay_paired.py deb58a3a8a4a8d0fa30b74468a65f7ee3b70b36d9721811c69e99c4fec269939 (last changed in freezing commit 5920292), scripts/learner_window_census.py bcef31c43430c1971e2fea5462d2a69f9c21c1c228930f9993f431f693a767b2 (8821dbd), scripts/learner_evaluate.py d2ec68ff176e6c0eff306021f3d13f93547085feb8e8508d26792b75e7a2cf0f (7636830). All are unchanged vs HEAD (git diff --quiet HEAD -- scripts/ src/). All 39 census raws (36 new plus the 3 primary controls from 2026-09-21): the per-window jsonl sha256 equals the recorded per_window_sha256, 39/39. All 10 KIND \u03b9 per-class caches the bintest reads match per_class_sha256 in docs/implicit-info-lag-kind-40-8-2-k7-2026-09-28.json. relay_paired gates passed in both arms (census sha, rungs, window sets, class bijection, drop_relay pairing, \u0394\u03b9 table sha 0501876c\u2026dbdc4). All 12 relay-arm checkpoints: sha256(ckpt.pt) equals census checkpoint_sha256. The six frozen-script output raws record git cdce58c with no +dirty flag. converged-ladder-c3c4 records cdce58c+dirty because its own script is untracked. Output sha256: bintest-kind 404e710c\u2026d607, bintest-actor e5042f1b\u20263d84, c3c4 d0a6d7bd\u20267b34, relay-paired-primary 8da615c4\u20265947, relay-paired-secondary 1024d4f6\u20260743, r3-primary 52299e32\u2026ccf2, r3-secondary 06f150c4\u2026f6b, converged_ladder_c3c4.py f2489541\u20266f93.",
+   "notes": "FAILURES, stated plainly.\n(1) C3 fails at \u03b5=1/2. r3 (0.02178) sits above r1 (0.02132), so the observed order is r2 > r3 > r1, not the predicted r2 > r1 > r3. The gap (\u22120.00046) is far inside the seed spreads (r1 sd 0.00298, r3 sd 0.00133). Unscored context: the evaluation raws' exact KIND KL at k=7 (kind_kl_bits) gives r1 0.02191 > r3 0.02159, the predicted direction, by 0.0003. So this link can't be resolved at 3 seeds and flips with the estimator. The stamped estimator is census by_field.kind, and under it C3 fails. The evaluation raws' structural_by_field.kind equals the census means exactly (difference 0 in all 27 runs), which independently confirms the C3/C4 inputs.\n(2) Relay primary R1 fails only on the band. The slope is positive and strongly significant (t 6.24), but 0.016273 is just under the 0.0165 floor, about 0.09 se below it. Under the literal stamped wording (\"its value lies in [0.0165, 0.066]\") that is a FAIL. No stamped reading uses a CI.\n(3) R2 fails by a lot. The exact-zero set's mean \u0394excess (+0.00076) is about 0 but well below the intercept (+0.00458, t 10.2). The intercept is the prereg's \"generic effect of the new field\", and it doesn't hold on the exact-zero set. R2 fails under either se reading.\n(4) R4 fails in the opposite direction: on \u0394\u03b9 < \u22120.05 windows the r1R models are significantly better (quadrature t +3.42, set-se t +3.51). The secondary arm goes the same way (t +2.55 / +2.62).\nSurprise, unscored, for the owner: addendum \u00a74 says the deciles of \u0394\u03b9 are reported, but relay_paired.py doesn't compute them. I computed them in scratch by importing the frozen functions unchanged (~/.cache/yupi-scratch/census/relay-deciles/relay-deciles-2026-10-02.json). In the primary arm \u0394excess is V-shaped in \u0394\u03b9: dec0 (mean \u0394\u03b9 \u22120.157) +0.0109, dec1 +0.0033, dec2 +0.0019, dec3 (around 0) +0.0007, dec4 +0.0039 \u2026 dec8 +0.0102, dec9 (mean \u0394\u03b9 +0.620) +0.0153. So r1R's advantage grows with |\u0394\u03b9| in both directions, not with signed \u0394\u03b9. That is why R4 has the wrong sign and R2's set sits below the intercept. I haven't investigated a confound; one candidate is that |\u0394\u03b9| tracks window difficulty. In the secondary arm the slope disappears (t 0.21), but the V shape on the negative side is still there.\nAMBIGUITIES. (a) C3 is one prediction with two parts. I scored each part and the whole (FAIL because the \u03b5=1/2 chain breaks). The \u03b5=1/2 r2>r3 pair is implied by the chain, not separately stamped, so I list it as REPORTED. (b) A4 uses the row the actor verdict scored (full_plus_log2_class_mass); the 'full' no-mass model also gives 24/24. The two narrowest margins on the scored row are t 3.07 and 3.17. (c) R4: addendum \u00a72 governs, so the scored t is the quadrature t (t_with_intercept_se), even though relay_paired.py's own in-file verdict uses the set-se t. Both readings FAIL here, so the choice changes nothing. (d) The C3/C4 cross-check against 'the raw's class list' can only be partial: each census raw lists only the top 20 classes (window share 0.2\u20138%) out of about 28k. For those classes, n matches and by_field.kind matches the per-window rows to within 2e-16. Row count equals summary.n and the structural mean equals summary.mean exactly, in all 30 runs.\nOTHER OBSERVATIONS. C2 passes, but converged pooled \u03b2_long (0.013\u20130.025) is about 40% below the 5-epoch values (0.029\u20130.041). At \u03b5=1, the pooled KIND \u03b2_short now has t 2.4\u20134.4 in r2, r3 and r4. R3 primary passes, with r1R's own pooled \u03b2_long 0.0179. Provenance: r1 \u03b5=1 e15 seed2 (a pre-existing model) resumed from step 38000 and finished at 117195. The new census raws record git 680dafe+dirty because learner_window_census.py checks the whole tree (`git status --porcelain` with no path filter) while sibling raws were being written to docs/; that's harmless. The frozen KIND bintest writes a hardcoded status 'EXPLORATORY (paper-1 readiness item 3, all windows)' into its raws, including these confirmatory ones; that's cosmetic. Nothing committed; the GPU wasn't touched; no processes killed. Untracked new files: the 7 docs/*.json raws listed and scripts/converged_ladder_c3c4.py."
+  },
+  "claudeRev": {
+   "objections": [
+    {
+     "line_id": "C2/r1-eps1, C2/r1-eps1_2, C2/r2-eps1, C2/r2-eps1_2, C2/r3-eps1, C2/r3-eps1_2, C2/r4-eps1, C2/r4-eps1_2 (and summary 'C2 8/8 PASS')",
+     "severity": "changes-result",
+     "claim": "The scorecard checks only C2's band. The stamped C2 text goes on to say: 'The prediction is that convergence shrinks the long-lag cost no more than the overall excess shrinks, and does not remove it.' The scorecard never evaluates that sentence. Read literally, as part of the prediction, it fails in 8/8 cells: \u03b2_long fell proportionally more than the excess in every cell. The wording is ambiguous, so both readings are given. Reading A (the band is the operational criterion, the sentence is its rationale; commit 05e3543's message summarises C2 as just 'pooled \u03b2_long in [0.01,0.05]'): C2 PASS 8/8. Reading B (the sentence labelled 'The prediction is' is scored too): C2 FAIL 8/8. The 'does not remove it' clause passes under both readings.",
+     "evidence": "My recomputation compares pooled \u03b2_long on full_plus_log2_class_mass at 5 epochs (docs/implicit-info-bintest-freqctl-k7-2026-09-29.json for \u03b5=1, docs/d1-long-lag-heldout-primary-2026-09-29.json for \u03b5=\u00bd) with 15 epochs (docs/converged-ladder-bintest-kind-2026-10-02.json). It sets that against the pooled mean KIND excess (mean_excess in the same raws). Ratios are 15-epoch over 5-epoch, \u03b2 vs KIND excess. r1 \u03b5=1: 0.477 vs 0.720. r1 \u03b5=\u00bd: 0.542 vs 0.632. r2 \u03b5=1 (seeds 1\u20133): 0.580 vs 0.662; with seeds 4\u20136 as the 5-epoch reference, 0.766 vs 0.829. r2 \u03b5=\u00bd: 0.599 vs 0.777. r3 \u03b5=1: 0.548 vs 0.700. r3 \u03b5=\u00bd: 0.689 vs 0.737. r4 \u03b5=1: 0.452 vs 0.575. r4 \u03b5=\u00bd: 0.552 vs 0.670. The total structural excess (census summary.mean) gives the same direction everywhere. Its ratios are 0.56\u20130.79, e.g. r1 \u03b5=1 0.774 and r4 \u03b5=\u00bd 0.702 (6 seeds) or 0.568 (seeds 1\u20133), each still above the matching \u03b2 ratio. These are point-estimate comparisons. r3 \u03b5=\u00bd (0.689 vs 0.737) is likely within noise, but the literal wording has no uncertainty allowance. Some cells mix 6-seed 5-epoch pools with 3-seed 15-epoch pools. That changes no direction."
+    },
+    {
+     "line_id": "C3/eps1_2:r2>r3 (implied by chain)",
+     "severity": "wording/provenance",
+     "claim": "The scorecard calls r2 > r3 at \u03b5=\u00bd 'not separately stamped' and marks it REPORTED. The stamped text says the mean KIND excess 'ranks as \u03b9_kind,4 ranks (r2 0.361 > r1 0.338 > r3 0.305)'. That is a full ranking of three cells, so r2 > r3 is part of the stamped prediction, not something merely implied. It holds on means (+0.00751) and is not seed-resolved (min r2 0.02259 < max r3 0.02304). The C3 result stays FAIL; only the label should change to a scored component (PASS on means, unresolved).",
+     "evidence": "Stamped text: docs/converged-ladder-prereg-v0.1.md, lines 31\u201335. My recomputed cell means at \u03b5=\u00bd: r2 0.029286, r3 0.021781, diff +0.007505."
+    },
+    {
+     "line_id": "R1/primary, R2/primary, R4/primary (relay primary block)",
+     "severity": "wording/provenance",
+     "claim": "The relay prereg says 'The relay field's own excess is reported separately and does not enter.' The scorecard does not report it, for either arm. The value is in the raws and should appear as a REPORTED line.",
+     "evidence": "docs/relay-paired-primary-2026-10-02.json relay_field_excess_r1R: n 84949, mean 9.38e-05, se 1.79e-06. docs/relay-paired-secondary-2026-10-02.json: mean 1.73e-04, se 3.31e-05."
+    },
+    {
+     "line_id": "R4/primary (scored: quadrature t)",
+     "severity": "wording/provenance",
+     "claim": "Addendum \u00a74 says the deciles of \u0394\u03b9 'are reported'. That is a prereg-required report, but the scorecard covers it only in its notes, from an unfrozen scratch script (~/.cache/yupi-scratch/census/relay-deciles/). It should be a REPORTED scorecard line with numbers for both arms. The numbers themselves are correct: I reproduced them from my own join code, not the frozen functions. The runner's notes also say the secondary arm keeps 'the V shape on the negative side'. That is true. On the positive side, dec9 drops to +0.0033, so the secondary curve is not monotone at the top. This should be stated.",
+     "evidence": "My recomputation, primary arm, deciles of \u0394\u03b9, mean \u0394excess: dec0 (\u0394\u03b9 \u22120.157) +0.01088, dec1 +0.00328, dec2 +0.00194, dec3 (+0.0001) +0.00065, dec4 +0.00387, dec5 +0.00225, dec6 +0.00471, dec7 +0.00816, dec8 +0.01018, dec9 (+0.620) +0.01531. Secondary arm: +0.00779, +0.00331, +0.00058, \u22120.00006, +0.00231, +0.00378, +0.00256, +0.00659, +0.00716, +0.00330."
+    },
+    {
+     "line_id": "A4/* and R3/* (sha_checks field)",
+     "severity": "wording/provenance",
+     "claim": "The sha_checks section names only the 10 KIND \u03b9 caches. A4 reads the 10 actorgk \u03b9 caches; R3 and the relay pairing read the r1R KIND \u03b9 cache and the \u0394\u03b9 per-class table. Those hashes are not recorded in the scorecard. I checked them and they all match, so nothing changes, but the provenance record is incomplete.",
+     "evidence": "Every ~/.cache/yupi-scratch/implicit/*-actorgk-m123456.jsonl sha256 matches docs/actor-iota-40-8-2-k7-2026-09-30.json. c1prime-loop-40-8-2-r1R-eps1-k7-kind-m123456.jsonl matches r1R_iota_sha256 (91d4f0a2\u2026) in docs/relay-exact-side-2026-09-30.json. The \u0394\u03b9 table matches per_class_sha256 0501876c\u2026dbdc4."
+    },
+    {
+     "line_id": "C3/overall, C4/* (scripts/converged_ladder_c3c4.py)",
+     "severity": "wording/provenance",
+     "claim": "The C3/C4 computation script was written after the raws existed, and it was never frozen or stamped. The runner discloses this. The script does compute what was stamped: the plain mean of by_field.kind over every row of the k=7 test per-window file (rows = windows with \u22657 records, n = summary.n), with gates on k=7, the test split, a full census, and step 117195. The cell mean is the mean of the three seed means; per-seed n is equal, so this equals the pooled window mean. Seed resolution is min(hi) > max(lo). My code is independent of that script and reproduces every C3/C4 number exactly. The verdict should still say the scoring script for C3/C4 is post-hoc code for a stamped estimator. Minor wording: the scorecard says eval structural_by_field.kind equals the census means with 'difference 0'; the measured maximum is 4.7e-16.",
+     "evidence": "My independent read of all 36 per-window files: sha256 matches in 36/36, and the cell means match the scorecard to 5 decimals. \u03b5=\u00bd: r1 0.02132, r2 0.02929, r3 0.02178, r4 0.02304, r0 0.00489. \u03b5=1: r1 0.01536, r2 0.01887, r3 0.01344, r4 0.01329, r0 0.00383. Maximum |eval k=7 structural_by_field.kind \u2212 census mean| over 27 runs is 4.7e-16, and the eval checkpoint sha matches the census in 27/27."
+    }
+   ],
+   "independently_confirmed": [
+    "C1/r1-eps1-s1",
+    "C1/r1-eps1-s2",
+    "C1/r1-eps1-s3",
+    "C1/r1-eps1_2-s1",
+    "C1/r1-eps1_2-s2",
+    "C1/r1-eps1_2-s3",
+    "C1/r2-eps1-s1",
+    "C1/r2-eps1-s2",
+    "C1/r2-eps1-s3",
+    "C1/r2-eps1_2-s1",
+    "C1/r2-eps1_2-s2",
+    "C1/r2-eps1_2-s3",
+    "C1/r3-eps1-s1",
+    "C1/r3-eps1-s2",
+    "C1/r3-eps1-s3",
+    "C1/r3-eps1_2-s1",
+    "C1/r3-eps1_2-s2",
+    "C1/r3-eps1_2-s3",
+    "C1/r4-eps1-s1",
+    "C1/r4-eps1-s2",
+    "C1/r4-eps1-s3",
+    "C1/r4-eps1_2-s1",
+    "C1/r4-eps1_2-s2",
+    "C1/r4-eps1_2-s3",
+    "C2/r1-eps1 (band numbers only)",
+    "C2/r1-eps1_2 (band numbers only)",
+    "C2/r2-eps1 (band numbers only)",
+    "C2/r2-eps1_2 (band numbers only)",
+    "C2/r3-eps1 (band numbers only)",
+    "C2/r3-eps1_2 (band numbers only)",
+    "C2/r4-eps1 (band numbers only)",
+    "C2/r4-eps1_2 (band numbers only)",
+    "C3/eps1_2:r2>r1",
+    "C3/eps1_2:r1>r3",
+    "C3/eps1_2:r2>r3 (implied by chain) (numbers)",
+    "C3/eps1_2:chain",
+    "C3/eps1:r2>r3",
+    "C3/overall",
+    "C4/eps1 with r1",
+    "C4/eps1 without r1",
+    "C4/eps1_2",
+    "r4/eps1 (no prediction)",
+    "r4/eps1_2 (no prediction)",
+    "A4/r1-eps1-s1",
+    "A4/r1-eps1-s2",
+    "A4/r1-eps1-s3",
+    "A4/r1-eps1_2-s1",
+    "A4/r1-eps1_2-s2",
+    "A4/r1-eps1_2-s3",
+    "A4/r2-eps1-s1",
+    "A4/r2-eps1-s2",
+    "A4/r2-eps1-s3",
+    "A4/r2-eps1_2-s1",
+    "A4/r2-eps1_2-s2",
+    "A4/r2-eps1_2-s3",
+    "A4/r3-eps1-s1",
+    "A4/r3-eps1-s2",
+    "A4/r3-eps1-s3",
+    "A4/r3-eps1_2-s1",
+    "A4/r3-eps1_2-s2",
+    "A4/r3-eps1_2-s3",
+    "A4/r4-eps1-s1",
+    "A4/r4-eps1-s2",
+    "A4/r4-eps1-s3",
+    "A4/r4-eps1_2-s1",
+    "A4/r4-eps1_2-s2",
+    "A4/r4-eps1_2-s3",
+    "Prov/primary",
+    "Prov/secondary",
+    "R1/primary",
+    "R2/primary",
+    "R4/primary (scored: quadrature t)",
+    "R4/primary (set-mean-se t, script label)",
+    "R3/primary-s1",
+    "R3/primary-s2",
+    "R3/primary-s3",
+    "R1/secondary",
+    "R2/secondary",
+    "R4/secondary",
+    "R3/secondary"
+   ],
+   "not_checked": [
+    "Methods and scope of this review. C1, A4 and R3: my recomputation reuses the frozen scripts' windows() loaders, imported unchanged, for the window-to-class join, then runs its own QR-based HC1 regression. It matches the runner's raws to within 4e-15 in all 54 rows plus the pooled rows. The class-key join is therefore checked only for internal consistency, not re-derived from scratch.",
+    "Relay: I recomputed with my own join (yupi surface_records, pattern_all and serial_key, plus the \u0394\u03b9 table) and my own OLS. I did not re-run the frozen drop_relay pairing gate.",
+    "R1 band: under the unrounded freqctl r1 \u03b5=1 \u03b2_long of 0.03266, the factor-of-two lower edge is 0.01633, and the slope 0.016273 still fails. The FAIL does not depend on the 0.033 rounding.",
+    "Hashes: the frozen-script sha256s match the required values (c73fab6b\u2026acfc, 09ba6f42\u20264c09), and scripts/ and src/ are unchanged at HEAD (src/ has not changed since census commit 680dafe; only scripts/run_converged_census_2026-10-02.sh was added). The preregs are unchanged.",
+    "Not opened: the runner's own scratch logs (scoring-2026-10-02-*.log). I did not re-hash the runner's output raws against the sha256 prefixes it lists. Instead I compared their contents with my recomputation."
+   ]
+  },
+  "codexRev": {
+   "objections": [
+    {
+     "line_id": "OMISSION/relay-field-excess",
+     "severity": "wording/provenance",
+     "claim": "The scorecard leaves out the relay-field excess, which the prereg says must be reported separately. Both relay raws contain it, so only the scorecard's reporting is incomplete. No number or verdict changes.",
+     "evidence": "Relay prereg, Frozen analysis: \"The relay field's own excess is reported separately and does not enter.\" Codex averaged by_field.relay across the three r1R seeds over 84,949 paired windows. Primary: mean 0.0000938448944426, se 0.00000179257349223. Secondary: mean 0.000173119528362, se 0.0000331176716576. Both agree with relay_field_excess_r1R in the respective raws."
+    },
+    {
+     "line_id": "OMISSION/relay-deciles",
+     "severity": "wording/provenance",
+     "claim": "The scorecard describes the deciles only in words. If the scorecard must stand alone, the required report is incomplete. If the scratch file counts as part of the report, the requirement is met, since its deciles reproduce independently. No verdict changes.",
+     "evidence": "Relay addendum \u00a74: \"The deciles of \u0394\u03b9 are reported, so a non-linear or one-sided effect is visible either way.\" Codex's independent reconstruction matches all ten bins, in both arms, in ~/.cache/yupi-scratch/census/relay-deciles/relay-deciles-2026-10-02.json. Counts: [8495,8425,6766,10290,8489,8501,8490,8496,8502,8495]. Primary mean \u0394excess: [0.01088187,0.00328230,0.00194017,0.00065081,0.00386581,0.00224557,0.00471350,0.00815853,0.01018470,0.01530905]. Secondary: [0.00779190,0.00330800,0.00057942,-0.00005886,0.00230714,0.00378417,0.00256171,0.00658652,0.00716101,0.00329691]."
+    },
+    {
+     "line_id": "OMISSION/r1-eps1-between-seed-spread",
+     "severity": "wording/provenance",
+     "claim": "The scorecard gives the r1 \u03b5=1 KIND-excess mean (in C4) without its between-seed spread, which the prereg requires. The C3/C4 raw does contain the spread, so this matters only if the scorecard must stand alone.",
+     "evidence": "Converged-ladder prereg, Frozen analyses: \"The between-seed spread is reported with it.\" Codex's independent per-window means for seeds 1\u20133 are [0.01569994934980953, 0.014635915664658269, 0.015758977306450435]. That gives a cell mean of 0.015364947440306078 and a sample sd of 0.0006320495014984572, both matching docs/converged-ladder-c3c4-2026-10-02.json."
+    }
+   ],
+   "independently_confirmed": [
+    "C1/r1-eps1-s1",
+    "C1/r1-eps1-s2",
+    "C1/r1-eps1-s3",
+    "C1/r1-eps1_2-s1",
+    "C1/r1-eps1_2-s2",
+    "C1/r1-eps1_2-s3",
+    "C1/r2-eps1-s1",
+    "C1/r2-eps1-s2",
+    "C1/r2-eps1-s3",
+    "C1/r2-eps1_2-s1",
+    "C1/r2-eps1_2-s2",
+    "C1/r2-eps1_2-s3",
+    "C1/r3-eps1-s1",
+    "C1/r3-eps1-s2",
+    "C1/r3-eps1-s3",
+    "C1/r3-eps1_2-s1",
+    "C1/r3-eps1_2-s2",
+    "C1/r3-eps1_2-s3",
+    "C1/r4-eps1-s1",
+    "C1/r4-eps1-s2",
+    "C1/r4-eps1-s3",
+    "C1/r4-eps1_2-s1",
+    "C1/r4-eps1_2-s2",
+    "C1/r4-eps1_2-s3",
+    "C2/r1-eps1",
+    "C2/r1-eps1_2",
+    "C2/r2-eps1",
+    "C2/r2-eps1_2",
+    "C2/r3-eps1",
+    "C2/r3-eps1_2",
+    "C2/r4-eps1",
+    "C2/r4-eps1_2",
+    "C3/eps1_2:r2>r1",
+    "C3/eps1_2:r1>r3",
+    "C3/eps1_2:r2>r3 (implied by chain)",
+    "C3/eps1_2:chain",
+    "C3/eps1:r2>r3",
+    "C3/overall",
+    "C4/eps1 with r1",
+    "C4/eps1 without r1",
+    "C4/eps1_2",
+    "r4/eps1 (no prediction)",
+    "r4/eps1_2 (no prediction)",
+    "A4/r1-eps1-s1",
+    "A4/r1-eps1-s2",
+    "A4/r1-eps1-s3",
+    "A4/r1-eps1_2-s1",
+    "A4/r1-eps1_2-s2",
+    "A4/r1-eps1_2-s3",
+    "A4/r2-eps1-s1",
+    "A4/r2-eps1-s2",
+    "A4/r2-eps1-s3",
+    "A4/r2-eps1_2-s1",
+    "A4/r2-eps1_2-s2",
+    "A4/r2-eps1_2-s3",
+    "A4/r3-eps1-s1",
+    "A4/r3-eps1-s2",
+    "A4/r3-eps1-s3",
+    "A4/r3-eps1_2-s1",
+    "A4/r3-eps1_2-s2",
+    "A4/r3-eps1_2-s3",
+    "A4/r4-eps1-s1",
+    "A4/r4-eps1-s2",
+    "A4/r4-eps1-s3",
+    "A4/r4-eps1_2-s1",
+    "A4/r4-eps1_2-s2",
+    "A4/r4-eps1_2-s3",
+    "Prov/primary",
+    "Prov/secondary",
+    "R1/primary",
+    "R2/primary",
+    "R4/primary (scored: quadrature t)",
+    "R4/primary (set-mean-se t, script label)",
+    "R3/primary-s1",
+    "R3/primary-s2",
+    "R3/primary-s3",
+    "R1/secondary",
+    "R2/secondary",
+    "R4/secondary",
+    "R3/secondary"
+   ],
+   "not_checked": []
+  },
+  "fixed": {
+   "lines": [
+    {
+     "id": "C1/r1-eps1-s1",
+     "rule": "\u03b2_long>0 and t>=3 (full_plus_log2_class_mass)",
+     "values": "\u03b2_long 0.01747, se 0.00257, t 6.79",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[0].full_plus_log2_class_mass.beta[1]/se[1]"
+    },
+    {
+     "id": "C1/r1-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01369, t 6.07",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[1].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01558, t 6.86",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[2].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01812, t 7.48",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[3].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02046, t 8.27",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[4].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r1-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02648, t 9.58",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[5].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01610, t 7.94",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[6].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02157, t 8.98",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[7].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02932, t 11.29",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[8].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02852, t 9.92",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[9].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01922, t 7.72",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[10].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r2-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02618, t 8.73",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[11].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01360, t 6.64",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[12].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01450, t 6.44",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[13].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01140, t 5.67",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[14].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01913, t 7.25",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[15].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02545, t 9.21",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[16].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r3-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01993, t 7.93",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[17].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01110, t 5.27 (minimum t of the 24)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[18].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01596, t 7.05",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[19].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01530, t 7.30",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[20].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02820, t 10.05",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[21].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01860, t 6.96",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[22].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C1/r4-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01863, t 7.40",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:runs[23].full_plus_log2_class_mass"
+    },
+    {
+     "id": "C2/r1-eps1:band",
+     "rule": "Reading A criterion (and part of Reading B): pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.01558 (t 11.37; \u03b2_short +0.00031)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[0].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r1-eps1_2:band",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02168 (t 14.68; \u03b2_short -0.00024)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[1].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r2-eps1:band",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02233 (t 16.41; \u03b2_short +0.00122)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[2].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r2-eps1_2:band",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02464 (t 15.25; \u03b2_short +0.00113)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[3].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r3-eps1:band",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.01317 (t 10.83; \u03b2_short +0.00137, t 3.75)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[4].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r3-eps1_2:band",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02150 (t 14.11)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[5].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r4-eps1:band",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.01412 (t 11.33)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[6].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r4-eps1_2:band",
+     "rule": "pooled \u03b2_long in [0.01,0.05]",
+     "values": "0.02181 (t 14.16)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-kind-2026-10-02.json:pooled_by_rung[7].full_plus_log2_class_mass.beta[1]"
+    },
+    {
+     "id": "C2/r1-eps1:shrink",
+     "rule": "Reading B only: 'convergence shrinks the long-lag cost no more than the overall excess shrinks', i.e. \u03b2_long ratio (15ep/5ep) >= excess ratio. Matched seeds 1-3 at both budgets",
+     "values": "\u03b2_long 0.03266->0.01558, ratio 0.477; KIND excess 0.02134->0.01536, ratio 0.720; total structural excess (summary.mean) 0.05967->0.04619, ratio 0.774. \u03b2 shrinks more than either excess",
+     "result": "FAIL",
+     "source": "5ep: ~/.cache/yupi-scratch/census/fix-2026-10-02-c2-5ep-seeds123-bintest-kind.json (frozen bintest re-run); 15ep: docs/converged-ladder-bintest-kind-2026-10-02.json; ~/.cache/yupi-scratch/census/scoring-2026-10-02-8-c2-shrink.log"
+    },
+    {
+     "id": "C2/r1-eps1_2:shrink",
+     "rule": "Reading B only: \u03b2_long ratio >= excess ratio",
+     "values": "\u03b2 ratio 0.542 (0.03997->0.02168); KIND 0.632; total 0.723",
+     "result": "FAIL",
+     "source": "same as C2/r1-eps1:shrink"
+    },
+    {
+     "id": "C2/r2-eps1:shrink",
+     "rule": "Reading B only: \u03b2_long ratio >= excess ratio",
+     "values": "\u03b2 ratio 0.580 (0.03850->0.02233, 5ep seeds 1-3); KIND 0.662; total 0.707. With 5ep seeds 4-6 (the D1-verdict cell) as reference: \u03b2 0.766 vs KIND 0.829, same direction",
+     "result": "FAIL",
+     "source": "same as C2/r1-eps1:shrink; seeds 4-6 from docs/d1-long-lag-heldout-primary-2026-09-29.json"
+    },
+    {
+     "id": "C2/r2-eps1_2:shrink",
+     "rule": "Reading B only: \u03b2_long ratio >= excess ratio",
+     "values": "\u03b2 ratio 0.598 (0.04120->0.02464, matched seeds 1-3); KIND 0.759; total 0.777. Against the 6-seed 5ep pool: \u03b2 0.599 vs KIND 0.777",
+     "result": "FAIL",
+     "source": "same as C2/r1-eps1:shrink"
+    },
+    {
+     "id": "C2/r3-eps1:shrink",
+     "rule": "Reading B only: \u03b2_long ratio >= excess ratio",
+     "values": "\u03b2 ratio 0.548 (0.02402->0.01317); KIND 0.700; total 0.767",
+     "result": "FAIL",
+     "source": "same as C2/r1-eps1:shrink"
+    },
+    {
+     "id": "C2/r3-eps1_2:shrink",
+     "rule": "Reading B only: \u03b2_long ratio >= excess ratio",
+     "values": "\u03b2 ratio 0.689 (0.03122->0.02150); KIND 0.737; total 0.773. Narrowest cell: gap 0.048, about 0.8 of an approximate ratio se 0.062 (unscored context; the wording has no uncertainty allowance)",
+     "result": "FAIL",
+     "source": "same as C2/r1-eps1:shrink"
+    },
+    {
+     "id": "C2/r4-eps1:shrink",
+     "rule": "Reading B only: \u03b2_long ratio >= excess ratio",
+     "values": "\u03b2 ratio 0.388 (0.03643->0.01412, matched seeds 1-3); KIND 0.512; total 0.564. Against the 6-seed 5ep pool: \u03b2 0.452 vs KIND 0.575",
+     "result": "FAIL",
+     "source": "same as C2/r1-eps1:shrink"
+    },
+    {
+     "id": "C2/r4-eps1_2:shrink",
+     "rule": "Reading B only: \u03b2_long ratio >= excess ratio",
+     "values": "\u03b2 ratio 0.460 (0.04744->0.02181, matched seeds 1-3); KIND 0.577; total 0.568. Against the 6-seed 5ep pool: \u03b2 0.552 vs KIND 0.670",
+     "result": "FAIL",
+     "source": "same as C2/r1-eps1:shrink"
+    },
+    {
+     "id": "C2/overall",
+     "rule": "C2 as stamped. Reading A: the band is the criterion and the 'The prediction is that...' sentence is its rationale (commit 05e3543 summarises C2 as just the band). Reading B: that sentence is scored too. 'Does not remove it' is scored under both",
+     "values": "Band 8/8 in [0.01,0.05]. 'Does not remove it' 8/8 (pooled t 10.8-16.4). Shrink clause 0/8: \u03b2_long fell proportionally more than the KIND excess and more than the total structural excess in every cell (\u03b2 ratio 0.39-0.69, KIND 0.51-0.76, total 0.56-0.78). Reading A PASS 8/8; Reading B FAIL 8/8",
+     "result": "AMBIGUOUS",
+     "source": "docs/converged-ladder-prereg-v0.1.md (C2); scoring-2026-10-02-8-c2-shrink.log"
+    },
+    {
+     "id": "C3/eps1_2:r2>r1",
+     "rule": "mean KIND excess r2 > r1 at eps=1/2; seed resolution reported",
+     "values": "r2 0.02929 (seeds 0.03241 0.02259 0.03286, sd 0.00581) vs r1 0.02132 (seeds 0.01953 0.01968 0.02476, sd 0.00298); diff +0.00796; NOT seed-resolved (min r2 0.02259 < max r1 0.02476)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.pairs[0]"
+    },
+    {
+     "id": "C3/eps1_2:r1>r3",
+     "rule": "mean KIND excess r1 > r3 at eps=1/2",
+     "values": "r1 0.02132 vs r3 0.02178 (seeds 0.02304 0.02191 0.02039, sd 0.00133); diff -0.00046; NOT seed-resolved",
+     "result": "FAIL",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.pairs[1]"
+    },
+    {
+     "id": "C3/eps1_2:r2>r3",
+     "rule": "mean KIND excess r2 > r3 at eps=1/2: a stamped component of the full ranking 'r2 0.361 > r1 0.338 > r3 0.305'",
+     "values": "r2 0.02929 vs r3 0.02178, diff +0.00751; NOT seed-resolved (min r2 0.02259 < max r3 0.02304)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.pairs[2]"
+    },
+    {
+     "id": "C3/eps1_2:chain",
+     "rule": "r2 > r1 > r3 at eps=1/2 (means; all three pairs)",
+     "values": "observed r2 0.02929 > r3 0.02178 > r1 0.02132; 2 of 3 pairs hold, the r1/r3 pair is inverted",
+     "result": "FAIL",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1_2.mean_order_holds"
+    },
+    {
+     "id": "C3/eps1:r2>r3",
+     "rule": "mean KIND excess r2 > r3 at eps=1 (r1 excluded)",
+     "values": "r2 0.01887 (seeds 0.01565 0.01719 0.02377, sd 0.00431) vs r3 0.01344 (seeds 0.01216 0.01398 0.01418, sd 0.00111); diff +0.00543; SEED-RESOLVED (min r2 0.01565 > max r3 0.01418)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3.eps1.pairs[0]"
+    },
+    {
+     "id": "C3/overall",
+     "rule": "both parts of C3 (eps=1/2 ranking and eps=1 pair)",
+     "values": "eps=1/2 ranking FAIL (r1<r3 by 0.00046; r2>r1 and r2>r3 hold on means, neither seed-resolved), eps=1 PASS and seed-resolved. Scored by post-hoc, unstamped scripts/converged_ladder_c3c4.py implementing the stamped estimator; reproduced exactly by an independent reviewer",
+     "result": "FAIL",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C3"
+    },
+    {
+     "id": "C4/eps1 with r1",
+     "rule": "r0 lowest KIND excess vs r1,r2,r3,r4 at eps=1",
+     "values": "r0 0.00383 (seeds 0.00373 0.00380 0.00394, sd 0.00011); others r1 0.01536 (seeds 0.01570 0.01464 0.01576, sd 0.00063), r2 0.01887 (sd 0.00431), r3 0.01344 (sd 0.00111), r4 0.01329 (sd 0.00075); margin +0.00947 (to r4); seed-resolved",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C4.eps1_with_r1; cells.r1-eps1"
+    },
+    {
+     "id": "C4/eps1 without r1",
+     "rule": "r0 lowest vs r2,r3,r4 at eps=1",
+     "values": "r0 0.00383; margin +0.00947 (to r4 0.01329); seed-resolved",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C4.eps1_without_r1"
+    },
+    {
+     "id": "C4/eps1_2",
+     "rule": "r0 lowest vs r1..r4 at eps=1/2",
+     "values": "r0 0.00489 (seeds 0.00532 0.00482 0.00453, sd 0.00040); others r1 0.02132 (sd 0.00298), r2 0.02929 (sd 0.00581), r3 0.02178 (sd 0.00133), r4 0.02304 (sd 0.00528); margin +0.01643; seed-resolved",
+     "result": "PASS",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:C4.eps1_2"
+    },
+    {
+     "id": "r4/eps1 (no prediction)",
+     "rule": "report cell mean",
+     "values": "0.01329, sd 0.00075 (seeds 0.01414 0.01304 0.01270)",
+     "result": "REPORTED",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:cells.r4-eps1"
+    },
+    {
+     "id": "r4/eps1_2 (no prediction)",
+     "rule": "report cell mean",
+     "values": "0.02304, sd 0.00528 (seeds 0.02904 0.01911 0.02097)",
+     "result": "REPORTED",
+     "source": "docs/converged-ladder-c3c4-2026-10-02.json:cells.r4-eps1_2"
+    },
+    {
+     "id": "A4/r1-eps1-s1",
+     "rule": "A1 on converged run: actor \u03b2_long>0, t>=3 (full_plus_log2_class_mass, as in the actor verdict)",
+     "values": "\u03b2_long 0.04172, t 9.03",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[0].full_plus_log2_class_mass.beta[1]/se[1]"
+    },
+    {
+     "id": "A4/r1-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03822, t 8.96",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[1].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03585, t 7.82",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[2].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02351, t 5.19",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[3].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03146, t 6.40",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[4].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r1-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02580, t 5.32",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[5].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03667, t 8.46",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[6].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03846, t 7.72",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[7].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.05384, t 10.14",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[8].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.04806, t 9.30",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[9].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01805, t 4.30",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[10].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r2-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03996, t 7.74",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[11].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02037, t 5.26",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[12].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01277, t 3.63",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[13].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01140, se 0.00371, t 3.07 (minimum of 24; narrow margin)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[14].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03637, t 5.08",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[15].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03380, t 5.37",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[16].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r3-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.03856, t 6.05",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[17].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02172, t 5.55",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[18].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01746, t 4.00",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[19].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02686, t 6.51",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[20].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1_2-s1",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.04962, t 7.66",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[21].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1_2-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.02575, t 5.11",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[22].full_plus_log2_class_mass"
+    },
+    {
+     "id": "A4/r4-eps1_2-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "0.01573, se 0.00496, t 3.17 (second-lowest; no-mass model t 6.51)",
+     "result": "PASS",
+     "source": "docs/converged-ladder-bintest-actor-2026-10-02.json:runs[23].full_plus_log2_class_mass"
+    },
+    {
+     "id": "Prov/primary",
+     "rule": "addendum \u00a73: primary-arm controls and r1R are 5 epochs, final step 39065",
+     "values": "6/6 OK: run.json epochs 5, steps_total 39065, log.jsonl last step 39065, census step 39065, d128, lr 1e-3->1e-4, seed match, ckpt.pt sha256 == census checkpoint_sha256; corpora r1-eps1/fd5da4c31e43d73d and r1R-eps1/fd5da4c31e43d73d",
+     "result": "PASS",
+     "source": "~/.cache/yupi-scratch/census/scoring-2026-10-02-4-provenance.log"
+    },
+    {
+     "id": "Prov/secondary",
+     "rule": "addendum \u00a73: secondary-arm controls and r1R are 15 epochs, step 117195",
+     "values": "6/6 OK (same checks); r1 e15 seed2 run.json resumed_from_step 38000 (pre-existing, reached 117195)",
+     "result": "PASS",
+     "source": "~/.cache/yupi-scratch/census/scoring-2026-10-02-4-provenance.log"
+    },
+    {
+     "id": "R1/primary",
+     "rule": "slope>0, t>=3, slope in [0.0165, 0.066]",
+     "values": "slope +0.016273, se 0.002608, t 6.24; below band lower edge 0.0165 by 0.000227 (about 0.09 se). Gates all passed",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:slope, slope_t, verdict.R1"
+    },
+    {
+     "id": "R2/primary",
+     "rule": "|mean \u0394excess(exact-zero set) - intercept| <= 2 se, se = set mean's se (addendum \u00a72)",
+     "values": "zero set n 8166 mean +0.000756 se 0.000294; intercept +0.004581 (se 0.000449, t 10.2); diff -0.003824 = 13.0 set-se (limit 2). Under the quadrature se 0.000536 it is 7.1 se, still FAIL",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:R2_zero_set, intercept"
+    },
+    {
+     "id": "R4/primary (scored: quadrature t)",
+     "rule": "\u0394\u03b9<-0.05: mean \u0394excess - intercept < 0 with t <= -3, t using set se and intercept se in quadrature (addendum \u00a72)",
+     "values": "n 7274, mean +0.011252 se 0.001901; minus intercept +0.006671; quadrature t +3.42 (wrong sign: the r1R models are BETTER there, not worse)",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:R4_set.t_with_intercept_se"
+    },
+    {
+     "id": "R4/primary (set-mean-se t, script label)",
+     "rule": "same, t = diff / set se (script's in-file verdict)",
+     "values": "t +3.51",
+     "result": "FAIL",
+     "source": "docs/relay-paired-primary-2026-10-02.json:R4_set.t, verdict.R4"
+    },
+    {
+     "id": "R3/primary-s1",
+     "rule": "r1R e5 own-\u03b9 frozen bintest, \u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.02042, t 6.28",
+     "result": "PASS",
+     "source": "docs/relay-r3-bintest-primary-2026-10-02.json:runs[0].full_plus_log2_class_mass"
+    },
+    {
+     "id": "R3/primary-s2",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01331, t 4.65",
+     "result": "PASS",
+     "source": "docs/relay-r3-bintest-primary-2026-10-02.json:runs[1].full_plus_log2_class_mass"
+    },
+    {
+     "id": "R3/primary-s3",
+     "rule": "\u03b2_long>0, t>=3",
+     "values": "\u03b2_long 0.01992, t 5.89",
+     "result": "PASS",
+     "source": "docs/relay-r3-bintest-primary-2026-10-02.json:runs[2].full_plus_log2_class_mass"
+    },
+    {
+     "id": "Relay/primary:relay-field-excess",
+     "rule": "prereg Frozen analysis: the relay field's own excess is reported separately and does not enter",
+     "values": "r1R by_field.relay over 84949 paired windows (3 seeds): mean +0.0000938, se 0.0000018",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-primary-2026-10-02.json:relay_field_excess_r1R"
+    },
+    {
+     "id": "Relay/primary:deciles",
+     "rule": "addendum \u00a74: deciles of \u0394\u03b9 reported (mean \u0394excess per decile)",
+     "values": "n per decile [8495,8425,6766,10290,8489,8501,8490,8496,8502,8495]; mean \u0394\u03b9 [-0.157,-0.020,-0.0025,+0.0001,+0.0054,+0.023,+0.059,+0.132,+0.270,+0.620]; mean \u0394excess [+0.01088,+0.00328,+0.00194,+0.00065,+0.00387,+0.00225,+0.00471,+0.00816,+0.01018,+0.01531] (se 0.0003-0.0018). V-shaped: \u0394excess rises with |\u0394\u03b9| on both sides, minimum at the \u0394\u03b9\u22480 decile",
+     "result": "REPORTED",
+     "source": "~/.cache/yupi-scratch/census/relay-deciles/relay-deciles-2026-10-02.json:primary.deciles_by_d_iota (post-hoc scratch script importing the frozen relay_paired functions unchanged; reproduced independently by two reviewers)"
+    },
+    {
+     "id": "R1/secondary",
+     "rule": "report without threshold",
+     "values": "slope +0.000491, se 0.002356, t +0.21; intercept +0.003671 (t 9.05)",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-secondary-2026-10-02.json:ols"
+    },
+    {
+     "id": "R2/secondary",
+     "rule": "report without threshold",
+     "values": "zero set mean +0.0000236 se 0.000316; minus intercept -0.003647 (11.6 set-se)",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-secondary-2026-10-02.json:R2_zero_set"
+    },
+    {
+     "id": "R4/secondary",
+     "rule": "report without threshold",
+     "values": "n 7274 mean +0.008040 se 0.001668; minus intercept +0.004369; t +2.62, quadrature t +2.55 (same wrong-sign direction as primary)",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-secondary-2026-10-02.json:R4_set"
+    },
+    {
+     "id": "R3/secondary",
+     "rule": "report without threshold",
+     "values": "\u03b2_long s1 0.01272 (t 4.61), s2 0.00774 (t 3.36), s3 0.01070 (t 4.29); pooled 0.01039 (t 7.12)",
+     "result": "REPORTED",
+     "source": "docs/relay-r3-bintest-secondary-2026-10-02.json:runs[*].full_plus_log2_class_mass"
+    },
+    {
+     "id": "Relay/secondary:relay-field-excess",
+     "rule": "report separately (does not enter)",
+     "values": "mean +0.000173, se 0.000033 (n 84949)",
+     "result": "REPORTED",
+     "source": "docs/relay-paired-secondary-2026-10-02.json:relay_field_excess_r1R"
+    },
+    {
+     "id": "Relay/secondary:deciles",
+     "rule": "addendum \u00a74: deciles of \u0394\u03b9 reported",
+     "values": "same decile bins and n as primary; mean \u0394excess [+0.00779,+0.00331,+0.00058,-0.00006,+0.00231,+0.00378,+0.00256,+0.00659,+0.00716,+0.00330] (se 0.0004-0.0016). Rises on the negative side (dec0 highest). On the positive side it climbs through dec8, then dec9 (mean \u0394\u03b9 +0.620) falls back to +0.0033, so the top end is not monotone",
+     "result": "REPORTED",
+     "source": "~/.cache/yupi-scratch/census/relay-deciles/relay-deciles-2026-10-02.json:secondary.deciles_by_d_iota"
+    }
+   ],
+   "summary": "C1 24/24 PASS (KIND \u03b2_long 0.0111\u20130.0293, t 5.27\u201311.29). C2: AMBIGUOUS, changed from 8/8 PASS. The band [0.01,0.05] holds 8/8 and 'does not remove it' holds 8/8 (pooled t \u226510.8). The stamped sentence 'convergence shrinks the long-lag cost no more than the overall excess shrinks' fails 8/8: on matched seeds 1\u20133, \u03b2_long's 15/5-epoch ratio (0.39\u20130.69) is below the KIND-excess ratio (0.51\u20130.76) and below the total-excess ratio (0.56\u20130.78) in every cell. Reading A (band only) gives PASS 8/8. Reading B (the 'The prediction is...' sentence scored too) gives FAIL 8/8. C3 FAIL: at \u03b5=\u00bd, r2>r1 holds and r2>r3 holds (now scored as a stamped component), but r1>r3 is inverted (0.02132 vs 0.02178). None of the \u03b5=\u00bd pairs is seed-resolved. The \u03b5=1 r2>r3 passes and is seed-resolved. C4 3/3 PASS, all seed-resolved. A4 24/24 PASS (min t 3.07, 3.17). Relay provenance 12/12. Relay primary: R1 FAIL (slope 0.01627, just under the 0.0165 floor), R2 FAIL (13 se), R4 FAIL (quadrature t +3.42, wrong sign), R3 3/3 PASS. Added REPORTED lines for the relay-field excess (primary 9.4e-5, secondary 1.7e-4) and for the \u0394\u03b9 deciles in both arms (primary V-shaped; secondary falls back at dec9).",
+   "commands": [
+    "sha256sum of the five frozen scripts + scripts/converged_ladder_c3c4.py, before and after this round (all unchanged; git diff --quiet HEAD -- scripts/ src/ docs/ -> tracked tree unchanged) > ~/.cache/yupi-scratch/census/scoring-2026-10-02-10-sha-after-fix.log",
+    "uv run --extra learner python scripts/implicit_info_bintest.py --m-long 4 --glob 'docs/learner-window-census-r[1-4]-eps*-2M-seed[123]-2026-09-*.json' --raw ~/.cache/yupi-scratch/census/fix-2026-10-02-c2-5ep-seeds123-bintest-kind.json  > scoring-2026-10-02-8-c2-5ep-seeds123.log  (frozen bintest, unchanged; 24 five-epoch seed 1-3 censuses; gives a matched-seed 5-epoch reference for C2's shrink clause)",
+    "C2 shrink ratios (python inline: pooled \u03b2_long and mean_excess 15ep/5ep from the two bintest raws; total structural excess = mean of census summary.mean over seeds 1-3; plus an unscored delta-method se) > scoring-2026-10-02-8-c2-shrink.log",
+    "cache sha256 verification (python inline: 10 actorgk per-class caches vs docs/actor-iota-40-8-2-k7-2026-09-30.json; r1R eps1 KIND \u03b9 cache and \u0394\u03b9 table vs docs/relay-exact-side-2026-09-30.json) > scoring-2026-10-02-9-cache-sha.log",
+    "eval vs per-window check (python inline: max |eval per_k.7.structural_by_field.kind.mean \u2212 mean of per-window by_field.kind|, and eval checkpoint sha vs census, 27 runs) > scoring-2026-10-02-9b-eval-vs-perwindow.log",
+    "read-only extraction of relay_field_excess_r1R from both relay-paired raws and the deciles from ~/.cache/yupi-scratch/census/relay-deciles/relay-deciles-2026-10-02.json"
+   ],
+   "files_written": [
+    "/home/tony/.cache/yupi-scratch/census/fix-2026-10-02-c2-5ep-seeds123-bintest-kind.json",
+    "/home/tony/.cache/yupi-scratch/census/scoring-2026-10-02-8-c2-5ep-seeds123.log",
+    "/home/tony/.cache/yupi-scratch/census/scoring-2026-10-02-8-c2-shrink.log",
+    "/home/tony/.cache/yupi-scratch/census/scoring-2026-10-02-9-cache-sha.log",
+    "/home/tony/.cache/yupi-scratch/census/scoring-2026-10-02-9b-eval-vs-perwindow.log",
+    "/home/tony/.cache/yupi-scratch/census/scoring-2026-10-02-10-sha-after-fix.log"
+   ],
+   "sha_checks": "The frozen scripts matched before this round and again after it. scripts/implicit_info_bintest.py c73fab6b76180b6a3851bcea89369f958aab81987a7f39bdd2a49ad32dd7acfc (the required value). scripts/implicit_info_bintest_actor.py 09ba6f42d6303c49bb60fb05587c2ef962f4d468e6de9e82ce624ce3a40c4c09 (the required value). scripts/relay_paired.py deb58a3a\u20269939. scripts/learner_window_census.py bcef31c4\u20267b2. scripts/learner_evaluate.py d2ec68ff\u20260f. scripts/converged_ladder_c3c4.py f2489541\u20266f93, not modified this round. Tracked tree: git diff --quiet HEAD -- scripts/ src/ docs/ shows no change. Nothing under docs/ was written this round.\n\nCarried from round 1: per-window jsonl sha256 matches the recorded value for 39/39 census raws. The 10 KIND \u03b9 per-class caches match docs/implicit-info-lag-kind-40-8-2-k7-2026-09-28.json. All 12 relay checkpoints match their census checkpoint_sha256. The relay_paired gates passed in both arms.\n\nAdded this round:\n- The 10 actorgk \u03b9 caches that A4 reads match per_class_sha256 in docs/actor-iota-40-8-2-k7-2026-09-30.json (10/10).\n- The r1R \u03b5=1 KIND \u03b9 cache (read by R3 and the relay pairing) matches r1R_iota_sha256 91d4f0a2\u2026 in docs/relay-exact-side-2026-09-30.json.\n- The \u0394\u03b9 table matches per_class_sha256 0501876c\u2026dbdc4.\n- Eval checkpoint sha equals the census checkpoint sha in 27/27 runs.\n- Max |eval k=7 structural_by_field.kind \u2212 per-window mean| is 4.7e-16 over 27 runs. This replaces round 1's 'difference 0', which compared eval against the census raw's recorded aggregate, not the per-window recomputation.\n\nThe new scratch raw fix-2026-10-02-c2-5ep-seeds123-bintest-kind.json has sha256 e3403d5a\u2026bb95. It records git cdce58c+dirty because the untracked raws and the C3/C4 script are present. The bintest code is unchanged.\n\nRound-1 output raws are unchanged: bintest-kind 404e710c\u2026d607, bintest-actor e5042f1b\u20263d84, c3c4 d0a6d7bd\u20267b34, relay-paired-primary 8da615c4\u20265947, relay-paired-secondary 1024d4f6\u20260743, r3-primary 52299e32\u2026ccf2, r3-secondary 06f150c4\u2026f6b.",
+   "notes": "OBJECTION DISPOSITIONS\n1. C2 shrink clause (claude, changes-result): ACCEPTED. The stamped C2 text includes \"The prediction is that convergence shrinks the long-lag cost no more than the overall excess shrinks, and does not remove it.\" Round 1 never evaluated it. I checked it two ways.\n   - Matched seeds: I re-ran the frozen bintest on the 5-epoch seed 1-3 censuses, into scratch. The reviewer's mix of 6-seed and 3-seed pools doesn't decide the result.\n   - Two readings of \"overall excess\": the KIND excess (by_field.kind mean) and the total structural excess (census summary.mean).\n   In all 8 cells, \u03b2_long shrank proportionally more than either excess, so the shrink clause fails 8/8. \"Does not remove it\" passes 8/8.\n   - Reading A (the band is the criterion; commit 05e3543's message summarises C2 as the band alone): PASS 8/8.\n   - Reading B (the sentence headed \"The prediction is\" is scored too): FAIL 8/8.\n   I scored C2 AMBIGUOUS overall and give both readings. My own view: the literal text favours Reading B. The sentence is introduced as the prediction, and the band [0.01,0.05] cannot test it, since the band would accept a three- to four-fold \u03b2 drop no matter how much the excess fell.\n   Caveats (unscored): the comparison has to be proportional (ratio), because \u03b2 is bits per bit and excess is bits. The narrowest cell is r3 \u03b5=\u00bd, with \u03b2 ratio 0.689 against KIND 0.737, a gap of about 0.8 of a rough delta-method se. That se uses pooled, not seed-clustered, se and ignores the correlation between budgets on the same windows. The wording has no noise allowance. Five cells separate by 2 to 4.7 such se.\n2. C3 r2>r3 at \u03b5=\u00bd label (claude): ACCEPTED. \"ranks as \u03b9_kind,4 ranks (r2 > r1 > r3)\" is a full three-cell ranking, so r2>r3 is a stamped component. It is now scored PASS on means and not seed-resolved. The script's mean_order_holds uses pairs[:2], which is equivalent to all three pairs by transitivity, so no recomputation was needed and the script was not changed. C3 is still FAIL.\n3. and 7. Relay-field excess (claude, codex): ACCEPTED. Added REPORTED lines for both arms from relay_field_excess_r1R: primary 9.38e-5 (se 1.79e-6), secondary 1.73e-4 (se 3.31e-5).\n4. and 8. Deciles (claude, codex): ACCEPTED. Added REPORTED lines with all ten bins for each arm. I also corrected round 1's description of the secondary arm: it rises on the negative side, but at the top dec9 (+0.0033) falls back below dec7 and dec8, so it is not monotone or V-shaped on the positive side. The lines state that the numbers come from post-hoc scratch code. That code imports the frozen relay_paired functions unchanged, and both reviewers reproduced it independently.\n5. Cache sha provenance (claude): ACCEPTED. I verified it myself: actorgk 10/10, r1R \u03b9 cache 91d4f0a2\u2026, \u0394\u03b9 table 0501876c\u2026. All are recorded in sha_checks now. No results changed.\n6. C3/C4 post-hoc script disclosure, and 'difference 0' (claude): ACCEPTED. The C3 overall line now says the scorer is post-hoc, unstamped code implementing the stamped estimator, and that an independent reviewer reproduced it exactly. I re-measured max |eval \u2212 per-window mean| at 4.7e-16, not 0. Round 1 had compared eval against the census raw's recorded aggregate. The checkpoint sha matches 27/27.\n9. r1 \u03b5=1 between-seed spread (codex): ACCEPTED. C4/eps1-with-r1 now lists r1's seeds (0.01570 0.01464 0.01576, sd 0.00063). The other cells' sds are now given in the C4 lines too.\nNo objection rejected.\n\nFAILURES, stated plainly\n- C3 fails at \u03b5=\u00bd: r1 0.02132 < r3 0.02178. The gap is far inside the seed spread. The unscored exact kind_kl_bits flips this pair by 0.0003.\n- C2 fails under Reading B.\n- Relay primary: R1 fails narrowly, on the band floor only. R2 and R4 fail clearly. R4 is significant in the wrong direction.\n\nUNCHANGED FROM ROUND 1\n- The A4 row choice (full_plus_log2_class_mass; the no-mass model is also 24/24).\n- The R4 scored t is the quadrature t (addendum \u00a72). Both readings fail.\n- The cosmetic status strings and dirty-git flags.\n- Nothing was committed, the GPU was not touched, and no processes were killed.\n- The only new files are scratch files under ~/.cache/yupi-scratch/census/."
+  }
+ },
+ "workflowProgress": [
+  {
+   "type": "workflow_phase",
+   "index": 1,
+   "title": "Score"
+  },
+  {
+   "type": "workflow_phase",
+   "index": 2,
+   "title": "Review"
+  },
+  {
+   "type": "workflow_phase",
+   "index": 3,
+   "title": "Fix"
+  },
+  {
+   "type": "workflow_agent",
+   "index": 1,
+   "label": "runner",
+   "phaseIndex": 1,
+   "phaseTitle": "Score",
+   "agentId": "a41a6e67d4749b3fa",
+   "model": "claude-opus-5-5",
+   "state": "done",
+   "startedAt": 1790979092330,
+   "queuedAt": 1790979092287,
+   "attempt": 1,
+   "lastToolName": "StructuredOutput",
+   "lastToolSummary": "C1 24/24 PASS (KIND \u03b2_long 0.0111\u20130.0293, t 5.27\u201311.29). C2\u2026",
+   "promptPreview": "You are working in /home/tony/projects/yupi (project Yupi). Today is 2026-10-02. This is CONFIRMATORY scoring of\npre-registered, OTS-stamped predictions. The raw census/eval files were produced by frozen scripts and committed UNSCORED\nat commit e3d1f06. Governing documents (read them in full, they are short):\n  docs/converged-ladder-prereg-v0.1.md            (C1, C2, C3, C4)\n  docs/actor-long-lag-\u2026",
+   "promptFramed": true,
+   "lastProgressAt": 1790979581772,
+   "tokens": 147317,
+   "toolCalls": 35,
+   "durationMs": 489441,
+   "resultPreview": "{\"lines\":[{\"id\":\"C1/r1-eps1-s1\",\"rule\":\"\u03b2_long>0 and t>=3 (full_plus_log2_class_mass)\",\"values\":\"\u03b2_long 0.01747, se 0.00257, t 6.79\",\"result\":\"PASS\",\"source\":\"docs/converged-ladder-bintest-kind-2026-10-02.json:runs[0].full_plus_log2_class_mass.beta[1]/se[1]\"},{\"id\":\"C1/r1-eps1-s2\",\"rule\":\"\u03b2_long>0, t>=3\",\"values\":\"\u03b2_long 0.01369, t 6.07\",\"result\":\"PASS\",\"source\":\"docs/converged-ladder-bintest-kind\u2026"
+  },
+  {
+   "type": "workflow_agent",
+   "index": 2,
+   "label": "review:claude",
+   "phaseIndex": 2,
+   "phaseTitle": "Review",
+   "agentId": "aba420f5bc3e3af98",
+   "model": "claude-opus-5-5",
+   "state": "done",
+   "startedAt": 1790979581858,
+   "queuedAt": 1790979581830,
+   "attempt": 1,
+   "lastToolName": "StructuredOutput",
+   "promptPreview": "You are working in /home/tony/projects/yupi (project Yupi). Today is 2026-10-02. This is CONFIRMATORY scoring of\npre-registered, OTS-stamped predictions. The raw census/eval files were produced by frozen scripts and committed UNSCORED\nat commit e3d1f06. Governing documents (read them in full, they are short):\n  docs/converged-ladder-prereg-v0.1.md            (C1, C2, C3, C4)\n  docs/actor-long-lag-\u2026",
+   "promptFramed": true,
+   "lastProgressAt": 1790979988520,
+   "tokens": 153888,
+   "toolCalls": 38,
+   "durationMs": 406662,
+   "resultPreview": "{\"objections\":[{\"line_id\":\"C2/r1-eps1, C2/r1-eps1_2, C2/r2-eps1, C2/r2-eps1_2, C2/r3-eps1, C2/r3-eps1_2, C2/r4-eps1, C2/r4-eps1_2 (and summary 'C2 8/8 PASS')\",\"severity\":\"changes-result\",\"claim\":\"The scorecard checks only C2's band. The stamped C2 text goes on to say: 'The prediction is that convergence shrinks the long-lag cost no more than the overall excess shrinks, and does not remove it.' The\u2026"
+  },
+  {
+   "type": "workflow_agent",
+   "index": 3,
+   "label": "review:codex",
+   "phaseIndex": 2,
+   "phaseTitle": "Review",
+   "agentId": "a1102b79ffe584dbd",
+   "agentType": "codex:codex-rescue",
+   "model": "claude-opus-5-5",
+   "state": "done",
+   "startedAt": 1790979581865,
+   "queuedAt": 1790979581830,
+   "attempt": 1,
+   "lastToolName": "StructuredOutput",
+   "promptPreview": "You are working in /home/tony/projects/yupi (project Yupi). Today is 2026-10-02. This is CONFIRMATORY scoring of\npre-registered, OTS-stamped predictions. The raw census/eval files were produced by frozen scripts and committed UNSCORED\nat commit e3d1f06. Governing documents (read them in full, they are short):\n  docs/converged-ladder-prereg-v0.1.md            (C1, C2, C3, C4)\n  docs/actor-long-lag-\u2026",
+   "promptFramed": true,
+   "lastProgressAt": 1790980176578,
+   "tokens": 42484,
+   "toolCalls": 2,
+   "durationMs": 594713,
+   "resultPreview": "{\"objections\":[{\"line_id\":\"OMISSION/relay-field-excess\",\"severity\":\"wording/provenance\",\"claim\":\"The scorecard leaves out the relay-field excess, which the prereg says must be reported separately. Both relay raws contain it, so only the scorecard's reporting is incomplete. No number or verdict changes.\",\"evidence\":\"Relay prereg, Frozen analysis: \\\"The relay field's own excess is reported separatel\u2026"
+  },
+  {
+   "type": "workflow_agent",
+   "index": 4,
+   "label": "runner:fix",
+   "phaseIndex": 3,
+   "phaseTitle": "Fix",
+   "agentId": "a46d1be3a1a0f5fa4",
+   "model": "claude-opus-5-5",
+   "state": "done",
+   "startedAt": 1790980176587,
+   "queuedAt": 1790980176582,
+   "attempt": 1,
+   "lastToolName": "StructuredOutput",
+   "lastToolSummary": "C1 24/24 PASS (KIND \u03b2_long 0.0111\u20130.0293, t 5.27\u201311.29). C2\u2026",
+   "promptPreview": "You are working in /home/tony/projects/yupi (project Yupi). Today is 2026-10-02. This is CONFIRMATORY scoring of\npre-registered, OTS-stamped predictions. The raw census/eval files were produced by frozen scripts and committed UNSCORED\nat commit e3d1f06. Governing documents (read them in full, they are short):\n  docs/converged-ladder-prereg-v0.1.md            (C1, C2, C3, C4)\n  docs/actor-long-lag-\u2026",
+   "promptFramed": true,
+   "lastProgressAt": 1790980475430,
+   "tokens": 102628,
+   "toolCalls": 16,
+   "durationMs": 298842,
+   "resultPreview": "{\"lines\":[{\"id\":\"C1/r1-eps1-s1\",\"rule\":\"\u03b2_long>0 and t>=3 (full_plus_log2_class_mass)\",\"values\":\"\u03b2_long 0.01747, se 0.00257, t 6.79\",\"result\":\"PASS\",\"source\":\"docs/converged-ladder-bintest-kind-2026-10-02.json:runs[0].full_plus_log2_class_mass.beta[1]/se[1]\"},{\"id\":\"C1/r1-eps1-s2\",\"rule\":\"\u03b2_long>0, t>=3\",\"values\":\"\u03b2_long 0.01369, t 6.07\",\"result\":\"PASS\",\"source\":\"docs/converged-ladder-bintest-kind\u2026"
+  }
+ ],
+ "totalTokens": 446317,
+ "totalToolCalls": 91
+}

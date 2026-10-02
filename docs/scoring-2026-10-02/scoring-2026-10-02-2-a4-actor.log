@@ -1,0 +1,37 @@
+r1 eps=1 s1            n= 84949 β_long=+0.0439 (t +9.5) β_H=+0.0187 (t +9.5) | +log2 mass: β_long=+0.0417 (t +9.0) β_short=+0.0090 (t +3.4) β_H=+0.0180 (t +9.2) β_mass=-0.0027 (t -5.7) corr(ι_long, log mass)=-0.10
+r1 eps=1 s2            n= 84949 β_long=+0.0403 (t +9.4) β_H=+0.0221 (t +11.3) | +log2 mass: β_long=+0.0382 (t +9.0) β_short=+0.0100 (t +4.2) β_H=+0.0214 (t +11.0) β_mass=-0.0026 (t -5.4) corr(ι_long, log mass)=-0.10
+r1 eps=1 s3            n= 84949 β_long=+0.0375 (t +8.1) β_H=+0.0239 (t +11.9) | +log2 mass: β_long=+0.0359 (t +7.8) β_short=+0.0124 (t +4.8) β_H=+0.0234 (t +11.7) β_mass=-0.0021 (t -4.4) corr(ι_long, log mass)=-0.10
+r1 eps=1/2 s1          n= 85105 β_long=+0.0299 (t +6.5) β_H=+0.0460 (t +16.3) | +log2 mass: β_long=+0.0235 (t +5.2) β_short=+0.0017 (t +0.6) β_H=+0.0436 (t +15.6) β_mass=-0.0068 (t -13.2) corr(ι_long, log mass)=-0.10
+r1 eps=1/2 s2          n= 85105 β_long=+0.0389 (t +7.8) β_H=+0.0488 (t +15.7) | +log2 mass: β_long=+0.0315 (t +6.4) β_short=+0.0049 (t +1.6) β_H=+0.0459 (t +15.0) β_mass=-0.0080 (t -13.4) corr(ι_long, log mass)=-0.10
+r1 eps=1/2 s3          n= 85105 β_long=+0.0339 (t +6.9) β_H=+0.0538 (t +17.6) | +log2 mass: β_long=+0.0258 (t +5.3) β_short=+0.0013 (t +0.4) β_H=+0.0506 (t +16.8) β_mass=-0.0087 (t -15.4) corr(ι_long, log mass)=-0.10
+r2 eps=1 s1            n= 84987 β_long=+0.0382 (t +8.8) β_H=+0.0230 (t +11.9) | +log2 mass: β_long=+0.0367 (t +8.5) β_short=+0.0092 (t +3.9) β_H=+0.0225 (t +11.7) β_mass=-0.0022 (t -4.8) corr(ι_long, log mass)=-0.10
+r2 eps=1 s2            n= 84987 β_long=+0.0403 (t +8.1) β_H=+0.0244 (t +11.4) | +log2 mass: β_long=+0.0385 (t +7.7) β_short=+0.0039 (t +1.5) β_H=+0.0238 (t +11.2) β_mass=-0.0026 (t -5.1) corr(ι_long, log mass)=-0.10
+r2 eps=1 s3            n= 84987 β_long=+0.0565 (t +10.6) β_H=+0.0355 (t +14.8) | +log2 mass: β_long=+0.0538 (t +10.1) β_short=+0.0171 (t +5.8) β_H=+0.0347 (t +14.6) β_mass=-0.0038 (t -6.5) corr(ι_long, log mass)=-0.10
+r2 eps=1/2 s1          n= 84714 β_long=+0.0592 (t +11.3) β_H=+0.0678 (t +19.9) | +log2 mass: β_long=+0.0481 (t +9.3) β_short=+0.0090 (t +3.3) β_H=+0.0631 (t +18.8) β_mass=-0.0091 (t -16.1) corr(ι_long, log mass)=-0.13
+r2 eps=1/2 s2          n= 84714 β_long=+0.0275 (t +6.5) β_H=+0.0643 (t +19.9) | +log2 mass: β_long=+0.0180 (t +4.3) β_short=+0.0020 (t +0.8) β_H=+0.0603 (t +19.1) β_mass=-0.0078 (t -14.1) corr(ι_long, log mass)=-0.13
+r2 eps=1/2 s3          n= 84714 β_long=+0.0504 (t +9.7) β_H=+0.0777 (t +21.1) | +log2 mass: β_long=+0.0400 (t +7.7) β_short=+0.0110 (t +3.9) β_H=+0.0733 (t +20.3) β_mass=-0.0086 (t -13.8) corr(ι_long, log mass)=-0.13
+r3 eps=1 s1            n= 84955 β_long=+0.0233 (t +6.0) β_H=+0.0209 (t +10.9) | +log2 mass: β_long=+0.0204 (t +5.3) β_short=+0.0020 (t +1.0) β_H=+0.0195 (t +10.2) β_mass=-0.0020 (t -4.9) corr(ι_long, log mass)=-0.12
+r3 eps=1 s2            n= 84955 β_long=+0.0165 (t +4.6) β_H=+0.0172 (t +10.0) | +log2 mass: β_long=+0.0128 (t +3.6) β_short=-0.0000 (t -0.0) β_H=+0.0154 (t +9.1) β_mass=-0.0025 (t -6.7) corr(ι_long, log mass)=-0.12
+r3 eps=1 s3            n= 84955 β_long=+0.0150 (t +4.0) β_H=+0.0189 (t +10.9) | +log2 mass: β_long=+0.0114 (t +3.1) β_short=-0.0010 (t -0.5) β_H=+0.0172 (t +10.0) β_mass=-0.0024 (t -6.0) corr(ι_long, log mass)=-0.12
+r3 eps=1/2 s1          n= 85071 β_long=+0.0534 (t +7.4) β_H=+0.0623 (t +18.3) | +log2 mass: β_long=+0.0364 (t +5.1) β_short=+0.0049 (t +1.7) β_H=+0.0560 (t +16.8) β_mass=-0.0070 (t -14.3) corr(ι_long, log mass)=-0.18
+r3 eps=1/2 s2          n= 85071 β_long=+0.0499 (t +7.8) β_H=+0.0589 (t +17.7) | +log2 mass: β_long=+0.0338 (t +5.4) β_short=+0.0034 (t +1.2) β_H=+0.0530 (t +16.3) β_mass=-0.0066 (t -14.8) corr(ι_long, log mass)=-0.18
+r3 eps=1/2 s3          n= 85071 β_long=+0.0553 (t +8.5) β_H=+0.0649 (t +18.6) | +log2 mass: β_long=+0.0386 (t +6.1) β_short=+0.0068 (t +2.4) β_H=+0.0587 (t +17.2) β_mass=-0.0068 (t -14.6) corr(ι_long, log mass)=-0.18
+r4 eps=1 s1            n= 84972 β_long=+0.0243 (t +6.2) β_H=+0.0194 (t +10.3) | +log2 mass: β_long=+0.0217 (t +5.5) β_short=+0.0017 (t +0.9) β_H=+0.0182 (t +9.8) β_mass=-0.0018 (t -4.8) corr(ι_long, log mass)=-0.12
+r4 eps=1 s2            n= 84972 β_long=+0.0221 (t +5.0) β_H=+0.0190 (t +10.1) | +log2 mass: β_long=+0.0175 (t +4.0) β_short=-0.0034 (t -1.6) β_H=+0.0169 (t +9.0) β_mass=-0.0032 (t -7.4) corr(ι_long, log mass)=-0.12
+r4 eps=1 s3            n= 84972 β_long=+0.0313 (t +7.5) β_H=+0.0199 (t +10.7) | +log2 mass: β_long=+0.0269 (t +6.5) β_short=+0.0036 (t +1.9) β_H=+0.0178 (t +9.7) β_mass=-0.0030 (t -7.2) corr(ι_long, log mass)=-0.12
+r4 eps=1/2 s1          n= 84841 β_long=+0.0684 (t +10.5) β_H=+0.0736 (t +18.5) | +log2 mass: β_long=+0.0496 (t +7.7) β_short=+0.0093 (t +2.9) β_H=+0.0666 (t +17.1) β_mass=-0.0077 (t -15.7) corr(ι_long, log mass)=-0.19
+r4 eps=1/2 s2          n= 84841 β_long=+0.0393 (t +7.7) β_H=+0.0645 (t +18.2) | +log2 mass: β_long=+0.0257 (t +5.1) β_short=+0.0095 (t +3.3) β_H=+0.0595 (t +17.2) β_mass=-0.0056 (t -11.5) corr(ι_long, log mass)=-0.19
+r4 eps=1/2 s3          n= 84841 β_long=+0.0321 (t +6.5) β_H=+0.0662 (t +18.9) | +log2 mass: β_long=+0.0157 (t +3.2) β_short=+0.0030 (t +1.1) β_H=+0.0601 (t +17.4) β_mass=-0.0067 (t -14.2) corr(ι_long, log mass)=-0.19
+r1 eps=1 POOLED×3      n=254847 β_long=+0.0406 (t +15.6) β_H=+0.0216 (t +18.9) | +log2 mass: β_long=+0.0386 (t +14.9) β_short=+0.0105 (t +7.1) β_H=+0.0209 (t +18.4) β_mass=-0.0025 (t -8.9) corr(ι_long, log mass)=-0.10
+r1 eps=1/2 POOLED×3    n=255315 β_long=+0.0342 (t +12.3) β_H=+0.0495 (t +28.6) | +log2 mass: β_long=+0.0269 (t +9.8) β_short=+0.0026 (t +1.5) β_H=+0.0467 (t +27.4) β_mass=-0.0078 (t -24.3) corr(ι_long, log mass)=-0.10
+r2 eps=1 POOLED×3      n=254961 β_long=+0.0450 (t +16.0) β_H=+0.0276 (t +22.1) | +log2 mass: β_long=+0.0430 (t +15.2) β_short=+0.0101 (t +6.5) β_H=+0.0270 (t +21.8) β_mass=-0.0029 (t -9.6) corr(ι_long, log mass)=-0.10
+r2 eps=1/2 POOLED×3    n=254142 β_long=+0.0457 (t +16.1) β_H=+0.0699 (t +35.2) | +log2 mass: β_long=+0.0354 (t +12.6) β_short=+0.0073 (t +4.8) β_H=+0.0656 (t +33.6) β_mass=-0.0085 (t -25.4) corr(ι_long, log mass)=-0.13
+r3 eps=1 POOLED×3      n=254865 β_long=+0.0183 (t +8.5) β_H=+0.0190 (t +18.4) | +log2 mass: β_long=+0.0148 (t +6.9) β_short=+0.0003 (t +0.3) β_H=+0.0174 (t +16.9) β_mass=-0.0023 (t -10.1) corr(ι_long, log mass)=-0.12
+r3 eps=1/2 POOLED×3    n=255213 β_long=+0.0528 (t +13.6) β_H=+0.0621 (t +31.6) | +log2 mass: β_long=+0.0362 (t +9.5) β_short=+0.0050 (t +3.1) β_H=+0.0559 (t +29.0) β_mass=-0.0068 (t -25.2) corr(ι_long, log mass)=-0.18
+r4 eps=1 POOLED×3      n=254916 β_long=+0.0259 (t +10.7) β_H=+0.0195 (t +18.0) | +log2 mass: β_long=+0.0220 (t +9.2) β_short=+0.0006 (t +0.6) β_H=+0.0176 (t +16.5) β_mass=-0.0026 (t -11.3) corr(ι_long, log mass)=-0.12
+r4 eps=1/2 POOLED×3    n=254523 β_long=+0.0466 (t +14.5) β_H=+0.0681 (t +32.0) | +log2 mass: β_long=+0.0304 (t +9.5) β_short=+0.0072 (t +4.2) β_H=+0.0620 (t +29.8) β_mass=-0.0066 (t -23.9) corr(ι_long, log mass)=-0.19
+
+real	0m25.784s
+user	1m6.798s
+sys	0m0.669s
+exit 0

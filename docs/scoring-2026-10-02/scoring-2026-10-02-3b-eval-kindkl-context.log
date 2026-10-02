@@ -1,0 +1,10 @@
+UNSCORED context: eval k=7 kind_kl_bits (exact KL) and structural_by_field.kind vs census by_field.kind mean
+r0-eps1    exactKL mean 0.00410 seeds 0.00408 0.00407 0.00415 | eval by_field.kind 0.00373 0.00380 0.00394 | census 0.00373 0.00380 0.00394 max|eval-census| 0.0e+00
+r2-eps1    exactKL mean 0.01876 seeds 0.01550 0.01799 0.02279 | eval by_field.kind 0.01565 0.01719 0.02377 | census 0.01565 0.01719 0.02377 max|eval-census| 0.0e+00
+r3-eps1    exactKL mean 0.01283 seeds 0.01168 0.01342 0.01339 | eval by_field.kind 0.01216 0.01398 0.01418 | census 0.01216 0.01398 0.01418 max|eval-census| 0.0e+00
+r4-eps1    exactKL mean 0.01284 seeds 0.01268 0.01304 0.01279 | eval by_field.kind 0.01414 0.01304 0.01270 | census 0.01414 0.01304 0.01270 max|eval-census| 0.0e+00
+r0-eps1_2  exactKL mean 0.00481 seeds 0.00507 0.00457 0.00477 | eval by_field.kind 0.00532 0.00482 0.00453 | census 0.00532 0.00482 0.00453 max|eval-census| 0.0e+00
+r1-eps1_2  exactKL mean 0.02191 seeds 0.02008 0.02070 0.02496 | eval by_field.kind 0.01953 0.01968 0.02476 | census 0.01953 0.01968 0.02476 max|eval-census| 0.0e+00
+r2-eps1_2  exactKL mean 0.02920 seeds 0.03252 0.02212 0.03295 | eval by_field.kind 0.03241 0.02259 0.03286 | census 0.03241 0.02259 0.03286 max|eval-census| 0.0e+00
+r3-eps1_2  exactKL mean 0.02159 seeds 0.02256 0.02181 0.02041 | eval by_field.kind 0.02304 0.02191 0.02039 | census 0.02304 0.02191 0.02039 max|eval-census| 0.0e+00
+r4-eps1_2  exactKL mean 0.02301 seeds 0.02857 0.01968 0.02079 | eval by_field.kind 0.02904 0.01911 0.02097 | census 0.02904 0.01911 0.02097 max|eval-census| 0.0e+00

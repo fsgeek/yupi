@@ -1,0 +1,48 @@
+r0-eps1    mean 0.00383  sd 0.00011  seeds 0.00373 0.00380 0.00394
+r1-eps1    mean 0.01536  sd 0.00063  seeds 0.01570 0.01464 0.01576
+r2-eps1    mean 0.01887  sd 0.00431  seeds 0.01565 0.01719 0.02377
+r3-eps1    mean 0.01344  sd 0.00111  seeds 0.01216 0.01398 0.01418
+r4-eps1    mean 0.01329  sd 0.00075  seeds 0.01414 0.01304 0.01270
+r0-eps1_2  mean 0.00489  sd 0.00040  seeds 0.00532 0.00482 0.00453
+r1-eps1_2  mean 0.02132  sd 0.00298  seeds 0.01953 0.01968 0.02476
+r2-eps1_2  mean 0.02929  sd 0.00581  seeds 0.03241 0.02259 0.03286
+r3-eps1_2  mean 0.02178  sd 0.00133  seeds 0.02304 0.02191 0.02039
+r4-eps1_2  mean 0.02304  sd 0.00528  seeds 0.02904 0.01911 0.02097
+C3 eps1_2: r2-eps1_2 > r1-eps1_2: 0.02929 vs 0.02132 diff +0.00796 holds=True seed-resolved=False
+C3 eps1_2: r1-eps1_2 > r3-eps1_2: 0.02132 vs 0.02178 diff -0.00046 holds=False seed-resolved=False
+C3 eps1_2: r2-eps1_2 > r3-eps1_2: 0.02929 vs 0.02178 diff +0.00751 holds=True seed-resolved=False
+C3 eps1: r2-eps1 > r3-eps1: 0.01887 vs 0.01344 diff +0.00543 holds=True seed-resolved=True
+C4 eps1_with_r1: r0 0.00383 lowest=True seed-resolved=True margin +0.00947
+C4 eps1_without_r1: r0 0.00383 lowest=True seed-resolved=True margin +0.00947
+C4 eps1_2: r0 0.00489 lowest=True seed-resolved=True margin +0.01643
+xcheck r0-eps1 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.11e-16 (listed share 0.0545)
+xcheck r0-eps1 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 9.37e-17 (listed share 0.0778)
+xcheck r0-eps1 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 7.55e-17 (listed share 0.0635)
+xcheck r1-eps1 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.11e-16 (listed share 0.0055)
+xcheck r1-eps1 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.39e-17 (listed share 0.0077)
+xcheck r1-eps1 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 2.22e-16 (listed share 0.0072)
+xcheck r2-eps1 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 6.94e-18 (listed share 0.0052)
+xcheck r2-eps1 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.11e-16 (listed share 0.0045)
+xcheck r2-eps1 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 7.70e-18 (listed share 0.0069)
+xcheck r3-eps1 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 5.55e-17 (listed share 0.0045)
+xcheck r3-eps1 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 5.55e-17 (listed share 0.0037)
+xcheck r3-eps1 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.04e-17 (listed share 0.0046)
+xcheck r4-eps1 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 2.78e-17 (listed share 0.0038)
+xcheck r4-eps1 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 0.00e+00 (listed share 0.0016)
+xcheck r4-eps1 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 0.00e+00 (listed share 0.0032)
+xcheck r0-eps1_2 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.01e-16 (listed share 0.0727)
+xcheck r0-eps1_2 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.60e-16 (listed share 0.0399)
+xcheck r0-eps1_2 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.80e-16 (listed share 0.0369)
+xcheck r1-eps1_2 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 5.55e-17 (listed share 0.0124)
+xcheck r1-eps1_2 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 5.55e-17 (listed share 0.0141)
+xcheck r1-eps1_2 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.67e-16 (listed share 0.0116)
+xcheck r2-eps1_2 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 5.55e-17 (listed share 0.0139)
+xcheck r2-eps1_2 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 8.67e-18 (listed share 0.0155)
+xcheck r2-eps1_2 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.11e-16 (listed share 0.0171)
+xcheck r3-eps1_2 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.39e-17 (listed share 0.0113)
+xcheck r3-eps1_2 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 6.94e-18 (listed share 0.0106)
+xcheck r3-eps1_2 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 1.11e-16 (listed share 0.0135)
+xcheck r4-eps1_2 s1: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 2.78e-17 (listed share 0.0117)
+xcheck r4-eps1_2 s2: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 4.16e-17 (listed share 0.0064)
+xcheck r4-eps1_2 s3: rows==n True struct diff 0.00e+00 listed classes n ok True max|Δ kind| 6.94e-18 (listed share 0.0122)
+-> docs/converged-ladder-c3c4-2026-10-02.json
