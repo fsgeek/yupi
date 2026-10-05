@@ -1,0 +1,14 @@
+== primary: n=84949 classes=25005 corr(ι4_r1, ι4_r1R)=+0.787 VIF={'iota4_r1': 2.64, 'iota4_r1R': 2.63, 'n_relay': 1.11, 'log2mass': 1.13}
+  A_ref  1=+0.00458(t +9.2) d_iota=+0.01627(t +5.7) | zero set obs +0.00076 pred +0.00458 gap -13.0 se
+  M1     1=-0.02183(t -6.2) iota4_r1=+0.01783(t +6.4) iota4_r1R=-0.00246(t -0.6) log2mass=-0.00164(t -6.7) | zero set obs +0.00076 pred +0.00350 gap -9.3 se
+  M2     1=-0.03418(t -6.0) n_relay=+0.00200(t +2.8) log2mass=-0.00226(t -8.0) | zero set obs +0.00076 pred +0.00801 gap -24.7 se
+  M3     1=-0.03375(t -5.9) iota4_r1=+0.01780(t +6.3) iota4_r1R=-0.00222(t -0.5) n_relay=+0.00229(t +3.1) log2mass=-0.00187(t -7.0) | zero set obs +0.00076 pred +0.00340 gap -9.0 se
+  split  1=+0.00289(t +5.9) d_iota_pos=+0.02365(t +7.8) d_iota_neg=+0.03255(t +2.9) | zero set obs +0.00076 pred +0.00289 gap -7.3 se
+  M1 b_r1 + b_r1R = +0.01536 (t +5.0)
+== secondary: n=84949 classes=25005 corr(ι4_r1, ι4_r1R)=+0.787 VIF={'iota4_r1': 2.64, 'iota4_r1R': 2.63, 'n_relay': 1.11, 'log2mass': 1.13}
+  A_ref  1=+0.00367(t +7.7) d_iota=+0.00049(t +0.2) | zero set obs +0.00002 pred +0.00367 gap -11.6 se
+  M1     1=-0.00736(t -1.7) iota4_r1=+0.00095(t +0.4) iota4_r1R=+0.00425(t +1.4) log2mass=-0.00070(t -2.3) | zero set obs +0.00002 pred +0.00345 gap -10.9 se
+  M2     1=-0.02726(t -4.7) n_relay=+0.00368(t +2.8) log2mass=-0.00118(t -4.5) | zero set obs +0.00002 pred +0.00440 gap -13.9 se
+  M3     1=-0.02716(t -4.7) iota4_r1=+0.00090(t +0.4) iota4_r1R=+0.00465(t +1.5) n_relay=+0.00380(t +2.9) log2mass=-0.00107(t -4.2) | zero set obs +0.00002 pred +0.00330 gap -10.4 se
+  split  1=+0.00281(t +5.7) d_iota_pos=+0.00425(t +1.7) d_iota_neg=+0.02441(t +2.6) | zero set obs +0.00002 pred +0.00281 gap -8.8 se
+  M1 b_r1 + b_r1R = +0.00520 (t +3.0)
