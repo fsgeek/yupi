@@ -1,5 +1,11 @@
 # The converged-budget ladder: verdict v0.1 (2026-10-02)
 
+> **2026-10-04, read with care: "per bit".** The confirmatory slopes below (β_long, bits of excess per bit of ι)
+> come from a linear model with no step term. Binned fits (exploratory; `relay-free-difficulty-results-v0.1.md`,
+> corrections) show the learner's cost is roughly a **plateau**: about +0.015 to +0.024 bits for any ι4 in (0, 0.4],
+> rising only above that. The sign and significance of the confirmatory results stand. Reading β_long as a
+> marginal price per bit, or comparing its magnitude across budgets, is not supported.
+
 > **Status: CONFIRMATORY verdict** against `docs/converged-ladder-prereg-v0.1.md` (05e3543, stamped
 > before any converged model was evaluated). It also scores **A4** of
 > `docs/actor-long-lag-design-prereg-v0.1.md`. The scorer is the instance of 2026-10-02, which did not

@@ -1,0 +1,11 @@
+import numpy as np, collections
+A=np.load('/home/tony/.cache/yupi-scratch/review-2026-10-04/arrays.npz')
+k1=A['k1'];kR=A['kR'];a1=A['i4_r1'];aR=A['i4_r1R'];z=A['zero'].astype(bool)
+print('n',len(a1),'zero set',z.sum(),z.mean())
+print('a1==0',(a1==0).sum(),'a1<1e-12',(a1<1e-12).sum(),'0<a1<1e-9',((a1>0)&(a1<1e-9)).sum(),'min pos a1',a1[a1>0].min(), 'neg', (a1<0).sum())
+print('aR==0',(aR==0).sum(),'min pos aR',aR[aR>0].min())
+print('z & a1!=0',(z&(a1!=0)).sum(),' a1==0 & ~z',((a1==0)&~z).sum(),' a1==0&aR>0',((a1==0)&(aR>0)).sum(), ' a1>0 & aR==0', ((a1>0)&(aR==0)).sum())
+print('z with a1>0 and a1==aR', (z&(a1>0)).sum())
+print('quantiles a1 pos', np.quantile(a1[a1>0],[0,.01,.05,.1,.5]))
+for s in list(dict.fromkeys(k1[a1==0]))[:6]: print('ZERO',s)
+for s in list(dict.fromkeys(k1[(a1>0)&(a1<0.01)]))[:4]: print('SMALL',s)

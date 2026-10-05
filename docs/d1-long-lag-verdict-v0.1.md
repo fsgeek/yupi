@@ -1,5 +1,11 @@
 # D1 held-out test: verdict (v0.1, 2026-09-29)
 
+> **2026-10-04, read with care: "per bit".** The confirmatory slopes below (β_long, bits of excess per bit of ι)
+> come from a linear model with no step term. Binned fits (exploratory; `relay-free-difficulty-results-v0.1.md`,
+> corrections) show the learner's cost is roughly a **plateau**: about +0.015 to +0.024 bits for any ι4 in (0, 0.4],
+> rising only above that. The sign and significance of the confirmatory results stand. Reading β_long as a
+> marginal price per bit, or comparing its magnitude across budgets, is not supported.
+
 > **2026-10-02 correction, read first.** The result below stands as a within-cell correlation. It also holds at
 > the converged budget (`docs/converged-ladder-verdict-v0.1.md`, C1 24/24). Any *distance* (causal) reading of it
 > is withdrawn: the relay intervention found the learner's gain V-shaped in Δι, so moving information further

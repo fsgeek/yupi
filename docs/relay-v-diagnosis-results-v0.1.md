@@ -1,5 +1,18 @@
 # Why is the relay's gain V-shaped? Results v0.1 (2026-10-04)
 
+> **2026-10-04 CORRECTIONS, read first.** An adversarial review (Claude, independent code; key numbers re-derived
+> by the owner before adoption) found no code or rule errors. The MIXED reading stands. Two descriptive claims below
+> are wrong:
+> - **Point 4 is wrong.** At 15 epochs the gain is not "roughly uniform" and the class-dependent part is not "gone".
+>   On the exact-zero set the gain is +0.00002; on the other windows it is +0.0041, about 60 % of the 5-epoch gain.
+>   By decile it runs from −0.0001 (decile 3) to +0.0078 (decile 0). Only the *linear slope on Δι* is gone.
+> - **Candidate C did not test explicitness.** n_relay equals 7 − (the number of distinct actors in the prefix) in
+>   every window. It is a thread count, a property of the relay-free history.
+> - **Point 1, qualified.** Both V tails are high-ι4_r1 classes, but decile 0's ι4_r1R is higher still (0.54). The
+>   table alone does not separate this reading from candidate B; only the regression does, and that regression is
+>   itself model-sensitive (see the correction atop `relay-free-difficulty-results-v0.1.md`).
+> The commit message of cdf362a repeats point 4's error.
+
 > **Status: EXPLORATORY.** This applies `docs/relay-v-diagnosis-design-v0.1.md`, committed and OTS-stamped
 > (e50204f) before the script first ran. Raw: `docs/relay-v-diagnosis-2026-10-04.json`. Script:
 > `scripts/relay_v_diagnosis.py`, run once, unedited after its commit. The frozen relay_paired join was

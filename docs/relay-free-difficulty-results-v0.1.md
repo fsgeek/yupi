@@ -1,5 +1,27 @@
 # Is the learner's long-range difficulty a property of the relay-free history? Results v0.1 (2026-10-04)
 
+> **2026-10-04 CORRECTIONS, read first.** An adversarial review (Claude, independent code, CR1 verified against
+> statsmodels; key numbers re-derived by the owner before adoption) found no code errors and confirms that the
+> pre-declared rule was applied correctly: H-free "stands out" *under model F*. The interpretation does not survive:
+> - **The H-free separation is specification-fragile.** Adding fixed effects for the kind of the last prefix record,
+>   a trivial observable class property, gives at r1ʀ 5 epochs ι4_r1 +0.0062 (t 1.2) and ι4_r1R +0.0097 (t 1.6).
+>   Neither reaches t 2. Alone, each regressor is strongly significant (t 6.8, 5.4). At a correlation of 0.79 the
+>   data cannot say which of the two indexes the learner. **Point 1 below is withdrawn as a suggestion: H-free vs
+>   H-acct is unresolved.**
+> - **"Speed-up, not relocation" and "no lasting advantage" are withdrawn.** About 60 % of the paired gain
+>   remains at 15 epochs (+0.0041 off the zero set), and in the paired fit the step-shaped advantage persists
+>   (indicator +0.0039, t 5.9). The per-bit *slope* converges; the step does not. "Relocation" was never tested.
+> - **The step marks a class type, not an amount of information.** Binned against ι4 = 0, classes with ι4_r1 in
+>   (0, 0.001] bits already cost +0.022 bits (t 8.0). Less than a millibit of information cannot cost 20 millibits,
+>   so the magnitude of ι4 is not the operative quantity at the low end. About half the step is absorbed by
+>   last-kind fixed effects (0.0157 → 0.0088), but it survives (t 4.5–6.8).
+> - **The cost profile (r1, 5 epochs, bins vs ι4_r1 = 0):** +0.022 (0–0.001 bits], +0.018, +0.015, +0.017, +0.020,
+> +0.024 (0.2–0.4], +0.030 (0.4–0.6], +0.049 (> 0.6), every bin t ≥ 8. The same shape holds in all four fits. It is a
+>   **plateau with a rise at the top**, not a line through the origin.
+> What survives: no long-range information, no gain (both arms); a relay gain concentrated in classes with any
+> long-range dependence, persisting at convergence in step form; and a learner cost that behaves more like the
+> *presence* of long-range dependence than like its quantity in bits.
+
 > **Status: EXPLORATORY, suggested by the data.** This applies `docs/relay-free-difficulty-design-v0.1.md`,
 > committed and OTS-stamped (e86759c) before the script first ran. The script `scripts/relay_free_difficulty.py`
 > ran once and was not edited after its commit. The relay_paired gates passed. Raw:
