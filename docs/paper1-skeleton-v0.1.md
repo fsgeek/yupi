@@ -1,5 +1,7 @@
 # Paper 1 — skeleton, decisions, and readiness (v0.1, 2026-09-28)
 
+> **Superseded for paper 1's shape by `docs/paper1-skeleton-v0.2.md` (2026-10-04).** The audit record (§0–§1), corrections C1/C2 and the cut list stand.
+
 > **Status: GOVERNING for paper 1's shape until superseded by a versioned revision.**
 > Written by the instance of 2026-09-28. The PI's terms (2026-09-28) are these. Paper 1
 > is "ready" when we judge it ready for **external review**. The owner of the project
