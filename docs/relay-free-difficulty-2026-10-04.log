@@ -1,0 +1,8 @@
+r1   primary   F     1=-0.10676(t -15.0) iota4_r1=+0.03353(t +6.1) iota4_r1R=-0.00387(t -0.6) any_long_r1=+0.01571(t +11.9) short_r1=+0.00248(t +0.9) short_r1R=-0.00449(t -1.5) H_kind=+0.01703(t +18.5) log2mass=-0.00621(t -14.4)
+r1   primary   F-ind 1=-0.08810(t -14.1) iota4_r1=+0.03835(t +7.1) iota4_r1R=-0.00576(t -0.9) short_r1=+0.00392(t +1.4) short_r1R=-0.00622(t -2.0) H_kind=+0.01713(t +18.5) log2mass=-0.00584(t -14.0)
+r1R  primary   F     1=-0.07305(t -12.1) iota4_r1=+0.01665(t +3.6) iota4_r1R=+0.00026(t +0.0) any_long_r1=+0.01290(t +12.4) short_r1=+0.00205(t +0.8) short_r1R=-0.00192(t -0.7) H_kind=+0.01215(t +15.7) log2mass=-0.00416(t -11.3)
+r1R  primary   F-ind 1=-0.05772(t -10.8) iota4_r1=+0.02061(t +4.6) iota4_r1R=-0.00129(t -0.2) short_r1=+0.00324(t +1.2) short_r1R=-0.00334(t -1.3) H_kind=+0.01224(t +15.7) log2mass=-0.00385(t -10.8)
+r1   secondary F     1=-0.06650(t -10.6) iota4_r1=+0.01406(t +3.3) iota4_r1R=-0.00063(t -0.1) any_long_r1=+0.01180(t +11.8) short_r1=+0.00134(t +0.5) short_r1R=-0.00115(t -0.4) H_kind=+0.01201(t +15.8) log2mass=-0.00384(t -9.8)
+r1   secondary F-ind 1=-0.05248(t -9.2) iota4_r1=+0.01767(t +4.2) iota4_r1R=-0.00205(t -0.4) short_r1=+0.00242(t +1.0) short_r1R=-0.00245(t -1.0) H_kind=+0.01209(t +15.8) log2mass=-0.00357(t -9.3)
+r1R  secondary F     1=-0.04886(t -9.6) iota4_r1=+0.01455(t +3.7) iota4_r1R=-0.00437(t -1.0) any_long_r1=+0.00792(t +9.1) short_r1=+0.00094(t +0.4) short_r1R=-0.00004(t -0.0) H_kind=+0.00901(t +13.7) log2mass=-0.00283(t -9.2)
+r1R  secondary F-ind 1=-0.03945(t -8.8) iota4_r1=+0.01698(t +4.4) iota4_r1R=-0.00532(t -1.2) short_r1=+0.00167(t +0.7) short_r1R=-0.00091(t -0.4) H_kind=+0.00906(t +13.7) log2mass=-0.00264(t -8.9)
