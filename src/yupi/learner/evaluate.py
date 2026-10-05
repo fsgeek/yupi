@@ -22,7 +22,9 @@ predicted), from ONE forward pass over the window:
   structural_by_field  the five terms of that sum, reported per field (kind, actor, obj, related, lineage);
                    at the relay rung r1ʀ ("r1R") the OBJECT slot carries the relay (a KIND
                    literal, interfaces.Lit) and its term is reported as "relay", never as "obj"
-                   and never inside "kind" (relay pre-registration v0.1, frozen analysis)
+                   and never inside "kind" (relay pre-registration v0.1, frozen analysis); at the
+                   decoy r1ᴅ ("r1D") and self-copy r1ꜱ ("r1S") rungs it is reported as "decoy" and
+                   "self" (three-arm design v0.1 §3)
   naming_bits      Σ_{fresh j} [ −log2 n_unused_j − (log2 P_M(tok_j) − log2 P̃_M(ρ_j)) ]
   token_bits       model token cost − ceiling token cost over the five fields (given
                    continuation) == structural_bits + naming_bits, algebraically
@@ -34,8 +36,8 @@ predicted), from ONE forward pass over the window:
                    its mean is the KL of the end-of-window process and is ≥ 0 in expectation
 
 The rung is the corpus manifest's (`evaluate` reads it); a caller may pass it, and a
-disagreement is refused. At r1R a KIND token in the OBJECT slot is a Lit; at every other
-rung it is an error.
+disagreement is refused. At a window-level rung (interfaces.WINDOW_RUNGS: r1R, r1D, r1S)
+a KIND token in the OBJECT slot is a Lit; at every other rung it is an error.
 
 Means over windows are estimates of the corresponding expected KLs (the
 realized record is a sample from P*(· | Πw)); standard deviations and
@@ -53,7 +55,7 @@ import numpy as np
 
 from yupi.corpus.vocab import ENTITY_TYPES, KINDS, MASKED, NONE, PAD, POOL_SIZES, RESERVED, RESET, TOKEN_ID, VOCAB, pool_tokens, token_type
 from yupi.corpus.writer import read_split
-from yupi.interfaces import MASKED as REC_MASKED, RELAY_RUNGS, Lit
+from yupi.interfaces import MASKED as REC_MASKED, RELAY_RUNGS, WINDOW_RUNGS, Lit  # noqa: F401
 from yupi.learner.data import BOS, frame
 from yupi.naming import pattern_all
 from yupi.pattern_ceiling import Table
@@ -68,12 +70,20 @@ KIND_IDS = np.array([TOKEN_ID[k] for k in KINDS if k != RESET])
 PAD_ID = TOKEN_ID[PAD]
 FIELDS = ("kind", "actor", "obj", "related", "lineage")
 RELAY_FIELDS = ("kind", "actor", "relay", "related", "lineage")     # reported names at a relay rung
+# the OBJECT slot's reported name at each window-level rung (three-arm design v0.1 §3)
+WINDOW_FIELD = {"r1R": "relay", "r1D": "decoy", "r1S": "self"}
+assert set(WINDOW_FIELD) == set(WINDOW_RUNGS), "every window-level rung needs a reported field name"
 KIND_TOKENS = frozenset(KINDS)
 
 
 def field_names(rung: Optional[str]) -> Tuple[str, ...]:
-    """The five reported field names at a rung: FIELDS, or RELAY_FIELDS at a relay rung."""
-    return RELAY_FIELDS if rung in RELAY_RUNGS else FIELDS
+    """The five reported field names at a rung: FIELDS, RELAY_FIELDS at the relay rung,
+    and at any window-level rung the OBJECT slot under that rung's WINDOW_FIELD name."""
+    if rung not in WINDOW_RUNGS:
+        return FIELDS
+    if rung == "r1R":
+        return RELAY_FIELDS
+    return FIELDS[:2] + (WINDOW_FIELD[rung],) + FIELDS[3:]
 
 
 def manifest_rung(corpus_dir) -> str:
@@ -99,14 +109,14 @@ def surface_records(tokens: Iterable[str], rung: Optional[str] = None) -> Tuple[
     """(reset flag, records) from a window's surface tokens; entity fields hold
     the surface TOKENS, so `pattern_all` yields the window's Π directly.
 
-    `rung` (the corpus manifest's) decides the OBJECT slot's reading: at a relay
-    rung (r1R) it must be a KIND token (-> interfaces.Lit) or NONE; at any other
+    `rung` (the corpus manifest's) decides the OBJECT slot's reading: at a
+    window-level rung (r1R, r1D, r1S) it must be a KIND token (-> interfaces.Lit) or NONE; at any other
     given rung a KIND token there is an error. With no rung (callers that predate
     the relay, among them the frozen scripts/implicit_info_bintest.py, which cannot
     pass one) a KIND token in the OBJECT slot is read as a Lit: that is the only
     reading it has in any corpus, and no r0–r4 corpus contains one, so their
     records are unchanged."""
-    relay = rung in RELAY_RUNGS
+    relay = rung in WINDOW_RUNGS
     toks = list(tokens)
     reset = bool(toks) and toks[0] == RESET
     if reset:
@@ -248,8 +258,9 @@ def window_excess(lp5: np.ndarray, next_tokens: Tuple[str, ...], used: Dict[str,
     """The five-field excesses for one realized next record. `lp5` is [5, 156]
     natural-log softmax at the five positions predicting `next_tokens`;
     `used` is mutated: the record's fresh tokens are added as they occur.
-    At a relay rung the OBJECT slot is the relay literal, reported as "relay"."""
-    relay = rung in RELAY_RUNGS
+    At a window-level rung the OBJECT slot is the rung's literal, reported under
+    field_names(rung) ("relay" at r1R)."""
+    relay = rung in WINDOW_RUNGS
     names = field_names(rung)
     ceil = field_ceiling(star, rho)
     structural = naming = ceiling_tok = model_tok = 0.0

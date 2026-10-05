@@ -13,6 +13,12 @@ window with the same actor token; NONE if none, or no actor). Manifests must agr
 every field but the rung, the git commit and the rung-derived corpus name.
 With --table-k7: every test window with at least 7 records has its k = 7 pattern
 class in the r1R table, and that class is the relayed r1 class of the paired window.
+
+With --rung r1D or r1S (three-arm design v0.1 §5) the same checks run for the decoy or
+self-copy arm (pass its corpus as --arm, an alias of --r1R): the slot is recomputed
+from the r1 tokens by that rung's rule (r1D: the KIND token of record t − 1 in the
+window, NONE for the first record; r1S: record t's own KIND token), independently of
+yupi.interfaces, and the coverage check uses the rung's window map.
 """
 import argparse
 import json
@@ -64,11 +70,41 @@ def _recompute_ok(r1, rr, lens):
     return bad == 0, with_kind
 
 
-def check_split(d1: Path, dr: Path, split: str) -> dict:
+def _recompute_decoy_ok(r1, rr, lens):
+    """r1D: the slot of record t is the KIND token of record t − 1 in the window (NONE for t = 1)."""
+    bad = with_kind = 0
+    for i in range(r1.shape[0]):
+        row1, rowr = r1[i].tolist(), rr[i].tolist()
+        off = 1 if row1 and row1[0] == RESET_ID else 0
+        prev, any_kind = NONE_ID, False
+        for j in range(off, int(lens[i]), 5):
+            bad += rowr[j + 2] != prev
+            any_kind |= prev in KIND_IDS
+            prev = row1[j]
+        with_kind += any_kind
+    return bad == 0, with_kind
+
+
+def _recompute_self_ok(r1, rr, lens):
+    """r1S: the slot of record t is record t's own KIND token."""
+    bad = with_kind = 0
+    for i in range(r1.shape[0]):
+        row1, rowr = r1[i].tolist(), rr[i].tolist()
+        off = 1 if row1 and row1[0] == RESET_ID else 0
+        js = range(off, int(lens[i]), 5)
+        bad += sum(rowr[j + 2] != row1[j] for j in js)
+        with_kind += any(row1[j] in KIND_IDS for j in js)
+    return bad == 0, with_kind
+
+
+RECOMPUTE = {"r1R": _recompute_ok, "r1D": _recompute_decoy_ok, "r1S": _recompute_self_ok}
+
+
+def check_split(d1: Path, dr: Path, split: str, rung: str = "r1R") -> dict:
     d1, dr = Path(d1), Path(dr)
     l1, a1 = _load(d1, split)
     lr, ar = _load(dr, split)
-    rep = dict(split=split, n_r1=int(len(l1)), n_r1R=int(len(lr)))
+    rep = {"split": split, "n_r1": int(len(l1)), f"n_{rung}": int(len(lr))}
     same_shape = a1.shape == ar.shape and len(l1) == len(lr)
     rep["lengths_equal"] = bool(same_shape and np.array_equal(l1, lr))
     rep["tables_identical"] = (d1 / f"{split}.table.jsonl").read_bytes() == (dr / f"{split}.table.jsonl").read_bytes()
@@ -76,7 +112,7 @@ def check_split(d1: Path, dr: Path, split: str) -> dict:
         dropped = ar.copy()
         dropped[_relay_mask(ar, lr)] = MASKED_ID
         rep["drop_relay_equals_r1"] = bool(np.array_equal(dropped, a1))
-        ok, with_kind = _recompute_ok(a1, ar, l1)
+        ok, with_kind = RECOMPUTE[rung](a1, ar, l1)
     else:
         rep["drop_relay_equals_r1"], ok, with_kind = False, False, 0
     rep["relay_recomputed_equal"] = ok
@@ -85,19 +121,20 @@ def check_split(d1: Path, dr: Path, split: str) -> dict:
     return rep
 
 
-def check_manifests(d1: Path, dr: Path) -> dict:
+def check_manifests(d1: Path, dr: Path, rung: str = "r1R") -> dict:
     m1 = json.loads((Path(d1) / "manifest.json").read_text())
     mr = json.loads((Path(dr) / "manifest.json").read_text())
     diff = sorted(k for k in set(m1) | set(mr) if m1.get(k) != mr.get(k))
     return dict(differing_fields=diff, rungs=(m1.get("rung"), mr.get("rung")),
-                passed=(set(diff) <= {"rung", "git_commit"} and m1.get("rung") == "r1" and mr.get("rung") == "r1R"))
+                passed=(set(diff) <= {"rung", "git_commit"} and m1.get("rung") == "r1" and mr.get("rung") == rung))
 
 
-def class_coverage(d1: Path, dr: Path, table_path: Path, k: int = 7) -> dict:
+def class_coverage(d1: Path, dr: Path, table_path: Path, k: int = 7, rung: str = "r1R") -> dict:
     from yupi.corpus.rendering import EpisodeTable
     from yupi.corpus.windows import deserialize
     from yupi.corpus.writer import read_split
-    from yupi.interfaces import relay_window
+    from yupi.interfaces import window_map
+    relay_window = window_map(rung)
     from yupi.naming import pattern_all
     from yupi.pattern_ceiling import load_table
     table = load_table(table_path)
@@ -122,24 +159,27 @@ def class_coverage(d1: Path, dr: Path, table_path: Path, k: int = 7) -> dict:
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--r1", required=True)
-    ap.add_argument("--r1R", required=True)
+    ap.add_argument("--r1R", "--arm", dest="r1R", required=True, help="the window-level arm's corpus")
+    ap.add_argument("--rung", default="r1R", choices=sorted(RECOMPUTE))
     ap.add_argument("--table-k7")
     ap.add_argument("--splits", default="train,val,test")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     if Path(a.out).exists():
         raise SystemExit(f"refusing to overwrite {a.out}")
-    rep = dict(design="docs/relay-intervention-design-v0.1.md §2 item 4", r1=a.r1, r1R=a.r1R,
-               git=subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip(),
-               manifests=check_manifests(Path(a.r1), Path(a.r1R)), splits=[])
+    design = ("docs/relay-intervention-design-v0.1.md §2 item 4" if a.rung == "r1R"
+              else "docs/three-arm-design-v0.1.md §5")
+    rep = {"design": design, "r1": a.r1, a.rung: a.r1R,
+           "git": subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip(),
+           "manifests": check_manifests(Path(a.r1), Path(a.r1R), a.rung), "splits": []}
     print(rep["manifests"], flush=True)
     for s in a.splits.split(","):
-        r = check_split(Path(a.r1), Path(a.r1R), s)
+        r = check_split(Path(a.r1), Path(a.r1R), s, a.rung)
         rep["splits"].append(r)
         print(r, flush=True)
     ok = rep["manifests"]["passed"] and all(r["passed"] for r in rep["splits"])
     if a.table_k7:
-        rep["class_coverage_k7"] = class_coverage(Path(a.r1), Path(a.r1R), Path(a.table_k7))
+        rep["class_coverage_k7"] = class_coverage(Path(a.r1), Path(a.r1R), Path(a.table_k7), rung=a.rung)
         print(rep["class_coverage_k7"], flush=True)
         ok &= rep["class_coverage_k7"]["passed"]
     rep["all_passed"] = bool(ok)

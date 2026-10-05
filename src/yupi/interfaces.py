@@ -133,14 +133,74 @@ def relay_window(window) -> tuple:
 
 
 def drop_relay(window) -> tuple:
-    """Inverse of relay_window: r1ʀ records -> r1 records."""
+    """Inverse of relay_window (and of every registered window map): OBJECT slot -> MASKED."""
     return tuple(Record(kind=r.kind, actor=r.actor, obj=MASKED, related=r.related, lineage=r.lineage)
                  for r in window)
 
 
+# ---- the decoy r1ᴅ and the self-copy r1ꜱ (docs/three-arm-design-v0.1.md §2, 2026-10-05) ----
+#
+# Window-level rungs over r1 like the relay, value in the same OBJECT slot, as a Lit:
+#   r1D: record t's OBJECT = KIND of record t − 1 in the window; None for the first record.
+#   r1S: record t's OBJECT = KIND of record t.
+# Neither carries binding content. Both are window-local, injective (drop_relay
+# inverts them) and literal under Π_all.
+
+def decoy_next(window, rec: Record) -> Record:
+    """The r1ᴅ form of r1 record `rec` following the r1 records `window`."""
+    _check_r1(rec)
+    val = Lit(window[-1].kind) if len(window) else None
+    return Record(kind=rec.kind, actor=rec.actor, obj=val, related=MASKED, lineage=MASKED)
+
+
+def decoy_window(window) -> tuple:
+    """r1 records of one window -> r1ᴅ records (window-local: record t uses record t − 1)."""
+    window = tuple(window)
+    return tuple(decoy_next(window[:i], rec) for i, rec in enumerate(window))
+
+
+def self_copy_next(window, rec: Record) -> Record:
+    """The r1ꜱ form of r1 record `rec` (the window is not consulted)."""
+    _check_r1(rec)
+    return Record(kind=rec.kind, actor=rec.actor, obj=Lit(rec.kind), related=MASKED, lineage=MASKED)
+
+
+def self_copy_window(window) -> tuple:
+    """r1 records of one window -> r1ꜱ records."""
+    return tuple(self_copy_next((), rec) for rec in window)
+
+
+# The registry of window-level rungs: name -> (base per-record rung, window map,
+# next-record map). The window map takes base records of one window to the rung's
+# records; the next-record map takes (base window, next base record) to the rung's
+# next record and equals the last step of the window map. RELAY_RUNGS above is kept
+# as it was (r1R only) for callers that predate the registry.
+WINDOW_RUNGS = {
+    "r1R": ("r1", relay_window, relay_next),
+    "r1D": ("r1", decoy_window, decoy_next),
+    "r1S": ("r1", self_copy_window, self_copy_next),
+}
+
+
+def base_rung(rung: str) -> str:
+    """The per-record rung a window-level rung is built on; a per-record rung is its own base."""
+    return WINDOW_RUNGS[rung][0] if rung in WINDOW_RUNGS else rung
+
+
+def window_map(rung: str):
+    """The window map of a registered window-level rung (KeyError otherwise)."""
+    return WINDOW_RUNGS[rung][1]
+
+
+def next_map(rung: str):
+    """The next-record map of a registered window-level rung (KeyError otherwise)."""
+    return WINDOW_RUNGS[rung][2]
+
+
 def project_window(records, rung: str) -> tuple:
-    """Project a window's latent records: per record for r0–r4, then the relay for r1R."""
-    base = RELAY_RUNGS.get(rung)
-    if base is None:
+    """Project a window's latent records: per record for r0–r4, then the window map
+    for a window-level rung (r1R, r1D, r1S)."""
+    if rung not in WINDOW_RUNGS:
         return tuple(project(r, rung) for r in records)
-    return relay_window(tuple(project(r, base) for r in records))
+    base, wmap, _ = WINDOW_RUNGS[rung]
+    return wmap(tuple(project(r, base) for r in records))

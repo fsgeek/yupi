@@ -24,7 +24,8 @@ from pathlib import Path
 from typing import Dict, Iterable, Tuple
 
 from yupi.config import WorldConfig
-from yupi.interfaces import MASKED, RELAY_RUNGS, Lit, project, relay_next, relay_window
+from yupi.interfaces import (MASKED, RELAY_RUNGS, WINDOW_RUNGS, Lit, base_rung, next_map, project,  # noqa: F401
+                             relay_next, relay_window, window_map)
 from yupi.kernel import enabled
 from yupi.naming import ENTITY_ORDER, extend_binding, pattern_all
 from yupi.queries import entropy_bits
@@ -51,24 +52,27 @@ def ceiling_table(cfg: WorldConfig, programs, law: WindowLaw, rungs: Iterable[st
     the classes are k-record prefixes (contract v0.1.2: the headline
     position k = L − 1 and the interior curve), from the prefix-length pass.
 
-    A window-level rung (`interfaces.RELAY_RUNGS`, e.g. "r1R") is computed
-    from its base rung's aggregate with the relay applied to each STRUCTURAL
-    window before pattern keying, and to each next record given that window
-    — the independent route of relay design v0.1 §3 (gate C); the base
-    rungs' tables are unaffected."""
+    A window-level rung (`interfaces.WINDOW_RUNGS`: "r1R", "r1D", "r1S") is
+    computed from its base rung's aggregate with the rung's window map applied
+    to each STRUCTURAL window before pattern keying, and its next-record map to
+    each next record given that window — the independent route of relay design
+    v0.1 §3 (gate C), three-arm design v0.1 §3; the base rungs' tables are
+    unaffected."""
     rungs = tuple(rungs)
-    bases = tuple(dict.fromkeys(RELAY_RUNGS.get(r, r) for r in rungs))
+    bases = tuple(dict.fromkeys(base_rung(r) for r in rungs))
     if prefix_len is None:
         aggs = window_law_aggregates(cfg, programs, law, bases, stats)
     else:
         aggs = prefix_law_aggregates(cfg, programs, law, prefix_len, bases, stats)
     out: Dict[str, Table] = {}
     for rung in rungs:
-        base = RELAY_RUNGS.get(rung, rung)
-        relay = rung in RELAY_RUNGS
+        base = base_rung(rung)
+        relay = rung in WINDOW_RUNGS
+        if relay:
+            wmap, nmap = window_map(rung), next_map(rung)
         patt: Dict[Key, Dict[tuple, Fraction]] = {}
         for (reset, win), joint in aggs[base].items():
-            pw, binding = pattern_all(relay_window(win) if relay else win, types)
+            pw, binding = pattern_all(wmap(win) if relay else win, types)
             tag = (binding, win) if relay else binding
             d = patt.setdefault((reset, pw), {})
             for s, m in joint.items():
@@ -82,7 +86,7 @@ def ceiling_table(cfg: WorldConfig, programs, law: WindowLaw, rungs: Iterable[st
                 b, win = tag if relay else (tag, None)
                 for r, p in _moves(s, cfg, programs, base, moves):
                     if relay:
-                        r = relay_next(win, r)
+                        r = nmap(win, r)
                     rho, _ = extend_binding(b, r, types)
                     star[rho] = star.get(rho, Fraction(0)) + m * p
             table[key] = (mass, {rho: q / mass for rho, q in star.items()})
@@ -92,22 +96,24 @@ def ceiling_table(cfg: WorldConfig, programs, law: WindowLaw, rungs: Iterable[st
     return out
 
 
-# ---- the relay rung's tables by the push-forward (relay design v0.1 §3) -------------
+# ---- the window-level rungs' tables by the push-forward (relay design v0.1 §3) -------
 
-def derive_relay_table(table: Table) -> Table:
+def derive_relay_table(table: Table, rung: str = "r1R") -> Table:
     """r1ʀ table from an r1 table: each class (reset, Πw) maps to (reset,
     relay(Πw)) and each next record ρ to relay_next(Πw, ρ). Both maps are
     injective (dropping the relay inverts them), so masses carry over and
     P*(· | class) is pushed forward without merging; a collision would be a
-    bug and is refused."""
+    bug and is refused. With `rung`, any registered window-level rung
+    (interfaces.WINDOW_RUNGS: r1R, r1D, r1S) by its window and next-record maps."""
+    wmap, nmap = window_map(rung), next_map(rung)
     out: Table = {}
     for (reset, pw), (mass, star) in table.items():
-        key = (reset, relay_window(pw))
+        key = (reset, wmap(pw))
         if key in out:
             raise ValueError(f"relay class collision at {key!r}")
         nstar: Dict[Record, Fraction] = {}
         for rho, q in star.items():
-            r = relay_next(pw, rho)
+            r = nmap(pw, rho)
             if r in nstar:
                 raise ValueError(f"relay next-record collision at {key!r}: {r!r}")
             nstar[r] = q
@@ -115,11 +121,13 @@ def derive_relay_table(table: Table) -> Table:
     return out
 
 
-def relay_gates(base: Table, relayed: Table) -> dict:
+def relay_gates(base: Table, relayed: Table, rung: str = "r1R") -> dict:
     """Gates A and B of relay design v0.1 §4, exact: for every base class c and
     its relayed class, equal law mass, equal KIND marginal (A), and equal
     multiset of next-record probabilities (B, which fixes H* per class); and
-    the relayed table has no class outside the image of the base table."""
+    the relayed table has no class outside the image of the base table.
+    `rung` names the window-level rung whose window map gives the image."""
+    wmap = window_map(rung)
     def kinds(star):
         k: Dict[str, Fraction] = {}
         for r, q in star.items():
@@ -129,7 +137,7 @@ def relay_gates(base: Table, relayed: Table) -> dict:
     missing, first_a, first_b = 0, None, None
     image = set()
     for (reset, pw), (mass, star) in base.items():
-        key = (reset, relay_window(pw))
+        key = (reset, wmap(pw))
         image.add(key)
         if key not in relayed:
             missing += 1

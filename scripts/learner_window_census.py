@@ -74,8 +74,9 @@ def class_label(key) -> str:
 
 
 def _third(by_field):
-    """The OBJECT slot's term for the printout: "obj" at r0–r4, "relay" at r1R."""
-    name = "relay" if "relay" in by_field else "obj"
+    """The OBJECT slot's term for the printout: "obj" at r0–r4, "relay" at r1R, "decoy" at r1D,
+    "self" at r1S (yupi.learner.evaluate.field_names)."""
+    name = next((n for n in ("relay", "decoy", "self") if n in by_field), "obj")
     return f"{name} {by_field[name]:.2f}"
 
 

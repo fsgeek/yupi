@@ -32,7 +32,8 @@ def summarize(rows: Sequence[dict], top: int = 20) -> dict:
                      tail_share={str(p): float(xs[order[:max(1, math.ceil(p * n))]].sum() / total) if total else None
                                  for p in TAIL})
     # the rows' own field names, in their order: FIELDS at r0–r4; at the relay rung
-    # r1R the OBJECT slot is reported as "relay" (yupi.learner.evaluate.RELAY_FIELDS)
+    # r1R the OBJECT slot is reported as "relay" (yupi.learner.evaluate.RELAY_FIELDS), at
+    # r1D / r1S as "decoy" / "self" (yupi.learner.evaluate.field_names)
     fields = tuple(rows[0]["by_field"]) if n else FIELDS
     by_class: Dict = {}
     for r, x in zip(rows, xs):

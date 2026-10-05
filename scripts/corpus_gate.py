@@ -51,6 +51,10 @@ PINNED_HQ = {(Fraction(1), "r1"): 0.6238, (Fraction(1), "r3"): 0.4565,
 # (relay design v0.1 §3), so its pinned H(q | Πw) is r1's
 PINNED_HQ[(Fraction(1), "r1R")] = PINNED_HQ[(Fraction(1), "r1")]
 PINNED_HQ[(Fraction(1, 2), "r1R")] = PINNED_HQ[(Fraction(1, 2), "r1")]
+# likewise the decoy and self-copy rungs (three-arm design v0.1 §2: same one-to-one argument)
+for _rung in ("r1D", "r1S"):
+    for _eps in (Fraction(1), Fraction(1, 2)):
+        PINNED_HQ[(_eps, _rung)] = PINNED_HQ[(_eps, "r1")]
 DEFAULT_CELLS = [(Fraction(1), "r1"), (Fraction(1), "r3"), (Fraction(1), "r4"), (Fraction(1, 2), "r1"), (Fraction(1, 2), "r3")]
 
 

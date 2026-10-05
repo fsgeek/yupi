@@ -12,12 +12,15 @@ from yupi.config import WorldConfig
 from yupi.corpus.rendering import RenderingRefused, d3_check
 from yupi.corpus.vocab import ENTITY_TYPES, POOL_SIZES, RESERVED, VOCAB_SHA256, VOCAB_VERSION
 from yupi.corpus.windows import max_tokens
+from yupi.interfaces import WINDOW_RUNGS
 from yupi.programs import programs_for
 from yupi.window import WindowLaw
 
 SCHEMA_VERSION = 1
 GENERATOR_VERSION = "0.1.0"
-RUNGS = ("r0", "r1", "r2", "r3", "r4", "r1R")      # r1R: the relay rung (relay design v0.1 §2, 2026-09-30)
+# the per-record rungs, then the window-level rungs of interfaces.WINDOW_RUNGS: r1R the relay (relay
+# design v0.1 §2, 2026-09-30); r1D the decoy and r1S the self-copy (three-arm design v0.1 §2, 2026-10-05)
+RUNGS = ("r0", "r1", "r2", "r3", "r4") + tuple(WINDOW_RUNGS)
 
 
 class ManifestRefused(ValueError):
