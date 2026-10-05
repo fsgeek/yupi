@@ -1,0 +1,2 @@
+val KIND excess at k=7: {'wb': 0.05563, 'add-0.05': 0.09555, 'add-0.2': 0.13268, 'add-0.5': 0.21047, 'add-1.0': 0.31139} -> wb
+test k=7 KIND excess 0.06351 ± 0.00192  classes 32584 unseen 1133  train 507s total 729s
