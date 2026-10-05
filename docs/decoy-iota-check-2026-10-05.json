@@ -1,0 +1,168 @@
+{
+ "design": "docs/decoy-iota-check-v0.1.md",
+ "law": "(40, 8, 2) c1prime-loop, k = 7, target KIND",
+ "git": "c52db8f2898234fc130fa524b33b5c28dafaa736",
+ "profiles": {
+  "1": {
+   "r1": {
+    "1": {
+     "mean_iota_kl": 0.711635093651701,
+     "n_groups": 7,
+     "identity_diff": 2.220446049250313e-16
+    },
+    "2": {
+     "mean_iota_kl": 0.5249055791249057,
+     "n_groups": 38,
+     "identity_diff": 4.884981308350689e-15
+    },
+    "3": {
+     "mean_iota_kl": 0.37914856590771195,
+     "n_groups": 224,
+     "identity_diff": 1.5432100042289676e-14
+    },
+    "4": {
+     "mean_iota_kl": 0.25684675719511385,
+     "n_groups": 1177,
+     "identity_diff": 9.71445146547012e-15
+    },
+    "5": {
+     "mean_iota_kl": 0.16844657435307298,
+     "n_groups": 5488,
+     "identity_diff": 2.836619827917275e-14
+    },
+    "6": {
+     "mean_iota_kl": 0.08031484293384898,
+     "n_groups": 23309,
+     "identity_diff": 1.2628786905111156e-15
+    }
+   },
+   "decoy": {
+    "1": {
+     "mean_iota_kl": 0.5602345949620884,
+     "n_groups": 28,
+     "identity_diff": 8.659739592076221e-15
+    },
+    "2": {
+     "mean_iota_kl": 0.3942906571501744,
+     "n_groups": 147,
+     "identity_diff": -9.270362255620057e-15
+    },
+    "3": {
+     "mean_iota_kl": 0.2881957958934619,
+     "n_groups": 737,
+     "identity_diff": 7.882583474838611e-15
+    },
+    "4": {
+     "mean_iota_kl": 0.1890743555840019,
+     "n_groups": 3383,
+     "identity_diff": 1.3711254354120683e-14
+    },
+    "5": {
+     "mean_iota_kl": 0.11093372539811673,
+     "n_groups": 14827,
+     "identity_diff": 1.3197776205231548e-14
+    },
+    "6": {
+     "mean_iota_kl": 0.01865106753284687,
+     "n_groups": 56595,
+     "identity_diff": -9.155870506205588e-15
+    }
+   }
+  },
+  "1/2": {
+   "r1": {
+    "1": {
+     "mean_iota_kl": 0.8355097191578669,
+     "n_groups": 7,
+     "identity_diff": 9.325873406851315e-15
+    },
+    "2": {
+     "mean_iota_kl": 0.6593689548956456,
+     "n_groups": 38,
+     "identity_diff": 7.993605777301127e-15
+    },
+    "3": {
+     "mean_iota_kl": 0.4941308184199635,
+     "n_groups": 224,
+     "identity_diff": -7.993605777301127e-15
+    },
+    "4": {
+     "mean_iota_kl": 0.33778610733927256,
+     "n_groups": 1177,
+     "identity_diff": 2.7755575615628914e-16
+    },
+    "5": {
+     "mean_iota_kl": 0.22493944485823059,
+     "n_groups": 5488,
+     "identity_diff": -5.245803791353865e-15
+    },
+    "6": {
+     "mean_iota_kl": 0.10029308798806616,
+     "n_groups": 23309,
+     "identity_diff": -7.854827899222983e-15
+    }
+   },
+   "decoy": {
+    "1": {
+     "mean_iota_kl": 0.681563854291292,
+     "n_groups": 28,
+     "identity_diff": 6.106226635438361e-15
+    },
+    "2": {
+     "mean_iota_kl": 0.5145298695039813,
+     "n_groups": 147,
+     "identity_diff": -5.218048215738236e-15
+    },
+    "3": {
+     "mean_iota_kl": 0.3921462415516046,
+     "n_groups": 737,
+     "identity_diff": -6.439293542825908e-15
+    },
+    "4": {
+     "mean_iota_kl": 0.25642283554389694,
+     "n_groups": 3383,
+     "identity_diff": -5.551115123125783e-15
+    },
+    "5": {
+     "mean_iota_kl": 0.14833337454155965,
+     "n_groups": 14827,
+     "identity_diff": -3.7192471324942744e-15
+    },
+    "6": {
+     "mean_iota_kl": 0.030566782308973223,
+     "n_groups": 56595,
+     "identity_diff": -7.4870665223159e-15
+    }
+   }
+  }
+ },
+ "comparison": {
+  "1": {
+   "n_classes": 89474,
+   "mean_d_iota4_relay": 0.09355677541179941,
+   "mean_d_iota4_decoy": 0.06777240161110441,
+   "corr_decoy_relay": 0.29027189082012633,
+   "slope_decoy_on_relay": 0.30548128289945575,
+   "mass_frac_decoy_zero_1e12": 0.12863153502983896,
+   "mass_frac_decoy_gt_0_05": 0.23698794274742763,
+   "mass_frac_decoy_lt_neg_0_05": 0.06390131652037513,
+   "mass_frac_sign_agree": 0.6489134438434322,
+   "mass_frac_iota4_r1_zero": 0.09538300997908677,
+   "mean_decoy_iota4_on_r1_zero": 0.0
+  },
+  "1/2": {
+   "n_classes": 89474,
+   "mean_d_iota4_relay": 0.1671004116579696,
+   "mean_d_iota4_decoy": 0.08136327179537572,
+   "corr_decoy_relay": 0.28451282528463023,
+   "slope_decoy_on_relay": 0.21962679954501835,
+   "mass_frac_decoy_zero_1e12": 0.14802986015674963,
+   "mass_frac_decoy_gt_0_05": 0.29199657597576556,
+   "mass_frac_decoy_lt_neg_0_05": 0.08255244373054807,
+   "mass_frac_sign_agree": 0.6721683848635263,
+   "mass_frac_iota4_r1_zero": 0.11502250172967238,
+   "mean_decoy_iota4_on_r1_zero": 0.0
+  }
+ },
+ "wall_s": 27.41737723350525
+}
