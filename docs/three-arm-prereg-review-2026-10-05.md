@@ -63,3 +63,23 @@ r1 baseline. The decoy-only set is too small to carry a test.
 - **For every paired or seed-mean analysis since 09-30:** the same caution applies, including the plateau fits,
   the V diagnosis and the count comparison's transformer side. Seed spread at 5 epochs is the first thing to
   check.
+
+## Addendum (same day): seed matching, and why 5 epochs is the wrong budget
+
+On the 10-02 relay models, per pairing (r1 seed i vs r1R seed j), the window-level correlation of excess is
+0.52–0.62 for **matched** seeds (i = j) and 0.35–0.46 for unmatched. Seed-matched pairs share a random component,
+so a v0.2 design should pair arms by seed.
+
+At **5 epochs**, every pairing against r1 seed 2 shows no relay gain, matched or not. Mean gains are −0.002 to
++0.002, and the |Δι| > 0.1 minus zero-set contrast is −0.002 to +0.002. Against seeds 0 and 1 the gains are
+0.007–0.011. Seed 2's excess (0.0152) is already at the relay models' level. The likeliest reading is that at 5
+epochs the learners are in a mixed phase: some seeds have acquired the long-range structure the relay supplies, and
+some have not. Between-seed variance there is mostly *which phase a seed is in*. This is a reading, not a test.
+
+At **15 epochs**, all 9 pairings are positive: mean gain 0.0017–0.0063, contrast 0.0028–0.0091.
+
+**Consequence for v0.2:** the confirmatory budget is 15 epochs, with seed-matched pairs, and 5 epochs is at most
+descriptive. This reverses v0.1's choice, which was made on window-level power. A rough calculation: the contrast
+has a per-pairing sd of about 0.0025 against a mean of about 0.006, so about 8 seeds per arm gives a t of about 5.
+That is 32 runs at 15 epochs, about 6.5 GPU hours in all. Per Tony's guidance, it runs as short, staggered leases
+of one or two waves (about 50–100 min each), with gaps between them, and never close to the single-lease cap.
