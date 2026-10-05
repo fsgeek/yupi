@@ -1,0 +1,138 @@
+{
+ "design": "docs/three-arm-design-v0.1.md \u00a77",
+ "arrays": "/home/tony/.cache/yupi-scratch/review-2026-10-04/arrays.npz",
+ "arrays_sha256": "9b85346499bd8b659072583098fd998a80403243c3c9279b905a955d8981961f",
+ "decoy_cache": "/home/tony/.cache/yupi-scratch/relay/c1prime-loop-40-8-2-r1D-eps1-k7-kind-diota4.jsonl",
+ "decoy_cache_sha256": "ea5873fbde038948ac388d3f6fbd8c922dcb05135d03ac1a02aab6e868a8242c",
+ "sims": 1000,
+ "seed": 20261005,
+ "n_windows": 84949,
+ "n_classes": 25005,
+ "corr_absdiota_R_D": 0.46673802015453497,
+ "discriminating": {
+  "share_D_gt_R_by_0_1": 0.07689319474037364,
+  "share_R_gt_D_by_0_1": 0.19298638006333213
+ },
+ "budgets": {
+  "primary": {
+   "relay_fit": {
+    "slope": 0.02425254570833398,
+    "t": 8.092727004410808,
+    "intercept": 0.0029722399890202366
+   },
+   "by_hypothesis": {
+    "H_move": {
+     "holds": {
+      "P_move": 1.0,
+      "P_bind": 0.0,
+      "P_null": 0.959
+     },
+     "ratio_quantiles": [
+      0.8033762752058393,
+      0.9973250567264678,
+      1.293162886242373
+     ]
+    },
+    "H_bind": {
+     "holds": {
+      "P_move": 0.0,
+      "P_bind": 0.996,
+      "P_null": 0.958
+     },
+     "ratio_quantiles": [
+      -0.12877376575772176,
+      -0.004574447149607095,
+      0.1202535389818631
+     ]
+    },
+    "H_field": {
+     "holds": {
+      "P_move": 0.0,
+      "P_bind": 1.0,
+      "P_null": 0.0
+     },
+     "ratio_quantiles": [
+      -0.12826695535160013,
+      -0.002870336547793005,
+      0.11929167164585154
+     ]
+    }
+   },
+   "severity": {
+    "P_move": {
+     "power": 1.0,
+     "severity_vs_H_bind": 1.0,
+     "severity_vs_H_field": 1.0
+    },
+    "P_bind": {
+     "power": 0.996,
+     "severity_vs_H_move": 1.0
+    },
+    "P_null": {
+     "power": 0.959,
+     "severity_vs_H_field": 1.0
+    }
+   }
+  },
+  "secondary": {
+   "relay_fit": {
+    "slope": 0.005624399513576767,
+    "t": 2.2604930827124803,
+    "intercept": 0.0029924024685150895
+   },
+   "by_hypothesis": {
+    "H_move": {
+     "holds": {
+      "P_move": 0.6,
+      "P_bind": 0.02,
+      "P_null": 0.96
+     },
+     "ratio_quantiles": [
+      0.39106285105698996,
+      1.014468011346575,
+      3.640700327262603
+     ]
+    },
+    "H_bind": {
+     "holds": {
+      "P_move": 0.002,
+      "P_bind": 0.766,
+      "P_null": 0.97
+     },
+     "ratio_quantiles": [
+      -0.6865674234668475,
+      0.003447105551974558,
+      0.8176323097431234
+     ]
+    },
+    "H_field": {
+     "holds": {
+      "P_move": 0.001,
+      "P_bind": 0.785,
+      "P_null": 0.0
+     },
+     "ratio_quantiles": [
+      -0.7077491976286112,
+      -0.007282236000892617,
+      0.7279710770517231
+     ]
+    }
+   },
+   "severity": {
+    "P_move": {
+     "power": 0.6,
+     "severity_vs_H_bind": 0.998,
+     "severity_vs_H_field": 0.999
+    },
+    "P_bind": {
+     "power": 0.766,
+     "severity_vs_H_move": 0.98
+    },
+    "P_null": {
+     "power": 0.96,
+     "severity_vs_H_field": 1.0
+    }
+   }
+  }
+ }
+}
