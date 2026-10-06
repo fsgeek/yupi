@@ -18,3 +18,22 @@
   procedural: the script reports sds only, and the owner does not open the census raws. It is not cryptographic.
 - **GPU (design v0.2 §6):** three leases of one wave each (one seed × four rungs, about 50–55 min), with ≥ 60 min
   between leases. Runs are resumable.
+
+## Result (2026-10-05 evening; `docs/three-arm-pilot-sd-2026-10-05.json`, sds only)
+
+All 12 runs reached step 117,195. Each one-wave lease took about 69 min against the 50 estimated, running about
+9 min past its declared `--expected-until` but inside its 90 min TTL. Later leases declare 75 min.
+
+Between-seed sd at τ = 0.1:
+- K_R: 0.0042 with the self-copy as control, 0.0026 with r1 as control;
+- K_D: 0.0006 (self-copy control) and 0.0017 (r1 control);
+- field contrast F (r1 − self-copy): 0.0011.
+
+**The owner's design error:** 3 seeds give df = 2, exactly the template problem the pilot was meant to solve. An
+80 % upper bound on a df-2 sd is about 3× the point value. Pooling the pilot with the 10-02 15-epoch templates
+(r1 control only) gives df = 4.
+
+**What the pilot does settle:** for the relay contrast, the self-copy control adds variance rather than removing
+it. K is a difference of class-set means, so a uniform field effect cancels in it already. Prereg v0.2 therefore
+uses **r1 as the control for K**. The self-copy keeps the job of checking that the field does not interact with the
+class sets (K_S ≈ 0 under every reading), plus the secondary H_field test.
