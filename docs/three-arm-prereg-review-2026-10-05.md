@@ -83,3 +83,31 @@ descriptive. This reverses v0.1's choice, which was made on window-level power. 
 has a per-pairing sd of about 0.0025 against a mean of about 0.006, so about 8 seeds per arm gives a t of about 5.
 That is 32 runs at 15 epochs, about 6.5 GPU hours in all. Per Tony's guidance, it runs as short, staggered leases
 of one or two waves (about 50–100 min each), with gaps between them, and never close to the single-lease cap.
+
+## Rounds 2 and 3 (same evening)
+
+**Round 2** (v0.2 rules, f7037b3): both reviewers blocked it.
+- Small field × class interactions, not caught by an |t| ≥ 3 gate, flipped readings in 25–50 % of runs.
+- 10 % off-phase seeds gave about 21 % confidently wrong readings with a percentile bootstrap.
+- Settings could be chosen from the command line.
+- Provenance had gaps.
+These were fixed in rules 2.1 (20199f1): self-copy-controlled ρ', a P_R' gate, a trimmed ratio with a 95 % CI, and
+everything frozen in code.
+
+**Round 3** (rules 2.1, 20199f1): both reviewers blocked it. They reproduced every round-2 fix (Codex matched the
+severity raw exactly) and found:
+- **Unequal, arm-specific interactions** (Claude and Codex independently). The self-copy field has zero entropy; the
+  relay's and decoy's vary. An effect of carrying a *variable* field that depends on the arm does not cancel in K'.
+  Planted at ±0.0015 to −0.004 it gave wrong mechanism attributions at 14–33 %.
+- **Two-phase convergence mixtures** (Codex). With the population ρ' near the split, they produced 7–9 % wrong
+  readings.
+- **Wrong rate among decisive readings** (Claude). Conditioning on the P_R' gate selects runs with an overestimated
+  relay gain. Near the split, the wrong share among decisive readings can be very high.
+- **Gate gaps** (Codex). The census table sha, the training split bytes and the trainer revision are not
+  authenticated, and duplicate window ids pass.
+- Minor: "bar met" at 21/500 has a Wilson interval up to 6.3 %. §5's coverage and power ranges were misstated.
+
+**The owner's decision:** the mechanism ratio is **not identified** by these arms. Identifying it would need a
+fourth field arm that varies but carries no information. Prereg **v0.3** keeps the models and confirms only
+**directional** claims, which are conservative under the variable-field confound: C1 replication, C2 the relay
+beats the self-copy, C3 the decoy beats the self-copy. The ratio is reported descriptively.
