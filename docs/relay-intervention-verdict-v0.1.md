@@ -1,5 +1,19 @@
 # The relay intervention: verdict v0.1 (2026-10-02)
 
+> **2026-10-05 CORRECTIONS, read first** (`docs/three-arm-prereg-review-2026-10-05.md` and its addendum). The
+> t-values below come from window-level errors (HC1) on seed-*mean* differences. They treat about 85k windows as
+> independent and ignore the draw of 3 + 3 models, which is the dominant noise at 5 epochs. The r1 5-epoch seed
+> means are 0.0244, 0.0244 and 0.0152, and two r1 seeds differ by more than the relay effect. **Per seed pairing**
+> (r1 seed i vs r1ʀ seed j, 9 pairings):
+> - The qualitative findings survive. The V's arms are positive against the zero set of the same pairing in 8/9
+>   (5 ep) and 9/9 (15 ep) pairings, and R4's wrong sign holds in 9/9 (5 ep) and 8/9 (15 ep).
+> - The magnitudes do not. The 5-ep slope on signed Δι ranges from 0.002 to 0.033 across pairings, and the 5-ep mean
+>   gain from −0.002 to +0.011. Every pairing against r1 seed 2 shows about zero gain, which suggests a mixed training
+>   phase at 5 epochs.
+>
+> Read every t below as window-level precision only. "The causal distance reading fails" stands as a qualitative
+> result: its pattern holds pairing by pairing. Its stated strength does not.
+
 > **Status: CONFIRMATORY verdict** against `docs/relay-intervention-prereg-v0.1.md` and addendum
 > v0.1.1, both stamped before any r1ʀ model finished training. The scorer is the instance of
 > 2026-10-02, which did not write the predictions. The raws were committed **unscored** at e3d1f06. The
