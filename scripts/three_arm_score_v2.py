@@ -1,40 +1,57 @@
-"""Frozen scorer for the three-arm test, design v0.2 (docs/three-arm-design-v0.2.md §3, §5), with the pilot's
-change (docs/three-arm-pilot-v0.1.md, result): r1 is the control for K; the self-copy checks for a field × class
-interaction and carries the secondary H_field test. Written and tested before any confirmatory model exists.
+"""Frozen scorer for the three-arm test, design v0.2 (docs/three-arm-design-v0.2.md §3, §5), revised to SCORER_VERSION
+2.1 after the two pre-stamp reviews of prereg v0.2. Written and tested before any confirmatory model exists.
 
-  uv run --extra learner python scripts/three_arm_score_v2.py --census-dir <dir> --seeds 1 2 ... 12 \\
-      --raw docs/three-arm-verdict-<date>.json
+  uv run --extra learner python scripts/three_arm_score_v2.py --census-dir <dir> --raw docs/three-arm-verdict-<date>.json
 
-Margins are frozen here (prereg v0.2 §4), not taken from the command line: field interaction ±0.002 bits, H_field
-±0.001 bits.
+NOTHING IS SELECTABLE FROM THE COMMAND LINE but the census directory and the output path. The seeds are exactly 1..12
+(SEEDS), τ = 0.1, 10,000 bootstrap draws at a fixed generator seed, a 95 % interval and a 20 % trim are constants; the
+CLI refuses any other argument. score_dir() takes underscored overrides for tests only, and a raw written with any
+of them non-default is marked frozen_settings: false.
 
 THE UNIT IS THE SEED. Per seed s, with y the realized KIND excess per test window (census by_field.kind) and the
 class sets fixed by the exact side (Δι_A from the sha-gated per-class cache, keyed by the window's r1 class):
   moved_A = { w : |Δι_A(w)| > τ },  zero_A = { w : Δι_A(w) = 0 exactly (the cache's Fraction flag) }
-  K_A,s   = mean_{moved_A} (y_r1,s − y_A,s) − mean_{zero_A} (y_r1,s − y_A,s)        A ∈ {R, D}
+  K_A,s   = mean_{moved_A} (y_r1,s − y_A,s) − mean_{zero_A} (y_r1,s − y_A,s)        A ∈ {R, D}   (r1 control)
   KS_A,s  = the same contrast with the self-copy, y_r1,s − y_S,s, on A's sets
-  k_A,s   = K_A,s / m_A,   m_A = mean |Δι_A| over moved_A
+  K'_A,s  = K_A,s − KS_A,s = mean_{moved_A} (y_S,s − y_A,s) − mean_{zero_A} (y_S,s − y_A,s)  (self-copy control)
+  k'_A,s  = K'_A,s / m_A,   m_A = mean |Δι_A| over moved_A
   F_s     = mean over all windows of y_r1,s − y_S,s
+A field × class interaction δ_A (the added OBJECT field helping or hurting differently on moved_A and zero_A,
+whatever the field carries) enters K_A and KS_A alike and cancels in K'_A. That is why the ratio uses K'.
 
-Rules, in order (score_seeds):
-  a. P_V: one-sample t of K_R across seeds ≥ 3; else the reading is "no replication" and no ratio is computed.
-  b. Field × class interaction: if the one-sample t of KS_R or of KS_D has |t| ≥ 3 (EVIDENCE of an interaction),
-     "mechanism withheld: field × class interaction". The TOST against ±margin_field_interaction is reported but does
-     not gate (severity v2: at 12 seeds an equivalence gate withheld the mechanism in up to 99 % of simulations).
-  c. ρ = mean k_D / mean k_R, seed-level percentile bootstrap 90 % CI (seeds resampled jointly). A draw with
-     mean k_R ≤ 0 counts as +inf for the upper tail and −inf for the lower; their number is reported.
-  d. "move-dominant" if the CI lies entirely above 0.5 (moving KIND information without binding content reproduces
-     more than half of the relay's per-bit gain); "binding-dominant" if it lies entirely below 0.5; otherwise
-     "unresolved". (Severity v2: the band readings of the first draft had ~1 % power for H_bind.)
-  e. Secondary, independent of the reading: H_field, TOST of mean F within ±margin_field.
+Readings, in order (score_seeds):
+  i.   P_V: one-sample t of K_R across seeds ≥ 3; else "no replication".
+  ii.  P_R': one-sample t of K'_R ≥ 3; else NO_RELAY_GAIN (the relay does not beat the self-copy where it moves
+       information). No ratio is computed after (i) or (ii) fails.
+  iii. ρ = T(k'_D) / T(k'_R), T the 20 %-trimmed mean across seeds (floor(0.2 n) dropped from each end; 2 each side
+       at n = 12), with a seed-level percentile bootstrap 95 % CI (seeds resampled jointly, N_BOOT draws, RNG_SEED).
+       A draw with T(k'_R) ≤ 0 counts as +inf for the upper bound and −inf for the lower; their number is reported.
+       "move-dominant" if the CI lower bound > 0.5; "binding-dominant" if the CI upper bound < 0.5; else
+       "unresolved".
+  Descriptive only: t and TOST (±0.002 bits) of KS_R and KS_D. They gate nothing.
+  Secondary, independent of the reading: H_field, TOST of mean F within ±0.001 bits.
 
-Gates (any failure raises relay_paired.Gate and writes nothing): exactly one census raw <rung>-s<seed>.json per
-(rung, seed), and no other census raw in the directory; each census is k = 7, full test split, its per-window file
-at its recorded sha256; census rung / seed / ε / step agree with the file name; the run dir's run.json shows the
-seed, 15 epochs, d_model 128, lr 1e-3, the census's corpus and that corpus manifest's sha256; its log.jsonl ends at
-step 117195; its ckpt.pt has the census's checkpoint sha256; the corpus manifest's rung is the file's rung, ε = 1,
-and its run key hashes to run 0582ffbeb4693d27; no two censuses share a run, checkpoint or per-window file; all
-window id sets are identical; every r1 class key (recomputed from the r1 corpus's test split) is in both Δι caches.
+Gates (any failure raises relay_paired.Gate and writes nothing):
+  - exactly one census raw <rung>-s<seed>.json per (rung, seed) for the frozen seeds, and no census raw for any
+    other seed in the directory;
+  - each census is k = 7, split test, n None (full split), its per-window file at its recorded sha256; census rung /
+    seed / ε / step agree with the file name;
+  - run.json: the seed, and EVERY field of RECIPE (architecture, optimizer, schedule, run length) equal to the pilot
+    runs' values (field missing = failure). The lr schedule itself is code (warmup then cosine to lr_min over
+    steps_planned, src/yupi/learner/train.py); its parameters lr, lr_min, warmup, steps_planned are gated;
+  - log.jsonl ends at step 117195; ckpt.pt has the census's checkpoint sha256; the census's corpus is the run's
+    corpus_dir, at the manifest sha256 run.json records; the manifest's rung is the file's, ε = 1, and its run key
+    hashes to run 0582ffbeb4693d27; all seeds of a rung share that corpus;
+  - no two censuses share a run, checkpoint, per-window file or raw; all window id sets are identical;
+  - the window id set is exactly the r1 corpus test split's windows with ≥ K + 1 = 8 records (evaluate()'s rule for
+    k = 7; at this corpus that equals the windows with ≥ 7 records), so the count matches the full split;
+  - cross-rung pairing: each arm corpus's test window i is window_map(arm) applied to the r1 corpus's test window i
+    (same reset flag); the per-window rows record only a census-local integer class id (the census stores labels only
+    for ≤ 5000 classes), so per census the check is that the partition of windows by that id is EXACTLY the
+    partition by the class key recomputed from the rung's records (an id ↔ key bijection over the scored windows);
+  - every r1 class key is in both Δι caches; the r1R and r1D exact sides passed all their gates;
+  - the r1S exact side (EXACT_S) passed all its gates and every d_iota_kind_4 entry reports
+    self_copy_all_zero_exact true.
 """
 import argparse
 import hashlib
@@ -50,24 +67,35 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from relay_paired import Gate, load_census  # noqa: E402
 
+SCORER_VERSION = "2.1"
 ROOT = Path(__file__).resolve().parents[1]
 RUNGS = ("r1", "r1R", "r1D", "r1S")
+ARMS = ("r1R", "r1D", "r1S")
 EXACT = {"r1R": "docs/relay-exact-side-2026-09-30.json", "r1D": "docs/three-arm-exact-side-r1D-2026-10-05.json"}
+EXACT_S = "docs/three-arm-exact-side-r1S-2026-10-05.json"
 FRESH_RUN = "0582ffbeb4693d27"
 FINAL_STEP = 117195
-RECIPE = dict(epochs=15, d_model=128, lr=1e-3)
+SEEDS = tuple(range(1, 13))                          # prereg: seeds 1..12, all of them, no others
+# The pilot runs' recipe (run.json of the 12 threearm-pilot runs, identical across rungs and seeds), frozen here.
+# Dotted names are nested under "model". Gated field by field; a missing field fails.
+RECIPE = {"batch_size": 256, "epochs": 15, "lr": 0.001, "lr_min": 0.0001, "warmup": 500, "weight_decay": 0.1,
+          "grad_clip": 1.0, "max_steps": None, "model.d_model": 128, "model.n_layer": 4, "model.n_head": 4,
+          "model.d_mlp": 512, "model.n_pos": 42, "model.vocab_in": 157, "model.vocab_out": 156, "n_params": 838940,
+          "steps_per_epoch": 7813, "steps_planned": FINAL_STEP, "steps_total": FINAL_STEP}
 EPS = "1"
 K = 7
 TAU = 0.1
 ALPHA = 0.05
 PV_T = 3.0
+PRP_T = 3.0
 RHO_SPLIT = 0.5
-FI_T = 3.0
+TRIM = 0.2
+CI_LEVEL = 0.95
 N_BOOT = 10000
 RNG_SEED = 20261005
-MARGINS = dict(field_interaction=0.002, field=0.001)     # prereg v0.2 §4
-READINGS = ("no replication", "mechanism withheld: field × class interaction", "move-dominant", "binding-dominant",
-            "unresolved")
+MARGINS = dict(field_interaction=0.002, field=0.001)     # KS descriptive TOST; H_field secondary
+NO_RELAY_GAIN = "no relay-specific gain (relay does not beat the self-copy where it moves information)"
+READINGS = ("no replication", NO_RELAY_GAIN, "move-dominant", "binding-dominant", "unresolved")
 
 
 # ---- Student t, numpy-free (scipy is not installed) ------------------------------------
@@ -166,26 +194,36 @@ def tost(x, margin, alpha=ALPHA):
                 t_crit=q, t_lower=t_lower, t_upper=t_upper, ci90=list(ci), equivalent=eq)
 
 
-def bootstrap_rho(k_R, k_D, n_boot=N_BOOT, rng_seed=RNG_SEED, level=0.90):
-    """Seed-level percentile bootstrap of ρ = mean k_D / mean k_R; seeds resampled jointly (one index set per
-    draw for both arrays). A draw with mean k_R ≤ 0 is +inf for the upper bound and −inf for the lower."""
+def trimmed_mean(x, trim=TRIM, axis=-1):
+    """Symmetric trimmed mean: sort, drop floor(trim · n) values from each end, average the rest."""
+    x = np.sort(np.asarray(x, dtype=np.float64), axis=axis)
+    n = x.shape[axis]
+    g = int(math.floor(trim * n))
+    return np.take(x, np.arange(g, n - g), axis=axis).mean(axis=axis)
+
+
+def bootstrap_rho(k_R, k_D, n_boot=N_BOOT, rng_seed=RNG_SEED, level=CI_LEVEL, trim=TRIM):
+    """Seed-level percentile bootstrap of ρ = T(k_D) / T(k_R), T the trimmed mean; seeds resampled jointly (one
+    index set per draw for both arrays). A draw with T(k_R) ≤ 0 is +inf for the upper bound and −inf for the lower."""
     k_R, k_D = np.asarray(k_R, dtype=np.float64), np.asarray(k_D, dtype=np.float64)
     n = len(k_R)
     idx = np.random.default_rng(rng_seed).integers(0, n, size=(n_boot, n))
-    den, num = k_R[idx].mean(axis=1), k_D[idx].mean(axis=1)
+    den, num = trimmed_mean(k_R[idx], trim, axis=1), trimmed_mean(k_D[idx], trim, axis=1)
     bad = den <= 0
     with np.errstate(divide="ignore", invalid="ignore"):
         r = np.where(bad, np.nan, num / np.where(bad, 1.0, den))
     a = (1 - level) / 2
     lo = float(np.quantile(np.where(bad, -np.inf, r), a, method="inverted_cdf"))
     hi = float(np.quantile(np.where(bad, np.inf, r), 1 - a, method="inverted_cdf"))
-    point = float(k_D.mean() / k_R.mean()) if k_R.mean() > 0 else None
-    return dict(point=point, ci90=[lo, hi], level=level, n_boot=int(n_boot), rng_seed=rng_seed,
-                n_nonpositive_denominator=int(bad.sum()), method="percentile, seeds resampled jointly")
+    tR, tD = float(trimmed_mean(k_R, trim)), float(trimmed_mean(k_D, trim))
+    return dict(point=tD / tR if tR > 0 else None, trimmed_mean_k_R=tR, trimmed_mean_k_D=tD, ci=[lo, hi],
+                level=level, trim=trim, n_trimmed_each_end=int(math.floor(trim * n)), n_boot=int(n_boot),
+                rng_seed=rng_seed, n_nonpositive_denominator=int(bad.sum()),
+                method="percentile, seeds resampled jointly, ratio of trimmed means")
 
 
 def score_seeds(K_R, K_D, KS_R, KS_D, mR, mD, F, margins, n_boot=N_BOOT, rng_seed=RNG_SEED):
-    """The v0.2 readings from per-seed contrasts (module docstring, rules a–e)."""
+    """The v2.1 readings from per-seed contrasts (module docstring, readings i–iii)."""
     arrs = {k: np.asarray(v, dtype=np.float64) for k, v in
             dict(K_R=K_R, K_D=K_D, KS_R=KS_R, KS_D=KS_D, F=F).items()}
     n = len(arrs["K_R"])
@@ -199,39 +237,40 @@ def score_seeds(K_R, K_D, KS_R, KS_D, mR, mD, F, margins, n_boot=N_BOOT, rng_see
         raise ValueError("mR and mD (mean |Δι| on the moved sets) must be positive")
     if not {"field_interaction", "field"} <= set(margins):
         raise ValueError("margins needs 'field_interaction' and 'field'")
-    k_R, k_D = arrs["K_R"] / mR, arrs["K_D"] / mD
+    arrs["Kp_R"], arrs["Kp_D"] = arrs["K_R"] - arrs["KS_R"], arrs["K_D"] - arrs["KS_D"]
+    kp_R, kp_D = arrs["Kp_R"] / mR, arrs["Kp_D"] / mD
     per_seed = {k: a.tolist() for k, a in arrs.items()}
-    per_seed.update(k_R=k_R.tolist(), k_D=k_D.tolist())
-    summary = {k: _summary(v) for k, v in dict(arrs, k_R=k_R, k_D=k_D).items()}
-    pv = summary["K_R"]
+    per_seed.update(kp_R=kp_R.tolist(), kp_D=kp_D.tolist())
+    summary = {k: _summary(v) for k, v in dict(arrs, kp_R=kp_R, kp_D=kp_D).items()}
+    pv, pr = summary["K_R"], summary["Kp_R"]
     P_V = dict(t=pv["t"], df=pv["df"], threshold=PV_T, **{"pass": bool(pv["t"] >= PV_T)})
-    fi = {a: tost(arrs[a], margins["field_interaction"]) for a in ("KS_R", "KS_D")}
-    fi["evidence"] = {a: dict(t=summary[a]["t"], flagged=bool(abs(summary[a]["t"]) >= FI_T)) for a in ("KS_R", "KS_D")}
-    fi["pass"] = not any(v["flagged"] for v in fi["evidence"].values())     # gates on EVIDENCE of interaction only
-    fi["equivalent_both"] = bool(fi["KS_R"]["equivalent"] and fi["KS_D"]["equivalent"])   # reported, not gating
+    P_Rp = dict(t=pr["t"], df=pr["df"], threshold=PRP_T, **{"pass": bool(pr["t"] >= PRP_T)})
+    sc = {a: dict(t=summary[a]["t"], **tost(arrs[a], margins["field_interaction"])) for a in ("KS_R", "KS_D")}
+    sc["note"] = "descriptive only: a field × class interaction cancels in K' and gates nothing"
     h = tost(arrs["F"], margins["field"])
     H_field = dict(result="equivalent" if h["equivalent"] else "not equivalent", **h)
     rho = None
     if not P_V["pass"]:
         reading = READINGS[0]
+    elif not P_Rp["pass"]:
+        reading = READINGS[1]
     else:
-        rho = bootstrap_rho(k_R, k_D, n_boot, rng_seed)       # mean k_R > 0 here, since t ≥ 3 and mR > 0
-        lo, hi = rho["ci90"]
-        if not fi["pass"]:
-            reading = READINGS[1]
-            rho["note"] = "reported only: the mechanism reading is withheld (field × class interaction)"
-        elif lo > RHO_SPLIT:
+        rho = bootstrap_rho(kp_R, kp_D, n_boot, rng_seed)
+        lo, hi = rho["ci"]
+        if lo > RHO_SPLIT:
             reading = "move-dominant"
         elif hi < RHO_SPLIT:
             reading = "binding-dominant"
         else:
             reading = "unresolved"
-    return dict(n_seeds=n, mR=float(mR), mD=float(mD), margins=dict(margins), per_seed=per_seed, summary=summary,
-                P_V=P_V, field_interaction=fi, rho=rho, reading=reading, H_field=H_field,
-                rules=dict(P_V=f"t(K_R) >= {PV_T}",
-                           field_interaction=f"withheld iff |t(KS_R)| or |t(KS_D)| >= {FI_T}; TOST reported",
-                           move_dominant=f"rho 90% CI entirely above {RHO_SPLIT}",
-                           binding_dominant=f"rho 90% CI entirely below {RHO_SPLIT}",
+    return dict(scorer_version=SCORER_VERSION, n_seeds=n, mR=float(mR), mD=float(mD), margins=dict(margins),
+                per_seed=per_seed, summary=summary, P_V=P_V, P_Rp=P_Rp, self_copy_contrast=sc, rho=rho,
+                reading=reading, H_field=H_field,
+                rules=dict(P_V=f"t(K_R) >= {PV_T} (r1 control)",
+                           P_Rp=f"t(K'_R) >= {PRP_T}, K' = K - KS (self-copy control)",
+                           rho=f"T(k'_D)/T(k'_R), T = {TRIM:g}-trimmed mean; {CI_LEVEL:.0%} seed bootstrap CI",
+                           move_dominant=f"CI lower > {RHO_SPLIT}", binding_dominant=f"CI upper < {RHO_SPLIT}",
+                           self_copy_contrast="KS_R, KS_D t and TOST reported, not gating",
                            H_field=f"TOST alpha {ALPHA} each, secondary"))
 
 
@@ -277,12 +316,39 @@ def _path(p):
     return p if p.is_absolute() else ROOT / p
 
 
+def _flat(d, pre=""):
+    out = {}
+    for k, v in d.items():
+        if isinstance(v, dict):
+            out.update(_flat(v, pre + k + "."))
+        else:
+            out[pre + k] = v
+    return out
+
+
+def check_recipe(rj, seed, tag):
+    """run.json must show the seed and every RECIPE field at its frozen value (a missing field fails)."""
+    if rj.get("seed") != seed:
+        raise Gate(f"GATE: {tag}: run.json seed {rj.get('seed')!r}, expected {seed}")
+    flat = _flat(rj)
+    for f, want in RECIPE.items():
+        if f not in flat:
+            raise Gate(f"GATE: {tag}: run.json lacks the recipe field {f!r}")
+        got = flat[f]
+        same = (got is None and want is None) or (got is not None and want is not None
+                                                   and type(got) is not bool and got == want)
+        if not same:
+            raise Gate(f"GATE: {tag}: run.json recipe field {f} = {got!r}, expected {want!r}")
+
+
 def _check_one(cd, rung, seed):
     raw = cd / f"{rung}-s{seed}.json"
     if not raw.is_file():
         raise Gate(f"GATE: census {raw} is missing")
     c, rows = load_census(raw)                       # per-window sha256, k = 7, full test split
     tag = f"census {raw.name}"
+    if c.get("n") is not None or c.get("split") != "test" or c.get("k") != K:
+        raise Gate(f"GATE: {tag} is not a k = {K}, full (n None) test-split census")
     if c["rung"] != rung:
         raise Gate(f"GATE: {tag} declares rung {c['rung']!r}, the file name says {rung!r}")
     if c["seed"] != seed:
@@ -293,16 +359,7 @@ def _check_one(cd, rung, seed):
         raise Gate(f"GATE: {tag} was taken at step {c['step']}, expected the final step {FINAL_STEP}")
     run = _path(c["run"])
     rj = json.loads((run / "run.json").read_text())
-    if rj.get("seed") != seed:
-        raise Gate(f"GATE: {tag}: run.json seed {rj.get('seed')!r}, expected {seed}")
-    if rj.get("epochs") != RECIPE["epochs"]:
-        raise Gate(f"GATE: {tag}: run.json epochs {rj.get('epochs')!r}, expected {RECIPE['epochs']}")
-    if rj.get("model", {}).get("d_model") != RECIPE["d_model"]:
-        raise Gate(f"GATE: {tag}: run.json d_model {rj.get('model', {}).get('d_model')!r}, expected {RECIPE['d_model']}")
-    if rj.get("lr") != RECIPE["lr"]:
-        raise Gate(f"GATE: {tag}: run.json lr {rj.get('lr')!r}, expected {RECIPE['lr']}")
-    if rj.get("steps_total") != FINAL_STEP:
-        raise Gate(f"GATE: {tag}: run.json steps_total {rj.get('steps_total')!r}, expected step {FINAL_STEP}")
+    check_recipe(rj, seed, tag)
     steps = [json.loads(l).get("step") for l in (run / "log.jsonl").read_text().splitlines() if l.strip()]
     steps = [s for s in steps if s is not None]
     if not steps or steps[-1] != FINAL_STEP or max(steps) != FINAL_STEP:
@@ -331,23 +388,26 @@ def _check_one(cd, rung, seed):
 
 def gate_censuses(census_dir, seeds):
     """All provenance gates that need no corpus records or Δι caches. Returns ({(rung, seed): (census, rows,
-    provenance)}, sorted window ids)."""
+    provenance)}, sorted window ids). `seeds` is SEEDS on the CLI path; tests pass small worlds."""
     cd = Path(census_dir).expanduser()
     seeds = list(seeds)
     if len(set(seeds)) != len(seeds):
-        raise Gate(f"GATE: duplicate seed in --seeds {seeds}")
+        raise Gate(f"GATE: duplicate seed in {seeds}")
     if len(seeds) < 2:
         raise Gate("GATE: at least two seeds are needed")
     want = {f"{r}-s{s}.json" for r in RUNGS for s in seeds}
     pat = re.compile(r"^(%s)-s(\d+)\.json$" % "|".join(RUNGS))
     extra = sorted(p.name for p in cd.glob("*.json") if pat.match(p.name) and p.name not in want)
     if extra:
-        raise Gate(f"GATE: census raws not in --seeds are in {cd}: {extra}")
+        raise Gate(f"GATE: census raws for seeds outside {seeds} are in {cd}: {extra}")
     cen = {(r, s): _check_one(cd, r, s) for r in RUNGS for s in seeds}
     for field in ("run", "checkpoint_sha256", "per_window_sha256", "raw_sha256"):
         vals = [p[field] for _, _, p in cen.values()]
         if len(set(vals)) != len(vals):
             raise Gate(f"GATE: duplicate {field} across census raws")
+    for r in RUNGS:
+        if len({str(_path(cen[(r, s)][0]["corpus"]).resolve()) for s in seeds}) != 1:
+            raise Gate(f"GATE: the seeds of rung {r} were censused on different corpora")
     ids = sorted(next(iter(cen.values()))[1])
     for (r, s), (_, rows, _) in cen.items():
         if sorted(rows) != ids:
@@ -355,14 +415,86 @@ def gate_censuses(census_dir, seeds):
     return cen, ids
 
 
-def class_sets(r1_corpus, ids):
-    """Per window (in ids order): the r1 class key recomputed from the r1 corpus's test split, and per arm the
-    |Δι| and exact-zero flag from the sha-gated cache. Returns (sets, provenance)."""
-    from relay_paired import load_diota, load_records
+def check_window_set(n_records, ids):
+    """n_records: {window index: record count} over the r1 corpus's WHOLE test split. The scored ids must be exactly
+    the windows evaluate() scores at k = K (≥ K + 1 records), so their count is the full split's."""
+    want = sorted(i for i, n in n_records.items() if n >= K + 1)
+    if len(ids) != len(want):
+        raise Gate(f"GATE: scored window count {len(ids)} differs from the test split's {len(want)} windows with "
+                   f">= {K + 1} records")
+    if list(ids) != want:
+        raise Gate(f"GATE: the scored window set is not the test split's windows with >= {K + 1} records")
+
+
+def _key(rec):
     from yupi.naming import pattern_all
     from yupi.pattern_ceiling import serial_key
-    recs = load_records(str(_path(r1_corpus)), ids, "r1")
-    keys = [serial_key((recs[i][0], pattern_all(recs[i][1][:K])[0])) for i in ids]
+    reset, records = rec
+    return serial_key((reset, pattern_all(records[:K])[0]))
+
+
+def check_class_pairing(recs, rows_by_census, ids):
+    """recs: {rung: {i: (reset, records)}} from each rung's corpus test split; rows_by_census: {(rung, seed): {i:
+    row}}. Checks (1) every arm window i is window_map(arm) of r1 window i, same reset flag; (2) per census, the
+    partition of windows by the row's class id equals the partition by the class key recomputed from the rung's
+    records. Returns the r1 class keys in ids order."""
+    from yupi.interfaces import window_map
+    for arm in ARMS:
+        wm = window_map(arm)
+        for i in ids:
+            r0, r1 = recs["r1"][i]
+            ra, xa = recs[arm][i]
+            if ra != r0 or tuple(xa) != tuple(wm(r1)):
+                raise Gate(f"GATE: {arm} test window {i} is not paired with r1 window {i} (window map differs)")
+    keys = {r: [_key(recs[r][i]) for i in ids] for r in RUNGS}
+    for (rung, seed), rows in rows_by_census.items():
+        fwd, back = {}, {}
+        for i, k in zip(ids, keys[rung]):
+            if "key" not in rows[i]:
+                raise Gate(f"GATE: census {rung}-s{seed} window {i} records no class id")
+            cid = rows[i]["key"]
+            if fwd.setdefault(cid, k) != k:
+                raise Gate(f"GATE: census {rung}-s{seed}: class id {cid} covers two recomputed {rung} classes")
+            if back.setdefault(k, cid) != cid:
+                raise Gate(f"GATE: census {rung}-s{seed}: one recomputed {rung} class carries two class ids")
+    return keys["r1"]
+
+
+def check_self_copy_exact(path=EXACT_S):
+    es = json.loads(_path(path).read_text())
+    if es.get("rung_name") != "r1S" or es.get("all_gates") is not True:
+        raise Gate(f"GATE: r1S exact side {path} is not r1S's or did not pass all its gates")
+    ents = es.get("d_iota_kind_4") or []
+    if not ents or any(e.get("self_copy_all_zero_exact") is not True for e in ents):
+        raise Gate(f"GATE: r1S exact side {path}: not every d_iota_kind_4 entry has self_copy_all_zero_exact true")
+    return dict(exact_side=str(path), exact_side_sha256=_sha(_path(path)),
+                eps=[e.get("eps") for e in ents], self_copy_all_zero_exact=True)
+
+
+def corpus_gates(cen, ids):
+    """Load each rung's corpus test split; window-set and cross-rung pairing gates. Returns r1 class keys."""
+    from yupi.corpus.vocab import VOCAB
+    from yupi.corpus.writer import read_split
+    from yupi.learner.evaluate import surface_records
+    corpora = {r: next(c["corpus"] for (rr, _), (c, _, _) in cen.items() if rr == r) for r in RUNGS}
+    recs, n_records = {}, None
+    for r in RUNGS:
+        split = read_split(_path(corpora[r]), "test")
+        allrec = [surface_records(tuple(VOCAB[t] for t in w), r) for w, _ in split]
+        if r == "r1":
+            n_records = {i: len(x[1]) for i, x in enumerate(allrec)}
+        elif len(allrec) != len(n_records):
+            raise Gate(f"GATE: {r} test split has {len(allrec)} windows, r1 has {len(n_records)}")
+        recs[r] = {i: allrec[i] for i in ids}
+    check_window_set(n_records, ids)
+    rows = {k: rws for k, (_, rws, _) in cen.items()}
+    return check_class_pairing(recs, rows, ids)
+
+
+def class_sets(keys):
+    """Per window (in the keys' order): per arm the |Δι| and exact-zero flag from the sha-gated cache, keyed by the
+    window's r1 class. Returns (sets, provenance, number of r1 classes)."""
+    from relay_paired import load_diota
     sets, prov = {}, {}
     for arm, es in EXACT.items():
         esj = json.loads(_path(es).read_text())
@@ -378,36 +510,44 @@ def class_sets(r1_corpus, ids):
     return sets, prov, len(set(keys))
 
 
-def main(argv=None):
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--census-dir", required=True)
-    ap.add_argument("--seeds", nargs="+", type=int, required=True)
-    ap.add_argument("--tau", type=float, default=TAU)
-    ap.add_argument("--n-boot", type=int, default=N_BOOT)
-    ap.add_argument("--rng-seed", type=int, default=RNG_SEED)
-    ap.add_argument("--raw", required=True)
-    a = ap.parse_args(argv)
-    if Path(a.raw).exists():
-        raise SystemExit(f"refusing to overwrite {a.raw}")
-    cen, ids = gate_censuses(a.census_dir, a.seeds)
-    sets, dprov, n_classes = class_sets(cen[("r1", a.seeds[0])][0]["corpus"], ids)
+def score_dir(census_dir, raw, *, _seeds=SEEDS, _tau=TAU, _n_boot=N_BOOT, _rng_seed=RNG_SEED):
+    """The whole scoring. The underscored overrides exist for tests ONLY; the CLI cannot reach them."""
+    if Path(raw).exists():
+        raise SystemExit(f"refusing to overwrite {raw}")
+    frozen = (tuple(_seeds) == SEEDS and _tau == TAU and _n_boot == N_BOOT and _rng_seed == RNG_SEED)
+    s_prov = check_self_copy_exact(EXACT_S)
+    cen, ids = gate_censuses(census_dir, _seeds)
+    keys = corpus_gates(cen, ids)
+    sets, dprov, n_classes = class_sets(keys)
+    dprov["r1S"] = s_prov
     y = {k: np.array([rows[i]["by_field"]["kind"] for i in ids], dtype=np.float64) for k, (_, rows, _) in cen.items()}
-    arr = seed_arrays(y, sets, a.seeds, a.tau)
+    arr = seed_arrays(y, sets, list(_seeds), _tau)
     res = score_seeds(arr["K_R"], arr["K_D"], arr["KS_R"], arr["KS_D"], arr["mR"], arr["mD"], arr["F"], MARGINS,
-                      n_boot=a.n_boot, rng_seed=a.rng_seed)
+                      n_boot=_n_boot, rng_seed=_rng_seed)
     git = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
     dirty = subprocess.run(["git", "status", "--porcelain", "src", "scripts"], capture_output=True, text=True,
                            cwd=ROOT).stdout.strip()
-    out = dict(prereg="docs/three-arm-prereg-v0.2.md", design="docs/three-arm-design-v0.2.md", control_for_K="r1", git=git + ("+dirty" if dirty else ""),
-               scorer_sha256=_sha(Path(__file__).resolve()), seeds=a.seeds, tau=a.tau, eps=EPS, k=K,
-               n_windows=len(ids), n_r1_classes=n_classes, sets=arr["sets"],
-               recipe=dict(RECIPE, final_step=FINAL_STEP, corpus_run=FRESH_RUN),
+    out = dict(prereg="docs/three-arm-prereg-v0.2.md", design="docs/three-arm-design-v0.2.md",
+               control_for_K="r1", control_for_Kp="r1S", frozen_settings=frozen,
+               git=git + ("+dirty" if dirty else ""), scorer_sha256=_sha(Path(__file__).resolve()),
+               seeds=list(_seeds), tau=_tau, eps=EPS, k=K, n_windows=len(ids), n_r1_classes=n_classes,
+               sets=arr["sets"], recipe=dict(RECIPE, final_step=FINAL_STEP, corpus_run=FRESH_RUN),
                censuses={f"{r}-s{s}": p for (r, s), (_, _, p) in cen.items()}, d_iota=dprov,
                gates="all passed", **res)
-    Path(a.raw).write_text(json.dumps(out, indent=1) + "\n")
-    print(json.dumps(dict(reading=res["reading"], P_V=res["P_V"], rho=res["rho"] and res["rho"]["ci90"],
-                          H_field=res["H_field"]["result"], raw=a.raw), indent=1))
+    Path(raw).write_text(json.dumps(out, indent=1) + "\n")
+    print(json.dumps(dict(reading=res["reading"], P_V=res["P_V"], P_Rp=res["P_Rp"],
+                          rho=res["rho"] and res["rho"]["ci"], H_field=res["H_field"]["result"],
+                          frozen_settings=frozen, raw=str(raw)), indent=1))
     return 0
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
+                                 allow_abbrev=False)
+    ap.add_argument("--census-dir", required=True)
+    ap.add_argument("--raw", required=True)
+    a = ap.parse_args(argv)                      # any other argument (seeds, τ, n_boot, ...) is an error
+    return score_dir(a.census_dir, a.raw)
 
 
 if __name__ == "__main__":

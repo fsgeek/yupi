@@ -16,15 +16,15 @@ import three_arm_score_v2 as S  # noqa: E402
 from relay_paired import Gate  # noqa: E402
 
 MARGINS = {"field_interaction": 0.002, "field": 0.001}
-N = 8
+N = 12
 MR, MD = 0.20, 0.15          # mean |Δι| on each arm's moved set
 KR_BIT = 0.03                # planted relay per-bit effect: K_R ≈ 0.006
 
 
 def _seeds(rho, n=N, sd=0.0004, rng_seed=1, ks_shift=(0.0, 0.0), f_mean=0.0):
     rng = np.random.default_rng(rng_seed)
-    K_R = MR * KR_BIT + rng.normal(0, sd, n)
-    K_D = MD * KR_BIT * rho + rng.normal(0, sd, n)
+    K_R = MR * KR_BIT + ks_shift[0] + rng.normal(0, sd, n)          # δ_A (field × class) enters K_A and KS_A
+    K_D = MD * KR_BIT * rho + ks_shift[1] + rng.normal(0, sd, n)
     KS_R = ks_shift[0] + rng.normal(0, 0.0003, n)
     KS_D = ks_shift[1] + rng.normal(0, 0.0003, n)
     F = f_mean + rng.normal(0, 0.0003, n)
@@ -53,40 +53,63 @@ def test_t_cdf_closed_forms():
     assert S.t_ppf(0.05, 11) == pytest.approx(-S.t_ppf(0.95, 11), abs=1e-9)
 
 
-# ---- reading rules ---------------------------------------------------------------------
+# ---- reading rules (v2.1: SC-controlled K', trimmed ratio, 95 % CI) ---------------------
+
+def test_frozen_settings():
+    assert S.SCORER_VERSION == "2.1"
+    assert S.SEEDS == tuple(range(1, 13))
+    assert S.TAU == 0.1 and S.N_BOOT == 10000 and S.CI_LEVEL == 0.95 and S.TRIM == 0.2
+    assert S.READINGS == ("no replication", S.NO_RELAY_GAIN, "move-dominant", "binding-dominant", "unresolved")
+
+
+def test_trimmed_mean_drops_floor_fifth_each_end():
+    x = np.array([100.0, -100.0, 1, 2, 3, 4, 5, 6, 7, 8, 50.0, -50.0])   # n = 12: 2 dropped each side
+    assert S.trimmed_mean(x) == pytest.approx(4.5)
+    assert S.trimmed_mean(np.array([1.0, 2.0, 30.0])) == pytest.approx(11.0)   # n = 3: floor(0.6) = 0, plain mean
+    assert S.trimmed_mean(np.array([5.0, 1.0, 2.0, 3.0, 4.0, 1000.0])) == pytest.approx(3.5)   # n = 6: 1 each
+
 
 def test_planted_move():
     r = _score(*_seeds(1.0))
-    assert r["P_V"]["pass"] and r["field_interaction"]["pass"]
-    lo, hi = r["rho"]["ci90"]
+    assert r["P_V"]["pass"] and r["P_Rp"]["pass"]
+    lo, hi = r["rho"]["ci"]
+    assert r["rho"]["level"] == 0.95
     assert 0.5 < lo < 1 < hi
     assert r["reading"] == "move-dominant"
 
 
 def test_planted_bind():
     r = _score(*_seeds(0.0))
-    lo, hi = r["rho"]["ci90"]
+    lo, hi = r["rho"]["ci"]
     assert hi < 0.5
     assert r["reading"] == "binding-dominant"
 
 
+@pytest.mark.parametrize("rho,want", [(1.0, "move-dominant"), (0.0, "binding-dominant")])
+def test_field_class_interaction_cancels_in_the_sc_controlled_contrast(rho, want):
+    """δ_A shared by every field-bearing rung enters K_A and KS_A alike and cancels in K'_A = K_A − KS_A. A large δ
+    on the relay's sets and the opposite on the decoy's would move a K-based ratio far from the planted one."""
+    K_R, K_D, KS_R, KS_D, F = _seeds(rho, ks_shift=(0.006, -0.006))
+    assert abs(S._summary(KS_R)["t"]) >= 3 and abs(S._summary(KS_D)["t"]) >= 3   # a real interaction
+    naive = np.mean(K_D / MD) / np.mean(K_R / MR)
+    assert abs(naive - rho) > 0.4                                                  # K alone is fooled
+    r = _score(K_R, K_D, KS_R, KS_D, F)
+    assert r["reading"] == want
+    assert r["rho"]["point"] == pytest.approx(rho, abs=0.15)
+    assert "self_copy_contrast" in r and not r["self_copy_contrast"]["KS_R"]["equivalent"]   # descriptive only
+
+
 def test_rho_near_the_split_is_unresolved():
     r = _score(*_seeds(0.5))
-    lo, hi = r["rho"]["ci90"]
+    lo, hi = r["rho"]["ci"]
     assert lo < 0.5 < hi
     assert r["reading"] == "unresolved"
-
-
-def test_rho_0_4_resolved_is_binding_dominant():
-    r = _score(*_seeds(0.4))
-    lo, hi = r["rho"]["ci90"]
-    assert hi < 0.5 and r["reading"] == "binding-dominant"     # a precise 0.4 is below the split
 
 
 def test_strongly_negative_decoy_is_binding_dominant():
     """A decoy that HURTS where it moves information reproduces none of the relay's gain: below the split."""
     r = _score(*_seeds(-1.0))
-    lo, hi = r["rho"]["ci90"]
+    lo, hi = r["rho"]["ci"]
     assert hi < 0.5 and r["reading"] == "binding-dominant"
 
 
@@ -106,29 +129,55 @@ def test_negative_relay_is_no_replication():
     assert r["P_V"]["t"] < -3 and r["reading"] == "no replication" and r["rho"] is None
 
 
-def test_replication_fail_precedes_field_interaction():
-    K_R, K_D, KS_R, KS_D, F = _seeds(1.0, ks_shift=(0.01, 0.0))
-    r = _score(np.random.default_rng(3).normal(0, 0.002, N), K_D, KS_R, KS_D, F)
+def test_no_relay_specific_gain():
+    """The relay beats r1 (P_V) but only because every field-bearing rung does on its sets: the self-copy matches
+    it, so K'_R ≈ 0 and the reading stops before any ratio."""
+    K_R, K_D, KS_R, KS_D, F = _seeds(1.0)
+    rng = np.random.default_rng(21)
+    KS_R = K_R + rng.normal(0, 0.0004, N)
+    r = _score(K_R, K_D, KS_R, KS_D, F)
+    assert r["P_V"]["pass"] and not r["P_Rp"]["pass"]
+    assert r["reading"] == S.NO_RELAY_GAIN and r["rho"] is None
+    assert "self-copy" in S.NO_RELAY_GAIN
+
+
+def test_replication_fail_precedes_no_relay_gain():
+    K_R, K_D, KS_R, KS_D, F = _seeds(1.0)
+    K_R = np.random.default_rng(3).normal(0, 0.002, N)
+    r = _score(K_R, K_D, K_R.copy(), KS_D, F)
     assert r["reading"] == "no replication"
 
 
-@pytest.mark.parametrize("shift", [(0.006, 0.0), (0.0, -0.006)])
-def test_field_interaction_withholds_the_mechanism(shift):
-    r = _score(*_seeds(1.0, ks_shift=shift))
-    assert r["P_V"]["pass"] and not r["field_interaction"]["pass"]
-    assert r["reading"] == "mechanism withheld: field × class interaction"
+def _outlier_seeds(rho, v, n_out=2):
+    """Planted ρ' with n_out seeds whose decoy per-bit SC-controlled contrast is v × the relay's planted per-bit."""
+    K_R, K_D, KS_R, KS_D, F = _seeds(rho, sd=0.0002)
+    Kp_D = K_D - KS_D
+    Kp_D[:n_out] = v * KR_BIT * MD
+    return K_R, Kp_D + KS_D, KS_R, KS_D, F
 
 
-def test_noisy_self_copy_is_reported_not_gating():
-    """A self-copy contrast centred on 0 but too noisy for its TOST is reported as not equivalent, and does not
-    withhold the reading: only EVIDENCE of an interaction (|t| >= 3) withholds (severity v2)."""
+@pytest.mark.parametrize("rho,v,wrong", [(1.0, -3.0, "binding-dominant"), (0.0, 3.5, "move-dominant")])
+def test_trimmed_ratio_two_outliers_do_not_flip(rho, v, wrong):
+    """Two off-phase seeds move the ratio of plain means across the split; the 20 %-trimmed ratio stays at the
+    planted value and the reading never comes out in the wrong direction."""
+    K_R, K_D, KS_R, KS_D, F = _outlier_seeds(rho, v)
+    kp_R, kp_D = (K_R - KS_R) / MR, (K_D - KS_D) / MD
+    plain = kp_D.mean() / kp_R.mean()
+    assert (plain < 0.5) if rho > 0.5 else (plain > 0.5)            # the untrimmed ratio would flip
+    r = _score(K_R, K_D, KS_R, KS_D, F)
+    assert r["rho"]["point"] == pytest.approx(rho, abs=0.1)
+    assert r["reading"] != wrong
+
+
+def test_noisy_self_copy_is_descriptive():
+    """A self-copy contrast centred on 0 but noisy is reported (t, TOST ±0.002) and gates nothing."""
     K_R, K_D, _, _, F = _seeds(1.0)
     rng = np.random.default_rng(11)
-    KS = rng.normal(0, 0.01, N)
+    KS = rng.normal(0, 0.0004, N)
     KS -= KS.mean()
     r = _score(K_R, K_D, KS, KS, F)
-    assert not r["field_interaction"]["KS_R"]["equivalent"] and not r["field_interaction"]["equivalent_both"]
-    assert r["field_interaction"]["pass"]
+    sc = r["self_copy_contrast"]
+    assert set(sc) >= {"KS_R", "KS_D"} and "t" in sc["KS_R"] and sc["KS_R"]["margin"] == 0.002
     assert r["reading"] == "move-dominant"
 
 
@@ -146,10 +195,11 @@ def test_per_seed_values_and_per_bit_are_reported():
     K_R, K_D, KS_R, KS_D, F = _seeds(1.0)
     r = _score(K_R, K_D, KS_R, KS_D, F)
     assert r["per_seed"]["K_R"] == pytest.approx(list(K_R))
-    assert r["per_seed"]["k_D"] == pytest.approx(list(K_D / MD))
-    assert r["summary"]["k_R"]["mean"] == pytest.approx(float(np.mean(K_R / MR)))
+    assert r["per_seed"]["Kp_R"] == pytest.approx(list(K_R - KS_R))
+    assert r["per_seed"]["kp_D"] == pytest.approx(list((K_D - KS_D) / MD))
+    assert r["summary"]["kp_R"]["mean"] == pytest.approx(float(np.mean((K_R - KS_R) / MR)))
     assert r["summary"]["K_R"]["sd"] == pytest.approx(float(np.std(K_R, ddof=1)))
-    assert r["rho"]["point"] == pytest.approx(float(np.mean(K_D / MD) / np.mean(K_R / MR)))
+    assert r["rho"]["point"] == pytest.approx(S.trimmed_mean((K_D - KS_D) / MD) / S.trimmed_mean((K_R - KS_R) / MR))
 
 
 def test_bootstrap_is_deterministic_and_resamples_jointly():
@@ -157,20 +207,17 @@ def test_bootstrap_is_deterministic_and_resamples_jointly():
     a, b = _score(K_R, K_D, KS_R, KS_D, F), _score(K_R, K_D, KS_R, KS_D, F)
     assert a["rho"] == b["rho"]
     # perfectly proportional seeds: every joint resample has ρ exactly 0.5, so the CI collapses there
-    kR = np.array([0.01, 0.03, 0.05, 0.02])
+    kR = np.array([0.01, 0.03, 0.05, 0.02, 0.04, 0.06])
     res = S.bootstrap_rho(kR, 0.5 * kR, n_boot=2000, rng_seed=0)
-    assert res["ci90"][0] == pytest.approx(0.5) and res["ci90"][1] == pytest.approx(0.5)
+    assert res["ci"][0] == pytest.approx(0.5) and res["ci"][1] == pytest.approx(0.5)
 
 
 def test_tiny_or_nonpositive_denominator_draws_widen_to_infinity():
-    kR = np.array([0.02, -0.03, 0.001])          # many resamples have mean(k_R) <= 0
+    kR = np.array([0.02, -0.03, 0.001])          # many resamples have T(k_R) <= 0
     kD = np.array([0.01, 0.01, 0.01])
     res = S.bootstrap_rho(kR, kD, n_boot=5000, rng_seed=0)
     assert res["n_nonpositive_denominator"] > 0.05 * 5000
-    assert res["ci90"][0] == -math.inf and res["ci90"][1] == math.inf
-    few = S.bootstrap_rho(np.array([0.03] * 7 + [-0.04]), np.full(8, 0.01),     # ≤ 0 only if ≥ 4 of 8 draws hit −0.04
-                          n_boot=5000, rng_seed=0)
-    assert 0 < few["n_nonpositive_denominator"] < 0.05 * 5000 and math.isfinite(few["ci90"][1])
+    assert res["ci"][0] == -math.inf and res["ci"][1] == math.inf
 
 
 def test_input_validation():
@@ -240,13 +287,25 @@ def _make_world(tmp, seeds=SEEDS):
     return cd
 
 
+def _recipe_json():
+    """A run.json carrying exactly the frozen recipe (dotted names nest under their prefix)."""
+    rj = {}
+    for k, v in S.RECIPE.items():
+        if "." in k:
+            a, b = k.split(".")
+            rj.setdefault(a, {})[b] = v
+        else:
+            rj[k] = v
+    return rj
+
+
 def _make_run(tmp, cd, rung, s, corpus, epochs=15, run_seed=None, ids=range(N_WIN), pw=None):
     run = tmp / "runs" / f"{rung}-s{s}"
     run.mkdir(parents=True, exist_ok=True)
-    (run / "run.json").write_text(json.dumps(dict(
-        corpus_dir=str(corpus), seed=s if run_seed is None else run_seed, epochs=epochs, lr=0.001,
-        model=dict(d_model=128), corpus_manifest_sha256=_sha(corpus / "manifest.json"),
-        steps_total=S.FINAL_STEP)))
+    rj = _recipe_json()
+    rj.update(corpus_dir=str(corpus), seed=s if run_seed is None else run_seed, epochs=epochs,
+              corpus_manifest_sha256=_sha(corpus / "manifest.json"))
+    (run / "run.json").write_text(json.dumps(rj))
     (run / "log.jsonl").write_text("".join(json.dumps(dict(step=st, epoch=0)) + "\n" for st in (1000, S.FINAL_STEP)))
     (run / "ckpt.pt").write_bytes(f"{rung}{s}".encode())
     if pw is None:
@@ -365,8 +424,8 @@ def test_gate_missing_census(tmp_path):
 
 def test_gate_unlisted_census_in_dir(tmp_path):
     cd = _make_world(tmp_path)
-    shutil.copy(cd / "r1-s1.json", cd / "r1-s9.json")   # a seed not in --seeds: no silent seed selection
-    with pytest.raises(Gate, match="not in --seeds"):
+    shutil.copy(cd / "r1-s1.json", cd / "r1-s9.json")   # a seed not scored: no silent seed selection
+    with pytest.raises(Gate, match="outside"):
         S.gate_censuses(cd, list(SEEDS))
 
 
@@ -390,9 +449,179 @@ def test_cli_refuses_to_overwrite(tmp_path):
     raw = tmp_path / "out.json"
     raw.write_text("{}")
     with pytest.raises(SystemExit, match="overwrite"):
-        S.main(["--census-dir", str(cd), "--seeds", "1", "2", "--raw", str(raw)])
+        S.main(["--census-dir", str(cd), "--raw", str(raw)])
+
+
+@pytest.mark.parametrize("extra", [["--seeds", "1", "2"], ["--seed", "1"], ["--tau", "0.05"], ["--n-boot", "100"],
+                                   ["--rng-seed", "7"], ["--level", "0.9"], ["--trim", "0"]])
+def test_cli_refuses_any_setting_override(tmp_path, extra):
+    raw = tmp_path / "out.json"
+    with pytest.raises(SystemExit) as e:
+        S.main(["--census-dir", str(tmp_path), "--raw", str(raw)] + extra)
+    assert e.value.code == 2 and not raw.exists()              # argparse: unrecognized argument
+
+
+def test_cli_scores_exactly_the_frozen_seeds(tmp_path):
+    """The CLI has no seed argument: a directory with seeds 1, 2 only is refused because 3..12 are missing."""
+    cd = _make_world(tmp_path)
+    with pytest.raises(Gate, match="missing"):
+        S.main(["--census-dir", str(cd), "--raw", str(tmp_path / "out.json")])
 
 
 def test_margins_are_the_preregistered_ones():
     assert S.MARGINS == {"field_interaction": 0.002, "field": 0.001}
     assert MARGINS == S.MARGINS
+
+
+# ---- v2.1 gates ------------------------------------------------------------------------
+
+def test_recipe_matches_the_pilot_runs():
+    assert S.RECIPE == {"batch_size": 256, "epochs": 15, "lr": 0.001, "lr_min": 0.0001, "warmup": 500,
+                        "weight_decay": 0.1, "grad_clip": 1.0, "max_steps": None, "model.d_model": 128,
+                        "model.n_layer": 4, "model.n_head": 4, "model.d_mlp": 512, "model.n_pos": 42,
+                        "model.vocab_in": 157, "model.vocab_out": 156, "n_params": 838940, "steps_per_epoch": 7813,
+                        "steps_planned": 117195, "steps_total": 117195}
+
+
+@pytest.mark.parametrize("field,value", [("model.n_layer", 2), ("model.n_head", 8), ("lr_min", 0.0), ("warmup", 0),
+                                         ("batch_size", 128), ("lr", 3e-4), ("steps_planned", 100000),
+                                         ("model.d_model", 64), ("weight_decay", None)])
+def test_gate_recipe_mismatch(tmp_path, field, value):
+    cd = _make_world(tmp_path)
+    c = json.loads((cd / "r1D-s2.json").read_text())
+    p = Path(c["run"]) / "run.json"
+    rj = json.loads(p.read_text())
+    if "." in field:
+        a, b = field.split(".")
+        rj[a][b] = value
+    else:
+        rj[field] = value
+    p.write_text(json.dumps(rj))
+    with pytest.raises(Gate, match="recipe"):
+        S.gate_censuses(cd, list(SEEDS))
+
+
+def test_gate_recipe_field_missing(tmp_path):
+    cd = _make_world(tmp_path)
+    c = json.loads((cd / "r1-s1.json").read_text())
+    p = Path(c["run"]) / "run.json"
+    rj = json.loads(p.read_text())
+    del rj["model"]["n_head"]
+    p.write_text(json.dumps(rj))
+    with pytest.raises(Gate, match="recipe"):
+        S.gate_censuses(cd, list(SEEDS))
+
+
+def test_gate_census_n_must_be_none(tmp_path):
+    cd = _make_world(tmp_path)
+    _edit(cd, "r1S-s1.json", n=100000)
+    with pytest.raises(Gate):
+        S.gate_censuses(cd, list(SEEDS))
+
+
+def test_window_set_is_the_full_k7_test_split():
+    n_rec = {0: 8, 1: 8, 2: 5, 3: 9, 4: 7, 5: 8}            # k = 7 scores windows with ≥ 8 records
+    S.check_window_set(n_rec, [0, 1, 3, 5])
+    with pytest.raises(Gate, match="window count"):
+        S.check_window_set(n_rec, [0, 1, 3])                # one scorable window dropped
+    with pytest.raises(Gate, match="window"):
+        S.check_window_set(n_rec, [0, 1, 3, 4])             # right count, wrong window (4 is too short)
+
+
+def _self_copy_side(tmp, all_gates=True, flags=(True, True)):
+    p = tmp / "r1S-exact.json"
+    p.write_text(json.dumps(dict(rung_name="r1S", all_gates=all_gates, d_iota_kind_4=[
+        dict(eps=e, self_copy_all_zero_exact=f, gate=True) for e, f in zip(("1", "1/2"), flags)])))
+    return p
+
+
+def test_self_copy_exact_side_gate(tmp_path):
+    assert S.EXACT_S == "docs/three-arm-exact-side-r1S-2026-10-05.json"
+    S.check_self_copy_exact(_self_copy_side(tmp_path))
+    S.check_self_copy_exact(S.EXACT_S)                                        # the committed raw passes
+
+
+@pytest.mark.parametrize("kw", [dict(all_gates=False), dict(flags=(True, False)), dict(flags=(False, True))])
+def test_self_copy_exact_side_gate_refuses(tmp_path, kw):
+    with pytest.raises(Gate, match="r1S"):
+        S.check_self_copy_exact(_self_copy_side(tmp_path, **kw))
+
+
+def test_self_copy_exact_side_gate_refuses_missing_flag(tmp_path):
+    p = tmp_path / "r1S-exact.json"
+    p.write_text(json.dumps(dict(rung_name="r1S", all_gates=True, d_iota_kind_4=[dict(eps="1", gate=True)])))
+    with pytest.raises(Gate, match="r1S"):
+        S.check_self_copy_exact(p)
+
+
+# ---- cross-rung class pairing ----------------------------------------------------------
+
+from yupi.interfaces import MASKED, window_map  # noqa: E402
+from yupi.naming import pattern_all  # noqa: E402
+from yupi.pattern_ceiling import serial_key  # noqa: E402
+from yupi.records import Record  # noqa: E402
+
+
+def _pair_world(n_win=40, seeds=(1, 2), rng_seed=0):
+    rng = np.random.default_rng(rng_seed)
+    kinds, threads = ("DISPATCH", "STEP", "ACQUIRE"), ("T7", "T19")
+    pool = [(bool(rng.integers(2)), tuple(Record(kinds[rng.integers(3)], threads[rng.integers(2)], MASKED, MASKED,
+                                                 MASKED) for _ in range(8))) for _ in range(12)]
+    recs = {r: {} for r in S.RUNGS}
+    for i in range(n_win):                                   # windows drawn from a small pool: classes repeat
+        reset, r1 = pool[rng.integers(len(pool))]
+        recs["r1"][i] = (reset, r1)
+        for arm in ("r1R", "r1D", "r1S"):
+            recs[arm][i] = (reset, window_map(arm)(r1))
+    rows = {}
+    for rung in S.RUNGS:
+        cid = {}
+        for s in seeds:
+            rows[(rung, s)] = {i: dict(i=i, key=cid.setdefault(serial_key((recs[rung][i][0],
+                                                                            pattern_all(recs[rung][i][1][:7])[0])),
+                                                               len(cid)))
+                               for i in range(n_win)}
+    return recs, rows, list(range(n_win))
+
+
+def test_class_pairing_passes_and_returns_r1_keys():
+    recs, rows, ids = _pair_world()
+    keys = S.check_class_pairing(recs, rows, ids)
+    assert keys == [serial_key((recs["r1"][i][0], pattern_all(recs["r1"][i][1][:7])[0])) for i in ids]
+
+
+@pytest.mark.parametrize("arm", ["r1R", "r1D", "r1S"])
+def test_class_pairing_refuses_an_unpaired_arm_window(arm):
+    recs, rows, ids = _pair_world()
+    other = recs["r1"][5][1]
+    recs[arm][3] = (recs[arm][3][0], window_map(arm)(other))          # arm window 3 is the image of r1 window 5
+    if recs[arm][3][1] == window_map(arm)(recs["r1"][3][1]):
+        pytest.skip("windows 3 and 5 coincide")
+    with pytest.raises(Gate, match="pair"):
+        S.check_class_pairing(recs, rows, ids)
+
+
+def test_class_pairing_refuses_a_census_that_merges_classes():
+    recs, rows, ids = _pair_world()
+    r = rows[("r1R", 2)]
+    a, b = next((i, j) for i in ids for j in ids if r[i]["key"] != r[j]["key"])
+    r[b] = dict(r[b], key=r[a]["key"])                                 # two distinct arm classes, one census id
+    with pytest.raises(Gate, match="class"):
+        S.check_class_pairing(recs, rows, ids)
+
+
+def test_class_pairing_refuses_a_census_that_splits_a_class():
+    recs, rows, ids = _pair_world(n_win=200)
+    r = rows[("r1D", 1)]
+    seen = {}
+    a, b = next((seen[r[i]["key"]], i) for i in ids if seen.setdefault(r[i]["key"], i) != i)
+    r[b] = dict(r[b], key=10 ** 6)                                     # one arm class, two census ids
+    with pytest.raises(Gate, match="class"):
+        S.check_class_pairing(recs, rows, ids)
+
+
+def test_class_pairing_refuses_rows_without_a_class_id():
+    recs, rows, ids = _pair_world()
+    rows[("r1", 1)][0] = {"i": 0}
+    with pytest.raises(Gate, match="class"):
+        S.check_class_pairing(recs, rows, ids)
