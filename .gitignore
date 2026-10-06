@@ -11,3 +11,4 @@ qhaway.db
 
 # generated corpora (design v0.1 §5): manifests are committed under docs/corpus-manifests/, data is not
 /corpus/
+.codex/
