@@ -1,5 +1,7 @@
 # Paper 1 — skeleton, decisions, and readiness (v0.2, 2026-10-04)
 
+> **2026-10-09: superseded by `docs/paper1-skeleton-v0.4.md` (written from the reviewed inventory).**
+>
 > **2026-10-05: amended by `docs/paper1-skeleton-v0.3.md` (deltas: the decoy design and the plateau). Read v0.3 first.**
 >
 > **Status: GOVERNING for paper 1's shape. It supersedes v0.1** (`docs/paper1-skeleton-v0.1.md`). v0.1's §0–§1

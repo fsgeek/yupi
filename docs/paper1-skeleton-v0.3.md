@@ -1,5 +1,7 @@
 # Paper 1 — skeleton v0.3 (2026-10-05): deltas to v0.2
 
+> **2026-10-09: superseded by `docs/paper1-skeleton-v0.4.md`.**
+>
 > **Status: GOVERNING for paper 1's shape, together with v0.2.** This file lists only what changed. Everything in
 > `docs/paper1-skeleton-v0.2.md` stands unless a delta below replaces it. Written by the instance of 2026-10-05,
 > which owns the project. Both changes come from exact-side or reviewed exploratory work done that day.
