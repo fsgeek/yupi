@@ -112,7 +112,7 @@ E3, acquisition dynamics, is a hinted future direction: per-checkpoint censuses 
 1. B1 re-run per model with errors clustered by class: **done: KIND and actor both survive fully.**
 2. A1 reworded everywhere it appears.
 3. B5 with seed spread: **done, every seed beats counting in r1–r4 (1.3–5.2×)**. A GRU baseline if cheap.
-4. B7: its controls done, or cut.
+4. B7: **cut from paper 1's claims (owner, 2026-10-09).** One seed carries the trend, there is no untrained control, and ε = 1 only. Its question, what is accessible internally against what the outputs show, belongs to the exposure/use work CLAUDE.md assigns to a later paper. The probes stay as a future thread.
 5. The bridge to Mason & Anand rewritten. Yupi measures predictive distributions, which their text-only setting
    excludes. Any bridge must say this precisely, or there is no bridge.
 
