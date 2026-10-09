@@ -37,7 +37,7 @@ evidence for:* anything about learners.
 | B2 | The cross-cell ordering by ι **holds at ε = 1** (r2 > r3, seed-resolved) and **fails at ε = ½**, where the ι gap is smaller than seed spread. C4 (r0 lowest) passes | CONFIRMATORY, split | converged-ladder verdict |
 | B3 | Moving information closer does not relieve the cost in proportion to the move. At **5 epochs** the gain is V-shaped in Δι (it tracks \|Δι\|, not the sign). At 15 epochs the right arm flattens. The rejection rests on R4's wrong sign and the shape, since R1 missed its band floor by 0.09 se | CONFIRMATORY (rejection), ROBUST in shape: 8/9 to 9/9 seed pairings. Magnitudes and t-values are unreliable (corrections of 2026-10-05) | relay verdict + CORRECTIONS |
 | B4 | No relay gain where ι4 = 0. Gain where ι4 > 0, persisting at 15 epochs | EXPLORATORY, and partly checked per pairing (contrasts positive 9/9 at 15 ep) | V diagnosis, prereg-review addendum |
-| B5 | The transformer's KIND excess is 1.5–4.7× smaller than a count table over the ceiling's own classes, wherever entities exist | EXPLORATORY, one baseline (Witten–Bell). The transformer side is a seed mean. **Owed:** seed spread, and ideally a GRU |
+| B5 | The transformer's KIND excess is 1.5–4.7× smaller than a count table over the ceiling's own classes, wherever entities exist | EXPLORATORY, one baseline (Witten–Bell). The transformer side is a seed mean. **Seed spread (2026-10-09, from the committed comparison raw): in every r1–r4 cell every individual seed beats the count table, by 1.3–5.2× (per-seed ranges, e.g. r2 ε=½ 1.3–1.9, r3 ε=1 4.5–5.2).** A GRU baseline is still optional |
 | B5′ | **The C2 clause (omitted in v0.1):** convergence cuts the long-lag cost proportionally *more* than the overall excess ("no more than" FAIL 8/8), and does not remove it (PASS 8/8) | CONFIRMATORY | converged-ladder verdict | count-baseline results |
 | B6 | Between-seed variance dominates at 5 epochs. r1 seed means are 0.0244, 0.0244 and 0.0152, and the relay gain is about 0 against the lucky seed. Seed-matched pairs share variance (window correlation 0.52–0.62 vs 0.35–0.46) | ROBUST as a description of 3 + 3 models. Its interpretation as a mixed training phase is EXPLORATORY | prereg-review addendum |
 | B7 | Belief geometry: the exact next-kind belief is linearly decodable after one record and less accessible with context | **EXPLORATORY, controls owed.** ε = 1 only. The k = 2..6 trend comes from seed 1 alone. There is no untrained control and no absolute bits. "Fixed extraction" was challenged as a four-point near-equality, and none of skeleton v0.1's item-7 completions was done | learner-belief raws, 2026-09-24 |
@@ -111,7 +111,7 @@ E3, acquisition dynamics, is a hinted future direction: per-checkpoint censuses 
 **Owed before any draft, in order:**
 1. B1 re-run per model with errors clustered by class: **done: KIND and actor both survive fully.**
 2. A1 reworded everywhere it appears.
-3. B5 with seed spread; a GRU baseline if cheap.
+3. B5 with seed spread: **done, every seed beats counting in r1–r4 (1.3–5.2×)**. A GRU baseline if cheap.
 4. B7: its controls done, or cut.
 5. The bridge to Mason & Anand rewritten. Yupi measures predictive distributions, which their text-only setting
    excludes. Any bridge must say this precisely, or there is no bridge.
