@@ -80,6 +80,20 @@ def _comparable(c: TrainConfig) -> dict:
     return d
 
 
+def _git_revision() -> dict:
+    """The trainer's source revision for run.json (2026-10-09: scorer gates need it). Provenance only: it never
+    affects training, and it is absent from the checkpoint's comparable config, so resuming is unaffected."""
+    import subprocess
+    root = Path(__file__).resolve().parents[3]
+    try:
+        rev = subprocess.run(["git", "rev-parse", "HEAD"], cwd=root, capture_output=True, text=True, check=True).stdout.strip()
+        dirty = bool(subprocess.run(["git", "status", "--porcelain", "src", "scripts"], cwd=root, capture_output=True,
+                                    text=True, check=True).stdout.strip())
+        return dict(git_revision=rev, git_dirty=dirty)
+    except Exception:
+        return dict(git_revision=None, git_dirty=None)
+
+
 def train(c: TrainConfig, resume: bool = False) -> dict:
     out = Path(c.out_dir)
     out.mkdir(parents=True, exist_ok=True)
@@ -116,7 +130,8 @@ def train(c: TrainConfig, resume: bool = False) -> dict:
     (out / "run.json").write_text(json.dumps(dict(
         asdict(c), corpus_manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest(),
         n_params=n_params(model), torch=torch.__version__, steps_per_epoch=steps_per_epoch,
-        steps_planned=planned, steps_total=total, resumed_from_step=(ck["step"] if ck else None)), indent=2) + "\n")
+        steps_planned=planned, steps_total=total, resumed_from_step=(ck["step"] if ck else None),
+        **_git_revision()), indent=2) + "\n")
     log = open(out / "log.jsonl", "a")
 
     def checkpoint():
