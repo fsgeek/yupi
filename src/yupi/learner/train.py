@@ -126,17 +126,25 @@ def train(c: TrainConfig, resume: bool = False) -> dict:
         opt.load_state_dict(ck["opt"])
         step, epoch, pos = ck["step"], ck["epoch"], ck["pos"]
         set_rng_state(ck["rng"])
+    rev = _git_revision()
+    # Revision lineage (2026-10-09, Codex review): every (revision, dirty) a run has been trained under, carried in
+    # the checkpoint, so a resume under a different revision cannot hide the earlier one. A checkpoint from before
+    # this field existed has an unknown lineage, recorded as None.
+    lineage = list(ck.get("lineage", [None])) if ck is not None else []
+    here = [rev["git_revision"], rev["git_dirty"]]
+    if not lineage or lineage[-1] != here:
+        lineage.append(here)
     manifest = Path(c.corpus_dir) / "manifest.json"
     (out / "run.json").write_text(json.dumps(dict(
         asdict(c), corpus_manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest(),
         n_params=n_params(model), torch=torch.__version__, steps_per_epoch=steps_per_epoch,
         steps_planned=planned, steps_total=total, resumed_from_step=(ck["step"] if ck else None),
-        **_git_revision()), indent=2) + "\n")
+        **rev, revision_lineage=lineage), indent=2) + "\n")
     log = open(out / "log.jsonl", "a")
 
     def checkpoint():
         save_atomic(out, {"model": model.state_dict(), "opt": opt.state_dict(), "step": step, "epoch": epoch,
-                          "pos": pos, "rng": rng_state(), "config": _comparable(c)})
+                          "pos": pos, "rng": rng_state(), "config": _comparable(c), "lineage": lineage})
 
     def on_term(signum, frame):
         checkpoint()

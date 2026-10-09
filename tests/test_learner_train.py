@@ -83,3 +83,20 @@ def test_cli_lr_min_defaults_to_a_tenth_of_lr_and_is_overridable():
     c = lt.build_config(ns(lr=3e-3, d_model=64))
     assert c.lr_min == pytest.approx(3e-4) and c.model.d_mlp == 256
     assert lt.build_config(ns(lr=3e-3, lr_min=5e-5)).lr_min == pytest.approx(5e-5)
+
+
+def test_revision_lineage_survives_resume(small_corpus, tmp_path, monkeypatch):
+    """A resume under a different revision must not hide the earlier one (2026-10-09, Codex review): the checkpoint
+    carries the lineage and run.json reports every (revision, dirty) the run was trained under."""
+    import json
+    import yupi.learner.train as T
+    monkeypatch.setattr(T, "_git_revision", lambda: dict(git_revision="aaa", git_dirty=True))
+    train(_cfg(small_corpus, tmp_path / "r", max_steps=10))
+    assert json.loads((tmp_path / "r" / "run.json").read_text())["revision_lineage"] == [["aaa", True]]
+    monkeypatch.setattr(T, "_git_revision", lambda: dict(git_revision="bbb", git_dirty=False))
+    train(_cfg(small_corpus, tmp_path / "r", max_steps=20), resume=True)
+    run = json.loads((tmp_path / "r" / "run.json").read_text())
+    assert run["git_revision"] == "bbb" and run["revision_lineage"] == [["aaa", True], ["bbb", False]]
+    assert torch.load(tmp_path / "r" / "ckpt.pt", weights_only=False)["lineage"] == [["aaa", True], ["bbb", False]]
+    train(_cfg(small_corpus, tmp_path / "r", max_steps=30), resume=True)       # same revision: no new entry
+    assert json.loads((tmp_path / "r" / "run.json").read_text())["revision_lineage"] == [["aaa", True], ["bbb", False]]
