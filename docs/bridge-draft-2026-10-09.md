@@ -1,13 +1,36 @@
 # The bridge to Mason & Anand: draft paragraph (2026-10-09)
 
-> **Status: DRAFT, for cross-family review (skeleton D3′, inventory §F item 5).** Source read:
+> **Status: ADOPTED 2026-10-09 after cross-family review (Codex). The adopted text is §0. The first draft below is
+> kept as the record of what was corrected.** Original status: DRAFT, for cross-family review (skeleton D3′,
+> inventory §F item 5). Source read:
 > `../ai-honesty/arxiv/main.tex`, the abstract (ll. 99–120), Definition "Observation Model" and its remark
 > (ll. 300–320), Theorem "Representational Impossibility" and "Connection to identifiability" (ll. 355–410). The
 > inventory v0.1 called Yupi's negative results "the impossibility at small scale". That was a category error
 > (text-only observation excludes token probabilities; Yupi scores full predictive distributions), and it is
 > withdrawn.
 
-## Draft (for paper 1 §1)
+## 0. Adopted paragraph (for paper 1 §1)
+
+> Mason and Anand prove that, for a query answerable in one world and unanswerable in another, no policy
+> conditioning only on that query can satisfy both honesty requirements when ε < ½. Their separate learnability
+> result requires that the supervisor's observations stay identical throughout training. Yupi is a related study
+> of interface design: under a specified simulator law, it computes exact posteriors over hidden state, and
+> measures how much predictive information each trace interface carries and at which lags. This is an analogy, not
+> an instance or a test of their theorem. Yupi's learners are scored on full predictive distributions, which lie
+> outside the text-only observation class.
+
+**What the review corrected in the first draft** (Codex, checked by the owner against `ai-honesty/arxiv/main.tex`
+ll. 300–410):
+- The theorem's mechanism is query-only conditioning under an ambiguous query, not "a world-to-observation map
+  that is many-to-one". The paper's own looser identifiability gloss (ll. 402–408) is not the theorem's
+  restriction (ll. 359–365).
+- "An exact instance of observational equivalence" was wrong. Posterior ambiguity over simulator states is not
+  equivalence of observation laws, and it depends on the prior and the law.
+- "Computed rather than argued" undersold a proved theorem.
+- "Identifying information" overstated what was found. The finding concerns *next-KIND* predictive information.
+- "No bounded supervisor can verify it" holds only under the identical-observation assumptions.
+
+## First draft (superseded)
 
 > Mason and Anand prove that when an observation model collapses a system's internal state to a response string,
 > the map from world states to observations can be many-to-one. Epistemic honesty is then non-identifiable from
