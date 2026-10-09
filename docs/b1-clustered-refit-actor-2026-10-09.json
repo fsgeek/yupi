@@ -1,0 +1,1243 @@
+{
+ "status": "EXPLORATORY re-analysis of confirmatory runs (not a re-score)",
+ "families": {
+  "A1_actor": {
+   "glob": "docs/learner-window-census-r[1-4]-eps*-seed*-2026-09-2*.json",
+   "runs": [
+    {
+     "raw": "docs/learner-window-census-r1-eps1-2M-seed1-2026-09-21.json",
+     "rung": "r1",
+     "eps": "1",
+     "seed": 1,
+     "n": 84949,
+     "n_classes": 25005,
+     "full": {
+      "beta_long": 0.06347923213472348,
+      "t_hc1": 11.50759999315522,
+      "t_cr1_class": 10.546802148210709,
+      "se_ratio_cr1_over_hc1": 1.0910984989992927
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.0608093416155408,
+      "t_hc1": 11.061083004565337,
+      "t_cr1_class": 10.160067277828126,
+      "se_ratio_cr1_over_hc1": 1.0886820630315568
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1-2M-seed2-2026-09-21.json",
+     "rung": "r1",
+     "eps": "1",
+     "seed": 2,
+     "n": 84949,
+     "n_classes": 25005,
+     "full": {
+      "beta_long": 0.05121106761067471,
+      "t_hc1": 10.786489789384081,
+      "t_cr1_class": 9.906686093459045,
+      "se_ratio_cr1_over_hc1": 1.0888090818286784
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.048194526390080455,
+      "t_hc1": 10.259166743981547,
+      "t_cr1_class": 9.503645395215138,
+      "se_ratio_cr1_over_hc1": 1.0794980575713395
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1-2M-seed3-2026-09-21.json",
+     "rung": "r1",
+     "eps": "1",
+     "seed": 3,
+     "n": 84949,
+     "n_classes": 25005,
+     "full": {
+      "beta_long": 0.037474146648193145,
+      "t_hc1": 7.376354482846446,
+      "t_cr1_class": 7.087425359023334,
+      "se_ratio_cr1_over_hc1": 1.0407664432691714
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.035179248458432816,
+      "t_hc1": 6.950465711912128,
+      "t_cr1_class": 6.708751169871111,
+      "se_ratio_cr1_over_hc1": 1.0360297372671314
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1_2-2M-seed1-2026-09-29.json",
+     "rung": "r1",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 85105,
+     "n_classes": 20248,
+     "full": {
+      "beta_long": 0.052849937209853724,
+      "t_hc1": 9.83402759012619,
+      "t_cr1_class": 8.669586173640075,
+      "se_ratio_cr1_over_hc1": 1.1343133793429039
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.04476758631319492,
+      "t_hc1": 8.39042792218128,
+      "t_cr1_class": 7.845347566178754,
+      "se_ratio_cr1_over_hc1": 1.069478165422825
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1_2-2M-seed2-2026-09-29.json",
+     "rung": "r1",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 85105,
+     "n_classes": 20248,
+     "full": {
+      "beta_long": 0.0535427143590266,
+      "t_hc1": 9.309679808192794,
+      "t_cr1_class": 7.704956108835768,
+      "se_ratio_cr1_over_hc1": 1.2082716211084947
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.043792358600786,
+      "t_hc1": 7.704244874939379,
+      "t_cr1_class": 6.846641970096905,
+      "se_ratio_cr1_over_hc1": 1.1252589091978378
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1_2-2M-seed3-2026-09-29.json",
+     "rung": "r1",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 85105,
+     "n_classes": 20248,
+     "full": {
+      "beta_long": 0.05206300448121922,
+      "t_hc1": 9.389629600303696,
+      "t_cr1_class": 7.4344567999441065,
+      "se_ratio_cr1_over_hc1": 1.2629879832477189
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.04210095250209839,
+      "t_hc1": 7.657063119702233,
+      "t_cr1_class": 6.321685906648153,
+      "se_ratio_cr1_over_hc1": 1.211237513659092
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-seed1-2026-09-21.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 1,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.054954868026580006,
+      "t_hc1": 11.41693565771625,
+      "t_cr1_class": 10.7124630962229,
+      "se_ratio_cr1_over_hc1": 1.0657619592399568
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.05296810392302155,
+      "t_hc1": 11.044088891676827,
+      "t_cr1_class": 10.378403389765689,
+      "se_ratio_cr1_over_hc1": 1.0641414172210324
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-seed2-2026-09-21.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 2,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.054204032528101694,
+      "t_hc1": 10.496447443858917,
+      "t_cr1_class": 9.618518010731604,
+      "se_ratio_cr1_over_hc1": 1.091274917003616
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.05230326680456328,
+      "t_hc1": 10.162216257150646,
+      "t_cr1_class": 9.299417588932128,
+      "se_ratio_cr1_over_hc1": 1.0927798606705643
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-seed3-2026-09-21.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 3,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.11419873890429436,
+      "t_hc1": 18.498057186482125,
+      "t_cr1_class": 15.98599344351701,
+      "se_ratio_cr1_over_hc1": 1.1571415471825968
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.1105725875254169,
+      "t_hc1": 17.9879966626264,
+      "t_cr1_class": 15.540980049700144,
+      "se_ratio_cr1_over_hc1": 1.1574557463622426
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-seed4-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 4,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.04737252104898154,
+      "t_hc1": 9.911554070204675,
+      "t_cr1_class": 9.204998640895962,
+      "se_ratio_cr1_over_hc1": 1.0767577983303145
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.044860800527778834,
+      "t_hc1": 9.418279299024746,
+      "t_cr1_class": 8.75798349876152,
+      "se_ratio_cr1_over_hc1": 1.0753935880738528
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-seed5-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 5,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.05369031034533281,
+      "t_hc1": 10.920221704982733,
+      "t_cr1_class": 10.55911048273933,
+      "se_ratio_cr1_over_hc1": 1.0341990192103492
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.050973486542784864,
+      "t_hc1": 10.394080251248756,
+      "t_cr1_class": 10.071738006788925,
+      "se_ratio_cr1_over_hc1": 1.0320046296123426
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-seed6-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 6,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.05581562120917457,
+      "t_hc1": 11.489294468196864,
+      "t_cr1_class": 10.491610396599453,
+      "se_ratio_cr1_over_hc1": 1.0950935112802875
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.05300099384540371,
+      "t_hc1": 10.952658807075395,
+      "t_cr1_class": 10.036224574129207,
+      "se_ratio_cr1_over_hc1": 1.0913126471191683
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-seed1-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.08905912383296662,
+      "t_hc1": 14.77064695211318,
+      "t_cr1_class": 12.003345714875728,
+      "se_ratio_cr1_over_hc1": 1.2305441585180656
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.0770009868888277,
+      "t_hc1": 12.86275405769231,
+      "t_cr1_class": 10.729845960846761,
+      "se_ratio_cr1_over_hc1": 1.1987827322618179
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-seed2-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.046680585357475574,
+      "t_hc1": 9.449850739203114,
+      "t_cr1_class": 8.309106143294686,
+      "se_ratio_cr1_over_hc1": 1.1372884852155838
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03593971515600395,
+      "t_hc1": 7.32504351465004,
+      "t_cr1_class": 6.6192642757643485,
+      "se_ratio_cr1_over_hc1": 1.1066250280215912
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-seed3-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.06818227978629665,
+      "t_hc1": 12.79645461914362,
+      "t_cr1_class": 10.819625670999311,
+      "se_ratio_cr1_over_hc1": 1.1827077024894639
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.056046174847368124,
+      "t_hc1": 10.584905587021359,
+      "t_cr1_class": 9.184145423840755,
+      "se_ratio_cr1_over_hc1": 1.152519379706731
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-seed4-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 4,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.07945203144790527,
+      "t_hc1": 13.88870506647158,
+      "t_cr1_class": 10.654868001415716,
+      "se_ratio_cr1_over_hc1": 1.3035079425316376
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.06674157959865322,
+      "t_hc1": 11.725173457193682,
+      "t_cr1_class": 9.192304671446209,
+      "se_ratio_cr1_over_hc1": 1.275542301553086
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-seed5-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 5,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.04019533268216926,
+      "t_hc1": 8.464651093238166,
+      "t_cr1_class": 7.582216308418386,
+      "se_ratio_cr1_over_hc1": 1.1163821696619272
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.029760492364033542,
+      "t_hc1": 6.341102488443332,
+      "t_cr1_class": 5.767627736166337,
+      "se_ratio_cr1_over_hc1": 1.09942991789865
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-seed6-2026-09-29.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 6,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.08779278376454251,
+      "t_hc1": 14.103412581310105,
+      "t_cr1_class": 11.898496146483708,
+      "se_ratio_cr1_over_hc1": 1.185310513839852
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.07294144447438675,
+      "t_hc1": 11.868684270892574,
+      "t_cr1_class": 10.543841311272995,
+      "se_ratio_cr1_over_hc1": 1.1256508819231865
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1-2M-seed1-2026-09-21.json",
+     "rung": "r3",
+     "eps": "1",
+     "seed": 1,
+     "n": 84955,
+     "n_classes": 32584,
+     "full": {
+      "beta_long": 0.03351967119899024,
+      "t_hc1": 8.13773827643048,
+      "t_cr1_class": 7.667300500768588,
+      "se_ratio_cr1_over_hc1": 1.0613563764214973
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.02944869968945523,
+      "t_hc1": 7.24887254623997,
+      "t_cr1_class": 6.852960784313066,
+      "se_ratio_cr1_over_hc1": 1.0577723664832834
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1-2M-seed2-2026-09-21.json",
+     "rung": "r3",
+     "eps": "1",
+     "seed": 2,
+     "n": 84955,
+     "n_classes": 32584,
+     "full": {
+      "beta_long": 0.0374115631025866,
+      "t_hc1": 8.05080071472824,
+      "t_cr1_class": 7.862584353818509,
+      "se_ratio_cr1_over_hc1": 1.023938231049734
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03310370514949948,
+      "t_hc1": 7.1981077275926575,
+      "t_cr1_class": 7.0569078430545655,
+      "se_ratio_cr1_over_hc1": 1.0200087471281154
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1-2M-seed3-2026-09-21.json",
+     "rung": "r3",
+     "eps": "1",
+     "seed": 3,
+     "n": 84955,
+     "n_classes": 32584,
+     "full": {
+      "beta_long": 0.03517004446038032,
+      "t_hc1": 7.798578602071761,
+      "t_cr1_class": 7.330026074850178,
+      "se_ratio_cr1_over_hc1": 1.0639223547688623
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03045731205935308,
+      "t_hc1": 6.839942388509379,
+      "t_cr1_class": 6.456429112822198,
+      "se_ratio_cr1_over_hc1": 1.0594002147294608
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1_2-2M-seed1-2026-09-29.json",
+     "rung": "r3",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 85071,
+     "n_classes": 25522,
+     "full": {
+      "beta_long": 0.06890072573990777,
+      "t_hc1": 9.678847857081712,
+      "t_cr1_class": 9.062108831387881,
+      "se_ratio_cr1_over_hc1": 1.0680568990252763
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.049029763153117,
+      "t_hc1": 7.006392042394884,
+      "t_cr1_class": 6.650683921702053,
+      "se_ratio_cr1_over_hc1": 1.0534844423341347
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1_2-2M-seed2-2026-09-29.json",
+     "rung": "r3",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 85071,
+     "n_classes": 25522,
+     "full": {
+      "beta_long": 0.0788323453468638,
+      "t_hc1": 10.786382561690758,
+      "t_cr1_class": 9.786093643920449,
+      "se_ratio_cr1_over_hc1": 1.1022153429312147
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.05964977131313528,
+      "t_hc1": 8.262460613600776,
+      "t_cr1_class": 7.535719032119176,
+      "se_ratio_cr1_over_hc1": 1.096439580401557
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1_2-2M-seed3-2026-09-29.json",
+     "rung": "r3",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 85071,
+     "n_classes": 25522,
+     "full": {
+      "beta_long": 0.0702637686406158,
+      "t_hc1": 9.927732997049247,
+      "t_cr1_class": 9.144808179917257,
+      "se_ratio_cr1_over_hc1": 1.0856141322735842
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.050214101873951374,
+      "t_hc1": 7.172957119275104,
+      "t_cr1_class": 6.712929860124136,
+      "se_ratio_cr1_over_hc1": 1.06852853653121
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-seed1-2026-09-22.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 1,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.03176136203158625,
+      "t_hc1": 7.206940367934794,
+      "t_cr1_class": 7.164082747160357,
+      "se_ratio_cr1_over_hc1": 1.0059822900274882
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.0278639610838188,
+      "t_hc1": 6.4000367440591255,
+      "t_cr1_class": 6.392937234180845,
+      "se_ratio_cr1_over_hc1": 1.0011105239451314
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-seed2-2026-09-22.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 2,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.07998266945189594,
+      "t_hc1": 12.614060153379643,
+      "t_cr1_class": 11.83103264032601,
+      "se_ratio_cr1_over_hc1": 1.066184206979929
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.07139773335209815,
+      "t_hc1": 11.359509240552784,
+      "t_cr1_class": 10.78000949395317,
+      "se_ratio_cr1_over_hc1": 1.053756886478131
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-seed3-2026-09-22.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 3,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.05757230935707324,
+      "t_hc1": 11.616132233253092,
+      "t_cr1_class": 11.167779089691834,
+      "se_ratio_cr1_over_hc1": 1.0401470283357501
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.05273625625581684,
+      "t_hc1": 10.817768103561098,
+      "t_cr1_class": 10.477673729412208,
+      "se_ratio_cr1_over_hc1": 1.0324589582508377
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-seed4-2026-09-22.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 4,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.02898206967305793,
+      "t_hc1": 6.7727061903730394,
+      "t_cr1_class": 6.61261275019351,
+      "se_ratio_cr1_over_hc1": 1.0242103153817443
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.02639997355755871,
+      "t_hc1": 6.2257909152917295,
+      "t_cr1_class": 6.08041459066255,
+      "se_ratio_cr1_over_hc1": 1.0239089493753317
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-seed5-2026-09-22.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 5,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.048784530382898456,
+      "t_hc1": 9.996395310278825,
+      "t_cr1_class": 9.533268528411707,
+      "se_ratio_cr1_over_hc1": 1.0485800625973007
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.043061172327784725,
+      "t_hc1": 8.86994273140985,
+      "t_cr1_class": 8.529359604025773,
+      "se_ratio_cr1_over_hc1": 1.0399306798160233
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-seed6-2026-09-22.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 6,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.030598416916395425,
+      "t_hc1": 7.134556855179512,
+      "t_cr1_class": 6.9642069456191615,
+      "se_ratio_cr1_over_hc1": 1.024460776494804
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.027069610032451914,
+      "t_hc1": 6.387111577437274,
+      "t_cr1_class": 6.258489709342808,
+      "se_ratio_cr1_over_hc1": 1.020551582581091
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-seed1-2026-09-29.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.10266343096114998,
+      "t_hc1": 13.391736257003812,
+      "t_cr1_class": 12.28674689416806,
+      "se_ratio_cr1_over_hc1": 1.0899334357868344
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.07552537453221193,
+      "t_hc1": 9.911915371851729,
+      "t_cr1_class": 9.318644691152763,
+      "se_ratio_cr1_over_hc1": 1.0636649105488725
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-seed2-2026-09-29.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.06086873474809705,
+      "t_hc1": 10.489049065642789,
+      "t_cr1_class": 9.892144104004906,
+      "se_ratio_cr1_over_hc1": 1.0603413127995396
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.0419008011446307,
+      "t_hc1": 7.282968993504585,
+      "t_cr1_class": 7.013976553290575,
+      "se_ratio_cr1_over_hc1": 1.0383509180805308
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-seed3-2026-09-29.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.06808771530006286,
+      "t_hc1": 11.403726992573269,
+      "t_cr1_class": 10.665782843481088,
+      "se_ratio_cr1_over_hc1": 1.069187996785741
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.0496619987701277,
+      "t_hc1": 8.31339396959554,
+      "t_cr1_class": 7.883707074789373,
+      "se_ratio_cr1_over_hc1": 1.054503153241224
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-seed4-2026-09-29.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 4,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.057103797669415014,
+      "t_hc1": 10.242683107174196,
+      "t_cr1_class": 9.461957717873991,
+      "se_ratio_cr1_over_hc1": 1.0825120353080195
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03902590037521608,
+      "t_hc1": 7.011719063681984,
+      "t_cr1_class": 6.614517020085942,
+      "se_ratio_cr1_over_hc1": 1.0600500448316756
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-seed5-2026-09-29.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 5,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.07191749144872649,
+      "t_hc1": 11.899973655514835,
+      "t_cr1_class": 11.255853681443673,
+      "se_ratio_cr1_over_hc1": 1.057225332906828
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.049278373149683,
+      "t_hc1": 8.211755401928258,
+      "t_cr1_class": 7.948422745753651,
+      "se_ratio_cr1_over_hc1": 1.0331301774701516
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-seed6-2026-09-29.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 6,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.051699586237650974,
+      "t_hc1": 9.262220308407219,
+      "t_cr1_class": 8.593144529193149,
+      "se_ratio_cr1_over_hc1": 1.0778615763927915
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03334428079130446,
+      "t_hc1": 5.978330179601397,
+      "t_cr1_class": 5.593543694017915,
+      "se_ratio_cr1_over_hc1": 1.0687911825905636
+     }
+    }
+   ],
+   "summary": {
+    "full": {
+     "n_runs": 36,
+     "pass_t3": 36,
+     "min_t": 6.61261275019351,
+     "median_se_ratio": 1.0801868058504054
+    },
+    "full_plus_log2_class_mass": {
+     "n_runs": 36,
+     "pass_t3": 36,
+     "min_t": 5.593543694017915,
+     "median_se_ratio": 1.0663349768761212
+    }
+   }
+  },
+  "A4_converged_e15": {
+   "glob": "docs/learner-window-census-r[1-4]-eps*-2M-e15-seed*-2026-10-02.json",
+   "runs": [
+    {
+     "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed1-2026-10-02.json",
+     "rung": "r1",
+     "eps": "1",
+     "seed": 1,
+     "n": 84949,
+     "n_classes": 25005,
+     "full": {
+      "beta_long": 0.04391367303297732,
+      "t_hc1": 9.476844460465543,
+      "t_cr1_class": 9.209693852177553,
+      "se_ratio_cr1_over_hc1": 1.0290075449386218
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.04171963028156558,
+      "t_hc1": 9.02503775967075,
+      "t_cr1_class": 8.815981919322446,
+      "se_ratio_cr1_over_hc1": 1.0237132791629378
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed2-2026-10-02.json",
+     "rung": "r1",
+     "eps": "1",
+     "seed": 2,
+     "n": 84949,
+     "n_classes": 25005,
+     "full": {
+      "beta_long": 0.04027514963173432,
+      "t_hc1": 9.385777014769486,
+      "t_cr1_class": 9.04544398652221,
+      "se_ratio_cr1_over_hc1": 1.0376248008118092
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.038223281378510714,
+      "t_hc1": 8.96279549420965,
+      "t_cr1_class": 8.662914533546019,
+      "se_ratio_cr1_over_hc1": 1.034616636179704
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1-2M-e15-seed3-2026-10-02.json",
+     "rung": "r1",
+     "eps": "1",
+     "seed": 3,
+     "n": 84949,
+     "n_classes": 25005,
+     "full": {
+      "beta_long": 0.03754050021590305,
+      "t_hc1": 8.130638457063524,
+      "t_cr1_class": 7.791540669550241,
+      "se_ratio_cr1_over_hc1": 1.0435212754312502
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.035853273101777924,
+      "t_hc1": 7.815798393074454,
+      "t_cr1_class": 7.484665236605682,
+      "se_ratio_cr1_over_hc1": 1.0442415453465146
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1_2-2M-e15-seed1-2026-10-02.json",
+     "rung": "r1",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 85105,
+     "n_classes": 20248,
+     "full": {
+      "beta_long": 0.029861608074005452,
+      "t_hc1": 6.518852326486105,
+      "t_cr1_class": 5.82318265022856,
+      "se_ratio_cr1_over_hc1": 1.119465542821371
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.023514058952805488,
+      "t_hc1": 5.190553709847988,
+      "t_cr1_class": 4.892890244209047,
+      "se_ratio_cr1_over_hc1": 1.0608359171741566
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1_2-2M-e15-seed2-2026-10-02.json",
+     "rung": "r1",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 85105,
+     "n_classes": 20248,
+     "full": {
+      "beta_long": 0.038894729481383526,
+      "t_hc1": 7.783743190561809,
+      "t_cr1_class": 6.8831947550650625,
+      "se_ratio_cr1_over_hc1": 1.1308329151712684
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03146284728335452,
+      "t_hc1": 6.401534320495984,
+      "t_cr1_class": 5.910786664003288,
+      "se_ratio_cr1_over_hc1": 1.0830257771746952
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r1-eps1_2-2M-e15-seed3-2026-10-02.json",
+     "rung": "r1",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 85105,
+     "n_classes": 20248,
+     "full": {
+      "beta_long": 0.033864707893309615,
+      "t_hc1": 6.930124062807122,
+      "t_cr1_class": 6.1610517921998165,
+      "se_ratio_cr1_over_hc1": 1.1248280807476716
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.02580077388465403,
+      "t_hc1": 5.315944745170722,
+      "t_cr1_class": 4.984901801126662,
+      "se_ratio_cr1_over_hc1": 1.066409120430264
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-e15-seed1-2026-10-02.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 1,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.03823679185600956,
+      "t_hc1": 8.844243056459693,
+      "t_cr1_class": 8.466043946316868,
+      "se_ratio_cr1_over_hc1": 1.0446724718819067
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03666897196167224,
+      "t_hc1": 8.461613157041063,
+      "t_cr1_class": 8.110152492096999,
+      "se_ratio_cr1_over_hc1": 1.0433358886021622
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-e15-seed2-2026-10-02.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 2,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.040306703009950345,
+      "t_hc1": 8.112892596047407,
+      "t_cr1_class": 8.04789864908957,
+      "se_ratio_cr1_over_hc1": 1.0080758903400442
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03845942208263077,
+      "t_hc1": 7.7184805005243655,
+      "t_cr1_class": 7.679033659346887,
+      "se_ratio_cr1_over_hc1": 1.0051369538053092
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1-2M-e15-seed3-2026-10-02.json",
+     "rung": "r2",
+     "eps": "1",
+     "seed": 3,
+     "n": 84987,
+     "n_classes": 28722,
+     "full": {
+      "beta_long": 0.056483684897361885,
+      "t_hc1": 10.631198405732713,
+      "t_cr1_class": 9.76940377870441,
+      "se_ratio_cr1_over_hc1": 1.0882136358113137
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.05383733596443401,
+      "t_hc1": 10.136627406631773,
+      "t_cr1_class": 9.331543440498448,
+      "se_ratio_cr1_over_hc1": 1.086275541797223
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-e15-seed1-2026-10-02.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.059154319333716315,
+      "t_hc1": 11.30398431188317,
+      "t_cr1_class": 9.75282395624994,
+      "se_ratio_cr1_over_hc1": 1.1590473038979845
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.04805622321229459,
+      "t_hc1": 9.295202333954576,
+      "t_cr1_class": 8.261398120082076,
+      "se_ratio_cr1_over_hc1": 1.1251367140096413
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-e15-seed2-2026-10-02.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.027530638091186284,
+      "t_hc1": 6.517293963070067,
+      "t_cr1_class": 6.01032660428413,
+      "se_ratio_cr1_over_hc1": 1.0843493860091684
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.018046414150505175,
+      "t_hc1": 4.303987381411368,
+      "t_cr1_class": 4.038007705596474,
+      "se_ratio_cr1_over_hc1": 1.065869036219584
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r2-eps1_2-2M-e15-seed3-2026-10-02.json",
+     "rung": "r2",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 84714,
+     "n_classes": 23062,
+     "full": {
+      "beta_long": 0.050423500100844725,
+      "t_hc1": 9.672950916826458,
+      "t_cr1_class": 8.853661671813384,
+      "se_ratio_cr1_over_hc1": 1.0925367690095242
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.039958015708688316,
+      "t_hc1": 7.735431769997194,
+      "t_cr1_class": 7.212726440571905,
+      "se_ratio_cr1_over_hc1": 1.0724698674949111
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1-2M-e15-seed1-2026-10-02.json",
+     "rung": "r3",
+     "eps": "1",
+     "seed": 1,
+     "n": 84955,
+     "n_classes": 32584,
+     "full": {
+      "beta_long": 0.023323646844977432,
+      "t_hc1": 6.031557738193401,
+      "t_cr1_class": 5.819260772054997,
+      "se_ratio_cr1_over_hc1": 1.0364817756849611
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.020367344145708816,
+      "t_hc1": 5.261192254448354,
+      "t_cr1_class": 5.078809421536115,
+      "se_ratio_cr1_over_hc1": 1.0359105486689195
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1-2M-e15-seed2-2026-10-02.json",
+     "rung": "r3",
+     "eps": "1",
+     "seed": 2,
+     "n": 84955,
+     "n_classes": 32584,
+     "full": {
+      "beta_long": 0.01651292910269187,
+      "t_hc1": 4.6265795801029235,
+      "t_cr1_class": 4.502021993178134,
+      "se_ratio_cr1_over_hc1": 1.0276670320832573
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.012768031319644166,
+      "t_hc1": 3.630476202802104,
+      "t_cr1_class": 3.5574812387157264,
+      "se_ratio_cr1_over_hc1": 1.020518720743199
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1-2M-e15-seed3-2026-10-02.json",
+     "rung": "r3",
+     "eps": "1",
+     "seed": 3,
+     "n": 84955,
+     "n_classes": 32584,
+     "full": {
+      "beta_long": 0.014975179571798305,
+      "t_hc1": 4.0262655700244485,
+      "t_cr1_class": 4.055590817799486,
+      "se_ratio_cr1_over_hc1": 0.992769179857511
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.011401991585559467,
+      "t_hc1": 3.0742562615976694,
+      "t_cr1_class": 3.1126506945005326,
+      "se_ratio_cr1_over_hc1": 0.987665036436405
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1_2-2M-e15-seed1-2026-10-02.json",
+     "rung": "r3",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 85071,
+     "n_classes": 25522,
+     "full": {
+      "beta_long": 0.053366214104975614,
+      "t_hc1": 7.353290373056259,
+      "t_cr1_class": 6.669870893980309,
+      "se_ratio_cr1_over_hc1": 1.102463674325803
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03636735654284037,
+      "t_hc1": 5.076920368195142,
+      "t_cr1_class": 4.6442870206116655,
+      "se_ratio_cr1_over_hc1": 1.0931538782300534
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1_2-2M-e15-seed2-2026-10-02.json",
+     "rung": "r3",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 85071,
+     "n_classes": 25522,
+     "full": {
+      "beta_long": 0.0498513277502912,
+      "t_hc1": 7.810291558360674,
+      "t_cr1_class": 6.870447897267124,
+      "se_ratio_cr1_over_hc1": 1.1367951078513225
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.03379600914531012,
+      "t_hc1": 5.369649429289741,
+      "t_cr1_class": 4.781784969749947,
+      "se_ratio_cr1_over_hc1": 1.1229382883711176
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r3-eps1_2-2M-e15-seed3-2026-10-02.json",
+     "rung": "r3",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 85071,
+     "n_classes": 25522,
+     "full": {
+      "beta_long": 0.05528902480400766,
+      "t_hc1": 8.530136133125119,
+      "t_cr1_class": 7.89728668194361,
+      "se_ratio_cr1_over_hc1": 1.0801350484880408
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.038564940254696964,
+      "t_hc1": 6.050843011932312,
+      "t_cr1_class": 5.648436722467401,
+      "se_ratio_cr1_over_hc1": 1.0712420638199394
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-e15-seed1-2026-10-02.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 1,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.02428834105803918,
+      "t_hc1": 6.165781049744535,
+      "t_cr1_class": 6.14500449742424,
+      "se_ratio_cr1_over_hc1": 1.0033810475369065
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.021716969618766842,
+      "t_hc1": 5.548188404561355,
+      "t_cr1_class": 5.549908432313171,
+      "se_ratio_cr1_over_hc1": 0.9996900799764908
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-e15-seed2-2026-10-02.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 2,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.022076459914488457,
+      "t_hc1": 5.018931962278245,
+      "t_cr1_class": 4.972720921198466,
+      "se_ratio_cr1_over_hc1": 1.0092929086132272
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.017459555263039096,
+      "t_hc1": 4.002440337228143,
+      "t_cr1_class": 3.9864386087388035,
+      "se_ratio_cr1_over_hc1": 1.0040140411178695
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1-2M-e15-seed3-2026-10-02.json",
+     "rung": "r4",
+     "eps": "1",
+     "seed": 3,
+     "n": 84972,
+     "n_classes": 32755,
+     "full": {
+      "beta_long": 0.031266350573779,
+      "t_hc1": 7.483018814546961,
+      "t_cr1_class": 7.299315154262438,
+      "se_ratio_cr1_over_hc1": 1.025167246022697
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.026862566618127467,
+      "t_hc1": 6.507090236330451,
+      "t_cr1_class": 6.372352250370687,
+      "se_ratio_cr1_over_hc1": 1.0211441522166207
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-e15-seed1-2026-10-02.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 1,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.06840066093623992,
+      "t_hc1": 10.500777408632441,
+      "t_cr1_class": 10.112714472893698,
+      "se_ratio_cr1_over_hc1": 1.0383737656965313
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.049615915271133015,
+      "t_hc1": 7.658419793118593,
+      "t_cr1_class": 7.469639624880245,
+      "se_ratio_cr1_over_hc1": 1.0252729954480735
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-e15-seed2-2026-10-02.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 2,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.039318591995662656,
+      "t_hc1": 7.725500255328886,
+      "t_cr1_class": 7.521256727554019,
+      "se_ratio_cr1_over_hc1": 1.0271555054126293
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.025747664039372786,
+      "t_hc1": 5.112958930818008,
+      "t_cr1_class": 5.072750664050417,
+      "se_ratio_cr1_over_hc1": 1.0079263242825118
+     }
+    },
+    {
+     "raw": "docs/learner-window-census-r4-eps1_2-2M-e15-seed3-2026-10-02.json",
+     "rung": "r4",
+     "eps": "1/2",
+     "seed": 3,
+     "n": 84841,
+     "n_classes": 25690,
+     "full": {
+      "beta_long": 0.032065206995520415,
+      "t_hc1": 6.513986709223271,
+      "t_cr1_class": 6.434159205065514,
+      "se_ratio_cr1_over_hc1": 1.012406827623244
+     },
+     "full_plus_log2_class_mass": {
+      "beta_long": 0.015727287395153507,
+      "t_hc1": 3.1685725467013675,
+      "t_cr1_class": 3.1857513485651925,
+      "se_ratio_cr1_over_hc1": 0.9946076137198961
+     }
+    }
+   ],
+   "summary": {
+    "full": {
+     "n_runs": 24,
+     "pass_t3": 24,
+     "min_t": 4.055590817799486,
+     "median_se_ratio": 1.0409475205638907
+    },
+    "full_plus_log2_class_mass": {
+     "n_runs": 24,
+     "pass_t3": 24,
+     "min_t": 3.1126506945005326,
+     "median_se_ratio": 1.039623218635541
+    }
+   }
+  }
+ }
+}

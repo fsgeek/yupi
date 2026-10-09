@@ -33,7 +33,7 @@ evidence for:* anything about learners.
 
 | # | claim | status | evidence |
 |---|---|---|---|
-| B1 | Within every cell, KIND excess rises with exact long-range information ι_long. The same holds for actor identity (whose information measure is a lower bound under suffix naming), and at the converged budget | CONFIRMATORY. These were per-model tests, but the errors were **HC1 over windows, not clustered by class**, while ι is a class property. Two converged runs sit at t 3.07 and 3.17. The 36 actor censuses are 15 existing + 21 held-out. **KIND re-run clustered by class (2026-10-09, `b1-clustered-refit`): 21/21 held-out and 24/24 converged keep t ≥ 3. The lowest is t 5.07 with log mass, and clustering inflates the errors by only 4–12 %.** The actor version (A1–A4, its own frozen script, where the t 3.07/3.17 runs are) is still owed | d1, actor, converged-ladder verdicts |
+| B1 | Within every cell, KIND excess rises with exact long-range information ι_long. The same holds for actor identity (whose information measure is a lower bound under suffix naming), and at the converged budget | CONFIRMATORY. These were per-model tests, but the errors were **HC1 over windows, not clustered by class**, while ι is a class property. Two converged runs sit at t 3.07 and 3.17. The 36 actor censuses are 15 existing + 21 held-out. **KIND re-run clustered by class (2026-10-09, `b1-clustered-refit`): 21/21 held-out and 24/24 converged keep t ≥ 3. The lowest is t 5.07 with log mass, and clustering inflates the errors by only 4–12 %.** **Actor, also re-run: 36/36 (A1) and 24/24 (A4) keep t ≥ 3. The two borderline A4 runs move from 3.07 to 3.11 and from 3.17 to 3.19.** B1 holds under class clustering throughout | d1, actor, converged-ladder verdicts |
 | B2 | The cross-cell ordering by ι **holds at ε = 1** (r2 > r3, seed-resolved) and **fails at ε = ½**, where the ι gap is smaller than seed spread. C4 (r0 lowest) passes | CONFIRMATORY, split | converged-ladder verdict |
 | B3 | Moving information closer does not relieve the cost in proportion to the move. At **5 epochs** the gain is V-shaped in Δι (it tracks \|Δι\|, not the sign). At 15 epochs the right arm flattens. The rejection rests on R4's wrong sign and the shape, since R1 missed its band floor by 0.09 se | CONFIRMATORY (rejection), ROBUST in shape: 8/9 to 9/9 seed pairings. Magnitudes and t-values are unreliable (corrections of 2026-10-05) | relay verdict + CORRECTIONS |
 | B4 | No relay gain where ι4 = 0. Gain where ι4 > 0, persisting at 15 epochs | EXPLORATORY, and partly checked per pairing (contrasts positive 9/9 at 15 ep) | V diagnosis, prereg-review addendum |
@@ -109,7 +109,7 @@ cost in proportion to the move. Supporting it:
 E3, acquisition dynamics, is a hinted future direction: per-checkpoint censuses with ≥ 8 seeds.
 
 **Owed before any draft, in order:**
-1. B1 re-run per model with errors clustered by class: **KIND done (survives fully)**; actor owed.
+1. B1 re-run per model with errors clustered by class: **done: KIND and actor both survive fully.**
 2. A1 reworded everywhere it appears.
 3. B5 with seed spread; a GRU baseline if cheap.
 4. B7: its controls done, or cut.
