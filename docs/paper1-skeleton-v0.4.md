@@ -36,10 +36,31 @@ not expect.
   unread pilot models) are kept for the fixed-model study.
 - Any mechanism claim. Any claim about epistemic honesty or text-only supervision.
 
+## §4a's framing after the literature pass (`docs/literature-pass-2026-10-09.md`)
+
+Someya et al. (ACL 2025, arXiv:2506.05136) already relocated information under transformations that preserve the
+ceiling, in natural text. They found loss rising roughly linearly as information is pushed further away. §4a
+therefore **does not claim the intervention as new.** It claims a contrary result under stricter conditions: an
+exact ceiling held identical class by class, in a structured world, with the source left in place. Gain does not
+follow the move, and pushing information *further back* is followed by *better* learning (R4's wrong sign). Pfau
+et al. (filler tokens) bears on §5's move-vs-bind confound. Li et al. (arXiv:2610.05292) is to be read before
+paper 3.
+
+**This raises the bar for §4a.** A result that contradicts published work rests today on 3 + 3 models. It is
+robust in shape (8–9/9 pairings) but unreplicated on fresh models. **Owed before external review: a model-level
+replication of §4a on the fresh paired corpus** (r1 and r1R, run 0582ffbeb4693d27). It needs:
+- seed-matched models;
+- one pre-registered, offset-cancelling contrast per seed, chosen to discriminate the locality prediction (gain ≤ 0
+  where the relay moves information further back) from §4a's (gain > 0 there);
+- severity computed at the model level before stamping;
+- the same two-family pre-stamp review.
+
+Design note: `docs/relay-replication-design-v0.1.md`.
+
 ## Before external review
 
 1. The bridge paragraph adopted after its cross-family review.
-2. A literature pass for §4a's novelty claim, covering relocation and relay-style interventions on learned
+2. **Done (`literature-pass-2026-10-09.md`), with the qualification above.** A literature pass for §4a's novelty claim, covering relocation and relay-style interventions on learned
    long-range dependence, and for §5's framing (Jonas & Kording; non-identifiability in mechanistic
    interpretability; causal abstraction). Citations verified, not from memory.
 3. A GRU baseline, if cheap. Otherwise §4d says the baseline is weak.
