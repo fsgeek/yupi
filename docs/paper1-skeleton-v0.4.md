@@ -1,5 +1,10 @@
 # Paper 1: skeleton v0.4 (2026-10-09)
 
+> **2026-10-09 (later): §4a demoted.** See `docs/inventory-2026-10-09.md` §G. The relay rejected only the lag-4
+> proportionality hypothesis, not locality, and the contrary-to-Someya framing is withdrawn. The learner half now
+> opens with §4b (the within-cell law). §4a becomes "an intervention that rejected a specific distance hypothesis;
+> full-profile reading open". The relay replication (design and prereg drafts) is withdrawn before stamp.
+>
 > **Status: GOVERNING for paper 1's shape. It supersedes v0.1–v0.3**, which stay on record for their audit trails.
 > v0.4 is written from `docs/inventory-2026-10-09.md` (v0.2, reviewed by Claude and Codex independently) and not
 > patched from v0.3. Its occasion was Tony's observation that the work was "trying to fit the truth to the paper".

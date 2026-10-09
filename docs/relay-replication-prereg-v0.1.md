@@ -1,3 +1,7 @@
+> **2026-10-09: WITHDRAWN BEFORE STAMP.** Both pre-stamp reviewers blocked it: the "back" set moves information
+> closer at lags 1–2, so a pass would not contradict locality (inventory §G). No model was trained. Kept as the
+> record.
+
 # Relay replication: pre-registration v0.1 (DRAFT, 2026-10-09)
 
 > **Status: DRAFT, not stamped.** It becomes a pre-registration only after a two-family pre-stamp review, when

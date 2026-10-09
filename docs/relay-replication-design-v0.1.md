@@ -1,3 +1,7 @@
+> **2026-10-09: WITHDRAWN BEFORE STAMP.** Both pre-stamp reviewers blocked it: the "back" set moves information
+> closer at lags 1–2, so a pass would not contradict locality (inventory §G). No model was trained. Kept as the
+> record.
+
 # Replicating §4a at the model level: design v0.1 (2026-10-09)
 
 > **Status: DESIGN.** Skeleton v0.4 owes this before external review, because §4a contradicts a published result

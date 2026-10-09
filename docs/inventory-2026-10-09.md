@@ -118,3 +118,24 @@ E3, acquisition dynamics, is a hinted future direction: per-checkpoint censuses 
 
 **The three-arm confirmatory test is shelved.** Its assets (corpus, rungs, scorer, pilot) are kept. Its question
 (move vs bind) belongs to a later fixed-model study.
+
+## G. Correction (same day, after the replication pre-stamp review)
+
+Both reviewers (Claude, Codex) blocked the relay replication. They showed that **B3's "wrong-sign" region is not
+"information pushed further back"**:
+- On windows with Δι_4 < −0.05, the relay moves information **closer** at lags 1–2: mean Δι_1 +0.096,
+  Δι_2 +0.023. Summed over lags 1–6 it moves information closer, on net.
+- The "zero" set moves information at lags 2–3.
+
+An exploratory regression of each matched model's gain on the full Δι_1..6 profile (10-02 models, collinear
+regressors, read cautiously) loads mainly on **Δι_5 and Δι_6**: moving the window's *farthest* information
+closer. |Δι_4| adds little once the profile is in.
+
+**B3 is revised:**
+- The relay rejected one specific hypothesis: "cost is proportional to the information beyond lag 4". It did **not**
+  reject locality.
+- A full-profile locality reading is open, and exploratorily favoured.
+- The "contrary to Someya et al." framing is **withdrawn**.
+
+**The learner half's front is now B1.** The within-cell law has survived every check so far: held-out, converged,
+class-clustered errors, KIND and actor. B5′, B5 and B2 support it.
