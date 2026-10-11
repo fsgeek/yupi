@@ -60,8 +60,25 @@ For §1:
 - §4e's open seam becomes the paper's design question: how much does an index placed near the consumer buy, and
   why does the gain not scale with the lag-4 measure of the move?
 
-Citation owed: the Indaleko source that states the index-placement argument (ask Tony which: thesis chapter or
-paper). Not yet checked whether the systems literature states consumer-side log placement anywhere. Tony's
+**Refined the same evening (Tony):** the index-placement argument probably did not survive into print in that
+form. The better statement has two decisions in it:
+1. **Extract when the data is close.** In storage tiering, data starts local and moves to cheaper, farther tiers.
+   Indexing should happen while extraction is still cheap.
+2. **Keep the index close to where it is used.** Indexing where the data ends up stored performs worse.
+
+The two decisions map onto the instrument, and each is measured exactly:
+- *Extraction* is the interface choice. The kernel holds the full hidden state at emit time, so extraction is
+  cheap there, and what it does not emit is lost for good. That loss is the **observation gap** (the ceiling).
+- *Placement* is the lag profile. For a bounded learner, the trace's past is a tiered store: recent records are
+  cheap to reach and far ones are dear. Information extracted but placed far away costs the learner without being
+  lost. That cost is what B1 measures, and convergence (B5′) is the learner building its own index, which cuts the
+  far-tier cost proportionally more and never to zero.
+- The relay is the second decision applied with the first held fixed: same extraction, same ceiling, and a copy
+  placed nearer the point of use.
+
+So §1 can state the paper as a separation: what the producer extracts and where the trace places it are different
+design decisions, and only a world with exact ceilings can price them separately. This is our framing and not an
+attributed principle; at most it cites Tony's tiering work as motivation. Not yet checked whether the systems literature states consumer-side log placement anywhere. Tony's
 recollection says not; a search is still owed before §1 says "no prior statement".
 
 ## Risk this framing carries
