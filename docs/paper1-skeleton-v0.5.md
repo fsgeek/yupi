@@ -47,6 +47,23 @@ and the question is open (inventory §G).
 Belief geometry (B7), the three-arm test, any mechanism claim, and any claim about epistemic honesty or text-only
 supervision.
 
+## §1's framing: producer locality against consumer locality (Tony, 2026-10-10)
+
+Asked whether "log close to where it's needed" was ever a stated principle in systems tracing, Tony said no.
+Logging is done close to where the activity occurs, at the producer. The nearest analogue he knew is his own
+Indaleko argument: index close to where the indices are needed, which is often far from the data they index.
+
+For §1:
+- Traces are written with **producer locality**. Learners pay for **consumer distance**, which is the lag profile.
+- The relay is an *index*, in Indaleko's sense: a redundant near copy placed at the point of use, with the source
+  left where it is. That is what makes it a natural intervention, and not an artefact of the experiment.
+- §4e's open seam becomes the paper's design question: how much does an index placed near the consumer buy, and
+  why does the gain not scale with the lag-4 measure of the move?
+
+Citation owed: the Indaleko source that states the index-placement argument (ask Tony which: thesis chapter or
+paper). Not yet checked whether the systems literature states consumer-side log placement anywhere. Tony's
+recollection says not; a search is still owed before §1 says "no prior statement".
+
 ## Risk this framing carries
 
 A reviewer may read §4a as "Someya again, in a toy world". The defence has to be in §1 and §3, not added in §4.
