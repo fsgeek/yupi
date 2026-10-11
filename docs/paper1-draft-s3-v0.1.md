@@ -24,7 +24,10 @@ as fields are added:
 | 1 | 1.176 | 0.999 | 0.955 | 0.911 | 0.911 |
 | ½ | 1.104 | 0.873 | 0.823 | 0.784 | 0.784 |
 
-*Bits; the law-mass-weighted conditional entropy H\* of the next KIND given the window.* [EXACT]
+*Bits; the law-mass-weighted conditional entropy H\* of the next KIND given the first seven records of the window
+(position k = 7, predicting record 8). Position-k quantities cover only windows that run at least k records,
+which is 0.85 of window law mass at k = 7; windows that start too close to the episode's beginning drop out.* [EXACT;
+re-derived 2026-10-11: H\* × 0.85 reproduces the pattern-ceiling raw to ≤ 10⁻¹⁵ on r0]
 
 Three properties of this ladder matter later:
 - **Interface value exists only where the window hides history.** From a reset, every content rung r1–r4 is
@@ -80,9 +83,16 @@ already have, and the ceiling stays identical *class by class*. Gates A–C veri
 - the **decoy** (r1D): record t's OBJECT holds the KIND of record t − 1;
 - the **self-copy** (r1S): record t's OBJECT holds record t's own KIND.
 
-The relay moves next-KIND information closer by Δι = 0.094 bits. The decoy moves it by 0.068, but in different
-classes: the two movements correlate only 0.29, and on 27 % of law mass the decoy pushes information *further
-back*. The self-copy moves nothing, exactly. [EXACT, A4]
+Write Δι_4 = ι_4(r1) − ι_4(intervention): the drop in next-KIND information lying more than four records back.
+At ε = 1 the relay's mean Δι_4 is 0.094 bits and the decoy's 0.068, but they act in different classes: across
+classes the two correlate only 0.29. The self-copy's lag profile equals r1's at every lag, so it moves nothing.
+[EXACT, A4; re-read 2026-10-11 from `decoy-iota-check-2026-10-05.json` and the r1S exact-side log]
+
+The means hide a mix. On about a quarter of law mass, *each* intervention raises ι_4 (relay 27.8 %, decoy 27.1 %).
+A rise in ι_4 does not mean information moved further back overall. Where the relay raises ι_4, it still moves
+information closer at lags 1–2, and over lags 1–6 it moves information closer on net (inventory §G). Δι_4 is one
+point on a profile. Comparisons in this paper use the full profile wherever the claim is about distance.
+[EXACT; sign fractions from `decoy-sign-fractions-2026-10-11.json`]
 
 With the ceiling identical, any difference a learner shows between r1 and r1R is a difference in where the
 information sits, and not in how much is available. §4e uses this.
@@ -118,10 +128,14 @@ cut the sentence. -->
 
 - Ceilings H\* and the lag profiles at both ε: `implicit-info-lag-kind-40-8-2-k7-2026-09-28.json` (60 rows; every
   gate true). Re-tabulated 2026-10-11 by the owner. The values match `implicit-information-first-results-v0.1.md` §1.
-- The regimes, the thin top rung and injectivity from reset: inventory A2 (pattern-ceiling raws,
-  `pattern-ceilings-40-8-2-k*-2026-09-18.json`; skeleton v0.1 corrections C1). **Not re-audited this session.**
-- Relay, decoy and self-copy Δι, the 0.29 correlation and 27 %: inventory A4 (relay and three-arm exact sides).
-  **Not re-audited this session.**
+- Thin top rung: **re-audited 2026-10-11** from `pattern-ceilings-40-8-2-k{1..7}-2026-09-18.json`. r4 − r3 lies
+  in [5e-6, 3.9e-4] bits on every k and both ε, and every gate holds. Injectivity from reset and the "four
+  regimes" wording are **still not re-audited** (inventory A2).
+- Relay and decoy Δι_4 and the 0.29 correlation: **re-read 2026-10-11** from `decoy-iota-check-2026-10-05.json`.
+  Self-copy: `three-arm-exact-side-r1S-2026-10-05.log` (ι_m equals r1's). The 27 % had **no committed source**. It
+  was recomputed (`scripts/decoy_sign_fractions.py` → `decoy-sign-fractions-2026-10-11.json`): the decoy's
+  fraction is 27.1 %, and the relay's is 27.8 %. The inventory used the figure to set the decoy apart from the
+  relay, which it does not.
 - The converged r2 > r3 at ε = 1, and the C3 failure at ε = ½: `converged-ladder-verdict-v0.1.md` C3 (C3/C4 from
   `scripts/converged_ladder_c3c4.py`, reproduced by both reviewers).
 - Five-token records: `src/yupi/corpus/rendering.py` `render`; `windows.py` `max_tokens`.

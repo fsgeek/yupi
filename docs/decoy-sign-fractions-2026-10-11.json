@@ -1,0 +1,18 @@
+{
+ "1": {
+  "mean_d_iota4_decoy": 0.06777240161110441,
+  "frac_decoy_further_back": 0.2710788907659456,
+  "frac_decoy_closer": 0.6002895742042315,
+  "frac_decoy_zero": 0.12863153502983896,
+  "frac_relay_further_back": 0.27780303593765926,
+  "W": 0.8499999999999943
+ },
+ "1/2": {
+  "mean_d_iota4_decoy": 0.08136327179537572,
+  "frac_decoy_further_back": 0.24918809586823928,
+  "frac_decoy_closer": 0.6027820439750186,
+  "frac_decoy_zero": 0.14802986015674963,
+  "frac_relay_further_back": 0.21891960634638372,
+  "W": 0.8499999999999922
+ }
+}

@@ -139,3 +139,14 @@ closer. |Δι_4| adds little once the profile is in.
 
 **The learner half's front is now B1.** The within-cell law has survived every check so far: held-out, converged,
 class-clustered errors, KIND and actor. B5′, B5 and B2 support it.
+
+## H. Correction (2026-10-11, owning instance, re-audit while drafting §3)
+
+- **A4's "27 %" had no committed source.** Recomputed (`scripts/decoy_sign_fractions.py` →
+  `docs/decoy-sign-fractions-2026-10-11.json`): the decoy raises ι_4 on 27.1 % of law mass at ε = 1, which
+  confirms the figure. But **the relay does too, on 27.8 %.** The figure does not set the decoy apart from the
+  relay. "Pushes information further back" also reads Δι_4 < 0 as overall distance, which §G showed is wrong.
+  A4's other figures (Δι_4 0.094 and 0.068, correlation 0.29, self-copy ι equal to r1's) re-read correctly.
+- **Position-k coverage, unstated until now:** the k = 7 ceilings and lag profiles cover the windows that run at
+  least 7 records, which is 0.85 of window law mass.
+- **A2's thin top rung re-audited:** r4 − r3 lies in [5e-6, 3.9e-4] bits on every k ∈ 1..7 and both ε.
