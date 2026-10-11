@@ -81,6 +81,20 @@ design decisions, and only a world with exact ceilings can price them separately
 attributed principle; at most it cites Tony's tiering work as motivation. Not yet checked whether the systems literature states consumer-side log placement anywhere. Tony's
 recollection says not; a search is still owed before §1 says "no prior statement".
 
+## Record lag is token lag (checked 2026-10-10)
+
+The learner's distance is measured in tokens, but ι is defined over records, so the two had to be compared. The
+d1 verdict (`d1-long-lag-verdict-v0.1.md:59`) listed token distance as an uncontrolled covariate. It is
+controlled by construction (Part I D5; `src/yupi/corpus/rendering.py` `render`):
+- Every record on every rung is exactly five tokens: KIND ACTOR OBJECT RELATED LINEAGE. Masked and absent fields
+  render as placeholder tokens.
+- The relay writes its KIND copy into the OBJECT slot and adds no tokens.
+- RESET shifts absolute positions by one and leaves distances unchanged.
+
+So token distance is 5 × record lag, plus a fixed offset within the record for each field, identical across
+rungs. §3 should state this in one sentence. One consequence for §1's exchange rate: placement on this instrument
+costs no trace *length*. Any price for redundancy has to be paid in slot capacity or entropy, not in bytes.
+
 ## Risk this framing carries
 
 A reviewer may read §4a as "Someya again, in a toy world". The defence has to be in §1 and §3, not added in §4.
