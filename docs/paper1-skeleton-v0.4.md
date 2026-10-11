@@ -1,5 +1,7 @@
 # Paper 1: skeleton v0.4 (2026-10-09)
 
+> **2026-10-10: superseded by `docs/paper1-skeleton-v0.5.md`** (new centre: observability as a lag profile, an observation-design result; the relay moves to §4e).
+
 > **2026-10-09 (later): §4a demoted.** See `docs/inventory-2026-10-09.md` §G. The relay rejected only the lag-4
 > proportionality hypothesis, not locality, and the contrary-to-Someya framing is withdrawn. The learner half now
 > opens with §4b (the within-cell law). §4a becomes "an intervention that rejected a specific distance hypothesis;

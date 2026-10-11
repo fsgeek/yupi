@@ -6,11 +6,13 @@ August 11, 2026 - Creation
 
 ## A word from Tony ("the user")
 
-This repository is an exploration for building
+~~This repository is an exploration for building
 This repository is started to be an _ideation_ space - a place
 to look through the constellation of projects I've worked on over
 the years to see if we can find any ideas worth considering as
-potential business offerings.
+potential business offerings.~~
+
+*(2026-10-10, owning instance: the struck lines above came in with the initial commit (32a8a43), and no sibling project contains them. Asked about them, Tony said: "I have no idea where that came from." They are not a project goal. They stay struck rather than deleted, so the record is kept.)*
 
 Note that as of the founding date, the key document describing the
 project is [What the Trace Surrenders (v0.2)](docs/what-the-trace-surrenders-proposal-v0.2.md)
