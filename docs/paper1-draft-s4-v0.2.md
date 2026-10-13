@@ -113,21 +113,26 @@ reviewed by both families before stamping, and both are exploratory in scale, at
 
 r1, with a placeholder input and a trivial placeholder target, is 0.0157, 0.0146 and 0.0158.
 
-- **Showing the copy without supervising it hurt** (r1Rm against r1m, every seed; paired p 1/8). This cannot tell an
-  informative but unscored copy from a varying decoy field.
-- **Supervising the slot with the relay value helped KIND without the copy ever being shown** (r1Rs against r1,
-  every seed; paired p 1/8). r1Rs did learn the lookup: it pays 0.00004 bits per slot. The gain is small, 0.0005 to
-  0.0032 bits, no larger than what removing a trivial target does (r1m against r1: 0.0012 to 0.0063). It does not
-  carry over to ACTOR, which is worse than r1 in two seeds of three. It cannot tell lookup supervision from any
-  nontrivial target in that slot.
-- **Showing the copy once it is supervised** (r1R against r1Rs) is not resolved with three seeds, and so no
-  interaction is claimed.
-- Only the full relay, with presence and supervision together, beat r1 on both KIND and ACTOR in every seed.
+- **Pre-registered.**
+  - *Showing the copy without supervising it cost the learner on KIND* (r1Rm against r1m, every seed; paired p
+    1/8).
+  - *Supervising the OBJECT slot with the relay value helped KIND without the copy ever being shown* (r1Rs
+    against r1, every seed; paired p 1/8). r1Rs did learn the lookup, paying 0.00004 bits per slot. That does not
+    show the lookup is what helped.
+  - *Whether showing the copy adds to supervision is not resolved* with three seeds (r1R against r1Rs). No
+    interaction is claimed.
+- **Post hoc, and they qualify each of these.**
+  - The C2 gain is small (0.0005–0.0032 bits) and rests on a 0.0005-bit separation margin.
+  - Removing OBJECT from the loss entirely (r1m against r1) moved KIND by a comparable amount (0.0012–0.0063), and
+    did so consistently. Small recipe changes move this shortfall.
+  - On ACTOR, none of the three contrasts resolves. The unscored copy, if anything, helped ACTOR.
+  - Summing KIND and ACTOR, only the full relay beats every r1 model.
 
-So the relay, built to test whether placing information near its use helps a learned reader, does not support
-that idea in this form. The copy helped only together with a training target for it. Without supervision it hurt,
-and supervision alone helped KIND a little and ACTOR not at all. [Pre-registered readings: `relay-lossmask-verdict-
-v0.1.md` (T) and `relay-2x2-verdict-v0.1.md` (C1, C2 resolved; C3 not); everything else EXPLORATORY]
+So the relay gives no support to the simple form of the idea it was built to test, that a near copy helps a learned
+reader. What it does show, at three seeds, is that the effect of placing information depends on what the learner is
+trained to produce, and that it differs between the two fields the record carries. [Pre-registered readings:
+`relay-lossmask-verdict-v0.1.md` (T); `relay-2x2-verdict-v0.1.md` (C1 and C2 resolved, C3 not). Everything else
+EXPLORATORY]
 
 ---
 

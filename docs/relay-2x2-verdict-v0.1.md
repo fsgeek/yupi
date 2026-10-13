@@ -13,18 +13,24 @@
 - **All six runs** reached 117,195 steps, exit status 0, and census step 117,195. Input manifest `457ec69a…` (the r1
   corpus `fd5da4c31e43d73d`); r1Rs target manifest `d8c23cab…` (r1R); `unscored_fields` is OBJECT for r1m and empty
   for r1Rs.
-- **Revision, disclosed.** The r1Rs runs record 4341134, clean. The r1m runs record 1ed07c0 with `git_dirty: true`.
-  At 14:47:26, when they wrote run.json, the only uncommitted file was `scripts/relay_2x2_score.py`, committed 16
-  s later at 7ae7630. Between the freeze and 4341134 only `scripts/relay_2x2_census.sh` and that scorer changed.
-  The learner code (`src/`) is identical for all six runs, so the flag is benign. The gate's literal "clean
-  revision" is not met for r1m, and we say so.
+- **Revision, disclosed.** The literal "clean revision" gate is **not met** for r1m, which records 1ed07c0 with
+  `git_dirty: true`. All six processes launched together at 14:46:42 from the same tree. Each run reads the
+  revision when it writes run.json: 14:47:26 for r1m, and 14:47:48–50 for r1Rs. That second time fell after the
+  scorer commit at 14:47:42, which is why r1Rs records 4341134 as clean. So all six ran the same code. `git diff
+  e170821..4341134 -- src` is empty. The trainer's dirty check covers `src/` and `scripts/` only, and the history
+  is consistent with the uncommitted file being `scripts/relay_2x2_score.py`. That is an inference: run.json records
+  no file list. The census raws for r1m seeds 1 and 3 and all three r1Rs seeds record `4341134+dirty`. The census's
+  dirty check covers the whole tree, and parallel census jobs were writing their raws into docs/, which is the
+  likely cause. (Reviewers: Claude finding 9; Codex finding 4.)
 - **Census sha256** matches its JSONL for all five arms. The scorer checks this and refuses on a mismatch.
 
 ## 2. Did r1Rs learn the lookup? (prereg §5): yes
 
-OBJECT cross-entropy against the relay values on r1 test inputs, in bits per slot: 0.00004, 0.00004 and 0.00005,
-against the ≤ 0.05 rule. That is better than r1R on r1 inputs (0.006) and close to r1R on its own (0.0001). Raw:
-`relay-2x2-object-ce-r1Rs-2026-10-13.jsonl`. So C2 and C3 can be read as being about lookup supervision.
+OBJECT cross-entropy against the relay values on r1 test inputs, over 20,000 windows (147,616 slots), in bits per
+slot: 0.0000444, 0.0000424 and 0.0000467. The rule is ≤ 0.05. Raw: `relay-2x2-object-ce-r1Rs-2026-10-13.jsonl`.
+For context, the pre-stamp reference values were measured on 4,000 windows for r1R seed 1 only: 0.006 on r1
+inputs and 0.0001 on its own. Those are a different subset, so they are not a direct comparison. The check shows
+r1Rs learned the lookup. It does not show that the lookup is what helped KIND (see §5).
 
 ## 3. Results
 
@@ -52,42 +58,64 @@ KIND shortfall, seeds 1–3:
 - C2 resolved and C3 not resolved: **"whether showing the copy adds to that is not resolved"**.
 - C1 resolved: **"an unscored copy in the input cost the learner, relative to a constant placeholder"**.
 
-## 5. What else must be said
+## 5. Additional readings: POST HOC, not pre-registered (revised after both verdict reviews)
 
-- **C4 was expected to be near-null, and it is not.** Removing the trivial MASKED target (r1m against r1) raised
-  the shortfall in all three seeds, by 0.0012–0.0063 bits. The pre-registration named C4's |d_s| as a noise floor
-  for near-identical recipes. On that floor, C2's effect (0.0005–0.0032) is *no larger* than what removing a trivial
-  target does. C2 is resolved by its decision rule, with the mask and denominator fixed within the contrast. But its
-  size sits inside the variation a minor recipe change produces, so it is a small effect. C4's consistent sign also
-  means C4 is not pure noise: scoring the trivial OBJECT target itself appears to help a little.
-- **ACTOR, reported alongside per prereg §5, qualifies C2.** ACTOR shortfall by seed:
-  - r1: 0.0312, 0.0299, 0.0314
-  - r1Rs: 0.0296, 0.0400, 0.0342
-  - r1m: 0.0346, 0.0438, 0.0409
-  - r1R: 0.0278, 0.0262, 0.0308
-  - r1Rm: 0.0328, 0.0363, 0.0345
+**ACTOR, under one standard for every contrast** (prereg §5 reports it alongside without scoring it). The same
+decision rule and paired signs are applied to each:
 
-  r1Rs is worse than r1 on ACTOR in seeds 2 and 3. On KIND + ACTOR together it is worse in two seeds of three
-  (r1 0.0469, 0.0445, 0.0472; r1Rs 0.0421, 0.0541, 0.0484). **C2's KIND gain is therefore not a gain on the
-  record's other learned field.** It may be a reallocation. The pre-registered reading stands for KIND only, and
-  paper 1 must give the ACTOR numbers beside it. By contrast, r1R is better than r1 on both fields in every seed.
-- **C2's limit, stated in the pre-registration:** it cannot tell lookup supervision from *any* nontrivial
-  predictable target in that slot. The lookup check shows r1Rs did learn the lookup. It does not show that the
-  lookup is what helped.
-- **C1's limit:** it cannot tell an informative but unscored copy from a varying decoy field.
-- **Relation to r1R's gain over r1** (−0.0027, −0.0052, −0.0032, seed-paired): r1Rs recovers part of it without
-  ever showing the copy. C3, the copy's increment once supervised, is not resolved.
+| contrast | ACTOR d_s, seeds 1–3 | decision rule | paired signs |
+|---|---|---|---|
+| C1 r1Rm − r1m | −0.0018, −0.0075, −0.0064 | not resolved | (−,−,−) |
+| C2 r1Rs − r1 | −0.0016, +0.0100, +0.0028 | not resolved | (−,+,+) |
+| C3 r1R − r1Rs | −0.0018, −0.0138, −0.0034 | not resolved | (−,−,−) |
+| C4 r1m − r1 | +0.0034, +0.0138, +0.0095 | **separated** (r1m worse) | (+,+,+) |
 
-## 6. Reading, for paper 1
+- On ACTOR the KIND-resolved contrasts do not resolve, and C1 *points the other way*: the unscored copy is
+  better than the placeholder on ACTOR in every seed, though the ranges overlap. C3 points toward presence helping
+  once the copy is supervised, also with overlapping ranges.
+- The earlier draft suggested that C2's KIND gain might be a reallocation away from ACTOR. The seed pattern does
+  not support that. Seed 1 has the largest KIND gain *and* improves ACTOR, while seed 2 has the smallest KIND gain
+  and the largest ACTOR loss. A seed-level overall-quality factor fits better. ACTOR also responds strongly to any
+  change in the OBJECT recipe (C4).
 
-Within these arms, three statements hold:
-1. Training the learner to *produce* the back-reference helped KIND a little, even when the copy was never shown.
-   It did not help ACTOR, which got worse in two seeds of three.
-2. *Showing* the copy without supervising it hurt.
-3. Showing it once it was supervised added nothing that three seeds resolve.
+**C4 is not a noise floor.** It is completely separated on both fields: r1m is worse than r1 on KIND (minimum
+0.01695 against maximum 0.01576) and on ACTOR. Removing OBJECT from the loss changes target scoring and loss
+normalization together, so the cause is not isolated. Seed by seed, |C2| exceeds |C4| in two seeds of three
+(1.70×, 0.08×, 1.35×). The seed-average magnitudes are 0.0018 against 0.0031. C2's complete separation rests on a
+margin of 0.00049 bits (r1 seed 2 at 0.01464 against r1Rs's maximum of 0.01415).
 
-The relay was built to test whether placing information near its point of use helps a learned reader. Neither manipulation alone reproduced
-the full relay's gain on both fields. Supervision without presence gave a small KIND gain, about as large as a
-minor recipe change moves the shortfall, and it was offset on ACTOR. Only presence and supervision *together* (r1R)
-beat r1 on both fields in every seed. C3 and the interaction are not resolved, so whether the pair is more than
-the sum of its parts is open. This is exploratory: three seeds, one world and one budget.
+**KIND + ACTOR summed, strict decision rule:**
+- r1: 0.0469, 0.0445, 0.0471
+- r1R: 0.0407, 0.0357, 0.0433
+- r1Rs: 0.0420, 0.0541, 0.0483
+- r1m: 0.0522, 0.0647, 0.0578
+- r1Rm: 0.0609, 0.0774, 0.0652
+
+Only r1R beats every r1 model (maximum 0.0433 < minimum 0.0445).
+
+**Recovery.** r1Rs recovers about 48 % of r1R's seed-mean KIND gain over r1 (seed by seed: 118 %, 10 % and 50 %).
+
+**Limits carried from the pre-registration.** C2 cannot tell lookup supervision from any nontrivial target in the
+slot. C1 cannot tell an informative but unscored copy from a varying decoy field.
+
+**Scorer deviations, disclosed** (Codex finding 7). The frozen scorer uses a 1e-15 tail tolerance, and it would
+print a p for a resolved-against outcome. Neither affects this dataset, and the scorer is left frozen.
+
+**Validation curves:** committed as `docs/relay-2x2-curves/` (r1m, r1Rs and r1Rm logs). They are not comparable
+across arms, because the masks and targets differ.
+
+## 6. Reading for paper 1 (POST HOC)
+
+Pre-registered:
+- On KIND, supervising the OBJECT slot with the relay value helped without the copy present (C2).
+- An unscored copy in the input cost the learner, relative to a constant placeholder (C1).
+- Whether showing the copy adds to supervision is not resolved (C3).
+
+Post hoc:
+- The C2 gain is small, comparable to the effect of a minor recipe change (C4), and it is not mirrored on ACTOR.
+- C1's cost is on KIND only. On ACTOR the unscored copy, if anything, helped.
+- Only the full relay beat r1 on KIND and ACTOR together under the strict rule.
+
+None of this establishes that presence and supervision are each necessary, or that the placement hypothesis is
+false. It does mean the relay gives that hypothesis no support in its simple form, "a near copy helps a learned
+reader". Every number here is from three seeds, one world and one budget.
