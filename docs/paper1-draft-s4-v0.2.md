@@ -90,8 +90,9 @@ trained on r1 (ε = 1, 15 epochs, the same paired corpus).
 That is complete separation of 3 against 3, with an exact one-sided permutation p of 1/20. With three models a side,
 this design can give no smaller p. The 15-epoch arm was pre-registered as secondary and reported without
 thresholds. This summary was computed afterwards. [EXPLORATORY] The gain is not a reallocation. The actor
-shortfall is also lower on r1R (0.0262–0.0308 against 0.0299–0.0314), though the two sets overlap. Predicting the
-relay field itself costs r1R models 0.00009–0.00028 bits per window.
+shortfall is also lower on r1R (0.0262–0.0308 against 0.0299–0.0314), though the two sets overlap. The copy is free to an ideal observer: given the window and the record's own KIND and ACTOR, its value is
+determined. It also costs no trace length, since r1 already carries the slot as a masked placeholder. Predicting it
+costs r1R models 0.00009–0.00028 bits per scored window, an order of magnitude below the smallest gain.
 
 **What the relay did not show.** The pre-registered test priced the gain by Δι_4. It was rejected. At 5 epochs the
 gain rises where ι_4 falls and also where ι_4 rises. At 15 epochs the seed-mean fit's slope on Δι_4 is 0.0005, with a

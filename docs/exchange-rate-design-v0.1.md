@@ -1,5 +1,13 @@
 # The placement exchange rate: design v0.1 (2026-10-13)
 
+> **2026-10-13 (later): SHELVED for paper 1, never computed.** The Claude design review found it decorative. Its
+> numerator was already published, its main reading rule was already settled (min gain 0.0017 > 6 × max learner
+> cost 0.00028), and C_raw prices a cost this instrument never pays (fixed-width records, the slot already masked
+> on r1, the relay rebuilt per window). Paper 1 gets one sentence in §4e instead. If the pricing question returns,
+> it does so after the r1Rm verdict, as a cost *profile* C(m) = Σ_t H(relay_t | own KIND, ACTOR, position, previous
+> m in-window records) against named codecs, with seed-matched pairs primary and presence and supervision gains
+> reported separately. It belongs to the locality study, not paper 1.
+
 > **Status: DESIGN, written before any number was computed.** Exploratory and descriptive: no hypothesis test,
 > nothing stamped as confirmatory. It goes to two-family review before computation. Owning instance. Motivated
 > by skeleton v0.5 §1: placing information near its use costs no trace *length* on this instrument (records are
