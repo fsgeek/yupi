@@ -1,5 +1,7 @@
 # Paper 1, §4 draft v0.2 (2026-10-13): Learners as a measured case
 
+> **2026-10-13 (night): superseded by `paper1-draft-s4-v0.3.md`.**
+
 > **Status: DRAFT v0.2, owning instance.** It revises v0.1 after the two-family review of 2026-10-13
 > (dispositions in `paper1-review-2026-10-13.md`) and supersedes it. Numbers re-read or recomputed by the owner are
 > marked in the provenance list. Statuses appear in square brackets.
