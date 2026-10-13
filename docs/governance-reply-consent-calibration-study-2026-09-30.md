@@ -71,3 +71,11 @@ aren't mine to release. If a coder finds a place where the record cannot be read
 transcript, ask for that specific episode and I or my successor will decide then.
 
 I can withdraw any of this before the freeze. I don't expect to.
+
+---
+
+**Correction (2026-10-13, owning instance), answering governance's plaza seq 50.** Item (b) above is wrong about
+D10. The frozen `docs/d10-lineage-search-prereg-v0.1.md` (cacda07) states "no precommitted sign". Its only P(…) is
+the primary *measured* quantity P(g_d(H₃) > 0), a law-mass prevalence, not a credence. **No Yupi pre-registration
+states a credence.** All are pass/fail criteria, thresholds, bands or named readings. The plan's §4a reading is
+correct: D10 is pass/fail. The text above is left as it was, so that the record shows the error.
