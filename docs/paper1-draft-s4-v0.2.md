@@ -38,7 +38,10 @@ The criterion was β_long > 0 with t ≥ 3 in every run, on the content rungs r1
 
 **What the coefficient is not.** The model is linear. In raw per-model bins, with no controls, shortfall rises with
 ι_4. Above ι_4 = 0.001 it rises bin by bin in every one of the 45 models (bins at 0.01, 0.05, 0.2 and 0.4). For r1
-ε = 1 at 15 epochs it goes from 0.001–0.004 bits at ι_4 = 0 to 0.028–0.031 above 0.4. The two lowest bins are noisy. The
+ε = 1 at 15 epochs it goes from 0.001–0.004 bits at ι_4 = 0 to 0.028–0.031 above 0.4. The two lowest bins are noisy.
+**Figure 4a** (`figures/b1-raw-bins-2026-10-13.png`, from `scripts/fig_b1_raw_bins.py`) shows every model, one line
+each. The 5-epoch held-out set covers five of the eight cells. One r4 ε = ½ model at 5 epochs is the high-excess
+basin noted in the learner results. The
 "plateau" seen in earlier binned fits appears only after the entropy control is added, and that control
 extrapolates off the support of the ι_4 = 0 classes (§5.1). β_long is therefore not a price per bit, and its size is
 not compared across cells or budgets. The claim is the sign, model by model. It is a correlation within cells:
