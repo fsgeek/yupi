@@ -23,10 +23,11 @@ an accounting term) correlate at 0.79. A pre-declared horse race between them wa
 trivial fixed effects for observable classes (the last record's kind) were added. *Not identified.* Settling it
 needs regressors that are not collinear by construction, or an intervention that moves one and holds the other.
 
-**5.3 Does the relay help by moving information or by binding it?** We trained three ceiling-holding arms: relay,
-decoy and self-copy. The self-copy carries zero entropy, so it cannot absorb any effect that comes simply from a
+**5.3 Does the relay help by moving information or by binding it?** We designed a test with three ceiling-holding
+arms: relay, decoy and self-copy. Pilot models were trained and never opened. The self-copy carries zero entropy, so it cannot absorb any effect that comes simply from a
 slot carrying *a variable field*. Under planted rival mechanisms, the pre-registered design attributed the
-mechanism wrongly 14–33 % of the time. Three rounds of two-family review blocked it, and the test was not run.
+mechanism wrongly 14–33 % of the time. Two-family pre-stamp review blocked it in every round (the record counts three to four), and the test was not
+run.
 *Not identified by those arms.* Settling it needs a field that varies but carries no information about the
 target. Better still, it needs interventions on a *fixed* trained model at evaluation time, such as
 counterfactual windows or interchange interventions (Geiger et al. 2021), rather than comparisons between models
