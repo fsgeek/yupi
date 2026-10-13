@@ -37,6 +37,26 @@ def frame(windows, seq_len: int = SEQ):
     return x, y, m
 
 
+FIELDS = ("KIND", "ACTOR", "OBJECT", "RELATED", "LINEAGE")    # the five-token record (Part I D5)
+RESET_ID = TOKEN_ID["RESET"]
+
+
+def unscore_fields(windows, m, fields):
+    """A copy of mask `m` with the target positions of the named record fields removed (2026-10-13: the
+    loss-masked relay arm). Record grids start after a leading RESET. The end-of-window target is kept."""
+    bad = [f for f in fields if f not in FIELDS]
+    if bad:
+        raise ValueError(f"unknown record fields {bad!r}; expected a subset of {FIELDS}")
+    out = m.copy()
+    slots = [FIELDS.index(f) for f in fields]
+    for i, w in enumerate(windows):
+        off = 1 if len(w) and w[0] == RESET_ID else 0
+        for j in range(off, len(w)):
+            if (j - off) % 5 in slots:
+                out[i, j] = False
+    return out
+
+
 def load_split(corpus_dir, name: str, seq_len: int = SEQ):
     """(inputs, targets, mask, per-window table dicts) for a corpus split."""
     rows = read_split(Path(corpus_dir), name)

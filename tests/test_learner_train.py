@@ -100,3 +100,11 @@ def test_revision_lineage_survives_resume(small_corpus, tmp_path, monkeypatch):
     assert torch.load(tmp_path / "r" / "ckpt.pt", weights_only=False)["lineage"] == [["aaa", True], ["bbb", False]]
     train(_cfg(small_corpus, tmp_path / "r", max_steps=30), resume=True)       # same revision: no new entry
     assert json.loads((tmp_path / "r" / "run.json").read_text())["revision_lineage"] == [["aaa", True], ["bbb", False]]
+
+
+def test_unscored_fields_absent_from_comparable_when_empty():
+    # 2026-10-13: old checkpoints (no unscored_fields) must still resume; a non-empty value must be compared.
+    from yupi.learner.train import TrainConfig, _comparable
+    a = _comparable(TrainConfig(corpus_dir="c", seed=1, out_dir="o"))
+    b = _comparable(TrainConfig(corpus_dir="c", seed=1, out_dir="o", unscored_fields=("OBJECT",)))
+    assert "unscored_fields" not in a and b["unscored_fields"] == ["OBJECT"] and a != b

@@ -22,7 +22,7 @@ import torch
 import torch.nn.functional as F
 
 from yupi.learner.checkpoint import load, rng_state, save_atomic, set_rng_state
-from yupi.learner.data import batches, epoch_order, load_split
+from yupi.learner.data import batches, epoch_order, load_split, unscore_fields
 from yupi.learner.model import Decoder, ModelConfig, n_params
 
 
@@ -42,6 +42,7 @@ class TrainConfig:
     ckpt_every: int = 500
     val_every: int = 250
     max_steps: int | None = None
+    unscored_fields: tuple = ()     # 2026-10-13: record fields left out of the loss (the loss-masked relay arm)
     model: ModelConfig = field(default_factory=ModelConfig)
 
 
@@ -77,6 +78,8 @@ def val_loss(model, X, Y, M, device, bs=1024) -> float:
 def _comparable(c: TrainConfig) -> dict:
     d = json.loads(json.dumps(asdict(c)))
     d.pop("max_steps")
+    if not d["unscored_fields"]:
+        d.pop("unscored_fields")    # absent when empty, so checkpoints from before the field resume unchanged
     return d
 
 
@@ -110,6 +113,9 @@ def train(c: TrainConfig, resume: bool = False) -> dict:
     np.random.seed(c.seed)
     X, Y, M, _ = load_split(c.corpus_dir, "train", c.model.n_pos)
     VX, VY, VM, _ = load_split(c.corpus_dir, "val", c.model.n_pos)
+    if c.unscored_fields:
+        M = unscore_fields([Y[i, :M[i].sum() - 1] for i in range(len(Y))], M, c.unscored_fields)
+        VM = unscore_fields([VY[i, :VM[i].sum() - 1] for i in range(len(VY))], VM, c.unscored_fields)
     steps_per_epoch = math.ceil(len(X) / c.batch_size)
     planned = c.epochs * steps_per_epoch
     total = planned if c.max_steps is None else min(planned, c.max_steps)
