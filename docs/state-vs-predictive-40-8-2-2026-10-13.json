@@ -1,0 +1,122 @@
+[
+ {
+  "eps": "1",
+  "rung": "r0",
+  "state_entropy": 3.947370849637951,
+  "pnext_total": 0.9984340111986219,
+  "pnext_irreducible": 0.556617323285,
+  "pnext_gap": 0.4418166879136223,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r0-2026-09-06.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r0-2026-09-06.json"
+  ]
+ },
+ {
+  "eps": "1",
+  "rung": "r1",
+  "state_entropy": 0.6008355759960454,
+  "pnext_total": 1.2136576097069771,
+  "pnext_irreducible": 1.0633662241963917,
+  "pnext_gap": 0.1502913855104676,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r1-2026-09-05.json"
+  ]
+ },
+ {
+  "eps": "1",
+  "rung": "r2",
+  "state_entropy": 0.5277293540521433,
+  "pnext_total": 1.1979995312146756,
+  "pnext_irreducible": 1.0633662241963997,
+  "pnext_gap": 0.13463330701837076,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r2-2026-09-05.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r2-2026-09-05.json"
+  ]
+ },
+ {
+  "eps": "1",
+  "rung": "r3",
+  "state_entropy": 0.4046373015478944,
+  "pnext_total": 1.1693786016217378,
+  "pnext_irreducible": 1.0633662241964874,
+  "pnext_gap": 0.10601237742518697,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r3-2026-09-06.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r3-2026-09-06.json"
+  ]
+ },
+ {
+  "eps": "1",
+  "rung": "r4",
+  "state_entropy": 0.38981145471813566,
+  "pnext_total": 1.1659875102373027,
+  "pnext_irreducible": 1.0633662241966733,
+  "pnext_gap": 0.10262128604030284,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r4-2026-09-04.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r4-2026-09-05.json"
+  ]
+ },
+ {
+  "eps": "1/2",
+  "rung": "r0",
+  "state_entropy": 3.3710775745379635,
+  "pnext_total": 0.9158269631730442,
+  "pnext_irreducible": 0.4913424814685868,
+  "pnext_gap": 0.42448448170446323,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r0-2026-09-06-eps1_2.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r0-2026-09-06-eps1_2.json"
+  ]
+ },
+ {
+  "eps": "1/2",
+  "rung": "r1",
+  "state_entropy": 0.296259334879133,
+  "pnext_total": 0.9906041598426102,
+  "pnext_irreducible": 0.8983846061253807,
+  "pnext_gap": 0.09221955371724523,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r1-2026-09-05-eps1_2.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r1-2026-09-05-eps1_2.json"
+  ]
+ },
+ {
+  "eps": "1/2",
+  "rung": "r2",
+  "state_entropy": 0.24000252777628445,
+  "pnext_total": 0.9774863108586731,
+  "pnext_irreducible": 0.8983846061253614,
+  "pnext_gap": 0.0791017047333136,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r2-2026-09-05-eps1_2.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r2-2026-09-05-eps1_2.json"
+  ]
+ },
+ {
+  "eps": "1/2",
+  "rung": "r3",
+  "state_entropy": 0.1774427218738968,
+  "pnext_total": 0.9573933174206966,
+  "pnext_irreducible": 0.8983846061253812,
+  "pnext_gap": 0.059008711295307464,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r3-2026-09-06-eps1_2.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r3-2026-09-06-eps1_2.json"
+  ]
+ },
+ {
+  "eps": "1/2",
+  "rung": "r4",
+  "state_entropy": 0.165793924058239,
+  "pnext_total": 0.9544446931359566,
+  "pnext_irreducible": 0.898384606125425,
+  "pnext_gap": 0.05606008701055788,
+  "sources": [
+   "docs/c1prime-loop-query-ceilings-40-8-2-r4-2026-09-05-eps1_2.json",
+   "docs/c1prime-loop-predictive-targets-40-8-2-r4-2026-09-05-eps1_2.json"
+  ]
+ }
+]
