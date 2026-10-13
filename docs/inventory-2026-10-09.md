@@ -165,3 +165,13 @@ class-clustered errors, KIND and actor. B5′, B5 and B2 support it.
 - **A1 / injectivity.** It holds for the structural-ID observer, not the pattern observer.
 - **Ceilings** are Bayes predictive losses and include irreducible future entropy.
 - **B2.** At ε = 1, r1 > r3 is seed-resolved at nearly equal ι_4, which is a counterexample to ordering by ι_4.
+
+## J. The loss-masked relay arm (2026-10-13, `relay-lossmask-verdict-v0.1.md`)
+
+- **Pre-registered reading T is MET** (stamped dc26a03 before training). r1R with OBJECT unscored (r1Rm) has KIND
+  shortfalls of 0.028, 0.041 and 0.031, all above r1R's maximum of 0.01296 (exact p = 1/20).
+- **EXPLORATORY: r1Rm is also above every r1 model.** A copy present but not trained on leaves the learner worse
+  than no copy. On identical inputs the deficit is at records 6–8 only.
+- **Consequence for B3/B4 and §I.** The relay's gain over r1 requires auxiliary supervision of the back-reference
+  lookup. The pure-distance reading is contradicted within these arms. Mechanism 3 (supervision) is isolated, and
+  mechanisms 1 and 2 are no longer needed to explain the gain. Why unsupervised presence hurts is open.

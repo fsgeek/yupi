@@ -102,15 +102,25 @@ magnitudes not interpreted] An earlier exploratory reading said that a regressio
 reviewer give coefficients that alternate in sign across adjacent, collinear lags, so they do not read as a
 distance price.
 
-**Three rival mechanisms, not separated.**
+**Three rival mechanisms, and the one the loss-masked arm settles.**
 1. *Distance:* the copy shortens how far back the learner must look.
-2. *Binding content:* the copy hands the learner a fact ("this actor's last event was …") that it would otherwise
-   have to assemble.
-3. *Auxiliary supervision:* r1R models are trained to produce the relay value, which is the very lookup the KIND
+2. *Binding content:* the copy hands the learner a fact ("this actor's last event was …").
+3. *Auxiliary supervision:* r1R models are trained to *produce* the relay value, which is the lookup the KIND
    prediction needs.
 
-The third is testable directly. A pre-registered arm, r1R with the OBJECT slot left out of the loss, is running
-(`relay-lossmask-prereg-v0.1.md`, stamped before training). This paragraph will be rewritten to its reading.
+A pre-registered arm, r1Rm, is r1R with the OBJECT slot left out of the training loss
+(`relay-lossmask-prereg-v0.1.md`, stamped before training; verdict `relay-lossmask-verdict-v0.1.md`). It keeps
+the copy in the input and removes it as a target. Its three models have KIND shortfalls of 0.028, 0.041 and 0.031.
+That is above every r1R model, which meets the pre-registered reading "supervision contributes" (exact p = 1/20).
+It is also above every r1 model, which the pre-registration did not foresee [EXPLORATORY]. A copy that is present
+but never trained on leaves the learner *worse* than having no copy. On identical inputs, r1Rm matches r1R at
+records 1–5 and falls behind only at records 6–8, where the far information is.
+
+So, within these arms, the relay's gain requires training the learner to produce the back-reference. Presenting
+it is not enough, and on its own it hurts. A pure distance reading predicted that r1Rm would do no worse than r1,
+and every model contradicts it. The result is closer to sub-task supervision (Abbe et al. 2024) than to an input
+index. Why an unsupervised variable field hurts is not established. A candidate is that the learner must learn,
+with no direct signal, to read a varying token stream. Paper 1 reports the observation and not a mechanism.
 
 ---
 
@@ -124,6 +134,8 @@ The third is testable directly. A pre-registered arm, r1R with the OBJECT slot l
   the frozen HC1 fit to 1e-9). This reproduces Claude findings 5 and 15.
 - 4b: `converged-ladder-verdict-v0.1.md` §C2. The ratios were reproduced by Codex (finding 12).
 - 4d: `count-baseline-comparison-2026-10-04.json`, per-seed ratios recomputed by the owner on 2026-10-13.
+- 4e (loss-masked arm): `relay-lossmask-verdict-v0.1.md` (censuses `learner-window-census-r1Rm-*-2026-10-13.json`;
+  by-position check `relay-lossmask-kind-by-position-2026-10-13.jsonl`).
 - 4e: the r1 and r1R seed means, the actor shortfalls and the relay-field excess were all recomputed by the owner on
   2026-10-13 from the census JSONLs (Codex also reproduced the means). Slope and se:
   `relay-paired-secondary-2026-10-02.json`. Withdrawal of the full-profile reading: Codex finding 10 and Claude
