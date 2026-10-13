@@ -39,3 +39,21 @@ consumer, but its abstract is about schema and semantic linkage, not where in th
 - In this limited search we found no statement that trace information should be placed relative to its point of
   use in the stream, nor any measurement of what such placement buys a learned consumer at a fixed ceiling. §1
   says "we found no", not "there is no", and cites the scope above.
+
+## Addendum (same day, after the two-family draft review)
+
+**Log20's measure, read from the full text** (SOSP '17 PDF, section "Entropy of LPS Placement", Eqs. 1–2):
+H_S(X) = Σ_L p(L) · H_L(X), the conditional entropy of the execution path X given the log output L that placement S
+produces, with p(x) estimated from sampled production path profiles. Placement minimises H_S under an overhead
+threshold. This is **state** (path) uncertainty given the log, the identifiability objective. Yupi's ceiling is
+**predictive**: the entropy of the next event given the window. The two differ by the irreducible-future term
+(review B6). §1 should state this exactly. Log20 is the precedent for the state term and not for our ceiling.
+
+**Back-reference fields** (Claude review finding 11):
+- **ARIES** (Mohan, Haderle, Lindsay, Pirahesh, Schwarz, *ACM TODS* 17(1), 1992). Each log record carries a
+  PrevLSN, the LSN of the same transaction's previous record. This is checked only against course material
+  (Waterloo CS448 slides; record layout LSN, TransId, PrevLSN, RedoInfo, UndoInfo), and the paper's own wording
+  is still to be read before citing. It is a per-entity link to that entity's most recent earlier record, which is
+  exactly the relay's lookup, held as a *pointer* where the relay *copies a value*.
+- Linux `sched_switch` (prev_state) and tracing parent/related activity identifiers (OpenTelemetry, ETW) are
+  further candidates, **not yet checked against primary documentation**.

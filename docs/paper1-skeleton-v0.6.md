@@ -66,8 +66,8 @@ denormalization for a learned reader, not as a new principle.
 ## Owed before external review
 
 1. The loss-masked relay arm, scored to its pre-registration.
-2. The fixed-effects and coarse-cluster robustness check (Claude finding 15) across all cells, run by the owner.
-3. The raw per-model bins as §4a's figure (Claude finding 5), reproduced by the owner.
+2. ~~The fixed-effects and coarse-cluster robustness check across all cells.~~ Done 2026-10-13: 45/45 keep t ≥ 3.
+3. ~~The raw per-model bins.~~ Done 2026-10-13: monotone above 0.001 in 45/45. The figure is still to draw.
 4. The back-reference citations verified, and Log20's measure read from its full text.
 5. A whole-draft second review by both families.
 

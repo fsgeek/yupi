@@ -31,12 +31,14 @@ The criterion was β_long > 0 with t ≥ 3 in every run, on the content rungs r1
 - Re-run with errors clustered by class, every converged run keeps t ≥ 3. With the mass control, the lowest t is
   5.07 for KIND and 3.11 for the actor. Clustering moves the standard errors by factors of 0.98–1.13, with a median
   of 1.04. With 20–33 k classes for about 85 k windows, class clustering is a weak check.
-- A stronger check, adding fixed effects for the last record's kind and the actor count and clustering on coarse
-  cells, kept t ≥ 3.8 in the six r1 ε = 1 models the Claude reviewer ran. It has not been run on every cell.
-  [EXPLORATORY; owed across all cells before external review]
+- A stronger check adds fixed effects for the last prefix record's kind and the number of distinct actors, and
+  clusters errors on those 26–28 coarse cells. Every run keeps β_long > 0 with t ≥ 3: 21 of 21 held-out (lowest t
+  3.44) and 24 of 24 converged (lowest t 3.60). [EXPLORATORY robustness of confirmatory runs;
+  `b1-fe-coarse-robustness-2026-10-13.json`]
 
-**What the coefficient is not.** The model is linear. In raw per-model bins, shortfall rises steadily with ι_4: for
-r1 ε = 1 at 15 epochs, from about 0.001–0.004 bits at ι_4 = 0 to about 0.03 above 0.4, in all three models. The
+**What the coefficient is not.** The model is linear. In raw per-model bins, with no controls, shortfall rises with
+ι_4. Above ι_4 = 0.001 it rises bin by bin in every one of the 45 models (bins at 0.01, 0.05, 0.2 and 0.4). For r1
+ε = 1 at 15 epochs it goes from 0.001–0.004 bits at ι_4 = 0 to 0.028–0.031 above 0.4. The two lowest bins are noisy. The
 "plateau" seen in earlier binned fits appears only after the entropy control is added, and that control
 extrapolates off the support of the ι_4 = 0 classes (§5.1). β_long is therefore not a price per bit, and its size is
 not compared across cells or budgets. The claim is the sign, model by model. It is a correlation within cells:
@@ -113,9 +115,9 @@ The third is testable directly. A pre-registered arm, r1R with the OBJECT slot l
 - 4a counts: the d1 verdict (P1–P4), the actor verdict (A1–A3), the converged-ladder verdict (C1, A4). Seed
   inventory: Codex finding 16 and Claude finding 14, checked against `d1-long-lag-prereg-v0.1.md:28`. Clustering:
   `b1-clustered-refit-2026-10-09.json`, with SE ratios recomputed by the owner on 2026-10-13 (converged 0.981–1.126,
-  median 1.039; held-out 1.028–1.186). Fixed-effects check: Claude finding 15 (`fe2.py`, reviewer scratch), **not
-  reproduced by the owner**. Raw bins: Claude finding 5, **not reproduced by the owner**. Owed before external
-  review.
+  median 1.039; held-out 1.028–1.186). Fixed-effects check and raw bins: run by the owner on 2026-10-13, all 45
+  runs (`scripts/b1_fe_coarse_robustness.py` → `b1-fe-coarse-robustness-2026-10-13.json`; it gates on reproducing
+  the frozen HC1 fit to 1e-9). This reproduces Claude findings 5 and 15.
 - 4b: `converged-ladder-verdict-v0.1.md` §C2. The ratios were reproduced by Codex (finding 12).
 - 4d: `count-baseline-comparison-2026-10-04.json`, per-seed ratios recomputed by the owner on 2026-10-13.
 - 4e: the r1 and r1R seed means, the actor shortfalls and the relay-field excess were all recomputed by the owner on
