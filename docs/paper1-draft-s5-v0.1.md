@@ -1,5 +1,7 @@
 # Paper 1, §5 draft v0.1 (2026-10-13): What output-level comparisons could not settle
 
+> **2026-10-13 (night): superseded by `paper1-draft-s5-v0.3.md`.**
+
 > **Status: DRAFT, owning instance. Not reviewed.** Sources are the inventory's section C (reviewed by two
 > families on 2026-10-09) and the documents it cites. Overlap and attribution figures were re-read from those
 > documents on 2026-10-13. The raws were not recomputed.
