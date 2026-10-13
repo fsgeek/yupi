@@ -24,12 +24,12 @@ This is the paper's result, and it is exact (§3).
 - The learners beat a count table over the ceiling's own classes by 1.3–5.2× per seed (exploratory).
 - No cross-interface ordering is claimed, since a seed-resolved counterexample exists.
 
-**One intervention, exploratory, and what it turned out to be.** With the ceiling held identical, three relay
-models beat three controls (complete separation, exact p = 0.05). The pre-registered loss-masked arm then showed
-that the gain requires the relay value to be a training *target*. With the copy present but unscored, all three
-models do worse than r1R and also worse than r1, with the deficit at the late, far-dependent records. Within this
-instrument, then, *presenting* information near its use did not help a learner. *Training the learner to produce
-the back-reference* did. That reverses the motivation the relay was built on, and §4e says so.
+**One intervention, exploratory.** With the ceiling held identical, three relay models beat three controls
+(exact p = 0.05). The pre-registered loss-masked arm showed that the gain requires the copy to be a training target
+as well as an input. With the copy present but unscored, the models did worse than both r1R and r1. This shows
+necessity, not mechanism. Whether presence alone hurts because of the copy or because of an unsupervised varying
+field is open, as is whether supervision helps without presence. The arms that separate these are named in §4e.
+The motivating idea, that placing information near its use helps a learned reader, found no support here.
 
 **What is ours and what is not.** Someya et al. (ACL 2025) used entropy-preserving transformations, exact PFSA
 local entropies, and learner KL against the inherent entropy. Our ι_m is their m-local entropy less the
@@ -40,7 +40,7 @@ full-window entropy. So we do not claim exact ceilings or entropy-preserving rel
 - within-interface analyses with the model as the unit;
 - the systems framing: Log20's identifiability objective (SOSP '17) priced against a learned consumer.
 
-**Producer and consumer locality: motivation only, and the one test of it went the other way** (see above). Traces are written where activity happens, and learned
+**Producer and consumer locality: motivation only. Its one test found no support for it** (see above). Traces are written where activity happens, and learned
 consumers may pay for where information sits. That is the hypothesis the instrument is built to test, and paper 1
 does not establish it. The relay is a consumer-side transformation of a window. Back-reference fields are a
 familiar log-design pattern, for example:

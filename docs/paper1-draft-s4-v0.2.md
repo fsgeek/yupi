@@ -113,14 +113,19 @@ A pre-registered arm, r1Rm, is r1R with the OBJECT slot left out of the training
 the copy in the input and removes it as a target. Its three models have KIND shortfalls of 0.028, 0.041 and 0.031.
 That is above every r1R model, which meets the pre-registered reading "supervision contributes" (exact p = 1/20).
 It is also above every r1 model, which the pre-registration did not foresee [EXPLORATORY]. A copy that is present
-but never trained on leaves the learner *worse* than having no copy. On identical inputs, r1Rm matches r1R at
-records 1–5 and falls behind only at records 6–8, where the far information is.
+but never trained on leaves the learner *worse* than having no copy. On identical inputs, r1Rm stays within 0.003 bits
+of r1R at records 1–5, and the gap grows from record 6 to 0.016–0.033 at record 8. (That comparison is against
+r1R, not r1.)
 
-So, within these arms, the relay's gain requires training the learner to produce the back-reference. Presenting
-it is not enough, and on its own it hurts. A pure distance reading predicted that r1Rm would do no worse than r1,
-and every model contradicts it. The result is closer to sub-task supervision (Abbe et al. 2024) than to an input
-index. Why an unsupervised variable field hurts is not established. A candidate is that the learner must learn,
-with no direct signal, to read a varying token stream. Paper 1 reports the observation and not a mechanism.
+So the relay's gain requires the copy to be a training target as well as an input. Presence alone did not help.
+Within these arms it hurt, and that may be the cost of an unsupervised, varying field rather than a fact about the
+copy (§5.3). This is necessity, not mechanism. Supervision may be what lets the learner read the copy, which could
+then help through distance or binding. Three arms would separate these, and none has been run:
+- supervision without presence (the paired corpora allow it: r1 inputs, r1R targets);
+- r1 with OBJECT unscored;
+- a masked variable-but-uninformative field.
+
+[pre-registered reading T: CONFIRMATORY in scale 3 + 3; everything else EXPLORATORY]
 
 ---
 
