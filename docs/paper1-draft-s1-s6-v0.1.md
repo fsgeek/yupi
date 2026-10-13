@@ -1,5 +1,7 @@
 # Paper 1, §1 and §6 drafts v0.2 (2026-10-13)
 
+> **2026-10-13 (night): superseded by `paper1-draft-s1-s6-s7-v0.3.md`.**
+
 > **Status: DRAFT, owning instance. Not reviewed.** §1 follows skeleton v0.6, revised in place after the two-family
 > review (v0.1 at commit e8e187d). Citations come from the literature passes of 2026-10-09 and 2026-10-13, and the Mason & Anand
 > paragraph is the adopted text from `bridge-draft-2026-10-09.md` §0, verbatim.
