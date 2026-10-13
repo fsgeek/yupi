@@ -118,9 +118,9 @@ One more caution. A richer interface still helps the learner in absolute terms. 
 (ceiling plus shortfall) is lower than on r1. What the profile prices is the share of the knowable that the learner
 fails to capture, not whether richer telemetry is worth having.
 
-<!-- TODO before review: confirm the absolute-loss sentence with converged r1 ε=1 numbers. The converged prereg
-excluded r1 at ε = 1, and the 5-epoch means (r1 0.021, r2 0.029) are under-converged. If no clean source exists,
-cut the sentence. -->
+At ε = 1, converged learners reach 0.9994 + 0.0154 = 1.015 bits per next KIND on r1 and 0.9548 + 0.0189 =
+0.974 on r2. At ε = ½ the figures are 0.895 and 0.853. [ceilings EXACT; shortfalls are means over three seeds of the
+converged census, `converged-ladder-c3c4-2026-10-02.json`]
 
 ---
 
