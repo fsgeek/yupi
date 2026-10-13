@@ -111,9 +111,11 @@ distance price.
 A pre-registered arm, r1Rm, is r1R with the OBJECT slot left out of the training loss
 (`relay-lossmask-prereg-v0.1.md`, stamped before training; verdict `relay-lossmask-verdict-v0.1.md`). It keeps
 the copy in the input and removes it as a target. Its three models have KIND shortfalls of 0.028, 0.041 and 0.031.
-That is above every r1R model, which meets the pre-registered reading "supervision contributes" (exact p = 1/20).
-It is also above every r1 model, which the pre-registration did not foresee [EXPLORATORY]. A copy that is present
-but never trained on leaves the learner *worse* than having no copy. On identical inputs, r1Rm stays within 0.003 bits
+That is above every r1R model, which meets the pre-registered reading "supervision contributes" (unpaired exact
+p = 1/20; paired within seeds, 1/8).
+It is also above every r1 model, which the pre-registration did not foresee [EXPLORATORY]. That comparison is
+between whole recipes, which differ in more than the copy: a varying field versus a constant placeholder, r1's
+trivial OBJECT target, and a loss denominator about 24 % smaller. On identical inputs, r1Rm stays within 0.003 bits
 of r1R at records 1–5, and the gap grows from record 6 to 0.016–0.033 at record 8. (That comparison is against
 r1R, not r1.)
 

@@ -172,6 +172,15 @@ class-clustered errors, KIND and actor. B5′, B5 and B2 support it.
   shortfalls of 0.028, 0.041 and 0.031, all above r1R's maximum of 0.01296 (exact p = 1/20).
 - **EXPLORATORY: r1Rm is also above every r1 model.** A copy present but not trained on leaves the learner worse
   than no copy. On identical inputs the deficit is at records 6–8 only.
-- **Consequence for B3/B4 and §I.** The relay's gain over r1 requires auxiliary supervision of the back-reference
-  lookup. The pure-distance reading is contradicted within these arms. Mechanism 3 (supervision) is isolated, and
-  mechanisms 1 and 2 are no longer needed to explain the gain. Why unsupervised presence hurts is open.
+- **Consequence for B3/B4 and §I (revised after both verdict reviews).** OBJECT-target supervision contributes
+  under this recipe. Keeping the copy without that loss does not reproduce the gain. This is necessity, not
+  mechanism: it does not say which computation the loss teaches. Only the simple prediction r1Rm ≤ r1 (a
+  distance account in which an unscored copy is costless) failed.
+- "r1Rm worse than r1" compares complete recipes. Three confounds are open:
+  - a varying unsupervised field versus a constant placeholder;
+  - r1's trivial OBJECT target;
+  - a loss denominator about 24 % smaller (Codex).
+  The separating arms, none run: supervision-only (r1 inputs, r1R targets; the paired corpora allow it); r1m with
+  matched loss normalization; a masked variable-but-uninformative field.
+- **p-values.** 1/20 is the pre-registered unpaired permutation. Swapping only within matched seed pairs gives
+  1/8.

@@ -28,7 +28,9 @@ arms: relay, decoy and self-copy. Pilot models were trained and never opened. Th
 slot carrying *a variable field*. Under planted rival mechanisms, the pre-registered design attributed the
 mechanism wrongly 14–33 % of the time. Two-family pre-stamp review blocked it in every round (the record counts three to four), and the test was not
 run.
-*Not identified by those arms.* Settling it needs a field that varies but carries no information about the
+*Not identified by those arms.* A later arm narrowed the question without settling it (§4e): with the relay left out
+of the loss, the gain disappears, so OBJECT-target supervision contributes. Whether distance or binding then
+contributes is still not identified. Settling it needs a field that varies but carries no information about the
 target. Better still, it needs interventions on a *fixed* trained model at evaluation time, such as
 counterfactual windows or interchange interventions (Geiger et al. 2021), rather than comparisons between models
 trained on different corpora.
