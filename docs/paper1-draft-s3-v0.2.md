@@ -1,5 +1,7 @@
 # Paper 1, §3 draft v0.2 (2026-10-13): Exact observability is a profile, not a number
 
+> **2026-10-13 (night): superseded by `paper1-draft-s3-v0.3.md`.**
+
 > **Status: DRAFT v0.2, owning instance.** v0.1 was reviewed adversarially by Claude and by Codex on 2026-10-13.
 > Each finding's disposition is in `paper1-review-2026-10-13.md`, and the review numbers adopted here were
 > reproduced by the owner where noted. Supersedes v0.1, which is kept for the record. Statuses are in square
