@@ -40,9 +40,10 @@ Small transformers trained from scratch on each interface's traces are scored ag
    holds for the next event's kind and for the identity of the entity that acts, on held-out models and at
    convergence, and training longer does not remove it. It is a correlation. The learners beat a count baseline by
    1.3–5.2× per seed (§4d).
-3. *A near copy at a fixed ceiling* (§4e). Three relay models beat three controls, with the ceiling held identical.
-   This is exploratory, and three mechanisms remain open: distance, binding content, and auxiliary supervision. A
-   pre-registered loss-masked arm tests the last.
+3. *A near copy helps only as a training target* (§4e). With the ceiling held identical, three relay models beat
+   three controls. A pre-registered arm that keeps the copy in the input but removes it from the loss does worse
+   than both, with the deficit at the late, far-dependent records. Presenting information near its use did not
+   help these learners. Training them to produce the back-reference did. All of this is three models a side.
 4. *What output-level comparisons could not settle* (§5). These are four questions an exact world still left
    open, each with the design that would settle it, including whether the near copy helps by shortening distance
    or by supplying a binding fact.
@@ -78,8 +79,8 @@ predictive distributions, which lie outside the text-only observation class.
 - *One baseline.* The count table is a smoothed n-gram over pattern classes. A recurrent baseline might narrow
   the gap.
 - *Correlation within cells.* The within-cell law controls entropy and frequency, and is not causal.
-- *One intervention, three models a side.* Its 3 vs 3 separation gives p = 0.05 at best. Its mechanism is not
-  identified, and its relay value is also a training target.
+- *One intervention, three models a side.* Each 3 vs 3 separation gives p = 0.05 at best. Why an unscored copy
+  hurts is not established.
 
 **Next studies.**
 1. *Interventions on fixed models.* Counterfactual windows and interchange interventions on trained models, with
