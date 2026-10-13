@@ -9,8 +9,11 @@
 Systems are instrumented for the people who debug them. A trace records an event where it happens: the scheduler
 logs a dispatch when it dispatches, the lock manager logs a release when it releases. Work on log placement asks
 *which* events to record so that a failure can be reconstructed afterwards. Log20 (Zhao et al., SOSP 2017) makes
-this information-theoretic: it places log statements so that they disambiguate execution paths, under a budget on
-runtime overhead. The figure of merit is identifiability: can the hidden execution be recovered from the record?
+this information-theoretic: it places log statements to minimise the conditional entropy of the execution path
+given the log output, under a budget on runtime overhead. The figure of merit is identifiability: how much
+uncertainty about the hidden execution the record leaves. A learned reader faces a different quantity. It predicts
+what happens next, so its best achievable loss also contains randomness that no record could remove. That predictive
+ceiling, and not state identifiability, is what we hold learners against.
 
 More and more traces are now read by learned models: anomaly detectors, root-cause agents, and language models
 given logs as context. For such a reader, identifiability may not be the whole story. A human with a debugger can
