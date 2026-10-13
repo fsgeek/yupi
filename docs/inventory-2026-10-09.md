@@ -150,3 +150,18 @@ class-clustered errors, KIND and actor. B5′, B5 and B2 support it.
 - **Position-k coverage, unstated until now:** the k = 7 ceilings and lag profiles cover the windows that run at
   least 7 records, which is 0.85 of window law mass.
 - **A2's thin top rung re-audited:** r4 − r3 lies in [5e-6, 3.9e-4] bits on every k ∈ 1..7 and both ε.
+
+## I. Status changes after the two-family draft review (2026-10-13, `paper1-review-2026-10-13.md`)
+
+- **B3 / relay gain.** At 15 epochs, three r1R models beat three r1 models: complete separation, exact one-sided
+  p = 1/20, post hoc on the secondary arm. **EXPLORATORY.** Three mechanisms are open: distance, binding content,
+  and auxiliary supervision (the relay value is a training target). A pre-registered loss-masked arm tests the
+  third.
+- **§G's full-profile reading is withdrawn.** It has no committed fit specification or raw, its coefficients
+  alternate in sign across collinear lags, and Δι_2 +0.023 does not reproduce. §G's conditional-mean lag
+  statements stand as conditional means only. About half of that region's mass has a negative summed change.
+- **B5′.** Only "does not remove it" is confirmatory. "Proportionally more" is descriptive of a coefficient ratio.
+- **B1** holds for r1–r4. The r0 secondary result is not resolved per seed.
+- **A1 / injectivity.** It holds for the structural-ID observer, not the pattern observer.
+- **Ceilings** are Bayes predictive losses and include irreducible future entropy.
+- **B2.** At ε = 1, r1 > r3 is seed-resolved at nearly equal ι_4, which is a counterexample to ordering by ι_4.

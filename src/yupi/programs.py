@@ -208,7 +208,7 @@ def c1_prime_programs() -> Tuple[Program, Program, Program, Program]:
     Thread 2: (COMPUTE, acquire(0), release(0)) × 5      — staggered lock-0 contender
     Thread 3: (io(0), acquire(1), release(1)) × 5        — lock-1 contender with I/O
 
-    Not a statutory configuration; nothing frozen refers to it.
+    Not statutory at first; the (40, 8, 2) freeze enacted on 2026-09-13 refers to it, so it is the frozen world.
     """
     thread_0 = (acquire(0), release(0), io(0)) * 5
     thread_1 = (acquire(0), acquire(1), release(1), release(0)) * 4
@@ -225,7 +225,7 @@ def c1_prime_loop_programs() -> Tuple[Loop, Loop, Loop, Loop]:
     folded worlds agree until the unrolled thread's last iteration; the
     folded world's reachable state space does not grow with the horizon.
 
-    Not a statutory configuration; nothing frozen refers to it.
+    Not statutory at first; the (40, 8, 2) freeze enacted on 2026-09-13 refers to it, so it is the frozen world.
     """
     return (
         Loop((acquire(0), release(0), io(0))),

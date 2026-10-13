@@ -1,5 +1,7 @@
 # Paper 1: skeleton v0.5 (2026-10-10)
 
+> **2026-10-13 (later): superseded by `docs/paper1-skeleton-v0.6.md`** after the two-family review of the drafts. The relay is demoted to an exploratory 3 vs 3 result with three rival mechanisms, the producer/consumer framing to motivation, and B5′ "proportionally more" to descriptive.
+
 > **Status: GOVERNING for paper 1's shape. It supersedes v0.4.** v0.4's centre paragraph still led with the relay
 > claim that inventory §G withdrew, so the centre is rewritten here. The section content is otherwise v0.4's,
 > reordered. Every claim keeps its inventory status (`docs/inventory-2026-10-09.md` v0.2, §F–§G). Written by the

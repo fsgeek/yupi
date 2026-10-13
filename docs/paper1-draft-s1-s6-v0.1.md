@@ -1,7 +1,7 @@
-# Paper 1, §1 and §6 drafts v0.1 (2026-10-13)
+# Paper 1, §1 and §6 drafts v0.2 (2026-10-13)
 
-> **Status: DRAFT, owning instance. Not reviewed.** §1 follows the skeleton v0.5 centre as corrected on
-> 2026-10-13. Citations come from the literature passes of 2026-10-09 and 2026-10-13, and the Mason & Anand
+> **Status: DRAFT, owning instance. Not reviewed.** §1 follows skeleton v0.6, revised in place after the two-family
+> review (v0.1 at commit e8e187d). Citations come from the literature passes of 2026-10-09 and 2026-10-13, and the Mason & Anand
 > paragraph is the adopted text from `bridge-draft-2026-10-09.md` §0, verbatim.
 
 ## 1. Introduction
@@ -33,23 +33,27 @@ Small transformers trained from scratch on each interface's traces are scored ag
    their lag profiles cross: a field can add information and also relocate information that was already
    available. Interventions can hold the ceiling identical, class by class, and still change where information
    sits.
-2. *Presentation matters beyond knowability* (§4e). With the ceiling held identical, adding a near copy of earlier
-   information lowers the converged learner's shortfall in every seed pairing we trained.
-3. *Within every interface, the shortfall sits where far information is* (§4a–§4b). This holds for the next
-   event's kind and for the identity of the entity that acts, on held-out models and at convergence. It is much
-   weaker where no entities have to be carried. Convergence shrinks it faster than the rest of the shortfall, but
-   not to zero. The learners beat a count baseline by 1.3–5.2× per seed (§4d).
+2. *Within each content interface, shortfall is higher where far information is* (§4a–§4b). The association
+   holds for the next event's kind and for the identity of the entity that acts, on held-out models and at
+   convergence, and training longer does not remove it. It is a correlation. The learners beat a count baseline by
+   1.3–5.2× per seed (§4d).
+3. *A near copy at a fixed ceiling* (§4e). Three relay models beat three controls, with the ceiling held identical.
+   This is exploratory, and three mechanisms remain open: distance, binding content, and auxiliary supervision. A
+   pre-registered loss-masked arm tests the last.
 4. *What output-level comparisons could not settle* (§5). These are four questions an exact world still left
    open, each with the design that would settle it, including whether the near copy helps by shortening distance
    or by supplying a binding fact.
 
-**What is not ours.** That learned models do worse when information is less local was shown for natural language
-and random automata by Someya et al. (ACL 2025). They relocated information with transformations that hold the
-global entropy fixed, and found loss rising almost linearly with local entropy. Their ceiling is fixed in
-aggregate, and on natural text its value is unknown. Ours is exact and identical class by class. The hidden system
-holds still while only its observation varies, and binding is measured alongside prediction. We do not claim the
-direction of the effect, and our own intervention did not confirm its proportional form (§4e). We claim the
-setting: a measurement of what trace *design* does to a learned observer, against exact ceilings.
+**What is not ours.** Someya et al. (ACL 2025) showed, for natural language and random automata, that learned
+models do worse when information is less local. They used transformations that preserve global and next-symbol
+entropy, computed local entropies exactly on automata, and scored learners by KL against the inherent entropy.
+Our ι_m is their m-local entropy less the full-window entropy. We claim neither exact ceilings nor
+entropy-preserving relocation as new. What we add:
+- a fixed hidden system whose *observation* is the controlled variable;
+- predictive laws matched class by class under intervention;
+- naming-aware binding targets measured alongside kind;
+- within-interface analyses with the model as the unit.
+We do not claim the direction of the effect, and our one intervention rejected its proportional form (§4e).
 
 **Relation to the impossibility result.** Mason and Anand prove that, for a query answerable in one world and
 unanswerable in another, no policy conditioning only on that query can satisfy both honesty requirements when
@@ -70,8 +74,9 @@ predictive distributions, which lie outside the text-only observation class.
   seven records.
 - *One baseline.* The count table is a smoothed n-gram over pattern classes. A recurrent baseline might narrow
   the gap.
-- *Correlation within cells.* The within-cell law controls entropy and frequency, and is not causal. The relay is
-  causal, but its mechanism is not identified.
+- *Correlation within cells.* The within-cell law controls entropy and frequency, and is not causal.
+- *One intervention, three models a side.* Its 3 vs 3 separation gives p = 0.05 at best. Its mechanism is not
+  identified, and its relay value is also a training target.
 
 **Next studies.**
 1. *Interventions on fixed models.* Counterfactual windows and interchange interventions on trained models, with
