@@ -7,25 +7,35 @@
 
 ## The centre
 
-**What a trace makes knowable does not settle what a learner will learn from it. Where the trace puts that
-knowledge also matters, and that placement is a property of the interface.** We use a hidden system small enough
-to count and vary only how it is observed. For each interface we compute the exact ceiling, and we also compute
-the *lag profile*: at which distance in the trace the knowable information sits. Interfaces with equal ceilings can
-place it differently. An intervention can hold the ceiling identical class by class and still move the
-information. Small transformers' shortfall from the exact ceiling tracks the long-range end of the profile within
-every interface. This holds for the next event's kind and for entity identity, on held-out models and at
-convergence. Training longer shrinks the long-range cost proportionally more than the rest, and does not remove it.
+> **Corrected 2026-10-13 (owner), while drafting §4.** The 10-10 text stated a causal *distance* reading
+> ("learners pay for distance"), which the d1 verdict withdrew on 10-02 and nothing since has restored. The
+> centre below separates what is causal from what is correlational. Superseded wording: commit 023a3b4.
 
-**What is ours and what is not.** That learners pay for distance is Someya et al.'s locality bias (ACL 2025),
-shown on languages and random automata. Our contribution is to make it a quantity of *observation design* for a
-fixed hidden-state system. The world holds still, only the telemetry varies, the ceilings are exact per class, and
-binding (actor identity under per-episode naming) is measured alongside kind. The classical figure of merit for an
-interface is identifiability, and this paper argues that it is incomplete. The practical question is the systems
-one: what should a trace record, and *how close to the moment it is needed*?
+**What a trace makes knowable does not settle what a learner will learn from it.** We use a hidden system small
+enough to count and vary only how it is observed. For each interface we compute the exact ceiling, and we also
+compute the *lag profile*: how far back in the trace the knowable information sits. Interfaces can place it
+differently, and the profiles of richer and poorer interfaces cross. An intervention can hold the ceiling
+identical class by class and still change the presentation.
 
-**Open seam, stated in the paper:** the relay adds a near copy and leaves the far source in place. It gives a
-gain, but not in proportion to the lag-4 measure of the move. An exploratory full-profile reading favours locality,
-and the question is open (inventory §G).
+The learner results come in three strengths:
+1. **Causal (the relay; robust per model, not pre-registered in this form).** With the ceiling held identical,
+   adding a near copy of earlier information lowers the converged learner's shortfall, in 9 of 9 seed pairings.
+   Presentation matters beyond knowability.
+2. **Correlational and confirmatory (the within-cell law).** Within every interface, the shortfall rises with
+   exact long-range information. This holds for the next event's kind and for entity identity, on held-out models,
+   at convergence, and under class-clustered errors. It is about ten times weaker where no entities exist (r0).
+   Convergence shrinks it proportionally more than the rest, and does not remove it.
+3. **Open (the mechanism).** We cannot yet say whether the relay helps because it shortens *distance* or because it
+   supplies *binding* content. The pre-registered single-lag pricing of its gain was rejected. An exploratory
+   full-profile reading favours distance. The design that would settle it (fixed-model interventions, or a
+   pre-specified full-profile test with a variable-but-uninformative control) is named in §5–§6.
+
+**What is ours and what is not.** Someya et al. (ACL 2025) showed, on languages and random automata, that loss
+rises with information locality. We do not claim the direction. We claim the setting: a fixed hidden-state system
+whose observation alone varies, with exact per-class ceilings, binding measured alongside kind, and a causal
+intervention that holds the ceiling identical class by class. The classical figure of merit for telemetry is
+identifiability, and this paper shows that it is incomplete for a learned observer. The systems question is what a
+trace should record, and where.
 
 ## Sections
 
@@ -54,7 +64,8 @@ Logging is done close to where the activity occurs, at the producer. The nearest
 Indaleko argument: index close to where the indices are needed, which is often far from the data they index.
 
 For §1:
-- Traces are written with **producer locality**. Learners pay for **consumer distance**, which is the lag profile.
+- Traces are written with **producer locality**. Whether learners pay for **consumer distance** is the paper's
+  hypothesis, and not its result (centre, item 3). The lag profile is the exact quantity that hypothesis needs.
 - The relay is an *index*, in Indaleko's sense: a redundant near copy placed at the point of use, with the source
   left where it is. That is what makes it a natural intervention, and not an artefact of the experiment.
 - §4e's open seam becomes the paper's design question: how much does an index placed near the consumer buy, and
