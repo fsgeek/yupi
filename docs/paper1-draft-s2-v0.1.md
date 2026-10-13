@@ -1,5 +1,7 @@
 # Paper 1, §2 draft v0.2 (2026-10-13): The instrument
 
+> **2026-10-13 (night): superseded by `paper1-draft-s2-v0.3.md`.**
+
 > **Status: DRAFT v0.2, owning instance.** Revised in place after the two-family review of 2026-10-13
 > (`paper1-review-2026-10-13.md`); v0.1 is at commit ec0f43c. Written from skeleton v0.5. Every configuration value was read
 > from code or from a raw named in the provenance list, and none from memory. Claim status is given in square
