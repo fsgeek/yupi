@@ -21,7 +21,9 @@ def build_config(a) -> TrainConfig:
     lr_min = a.lr / 10 if a.lr_min is None else a.lr_min
     return TrainConfig(corpus_dir=a.corpus_dir, seed=a.seed, out_dir=a.out, device=a.device, batch_size=a.batch_size,
                        epochs=a.epochs, lr=a.lr, lr_min=lr_min, warmup=a.warmup, ckpt_every=a.ckpt_every, val_every=a.val_every,
-                       max_steps=a.max_steps, unscored_fields=tuple(getattr(a, "unscored_fields", ())), model=model)
+                       max_steps=a.max_steps, unscored_fields=tuple(getattr(a, "unscored_fields", ())),
+                       target_corpus_dir=getattr(a, "target_corpus_dir", None),
+                       target_fields=tuple(getattr(a, "target_fields", ())), model=model)
 
 
 def main(argv=None):
@@ -42,6 +44,8 @@ def main(argv=None):
     ap.add_argument("--n-layer", type=int, default=4)
     ap.add_argument("--n-head", type=int, default=4)
     ap.add_argument("--unscored-fields", nargs="*", default=[], help="record fields left out of the loss, e.g. OBJECT")
+    ap.add_argument("--target-corpus-dir", default=None, help="targets from this paired corpus (inputs stay from --corpus-dir)")
+    ap.add_argument("--target-fields", nargs="*", default=[], help="the only fields at which paired targets may differ")
     ap.add_argument("--resume", action="store_true")
     a = ap.parse_args(argv)
     cfg = build_config(a)

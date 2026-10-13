@@ -22,7 +22,7 @@ import torch
 import torch.nn.functional as F
 
 from yupi.learner.checkpoint import load, rng_state, save_atomic, set_rng_state
-from yupi.learner.data import batches, epoch_order, load_split, unscore_fields
+from yupi.learner.data import batches, epoch_order, load_split, paired_targets, unscore_fields
 from yupi.learner.model import Decoder, ModelConfig, n_params
 
 
@@ -43,6 +43,8 @@ class TrainConfig:
     val_every: int = 250
     max_steps: int | None = None
     unscored_fields: tuple = ()     # 2026-10-13: record fields left out of the loss (the loss-masked relay arm)
+    target_corpus_dir: str | None = None   # 2026-10-13: targets from a paired corpus (supervision without presence)
+    target_fields: tuple = ()       # the only fields at which the paired targets may differ
     model: ModelConfig = field(default_factory=ModelConfig)
 
 
@@ -80,6 +82,10 @@ def _comparable(c: TrainConfig) -> dict:
     d.pop("max_steps")
     if not d["unscored_fields"]:
         d.pop("unscored_fields")    # absent when empty, so checkpoints from before the field resume unchanged
+    if d["target_corpus_dir"] is None:
+        d.pop("target_corpus_dir")
+    if not d["target_fields"]:
+        d.pop("target_fields")
     return d
 
 
@@ -113,6 +119,13 @@ def train(c: TrainConfig, resume: bool = False) -> dict:
     np.random.seed(c.seed)
     X, Y, M, _ = load_split(c.corpus_dir, "train", c.model.n_pos)
     VX, VY, VM, _ = load_split(c.corpus_dir, "val", c.model.n_pos)
+    if c.target_corpus_dir is not None:
+        if not c.target_fields:
+            raise ValueError("target_corpus_dir needs target_fields")
+        _, Y2, M2, _ = load_split(c.target_corpus_dir, "train", c.model.n_pos)
+        _, VY2, VM2, _ = load_split(c.target_corpus_dir, "val", c.model.n_pos)
+        Y = paired_targets(Y, M, Y2, M2, c.target_fields)
+        VY = paired_targets(VY, VM, VY2, VM2, c.target_fields)
     if c.unscored_fields:
         M = unscore_fields([Y[i, :M[i].sum() - 1] for i in range(len(Y))], M, c.unscored_fields)
         VM = unscore_fields([VY[i, :VM[i].sum() - 1] for i in range(len(VY))], VM, c.unscored_fields)

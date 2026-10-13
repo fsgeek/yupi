@@ -54,3 +54,22 @@ def test_unscore_fields_drops_object_slot_targets_only():
     assert m.sum() == 23                                        # the input mask is not modified in place
     with pytest.raises(ValueError):
         unscore_fields([w_plain], m[1:], ("KIND", "NOPE"))
+
+
+def test_paired_targets_accepts_object_only_differences_and_refuses_others():
+    # 2026-10-13: the supervision-without-presence arm (r1 inputs, r1R targets). Targets may come from a paired corpus
+    # only if the masks are identical and the token streams differ only at the named fields' slots.
+    from yupi.learner.data import paired_targets
+    a = [TOKEN_ID["DISPATCH"], TOKEN_ID["T03"], TOKEN_ID["MASKED"], TOKEN_ID["MASKED"], TOKEN_ID["MASKED"]]
+    b = [TOKEN_ID["DISPATCH"], TOKEN_ID["T03"], TOKEN_ID["DISPATCH"], TOKEN_ID["MASKED"], TOKEN_ID["MASKED"]]
+    _, ya, ma = frame([tuple(a + a)])
+    _, yb, mb = frame([tuple(a + b)])
+    y = paired_targets(ya, ma, yb, mb, ("OBJECT",))
+    assert (y == yb).all() and y is not yb
+    c = list(b); c[1] = TOKEN_ID["T04"]                       # an ACTOR difference
+    _, yc, mc = frame([tuple(a + c)])
+    with pytest.raises(ValueError):
+        paired_targets(ya, ma, yc, mc, ("OBJECT",))
+    _, yd, md = frame([tuple(a)])                              # a different length: masks differ
+    with pytest.raises(ValueError):
+        paired_targets(ya, ma, yd, md, ("OBJECT",))

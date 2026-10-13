@@ -108,3 +108,10 @@ def test_unscored_fields_absent_from_comparable_when_empty():
     a = _comparable(TrainConfig(corpus_dir="c", seed=1, out_dir="o"))
     b = _comparable(TrainConfig(corpus_dir="c", seed=1, out_dir="o", unscored_fields=("OBJECT",)))
     assert "unscored_fields" not in a and b["unscored_fields"] == ["OBJECT"] and a != b
+
+
+def test_target_corpus_fields_absent_from_comparable_when_unset():
+    from yupi.learner.train import TrainConfig, _comparable
+    a = _comparable(TrainConfig(corpus_dir="c", seed=1, out_dir="o"))
+    b = _comparable(TrainConfig(corpus_dir="c", seed=1, out_dir="o", target_corpus_dir="t", target_fields=("OBJECT",)))
+    assert "target_corpus_dir" not in a and "target_fields" not in a and b["target_corpus_dir"] == "t"

@@ -57,6 +57,18 @@ def unscore_fields(windows, m, fields):
     return out
 
 
+def paired_targets(y, m, y2, m2, fields):
+    """Targets `y2` from a paired corpus, for training on inputs from another (2026-10-13: the supervision-without-
+    presence arm). Refused unless the masks are identical and the target streams differ only at the named fields'
+    slots."""
+    if y.shape != y2.shape or not (m == m2).all():
+        raise ValueError("paired corpora must have identical masks")
+    slots = ~unscore_fields([y[i, :m[i].sum() - 1] for i in range(len(y))], m, fields) & m
+    if ((y != y2) & m & ~slots).any():
+        raise ValueError(f"paired corpora differ outside the fields {tuple(fields)}")
+    return y2.copy()
+
+
 def load_split(corpus_dir, name: str, seq_len: int = SEQ):
     """(inputs, targets, mask, per-window table dicts) for a corpus split."""
     rows = read_split(Path(corpus_dir), name)
