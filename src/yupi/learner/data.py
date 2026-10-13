@@ -66,6 +66,8 @@ def paired_targets(y, m, y2, m2, fields):
     slots = ~unscore_fields([y[i, :m[i].sum() - 1] for i in range(len(y))], m, fields) & m
     if ((y != y2) & m & ~slots).any():
         raise ValueError(f"paired corpora differ outside the fields {tuple(fields)}")
+    if not ((y != y2) & slots).any():
+        raise ValueError(f"paired targets never differ at {tuple(fields)}: is the target corpus the input corpus?")
     return y2.copy()
 
 

@@ -73,3 +73,5 @@ def test_paired_targets_accepts_object_only_differences_and_refuses_others():
     _, yd, md = frame([tuple(a)])                              # a different length: masks differ
     with pytest.raises(ValueError):
         paired_targets(ya, ma, yd, md, ("OBJECT",))
+    with pytest.raises(ValueError):                            # identical corpora: an r1 replicate mislabelled
+        paired_targets(ya, ma, ya.copy(), ma, ("OBJECT",))

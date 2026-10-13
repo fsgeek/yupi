@@ -156,6 +156,8 @@ def train(c: TrainConfig, resume: bool = False) -> dict:
     manifest = Path(c.corpus_dir) / "manifest.json"
     (out / "run.json").write_text(json.dumps(dict(
         asdict(c), corpus_manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest(),
+        target_corpus_manifest_sha256=(hashlib.sha256((Path(c.target_corpus_dir) / "manifest.json").read_bytes()).hexdigest()
+                                       if c.target_corpus_dir else None),
         n_params=n_params(model), torch=torch.__version__, steps_per_epoch=steps_per_epoch,
         steps_planned=planned, steps_total=total, resumed_from_step=(ck["step"] if ck else None),
         **rev, revision_lineage=lineage), indent=2) + "\n")

@@ -13,8 +13,8 @@ job() {
   echo "=== $(basename $out) start $(date) $resume"
   uv run --extra learner python scripts/learner_train.py --corpus-dir $C --out $out --device cuda --epochs 15 \
     --ckpt-every 2000 --val-every 1000 --seed $1 --d-model 128 --lr 1e-3 --unscored-fields OBJECT $resume > $out.log 2>&1
-  echo "=== $(basename $out) exit $? $(date)"
+  rc=$?; echo "=== $(basename $out) exit $rc $(date)"; return $rc
 }
 export -f job; export L C
-printf "1\n2\n3\n" | xargs -P 3 -L 1 bash -c 'job "$@"' _
+printf "1\n2\n3\n" | xargs -P 3 -L 1 bash -c 'job "$@"' _ || { echo "=== a job FAILED $(date)"; exit 4; }
 echo "=== lossmask GPU DONE $(date)"
