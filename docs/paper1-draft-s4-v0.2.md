@@ -102,32 +102,32 @@ magnitudes not interpreted] An earlier exploratory reading said that a regressio
 reviewer give coefficients that alternate in sign across adjacent, collinear lags, so they do not read as a
 distance price.
 
-**Three rival mechanisms, and the one the loss-masked arm settles.**
-1. *Distance:* the copy shortens how far back the learner must look.
-2. *Binding content:* the copy hands the learner a fact ("this actor's last event was …").
-3. *Auxiliary supervision:* r1R models are trained to *produce* the relay value, which is the lookup the KIND
-   prediction needs.
+**Separating presence from supervision.** In r1R the copy is both an input and a training target (every position
+is scored). Two pre-registered follow-ups separate the two, giving a 2×2 at the OBJECT slot. Each follow-up was
+reviewed by both families before stamping, and both are exploratory in scale, at three seeds per arm.
 
-A pre-registered arm, r1Rm, is r1R with the OBJECT slot left out of the training loss
-(`relay-lossmask-prereg-v0.1.md`, stamped before training; verdict `relay-lossmask-verdict-v0.1.md`). It keeps
-the copy in the input and removes it as a target. Its three models have KIND shortfalls of 0.028, 0.041 and 0.031.
-That is above every r1R model, which meets the pre-registered reading "supervision contributes" (unpaired exact
-p = 1/20; paired within seeds, 1/8).
-It is also above every r1 model, which the pre-registration did not foresee [EXPLORATORY]. That comparison is
-between whole recipes, which differ in more than the copy: a varying field versus a constant placeholder, r1's
-trivial OBJECT target, and a loss denominator about 24 % smaller. On identical inputs, r1Rm stays within 0.003 bits
-of r1R at records 1–5, and the gap grows from record 6 to 0.016–0.033 at record 8. (That comparison is against
-r1R, not r1.)
+| KIND shortfall, seeds 1–3 | target: none | target: relay value |
+|---|---|---|
+| input: placeholder | r1m 0.0176, 0.0209, 0.0170 | r1Rs 0.0125, 0.0141, 0.0142 |
+| input: copy | r1Rm 0.0281, 0.0411, 0.0307 | r1R 0.0130, 0.0095, 0.0125 |
 
-So the relay's gain requires the copy to be a training target as well as an input. Presence alone did not help.
-Within these arms it hurt, and that may be the cost of an unsupervised, varying field rather than a fact about the
-copy (§5.3). This is necessity, not mechanism. Supervision may be what lets the learner read the copy, which could
-then help through distance or binding. Three arms would separate these, and none has been run:
-- supervision without presence (the paired corpora allow it: r1 inputs, r1R targets);
-- r1 with OBJECT unscored;
-- a masked variable-but-uninformative field.
+r1, with a placeholder input and a trivial placeholder target, is 0.0157, 0.0146 and 0.0158.
 
-[pre-registered reading T: CONFIRMATORY in scale 3 + 3; everything else EXPLORATORY]
+- **Showing the copy without supervising it hurt** (r1Rm against r1m, every seed; paired p 1/8). This cannot tell an
+  informative but unscored copy from a varying decoy field.
+- **Supervising the slot with the relay value helped KIND without the copy ever being shown** (r1Rs against r1,
+  every seed; paired p 1/8). r1Rs did learn the lookup: it pays 0.00004 bits per slot. The gain is small, 0.0005 to
+  0.0032 bits, no larger than what removing a trivial target does (r1m against r1: 0.0012 to 0.0063). It does not
+  carry over to ACTOR, which is worse than r1 in two seeds of three. It cannot tell lookup supervision from any
+  nontrivial target in that slot.
+- **Showing the copy once it is supervised** (r1R against r1Rs) is not resolved with three seeds, and so no
+  interaction is claimed.
+- Only the full relay, with presence and supervision together, beat r1 on both KIND and ACTOR in every seed.
+
+So the relay, built to test whether placing information near its use helps a learned reader, does not support
+that idea in this form. The copy helped only together with a training target for it. Without supervision it hurt,
+and supervision alone helped KIND a little and ACTOR not at all. [Pre-registered readings: `relay-lossmask-verdict-
+v0.1.md` (T) and `relay-2x2-verdict-v0.1.md` (C1, C2 resolved; C3 not); everything else EXPLORATORY]
 
 ---
 
@@ -141,6 +141,7 @@ then help through distance or binding. Three arms would separate these, and none
   the frozen HC1 fit to 1e-9). This reproduces Claude findings 5 and 15.
 - 4b: `converged-ladder-verdict-v0.1.md` §C2. The ratios were reproduced by Codex (finding 12).
 - 4d: `count-baseline-comparison-2026-10-04.json`, per-seed ratios recomputed by the owner on 2026-10-13.
+- 4e (2×2): `relay-2x2-verdict-v0.1.md`, `relay-2x2-score-2026-10-13.json`, `relay-2x2-object-ce-r1Rs-2026-10-13.jsonl`.
 - 4e (loss-masked arm): `relay-lossmask-verdict-v0.1.md` (censuses `learner-window-census-r1Rm-*-2026-10-13.json`;
   by-position check `relay-lossmask-kind-by-position-2026-10-13.jsonl`).
 - 4e: the r1 and r1R seed means, the actor shortfalls and the relay-field excess were all recomputed by the owner on
