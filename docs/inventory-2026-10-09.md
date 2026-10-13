@@ -184,3 +184,19 @@ class-clustered errors, KIND and actor. B5′, B5 and B2 support it.
   matched loss normalization; a masked variable-but-uninformative field.
 - **p-values.** 1/20 is the pre-registered unpaired permutation. Swapping only within matched seed pairs gives
   1/8.
+
+## K. The relay 2×2 (2026-10-13, `relay-2x2-verdict-v0.1.md`, both families reviewed)
+
+- **Pre-registered (KIND, 3 seeds, paired p 1/8):**
+  - C1: an unscored copy costs, relative to a constant placeholder.
+  - C2: relay-value supervision without the copy helps.
+  - C3, presence given supervision: not resolved. No interaction claim.
+- **Post hoc:**
+  - On ACTOR, C1–C3 are unresolved, and C1 leans the other way.
+  - C4 (r1m against r1) is separated on both fields, so it is not a noise floor. Small recipe changes move the
+    shortfall.
+  - C2's margin is 0.0005 bits.
+  - On KIND + ACTOR, only r1R beats every r1 model.
+- **Consequence:** §J's "the gain requires supervision" stands as necessity on KIND. The simple placement hypothesis
+  has no support from the relay. Whatever placing information does depends on the training target and on the
+  field.

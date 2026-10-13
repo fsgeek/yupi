@@ -40,10 +40,11 @@ Small transformers trained from scratch on each interface's traces are scored ag
    holds for the next event's kind and for the identity of the entity that acts, on held-out models and at
    convergence, and training longer does not remove it. It is a correlation. The learners beat a count baseline by
    1.3–5.2× per seed (§4d).
-3. *A near copy helped only when it was also a training target* (§4e). With the ceiling held identical, three
-   relay models beat three controls. A pre-registered arm that keeps the copy in the input but removes it from the
-   loss does worse than both, under recipes that differ in more than the copy. Every comparison is three models a
-   side.
+3. *A near copy at a fixed ceiling, as a 2×2* (§4e). With the ceiling held identical, three relay models beat three
+   controls. Pre-registered follow-ups separate the copy's presence from its supervision. On KIND, an unscored copy
+   costs the learner, and supervising the slot without the copy helps a little. The copy's increment once
+   supervised is not resolved, and none of this resolves on ACTOR. The simple placement hypothesis finds no support.
+   Every comparison is three models a side.
 4. *What output-level comparisons could not settle* (§5). These are four questions an exact world still left
    open, each with the design that would settle it, including whether the near copy helps by shortening distance
    or by supplying a binding fact.

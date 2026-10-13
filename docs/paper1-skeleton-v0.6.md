@@ -24,12 +24,15 @@ This is the paper's result, and it is exact (§3).
 - The learners beat a count table over the ceiling's own classes by 1.3–5.2× per seed (exploratory).
 - No cross-interface ordering is claimed, since a seed-resolved counterexample exists.
 
-**One intervention, exploratory.** With the ceiling held identical, three relay models beat three controls
-(exact p = 0.05). The pre-registered loss-masked arm showed that the gain requires the copy to be a training target
-as well as an input. With the copy present but unscored, the models did worse than both r1R and r1. This shows
-necessity, not mechanism. Whether presence alone hurts because of the copy or because of an unsupervised varying
-field is open, as is whether supervision helps without presence. The arms that separate these are named in §4e.
-The motivating idea, that placing information near its use helps a learned reader, found no support here.
+**One intervention, exploratory, examined as a 2×2.** With the ceiling held identical, three relay models beat three
+controls. Two pre-registered follow-ups then separated the copy's *presence* from its *supervision*. On KIND:
+- an unscored copy cost the learner;
+- supervising the slot without the copy helped a little;
+- the copy's increment once supervised is not resolved.
+Post hoc: none of these resolves on ACTOR, where the unscored copy if anything helped; small recipe changes move the
+shortfall by comparable amounts; and only the full relay beats r1 on both fields together. The simple placement
+hypothesis, "a near copy helps a learned reader", finds no support. What placement does appears to depend on what
+the learner is trained to produce, and it differs by field (§4e; `relay-2x2-verdict-v0.1.md`).
 
 **What is ours and what is not.** Someya et al. (ACL 2025) used entropy-preserving transformations, exact PFSA
 local entropies, and learner KL against the inherent entropy. Our ι_m is their m-local entropy less the
@@ -67,8 +70,8 @@ denormalization for a learned reader, not as a new principle.
 
 ## Owed before external review
 
-1. ~~The loss-masked relay arm, scored to its pre-registration.~~ Done 2026-10-13: reading T, plus r1Rm > r1
-   (exploratory). Verdict review owed.
+1. ~~The loss-masked relay arm and the 2×2.~~ Done 2026-10-13. Both are scored, and both verdicts were reviewed by
+   both families.
 2. ~~The fixed-effects and coarse-cluster robustness check across all cells.~~ Done 2026-10-13: 45/45 keep t ≥ 3.
 3. ~~The raw per-model bins.~~ Done 2026-10-13: monotone above 0.001 in 45/45. Figure: `figures/b1-raw-bins-2026-10-13.png`.
 4. The back-reference citations verified, and Log20's measure read from its full text.
