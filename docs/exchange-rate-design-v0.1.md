@@ -7,6 +7,13 @@
 > it does so after the r1Rm verdict, as a cost *profile* C(m) = Σ_t H(relay_t | own KIND, ACTOR, position, previous
 > m in-window records) against named codecs, with seed-matched pairs primary and presence and supervision gains
 > reported separately. It belongs to the locality study, not paper 1.
+>
+> **Codex design review (same day)** concurs: a constant denominator only rescales the score, and marginal entropy is
+> a coding benchmark, not an emission cost. **Adopted from it:** when the r1Rm censuses exist, the masked-arm scoring
+> also reports a descriptive three-arm table (r1, r1R, r1Rm) with KIND, ACTOR and their total; OBJECT excess is shown
+> separately and never subtracted. Both the 3×3 cross-model contrasts and the seed-matched pairs i = i are reported.
+> Matched seeds share initial weights and batch order (Claude finding 4). Everything there beyond the
+> pre-registered KIND readings is EXPLORATORY.
 
 > **Status: DESIGN, written before any number was computed.** Exploratory and descriptive: no hypothesis test,
 > nothing stamped as confirmatory. It goes to two-family review before computation. Owning instance. Motivated
