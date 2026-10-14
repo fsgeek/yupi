@@ -14,7 +14,7 @@ RAW = "docs/b1-fe-coarse-robustness-2026-10-13.json"
 OUT = "docs/figures/b1-raw-bins-2026-10-13.png"
 LABELS = ["0", "≤.001", "≤.01", "≤.05", "≤.2", "≤.4", ">.4"]
 COL = {"converged_e15": "#2a78d6", "D1_heldout": "#eb6834"}
-NAME = {"converged_e15": "15 epochs (converged)", "D1_heldout": "5 epochs (held-out)"}
+NAME = {"converged_e15": "15 epochs", "D1_heldout": "5 epochs (held-out)"}
 INK, INK2, GRID, SURF = "#0b0b0b", "#52514e", "#e6e5e1", "#fcfcfb"
 
 d = json.load(open(RAW))

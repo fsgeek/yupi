@@ -43,8 +43,8 @@ Its pattern class has law mass 1/5760. The exact law of the next record:
 - `IO_COMPLETE 0` with probability 1/3, because the device completes on this step;
 - `DISPATCH 2` (a thread not yet seen in the window) with probability 2/3.
 
-The next-KIND entropy is H(1/3, 2/3) = 0.918 bits. That is the irreducible part the §3 introduction quotes: even
-from reset, with the state known, the next event is random. A learner that predicts `DISPATCH` must also place
+The next-KIND entropy is H(1/3, 2/3) = 0.918 bits. That is the irreducible part the §3 introduction quotes. The
+next-KIND law is the same in every state consistent with this window, and still random. A learner that predicts `DISPATCH` must also place
 probability on the *fresh* thread name. Its ACTOR term sums the probability over unused drawable names (§2.5).
 
 ## A.3 Size and cost at the frozen law (40, 8, 2)
@@ -54,7 +54,7 @@ probability on the *fresh* thread name. Its ACTOR term sums the probability over
 | reachable states (max over ticks) | 1,953 | 4,173 |
 | (state, window) pairs in the frontier (max over ticks) | 1,964,919 | 1,964,919 |
 | one recursion pass, wall time | 542 s | 532 s |
-| peak memory of that pass | 4.97 GB | 5.11 GB |
+| peak memory of that pass | 5.09 GB (4.74 GiB) | 5.23 GB (4.87 GiB) |
 
 Per rung, at the window's last record:
 

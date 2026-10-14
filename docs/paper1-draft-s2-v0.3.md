@@ -44,7 +44,7 @@ of 5m tokens everywhere.
 | r4 | + LINEAGE (the request identifier) |
 
 Before any learner existed, each added field was shown to change some posterior or some finite-horizon predictive
-distribution. [EXACT; Part I D2]
+distribution. [EXACT; a design requirement of the milestone specification]
 
 **Names carry no identity across episodes.** Entities are named per episode by a keyed injection from pools much
 larger than the entity counts: 64 thread names for 4 threads, 32 lock names for 2 locks, 16 device names and 32
@@ -58,7 +58,7 @@ Two observers appear:
   decomposition (§3.1, Table 3.0).
 - **The pattern observer** sees the window with every entity renamed by order of first appearance, so that only the
   pattern of who recurs remains. Names are re-drawn every episode, so this is the learner's comparison point. Every
-  ceiling, lag profile and shortfall in §3–§4 is for the pattern observer at window position k = 7: after seven
+  ceiling, lag profile and shortfall in §3–§4 (except Table 3.0) is for the pattern observer at window position k = 7: after seven
   records, predicting the eighth. Position k = 7 covers the windows that run at least seven records, which is 0.85
   of window law mass. Its averages are normalised over that mass.
 
@@ -68,7 +68,7 @@ pattern class: a Bayes predictive loss. Each computed quantity is validated in i
 | quantity | how it is validated | coverage |
 |---|---|---|
 | structural window posteriors | the filtering recursion agrees with an independent path summation, with zero mismatches | **exhaustive**, 8,542,940 windows, all ten (rung, ε) |
-| pattern-class ceilings P\*(next \| pattern class) | they agree exactly with an independent pattern filter | **exhaustive class by class** at the small law (8, 4, 2); at the frozen law, **a random sample** of about 91 test windows per (rung, ε), all exactly equal |
+| pattern-class ceilings P\*(next \| pattern class) | they agree exactly with an independent pattern filter | **exhaustive class by class** at the small law (8, 4, 2); at the frozen law, **a random sample** of 82–91 test windows per (rung, ε), all exactly equal |
 | the lag identity ι_m = H_m − H\* | the KL route and the entropy route agree | every row, within 3 × 10⁻¹⁴ (gate 10⁻⁹) |
 | window-level rungs (r1R, r1D, r1S) | gate A: equal KIND marginal per class; gate B: equal multiset of whole-record probabilities per class; gate C: an independent construction, plus brute force on small worlds | **exhaustive** over classes |
 
@@ -122,7 +122,7 @@ law given the pattern class, and q is the model's softmax.
 - Means over a class estimate KL(P\* ‖ q̃). Single windows can be negative.
 - Subsets are always chosen by functions of the prefix, never by another realised field, which would bias the
   estimator.
-- A shortfall is measured above the model's own interface's ceiling. On the content rungs, converged shortfalls run at
+- A shortfall is measured above the model's own interface's ceiling. On the content rungs, 15-epoch shortfalls run at
   about 1–4 % of the KIND ceiling (0.009–0.041 bits against 0.78–1.00); on r0 about 0.4 %.
 
 **The actor's far information.** ι_{A|K,m} is the KL from the actor's exact law given kind and the whole window, to
@@ -139,11 +139,13 @@ t statistic on a seed mean.
 |---|---|---|---|---|---|
 | D1, KIND within-cell (held-out) | 5 of the 8 r1–r4 cells: r1 ε½, r2 ε1, r2 ε½, r3 ε½, r4 ε½ | 3; 6 for r2 ε½ and r4 ε½; seeds 4–6 for r2 ε1 | 5 ep | none (21 runs) | stamped before the census |
 | A1, ACTOR within-cell | 8 cells | 36 runs: 21 held-out, 15 existing | 5 ep | 15 censused earlier for KIND | stamped before any actor ι |
-| converged ladder (C1–C4, A4) | 8 r1–r4 cells, plus r0 at both ε | 3 | 15 ep | r1 ε1 seeds 1–3 evaluated before the prereg | stamped before evaluation |
+| 15-epoch ladder (C1–C4, A4) | 8 r1–r4 cells, plus r0 at both ε | 3 | 15 ep | r1 ε1 seeds 1–3 evaluated before the prereg | stamped before evaluation |
 | relay | r1 against r1R, ε = 1 | 3 per arm | 5 and 15 ep | — | stamped (Δι₄ pricing) |
 | loss-masked arm | r1Rm | 3 | 15 ep | — | stamped (reading T) |
 | relay 2×2 | r1m, r1Rs | 3 per arm | 15 ep | — | stamped (C1–C4) |
 | count baseline | 10 cells | — | — | — | exploratory |
+| GRU baseline | 8 r1–r4 cells | 1 | 15 ep | — | stamped (G1; quality floor) |
+| d = 256 size check | r1 ε1 | 3 (15 ep), 1 (45 ep) | 15, 45 ep | trained in September | exploratory (not the planned pre-registered wave) |
 
 Test windows come from episodes disjoint from training, as asserted by the corpus gates.
 

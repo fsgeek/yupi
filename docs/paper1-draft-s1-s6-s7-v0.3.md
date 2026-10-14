@@ -17,9 +17,10 @@ five nested interfaces, each showing one more record field. Because the world is
 observable window, exact posteriors over hidden state and exact predictive laws for the next event.
 
 **Two results hold exactly:**
-- *State identifiability and predictive value come apart.* Each added field cuts state uncertainty by several
-  times more than it cuts the reducible part of next-event uncertainty, so an identifiability objective ranks
-  fields differently from a predictor's ceiling.
+- *Most state uncertainty is irrelevant to the next event.* For an observer with structural identities, the
+  state uncertainty a window leaves is 3–5 times the part of it that bears on the next record. The ratio is nearly
+  constant, so identifiability and prediction rank the fields the same way, and the first overstates the second by
+  a stable factor.
 - *The lag profile of predictive information differs across interfaces, and can cross.* That is, where in the
   window the knowable information sits, and window-level rewrites can change it with the ceiling held identical
   class by class.
@@ -58,9 +59,11 @@ asynchronous device. It is observed through five nested interfaces. For every wi
 - window-level rewrites leave it unchanged.
 
 What we find:
-1. **Identifiability and predictive value disagree** (§3.0). On the first content interface, 0.60 bits of state
-   uncertainty correspond to 0.15 bits of reducible next-event uncertainty. Each richer field removes several times
-   more of the former than of the latter.
+1. **Most state uncertainty is irrelevant to the next event** (§3.0, structural observer). On the first content
+   interface, 0.60 bits of state uncertainty correspond to 0.15 bits of reducible next-event uncertainty. Each
+   added field removes 3–5 times more of the first than of the second. That factor is nearly constant, so the two
+   measures rank the fields the same way. (The predictive gap is a mutual information with the state, so it can
+   never exceed the state entropy.)
 2. **Lag profiles cross** (§3.2). A richer field can add information and also relocate information that was already
    available. Interfaces rank differently by ceiling and by distance, and the ranking by distance depends on which
    lags are counted. This is one world, and the crossing is about 0.02 bits.
@@ -68,9 +71,11 @@ What we find:
    - within each content interface, KIND shortfall is higher where far information is (robust to fixed effects and
      coarse clustering in 45 of 45 models), and training to 15 epochs does not remove the association;
    - the identity association passes its pre-registered test but is not robust to the stronger controls;
-   - the learners beat a count table over the ceiling's own classes on every content interface.
-4. **A near copy, factored** (§4e). With the ceiling held identical, a relay field (the actor's previous event, at
-   the point of use) helps. A pre-registered 2×2 separates the copy's presence from its supervision. On KIND, an
+   - the transformers beat a count table over the ceiling's own classes on every content interface, and an untuned,
+     parameter-matched GRU did not, so it is uninformative by its pre-registered floor.
+4. **A near copy, factored** (§4e). With the ceiling held identical, the relay recipe helps: the actor's previous
+   event is placed at the point of use *and* is a training target. In no resolved contrast did the copy itself
+   help. A pre-registered 2×2 separates the copy's presence from its supervision. On KIND, an
    unscored copy hurts, and supervising the slot without the copy helps a little. Whether the copy helps once
    supervised is not resolved with three seeds, and nothing resolves on identity. The simple placement hypothesis
    finds no support.

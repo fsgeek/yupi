@@ -32,8 +32,11 @@ The criterion was β_long > 0 with t ≥ 3 in every run, on r1–r4.
 **At a larger size** [EXPLORATORY, not pre-registered]: d = 256 (3.25 M parameters, the same recipe), r1 ε = 1. The four
 existing models (15 epochs, seeds 1–3; 45 epochs, seed 1) were censused on 2026-10-13. All four keep β_long > 0:
 frozen-model t 7.6–11.3, and under the coarse-cell fixed effects t 5.6–7.1. Their raw bins rise as at d = 128. At this
-recipe the larger model has *higher* overall KIND shortfall than d = 128 (it is under-trained at 15 epochs, as the
-September size axis found), so this checks only that the association is not specific to one size, in one cell.
+recipe the larger model has *higher* KIND shortfall than d = 128: 0.025–0.035 at 15 epochs, and 0.020 at 45, against
+0.015–0.016. Under-training is plausible but not shown. All four beat the count table (0.042), so by the floor
+applied to the GRU their association can be read. This checks only that the association is not specific to one
+size, in one cell. It is an exploratory re-census of existing models, not the pre-registered size wave planned in
+the review disposition.
 [`b1-size-axis-d256-2026-10-13.jsonl`]
 
 **ACTOR**, with ι_{A|K,4}, a lower bound (§2.5):
@@ -41,7 +44,7 @@ September size axis found), so this checks only that the association is not spec
 - 24 of 24 pass at 15 epochs. [CONFIRMATORY]
 - Class-clustered errors: lowest t 3.11.
 - **It is not robust to the stronger check.** Under the same coarse-cell fixed effects, the coefficient stays
-  positive in all 60 runs, but it shrinks (median 0.81 of its frozen value at 5 epochs, 0.60 at 15). It keeps
+  positive in all 60 runs, but it shrinks (median 0.80 of its frozen value at 5 epochs, 0.59 at 15). It keeps
   t ≥ 3 in only 24 of 36 runs at 5 epochs and 9 of 24 at 15. The number of distinct actors is mechanically related
   to the actor target, so this check may over-control. Even so, the actor association cannot be called robust.
   [EXPLORATORY; `b1-fe-coarse-robustness-actor-2026-10-13.json`]
@@ -88,16 +91,16 @@ did better.
 - **Content rungs:** every transformer seed does better, by 1.33–5.22 times.
 - **r0:** close. At ε = 1 every transformer seed is slightly better (1.07–1.14). At ε = ½ the table is better
   (0.74–0.87). No uncertainty analysis separates the two.
-- The table's shortfall grows with the number of classes, and the transformer's does not.
+- The table's shortfall broadly grows with the number of classes (not monotone at r4), and the transformer's does
+  not.
 
 [EXPLORATORY; one count baseline]
 
 **A recurrent baseline.** We pre-registered a parameter-matched GRU (870 k parameters, 2 layers of width 256) on the
 transformer's untuned recipe, one seed in each of the 8 cells. The registration requires each model to beat the count
 table before its association is read. All eight did worse than the count table (KIND 0.045–0.076), so by that rule all
-eight are uninformative, and no reading of the association is made for a recurrent learner. On r1 ε = 1, the GRU's
-loss over all positions is close to the transformer's, and its deficit sits at the late prediction scored here. A
-tuned recurrent baseline remains owed. [pre-registered: Y = 0 informative; `gru-baseline-verdict-v0.1.md`]
+eight are uninformative, and no reading of the association is made for a recurrent learner. A tuned recurrent baseline
+remains owed. [pre-registered: none of the 8 GRU models is informative; `gru-baseline-verdict-v0.1.md`]
 
 ### 4e. A near copy at a fixed ceiling, as a 2×2
 
@@ -134,14 +137,15 @@ There are five arms, with KIND shortfall at 15 epochs for seeds 1, 2 and 3:
 
 **Post hoc, and they qualify the above:**
 - C2's separation margin is 0.0005 bits.
-- Removing OBJECT from the loss altogether (r1m against r1) moved KIND by a comparable amount, in every seed, so
-  small recipe changes move this shortfall.
+- Removing OBJECT from the loss altogether (r1m against r1, the pre-registered descriptive C4) moved KIND by a
+  comparable amount in every seed, so small recipe changes move this shortfall.
 - On ACTOR, none of C1–C3 resolves under the decision rule. C1 leans the other way: the unscored copy is better than
   the placeholder on ACTOR in every seed, though the ranges overlap.
 - Summing KIND and ACTOR, only r1R is below every r1 model.
 
 **Reading.** The relay gives no support to the simple form of the placement hypothesis, "a near copy helps a learned
-reader". On KIND, a copy helped only where its slot was supervised, and an unscored copy hurt. ACTOR evidence is
+reader". The relay *recipe* (copy plus target) helped. In no resolved contrast did the copy itself help, and an
+unscored copy hurt on KIND. ACTOR evidence is
 inconclusive. Whether the copy adds anything once supervised is open. Three seeds, one world, one budget.
 [readings as labelled; everything not pre-registered is EXPLORATORY]
 
