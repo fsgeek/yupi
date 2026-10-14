@@ -19,6 +19,7 @@ class ModelConfig:
     n_pos: int = 42          # BOS + 41
     vocab_in: int = 157      # 156 corpus tokens + BOS
     vocab_out: int = 156     # the corpus vocabulary; BOS is never predicted
+    arch: str = "transformer"  # 2026-10-13: "gru" is the recurrent baseline (n_head, d_mlp, n_pos unused there)
 
 
 class Attention(nn.Module):
@@ -79,6 +80,39 @@ class Decoder(nn.Module):
             hidden.append(x)
         logits = self.head(self.ln_f(x))
         return (logits, hidden) if return_hidden else logits
+
+
+class GRUNet(nn.Module):
+    """The recurrent baseline (2026-10-13): token embedding, an n_layer GRU of width d_model, LayerNorm, the same
+    output head. Causal by construction. forward(ids, return_hidden=True) returns the embeddings and the top GRU
+    states, for interface parity with Decoder."""
+
+    def __init__(self, c: ModelConfig):
+        super().__init__()
+        self.cfg = c
+        self.tok = nn.Embedding(c.vocab_in, c.d_model)
+        self.rnn = nn.GRU(c.d_model, c.d_model, num_layers=c.n_layer, batch_first=True)
+        self.ln_f = nn.LayerNorm(c.d_model)
+        self.head = nn.Linear(c.d_model, c.vocab_out)
+        for m in (self.tok, self.head):
+            nn.init.normal_(m.weight, std=0.02)
+        nn.init.zeros_(self.head.bias)
+
+    def forward(self, ids, return_hidden: bool = False):
+        if ids.shape[1] > self.cfg.n_pos:
+            raise ValueError(f"sequence of {ids.shape[1]} positions exceeds n_pos={self.cfg.n_pos}")
+        e = self.tok(ids)
+        h, _ = self.rnn(e)
+        logits = self.head(self.ln_f(h))
+        return (logits, [e, h]) if return_hidden else logits
+
+
+def build_model(c: ModelConfig) -> nn.Module:
+    if c.arch == "transformer":
+        return Decoder(c)
+    if c.arch == "gru":
+        return GRUNet(c)
+    raise ValueError(f"unknown arch {c.arch!r}")
 
 
 def n_params(model: nn.Module) -> int:

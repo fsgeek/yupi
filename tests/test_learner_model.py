@@ -43,3 +43,22 @@ def test_small_config_shapes():
     m = Decoder(ModelConfig(d_model=32, n_layer=1, n_head=2, d_mlp=64, n_pos=22))
     out, hs = m(torch.zeros(2, 22, dtype=torch.long), return_hidden=True)
     assert out.shape == (2, 22, 156) and len(hs) == 2
+
+
+def test_gru_baseline_shape_causality_and_factory():
+    # 2026-10-13: the recurrent baseline (whole-draft review W28). Same input/output contract as Decoder; causal by
+    # construction; build_model dispatches on arch, defaulting to the transformer so old configs load unchanged.
+    import torch
+    from yupi.learner.model import GRUNet, build_model, n_params
+    c = ModelConfig(arch="gru", d_model=32, n_layer=2, n_pos=22)
+    m = build_model(c).eval()
+    assert isinstance(m, GRUNet)
+    x = torch.randint(0, 157, (3, 20))
+    y = m(x)
+    assert y.shape == (3, 20, 156)
+    x2 = x.clone(); x2[:, 15:] = (x2[:, 15:] + 1) % 157
+    assert torch.allclose(m(x2)[:, :15], y[:, :15])            # positions before 15 never see later inputs
+    assert isinstance(build_model(ModelConfig()), Decoder)
+    assert ModelConfig(**{k: v for k, v in ModelConfig().__dict__.items() if k != "arch"}).arch == "transformer"
+    full = build_model(ModelConfig(arch="gru", d_model=256, n_layer=2))
+    assert 800_000 < n_params(full) < 950_000                   # matched to the transformer's 838,940

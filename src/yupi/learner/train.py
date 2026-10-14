@@ -23,7 +23,7 @@ import torch.nn.functional as F
 
 from yupi.learner.checkpoint import load, rng_state, save_atomic, set_rng_state
 from yupi.learner.data import batches, epoch_order, load_split, paired_targets, unscore_fields
-from yupi.learner.model import Decoder, ModelConfig, n_params
+from yupi.learner.model import Decoder, ModelConfig, n_params, build_model
 
 
 @dataclass
@@ -82,6 +82,8 @@ def _comparable(c: TrainConfig) -> dict:
     d.pop("max_steps")
     if not d["unscored_fields"]:
         d.pop("unscored_fields")    # absent when empty, so checkpoints from before the field resume unchanged
+    if d["model"].get("arch") == "transformer":
+        d["model"].pop("arch")      # the default, absent from configs written before the field existed
     if d["target_corpus_dir"] is None:
         d.pop("target_corpus_dir")
     if not d["target_fields"]:
@@ -132,7 +134,7 @@ def train(c: TrainConfig, resume: bool = False) -> dict:
     steps_per_epoch = math.ceil(len(X) / c.batch_size)
     planned = c.epochs * steps_per_epoch
     total = planned if c.max_steps is None else min(planned, c.max_steps)
-    model = Decoder(c.model).to(c.device)
+    model = build_model(c.model).to(c.device)
     opt = _optimizer(model, c)
     step, epoch, pos = 0, 0, 0
     ck = load(out) if resume else None

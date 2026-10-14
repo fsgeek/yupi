@@ -32,7 +32,7 @@ from yupi.corpus.writer import read_split
 from yupi.interfaces import Lit
 from yupi.learner.census import summarize
 from yupi.learner.evaluate import evaluate, surface_records, torch_logprobs_fn
-from yupi.learner.model import Decoder, ModelConfig
+from yupi.learner.model import Decoder, ModelConfig, build_model
 from yupi.pattern_ceiling import load_table
 
 
@@ -114,7 +114,7 @@ def main(argv=None):
     table = load_table(fn)
     table_sha = hashlib.sha256(fn.read_bytes()).hexdigest()
     ck = torch.load(run / "ckpt.pt", weights_only=False, map_location="cpu")
-    model = Decoder(ModelConfig(**run_json["model"])).to(a.device)
+    model = build_model(ModelConfig(**run_json["model"])).to(a.device)
     model.load_state_dict(ck["model"])
 
     rows, keys, class_ids = [], {}, []

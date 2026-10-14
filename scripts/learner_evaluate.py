@@ -23,7 +23,7 @@ import torch
 
 from yupi.corpus.manifest import Manifest
 from yupi.learner.evaluate import evaluate, torch_logprobs_fn
-from yupi.learner.model import Decoder, ModelConfig
+from yupi.learner.model import Decoder, ModelConfig, build_model
 from yupi.pattern_ceiling import load_table
 
 
@@ -59,7 +59,7 @@ def main(argv=None):
         tables[k] = load_table(fn)
         shas[str(k)] = hashlib.sha256(fn.read_bytes()).hexdigest()
     ck = torch.load(run / "ckpt.pt", weights_only=False, map_location="cpu")
-    model = Decoder(ModelConfig(**run_json["model"])).to(a.device)
+    model = build_model(ModelConfig(**run_json["model"])).to(a.device)
     model.load_state_dict(ck["model"])
     t0 = time.time()
     r = evaluate(torch_logprobs_fn(model, a.device), run_json["corpus_dir"], law, tables, k_list,
