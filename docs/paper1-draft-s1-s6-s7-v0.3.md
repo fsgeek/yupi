@@ -86,7 +86,8 @@ and none is a general claim about learners or about telemetry design.
   validated on a sample of about 91 windows per cell, and class by class only at a smaller law. Nothing validates
   the kernel itself beyond its tests, reviews and one argued property tested at r1.
 - *One world and one window law.* The crossing is one example.
-- *One architecture and size, one corpus size, position k = 7 only.*
+- *One architecture, one corpus size, position k = 7 only.* The size axis is thin: d = 256 was checked in one
+  cell (r1 ε = 1), where the KIND association holds, and the larger model is under-trained at this recipe.
 - *Seeds.* Three per cell; six in two held-out cells. Every relay or 2×2 comparison is three models a side, with a
   paired p floor of 1/8. The 2×2 also carries post-hoc multiplicity: four contrasts × two fields, plus a sum.
 - *Budget.* 15 epochs, with validation loss still falling slowly.

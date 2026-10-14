@@ -29,6 +29,13 @@ The criterion was β_long > 0 with t ≥ 3 in every run, on r1–r4.
   - fixed effects for the last prefix record's kind × the number of distinct actors, with errors clustered on those
     26–28 coarse cells: every run keeps t ≥ 3 (lowest 3.44 held-out, 3.60 at 15 epochs).
 
+**At a larger size** [EXPLORATORY, not pre-registered]: d = 256 (3.25 M parameters, the same recipe), r1 ε = 1. The four
+existing models (15 epochs, seeds 1–3; 45 epochs, seed 1) were censused on 2026-10-13. All four keep β_long > 0:
+frozen-model t 7.6–11.3, and under the coarse-cell fixed effects t 5.6–7.1. Their raw bins rise as at d = 128. At this
+recipe the larger model has *higher* overall KIND shortfall than d = 128 (it is under-trained at 15 epochs, as the
+September size axis found), so this checks only that the association is not specific to one size, in one cell.
+[`b1-size-axis-d256-2026-10-13.jsonl`]
+
 **ACTOR**, with ι_{A|K,4}, a lower bound (§2.5):
 - 36 of 36 runs pass at 5 epochs (21 held out). [CONFIRMATORY]
 - 24 of 24 pass at 15 epochs. [CONFIRMATORY]
