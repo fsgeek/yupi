@@ -68,14 +68,26 @@ denormalization for a learned reader, not as a new principle.
 | 5 | What output-level comparisons could not settle, and the designs that would | negative, as method |
 | 6 | Limits; next studies (fixed-model interventions, full-profile locality test, acquisition dynamics, exchange rate, exposure) | — |
 
-## Owed before external review
+## Owed before external review (updated 2026-10-13, night)
 
-1. ~~The loss-masked relay arm and the 2×2.~~ Done 2026-10-13. Both are scored, and both verdicts were reviewed by
-   both families.
-2. ~~The fixed-effects and coarse-cluster robustness check across all cells.~~ Done 2026-10-13: 45/45 keep t ≥ 3.
-3. ~~The raw per-model bins.~~ Done 2026-10-13: monotone above 0.001 in 45/45. Figure: `figures/b1-raw-bins-2026-10-13.png`.
-4. The back-reference citations verified, and Log20's measure read from its full text.
-5. A whole-draft second review by both families.
+**Current drafts:** `paper1-draft-s1-s6-s7-v0.3.md` (title, abstract, §1, §6, §7), `-s2-v0.3`, `-s3-v0.3`, `-s4-v0.3`,
+`-s5-v0.3`, and Figure 4a. Whole-draft review dispositions: `paper1-whole-review-2026-10-13.md`.
+
+Done:
+- the loss-masked arm and the 2×2;
+- the FE robustness check (KIND 45/45; ACTOR not robust);
+- the raw-bin figure;
+- injectivity at r1;
+- Table 3.0 (state vs predictive);
+- related work;
+- the d = 256 size check.
+
+Owed:
+1. A recurrent (GRU) baseline, pre-registered and two-family reviewed before stamping.
+2. The instrument appendix (W19): pseudocode, a worked window, state/class/frontier counts, cost, a reproducibility
+   manifest.
+3. The remaining citation checks listed at the end of §7.
+4. A third whole-draft review by both families.
 
 ## Cut (unchanged)
 
