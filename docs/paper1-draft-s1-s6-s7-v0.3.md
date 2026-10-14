@@ -114,7 +114,8 @@ and none is a general claim about learners or about telemetry design.
   randomness. Our ι_m is the gap between the order-m and the full-window predictive entropy, class by class, for
   each interface of one system.
 - In language, the memory–surprisal trade-off (Hahn, Degen and Futrell, Psychological Review 128(4), 2021) and
-  information locality (Futrell; Someya et al., ACL 2025) treat how far back predictive information sits as a
+  information locality (Futrell, "Information-theoretic locality properties of natural language", 2019,
+  ACL Anthology W19-7902; Someya et al., ACL 2025) treat how far back predictive information sits as a
   property that shapes processing and learning. Someya et al. used entropy-preserving transformations, exact
   local entropies on automata, and learner KL against the inherent entropy. We do not claim these methods. We
   differ in the setting: one fixed hidden system whose *observation* is varied, with predictive laws matched class
@@ -140,9 +141,10 @@ apart from other nontrivial auxiliary targets.
 - Back-reference fields are a familiar log-design pattern. ARIES records carry the previous log record of the same
   transaction (Mohan et al., TODS 17(1), 1992). The relay is a consumer-side analogue of such a link, copying a value
   rather than holding a pointer.
-- Learned log readers (DeepLog, Du et al., CCS 2017; LogBERT, 2021; LLM-based detectors) treat long-range
+- Learned log readers (DeepLog, Du et al., CCS 2017; LogBERT, Guo, Yuan and Wu, IJCNN 2021; LLM-based detectors) treat long-range
   dependence as a modelling problem, not as a format choice.
-- Interventional and causal-abstraction methods (Geiger et al., NeurIPS 2021) are the route §6 names for fixed-model
+- Interventional and causal-abstraction methods (Geiger, Lu, Icard and Potts, "Causal Abstractions of Neural
+  Networks", NeurIPS 2021) are the route §6 names for fixed-model
   studies.
 
 **Text-only supervision.** Mason and Anand prove that for a query answerable in one world and unanswerable in
@@ -156,10 +158,9 @@ our scheduler's ε.)
 
 ## Citations still to verify before submission
 
-- Futrell's information-locality paper: the exact reference.
-- LogBERT: authors and venue.
+- ~~Futrell, LogBERT, Geiger et al.~~ Checked 2026-10-13. Futrell 2019 is cited by its Anthology id; the venue is
+  not confirmed beyond that.
 - ARIES PrevLSN: the wording in the paper itself (checked so far only against course material).
-- Geiger et al. 2021: the exact title.
 - 2512.22471 and 2605.20824: read beyond their abstracts.
 - The Linux `sched_switch`, OpenTelemetry and ETW examples are cut from the text until checked against primary
   documentation.
