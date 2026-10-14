@@ -91,7 +91,8 @@ and none is a general claim about learners or about telemetry design.
 - *Seeds.* Three per cell; six in two held-out cells. Every relay or 2×2 comparison is three models a side, with a
   paired p floor of 1/8. The 2×2 also carries post-hoc multiplicity: four contrasts × two fields, plus a sum.
 - *Budget.* 15 epochs, with validation loss still falling slowly.
-- *One baseline*, a smoothed count table. A recurrent baseline and a larger model are pre-registered separately.
+- *Baselines.* A smoothed count table. A parameter-matched GRU on the untuned transformer recipe did worse than the
+  table in every cell, so it is uninformative by its pre-registered floor. A tuned recurrent baseline is owed.
 - *Correlation within cells.* The KIND association controls entropy, frequency and coarse observable classes, and
   remains a correlation.
 - *Consumer side only.* The relay rewrites windows a consumer holds. Producer-emitted fields, their overhead, and any

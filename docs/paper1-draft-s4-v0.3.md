@@ -90,7 +90,14 @@ did better.
   (0.74–0.87). No uncertainty analysis separates the two.
 - The table's shortfall grows with the number of classes, and the transformer's does not.
 
-[EXPLORATORY; one baseline; a recurrent baseline is pre-registered separately]
+[EXPLORATORY; one count baseline]
+
+**A recurrent baseline.** We pre-registered a parameter-matched GRU (870 k parameters, 2 layers of width 256) on the
+transformer's untuned recipe, one seed in each of the 8 cells. The registration requires each model to beat the count
+table before its association is read. All eight did worse than the count table (KIND 0.045–0.076), so by that rule all
+eight are uninformative, and no reading of the association is made for a recurrent learner. On r1 ε = 1, the GRU's
+loss over all positions is close to the transformer's, and its deficit sits at the late prediction scored here. A
+tuned recurrent baseline remains owed. [pre-registered: Y = 0 informative; `gru-baseline-verdict-v0.1.md`]
 
 ### 4e. A near copy at a fixed ceiling, as a 2×2
 

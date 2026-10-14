@@ -83,7 +83,8 @@ Done:
 - the d = 256 size check.
 
 Owed:
-1. A recurrent (GRU) baseline, pre-registered and two-family reviewed before stamping.
+1. ~~A recurrent (GRU) baseline.~~ Run 2026-10-13: all 8 models are under the floor, worse than the count table, so
+   uninformative. A *tuned* recurrent baseline is owed (`gru-baseline-verdict-v0.1.md`).
 2. The instrument appendix (W19): pseudocode, a worked window, state/class/frontier counts, cost, a reproducibility
    manifest.
 3. The remaining citation checks listed at the end of §7.
