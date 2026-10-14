@@ -21,8 +21,8 @@
 10. K. Li, A. K. Hopkins, D. Bau, F. Viégas, H. Pfister, M. Wattenberg. Emergent World Representations: Exploring a
     Sequence Model Trained on a Synthetic Task. ICLR 2023. **[check: author list]**
 11. Markovian Circuit Tracing for Transformer State Dynamics. arXiv:2605.20824. **[abstract only; authors to add]**
-12. W. A. Mason, A. Anand. Epistemic observability impossibility (title to add). arXiv:2603.20531. **[check: exact
-    title]**
+12. T. Mason, V. Anand. Epistemic Observability in Language Models. arXiv:2603.20531. (Title and authors from the
+    source, `ai-honesty/arxiv/main.tex`.)
 13. MetaOthello. arXiv:2602.23164. **[check: title and authors]**
 14. C. Mohan, D. Haderle, B. Lindsay, H. Pirahesh, P. Schwarz. ARIES: A Transaction Recovery Method Supporting
     Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging. ACM TODS 17(1):94–162, 1992.
