@@ -35,7 +35,8 @@ intervention that moves one while holding the other.
   trained, and only their between-seed spreads have been read.
 - Two later pre-registered arms took a different route, separating the copy's presence from its supervision (§4e).
   On KIND, an unscored copy cost the learner, and supervising the slot without the copy helped a little. Whether
-  the copy helps once supervised is not resolved with three seeds, and nothing resolves on ACTOR.
+  the copy helps once supervised is not resolved with three seeds. On ACTOR none of the
+  presence or supervision contrasts (C1–C3) resolves.
 
 *Cause:* a missing control of the right kind, then too few seeds. *Candidate designs:* more paired seeds; a field
 that varies like the relay but carries no information; a nontrivial auxiliary target that is not the lookup; and

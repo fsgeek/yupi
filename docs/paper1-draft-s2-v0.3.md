@@ -114,8 +114,9 @@ Seed i shares initial weights and batch order across arms.
 
 **Scoring at position k = 7.** Let the realised next record have KIND x and actor pattern value a. P\* is its exact
 law given the pattern class, and q is the model's softmax.
-- **KIND shortfall:** log₂ P\*(x | class) − log₂ q̃(x), where q̃ is the model's KIND distribution renormalised over
-  non-end tokens. (Ending the window is scored separately and excluded.)
+- **KIND shortfall:** log₂ P\*(x | class) − log₂ q̃(x), where q̃ is the model's softmax at the KIND position,
+  renormalised to remove only the end-of-window token. Probability on other non-KIND tokens stays in the
+  denominator and is penalised. (Ending the window is scored separately and excluded.)
 - **ACTOR shortfall:** log₂ P\*(a | x, class) − log₂ q̃(a | x). The model's probability is projected to the pattern
   value. A thread already bound in the window scores its own token. A fresh thread scores the summed probability of
   the drawable thread names not yet used in the window (reserved names never count).

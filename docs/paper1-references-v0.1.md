@@ -12,8 +12,9 @@
    13(1):25–54, 2003. arXiv:cond-mat/0102181.
 5. M. Du, F. Li, G. Zheng, V. Srikumar. DeepLog: Anomaly Detection and Diagnosis from System Logs through Deep
    Learning. ACM CCS 2017. **[check: author list]**
-6. R. Futrell. Information-theoretic locality properties of natural language. 2019. ACL Anthology W19-7902.
-   **[check: venue]**
+6. R. Futrell. Information-theoretic locality properties of natural language. Proceedings of the First Workshop on
+   Quantitative Syntax (Quasy, SyntaxFest 2019). ACL Anthology W19-7902. (Venue per Codex's reading of the Anthology
+   record.)
 7. A. Geiger, H. Lu, T. Icard, C. Potts. Causal Abstractions of Neural Networks. NeurIPS 2021. arXiv:2106.02997.
 8. H. Guo, S. Yuan, X. Wu. LogBERT: Log Anomaly Detection via BERT. IJCNN 2021. arXiv:2103.04475.
 9. M. Hahn, J. Degen, R. Futrell. Modeling Word and Morpheme Order in Natural Language as an Efficient Trade-Off of

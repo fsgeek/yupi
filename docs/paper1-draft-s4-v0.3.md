@@ -99,7 +99,15 @@ did better.
 **A recurrent baseline.** We pre-registered a parameter-matched GRU (870 k parameters, 2 layers of width 256) on the
 transformer's untuned recipe, one seed in each of the 8 cells. The registration requires each model to beat the count
 table before its association is read. All eight did worse than the count table (KIND 0.045–0.076), so by that rule all
-eight are uninformative, and no reading of the association is made for a recurrent learner. A tuned recurrent baseline
+eight are uninformative, and no reading of the association is made for a recurrent learner. Its KIND and ACTOR means, per cell (G2, the pre-registered descriptive table):
+
+| cell | r1 ε1 | r2 ε1 | r3 ε1 | r4 ε1 | r1 ε½ | r2 ε½ | r3 ε½ | r4 ε½ |
+|---|---|---|---|---|---|---|---|---|
+| GRU KIND | 0.045 | 0.059 | 0.070 | 0.064 | 0.056 | 0.076 | 0.070 | 0.067 |
+| count KIND | 0.042 | 0.054 | 0.064 | 0.062 | 0.039 | 0.044 | 0.047 | 0.044 |
+| GRU ACTOR | 0.099 | 0.147 | 0.133 | 0.129 | 0.126 | 0.170 | 0.136 | 0.122 |
+
+A tuned recurrent baseline
 remains owed. [pre-registered: none of the 8 GRU models is informative; `gru-baseline-verdict-v0.1.md`]
 
 ### 4e. A near copy at a fixed ceiling, as a 2×2
@@ -125,7 +133,10 @@ There are five arms, with KIND shortfall at 15 epochs for seeds 1, 2 and 3:
 | r1Rm | relay copy | none | 0.0281, 0.0411, 0.0307 | 0.0328, 0.0363, 0.0345 |
 | r1R | relay copy | relay value | 0.0130, 0.0095, 0.0125 | 0.0278, 0.0262, 0.0308 |
 
-**Pre-registered contrasts, on KIND** (seed-paired; the floor is p = 1/8):
+**Pre-registered contrasts, on KIND.** "Resolved" is a descriptive rule: every model of one arm lies beyond every model
+of the other, in the pre-registered direction. Beside it is an exact one-sided sign-flip test on the three
+seed-paired differences, with a floor of 1/8. The p-values: loss-mask T, 1/20 unpaired; C1 and C2, p = 0.125; C3,
+p = 0.25; the interaction, two-sided p = 0.25. None is conventionally significant. Three models a side cannot be.
 - **Loss-masked arm, reading T:** r1Rm is above every r1R model, so supervision contributes given the copy.
 - **C1** (r1Rm against r1m; same mask, different input): **an unscored copy in the input cost the learner,
   relative to a constant placeholder.** This cannot tell an informative but unscored copy from a varying decoy field.

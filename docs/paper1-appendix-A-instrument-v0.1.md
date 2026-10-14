@@ -15,17 +15,19 @@ for t = 1 … T_ep:
             w' ← (w + [record_of(τ)])[-L:]
             next[(τ.next_state, w')] += μ · p
     frontier ← next
-    for each endpoint T on the grid {B, 2B, …, T_ep} with T = t:        # the window law
-        aggregate[(reset_flag, w)] += frontier mass, by state           # joint P(window, state)
+    for each endpoint T on the grid {B, 2B, …, T_ep} with T = t:        # the window law: T uniform on the grid
+        aggregate[(reset_flag, w)] += frontier mass / |grid|, by state  # joint P(window, state)
 
 # Pattern ceilings at position k (here 7): for each rung r and class c = (reset_flag, Π_all(project_r(w_≤k))):
     P*(next record | c) = Σ over (S, binding β) consistent with c of P(S, β | c) · P(record_r(τ) re-keyed by β | S)
-    ceiling_target = Σ_c mass(c) · H(target of next | c)
+    M = Σ_c mass(c) over classes whose window runs ≥ k records         # 0.85 at k = 7
+    ceiling_target = Σ_c (mass(c) / M) · H(target of next | c)
 
 # Lag profile: for m < k, the suffix view s_m(c) re-keys the last m records by Π_all,
 # and an entity bound only before the suffix becomes fresh:
     P*_m(· | s) = law-mass mixture of the pushed-forward Q_c over classes sharing s
-    ι_m(c) = KL(Q_c ‖ P*_m(· | s_m(c)));   lag profile ι_m = Σ_c mass(c) ι_m(c) = H_m − H*
+    ι_m(c) = KL(Q_c ‖ P*_m(· | s_m(c)));   lag profile ι_m = Σ_c (mass(c)/M) ι_m(c) = H_m − H*
+    # (KIND target; naming-aware targets use the suffix push-forward of Q_c described in §2.5)
 ```
 
 Every probability is an exact rational. Logarithms are taken in float at the end. The recursion and an independent
@@ -79,7 +81,10 @@ observability curve (Part I D4) is stated in `d4-budget-freeze` and its erratum 
 | reset injectivity (§2.3) | frozen world, L ≤ 8 | `reset-injectivity-r1-2026-10-13.jsonl` | — |
 | within-cell association (§4a) | 45 transformers; 4 at d = 256 | `d1-long-lag-verdict-v0.1.md`, `converged-ladder-verdict-v0.1.md`, the FE raws, `b1-size-axis-d256-2026-10-13.jsonl` | D1 and converged-ladder preregs (stamped) |
 | relay and 2×2 (§4e) | 5 arms × 3 seeds | `relay-2x2-score-2026-10-13.json` and the verdicts | relay, loss-mask and 2×2 preregs (stamped) |
-| code | — | git, OTS-stamped per commit; each `run.json` records its revision lineage | — |
+| code | — | git, OTS-stamped per commit. Runs since 2026-10-09 record their revision lineage in `run.json`; earlier
+runs (the 10-02 r1/r1R baselines) do not, and are authenticated instead by the trainer-reproduction gate (exact
+step-1000 losses). One gate deviation is disclosed: the r1m runs record a dirty tree, and only an untracked
+scorer differed (`relay-2x2-verdict-v0.1.md` §1). | — |
 
 ---
 

@@ -77,7 +77,7 @@ What we find:
    event is placed at the point of use *and* is a training target. In no resolved contrast did the copy itself
    help. A pre-registered 2×2 separates the copy's presence from its supervision. On KIND, an
    unscored copy hurts, and supervising the slot without the copy helps a little. Whether the copy helps once
-   supervised is not resolved with three seeds, and nothing resolves on identity. The simple placement hypothesis
+   supervised is not resolved with three seeds. On identity none of these three contrasts resolves. The simple placement hypothesis
    finds no support.
 5. **What output-level comparisons could not settle** (§5), with the cause of each failure and candidate designs.
 
@@ -117,11 +117,13 @@ and none is a general claim about learners or about telemetry design.
 **Entropy convergence and locality.**
 - The lag profile is a per-class, exact version of a familiar curve. Crutchfield and Feldman (Chaos 13:25, 2003)
   study how block entropies converge to the entropy rate, and what an observer misses when it reads structure as
-  randomness. Our ι_m is the gap between the order-m and the full-window predictive entropy, class by class, for
-  each interface of one system.
+  randomness. Our ι_m is a per-class KL divergence whose law-mass mean equals the gap between the order-m and
+  the full-window predictive entropy, computed for each interface of one system. (Per class, the KL and the entropy
+  difference generally differ; only their means agree. Our order m counts *records*. Someya et al.'s m-local
+  entropy conditions on m − 1 symbols.)
 - In language, the memory–surprisal trade-off (Hahn, Degen and Futrell, Psychological Review 128(4), 2021) and
   information locality (Futrell, "Information-theoretic locality properties of natural language", 2019,
-  ACL Anthology W19-7902; Someya et al., ACL 2025) treat how far back predictive information sits as a
+  Quasy/SyntaxFest workshop, ACL Anthology W19-7902; Someya et al., ACL 2025) treat how far back predictive information sits as a
   property that shapes processing and learning. Someya et al. used entropy-preserving transformations, exact
   local entropies on automata, and learner KL against the inherent entropy. We do not claim these methods. We
   differ in the setting: one fixed hidden system whose *observation* is varied, with predictive laws matched class
