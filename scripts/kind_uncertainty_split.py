@@ -12,6 +12,7 @@ Gate: the law-mass mean of H* per rung must reproduce paper 1 §3.1's KIND ceili
 
   python scripts/kind_uncertainty_split.py --eps 1 [--k 7] [--out docs/kind-uncertainty-split-...json]
 Per-class rows go to ~/.cache/yupi-scratch/split/ (not docs/); the summary raw holds sha256s.
+Rows carry the class key and the exact P*(KIND) (as Fraction strings) since 2026-10-15 (Codex review #15).
 """
 import argparse
 import hashlib
@@ -98,7 +99,8 @@ def main():
                 for k, p in kd.items():
                     star[k] = star.get(k, Fraction(0)) + w * p
             hs = h_bits(star.values())
-            rows.append((float(mass), hs, r, hs - r))
+            pstar = tuple(sorted((k, str(v)) for k, v in star.items() if v > 0))
+            rows.append((float(mass), hs, r, hs - r, pstar, repr(key)))
         M = sum(x[0] for x in rows)
         mean = lambda j: sum(x[0] * x[j] for x in rows) / M
         H, R, G = mean(1), mean(2), mean(3)
@@ -122,7 +124,7 @@ def main():
         p = rows_dir / f"{a.programs}-{'-'.join(map(str, a.law))}-{rung}-eps{a.eps.replace('/', '_')}-k{a.k}.jsonl"
         with open(p, "w") as fh:
             for x in rows:
-                fh.write(json.dumps(dict(mass=x[0], h_star=x[1], r=x[2], g=x[3])) + "\n")
+                fh.write(json.dumps(dict(mass=x[0], h_star=x[1], r=x[2], g=x[3], p_star=x[4], key=x[5])) + "\n")
         sha = hashlib.sha256(p.read_bytes()).hexdigest()
         ok = round(H, 3) == EXPECT[a.eps][ri] if a.eps in EXPECT and a.k == 7 else None
         summary.append(dict(rung=rung, n_classes=len(rows), h_star=H, transition_randomness=R, observation_gap=G,

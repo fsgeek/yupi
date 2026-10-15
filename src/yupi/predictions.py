@@ -64,6 +64,7 @@ NON_MEASUREMENT_PREFIXES = (
     "plateau-stratified",   # step-vs-rise stratification (§5.1)
     "state-vs-predictive",   # Table 3.0, structural observer
     "three-arm-",   # three-arm design: exact side, corpus pairing, pilot SDs, severity runs
+    "one-step-identifiability",   # 2026-10-15 declared check (docs/one-step-identifiability-check-2026-10-15.md): mass where identical P*(KIND) hides different G
     "kind-uncertainty-split",   # 2026-10-15 exact R/G split of next-KIND uncertainty per class (scripts/kind_uncertainty_split.py); feasibility gate, not a prediction family
 )
 
