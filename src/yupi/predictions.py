@@ -52,6 +52,18 @@ NON_MEASUREMENT_PREFIXES = (
     "implicit-info",   # 2026-09-28/29 implicit-information ι_m raws (docs/implicit-information-design-v0.1.md; scripts/implicit_info*.py); per-class ι under ~/.cache/yupi-scratch/implicit, not a prediction family (registered 2026-09-30: the suite's unknown-family check had been failing since these were committed)
     "d1-long-lag",   # 2026-09-29 D1 held-out test raws, scored against docs/d1-long-lag-prereg-v0.1.md by its own analysis script; not a ledger prediction family (registered 2026-09-30, same reason)
     "relay-",   # 2026-09-30 relay intervention (docs/relay-intervention-design-v0.1.md): exact-side raw, corpus pairing and gate verdicts; not a prediction family
+    # Registered 2026-10-15: committed 2026-09-30..10-13 without registration, so the
+    # unknown-family check failed for two weeks. Each is scored by its own script against
+    # its own prereg or verdict note, not a ledger prediction family.
+    "actor-iota", "actor-long-lag",   # ACTOR ι_m and the D1 ACTOR long-lag results
+    "b1-clustered-refit", "b1-fe-coarse-robustness",   # B1 within-cell refits (paper 1 §4a)
+    "converged-ladder",   # 15-epoch ladder C3/C4 and bin tests (§3.4, §4b)
+    "count-baseline",   # count-table baseline per cell and its comparison (§4d)
+    "decoy-",   # decoy Δι_4 check and sign fractions (§3.3)
+    "gru-baseline",   # GRU baseline score (docs/gru-baseline-verdict-v0.1.md)
+    "plateau-stratified",   # step-vs-rise stratification (§5.1)
+    "state-vs-predictive",   # Table 3.0, structural observer
+    "three-arm-",   # three-arm design: exact side, corpus pairing, pilot SDs, severity runs
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);
