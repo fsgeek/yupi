@@ -49,18 +49,23 @@ the unit, the qualitative findings survived and their stated strengths did not. 
 model.
 
 **5.5 Does a learner treat "the world is random here" differently from "the telemetry hides the state here"?**
-§3.0 splits each class's next-KIND uncertainty exactly into transition randomness R and observation gap G. Two
-designs that would compare learners on classes of matched H\* and different G/H\* failed review before they ran.
-The cause is the same in both: in this world, classes with G = 0 take only three values of H\* at each ε. One of
-them, the device-completion coin (0.918 bits), carries about 90 % of their mass. Classes with high G/H\* that share
-an H\* bin with them carry about 1 % of law mass. Any such contrast is in effect a comparison between one mechanism and
-everything else.
+§3.0 splits each class's next-KIND uncertainty exactly into transition randomness R and observation gap G. The
+natural contrast compares learners on classes of matched H\* where the uncertainty is pure randomness (G = 0,
+H\* > 0) against classes where much of it is withheld state (G/H\* ≥ 0.5). Pooled over r1–r3, the pure-randomness
+classes are 15.6 % (ε = 1) and 17.2 % (ε = ½) of the position-7 population, and take only three values of H\*; the
+device-completion coin (0.918 bits) is 89–92 % of them. High-gap classes sharing a 0.05-bit H\* bin with them carry
+0.8–1.4 % of that population. This contrast is in effect one mechanism against everything else.
 
-*Cause:* the world has few stochastic mechanisms. 5.1 meets the same constraint from another side: classes with no
-far information take three entropy values. A world small enough for exact posteriors has few sources of
-randomness, so learner contrasts at matched exact quantities collapse onto one or two of them. *Candidate design:*
-a world variant whose random sources have many entropies and interact with hidden state. For any exact testbed, a
-cheap check comes first: count the mechanisms that populate both sides of a contrast before designing it.
+A graded contrast has more support: within 0.05-bit H\* bins, the share G/H\* varies widely (10th–90th percentile
+spread ≥ 0.30) on 17–22 % of the position-7 population at ε = 1 and 36–43 % at ε = ½ (exploratory bin statistics).
+Whether that variation spans more than a few mechanisms has not been audited.
+
+*Cause:* in this world, the randomness that does not depend on hidden state comes almost entirely from one source,
+by design (Milestone 1 placed randomness only in the scheduler and the device to keep exact filtering tractable).
+5.1 meets a related constraint: classes with no far information take three entropy values. *Candidate design:* a
+reparameterised world in which completion and dispatch probabilities vary, which leaves the posterior support
+unchanged (`world-variant-reading-2026-10-15.md`). *For any exact testbed:* compute the support of a planned contrast,
+its mass and its mechanism composition, before designing the learner study.
 
 ---
 
