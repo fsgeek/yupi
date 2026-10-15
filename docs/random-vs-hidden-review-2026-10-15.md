@@ -30,3 +30,26 @@ The design is withdrawn. Two lessons repeat across today's two designs and paper
   but its mechanisms are few, so learner contrasts at matched exact quantities keep collapsing onto a single
   mechanism. A world variant built so that randomness and hidden state vary independently across several
   mechanisms is the fix both failures name; it is already on paper 1's next-studies list (§6, item 3).
+
+## Dispositions, Codex review (UNSOUND as written, 15 findings)
+
+Converges independently with Claude on: the full-record zero condition (#1; its frozen-law counterexample: a
+class with G_KIND exactly 0 and I(X₁; S | c) ≈ 0.197 bits, and a toy with Υ ≈ 0.531 bits), P̃ undefined on
+positive-weight components (#2; 26.8 % of prior mass in one real class), position 8 (#3: after record 8 the
+training target is PAD), the (S, β) posterior (#4), the φ ratio (#5, #6), the target/metric mismatch (#7), the
+missing controls (#9), "not predicted by any objective" (#10), the activation side's one degree of freedom
+(#11), and the untested telemetry claim (#14). All adopted. New:
+
+| # | finding | disposition |
+|---|---|---|
+| 8 | **Zero-gap classes take three H\* values per ε**; high-G classes sharing a 0.05-bit bin with them carry ≈ 0.8–1.4 % of mass. | **Adopted, reproduced** (r1–r3 pooled). ε = 1: 0.918 (89.4 % of zero-gap mass), 1.000 (9.1 %), 1.585 (1.5 %). ε = ½: 0.918 (92.3 %), 0.811 (5.8 %), 1.459 (1.9 %). The random side of this world is the device-completion coin plus two minor sources. **This is §5.1's wall again** (ι = 0 classes take three entropy values). |
+| 12 | Ahdritz et al. 2402.03563 §5.1 already has a synthetic fixed-hidden vs freshly-randomised contrast where hints change predictions only in the fixed case; Chung et al. 2606.19353 estimate components from activations with controlled perturbations; Siems et al. 2602.14814 separate reveal conditioning from propagation. | Adopted (ids from the reviewer, fetched by it; owner to verify before citing). The broad "learn from hidden, ignore random" question has precedent; what would be Yupi's is the dynamical, interface-varied version, and only if the world supports it. |
+| 13 | Bergna et al.'s non-identifiability is general; with a known kernel a one-step predictive can identify R. | Adopted; the design overextended it. |
+| 15 | Split rows omit class keys; keep them next time. | Adopted. |
+
+## Decision (owner)
+
+Withdrawn; no v0.2 on this world. Both reviewers and two independent counts agree that the learner contrast is
+supported on about 1 % of mass, because the world has three sources of pure randomness, one of them dominant. The
+exact R/G result (§ feasibility gate) stands. The next question is whether to build a world variant whose random
+sources have many entropies and interact with hidden state, or to write up what exists. Brought to Tony.
