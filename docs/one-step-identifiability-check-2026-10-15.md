@@ -39,3 +39,31 @@ same reason makes contrasts between sources unavailable to a learner study.
 **Consequence for the observation-design note:** its central claim ("a single prediction cannot tell a monitor
 which it is") is false in this world, and the note is not written as conceived. What it would have said survives
 as one section of the methods paper: mechanism sparsity cuts both ways.
+
+## Correction (owner, 2026-10-15, after the skeleton v0.7 review): the result holds only at exact precision
+
+The check grouped classes by **exact Fraction equality** of P\*(KIND). That makes it nearly tautological: exact
+equality almost only occurs between classes whose posteriors mix the same state-conditional laws in the same
+proportions, and within such a group R and G are equal by construction (Claude skeleton review #1–#2). The owner
+declared the check without asking what precision a monitor has.
+
+Reproduced by the owner with the reviewer's grid-rounding script (`scratchpad/review3/robust.py`, read before
+running), share of law mass in groups whose G spans ≥ 0.1 bits:
+
+| grid tolerance on P\*(KIND) | r1 ε = 1 | r3 ε = 1 | r1 ε = ½ | r3 ε = ½ |
+|---|---|---|---|---|
+| exact | 0.00 % | 0.01 % | 0.04 % | 0.02 % |
+| 0.005 | 0.06 % | 0.11 % | 1.8 % | 5.3 % |
+| 0.01 | 0.55 % | 0.50 % | 3.5 % | 7.7 % |
+| 0.02 | 2.0 % | 2.4 % | 10.6 % | 12.2 % |
+| 0.05 | 60 % | 64 % | 73 % | 82 % |
+
+A trained learner's KIND KL of 0.015–0.04 bits allows total-variation error up to ≈ 0.07–0.12 by Pinsker, so a
+monitor reading a learner's output works at roughly the coarsest tolerance shown. Grid cells are a crude
+neighbourhood (boundary effects both ways); a declared ball-based check is owed before any number here is cited.
+
+**Corrected reading:** with the kernel known and probabilities read exactly, one prediction determines the split.
+At any precision a learner's output actually has, it does not, on most of the mass. "Mechanism sparsity cuts both
+ways" is withdrawn as a thesis (skeleton v0.7). The original note's claim, that one prediction does not tell a
+monitor which kind of uncertainty it faces, is closer to true here than the uncorrected result said, subject to
+that check.
