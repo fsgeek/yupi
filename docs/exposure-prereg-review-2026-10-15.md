@@ -88,3 +88,50 @@ gap at k = 7 for the pattern observer (exact side; extends Table 3.0, which is s
 (2) check that the split varies across classes with comparable H\*, otherwise the question cannot be posed in
 this world (cf. §5.1's posterior-shape failure); (3) literature check on aleatoric-vs-epistemic representation
 in activations. If (2) fails, the line stops here and the instrument is written up.
+
+## Feasibility gate for step 2, declared before the run (owner, 2026-10-15)
+
+Script: `scripts/kind_uncertainty_split.py` (pattern observer, k = 7, KIND, both ε). Validity: each rung's
+law-mass mean H\* reproduces §3.1 to three decimals, and every class has G ≥ −10⁻¹² (G is a mutual information).
+Within each content rung (r1–r4), classes with H\* > 0 are cut into law-mass quartiles of H\*; in each quartile,
+the gap share G/H\* has a law-mass-weighted 10th–90th percentile spread.
+- **Pass:** in at least two content rungs, at least two quartiles each have spread ≥ 0.30. Classes with similar
+  next-event uncertainty then differ substantively in how much of it is hidden state vs randomness, and the
+  question can be posed with H\* held roughly fixed.
+- **Fail:** spread < 0.10 in every quartile of every content rung. Gap share is then a function of H\*, the two
+  cannot be told apart in this world, and the line stops (instrument report).
+- **Between:** weak; recorded as such, and a v0.2 would have to justify itself against it.
+Exploratory; quartiles and thresholds fixed here and not revised after the read.
+
+## Feasibility gate: result (owner, 2026-10-15)
+
+Raws: `kind-uncertainty-split-40-8-2-k7-eps1-2026-10-15.json`, `…-eps1_2-…json` (per-class rows sha-pinned under
+`~/.cache/yupi-scratch/split/`). About 4 min and 1.6 GB per ε.
+
+**Validity holds.** Every rung's law-mass H\* reproduces §3.1 to three decimals at both ε; the smallest class gap is
+−8.9 × 10⁻¹⁶ (float rounding of a mutual information that is ≥ 0).
+
+**By construction, stated so nobody reads it as a finding.** The law-mass mean transition randomness R is the same
+on every rung (0.6085 bits at ε = 1, 0.5441 at ε = ½): its mean is E[H(KIND | S)], which no interface changes. So an
+interface acts on next-KIND uncertainty only through the observation gap G: r0 0.567 → r3/r4 0.302 at ε = 1
+(0.560 → 0.240 at ε = ½). Half of r0's next-KIND uncertainty, and a third of r3's, is hidden state.
+
+**Gate as declared: PASS** (3 of 4 content rungs at ε = 1, 4 of 4 at ε = ½; quartile spreads in the raws).
+
+**Weakness of the gate (owner's, found when scoring).** H\* quartiles are wide (up to 0.9 bits), so a quartile can
+pass on the H\* trend alone. At ε = ½ the narrow quartile (≈ 0.1 bits) has small spread (0.07–0.13), the opposite
+of ε = 1 (0.41–0.49).
+
+**Post hoc check (exploratory, labelled as such): spread within 0.05-bit H\* bins** (bins with ≥ 0.5 % of mass and
+≥ 5 classes; coverage 75–83 % of mass on content rungs):
+
+| ε | rung | mass-weighted q10–q90 spread of G/H\* | covered mass in bins with spread ≥ 0.30 |
+|---|---|---|---|
+| 1 | r1 / r2 / r3 | 0.208 / 0.184 / 0.184 | 0.24 / 0.27 / 0.22 |
+| ½ | r1 / r2 / r3 | 0.298 / 0.308 / 0.276 | 0.47 / 0.54 / 0.48 |
+
+At matched H\*, how much of the uncertainty is hidden state still varies: moderately at ε = 1 and substantially at
+ε = ½. **The random-vs-hidden question can be posed in this world**, with matched-H\* contrasts available on
+roughly a quarter (ε = 1) to a half (ε = ½) of law mass. The line continues to a design note; the output side must
+use a query class, not the one-step predictive (Bergna, Depeweg & Hernández-Lobato, arXiv:2605.06413, verified:
+the split is not identifiable from an exact one-step predictive; see `literature-random-vs-hidden-2026-10-15.md`).

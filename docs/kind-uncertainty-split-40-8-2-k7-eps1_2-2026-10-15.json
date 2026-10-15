@@ -1,0 +1,328 @@
+{
+ "status": "EXPLORATORY exact side; feasibility gate for the random-vs-hidden question (docs/exposure-prereg-review-2026-10-15.md, Decision)",
+ "law": {
+  "T_ep": 40,
+  "L": 8,
+  "B": 2
+ },
+ "programs": "c1prime-loop",
+ "eps": "1/2",
+ "k": 7,
+ "observer": "pattern",
+ "git": "c6c7ab7e9f839482d76216d764c83694360356b3",
+ "wall_pass_s": 162.5421450138092,
+ "wall_total_s": 232.61170029640198,
+ "peak_rss_kb": 1576220,
+ "rungs": [
+  {
+   "rung": "r0",
+   "n_classes": 5540,
+   "h_star": 1.1036513994957746,
+   "transition_randomness": 0.5441177920793673,
+   "observation_gap": 0.5595336074164073,
+   "gate_h_star_matches_s31": true,
+   "min_class_gap": -4.440892098500626e-16,
+   "mass_h_star_zero": 0.07653128080157934,
+   "gap_share_by_h_star_quartile": [
+    {
+     "h_star_range": [
+      0.0,
+      0.523159162636577
+     ],
+     "mass": 0.23093798621584075,
+     "n_classes": 700,
+     "gap_share_q10": 0.5937419545812815,
+     "gap_share_q50": 0.6975850910828054,
+     "gap_share_q90": 0.803054387292653,
+     "mass_share_gap_zero": 0.0
+    },
+    {
+     "h_star_range": [
+      0.523159162636577,
+      1.3712809932190104
+     ],
+     "mass": 0.231095817853568,
+     "n_classes": 1562,
+     "gap_share_q10": -1.2090036603163752e-16,
+     "gap_share_q50": 2.4180073206327504e-16,
+     "gap_share_q90": 0.596762832431841,
+     "mass_share_gap_zero": 0.5217256844828289
+    },
+    {
+     "h_star_range": [
+      1.3712809932190104,
+      1.8286974160480791
+     ],
+     "mass": 0.23097430645559486,
+     "n_classes": 696,
+     "gap_share_q10": 0.39184312890351153,
+     "gap_share_q50": 0.5860326007154032,
+     "gap_share_q90": 0.6824625547604728,
+     "mass_share_gap_zero": 0.0007742815840435165
+    },
+    {
+     "h_star_range": [
+      1.8286974160480791,
+      Infinity
+     ],
+     "mass": 0.23046060867341706,
+     "n_classes": 380,
+     "gap_share_q10": 0.37376276370529476,
+     "gap_share_q50": 0.6363730602044424,
+     "gap_share_q90": 0.6975796581767449,
+     "mass_share_gap_zero": 0.0
+    }
+   ],
+   "rows_file": "/home/tony/.cache/yupi-scratch/split/c1prime-loop-40-8-2-r0-eps1_2-k7.jsonl",
+   "rows_sha256": "d1b5fabaebc4d8ee4700b94c457643ecada4338b201ed4ec942b212b81f70d3e"
+  },
+  {
+   "rung": "r1",
+   "n_classes": 89474,
+   "h_star": 0.873340963616531,
+   "transition_randomness": 0.5441177920793673,
+   "observation_gap": 0.3292231715371638,
+   "gate_h_star_matches_s31": true,
+   "min_class_gap": -3.3306690738754696e-16,
+   "mass_h_star_zero": 0.1712363730484573,
+   "gap_share_by_h_star_quartile": [
+    {
+     "h_star_range": [
+      0.0,
+      0.8286766308192965
+     ],
+     "mass": 0.20722212667031464,
+     "n_classes": 13800,
+     "gap_share_q10": 0.3592818558662239,
+     "gap_share_q50": 0.6929209628018211,
+     "gap_share_q90": 0.8132560979358479,
+     "mass_share_gap_zero": 0.029663406910742634
+    },
+    {
+     "h_star_range": [
+      0.8286766308192965,
+      0.938305078649671
+     ],
+     "mass": 0.20741697098260561,
+     "n_classes": 17489,
+     "gap_share_q10": -1.2090036603163752e-16,
+     "gap_share_q50": 0.0,
+     "gap_share_q90": 0.13267364533430978,
+     "mass_share_gap_zero": 0.7343251769581534
+    },
+    {
+     "h_star_range": [
+      0.938305078649671,
+      1.5283794140461653
+     ],
+     "mass": 0.2069388118759625,
+     "n_classes": 14923,
+     "gap_share_q10": 0.17915191288490984,
+     "gap_share_q50": 0.38511256517594805,
+     "gap_share_q90": 0.6320339808386204,
+     "mass_share_gap_zero": 0.012354632636758357
+    },
+    {
+     "h_star_range": [
+      1.5283794140461653,
+      Infinity
+     ],
+     "mass": 0.2071857174226599,
+     "n_classes": 10284,
+     "gap_share_q10": 0.2779135589243304,
+     "gap_share_q50": 0.5476234053290344,
+     "gap_share_q90": 0.6491221684274584,
+     "mass_share_gap_zero": 0.0
+    }
+   ],
+   "rows_file": "/home/tony/.cache/yupi-scratch/split/c1prime-loop-40-8-2-r1-eps1_2-k7.jsonl",
+   "rows_sha256": "311123c6455cd7df856c36ab86fc1187661f441d390f9739b2f05752d449008f"
+  },
+  {
+   "rung": "r2",
+   "n_classes": 116624,
+   "h_star": 0.8232460013579084,
+   "transition_randomness": 0.5441177920793673,
+   "observation_gap": 0.2791282092785411,
+   "gate_h_star_matches_s31": true,
+   "min_class_gap": -3.3306690738754696e-16,
+   "mass_h_star_zero": 0.18240619045934148,
+   "gap_share_by_h_star_quartile": [
+    {
+     "h_star_range": [
+      0.0,
+      0.8112781244591328
+     ],
+     "mass": 0.2067683723168632,
+     "n_classes": 17759,
+     "gap_share_q10": 0.3070863213216868,
+     "gap_share_q50": 0.698985747285327,
+     "gap_share_q90": 0.8150811243614946,
+     "mass_share_gap_zero": 0.04050164321764716
+    },
+    {
+     "h_star_range": [
+      0.8112781244591328,
+      0.9182958340544896
+     ],
+     "mass": 0.2195826325733892,
+     "n_classes": 23357,
+     "gap_share_q10": -1.2090036603163752e-16,
+     "gap_share_q50": 0.0,
+     "gap_share_q90": 0.09215349321823756,
+     "mass_share_gap_zero": 0.7321016837224112
+    },
+    {
+     "h_star_range": [
+      0.9182958340544896,
+      1.4484917340033667
+     ],
+     "mass": 0.18690203354674506,
+     "n_classes": 15753,
+     "gap_share_q10": 0.1415501180565913,
+     "gap_share_q50": 0.3326859156855365,
+     "gap_share_q90": 0.6320339808386204,
+     "mass_share_gap_zero": 0.0
+    },
+    {
+     "h_star_range": [
+      1.4484917340033667,
+      Infinity
+     ],
+     "mass": 0.20434077110366117,
+     "n_classes": 14813,
+     "gap_share_q10": 0.2476137364250114,
+     "gap_share_q50": 0.5089354373912442,
+     "gap_share_q90": 0.6212789889172288,
+     "mass_share_gap_zero": 0.01447890587272741
+    }
+   ],
+   "rows_file": "/home/tony/.cache/yupi-scratch/split/c1prime-loop-40-8-2-r2-eps1_2-k7.jsonl",
+   "rows_sha256": "2d29489f3f7baf349209647c44cee2aa43d1fd50838d2be2bb7923aebaf02fb9"
+  },
+  {
+   "rung": "r3",
+   "n_classes": 146455,
+   "h_star": 0.7841829133602566,
+   "transition_randomness": 0.5441177920793673,
+   "observation_gap": 0.24006512128088922,
+   "gate_h_star_matches_s31": true,
+   "min_class_gap": -3.3306690738754696e-16,
+   "mass_h_star_zero": 0.2205024153819144,
+   "gap_share_by_h_star_quartile": [
+    {
+     "h_star_range": [
+      0.0,
+      0.824446649037919
+     ],
+     "mass": 0.19488698995454398,
+     "n_classes": 24709,
+     "gap_share_q10": 0.006089556895676263,
+     "gap_share_q50": 0.6761972588962883,
+     "gap_share_q90": 0.799779199453693,
+     "mass_share_gap_zero": 0.08027416874414381
+    },
+    {
+     "h_star_range": [
+      0.824446649037919,
+      0.9182958340544896
+     ],
+     "mass": 0.2191685859124106,
+     "n_classes": 28320,
+     "gap_share_q10": -1.2090036603163752e-16,
+     "gap_share_q50": 0.0,
+     "gap_share_q90": 0.07481370217325851,
+     "mass_share_gap_zero": 0.7432409947321149
+    },
+    {
+     "h_star_range": [
+      0.9182958340544896,
+      1.3785662174964748
+     ],
+     "mass": 0.17057212672880853,
+     "n_classes": 16562,
+     "gap_share_q10": 0.12776587629570185,
+     "gap_share_q50": 0.3039587533652434,
+     "gap_share_q90": 0.5730515878304459,
+     "mass_share_gap_zero": 0.0
+    },
+    {
+     "h_star_range": [
+      1.3785662174964748,
+      Infinity
+     ],
+     "mass": 0.19486988202232244,
+     "n_classes": 19331,
+     "gap_share_q10": 0.17726578764036396,
+     "gap_share_q50": 0.48634762585416064,
+     "gap_share_q90": 0.6080313152032996,
+     "mass_share_gap_zero": 0.02103038820268729
+    }
+   ],
+   "rows_file": "/home/tony/.cache/yupi-scratch/split/c1prime-loop-40-8-2-r3-eps1_2-k7.jsonl",
+   "rows_sha256": "88c4a16335e0e3e1bc108b966e513090969968458d15c35f088eb159c4046dd9"
+  },
+  {
+   "rung": "r4",
+   "n_classes": 160363,
+   "h_star": 0.7841749510027273,
+   "transition_randomness": 0.5441177920793673,
+   "observation_gap": 0.24005715892335996,
+   "gate_h_star_matches_s31": true,
+   "min_class_gap": -3.3306690738754696e-16,
+   "mass_h_star_zero": 0.2205024153819144,
+   "gap_share_by_h_star_quartile": [
+    {
+     "h_star_range": [
+      0.0,
+      0.8242743299928215
+     ],
+     "mass": 0.19487477153367705,
+     "n_classes": 25097,
+     "gap_share_q10": 0.006089556895676263,
+     "gap_share_q50": 0.6761972588962883,
+     "gap_share_q90": 0.799779199453693,
+     "mass_share_gap_zero": 0.08027920184088969
+    },
+    {
+     "h_star_range": [
+      0.8242743299928215,
+      0.9182958340544896
+     ],
+     "mass": 0.21918472009067833,
+     "n_classes": 33550,
+     "gap_share_q10": -1.2090036603163752e-16,
+     "gap_share_q50": 0.0,
+     "gap_share_q90": 0.07481370217325851,
+     "mass_share_gap_zero": 0.743186284792937
+    },
+    {
+     "h_star_range": [
+      0.9182958340544896,
+      1.3780878063469983
+     ],
+     "mass": 0.17060980030428127,
+     "n_classes": 17898,
+     "gap_share_q10": 0.12776587629570185,
+     "gap_share_q50": 0.3039587533652434,
+     "gap_share_q90": 0.5730515878304459,
+     "mass_share_gap_zero": 0.0
+    },
+    {
+     "h_star_range": [
+      1.3780878063469983,
+      Infinity
+     ],
+     "mass": 0.19482829268944896,
+     "n_classes": 21993,
+     "gap_share_q10": 0.17726578764036396,
+     "gap_share_q50": 0.48640901531259745,
+     "gap_share_q90": 0.6080313152032996,
+     "mass_share_gap_zero": 0.02103487748811574
+    }
+   ],
+   "rows_file": "/home/tony/.cache/yupi-scratch/split/c1prime-loop-40-8-2-r4-eps1_2-k7.jsonl",
+   "rows_sha256": "097fecf064a0625ae05cd0b8801f09720dd370d33c88b1e6dd8caf9db9718b1d"
+  }
+ ]
+}

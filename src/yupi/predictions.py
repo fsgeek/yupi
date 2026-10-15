@@ -64,6 +64,7 @@ NON_MEASUREMENT_PREFIXES = (
     "plateau-stratified",   # step-vs-rise stratification (§5.1)
     "state-vs-predictive",   # Table 3.0, structural observer
     "three-arm-",   # three-arm design: exact side, corpus pairing, pilot SDs, severity runs
+    "kind-uncertainty-split",   # 2026-10-15 exact R/G split of next-KIND uncertainty per class (scripts/kind_uncertainty_split.py); feasibility gate, not a prediction family
 )
 
 # The direct-handoff kernel erratum was fixed 2026-08-20 (commit d69fa87);
