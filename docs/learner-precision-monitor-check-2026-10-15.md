@@ -23,3 +23,23 @@ The model is the unit; seeds are reported separately.
 - **Between:** report the numbers, no general sentence.
 Validity: V1, each model's mean of kind_kl_eval equals its census-era `kind_kl_bits` within 10⁻⁶ where a learner-eval raw
 exists; V2, mean t_w ≤ the Pinsker bound from the same model's mean KL (a consistency check, by Jensen).
+
+## Result (owner, 2026-10-15): BETWEEN in every cell; numbers only, as declared
+
+Raw: `learner-precision-monitor-40-8-2-k7-2026-10-15.json` (12 models, 84,949–85,105 test windows each, none
+unmatched). V1 (KL equals the evaluator's) and V2 (mean TV ≤ Pinsker bound) hold for all 12.
+
+| cell | TV median | TV mean | TV q90 | mean a_w | windows a_w ≥ 0.10 |
+|---|---|---|---|---|---|
+| r1, ε = 1 | 0.020–0.026 | 0.032–0.035 | 0.076–0.081 | 0.062–0.066 | 12.8–13.5 % |
+| r3, ε = 1 | 0.015–0.018 | 0.027–0.030 | 0.070–0.076 | 0.047–0.055 | 9.6–11.5 % |
+| r1, ε = ½ | 0.019–0.022 | 0.037–0.041 | 0.095–0.106 | 0.106–0.113 | 21.1–23.1 % |
+| r3, ε = ½ | 0.019–0.027 | 0.036–0.039 | 0.094–0.100 | 0.096–0.099 | 19.5–20.5 % |
+
+(Ranges are over seeds 1–3. r3 ε = 1 seeds 1–2 meet the "readable" rule and seed 3 does not, so the cell is Between
+by the all-seeds condition.)
+
+**What can be said without a general sentence:** trained learners' one-step outputs sit mostly near the boundary
+the tolerance check located (median TV 0.015–0.027, against δ ≈ 0.02 where R stays readable). On average, 5–11 % of
+the prior mass of the classes an output resembles at least as much as the truth differ from it in randomness by
+≥ 0.1 bits; 10–23 % of windows carry ≥ 10 % such ambiguity. Ambiguity is higher at ε = ½ and on r1 than on r3.
