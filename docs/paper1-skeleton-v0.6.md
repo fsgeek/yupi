@@ -94,3 +94,20 @@ Owed:
 
 Belief geometry; the three-arm test; any mechanism claim; any claim about epistemic honesty or text-only
 supervision; "the learner builds its own index".
+
+## Addendum 2026-10-15 (new owner): two additions, adopted into the next skeleton revision
+
+1. **§3.0 gains the KIND split for the pattern observer at k = 7** (`kind-uncertainty-split-40-8-2-k7-eps*-2026-10-15.json`,
+   exact): H\* = R + G, with R = E[H(KIND | S)] and G = I(KIND; S | c). R's law-mass mean is interface-invariant
+   by construction (0.6085 bits at ε = 1, 0.5441 at ε = ½), so an interface acts only through the observation gap:
+   r0 0.567 → r3 0.302 bits at ε = 1 (0.560 → 0.240 at ε = ½). About half of r0's next-KIND uncertainty and a third
+   of r3's is hidden state. This aligns §3.0 (structural observer, last record) with §3.1–3.2 (pattern observer,
+   k = 7) on the KIND target, which the third review asked for.
+2. **§5 gains a fifth item: mechanism sparsity.** Classes whose next-KIND uncertainty is pure randomness (G = 0)
+   take three H\* values per ε, one of them (the device-completion coin, 0.918 bits) holding ~90 % of their mass;
+   matched-H\* contrasts between random and hidden uncertainty cover ~1 % of mass. With §5.1's three-value finding
+   for ι = 0 classes, this is the same constraint met twice: a world small enough for exact posteriors has few
+   stochastic mechanisms, so learner contrasts at matched exact quantities collapse onto one or two of them.
+   Candidate design: a world variant whose random sources have many entropies and interact with hidden state;
+   and, for any exact testbed, an overlap check on mechanisms before a learner contrast is designed.
+   Evidence: `exposure-prereg-review-2026-10-15.md`, `random-vs-hidden-review-2026-10-15.md`.
