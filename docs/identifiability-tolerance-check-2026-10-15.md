@@ -37,3 +37,21 @@ Pinsker bound (≈ 0.065–0.09) is several times coarser. So §4(c) may say: *i
 kernel could tell randomness from withheld state from one exact prediction, but not from one prediction at the
 precision a trained learner's output has.* The first run crashed (lists as dict keys) and its exit status was
 masked by a pipe to `tail`; rerun with the real status.
+
+## Correction (owner, 2026-10-15, after the skeleton v0.8 Claude review): the Reading above overstates
+
+Three errors, all the owner's, reproduced from the reviewer's scripts (`scratchpad/review4c/alt2.py`, read before
+running):
+1. **Pinsker was used in the wrong direction.** It bounds a learner's TV from *above* (≤ ≈ 0.09); it cannot show the
+   TV exceeds 0.05. "Several times coarser" is withdrawn. The models' actual TV to P\* was not measured.
+2. **|ΔG| ≥ 0.1 confounds the amount of uncertainty with its kind.** A TV ball moves H\* (up to ≈ 0.19 bits at
+   δ = 0.02), so G moves with R fixed. At ε = 1, δ = 0.02 (r1, r3): |ΔG| ≥ 0.1 on 49–51 % of mass, but |ΔR| ≥ 0.1 on
+   only 1.8–2.4 %, and opposite-sign R/G swaps (≥ 0.05 each) on 2.9–3.2 %. At δ = 0.05: |ΔR| ≥ 0.1 on 43–44 %,
+   swaps 18–21 %.
+3. **U is an any-neighbour statistic**; mass-weighted versions are much smaller at δ = 0.02 (reviewer's table, to be
+   reproduced before citing).
+
+**Corrected reading:** at ε = 1, one prediction known to within δ ≈ 0.02 leaves the *kind* of uncertainty readable
+(the randomness part is pinned; only the amount is uncertain). Somewhere between δ ≈ 0.02 and 0.05 the kind becomes
+ambiguous on a large share of mass. Whether a trained learner's output is on the readable or the ambiguous side
+is **not known**: it needs the models' measured TV to P\*, or better, a Bayes monitor run on actual model outputs.
