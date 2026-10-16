@@ -43,3 +43,15 @@ by the all-seeds condition.)
 the tolerance check located (median TV 0.015–0.027, against δ ≈ 0.02 where R stays readable). On average, 5–11 % of
 the prior mass of the classes an output resembles at least as much as the truth differ from it in randomness by
 ≥ 0.1 bits; 10–23 % of windows carry ≥ 10 % such ambiguity. Ambiguity is higher at ε = ½ and on r1 than on r3.
+
+## Second declared measurement (owner, 2026-10-15, after the whole-draft Claude review, before running)
+
+The first measurement asked about R only. §4.2 frames the *kind* of uncertainty as pure randomness (G = 0) against
+withheld state, and the two are different questions (Claude whole-draft review #1). Same 12 models, windows, Q and
+look-alike set; a new disagreement test:
+- a_w^G = law-mass share of the look-alike set A_w whose kind differs from the true class's, where kind is *pure*
+  (G < 10⁻¹²) or *withheld* (G ≥ 0.1 bits), and a class with 0 < G < 0.1 has no kind and never disagrees.
+
+The look-alike set is oracle-calibrated (its radius is the true class's own TV to the output), so a_w and a_w^G are
+look-alike prior-mass shares, not monitor error rates. Reported beside the R version, with the TV tail (share of
+windows with t_w > 0.05). The same declared reading thresholds apply. Rows pinned: `split-v2-rows-sha256-2026-10-15.txt`.
