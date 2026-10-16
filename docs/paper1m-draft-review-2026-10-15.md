@@ -42,3 +42,27 @@
 - Codex #13: r3 and r4 effectively tied at lags 1–3; bins rise monotonically above ι₄ = 0.001. **Adopted.**
 - Claude #10: "GPU-days" and "under a minute" need sources. **Adopted**: replaced with measured figures or cut.
 - Claude #13–#14: report the TV tail; collision share is of position-7 mass. **Adopted.**
+
+## Final read of v0.2 (both families: SUBMITTABLE AFTER FIXES), applied in v0.3 (7fdfb95)
+
+- **Abstract's twelve-model sentence** (both, BLOCKING): now carries the oracle-calibrated definition and the 10 %
+  threshold for both senses.
+- **Two senses of kind** (Claude #2–#3, Codex #1): kind defined as §4.2's two sides with an unclassified middle; an
+  **exact kind sweep** added (`scripts/support_audit_table.py`, run by the owner, reproducing Claude's values): kind
+  differs on 0.1–1.7 % at δ = 0.01, 14–19 % at 0.02, 16–23 % at 0.05; R on 1.8–2.4 % at 0.02 and 43–44 % at 0.05. The
+  monitor's dilution (deterministic as pure; unclassified windows score 0) and its group-mean approximation
+  (Codex #5) are disclosed, and the conditional shares bounded (< 2.3 % mean, < 6.4 % of windows).
+- **δ/2δ** (both): restated as "two laws within η of one prediction are within 2η of each other".
+- **r3 vs r4** (Codex #3): "agrees to within 10⁻⁵ bits", not equality.
+- **Support table** (both): both matched sides, eligible high-gap mass, bin rule, device-coin rule; all pure mass is
+  matched, in three shared bins; script committed (`support-audit-table-40-8-2-k7-2026-10-15.json`).
+- **Declaration order** (Claude #5): stated in §4.3.
+- **§6** (both): 0.79 over paired test windows; exploratory with a declared reading; one cell, reviewer-added FE.
+- **Rounding, scope, timings** (both): 0.5–1.4 %; R and swaps r1/r3 only, swaps ≥ 0.05 each; timings reduced to the
+  one with a recorded source.
+- **Relay on KIND only; thesis-sentence credit** (Claude #10–#11): adopted.
+
+**Owner's judgement:** both final reads found nothing that changes a result; every remaining item was scope or
+wording. The review loop for content stops here. Next: one manuscript file in a venue format, author-facing text and
+provenance moved to a supplement, and a last mechanical check of numbers against `support-audit-table-*.json` and the
+monitor raws.
