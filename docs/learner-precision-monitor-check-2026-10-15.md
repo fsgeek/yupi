@@ -55,3 +55,19 @@ look-alike set; a new disagreement test:
 The look-alike set is oracle-calibrated (its radius is the true class's own TV to the output), so a_w and a_w^G are
 look-alike prior-mass shares, not monitor error rates. Reported beside the R version, with the TV tail (share of
 windows with t_w > 0.05). The same declared reading thresholds apply. Rows pinned: `split-v2-rows-sha256-2026-10-15.txt`.
+
+## Second result (owner, 2026-10-15): G-kind READABLE in every cell (all seeds); R unchanged (BETWEEN)
+
+Raw: `learner-precision-monitor-gkind-40-8-2-k7-2026-10-15.json` (the same 12 models; V1 and V2 hold for all; the R
+columns reproduce the first run exactly).
+
+| cell | mean a_w^G | windows a_w^G ≥ 0.10 | mean a_w (R) | windows t_w > 0.05 |
+|---|---|---|---|---|
+| r1, ε = 1 | 0.0055–0.0079 | 1.3–2.2 % | 0.062–0.066 | 23–25 % |
+| r3, ε = 1 | 0.0065–0.0078 | 1.6–2.1 % | 0.047–0.055 | 19–23 % |
+| r1, ε = ½ | 0.0087–0.0102 | 1.9–2.3 % | 0.106–0.113 | 28–31 % |
+| r3, ε = ½ | 0.0136–0.0140 | 3.5–3.9 % | 0.096–0.099 | 25–27 % |
+
+**Reading, as declared:** under the §4.2 meaning of kind (pure randomness, G = 0, against withheld state, G ≥ 0.1),
+every cell meets the "readable" rule for every seed; under the R meaning, every cell is Between. Both statistics are
+oracle-calibrated look-alike prior-mass shares, not monitor error rates.

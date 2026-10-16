@@ -37,7 +37,7 @@ def groups_for(rung, eps_tag):
     for line in open(SPLIT / f"c1prime-loop-40-8-2-{rung}-eps{eps_tag}-k{K}.jsonl"):
         r = json.loads(line)
         key = tuple(sorted(map(tuple, r["p_star"])))
-        g.setdefault(key, []).append((r["mass"], r["r"]))
+        g.setdefault(key, []).append((r["mass"], r["r"], r["g"]))
     return g
 
 
@@ -58,8 +58,9 @@ def main():
         keys = list(groups)
         kinds = list(ev.KINDS)
         P = np.array([[float(Fraction(dict(k).get(x, "0"))) for x in kinds] for k in keys])
-        gR = [np.array([r for _, r in groups[k]]) for k in keys]
-        gW = [np.array([w for w, _ in groups[k]]) for k in keys]
+        gR = [np.array([x[1] for x in groups[k]]) for k in keys]
+        gG = [np.array([x[2] for x in groups[k]]) for k in keys]
+        gW = [np.array([x[0] for x in groups[k]]) for k in keys]
         index = {k: i for i, k in enumerate(keys)}
         captured = []
         orig = ev.window_excess
@@ -81,7 +82,7 @@ def main():
             res = evaluate(torch_logprobs_fn(model, "cpu"), rj["corpus_dir"], law, tables, (K,), rj["model"]["n_pos"], n=a.n)
         finally:
             ev.window_excess = orig
-        t_all, a_all, kl_all, miss = [], [], [], 0
+        t_all, a_all, ag_all, kl_all, miss = [], [], [], [], 0
         Q = np.array([q for _, q, _, _ in captured])
         for j0 in range(0, len(captured), 256):
             tvq = 0.5 * np.abs(Q[j0:j0 + 256, None, :] - P[None, :, :]).sum(-1)   # windows x groups
@@ -96,13 +97,22 @@ def main():
                 near = np.nonzero(tvq[jj] <= t + 1e-12)[0]
                 tot = sum(float(gW[i].sum()) for i in near)
                 dis = sum(float(gW[i][np.abs(gR[i] - rc) >= 0.1].sum()) for i in near)
-                t_all.append(t); a_all.append(dis / tot); kl_all.append(kl)
-        t_arr, a_arr = np.array(t_all), np.array(a_all)
+                gc = float(np.average(gG[gi], weights=gW[gi]))
+                if gc < 1e-12:
+                    disg = sum(float(gW[i][gG[i] >= 0.1].sum()) for i in near)
+                elif gc >= 0.1:
+                    disg = sum(float(gW[i][gG[i] < 1e-12].sum()) for i in near)
+                else:
+                    disg = 0.0
+                t_all.append(t); a_all.append(dis / tot); ag_all.append(disg / tot); kl_all.append(kl)
+        t_arr, a_arr, ag_arr = np.array(t_all), np.array(a_all), np.array(ag_all)
         mean_kl = float(np.mean(kl_all))
         line = dict(run=str(run), rung=m.rung, eps=m.epsilon, seed=rj["seed"], n=len(t_all), unmatched=miss,
                     checkpoint_sha256=hashlib.sha256((run / "ckpt.pt").read_bytes()).hexdigest(),
                     tv_mean=float(t_arr.mean()), tv_median=float(np.median(t_arr)), tv_q90=float(np.quantile(t_arr, 0.9)),
                     a_mean=float(a_arr.mean()), share_a_ge_0_10=float(np.mean(a_arr >= 0.10)),
+                    aG_mean=float(ag_arr.mean()), share_aG_ge_0_10=float(np.mean(ag_arr >= 0.10)),
+                    share_tv_gt_0_05=float(np.mean(t_arr > 0.05)),
                     mean_kl_eval=mean_kl, evaluator_kind_kl=res["per_k"][K]["kind_kl_bits"]["mean"],
                     pinsker_bound_of_mean=math.sqrt(mean_kl * math.log(2) / 2))
         line["V1_kl_matches_evaluator"] = abs(line["mean_kl_eval"] - line["evaluator_kind_kl"]) < 1e-6
