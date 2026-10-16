@@ -64,6 +64,7 @@ NON_MEASUREMENT_PREFIXES = (
     "plateau-stratified",   # step-vs-rise stratification (§5.1)
     "state-vs-predictive",   # Table 3.0, structural observer
     "three-arm-",   # three-arm design: exact side, corpus pairing, pilot SDs, severity runs
+    "support-audit-table",   # 2026-10-15 methods paper §4.2 table and §4.3 exact kind sweep (scripts/support_audit_table.py)
     "learner-precision-monitor",   # 2026-10-15 declared check on 12 trained models (docs/learner-precision-monitor-check-2026-10-15.md)
     "identifiability-tolerance",   # 2026-10-15 declared TV-ball check (docs/identifiability-tolerance-check-2026-10-15.md)
     "one-step-identifiability",   # 2026-10-15 declared check (docs/one-step-identifiability-check-2026-10-15.md): mass where identical P*(KIND) hides different G
