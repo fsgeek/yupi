@@ -41,8 +41,20 @@ law carries ≥ 10 % of the matched pure mass in every cell of every variant.
 So, as declared: the contrast's narrowness survives every completion-probability reparameterisation tried (scalar
 1/4, 1/2, and occupancy-dependent). It belongs to *where* the kernel places randomness, not to the value 1/3. §4.2's
 "a consequence of design" is now a tested statement for this family of variants. **No learner is trained.** This is
-the audit used prospectively: it ran on candidate worlds before any training, and it said the training would not
-answer its question.
+the audit used prospectively: it ran on candidate worlds before any training, and each world failed the declared
+adequacy criterion for this contrast.
+
+*Correction (same day, after the reviewer's second read): an earlier version ended "it said the training would not
+answer its question". That is stronger than the experiment shows. The two failures differ in kind:*
+- *The **mass** failure (matched high-gap < 2 %) is a fact about the natural evaluation population. A targeted sampling
+  scheme could oversample the matched classes, which are rare but not absent.*
+- *The **composition** failure (exactly one law carries ≥ 10 % of the matched pure mass) does not yield to sampling.
+  However many examples are drawn, the pure side is one mechanism, so a contrast drawn from these worlds compares
+  "withheld state" with "the device coin", not with randomness in general.*
+
+*Also: a passed audit would have been permission to proceed, one necessary condition met, and not evidence that the
+inference would be valid. A failed audit can rule out a planned comparison under its declared criteria; a passed
+audit cannot rule one in.*
 
 ## Unpredicted: where the kind ambiguity sets in moves with the world
 

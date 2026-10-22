@@ -448,3 +448,19 @@ It is also a stronger claim than the rather particular observations about an ope
 I think the latter could make a very good TMLR paper.
 
 And that is where I would concentrate my scrutiny in a second reading.
+
+---
+
+## Second read (relayed by Tony, same day, after the world-variant gate result)
+
+Verbatim text is held in the session; the substance, with dispositions:
+
+| # | Reviewer point | Disposition |
+|---|---|---|
+| 2a | The prospective gate is materially stronger evidence of the method's utility; the audit rejected a *contrast*, not the world | Agree; v4 says it in those words. |
+| 2b | P3's failure is generalisable: varying a parameter is not varying the conditions that carry the contrast (the population sits in one-pending states) | Adopt as a stated lesson in v4 §4, with the numbers scoped to these worlds. |
+| 2c | Methodological conclusion robust across four parameterisations; numerical findings (the onset) demonstrably not. Remaining limit: same transition structure, not different placements of randomness | Agree; already scoped in the result's last bullet; v4 states it as a limit. |
+| 2d | Tupay: shared logical structure (failure of experimental support, not of machinery; cf. vacuity, positivity, coverage). Do not make it a second empirical pillar; a short, bounded cross-domain example that says how its criterion relates to Yupi's | Adopt: one paragraph, binary support (witness reachable in the checked space) vs Yupi's quantitative support (mass and composition). Tupay granted citation (plaza seq 144). |
+| 2e | **"Failed a predeclared adequacy criterion" ≠ "could not support the contrast".** Targeted sampling could collect the rare matched population | **Accept; owner's error.** The result note, plaza seq 145 and the owner's summary to Tony overstated it. Corrected in `world-variant-gate-result-2026-10-22.md`, with a sharper split: mass yields to sampling, composition (one law) does not. Plaza correction posted. |
+| 2f | Classifier: given pattern class + kernel it's a lookup; given only q it's a different problem; majority-class accuracy can be uninformative. Needs prior-only baseline, explicit ambiguous-class treatment, separated train/eval populations | Adopt all, in a declaration before any run. |
+| 2g | Asymmetry: a passed audit is permission to proceed (one necessary condition), not validity; a failed one can rule out a comparison under its criteria | Adopt in v4 §4.4 as a stated property of the procedure. |
