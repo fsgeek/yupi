@@ -201,6 +201,15 @@ def _completion_candidates(state: State, cfg: WorldConfig) -> List[Tuple[int, in
     return candidates
 
 
+def completion_mass(state: State, cfg: WorldConfig) -> Fraction:
+    """Total completion probability when some request is pending: the scalar completion_p, or, under the
+    world-variant gate's V3 rule, completion_p_by_occupancy[n - 1] for n pending requests (all devices)."""
+    if cfg.completion_p_by_occupancy is None:
+        return cfg.completion_p
+    n = sum(len(q) for q in state.dev_q)
+    return cfg.completion_p_by_occupancy[n - 1]
+
+
 def _completion_transitions(
     state: State, cfg: WorldConfig, programs
 ) -> List[Tuple[Transition, Fraction]]:
@@ -224,7 +233,7 @@ def _completion_transitions(
     if not candidates:
         return []
 
-    p = cfg.completion_p
+    p = completion_mass(state, cfg)
     share = p / len(candidates)
 
     out: List[Tuple[Transition, Fraction]] = []
@@ -533,7 +542,7 @@ def enabled(
     """
     _programs_validated(programs)
     any_device_nonempty = any(len(q) > 0 for q in state.dev_q)
-    p = cfg.completion_p if any_device_nonempty else Fraction(0)
+    p = completion_mass(state, cfg) if any_device_nonempty else Fraction(0)
 
     pairs: List[Tuple[Transition, Fraction]] = []
 

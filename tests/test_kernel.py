@@ -273,3 +273,52 @@ def test_epsilon_one_cursor_absent_from_effective_state():
     # (b) exact reachable count under the corrected (2026-08-20) kernel;
     # §3.2a's 72 was a buggy-kernel measurement, flagged for statute erratum
     assert len(seen) == 58
+
+
+def test_occupancy_dependent_completion_mass():
+    """World-variant gate V3 (docs/world-variant-gate-declared-2026-10-22.md): with
+    completion_p_by_occupancy = (1/4, 1/2), total completion mass is 1/4 with one request
+    pending and 1/2 with two, split uniformly over the pending requests; enabled() still
+    sums to exactly 1."""
+    cfg = WorldConfig(
+        n_threads=2, n_cpus=2, n_locks=1, n_devices=1,
+        queue_depth=2, req_pool=4, completion_p=Fraction(1, 3),
+        epsilon=Fraction(1), discipline="stochastic",
+        completion_p_by_occupancy=(Fraction(1, 4), Fraction(1, 2)),
+    )
+    from yupi.programs import io as io_instr
+    progs = ((io_instr(0),), (io_instr(0),))
+    s = initial_state(cfg)
+    s, _ = take(s, lambda t: t.kind == "DISPATCH" and t.actor == 0, cfg, progs)
+    s, _ = take(s, lambda t: t.kind == "DISPATCH" and t.actor == 1, cfg, progs)
+    s, _ = take(s, lambda t: t.kind == "IO_ISSUE" and t.actor == 0, cfg, progs)
+    pairs = enabled(s, cfg, progs)
+    comp = [p for t, p in pairs if t.kind == "COMPLETION"]
+    assert comp == [Fraction(1, 4)]
+    assert total(pairs) == Fraction(1)
+    s, _ = take(s, lambda t: t.kind == "IO_ISSUE" and t.actor == 1, cfg, progs)
+    pairs = enabled(s, cfg, progs)
+    comp = [p for t, p in pairs if t.kind == "COMPLETION"]
+    assert comp == [Fraction(1, 4), Fraction(1, 4)]
+    assert total(pairs) == Fraction(1)
+
+
+def test_occupancy_rule_absent_matches_scalar():
+    """Without the occupancy rule, behaviour is the scalar completion_p (regression)."""
+    a = WorldConfig.c1()
+    assert a.completion_p_by_occupancy is None
+    b = WorldConfig.c1(p_by_occupancy=(Fraction(1, 3), Fraction(1, 3)))
+    progs = __import__("yupi.programs", fromlist=["programs_for"]).programs_for("c1prime-loop")
+    frontier = [initial_state(a)]
+    seen = set()
+    for _ in range(6):
+        nxt = []
+        for s in frontier:
+            if s in seen:
+                continue
+            seen.add(s)
+            pa = sorted((repr(t), p) for t, p in enabled(s, a, progs))
+            pb = sorted((repr(t), p) for t, p in enabled(s, b, progs))
+            assert pa == pb
+            nxt.extend(t.next_state for t, _ in enabled(s, a, progs))
+        frontier = nxt

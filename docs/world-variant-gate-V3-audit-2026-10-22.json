@@ -1,0 +1,253 @@
+{
+ "rows_dir": "/home/tony/.cache/yupi-scratch/variant-gate-2026-10-22/V3",
+ "rows": [
+  {
+   "eps": "1",
+   "rung": "r1",
+   "pure_eligible": 0.12732192467507364,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.9036496445875055,
+   "high_eligible": 0.34053318244676445,
+   "base": {
+    "pure_matched": 0.12732192467507364,
+    "high_matched": 0.015841141146897345,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8283103570577345,
+    "matched_pure_device_template_share": 0.9036496445875055
+   },
+   "offset": {
+    "pure_matched": 0.12732192467507364,
+    "high_matched": 0.017409728120670466,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8283103570577345,
+    "matched_pure_device_template_share": 0.9036496445875055
+   },
+   "pure_largest_law_share": 0.8283103570577345,
+   "graded": 0.28160293111898943,
+   "graded_restricted": 0.271785333480575,
+   "kind_exist_0.01": 0.10558912151344366,
+   "kind_exist_0.02": 0.11855161497010375,
+   "kind_exist_0.05": 0.13984730245870874,
+   "kind_carried": 0.6571362890664064
+  },
+  {
+   "eps": "1",
+   "rung": "r2",
+   "pure_eligible": 0.13754686725490275,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.8897308050236917,
+   "high_eligible": 0.2946240339307421,
+   "base": {
+    "pure_matched": 0.13754686725490275,
+    "high_matched": 0.014365324878679125,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8006290757289535,
+    "matched_pure_device_template_share": 0.8897308050236917
+   },
+   "offset": {
+    "pure_matched": 0.13754686725490275,
+    "high_matched": 0.016201397614740404,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8006290757289535,
+    "matched_pure_device_template_share": 0.8897308050236917
+   },
+   "pure_largest_law_share": 0.8006290757289535,
+   "graded": 0.3086381221640984,
+   "graded_restricted": 0.2916645716511724,
+   "kind_exist_0.01": 0.11025107382426129,
+   "kind_exist_0.02": 0.127679968815208,
+   "kind_exist_0.05": 0.15065704708380853,
+   "kind_carried": 0.6386398072139896
+  },
+  {
+   "eps": "1",
+   "rung": "r3",
+   "pure_eligible": 0.16232828764458918,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.8526480364169545,
+   "high_eligible": 0.23449281513172823,
+   "base": {
+    "pure_matched": 0.16232828764458918,
+    "high_matched": 0.009934043198631658,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.769313102778302,
+    "matched_pure_device_template_share": 0.8526480364169545
+   },
+   "offset": {
+    "pure_matched": 0.16232828764458918,
+    "high_matched": 0.011857924769939434,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.769313102778302,
+    "matched_pure_device_template_share": 0.8526480364169545
+   },
+   "pure_largest_law_share": 0.769313102778302,
+   "graded": 0.271674565890848,
+   "graded_restricted": 0.2536473144950061,
+   "kind_exist_0.01": 0.12605828128556137,
+   "kind_exist_0.02": 0.15558230138757545,
+   "kind_exist_0.05": 0.17275147381988004,
+   "kind_carried": 0.6333421167733965
+  },
+  {
+   "eps": "1",
+   "rung": "r4",
+   "pure_eligible": 0.16232828764458918,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.8526480364169545,
+   "high_eligible": 0.23447800777475636,
+   "base": {
+    "pure_matched": 0.16232828764458918,
+    "high_matched": 0.00992946997056442,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.7693131027782798,
+    "matched_pure_device_template_share": 0.8526480364169545
+   },
+   "offset": {
+    "pure_matched": 0.16232828764458918,
+    "high_matched": 0.01186808346396216,
+    "n_shared_bins": 4,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.7693131027782798,
+    "matched_pure_device_template_share": 0.8526480364169545
+   },
+   "pure_largest_law_share": 0.7693131027782798,
+   "graded": 0.27168415093580667,
+   "graded_restricted": 0.25365454892602174,
+   "kind_exist_0.01": 0.12607361128920797,
+   "kind_exist_0.02": 0.15577765902788537,
+   "kind_exist_0.05": 0.17275119569627628,
+   "kind_carried": 0.6333375364577163
+  },
+  {
+   "eps": "1/2",
+   "rung": "r1",
+   "pure_eligible": 0.15929134754013655,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.9372982873117331,
+   "high_eligible": 0.3131183257744961,
+   "base": {
+    "pure_matched": 0.15929134754013655,
+    "high_matched": 0.009396275078310156,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8687158958077059,
+    "matched_pure_device_template_share": 0.9372982873117331
+   },
+   "offset": {
+    "pure_matched": 0.15929134754013655,
+    "high_matched": 0.00853732374238535,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8687158958077059,
+    "matched_pure_device_template_share": 0.9372982873117331
+   },
+   "pure_largest_law_share": 0.8687158958077059,
+   "graded": 0.47149328146676983,
+   "graded_restricted": 0.4585971496079162,
+   "kind_exist_0.01": 0.14329590495002603,
+   "kind_exist_0.02": 0.1645381641254854,
+   "kind_exist_0.05": 0.1953610542430533,
+   "kind_carried": 0.6592129479098602
+  },
+  {
+   "eps": "1/2",
+   "rung": "r2",
+   "pure_eligible": 0.16915498815835614,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.9206754596904636,
+   "high_eligible": 0.2721716062861068,
+   "base": {
+    "pure_matched": 0.16915498815835614,
+    "high_matched": 0.008775885499367123,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8392939943490177,
+    "matched_pure_device_template_share": 0.9206754596904636
+   },
+   "offset": {
+    "pure_matched": 0.16915498815835614,
+    "high_matched": 0.010374747070443063,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8392939943490177,
+    "matched_pure_device_template_share": 0.9206754596904636
+   },
+   "pure_largest_law_share": 0.8392939943490177,
+   "graded": 0.45178521693830004,
+   "graded_restricted": 0.4400270628641341,
+   "kind_exist_0.01": 0.012890512691881495,
+   "kind_exist_0.02": 0.03447053896637703,
+   "kind_exist_0.05": 0.21700814912047905,
+   "kind_carried": 0.6335286227334395
+  },
+  {
+   "eps": "1/2",
+   "rung": "r3",
+   "pure_eligible": 0.1899076691079241,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.8846382010660266,
+   "high_eligible": 0.21477575370825508,
+   "base": {
+    "pure_matched": 0.1899076691079241,
+    "high_matched": 0.006844314251383436,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8028686267464448,
+    "matched_pure_device_template_share": 0.8846382010660266
+   },
+   "offset": {
+    "pure_matched": 0.1899076691079241,
+    "high_matched": 0.008314523953214834,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8028686267464448,
+    "matched_pure_device_template_share": 0.8846382010660266
+   },
+   "pure_largest_law_share": 0.8028686267464448,
+   "graded": 0.4459148801398275,
+   "graded_restricted": 0.4260297334374366,
+   "kind_exist_0.01": 0.018927499085176748,
+   "kind_exist_0.02": 0.04546375418378883,
+   "kind_exist_0.05": 0.24198252409887647,
+   "kind_carried": 0.6165404754202954
+  },
+  {
+   "eps": "1/2",
+   "rung": "r4",
+   "pure_eligible": 0.1899076691079241,
+   "coin_share_of_pure": 0.0,
+   "device_template_share_of_pure": 0.8846382010660266,
+   "high_eligible": 0.21475666033192897,
+   "base": {
+    "pure_matched": 0.1899076691079241,
+    "high_matched": 0.006846615593100207,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8028686267464471,
+    "matched_pure_device_template_share": 0.8846382010660266
+   },
+   "offset": {
+    "pure_matched": 0.1899076691079241,
+    "high_matched": 0.008322146327988118,
+    "n_shared_bins": 3,
+    "matched_pure_laws_ge_10pct": 1,
+    "matched_pure_largest_law_share": 0.8028686267464471,
+    "matched_pure_device_template_share": 0.8846382010660266
+   },
+   "pure_largest_law_share": 0.8028686267464471,
+   "graded": 0.4459082770384707,
+   "graded_restricted": 0.4260219379736208,
+   "kind_exist_0.01": 0.018928022535750166,
+   "kind_exist_0.02": 0.19792865947055852,
+   "kind_exist_0.05": 0.24200390464089036,
+   "kind_carried": 0.616484488058046
+  }
+ ]
+}

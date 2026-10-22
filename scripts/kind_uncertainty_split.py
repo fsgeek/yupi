@@ -70,10 +70,14 @@ def main():
     ap.add_argument("--law", nargs=3, type=int, default=(40, 8, 2))
     ap.add_argument("--programs", default="c1prime-loop")
     ap.add_argument("--rows-dir", default=str(Path.home() / ".cache/yupi-scratch/split"))
+    ap.add_argument("--p", default="1/3", help="device completion probability (world-variant gate, 2026-10-22)")
+    ap.add_argument("--p-by-occupancy", nargs="+", default=None,
+                    help="V3: completion mass per number of pending requests, e.g. 1/4 1/2")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
+    pocc = tuple(Fraction(x) for x in a.p_by_occupancy) if a.p_by_occupancy else None
     eps = Fraction(a.eps)
-    law, progs, cfg = WindowLaw(*a.law), programs_for(a.programs), WorldConfig.c1(epsilon=eps)
+    law, progs, cfg = WindowLaw(*a.law), programs_for(a.programs), WorldConfig.c1(p=Fraction(a.p), epsilon=eps, p_by_occupancy=pocc)
     t0 = time.time()
     aggs = prefix_law_aggregates(cfg, progs, law, a.k, RUNGS, None)
     t_pass = time.time() - t0
@@ -126,7 +130,7 @@ def main():
             for x in rows:
                 fh.write(json.dumps(dict(mass=x[0], h_star=x[1], r=x[2], g=x[3], p_star=x[4], key=x[5])) + "\n")
         sha = hashlib.sha256(p.read_bytes()).hexdigest()
-        ok = round(H, 3) == EXPECT[a.eps][ri] if a.eps in EXPECT and a.k == 7 else None
+        ok = round(H, 3) == EXPECT[a.eps][ri] if a.eps in EXPECT and a.k == 7 and Fraction(a.p) == Fraction(1, 3) and pocc is None else None
         summary.append(dict(rung=rung, n_classes=len(rows), h_star=H, transition_randomness=R, observation_gap=G,
                             gate_h_star_matches_s31=ok, min_class_gap=min_gap, mass_h_star_zero=1 - sum(wpos) / M,
                             gap_share_by_h_star_quartile=bins, rows_file=str(p), rows_sha256=sha))
@@ -137,7 +141,7 @@ def main():
     git = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
     out = dict(status="EXPLORATORY exact side; feasibility gate for the random-vs-hidden question "
                       "(docs/exposure-prereg-review-2026-10-15.md, Decision)",
-               law=dict(zip(("T_ep", "L", "B"), a.law)), programs=a.programs, eps=a.eps, k=a.k, observer="pattern",
+               law=dict(zip(("T_ep", "L", "B"), a.law)), programs=a.programs, eps=a.eps, completion_p=a.p, completion_p_by_occupancy=a.p_by_occupancy, k=a.k, observer="pattern",
                git=git, wall_pass_s=t_pass, wall_total_s=time.time() - t0,
                peak_rss_kb=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss, rungs=summary)
     if a.out:

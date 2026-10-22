@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from fractions import Fraction
+from typing import Optional, Tuple
 
 
 @dataclass(frozen=True)
@@ -20,6 +21,9 @@ class WorldConfig:
     completion_p: Fraction
     epsilon: Fraction
     discipline: str
+    # World-variant gate V3 (docs/world-variant-gate-declared-2026-10-22.md): total completion mass
+    # as a function of the number of pending requests (index n - 1); None means the scalar completion_p.
+    completion_p_by_occupancy: Optional[Tuple[Fraction, ...]] = None
 
     @classmethod
     def c0a(cls, p: Fraction = Fraction(1, 3)) -> "WorldConfig":
@@ -47,6 +51,7 @@ class WorldConfig:
         p: Fraction = Fraction(1, 3),
         queue_depth: int = 2,
         epsilon: Fraction = Fraction(1),
+        p_by_occupancy: Optional[Tuple[Fraction, ...]] = None,
     ) -> "WorldConfig":
         """Base experimental config (Part I, Configurations): 4 threads,
         2 CPUs, 2 locks, 1 device, queue depth 2 (pending the D4/D9
@@ -75,6 +80,7 @@ class WorldConfig:
             completion_p=p,
             epsilon=epsilon,
             discipline="stochastic",
+            completion_p_by_occupancy=p_by_occupancy,
         )
 
     @classmethod
