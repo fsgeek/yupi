@@ -52,10 +52,16 @@ for p in sorted((ROOT / "docs").iterdir()):
     if p.is_file() and (p.name.startswith(RESULT_PREFIXES) and p.suffix in {".json", ".jsonl", ".txt", ".log"} or p.name in NOTES):
         shutil.copy(p, STAGE / "results" / p.name)
         n += 1
+(STAGE / "docs").mkdir()
+for p in sorted((ROOT / "docs").iterdir()):
+    if p.is_file() and p.suffix in {".json", ".jsonl", ".log", ".txt"}:
+        shutil.copy(p, STAGE / "docs" / p.name)
+if (ROOT / "docs" / "corpus-manifests").is_dir():
+    shutil.copytree(ROOT / "docs" / "corpus-manifests", STAGE / "docs" / "corpus-manifests")
 (STAGE / "README.md").write_text("""# Supplementary material (anonymised)
 
 `src/` is the instrument: the kernel (`yupi/kernel.py`), interfaces, exact filters and ceilings, and the learner code.
-`tests/` holds its test suite (`uv run --extra learner pytest -q`). `scripts/` holds the analyses; `results/` holds the summary
+`docs/` holds every committed result file the test suite checks against; `tests/` holds the test suite (`uv run --extra learner pytest -q`). `scripts/` holds the analyses; `results/` holds the summary
 result files every number in the paper is computed from, and the notes recording what was declared before each check
 ran. `results/paper1m-supplement-provenance-v1.md` maps each section of the paper to its result files.
 
