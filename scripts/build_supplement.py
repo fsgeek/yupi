@@ -70,6 +70,11 @@ Exact tables are regenerated, not shipped (they are large): for example
 and §4 (minutes on a workstation CPU), whose hashes are listed in `results/split-v2-rows-sha256-2026-10-15.txt`;
 `scripts/support_audit_table.py` then reproduces the §4.2 table and the §4.3 exact sweep. Trained checkpoints are
 not included (about 3 MB each); `scripts/learner_train.py` retrains them.
+
+**Expected test results.** In this anonymised copy, 1,044 tests pass and 5 fail, all in
+`tests/test_relay_replication_score.py`: four check the byte-for-byte hash of a frozen result file whose contents
+anonymisation necessarily altered (a local path was replaced), and one reads a design note that is not included. In
+the original repository all five pass.
 """)
 for p in STAGE.rglob("*"):
     if p.is_file():
