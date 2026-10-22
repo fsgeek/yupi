@@ -66,3 +66,28 @@
 wording. The review loop for content stops here. Next: one manuscript file in a venue format, author-facing text and
 provenance moved to a supplement, and a last mechanical check of numbers against `support-audit-table-*.json` and the
 monitor raws.
+
+## TMLR-reviewer read of v2 (2026-10-22): both families MAJOR REVISION → applied in v3
+
+Both reviewers found that the v2 prose pass, though number-preserving, reversed three adopted abstract fixes (the
+twelve-model sentence, the relay scope and "unresolved at three seeds", "by construction"). All restored in v3. Also
+applied, from both unless noted:
+- **Appendix B** (kernel state, programs, step semantics, record kinds, the exact recursion, pattern classes, sizes),
+  written from `src/yupi/{state,programs,kernel,records}.py` and the reviewed instrument appendix; two sentences
+  corrected against the kernel source before commit (execution choice by the same ε-rule; hand-off to the queue head).
+- **The declared readability rules** and the look-alike statistic stated as formulas in §4.3.
+- **Kind definitions distinguished** (§4.2's G/H\* ≥ 0.5 vs §4.3's G ≥ 0.1, with reasons); "saturates" limited to the
+  evaluated range; the median-error comparison labelled a compatibility bound (Codex #5, #8).
+- **Device coin argued from the kernel** (Codex #7): owner check, every pure 0.918-bit class has law ⅓ IO_COMPLETE + ⅔ on
+  one event, at every content interface and both ε.
+- **§5.1 effect sizes** (Codex #6): regression equation and a table from `b1-fe-coarse-robustness-2026-10-13.json`.
+- **§5.2**: arms named as the cells that exist (not a full factorial), directions given, the failed pre-registered relay
+  prediction stated (Claude F9–F10).
+- **Definitions**: the small window law, "census", the count-table ratio, the 39 % figure (deterministic + no-kind mass,
+  owner-verified 32–39 %), "every row".
+- **Anonymity**: the submission .tex carries no author line, no kernel name, and a neutral citation key; a short
+  anonymised **disclosure** of AI conduct replaces the contribution statement (Claude F18). The preprint carries the full
+  statement and a UBC affiliation.
+- Positivity "that can be applied before"; sample-only validation of pattern laws added to Limits (Claude F11).
+
+Not done: figures (Claude F13, optional), a notation table.

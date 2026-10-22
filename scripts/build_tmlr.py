@@ -13,7 +13,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "docs" / "paper1m-manuscript-v2.md"
+SRC = ROOT / "docs" / "paper1m-manuscript-v3.md"
 OUT = ROOT / "docs" / "tmlr"
 STYLE = Path(sys.argv[1])
 
@@ -22,7 +22,7 @@ UNICODE = {"§": r"\S{}", "½": r"\ensuremath{\tfrac{1}{2}}", "⅓": r"\ensurema
            "η": r"\ensuremath{\eta}", "ι": r"\ensuremath{\iota}", "–": "--", "—": "---", "‖": r"\ensuremath{\|}", "…": r"\ldots{}",
            "−": r"\ensuremath{-}", "≥": r"\ensuremath{\geq}", "¹": r"\textsuperscript{1}", "³": r"\textsuperscript{3}",
            "⁴": r"\textsuperscript{4}", "⁵": r"\textsuperscript{5}", "⁻": r"\textsuperscript{-}", "₂": r"\textsubscript{2}",
-           "₄": r"\textsubscript{4}"}
+           "₄": r"\textsubscript{4}", "′": r"\ensuremath{'}", "⅔": r"\ensuremath{\tfrac{2}{3}}", "₁": r"\textsubscript{1}", "∈": r"\ensuremath{\in}", "λ": r"\ensuremath{\lambda}", "μ": r"\ensuremath{\mu}", "γ": r"\ensuremath{\gamma}", "α": r"\ensuremath{\alpha}", "≤": r"\ensuremath{\leq}"}
 
 
 def section(md, heading):
@@ -48,16 +48,28 @@ def strip_numbers(tex):
 def build(variant):
     md = SRC.read_text()
     md = md[md.index("\n---\n", 4) + 5:]  # drop YAML header
+    if variant == "submission":   # double-blind: the kernel's name leads to a public repository
+        md = md.replace("**The world.** Yupana is", "**The world.** Our world is")
+        md = md.replace("Yupana is a small stochastic operating-system kernel", "The world is a small stochastic operating-system kernel")
+        assert "Yupana" not in md, "kernel name left in submission"
     title = "An exact world audits its own experiments: what a small stochastic kernel can and cannot settle about learners"
     abstract = section(md, "Abstract")
     body_md = md[md.index("## 1. Introduction"):md.index("## Contribution statement")]
     contrib = section(md, "Contribution statement")
     appendix = md[md.index("## Appendix A"):]
     appendix = appendix.replace("## Appendix A. Which models carry which claim", "## Which models carry which claim")
+    appendix = appendix.replace("## Appendix B. The kernel and the exact computation", "## The kernel and the exact computation")
     body = strip_numbers(to_latex(body_md))
     app = strip_numbers(to_latex(appendix))
-    contrib_tex = "" if variant == "submission" else "\\section*{Contribution statement}\n" + to_latex(contrib)
+    if variant == "submission":
+        contrib_tex = ("\\section*{Disclosure}\nThe research and the writing were conducted largely by AI agents (large "
+                       "language models) under human direction, with adversarial review of designs, pre-registrations and "
+                       "results by separate AI agents. A full contribution statement appears in the de-anonymised version.\n")
+    else:
+        contrib_tex = "\\section*{Contribution statement}\n" + to_latex(contrib)
     opt = "" if variant == "submission" else "[preprint]"
+    author_line = ("\\author{\\name Anonymous authors}" if variant == "submission" else
+                   "\\author{\\name W. Anthony Mason \\email fsgeek@cs.ubc.ca \\\\ \\addr University of British Columbia}")
     decls = "\n".join(f"\\DeclareUnicodeCharacter{{{ord(c):04X}}}{{{v}}}" for c, v in UNICODE.items())
     tex = f"""\\documentclass[10pt]{{article}}
 \\usepackage[utf8]{{inputenc}}
@@ -70,7 +82,7 @@ def build(variant):
 \\providecommand{{\\pandocbounded}}[1]{{#1}}
 {decls}
 \\title{{{title}}}
-\\author{{\\name W. Anthony Mason \\email tony@wamason.com \\\\ \\addr Independent researcher, on behalf of the ayllu collaboration}}
+{author_line}
 \\def\\month{{MM}}
 \\def\\year{{YYYY}}
 \\def\\openreview{{\\url{{https://openreview.net/forum?id=XXXX}}}}
@@ -96,7 +108,7 @@ def build(variant):
     for cmd in (["pdflatex", "-interaction=nonstopmode", f"paper1m-{variant}.tex"], ["bibtex", f"paper1m-{variant}"],
                 ["pdflatex", "-interaction=nonstopmode", f"paper1m-{variant}.tex"],
                 ["pdflatex", "-interaction=nonstopmode", f"paper1m-{variant}.tex"]):
-        subprocess.run(cmd, cwd=work, capture_output=True, text=True)
+        subprocess.run(cmd, cwd=work, capture_output=True, text=True, errors="replace")
     pdf = work / f"paper1m-{variant}.pdf"
     log = (work / f"paper1m-{variant}.log").read_text(errors="ignore")
     errs = [l for l in log.splitlines() if l.startswith("!")]

@@ -30,8 +30,17 @@
 \DeclareUnicodeCharacter{207B}{\textsuperscript{-}}
 \DeclareUnicodeCharacter{2082}{\textsubscript{2}}
 \DeclareUnicodeCharacter{2084}{\textsubscript{4}}
+\DeclareUnicodeCharacter{2032}{\ensuremath{'}}
+\DeclareUnicodeCharacter{2154}{\ensuremath{\tfrac{2}{3}}}
+\DeclareUnicodeCharacter{2081}{\textsubscript{1}}
+\DeclareUnicodeCharacter{2208}{\ensuremath{\in}}
+\DeclareUnicodeCharacter{03BB}{\ensuremath{\lambda}}
+\DeclareUnicodeCharacter{03BC}{\ensuremath{\mu}}
+\DeclareUnicodeCharacter{03B3}{\ensuremath{\gamma}}
+\DeclareUnicodeCharacter{03B1}{\ensuremath{\alpha}}
+\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
 \title{An exact world audits its own experiments: what a small stochastic kernel can and cannot settle about learners}
-\author{\name W. Anthony Mason \email tony@wamason.com \\ \addr Independent researcher, on behalf of the ayllu collaboration}
+\author{\name W. Anthony Mason \email fsgeek@cs.ubc.ca \\ \addr University of British Columbia}
 \def\month{MM}
 \def\year{YYYY}
 \def\openreview{\url{https://openreview.net/forum?id=XXXX}}
@@ -42,16 +51,19 @@ Exact synthetic worlds let us compare what a learned model acquires with what th
 in which the observation channel is the controlled variable: a small stochastic operating-system kernel, observed
 through five nested interfaces, with exact posteriors and predictive laws for every window an observer can see. The
 uncertainty an interface leaves about the next event splits exactly into randomness that no observation could remove
-and hidden state the interface withholds. Interfaces act on average only on the second, which falls from about half
-of the uncertainty on the sparsest interface to about a third on the richest. We then use the same exact quantities to
-audit which learner experiments the world can support. The natural contrast between pure randomness and withheld
-state, at matched uncertainty, rests on about 1 \% of the evaluated population on one side, and 86--95 \% of the other
-side is a single mechanism. Whether one prediction reveals where its uncertainty comes from depends on the question and
-the precision: among exact laws, the kind of uncertainty becomes ambiguous early and then saturates, while the amount
-of randomness stays readable longer and then fails widely; twelve trained transformers sit near that boundary. Finally,
-a factorial shows that the gain from a ceiling-preserving input rewrite comes at least partly from what the learner is
-trained to produce. An exact oracle makes such limitations measurable; it does not guarantee that the desired contrast
-exists.
+and hidden state the interface withholds. The mean randomness is the same on every interface by construction; the
+withheld part falls from about half of the uncertainty on the sparsest interface to about a third on the richest. We
+then use the same exact quantities to audit which learner experiments the world can support. The natural contrast
+between pure randomness and withheld state, at matched uncertainty, has about 1 \% of the evaluated population on its
+withheld side, and 86--95 \% of its random side is a single mechanism. Whether one prediction shows where its
+uncertainty comes from depends on the question and the precision. Among exact laws, telling pure randomness from
+substantial withheld state becomes ambiguous between separations of 0.01 and 0.02 in total variation, while the
+amount of randomness stays readable to 0.02 and becomes ambiguous by 0.05. For twelve trained transformers, measured by
+the prior mass of the classes whose exact law is at least as close to the model's output as the truth's, the kind of
+uncertainty meets a pre-declared readability rule in every cell and the amount of randomness in none. On the next
+event's kind, a comparison that separates an input rewrite from its training target suggests that the target
+contributes to the rewrite's gain; whether the input adds anything is unresolved at three seeds. An exact oracle makes
+such limitations measurable; it does not guarantee that the desired contrast exists.
 
 \end{abstract}
 \hypertarget{introduction}{%
@@ -81,21 +93,21 @@ the exact posterior over hidden state and the exact law of the next event.
 \tightlist
 \item
   \textbf{Exact measurements of what each interface makes knowable} (§3). Next-event uncertainty splits into randomness and
-  withheld state, and interfaces act on average only on the second. On the content interfaces, state uncertainty
+  withheld state; by construction, interfaces can change only the second on average. On the content interfaces, state uncertainty
   overstates the predictively relevant part by a factor of 3--5 while ranking fields identically. Where in the window
   the knowable information sits differs by interface, and the profiles cross.
 \item
-  \textbf{A support audit} (§4). For a planned contrast: the eligible mass, the matched mass, and their mechanism
-  composition, all computable from the exact tables before any training (we ran them retrospectively); and a
+  \textbf{A support audit} (§4). For a planned contrast: the eligible mass, the matched mass, and the mechanism
+  composition of the pure-randomness side, all computable from the exact tables before any training (we ran them retrospectively); and a
   precision sweep for an output-level identifiability question, placed beside the measured precision of trained
   models.
 \item
-  \textbf{A worked learner case} (§5), including a factorial that separates an intervention's input from its training
+  \textbf{A worked learner case} (§5), including a comparison that separates an intervention's input from its training
   target.
 \end{enumerate}
 
 \textbf{Motivation.} The instrument was motivated by an impossibility result about verifying a model's epistemic state from
-its text alone \citep{mason2026epistemic}: in a world where the truth is known, one can measure how much the observation
+its text alone \citep{epistemic2026observability}: in a world where the truth is known, one can measure how much the observation
 channel withholds and how much a model's outputs reveal. §4.3 is the nearest this paper comes to that question, and it
 answers it only for one-step predictions in this world. It is an analogy to that result, not a test of it.
 
@@ -159,14 +171,14 @@ pattern-class predictive laws\strut
 \end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
 agree exactly with an independent pattern filter\strut
 \end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-exhaustive at a small law (8, 4, 2); at the frozen law, a random sample of 82--91 test windows per cell, all exactly equal\strut
+exhaustive at a small window law (episodes of 8 records, windows of 4, endpoint stride 2); at the frozen law, a random sample of 82--91 test windows per cell, all exactly equal\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.30\columnwidth}\raggedright
 lag profile ι\_m = H\_m − H*\strut
 \end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
 the KL route and the entropy route agree\strut
 \end{minipage} & \begin{minipage}[t]{0.30\columnwidth}\raggedright
-every row, to 3 × 10⁻¹⁴\strut
+every (interface, ε, m), to 3 × 10⁻¹⁴\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.30\columnwidth}\raggedright
 ceiling-holding rewrites\strut
@@ -188,6 +200,7 @@ every class, both ε\strut
 \textbf{What none of this validates is the kernel.} Every route calls the same kernel functions, so the gates check the
 computation \emph{given} the kernel. The kernel rests on its tests, its reviews, and one property tested directly: from a
 reset, the r1 projection determines the structural state for every transition path up to eight records, at both ε.
+Appendix B specifies the kernel and the exact computation.
 
 \hypertarget{learners}{%
 \subsection{Learners}\label{learners}}
@@ -373,7 +386,9 @@ r1 / r2 / r3\strut
 
 \emph{Shares of the position-7 population (law mass 0.85; r4 agrees with r3 at this precision). Pure: G = 0, H* \textgreater{} 0;
 high-gap: G/H* ≥ 0.5; matched: sharing a bin floor(H*/0.05) with the other side. Every pure class is matched, and the
-matched mass lies in three shared bins. Device coin: a pure class whose H* is the entropy of a 1/3 coin (0.918 bits).
+matched mass lies in three shared bins. Device coin: a pure class whose H* is the entropy of a 1/3 coin (0.918 bits). Every such class has next-KIND law
+⅓ IO\_COMPLETE and ⅔ on a single other event: the kernel gives probability 1/3 to a completion whenever a request is
+pending and the remaining 2/3 to the scheduling step, which in these classes has one outcome (Appendix B).
 Graded variation: mass in bins where G/H* spans 0.30 or more between its mass-weighted 10th and 90th percentiles;
 restricting to bins with at least 0.5 \% of mass and five classes gives 17--22 \% (ε = 1) and 36--43 \% (ε = ½).}
 
@@ -396,8 +411,10 @@ behave differently:
 \begin{itemize}
 \tightlist
 \item
-  the \emph{kind}: §4.2's two sides, pure randomness (G = 0 with H* \textgreater{} 0) against substantial withheld state (G ≥ 0.1 bits);
-  classes in between have no kind;
+  the \emph{kind}: pure randomness (G = 0 with H* \textgreater{} 0) against substantial withheld state (G ≥ 0.1 bits); classes in
+  between have no kind. This differs from §4.2's high-gap side (G/H* ≥ 0.5), which asks for classes where withheld
+  state dominates, for a matched learner contrast; here the question is only whether any substantial withheld state
+  is present;
 \item
   the \emph{amount of randomness} R.
 \end{itemize}
@@ -449,14 +466,19 @@ R differs by ≥ 0.1 bits (ε = 1, r1 and r3)\strut
 \emph{Shares of all position-7 mass. Opposite-sign R/G swaps of at least 0.05 bits each occur on about 3 \% of mass at
 δ = 0.02 and 18--21 \% at δ = 0.05 (ε = 1, r1 and r3).}
 
-The two senses fail differently. The kind becomes ambiguous early, between δ = 0.01 and 0.02, and then saturates near a
-fifth of the mass. R stays pinned up to δ = 0.02 and then fails widely. (G itself, the amount of withheld state, differs
+The two senses fail differently over the separations evaluated. The kind becomes ambiguous between δ = 0.01 and 0.02
+and changes little from there to δ = 0.05, the largest separation we evaluated. R stays pinned up to δ = 0.02 and is
+ambiguous on 43--44 \% of mass by 0.05. (G itself, the amount of withheld state, differs
 on 49--51 \% of mass at δ = 0.02, mostly because a small perturbation moves H*.)
 
 \textbf{Measured on trained models.} We ran twelve trained models (r1 and r3, both ε, three seeds each) on their test
 windows. For each window, the \emph{look-alike set} is the set of classes whose exact law is at least as close to the model's
-output as the true class's law is. The set is calibrated by an oracle that knows the true class, so the statistics
-below are prior-mass shares of look-alikes, not error rates of any monitor.
+output as the true class's law is: \(A(w) = \{c' : \mathrm{TV}(P^*_{c'}, q_w) \le \mathrm{TV}(P^*_{c}, q_w)\}\), where \(c\) is the window's class and \(q_w\) the model's output. The
+statistic is a(w) = Σ m(c′) over the c′ in A(w) that differ from c, divided by Σ m(c′) over all of A(w), with m a
+class's law mass. The set is calibrated by an oracle that knows the true class, so these are prior-mass shares of
+look-alikes, not error rates of any monitor. Before each run we declared a result \emph{readable} if the mean of a(w) is
+below 0.05 and fewer than 10 \% of windows have a(w) ≥ 0.10, \emph{not readable} if the mean is at least 0.20 or at least
+40 \% of windows have a(w) ≥ 0.10, and otherwise neither; all three seeds of a cell must agree.
 
 \begin{itemize}
 \tightlist
@@ -472,15 +494,17 @@ below are prior-mass shares of look-alikes, not error rates of any monitor.
 Three details of the kind measurement dilute its shares. Every class with G = 0, including deterministic ones, counted
 as pure; windows whose class has no kind (16--18 \% of mass) score zero; and a window's own R and G were taken as the mean
 over classes sharing its exact law, which differs from the class's own value only on collision groups (below 0.05 \% of
-mass). Since at most 39 \% of windows score zero by construction, shares conditioned on the rest are at most 1/0.61
+mass). Deterministic classes and classes with no kind together carry 32--39 \% of the mass, so at most 39 \% of windows score
+zero by construction, and shares conditioned on the rest are at most 1/0.61
 times those above: under 2.3 \% on average and 6.4 \% of windows.
 
 We declared rules for calling each result readable or not before each run. The R measurement came first and fell
 between the rules in every cell. The kind measurement was declared after it, at a reviewer's prompting, and before it
 ran; it meets the ``readable'' rule in every cell and seed, with or without the correction above. For R we report the
-numbers only. Set against the exact sweep, the models' median error (0.015--0.027, a separation of roughly 0.03--0.05)
-sits where the kind has already become ambiguous on a fifth of the mass existentially, yet the look-alike mass of the
-other kind stays small: ambiguous neighbours exist, but they are rare.
+numbers only. Set against the exact sweep, the models' median error (0.015--0.027) allows separations of up to roughly 0.03--0.05,
+where the kind is already ambiguous on about a fifth of the mass existentially; that is only a compatibility bound.
+The look-alike measurement asks the more specific question at the models' actual outputs, and there the look-alike mass
+of the other kind stays small: ambiguous neighbours exist, but they are rare.
 
 \hypertarget{the-audit-as-a-procedure}{%
 \subsection{The audit as a procedure}\label{the-audit-as-a-procedure}}
@@ -519,29 +543,74 @@ The learners and the shortfall measure are those of §2.4. This is a measured ca
 \hypertarget{shortfall-is-higher-where-far-information-is}{%
 \subsection{Shortfall is higher where far information is}\label{shortfall-is-higher-where-far-information-is}}
 
-Within each content interface, a pre-registered regression of per-window KIND shortfall on far information (ι₄), near
-information, ceiling entropy and log class mass gives a positive far-information coefficient with t ≥ 3 in every run:
+Within each content interface, a pre-registered regression of per-window KIND shortfall d(w) on the class's far
+information, d(w) = α + β ι₄(c) + γ (ι₁(c) − ι₄(c)) + λ H*(c) + μ log₂ m(c) + e(w), with near information ι₁ − ι₄,
+ceiling entropy H* and log law mass m, gives β \textgreater{} 0 with t ≥ 3 in every run:
 21 of 21 held-out runs at 5 epochs and 24 of 24 at 15 epochs. It survives errors clustered by class, and fixed effects
 for the last record's kind crossed with the number of distinct actors (lowest t 3.44), in all 45 of those evaluations
 (runs, not independent seeds). An exploratory check at about four times the parameters, in one cell, keeps the sign. The
 same analysis for the actor field passes its pre-registered test but is not robust to the fixed effects (9 of 24 runs
 keep t ≥ 3 at 15 epochs). The association is a correlation within cells: classes with more far information may also be
 rarer or harder in ways the controls miss. A pre-registered prediction that the coefficient would shrink no faster than
-overall shortfall with training failed in 8 of 8 cells.
+overall shortfall with training failed in 8 of 8 cells. The size of the association at 15 epochs:
 
-\textbf{Baselines.} A Witten--Bell count table over the ceiling's own classes, trained on the same windows, is worse than every
-transformer on every content interface, by 1.33--5.22 times. A parameter-matched GRU on the transformer's untuned recipe
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+\begin{minipage}[b]{0.17\columnwidth}\raggedright
+ε\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+interface\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+mean shortfall, ι₄ = 0\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+mean shortfall, ι₄ \textgreater{} 0.4\strut
+\end{minipage} & \begin{minipage}[b]{0.17\columnwidth}\raggedright
+β with fixed effects (t)\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+1\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+r1 / r2 / r3 / r4\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+0.001--0.004\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+0.023--0.050\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+0.009--0.023 (3.6--8.1)\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.17\columnwidth}\raggedright
+½\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+r1 / r2 / r3 / r4\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+0.001--0.004\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+0.035--0.061\strut
+\end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
+0.013--0.024 (3.6--9.6)\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\emph{Bits; ranges over the three seeds of each interface. β is bits of shortfall per bit of far information.}
+
+\textbf{Baselines.} A Witten--Bell count table over the ceiling's own classes, trained on the same windows, has 1.33--5.22 times
+the KIND shortfall of every transformer on every content interface. A parameter-matched GRU on the transformer's untuned recipe
 was pre-registered with a floor fixed before the models ran: each had to beat the count table before its association
 could be read. All eight failed it (KIND 0.045--0.076 bits against the table's 0.039--0.064), so their large, positive
 association statistics are uninformative under the declared rule.
 
-\hypertarget{a-copy-placed-at-the-point-of-use-as-an-input-by-supervision-factorial}{%
-\subsection{A copy placed at the point of use, as an input-by-supervision factorial}\label{a-copy-placed-at-the-point-of-use-as-an-input-by-supervision-factorial}}
+\hypertarget{a-copy-placed-at-the-point-of-use-separating-input-from-supervision}{%
+\subsection{A copy placed at the point of use: separating input from supervision}\label{a-copy-placed-at-the-point-of-use-separating-input-from-supervision}}
 
 The relay rewrite (§3.4) holds the ceiling identical class by class while putting the same actor's previous KIND in each
-record. All three relay models had lower KIND shortfall than all three controls. But in the original training recipe the
-copy is both an input and a training target. Two pre-registered follow-ups separated the two by varying only the OBJECT
-slot (KIND and ACTOR shortfall at 15 epochs, seeds 1--3):
+record. All three relay models had lower KIND shortfall than all three controls. A pre-registered prediction that the gain
+would scale with how much far information the relay moves closer failed. In the original training recipe the copy is
+both an input and a training target. Two pre-registered follow-ups separated the two by varying only the OBJECT slot.
+The five arms below are the cells that exist; no arm shows the copy while training on a placeholder, so the design is a
+set of controlled contrasts, not a full factorial (KIND and ACTOR shortfall at 15 epochs, seeds 1--3):
 
 \begin{longtable}[]{@{}lllll@{}}
 \toprule
@@ -567,9 +636,10 @@ significant. On KIND:
   constant placeholder. This cannot distinguish an informative unscored copy from any varying field.
 \item
   \textbf{Changing the slot's target moved the shortfall} (r1Rs against r1): training the slot to produce the relay value,
-  without ever showing it, gave a small resolved gain, with a margin of 0.0005 bits. Removing the slot from the loss
-  altogether (r1m against r1) moved KIND by a comparable amount, and the contrast cannot tell lookup supervision from any
-  nontrivial target in that slot. (Leaving OBJECT out of the loss also shrinks the loss denominator by about 24 \%.)
+  without ever showing it, lowered KIND shortfall in every seed, with a margin of 0.0005 bits between the closest models
+  (unrounded values). Removing the slot from the loss altogether (r1m against r1) raised KIND shortfall by a comparable
+  amount. KIND shortfall thus moves with any change to the OBJECT slot's loss, so r1Rs's gain cannot be credited to the
+  content of the lookup rather than to having a nontrivial target in that slot. (Leaving OBJECT out of the loss also shrinks the loss denominator by about 24 \%.)
 \item
   \textbf{Whether the copy adds to supervision is unresolved} (r1R against r1Rs).
 \end{itemize}
@@ -611,7 +681,7 @@ including orbital mechanics. Our audit is a different check: support and precisi
 languages, measure learner excess loss against exact PFSA entropies, and use entropy-preserving transformations as
 interventions. Our lag profile is a per-class relative of their quantity (counted in records, conditioning on m of
 them), and our ceiling-preserving rewrites are close to their interventions; what differs is the fixed hidden system,
-class-by-class preservation, and the input-by-supervision factorial. Block-entropy convergence
+class-by-class preservation, and the separation of input from supervision. Block-entropy convergence
 \citep{crutchfield2003regularities} is the classical form.
 
 \textbf{Separating kinds of uncertainty.} The split of predictive uncertainty into aleatoric and epistemic parts is not
@@ -623,8 +693,8 @@ both cases, and the difference appears only in how the model updates on a provid
 question in a world with no such cue, whose kernel is known, and finds that the answer depends on which sense of the
 question is asked.
 
-\textbf{Overlap.} The support audit is positivity checking \citep{petersen2012positivity, damour2017overlap} applied before the
-learner study, using exact class masses.
+\textbf{Overlap.} The support audit is positivity checking \citep{petersen2012positivity, damour2017overlap} that can be applied
+before a learner study, using exact class masses.
 
 \textbf{Telemetry design.} Log placement work optimises the identifiability of execution from logs \citep{zhao2017log20}; §3.2
 computes that kind of quantity beside the predictive one.
@@ -636,7 +706,8 @@ One world, with randomness placed by design in two mechanisms; one window law; o
 check at about four times the parameters in one cell); three seeds per cell; KIND at position 7. The identifiability
 results hold for the stated admissible family (known kernel, interface and ε, pattern observer, position 7). Learner
 precision was measured on twelve models on two interfaces. The kernel itself is validated only by its tests, its
-reviews and one directly tested property. A reparameterised world, varying completion and dispatch probabilities with
+reviews and one directly tested property, and the pattern-class laws at the frozen law are validated on a sample of
+82--91 test windows per cell rather than exhaustively. A reparameterised world, varying completion and dispatch probabilities with
 the posterior support unchanged, would test whether the audit's findings belong to this world's mechanisms.
 
 \section*{Contribution statement}
@@ -681,7 +752,7 @@ far-information association, KIND (held-out)\strut
 \end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
 5 epochs\strut
 \end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
-pre-registered before the census (21 runs)\strut
+pre-registered before evaluation (21 runs)\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.17\columnwidth}\raggedright
 far-information association, ACTOR\strut
@@ -728,7 +799,7 @@ r1Rm\strut
 pre-registered\strut
 \end{minipage}\tabularnewline
 \begin{minipage}[t]{0.17\columnwidth}\raggedright
-relay factorial\strut
+relay follow-up contrasts\strut
 \end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
 r1m, r1Rs\strut
 \end{minipage} & \begin{minipage}[t]{0.17\columnwidth}\raggedright
@@ -794,5 +865,43 @@ across the 30 ladder runs. Test windows come from episodes disjoint from trainin
 the model's softmax at the KIND position renormalised to remove only the end-of-window token. Class means estimate
 KL(P* ‖ \(\tilde{q}\)); single windows can be negative. Subsets are always chosen by functions of the prefix, never by another
 realised field.
+
+\hypertarget{the-kernel-and-the-exact-computation}{%
+\section{The kernel and the exact computation}\label{the-kernel-and-the-exact-computation}}
+
+\textbf{State.} For each of the four threads: a program counter and a status (RUNNABLE; RUNNING; blocked on lock l; blocked
+on I/O request r; blocked on a full device queue; TERMINATED). Also: the set of threads on the two CPUs, each lock's
+owner and FIFO wait queue, the device queue of (thread, request) pairs (capacity two), and a round-robin cursor (absent
+from the dynamics at ε = 1). An episode starts with every thread RUNNABLE at program counter 0, no thread running, both
+locks free and the device queue empty.
+
+\textbf{Programs} (each loops forever): thread 0 acquires lock 0, releases it, issues I/O; thread 1 acquires lock 0 then
+lock 1 and releases them in reverse order; thread 2 computes, then acquires and releases lock 0; thread 3 issues I/O,
+then acquires and releases lock 1.
+
+\textbf{One step emits one record.} If a request is pending, the device completes one of the pending requests, chosen
+uniformly, with total probability 1/3 (record IO\_COMPLETE, with the issuer as actor and the request as lineage); the
+issuer wakes. The remaining probability goes to the scheduling stage. If a CPU is free and a thread is runnable, a
+DISPATCH places a thread on a CPU for one instruction (uniform over runnable threads with probability ε, round-robin
+with probability 1 − ε). Otherwise one running thread, chosen by the same rule, executes its next instruction: STEP for computation; ACQUIRE, or
+BLOCK with the owner as RELATED if the lock is held; RELEASE, with the lock handed directly to the head of its wait
+queue, who appears as RELATED; IO\_ISSUE with a fresh request identifier as LINEAGE, or BLOCK on the device if its queue is full.
+If nothing can happen, the step is IDLE. A thread leaves the CPU after each instruction. The record kinds are thus
+DISPATCH, STEP, ACQUIRE, BLOCK, RELEASE, IO\_ISSUE, IO\_COMPLETE and IDLE, plus a RESET token at the start of a window that
+reaches back to the reset.
+
+\textbf{The exact computation.} One recursion per (window law, ε) runs at the richest interface; coarser interfaces are
+projections. Its frontier maps (state, last-8-record window) to exact probability: at each tick every (state, window)
+is pushed through the kernel's transition distribution, and at each endpoint the frontier's mass is added, divided by
+the number of endpoints, to the joint law of (window, state). A \emph{pattern class} at position k is a window prefix of k
+records after renaming each entity type by order of first appearance, together with whether the window starts at a
+reset. Its law mass is the summed mass of its structural windows, and its next-record law is the posterior over
+(state, binding of pattern names to structural entities), pushed through one kernel step and re-keyed through the
+binding. Every probability is an exact rational; logarithms are taken in floating point at the end. Equality checks
+between independent routes are exact equality of rationals.
+
+\textbf{Size and cost} at the frozen law: reachable states peak at 1,953 (ε = 1) and 4,173 (ε = ½); the recursion's frontier
+peaks at 1,964,919 (state, window) pairs; one pass takes about nine minutes and about 5 GB on one workstation CPU.
+Pattern classes at position 7 number 5,540 (r0), 89,474 (r1), 116,624 (r2), 146,455 (r3) and 160,363 (r4).
 
 \end{document}
