@@ -45,8 +45,8 @@ The look-alike rule called the kind readable in every cell. The two disagree, so
   kind is deterministic or none (0 < G < 0.1 bits), or on an exact distance tie with the other kind. So most
   pure-randomness outputs lie nearest to laws that carry a *small* amount of withheld state.
 - §4.3's look-alike statistic scored those no-kind neighbours as zero: it counted only look-alikes of the opposite kind.
-  That is why it read "readable" while an operational monitor does not.
-- **Plain accuracy on covered windows is 0.97–0.99, against 0.70–0.79 for always saying "withheld".** This is the
+  By construction it could not register this failure: no-kind neighbours entered its denominator, never its numerator.
+- **Plain accuracy on covered windows is 0.965–0.988, against 0.70–0.79 for always saying "withheld".** This is the
   reviewer's warning made concrete: accuracy alone would have reported success.
 - **The margin sweep:** at m = 0.02, covered pure recall falls to 0.000–0.307 (median
   below 0.01). Pure laws have withheld laws within about
