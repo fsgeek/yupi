@@ -87,7 +87,7 @@ these models' precision". That reading is mostly an artefact of the declared des
   "operationally readable"; r1 ε = 1 (one seed at 0.849) and r3 ε = ½ (one seed at 0.750) would read "between".
 
 **What survives.**
-- The asymmetry: every error is on the pure side, and withheld state is recognised essentially always. Its size,
+- The asymmetry: nearly every error is on the pure side (withheld recall 0.999–1.000). Its size,
   though, is moderate and seed-dependent, not "cannot identify".
 - Plain accuracy is still a trap, against the prior's 0.70–0.79.
 
