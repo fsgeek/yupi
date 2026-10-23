@@ -1,0 +1,12 @@
+r1 1 s1 m=0.0 cov 1.000 bal 0.610 cons 0.610 rp 0.222 rw 0.999 m=0.005 cov 0.826 bal 0.849 cons 0.567 rp 0.699 rw 1.000
+r1 1 s2 m=0.0 cov 1.000 bal 0.889 cons 0.889 rp 0.779 rw 1.000 m=0.005 cov 0.950 bal 0.940 cons 0.840 rp 0.881 rw 1.000
+r1 1 s3 m=0.0 cov 1.000 bal 0.858 cons 0.858 rp 0.717 rw 0.999 m=0.005 cov 0.924 bal 0.944 cons 0.789 rp 0.888 rw 1.000
+r1 1_2 s1 m=0.0 cov 1.000 bal 0.886 cons 0.886 rp 0.772 rw 0.999 m=0.005 cov 0.937 bal 0.959 cons 0.843 rp 0.917 rw 1.000
+r1 1_2 s2 m=0.0 cov 1.000 bal 0.915 cons 0.915 rp 0.832 rw 0.999 m=0.005 cov 0.957 bal 0.963 cons 0.885 rp 0.927 rw 0.999
+r1 1_2 s3 m=0.0 cov 1.000 bal 0.812 cons 0.812 rp 0.626 rw 0.998 m=0.005 cov 0.870 bal 0.937 cons 0.709 rp 0.875 rw 0.999
+r3 1 s1 m=0.0 cov 1.000 bal 0.890 cons 0.890 rp 0.780 rw 1.000 m=0.005 cov 0.934 bal 0.953 cons 0.839 rp 0.905 rw 1.000
+r3 1 s2 m=0.0 cov 1.000 bal 0.721 cons 0.721 rp 0.443 rw 0.999 m=0.005 cov 0.823 bal 0.905 cons 0.631 rp 0.811 rw 0.999
+r3 1 s3 m=0.0 cov 1.000 bal 0.918 cons 0.918 rp 0.837 rw 0.998 m=0.005 cov 0.967 bal 0.952 cons 0.897 rp 0.904 rw 0.999
+r3 1_2 s1 m=0.0 cov 1.000 bal 0.763 cons 0.763 rp 0.529 rw 0.998 m=0.005 cov 0.831 bal 0.891 cons 0.675 rp 0.782 rw 1.000
+r3 1_2 s2 m=0.0 cov 1.000 bal 0.744 cons 0.744 rp 0.490 rw 0.998 m=0.005 cov 0.934 bal 0.750 cons 0.696 rp 0.501 rw 0.999
+r3 1_2 s3 m=0.0 cov 1.000 bal 0.892 cons 0.892 rp 0.786 rw 0.998 m=0.005 cov 0.958 bal 0.929 cons 0.873 rp 0.859 rw 1.000

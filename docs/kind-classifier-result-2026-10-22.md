@@ -63,3 +63,34 @@ The look-alike rule called the kind readable in every cell. The two disagree, so
   from these learners' outputs. The gap between the two is the learners' imprecision, measured at about the distance
   that separates pure laws from small-withheld laws.
 - §4.3's look-alike numbers stay as reported, and v4 states what they count and what they do not (no-kind neighbours).
+
+---
+
+## Correction (same day, after the certification-margin check): the interpretation above overstated the result
+
+The declared verdicts stand as declared (K1 holds; K2, K3 fail; no cell readable under the declared monitor). **The
+interpretation does not.** The section "What this means for v4" said the monitor "cannot identify pure randomness at
+these models' precision". That reading is mostly an artefact of the declared design, not a property of the learners.
+
+- **Why.** The declared monitor abstains when the nearest exact law has no kind. The certification-margin check
+  (`certification-margin-result-2026-10-22.md`) found that the nearest non-pure law to a pure law is usually *almost
+  pure*: mass-weighted median G of 0.003–0.03 bits, at TV 0.0002–0.003. The nearest *substantially* withheld law
+  (G ≥ 0.1) is at about 0.015 in every cell. So most abstentions were on the question "pure, or a trace of withheld state
+  nobody would care about?". That is not the declared question, pure vs G ≥ 0.1.
+- **Post hoc monitor (EXPLORATORY, designed after seeing these data).** Compare the distance to the nearest pure law
+  with the distance to the nearest G ≥ 0.1 law, ignoring no-kind laws, with the same margin m = 0.005. Raw:
+  `kind-monitor-posthoc-pure-vs-withheld-2026-10-22.txt`. Over the 12 models:
+  - coverage 0.82–0.97;
+  - covered balanced accuracy 0.75–0.96; conservative (abstain = error) 0.57–0.90;
+  - pure recall, covered, 0.50–0.93; withheld recall 0.999–1.000.
+- Applying the declared reading thresholds to it (post hoc, so not a verdict): r1 ε = ½ and r3 ε = 1 would read
+  "operationally readable"; r1 ε = 1 (one seed at 0.849) and r3 ε = ½ (one seed at 0.750) would read "between".
+
+**What survives.**
+- The asymmetry: every error is on the pure side, and withheld state is recognised essentially always. Its size,
+  though, is moderate and seed-dependent, not "cannot identify".
+- Plain accuracy is still a trap, against the prior's 0.70–0.79.
+
+**What does not survive:** "not operationally readable" as a description of the learners. v4 reports both monitors, the
+design flaw, and the post hoc numbers as post hoc. It does not use "readable" for either. Any confirmatory claim about
+the post hoc monitor needs models it has not seen.

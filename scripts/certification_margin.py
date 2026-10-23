@@ -38,7 +38,7 @@ def main():
         pred = classify(Qp, P, W, G, 0.0)
         is_pure = pred == "pure"
         lo, hi = t < 0.4 * mu, t > 0.6 * mu
-        line = dict(rung=rung, eps=eps_tag.replace("_", "/"), seed=int(seed[1:]), n_pure=int(sel.sum()),
+        line: dict = dict(rung=rung, eps=eps_tag.replace("_", "/"), seed=int(seed[1:]), n_pure=int(sel.sum()),
                     mu_q10=float(np.quantile(mu, 0.1)), mu_median=float(np.median(mu)), mu_q90=float(np.quantile(mu, 0.9)),
                     t_median=float(np.median(t)),
                     n_lo=int(lo.sum()), pure_rate_lo=float(is_pure[lo].mean()) if lo.any() else None,
