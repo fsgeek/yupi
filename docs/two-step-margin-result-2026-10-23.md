@@ -55,3 +55,17 @@ pure classes (μ2, floor 0) are 0.110–0.136 on r1–r4 and 0.117–0.119 on r0
   mechanism. Other pure laws are included in the all-pure medians, which agree.
 - **One world.** The size of the widening (eight times) belongs to this kernel. Whether a second step widens the margin
   in general depends on withheld state inducing serial correlation, which is a property of the mechanism.
+
+## Addendum: position 6, where a learner can be queried (exploratory, not separately declared)
+
+Built so that both steps fall inside the window (`two-step-margin-40-8-2-k6-2026-10-23.json`, row hashes in
+`two-step-rows-k6-sha256-2026-10-23.txt`). The coin's median margin at floor 0 (γ = 0.1), one step → two steps:
+
+| | r0 | r1 | r2 | r3 | r4 |
+|---|---|---|---|---|---|
+| ε = 1 | 0.060 → 0.157 | 0.045 → 0.175 | 0.047 → 0.172 | 0.075 → 0.192 | 0.075 → 0.183 |
+| ε = ½ | 0.020 → 0.124 | 0.023 → 0.167 | 0.023 → 0.142 | 0.027 → 0.134 | 0.027 → 0.134 |
+
+T0 holds everywhere. At k = 6 the one-step margin is already wider than at k = 7 (fewer, less rare classes), so the
+widening is smaller: 2.4–6.2 times, against 7.8–9.5. The two-step margin is 0.12–0.19 in every cell, the same order as
+at k = 7. The learner-side test is at k = 6.

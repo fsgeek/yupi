@@ -75,12 +75,13 @@ def cell(path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--rows-dir", required=True)
+    ap.add_argument("--k", type=int, default=7)
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
     res = []
     for eps in ("1", "1_2"):
         for rung in ("r0", "r1", "r2", "r3", "r4"):
-            c = cell(Path(a.rows_dir) / f"c1prime-loop-40-8-2-{rung}-eps{eps}-k7.jsonl")
+            c = cell(Path(a.rows_dir) / f"c1prime-loop-40-8-2-{rung}-eps{eps}-k{a.k}.jsonl")
             c.update(rung=rung, eps=eps.replace("_", "/"))
             res.append(c)
             print(rung, c["eps"], " | ".join(
