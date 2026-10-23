@@ -39,3 +39,39 @@ not checked.
 Of the two levers proposed for widening μ(γ), "observe more" does not work here, for this world's dominant mechanism.
 "Ask more" (two-step queries) is the one left. That makes it the next experiment, and a sharper one: richer telemetry
 fails to separate randomness from withheld state, so can a richer *query* do it?
+
+---
+
+## Correction (2026-10-23, the morning after): the reading above is an artefact of an existential statistic
+
+The predictions are scored as declared, and those verdicts stand. **The reading ("content interfaces barely move the
+margin"; "observe more does not work") is wrong.** It came from chasing the r0 oddity, at Tony's prompt.
+
+μ(γ) as defined takes the nearest substantially withheld law of *any* mass. At r1–r4 that neighbour carries essentially
+zero prior mass (it prints as 0.00000). Richer interfaces split histories into many rare classes: 5,864–23,603 laws with
+G ≥ 0.1, against 1,515–1,648 at r0. One rare class near the coin is enough to set the margin. v3 §4.3 warned of this
+("existential statistics: one rare neighbour suffices"), and this result did not apply the warning.
+
+The coin's μ(0.1) when the neighbour must carry at least a given share of law mass:
+
+| floor | 0 | 1e-6 | 1e-5 | 1e-4 | 1e-3 |
+|---|---|---|---|---|---|
+| r0, ε = 1 | 0.0268 | 0.0268 | 0.0268 | 0.0268 | 0.0268 |
+| r1–r4, ε = 1 | 0.0153 | 0.0153 | 0.0233 | 0.108–0.152 | 0.310–0.667 |
+| r0, ε = ½ | 0.0274 | 0.0274 | 0.0274 | 0.0284 | 0.0524 |
+| r1–r4, ε = ½ | 0.0143–0.0151 | same | 0.0143–0.0172 | 0.160–0.205 | 0.517–0.667 |
+
+**What this shows.**
+- At any floor of 1e-4 or more, the content interfaces widen the coin's margin four- to sevenfold over r0.
+- The coarse interface's neighbours of the coin are *heavy* mixtures. The rich interfaces' near neighbours are rare.
+- So richer telemetry does make the dominant randomness more certifiable, *for an observer that weights by prior mass*,
+  and makes it look less certifiable to one that does not.
+- The floor is arbitrary, so the table is a curve, not a number. The object that removes the arbitrariness is a
+  prior-aware monitor: one that weighs neighbours by mass, not by existence.
+
+**Consequences.**
+1. The operational kind monitor (nearest law, mass ignored except to break ties) and its post hoc variant are both
+   mass-blind. The §4.3 look-alike statistic, which *is* mass-weighted, read "readable". The two disagree, and this is
+   probably why. The next monitor to declare is prior-aware: the posterior over law groups given q, under a stated
+   noise model for q.
+2. The two-step query experiment should report mass-aware margins from the start.
