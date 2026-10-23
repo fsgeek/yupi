@@ -23,7 +23,7 @@ def main():
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
     out = []
-    for f in sorted(Path(a.dump_dir).glob("*.npz")):
+    for f in sorted(p for p in Path(a.dump_dir).glob("*.npz") if not p.stem.endswith("-val")):
         rung, eps_tag, seed = f.stem.split("-")
         eps_tag = eps_tag[3:]
         z = np.load(f)

@@ -102,6 +102,7 @@ def main():
     ap.add_argument("runs", nargs="+")
     ap.add_argument("--out", required=True)
     ap.add_argument("--n", type=int, default=None)
+    ap.add_argument("--split", default="test")
     ap.add_argument("--dump-dir", default=None, help="save per-window (Q, P_c, truth) arrays (certification margin)")
     a = ap.parse_args()
     out = []
@@ -129,7 +130,7 @@ def main():
             model.load_state_dict(ck["model"])
             model.eval()
             evaluate(torch_logprobs_fn(model, "cpu"), rj["corpus_dir"], law, {K: load_table(tfile)}, (K,),
-                     rj["model"]["n_pos"], n=a.n, on_window=on_window)
+                     rj["model"]["n_pos"], n=a.n, on_window=on_window, split=a.split)
         finally:
             ev.window_excess = orig
         assert len(keys) == len(cap_q), (len(keys), len(cap_q))
@@ -138,7 +139,7 @@ def main():
         Q, B = np.array(cap_q), np.array(cap_b)
         if a.dump_dir:
             Path(a.dump_dir).mkdir(parents=True, exist_ok=True)
-            np.savez_compressed(Path(a.dump_dir) / f"{m.rung}-eps{eps_tag}-s{rj['seed']}.npz", Q=Q, B=B, truth=truth)
+            np.savez_compressed(Path(a.dump_dir) / f"{m.rung}-eps{eps_tag}-s{rj['seed']}" + ("" if a.split == "test" else f"-{a.split}") + ".npz", Q=Q, B=B, truth=truth)
         majority = "pure" if W[G == "pure"].sum() >= W[G == "withheld"].sum() else "withheld"
         line: dict = dict(run=str(run), rung=m.rung, eps=m.epsilon, seed=rj["seed"], n=len(keys), unmatched=unmatched,
                     checkpoint_sha256=hashlib.sha256((run / "ckpt.pt").read_bytes()).hexdigest(),
