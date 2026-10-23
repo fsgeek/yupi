@@ -139,7 +139,7 @@ def main():
         Q, B = np.array(cap_q), np.array(cap_b)
         if a.dump_dir:
             Path(a.dump_dir).mkdir(parents=True, exist_ok=True)
-            np.savez_compressed(Path(a.dump_dir) / f"{m.rung}-eps{eps_tag}-s{rj['seed']}" + ("" if a.split == "test" else f"-{a.split}") + ".npz", Q=Q, B=B, truth=truth)
+            np.savez_compressed(Path(a.dump_dir) / (f"{m.rung}-eps{eps_tag}-s{rj['seed']}" + ("" if a.split == "test" else f"-{a.split}") + ".npz"), Q=Q, B=B, truth=truth)
         majority = "pure" if W[G == "pure"].sum() >= W[G == "withheld"].sum() else "withheld"
         line: dict = dict(run=str(run), rung=m.rung, eps=m.epsilon, seed=rj["seed"], n=len(keys), unmatched=unmatched,
                     checkpoint_sha256=hashlib.sha256((run / "ckpt.pt").read_bytes()).hexdigest(),

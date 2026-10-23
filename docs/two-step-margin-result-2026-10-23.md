@@ -28,7 +28,7 @@ pure classes (μ2, floor 0) are 0.110–0.136 on r1–r4 and 0.117–0.119 on r0
 
 - **T0 (check): holds.** No pure class has μ2 < μ1 at any floor, interface or ε.
 - **T1: holds.** At floor 0 the coin's median μ2 is 0.117–0.145 on r1–r4 at both ε, against ≥ 0.05 declared. That is
-  8–9.5 times the one-step margin, and above the trained models' typical one-step error (median TV 0.008–0.032).
+  7.8–9.5 times the one-step margin, and above the trained models' typical one-step error (median TV 0.008–0.032).
 - **T2: holds as declared, but not by the stated mechanism.** μ2/μ1 at floor 0 is 7.8–9.5 on r1–r4 against 4.3–4.5 on
   r0. The absolute μ2 is about the same everywhere (about 0.12). The ratio is larger on rich interfaces because their
   μ1 is smaller (rare neighbours), not because those neighbours are more exposed at the second step. The declared
