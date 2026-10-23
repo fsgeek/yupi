@@ -20,3 +20,13 @@ explained by nearest-law geometry, and the error direction (follow-up 2) becomes
 
 Per-window (P_c, q, truth) arrays are captured by re-running the monitor's capture, to
 `~/.cache/yupi-scratch/kind-windows-2026-10-22/`.
+
+## Addendum, written before any per-window data was read (same day)
+
+Writing the analysis showed that M1's low half is close to a theorem. If t < μ_c/2, then every non-pure law is at
+TV ≥ μ_c − t > t from q, while P_c is at t, so the nearest law cannot be non-pure. The one way the low half can fail
+is a nearer *deterministic* law, which is excluded from μ_c and makes the monitor abstain. The low half is therefore a
+check, not a test. **The informative half is the high one:** that beyond 0.6 μ_c the output has actually moved toward
+the mixtures, rather than in some other direction that keeps it nearest P_c. That half bears on follow-up 2 (the
+direction of the error). The declared prediction is unchanged. The result will report the two halves separately and
+weigh only the high half as evidence.

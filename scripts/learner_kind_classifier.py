@@ -102,6 +102,7 @@ def main():
     ap.add_argument("runs", nargs="+")
     ap.add_argument("--out", required=True)
     ap.add_argument("--n", type=int, default=None)
+    ap.add_argument("--dump-dir", default=None, help="save per-window (Q, P_c, truth) arrays (certification margin)")
     a = ap.parse_args()
     out = []
     for run in map(Path, a.runs):
@@ -135,6 +136,9 @@ def main():
         unmatched = sum(1 for k in keys if k not in truth_of)
         truth = np.array([truth_of.get(k, "none") for k in keys])
         Q, B = np.array(cap_q), np.array(cap_b)
+        if a.dump_dir:
+            Path(a.dump_dir).mkdir(parents=True, exist_ok=True)
+            np.savez_compressed(Path(a.dump_dir) / f"{m.rung}-eps{eps_tag}-s{rj['seed']}.npz", Q=Q, B=B, truth=truth)
         majority = "pure" if W[G == "pure"].sum() >= W[G == "withheld"].sum() else "withheld"
         line: dict = dict(run=str(run), rung=m.rung, eps=m.epsilon, seed=rj["seed"], n=len(keys), unmatched=unmatched,
                     checkpoint_sha256=hashlib.sha256((run / "ckpt.pt").read_bytes()).hexdigest(),
