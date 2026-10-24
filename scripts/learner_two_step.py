@@ -29,6 +29,7 @@ from yupi.naming import pattern_all
 K = 6
 PRUNE = 1e-4
 FLOOR = 1e-5    # absolute prefix-probability floor per branch (eta stays exact; design v2 note)
+WINDOW_CHUNK = 25
 KIND_LIST = [k for k in KINDS if k != RESET]
 KIND_IDS = np.array([TOKEN_ID[k] for k in KIND_LIST])
 PAD_ID = TOKEN_ID[PAD]
@@ -36,13 +37,17 @@ MASKED_ID = TOKEN_ID[MASKED]
 MASKED_SLOTS = {"r1": (2, 3, 4), "r2": (3, 4), "r3": (4,), "r4": ()}
 
 
-def logprobs(model, seqs, n_pos):
-    x, _, _ = frame(seqs, n_pos)
-    out = []
+def logprobs_at(model, seqs, n_pos, batch=512):
+    """Log-probabilities of the NEXT token after each sequence: one row of len(VOCAB) per sequence. Only that row is
+    kept (memory: the full [n, n_pos, vocab] array is never held; the host crash of 2026-10-23 came from holding it)."""
+    out = np.empty((len(seqs), len(VOCAB)))
     with torch.no_grad():
-        for i in range(0, len(x), 1024):
-            out.append(torch.log_softmax(model(torch.from_numpy(x[i:i + 1024])).double(), -1).numpy())
-    return np.concatenate(out)
+        for i in range(0, len(seqs), batch):
+            chunk = seqs[i:i + batch]
+            x, _, _ = frame(chunk, n_pos)
+            lp = torch.log_softmax(model(torch.from_numpy(x)).double(), -1).numpy()
+            out[i:i + len(chunk)] = lp[np.arange(len(chunk)), [len(t) for t in chunk]]
+    return out
 
 
 def slot_dist(lp_row, slot):
@@ -90,38 +95,40 @@ def main():
         resets.append(reset)
         prefixes.append(tuple(TOKEN_ID[t] for t in wins[i][:off + 5 * K]))
     # nodes: (window j, token tuple of record 7 so far, prefix prob)
-    nodes = [(j, (), 1.0) for j in range(len(idx))]
     eta = np.zeros(len(idx))
     q1 = np.zeros((len(idx), len(KIND_LIST)))
-    for slot in range(5):
-        if slot in masked:
-            nodes = [(j, t + (MASKED_ID,), p) for j, t, p in nodes]
-            continue
-        lp = logprobs(model, [prefixes[j] + t for j, t, _ in nodes], n_pos)
-        new = []
-        for (j, t, p), row in zip(nodes, lp):
-            L = len(prefixes[j]) + len(t)
-            ids, pr = slot_dist(row[L], slot)
-            if slot == 0:
-                q1[j] = pr
-            o = np.argsort(-pr); c = np.cumsum(pr[o])
-            keep = o[:int(np.searchsorted(c, 1 - PRUNE)) + 1]
-            eta[j] += p * (1.0 - pr[keep].sum())
-            for x in keep:
-                q = p * float(pr[x])
-                if q >= FLOOR:
-                    new.append((j, t + (int(ids[x]),), q))
-                else:
-                    eta[j] += q
-        nodes = new
-    n_leaves = np.bincount([j for j, _, _ in nodes], minlength=len(idx))
-    lp = logprobs(model, [prefixes[j] + t for j, t, _ in nodes], n_pos)
+    n_leaves = np.zeros(len(idx), dtype=int)
     kpos = {k: i for i, k in enumerate(KIND_LIST)}
     q2 = np.zeros((len(idx), len(KIND_LIST), len(KIND_LIST)))
-    for (j, t, p), row in zip(nodes, lp):
-        L = len(prefixes[j]) + 5
-        _, pr = slot_dist(row[L], 0)
-        q2[j, kpos[VOCAB[t[0]]]] += p * pr
+    # windows in chunks, so the tree for only WINDOW_CHUNK windows is ever held (memory bound; see logprobs_at)
+    for c0 in range(0, len(idx), WINDOW_CHUNK):
+        nodes = [(j, (), 1.0) for j in range(c0, min(c0 + WINDOW_CHUNK, len(idx)))]
+        for slot in range(5):
+            if slot in masked:
+                nodes = [(j, t + (MASKED_ID,), p) for j, t, p in nodes]
+                continue
+            lp = logprobs_at(model, [prefixes[j] + t for j, t, _ in nodes], n_pos)
+            new = []
+            for (j, t, p), row in zip(nodes, lp):
+                ids, pr = slot_dist(row, slot)
+                if slot == 0:
+                    q1[j] = pr
+                o = np.argsort(-pr); c = np.cumsum(pr[o])
+                keep = o[:int(np.searchsorted(c, 1 - PRUNE)) + 1]
+                eta[j] += p * (1.0 - pr[keep].sum())
+                for x in keep:
+                    q = p * float(pr[x])
+                    if q >= FLOOR:
+                        new.append((j, t + (int(ids[x]),), q))
+                    else:
+                        eta[j] += q
+            nodes = new
+        for j, _, _ in nodes:
+            n_leaves[j] += 1
+        lp = logprobs_at(model, [prefixes[j] + t for j, t, _ in nodes], n_pos)
+        for (j, t, p), row in zip(nodes, lp):
+            _, pr = slot_dist(row, 0)
+            q2[j, kpos[VOCAB[t[0]]]] += p * pr
     tot = q2.sum((1, 2))
     q2 /= tot[:, None, None]
     marg = q2.sum(2)
