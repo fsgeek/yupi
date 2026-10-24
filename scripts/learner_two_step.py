@@ -12,6 +12,7 @@ q2 = normalised sum over leaves; asserted: sum q2 = 1 and its k1-marginal equals
   python scripts/learner_two_step.py RUN_DIR --split val|test --n-sample N --seed S --out FILE.npz
 """
 import argparse
+import hashlib
 import json
 from pathlib import Path
 
@@ -65,6 +66,13 @@ def main():
     m = Manifest.from_json(json.loads((Path(rj["corpus_dir"]) / "manifest.json").read_text()))
     n_pos = rj["model"]["n_pos"]
     model = build_model(ModelConfig(**rj["model"]))
+    # Trust boundary: checkpoints hold non-tensor objects (weights_only=True fails on all 12), so they are unpickled
+    # only after their SHA-256 matches the hash committed in the precision-monitor results.
+    pinned = {r["run"]: r["checkpoint_sha256"] for r in json.loads(Path(
+        "docs/learner-precision-monitor-gkind-40-8-2-k7-2026-10-15.json").read_text())["rows"]}
+    digest = hashlib.sha256((run / "ckpt.pt").read_bytes()).hexdigest()
+    if pinned.get(str(run)) != digest:
+        raise SystemExit(f"refusing to unpickle {run}/ckpt.pt: sha256 {digest} is not the pinned hash")
     model.load_state_dict(torch.load(run / "ckpt.pt", weights_only=False, map_location="cpu")["model"])
     model.eval()
     masked = MASKED_SLOTS[m.rung]
