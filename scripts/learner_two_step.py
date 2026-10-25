@@ -65,6 +65,8 @@ def main():
     ap.add_argument("--n-sample", type=int, default=10000)
     ap.add_argument("--seed", type=int, default=20261023)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--pinned", default="docs/learner-precision-monitor-gkind-40-8-2-k7-2026-10-15.json",
+                    help="committed JSON whose rows carry run and checkpoint_sha256")
     a = ap.parse_args()
     run = Path(a.run)
     rj = json.loads((run / "run.json").read_text())
@@ -73,8 +75,7 @@ def main():
     model = build_model(ModelConfig(**rj["model"]))
     # Trust boundary: checkpoints hold non-tensor objects (weights_only=True fails on all 12), so they are unpickled
     # only after their SHA-256 matches the hash committed in the precision-monitor results.
-    pinned = {r["run"]: r["checkpoint_sha256"] for r in json.loads(Path(
-        "docs/learner-precision-monitor-gkind-40-8-2-k7-2026-10-15.json").read_text())["rows"]}
+    pinned = {r["run"]: r["checkpoint_sha256"] for r in json.loads(Path(a.pinned).read_text())["rows"]}
     digest = hashlib.sha256((run / "ckpt.pt").read_bytes()).hexdigest()
     if pinned.get(str(run)) != digest:
         raise SystemExit(f"refusing to unpickle {run}/ckpt.pt: sha256 {digest} is not the pinned hash")

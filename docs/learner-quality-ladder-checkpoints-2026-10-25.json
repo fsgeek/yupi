@@ -1,0 +1,45 @@
+{
+ "note": "r1 eps1 quality ladder, corpus fd5da4c31e43d73d; hashes pinned 2026-10-25 before any run",
+ "rows": [
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d64-lr3e-4-s1",
+   "checkpoint_sha256": "924c144866ddf1e9193997d102b065425ee84a4c6e68b22a96f77dafcb2834b1"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d64-s1",
+   "checkpoint_sha256": "d9e78299efc8b60a4932cd46516ebf42a1dac1878e5f38c1d4a99e3ef24a0d52"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d64-lr1e-3-e15-s1",
+   "checkpoint_sha256": "39a61d406e4267073416e6c747d74fe476d34a68287fc318f3fb5a453536bb85"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr3e-4-s1",
+   "checkpoint_sha256": "f0bd8e51b7b58d64383fcfe320421c93ee3cab6295104c198391cd94158db577"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-s1",
+   "checkpoint_sha256": "580c5a67aaa3750e3b1ccc1ca861a570f79ba620f02d2a1c484229a48fa8c1a1"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d128-lr1e-3-e45-s1",
+   "checkpoint_sha256": "4c97c636c992cc4003b6cfc5826d3e581cc739bc12467e03e1b37ad4e7c00c43"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d256-lr1e-4-s1",
+   "checkpoint_sha256": "47afd3190a05010f45785dbf52f299bceaa5bd2cd7e318de8647e55da2fd5f6a"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d256-lr1e-3-e15-s1",
+   "checkpoint_sha256": "e9e469ac000e92622803d23e4d5cd45124177cd730d56efcbfde132a653c6c83"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gpu/c1prime-loop-40-8-2-r1-eps1-2M-d256-lr1e-3-e45-s1",
+   "checkpoint_sha256": "2849d66ff737ad4cdf9a575a1f2bd3c612a1715cdc54b0aa0a0790a1c7f61fcd"
+  },
+  {
+   "run": "/home/tony/.cache/yupi-scratch/runs/gru/c1prime-loop-40-8-2-r1-eps1-2M-gru256x2-e15-s1",
+   "checkpoint_sha256": "17e8f3e768f9c8fc21227487457452d195e741f167e9baefca430c1916a05763"
+  }
+ ]
+}
