@@ -18,7 +18,7 @@
 | F8 | L3: prior-aware within 0.02 between one and two steps | r3 ε = 1 worse by 0.027–0.045 | **Mostly the monitor's noise scale:** τ = mean error is too broad. At τ × ¼ the gap is 0.007–0.008, and one-step accuracy rises to 0.96 (post hoc, 2026-10-24). |
 
 | F9 | Q3 (10-25): the prior-free two-step gain shrinks as learners get worse | Reversed: Spearman +0.85; the gain is largest for the worst learners | Prior-free one-step observers of poor learners fall into the rare-neighbour trap; the wider two-step margin rescues them (inferred; `learner-quality-result-2026-10-25.md`). |
-| F10 | (10-25 interpretation) prior-free observers collapse at one step; two steps rescue the worst learners most | The collapse belonged to the β = 0 *summed* observer (a uniform law prior). A nearest-law monitor, with no prior, gets 0.884–0.975 at one step and 0.916–0.988 at two, beating the best prior-aware observer in 9 of 10 | A fourth observer artefact of the owner's making; found by Codex (`story-codex-review-2026-10-25.md`). |
+| F10 | (10-25 interpretation) prior-free observers collapse at one step; two steps rescue the worst learners most | The collapse belonged to the β = 0 *summed* observer (a uniform law prior). A nearest-law monitor, with no prior, gets 0.884–0.975 at one step and 0.916–0.988 at two, beating the best prior-aware observer in all 10 | A fourth observer artefact of the owner's making; found by Codex (`story-codex-review-2026-10-25.md`). |
 
 Pattern B update (10-25): across real quality differences, observer and learner are *comparable* (R = 0.73), not observer-dominated; see `learner-quality-result-2026-10-25.md`.
 

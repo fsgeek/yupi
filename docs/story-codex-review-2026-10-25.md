@@ -36,7 +36,7 @@ The headline JSON numbers reproduce, including R = **0.7323**, Q3’s Spearman *
 |---|---|---|---|---|
 | range over the 10 learners | 0.884–0.975 | 0.916–0.988 | 0.518–0.943 | 0.899–0.981 |
 
-- The nearest-law two-step monitor uses **no prior**, and it **beats the grid's best prior-aware observer in 9 of 10
+- The nearest-law two-step monitor uses **no prior**, and it **beats the grid's best prior-aware observer in all 10
   learners**.
 - The "prior-free collapse" was the β = 0 *summed* observer, which effectively puts a uniform prior over laws and
   rewards multiplicity. This is ledger F10: a fourth observer artefact of the owner's making.
