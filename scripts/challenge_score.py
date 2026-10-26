@@ -1,4 +1,4 @@
-"""Declared: docs/challenge-declared-2026-10-25.md (stamped before running).
+"""Declared: docs/challenge-declared-2026-10-25.md; factorial arm PA2* per docs/factorial-declared-2026-10-26.md.
 
 NL1/NL2 (nearest-law, score s = d_withheld - d_pure) and PA* (prior-aware, best (beta, c) on val, one step), each with
 a symmetric threshold set on val to 0.95 coverage of the headline population; frozen; scored on fresh test windows
@@ -55,6 +55,7 @@ def main():
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
     taus = {r["run"]: r["tau1"] for r in json.loads(Path(a.scores).read_text())["rows"]}
+    taus2 = {r["run"]: r["tau2"] for r in json.loads(Path(a.scores).read_text())["rows"]}
     fam, out = None, []
     for fv in sorted(Path(a.dir).glob("*-val.npz")):
         stem = fv.name[:-len("-val.npz")]
@@ -82,6 +83,18 @@ def main():
         _, beta, c, t, bv = best
         res["PA*"] = dict(beta=beta, c=c, threshold=t, val=bv,
                           test=bal(decide(scores_pa(z["q1"][keep], P1, W1, G1, taus[stem] * c, beta), t), labt))
+        tau2 = taus2[stem]
+        best2 = None
+        for beta in (1.0, 2.0):
+            for c in (1 / 16, 1 / 8, 1 / 4):
+                sv = scores_pa(v["q2"], P2, W2, G2, tau2 * c, beta)
+                t2 = thr_for_coverage(sv, labv)
+                b = bal(decide(sv, t2), labv)
+                if best2 is None or b["balanced_conservative"] > best2[0]:
+                    best2 = (b["balanced_conservative"], beta, c, t2, b)
+        _, beta2, c2, t2, bv2 = best2
+        res["PA2*"] = dict(beta=beta2, c=c2, threshold=t2, val=bv2,
+                           test=bal(decide(scores_pa(z["q2"][keep], P2, W2, G2, tau2 * c2, beta2), t2), labt))
         out.append(res)
         print("%-30s n %d | NL1 %.3f NL2 %.3f PA* %.3f (b%.0f c%.4g) | cov %.3f %.3f %.3f" % (
             stem.split("eps1-2M-")[1][:30], res["n_fresh"], res["NL1"]["test"]["balanced_covered"],
