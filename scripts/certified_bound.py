@@ -20,21 +20,28 @@ QS = (0.90, 0.95, 0.99)
 
 def main():
     ap = argparse.ArgumentParser()
-    for k in ("--dir", "--fresh", "--rows"):
+    for k in ("--dir", "--rows"):
         ap.add_argument(k, required=True)
+    ap.add_argument("--fresh", default=None, help="fresh test dir; if absent, score the --dir test windows (none excluded)")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
-    fam, out = None, []
+    fams, out = {}, []
     for fv in sorted(Path(a.dir).glob("*-val.npz")):
         stem = fv.name[:-len("-val.npz")]
-        v, old, z = np.load(fv), np.load(Path(a.dir) / f"{stem}-test.npz"), np.load(Path(a.fresh) / f"{stem}-test.npz")
+        v = np.load(fv)
+        if a.fresh:
+            old, z = np.load(Path(a.dir) / f"{stem}-test.npz"), np.load(Path(a.fresh) / f"{stem}-test.npz")
+            keep = ~np.isin(z["idx"], old["idx"])
+        else:
+            z = np.load(Path(a.dir) / f"{stem}-test.npz")
+            keep = np.ones(len(z["idx"]), bool)
         kinds = [str(k) for k in v["kinds"]]
-        if fam is None:
-            fam = family(Path(a.rows) / "c1prime-loop-40-8-2-r1-eps1-k6.jsonl", kinds)
-        tm, (k1, P1, _, G1), (k2, P2, _, G2) = fam
+        rung = "r1" if "-r1-" in stem else "r3"; eps = "1_2" if "eps1_2" in stem else "1"
+        if (rung, eps) not in fams:
+            fams[(rung, eps)] = family(Path(a.rows) / f"c1prime-loop-40-8-2-{rung}-eps{eps}-k6.jsonl", kinds)
+        tm, (k1, P1, _, G1), (k2, P2, _, G2) = fams[(rung, eps)]
         i1 = {k: i for i, k in enumerate(k1)}; i2 = {k: i for i, k in enumerate(k2)}
-        keep = ~np.isin(z["idx"], old["idx"])
-        res: dict = dict(run=stem, n=int(keep.sum()))
+        res: dict = dict(run=stem, rung=rung, eps=eps.replace("_", "/"), n=int(keep.sum()))
         for s, Pk, G, ix, qk, slot in (("one", P1, G1, i1, "q1", 1), ("two", P2, G2, i2, "q2", 2)):
             Tv = np.array([Pk[ix[tm[str(k)][slot]]] for k in v["keys"]])
             ev = 0.5 * np.abs(Tv - v[qk]).sum(1)
@@ -56,7 +63,7 @@ def main():
         out.append(res)
         r1, r2 = res["one|q0.95"], res["two|q0.95"]
         print("%-28s q.95 | one: B %.3f pure %.3f wh %.3f false %.4f >B %.3f | two: B %.3f pure %.3f wh %.3f false %.4f >B %.3f" % (
-            stem.split("eps1-2M-")[1][:28], r1["B"], r1["certified_pure_share"], r1["certified_withheld_share"], r1["false_certificate_rate"] or 0,
+            stem[-34:], r1["B"], r1["certified_pure_share"], r1["certified_withheld_share"], r1["false_certificate_rate"] or 0,
             r1["test_share_error_gt_B"], r2["B"], r2["certified_pure_share"], r2["certified_withheld_share"], r2["false_certificate_rate"] or 0,
             r2["test_share_error_gt_B"]), flush=True)
     if a.out:
