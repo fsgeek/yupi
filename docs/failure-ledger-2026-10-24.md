@@ -19,6 +19,7 @@
 
 | F9 | Q3 (10-25): the prior-free two-step gain shrinks as learners get worse | Reversed: Spearman +0.85; the gain is largest for the worst learners | Prior-free one-step observers of poor learners fall into the rare-neighbour trap; the wider two-step margin rescues them (inferred; `learner-quality-result-2026-10-25.md`). |
 | F10 | (10-25 interpretation) prior-free observers collapse at one step; two steps rescue the worst learners most | The collapse belonged to the β = 0 *summed* observer (a uniform law prior). A nearest-law monitor, with no prior, gets 0.884–0.975 at one step and 0.916–0.988 at two, beating the best prior-aware observer in all 10 | A fourth observer artefact of the owner's making; found by Codex (`story-codex-review-2026-10-25.md`). |
+| F11 | W2/W3 (10-26): learners err toward hidden-state alternatives in particular | 13/22 and 15/22; direction idiosyncratic per model | Points instead to class-dependent precision: learners are more precise on pure windows (post hoc; `error-direction-result-2026-10-26.md`). |
 
 Pattern B update (10-25): across real quality differences, observer and learner are *comparable* (R = 0.73), not observer-dominated; see `learner-quality-result-2026-10-25.md`.
 
