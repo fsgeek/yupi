@@ -1,4 +1,4 @@
-"""Declared: docs/direction-intervention-declared-2026-10-26.md (stamped before running).
+"""Declared: docs/direction-intervention-declared-2026-10-26.md; --null family per docs/direction-null-declared-2026-10-26.md.
 
 For pure-truth test windows: certify the real output, an adversarial output (toward the nearest withheld law) and a
 random-direction output (toward a Dirichlet(1) law), all at the model's real per-window TV error, with the same
@@ -36,9 +36,10 @@ def main():
     ap.add_argument("--rows", required=True)
     ap.add_argument("--dir", action="append", required=True)
     ap.add_argument("--fresh-for-ladder", default=None)
+    ap.add_argument("--null", default="dirichlet", choices=("dirichlet", "family"))
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
-    rng = np.random.default_rng(20261026)
+    rng = np.random.default_rng(20261026 if a.null == "dirichlet" else 20261027)
     fams, out = {}, []
     for d in a.dir:
         for fv in sorted(Path(d).glob("*-val.npz")):
@@ -53,9 +54,9 @@ def main():
             kinds = [str(k) for k in v["kinds"]]
             if (rung, eps) not in fams:
                 fams[(rung, eps)] = family(Path(a.rows) / f"c1prime-loop-40-8-2-{rung}-eps{eps}-k6.jsonl", kinds)
-            tm, (k1, P1, _, G1), (k2, P2, _, G2) = fams[(rung, eps)]
+            tm, (k1, P1, W1, G1), (k2, P2, W2, G2) = fams[(rung, eps)]
             res: dict = dict(run=stem, rung=rung, eps=eps.replace("_", "/"))
-            for s, ks, P, G, slot, qk in (("one", k1, P1, G1, 1, "q1"), ("two", k2, P2, G2, 2, "q2")):
+            for s, ks, P, W, G, slot, qk in (("one", k1, P1, W1, G1, 1, "q1"), ("two", k2, P2, W2, G2, 2, "q2")):
                 ix = {k: i for i, k in enumerate(ks)}
                 Tv = np.array([P[ix[tm[str(k)][slot]]] for k in v["keys"]])
                 B = float(np.quantile(0.5 * np.abs(Tv - v[qk]).sum(1), Q))
@@ -67,7 +68,10 @@ def main():
                 e = 0.5 * np.abs(T - Qr).sum(1)
                 Pw = P[G == "withheld"]
                 Qa = towards(T, Pw[nearest_idx(T, Pw)], e)
-                R = rng.dirichlet(np.ones(P.shape[1]), size=len(T))
+                if a.null == "dirichlet":
+                    R = rng.dirichlet(np.ones(P.shape[1]), size=len(T))
+                else:
+                    R = P[rng.choice(len(P), size=len(T), p=W / W.sum())]
                 Qn = towards(T, R, e)
                 res[s] = dict(B=B, n=int(sel.sum()), real=float(certified_pure(Qr, P, G, B).mean()),
                               adversarial=float(certified_pure(Qa, P, G, B).mean()), random=float(certified_pure(Qn, P, G, B).mean()))
