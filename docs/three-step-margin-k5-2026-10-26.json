@@ -1,0 +1,185 @@
+{
+ "declared": "docs/three-step-margin-declared-2026-10-26.md",
+ "rows": [
+  {
+   "n_pure_groups": 105,
+   "mu1": {
+    "coin_median": 0.03327011435513938,
+    "all_median": 0.03327011435513938
+   },
+   "mu2": {
+    "coin_median": 0.17309675719688594,
+    "all_median": 0.17309675719688594
+   },
+   "mu3": {
+    "coin_median": 0.32613924535841404,
+    "all_median": 0.3055952627324902
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r0",
+   "eps": "1"
+  },
+  {
+   "n_pure_groups": 414,
+   "mu1": {
+    "coin_median": 0.10999979678522817,
+    "all_median": 0.10999979678522817
+   },
+   "mu2": {
+    "coin_median": 0.21602632075587513,
+    "all_median": 0.21602632075587513
+   },
+   "mu3": {
+    "coin_median": 0.37429274333679785,
+    "all_median": 0.37300570878091516
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r1",
+   "eps": "1"
+  },
+  {
+   "n_pure_groups": 486,
+   "mu1": {
+    "coin_median": 0.05166912888394015,
+    "all_median": 0.05166912888394015
+   },
+   "mu2": {
+    "coin_median": 0.1718961860664876,
+    "all_median": 0.16802969063428588
+   },
+   "mu3": {
+    "coin_median": 0.3724246374461759,
+    "all_median": 0.36812564246249624
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r2",
+   "eps": "1"
+  },
+  {
+   "n_pure_groups": 582,
+   "mu1": {
+    "coin_median": 0.05166912888394015,
+    "all_median": 0.05166912888394015
+   },
+   "mu2": {
+    "coin_median": 0.16635596928013688,
+    "all_median": 0.15946490166887825
+   },
+   "mu3": {
+    "coin_median": 0.36276659029210806,
+    "all_median": 0.35936748607242563
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r3",
+   "eps": "1"
+  },
+  {
+   "n_pure_groups": 692,
+   "mu1": {
+    "coin_median": 0.05166912888394015,
+    "all_median": 0.05166912888394015
+   },
+   "mu2": {
+    "coin_median": 0.16635596928013688,
+    "all_median": 0.15946490166887825
+   },
+   "mu3": {
+    "coin_median": 0.36276659029210806,
+    "all_median": 0.35936748607242563
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r4",
+   "eps": "1"
+  },
+  {
+   "n_pure_groups": 107,
+   "mu1": {
+    "coin_median": 0.026896910956917257,
+    "all_median": 0.026896910956917257
+   },
+   "mu2": {
+    "coin_median": 0.15582900806301286,
+    "all_median": 0.14341279128276724
+   },
+   "mu3": {
+    "coin_median": 0.28532478948032836,
+    "all_median": 0.28532478948032836
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r0",
+   "eps": "1/2"
+  },
+  {
+   "n_pure_groups": 721,
+   "mu1": {
+    "coin_median": 0.05113614045336412,
+    "all_median": 0.05113614045336412
+   },
+   "mu2": {
+    "coin_median": 0.2027490923127086,
+    "all_median": 0.20168517671836358
+   },
+   "mu3": {
+    "coin_median": 0.2871647527323523,
+    "all_median": 0.27787930656191195
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r1",
+   "eps": "1/2"
+  },
+  {
+   "n_pure_groups": 860,
+   "mu1": {
+    "coin_median": 0.03787555607899354,
+    "all_median": 0.03787555607899354
+   },
+   "mu2": {
+    "coin_median": 0.18831203232813254,
+    "all_median": 0.18310797641153442
+   },
+   "mu3": {
+    "coin_median": 0.28468024241254053,
+    "all_median": 0.27607126459033254
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r2",
+   "eps": "1/2"
+  },
+  {
+   "n_pure_groups": 1229,
+   "mu1": {
+    "coin_median": 0.03787555607899354,
+    "all_median": 0.03787555607899354
+   },
+   "mu2": {
+    "coin_median": 0.15993927496291838,
+    "all_median": 0.1559629251556067
+   },
+   "mu3": {
+    "coin_median": 0.23626038624769308,
+    "all_median": 0.23402388118713707
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r3",
+   "eps": "1/2"
+  },
+  {
+   "n_pure_groups": 1475,
+   "mu1": {
+    "coin_median": 0.03787555607899354,
+    "all_median": 0.03787555607899354
+   },
+   "mu2": {
+    "coin_median": 0.15993927496291838,
+    "all_median": 0.1559629251556067
+   },
+   "mu3": {
+    "coin_median": 0.23626038624769308,
+    "all_median": 0.23402388118713707
+   },
+   "D0_violations_mass": 0.0,
+   "rung": "r4",
+   "eps": "1/2"
+  }
+ ]
+}
