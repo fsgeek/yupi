@@ -16,6 +16,8 @@ step (s = 1) and two steps (s = 2), with q ∈ {0.90, 0.95, 0.99}.
 - If the true error is ≤ B, a certificate cannot be wrong: the true law is within B, and the other kind is not. So the
   false-certificate rate is bounded by the share of windows whose error exceeds B, which is about 1 − q if val and
   test errors match.
+  *Correction 10-26 (Codex): that bounds the unconditional wrong-certificate rate; among certified windows the bound is
+  P(e > B) / coverage. B2's numbers stand as an empirical observation, not as the stated guarantee.*
 
 **Reported per learner, s and q:**
 - certified share of pure windows (the coverage that matters);
