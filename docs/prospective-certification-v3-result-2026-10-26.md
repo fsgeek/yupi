@@ -10,7 +10,7 @@
 - **X2 (two-step median gap ≤ 0.15): fails, 0.213** (L2: 0.246; L: 0.553). The rank agreement at two steps is 0.94.
 - **X3 (one-step median gap ≤ 0.015): holds, 0.011.**
 
-## The floor's looseness, decomposed (two steps, median gap)
+## The floor's looseness, decomposed (two steps, median gap). *Descriptive, not causal (Codex 10-26): differences of medians do not identify contributions.*
 
 | floor | assumption dropped | gap |
 |---|---|---|

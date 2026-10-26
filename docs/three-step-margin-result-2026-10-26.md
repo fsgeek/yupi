@@ -13,7 +13,7 @@
 | r2 | 0.052 → 0.172 → 0.372 | 0.038 → 0.188 → 0.285 |
 | r3, r4 | 0.052 → 0.166 → 0.363 | 0.038 → 0.160 → 0.236 |
 
-Medians over all pure classes agree to within 0.015.
+Medians over all pure classes agree to within 0.021 (the largest difference is r0, ε = 1, three steps; corrected 10-26 after the Codex read).
 
 ## Predictions
 

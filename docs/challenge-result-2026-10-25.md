@@ -39,7 +39,7 @@ Conservative balanced accuracy (abstention counts as error): NL1 0.791–0.895, 
 
 With calibrated thresholds at matched coverage, in this world, at k = 6:
 1. A plain nearest-law monitor with no prior is already good at one step (0.887–0.990).
-2. A prior and a second step are near-substitutes: each lifts it, and together they add little more. Two steps
+2. A prior and a second step are near-substitutes in the sense tested: each lifts NL1, and NL2 (no prior) matches one-step PA\*. *Correction 10-26 (Codex): there was no two-step PA\* arm, so "together they add little more" was not tested.* Two steps
    without a prior match the best prior-aware monitor in 8 of 10 learners.
 3. Their value grows as the learner gets worse. Gains are 0.004–0.063 over NL1, largest for the worst learners. This
    is now true for the calibrated nearest-law monitor too (exploratory), not only for the uncalibrated summed observer

@@ -16,7 +16,7 @@
 ## Reading
 
 - **The PACMI-shaped hypothesis ("models over-attribute their uncertainty to what they cannot see") is not supported in
-  this world.** At two steps there is a weak lean toward mixtures, consistent with hedging. It is not specific to
+  this world.** *Correction 10-26 (Codex): this means a specific hidden-state bias is not established, not that it is absent. Euclidean cosine toward one neighbour is not a certificate-boundary test.* At two steps there is a weak lean toward mixtures, consistent with hedging. It is not specific to
   hidden state, and at one step the direction is idiosyncratic per model.
 - **So direction does not explain the remaining floor gap. What does (post hoc, val):** learners are *more precise on
   pure-randomness windows*. The median two-step val error on pure windows is 0.029–0.069, against 0.037–0.109 over all
