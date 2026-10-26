@@ -61,3 +61,33 @@ The headline JSON numbers reproduce, including R = **0.7323**, Q3’s Spearman *
 **Next:** the reviewer's falsification experiment, declared before running. It is a validation-calibrated challenge
 between nearest-law one- and two-step monitors and the best prior-aware monitor (c extended below ¼), at matched
 coverage, on fresh paired test windows.
+
+---
+
+## Owner's audit of these dispositions (2026-10-25, at Tony's question: "was the hostile reader correct, or did we narrow because we weren't sure?")
+
+**Verified correct after the fact:**
+- Finding 1: recomputed (see above).
+- Finding 3: R is 0.12–2.74 depending on the observer set. 0.37 is reproduced with β = 1, c ≤ ½ (4 observers).
+- Finding 4: a 1e-4 floor removes 26.3 % of withheld-law mass at r3 against 4.9 % at r0 (ε = 1, k = 7). Recomputed.
+- Finding 6: verified.
+- Finding 5: true by construction.
+
+**Over-conceded: finding 2 (necessity).** It is correct that a successful monitor shows sufficiency and a failing one
+shows nothing, *for average classification*. The disposition withdrew the claim outright. It should have split it.
+
+- **Worst-case certification is a geometric statement, not an experimental one.** If a substantially withheld law lies
+  within 2ε of a pure law, an output within ε of both is consistent with both. Then *no* observer without a prior can
+  certify that window, whatever its rule. The existential margin μ is exactly this quantity, and the reviewer notes
+  that existential statistics are right for worst-case guarantees.
+- **The evidence was already in hand.** The k = 6 sufficient-condition shares
+  (`learner-two-step-result-2026-10-23.md`) rise from 0.05–0.82 of pure windows at one step to 0.46–0.88 at two.
+- **Restored claim (worst-case form):** to *certify* "randomness, not substantial hidden state" for a window, without a
+  prior, the model's error must be below about half the existential margin. At one step the margin is narrower than
+  these learners' error on most pure windows in the narrow-margin cells. A second step widens it enough for many more.
+- **Limit:** the condition uses the window's true error, which a real observer does not know. An actual guarantee
+  needs an error bound the observer can trust, for example a calibrated upper quantile of error. That is not yet
+  built.
+
+**Not withdrawn by this audit:** "the second step rescues the worst learners most" (summed-observer form). It stays
+withdrawn. The calibrated nearest-law version is exploratory (challenge result).
