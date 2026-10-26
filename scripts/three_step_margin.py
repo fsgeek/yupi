@@ -29,7 +29,10 @@ def vecs(laws):
     return V
 
 
-def nearest(A, B, chunk=256):
+def nearest(A, B, budget=2e8):
+    """Chunk so a chunk's [chunk, len(B), dim] float64 block stays near budget bytes (about 1.6 GB at 2e8 elements;
+    a fixed 256-row chunk would be about 40 GB for three-step laws)."""
+    chunk = max(1, int(budget / max(1, B.shape[0] * B.shape[1])))
     out = np.empty(len(A))
     for i in range(0, len(A), chunk):
         out[i:i + chunk] = (0.5 * np.abs(A[i:i + chunk, None, :] - B[None, :, :]).sum(-1)).min(1)
