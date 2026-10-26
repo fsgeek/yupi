@@ -41,7 +41,8 @@ Withheld windows are certified withheld at 0.66–0.95 at one step and 0.72–0.
 The worst-case form of the withdrawn claim, now with an error bound the observer can know. For these learners,
 without a prior:
 - one output almost never certifies "this is randomness, not hidden state" (≤ 8.5 % of pure windows at 95 %);
-- a second question certifies most of them for good learners (51–84 %), at false-certificate rates of about 0.1–0.4 %.
+- a second question certifies 51–84 % of them for the six best learners, at false-certificate rates of 0.07–0.24 %,
+  and 43 % and 24 % for the next two (GRU; d64 at 5 epochs).
 
 For the worst learners, neither suffices. The certificate is honest about that: it abstains instead of guessing.
 That is the auditor's version of the question, and it is the version PACMI asks.
