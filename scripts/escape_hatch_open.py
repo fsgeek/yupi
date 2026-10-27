@@ -4,7 +4,9 @@ Arm B: exp27's four models and its knowable and unknowable queries, plus determi
 (scripts/open_queries.py). Greedy decoding, 150 tokens, exp27's system prompt and chat formatting; the per-token
 entropy (nats, as exp27) of every generated token is kept, so profiles can be scored.
 
-  python scripts/escape_hatch_open.py --out DIR [--models Llama Qwen ...]
+  uv run --project ~/projects/ai-honesty python scripts/escape_hatch_open.py --out DIR [--models Llama Qwen ...]
+
+(Run in ai-honesty's environment: Yupi's own environment stays free of pretrained-model code.)
 """
 import argparse
 import gc
@@ -42,6 +44,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
     ap.add_argument("--models", nargs="*", default=None)
+    ap.add_argument("--limit", type=int, default=None, help="smoke test: first N queries per set")
     a = ap.parse_args()
     outdir = Path(a.out); outdir.mkdir(parents=True, exist_ok=True)
     sets = [("knowable", [q for q, _ in exp27.KNOWABLE_QUERIES]), ("unknowable", [q for q, _ in exp27.UNKNOWABLE_QUERIES]),
@@ -58,7 +61,7 @@ def main():
         tmp = path.with_suffix(".partial")
         with open(tmp, "w") as f:
             for cat, qs in sets:
-                for i, q in enumerate(qs):
+                for i, q in enumerate(qs[:a.limit]):
                     resp, ents, ids = generate(model, tok, exp27.format_chat(exp27.SYSTEM_PROMPT, q, tok))
                     f.write(json.dumps(dict(family=family, model_id=model_id, category=cat, query=q, response=resp,
                                             entropies=ents, token_ids=ids)) + "\n")
