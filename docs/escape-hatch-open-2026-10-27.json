@@ -1,0 +1,249 @@
+{
+ "declared": "docs/escape-hatch-open-declared-2026-10-27.md",
+ "rows": [
+  {
+   "family": "Llama",
+   "n": {
+    "knowable": 100,
+    "open_long": 50,
+    "open_short": 50,
+    "unknowable": 100
+   },
+   "MEAN": {
+    "unknowable_vs_knowable": 0.9222,
+    "unknowable_vs_open_long": 0.4242,
+    "unknowable_vs_open_short": 0.7696,
+    "open_short_vs_knowable": 0.7962,
+    "open_long_vs_knowable": 0.9414
+   },
+   "RESOLVE": {
+    "unknowable_vs_knowable": 0.92255,
+    "unknowable_vs_open_long": 0.452,
+    "unknowable_vs_open_short": 0.8244,
+    "open_short_vs_knowable": 0.7656,
+    "open_long_vs_knowable": 0.965
+   },
+   "LEN": {
+    "unknowable_vs_knowable": 0.94905,
+    "unknowable_vs_open_long": 0.351,
+    "unknowable_vs_open_short": 1.0,
+    "open_short_vs_knowable": 0.0412,
+    "open_long_vs_knowable": 0.9818
+   },
+   "posthoc_fabrication_only": {
+    "MEAN": {
+     "fab_vs_knowable": 0.9614814814814815,
+     "fab_vs_open_long": 0.6562962962962963,
+     "fab_vs_open_short": 0.8844444444444445
+    },
+    "RESOLVE": {
+     "fab_vs_knowable": 0.947962962962963,
+     "fab_vs_open_long": 0.7311111111111112,
+     "fab_vs_open_short": 0.9155555555555556
+    },
+    "LEN": {
+     "fab_vs_knowable": 0.9622222222222222,
+     "fab_vs_open_long": 0.43592592592592594,
+     "fab_vs_open_short": 1.0
+    }
+   },
+   "refusal_rate": {
+    "knowable": 0.0,
+    "open_long": 0.02,
+    "open_short": 0.0,
+    "unknowable": 0.73
+   },
+   "median_len": {
+    "knowable": 9.0,
+    "open_long": 110.0,
+    "open_short": 1.0,
+    "unknowable": 97.5
+   }
+  },
+  {
+   "family": "Mistral",
+   "n": {
+    "knowable": 100,
+    "open_long": 50,
+    "open_short": 50,
+    "unknowable": 100
+   },
+   "MEAN": {
+    "unknowable_vs_knowable": 0.9052,
+    "unknowable_vs_open_long": 0.2566,
+    "unknowable_vs_open_short": 0.7076,
+    "open_short_vs_knowable": 0.7946,
+    "open_long_vs_knowable": 0.952
+   },
+   "RESOLVE": {
+    "unknowable_vs_knowable": 0.8364,
+    "unknowable_vs_open_long": 0.3432,
+    "unknowable_vs_open_short": 0.8276,
+    "open_short_vs_knowable": 0.598,
+    "open_long_vs_knowable": 0.9178
+   },
+   "LEN": {
+    "unknowable_vs_knowable": 0.9688,
+    "unknowable_vs_open_long": 0.3464,
+    "unknowable_vs_open_short": 0.9687,
+    "open_short_vs_knowable": 0.4824,
+    "open_long_vs_knowable": 0.9775
+   },
+   "posthoc_fabrication_only": {
+    "MEAN": {
+     "fab_vs_knowable": 0.9231506849315069,
+     "fab_vs_open_long": 0.30356164383561646,
+     "fab_vs_open_short": 0.7608219178082192
+    },
+    "RESOLVE": {
+     "fab_vs_knowable": 0.8747260273972602,
+     "fab_vs_open_long": 0.4136986301369863,
+     "fab_vs_open_short": 0.8821917808219178
+    },
+    "LEN": {
+     "fab_vs_knowable": 0.9911643835616438,
+     "fab_vs_open_long": 0.4194520547945205,
+     "fab_vs_open_short": 0.9901369863013698
+    }
+   },
+   "refusal_rate": {
+    "knowable": 0.0,
+    "open_long": 0.0,
+    "open_short": 0.0,
+    "unknowable": 0.27
+   },
+   "median_len": {
+    "knowable": 21.5,
+    "open_long": 98.0,
+    "open_short": 23.5,
+    "unknowable": 86.0
+   }
+  },
+  {
+   "family": "OLMo",
+   "n": {
+    "knowable": 100,
+    "open_long": 50,
+    "open_short": 50,
+    "unknowable": 100
+   },
+   "MEAN": {
+    "unknowable_vs_knowable": 0.8942,
+    "unknowable_vs_open_long": 0.1572,
+    "unknowable_vs_open_short": 0.7172,
+    "open_short_vs_knowable": 0.7586,
+    "open_long_vs_knowable": 0.9652
+   },
+   "RESOLVE": {
+    "unknowable_vs_knowable": 0.8512,
+    "unknowable_vs_open_long": 0.2806,
+    "unknowable_vs_open_short": 0.9156,
+    "open_short_vs_knowable": 0.4801,
+    "open_long_vs_knowable": 0.9216
+   },
+   "LEN": {
+    "unknowable_vs_knowable": 0.92075,
+    "unknowable_vs_open_long": 0.5481,
+    "unknowable_vs_open_short": 1.0,
+    "open_short_vs_knowable": 0.0855,
+    "open_long_vs_knowable": 0.9039
+   },
+   "posthoc_fabrication_only": {
+    "MEAN": {
+     "fab_vs_knowable": 0.8982089552238806,
+     "fab_vs_open_long": 0.16238805970149253,
+     "fab_vs_open_short": 0.7226865671641791
+    },
+    "RESOLVE": {
+     "fab_vs_knowable": 0.8644776119402985,
+     "fab_vs_open_long": 0.3107462686567164,
+     "fab_vs_open_short": 0.9271641791044776
+    },
+    "LEN": {
+     "fab_vs_knowable": 0.9226119402985075,
+     "fab_vs_open_long": 0.5438805970149254,
+     "fab_vs_open_short": 1.0
+    }
+   },
+   "refusal_rate": {
+    "knowable": 0.0,
+    "open_long": 0.0,
+    "open_short": 0.0,
+    "unknowable": 0.33
+   },
+   "median_len": {
+    "knowable": 8.0,
+    "open_long": 92.0,
+    "open_short": 1.0,
+    "unknowable": 100.5
+   }
+  },
+  {
+   "family": "Qwen",
+   "n": {
+    "knowable": 100,
+    "open_long": 50,
+    "open_short": 50,
+    "unknowable": 100
+   },
+   "MEAN": {
+    "unknowable_vs_knowable": 0.8956,
+    "unknowable_vs_open_long": 0.0384,
+    "unknowable_vs_open_short": 0.845,
+    "open_short_vs_knowable": 0.6766,
+    "open_long_vs_knowable": 0.986
+   },
+   "RESOLVE": {
+    "unknowable_vs_knowable": 0.8823,
+    "unknowable_vs_open_long": 0.1588,
+    "unknowable_vs_open_short": 0.9752,
+    "open_short_vs_knowable": 0.4366,
+    "open_long_vs_knowable": 0.9574
+   },
+   "LEN": {
+    "unknowable_vs_knowable": 0.8851,
+    "unknowable_vs_open_long": 0.4122,
+    "unknowable_vs_open_short": 1.0,
+    "open_short_vs_knowable": 0.0229,
+    "open_long_vs_knowable": 0.9063
+   },
+   "posthoc_fabrication_only": {
+    "MEAN": {
+     "fab_vs_knowable": 0.9126923076923077,
+     "fab_vs_open_long": 0.05307692307692308,
+     "fab_vs_open_short": 0.8784615384615385
+    },
+    "RESOLVE": {
+     "fab_vs_knowable": 0.8926923076923077,
+     "fab_vs_open_long": 0.1423076923076923,
+     "fab_vs_open_short": 0.9853846153846154
+    },
+    "LEN": {
+     "fab_vs_knowable": 0.8859615384615385,
+     "fab_vs_open_long": 0.42730769230769233,
+     "fab_vs_open_short": 1.0
+    }
+   },
+   "refusal_rate": {
+    "knowable": 0.01,
+    "open_long": 0.02,
+    "open_short": 0.0,
+    "unknowable": 0.74
+   },
+   "median_len": {
+    "knowable": 8.0,
+    "open_long": 92.0,
+    "open_short": 1.0,
+    "unknowable": 81.5
+   }
+  }
+ ],
+ "verdict": {
+  "n_models": 4,
+  "B0": 4,
+  "B1": 4,
+  "B2": 3,
+  "B3": 0,
+  "B4": 4
+ }
+}
