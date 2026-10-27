@@ -19,8 +19,10 @@
   of 22. **But the random column is a single draw per fraction, and it is not monotone** (0.928 at 25 %, 0.968 at
   10 %), so draw-to-draw noise is large. Four more seeds, a post hoc robustness check, are in the addendum below.
 - **The pattern that does not depend on one draw:** random knowledge of *half* the laws already brings the full
-  distribution down to near the entropy profile (0.948 vs 0.940). Most of the full distribution's 0.059 advantage is
-  knowledge of the *common* laws, not the export alone.
+  distribution down to near the entropy profile (0.948 vs 0.940). *Corrected after review:* how much of the full
+  distribution's 0.059 advantage is world knowledge, and how much is the export, is **not identified**. That needs an
+  entropy observer given the same reference laws. The "higher now, lower next" profile was itself learned from
+  labelled exact data, so it is not knowledge-free.
 
 ## What it says
 
@@ -49,7 +51,9 @@ Four more random draws (`--seed 1..4`, numbers in `partial-support-seeds-2026-10
   the declared 12). P2 stays *failed* as declared, and the failure is now understood: it came from one atypical draw,
   not from the world.
 - **The robust pattern:** random knowledge of about half the laws keeps the full distribution ahead of the profile
-  (0.95–0.98 against 0.94). At a quarter or less it is level with or below the profile, and noisy, because a small
-  random subset is dominated by which rare laws it happens to contain.
+  (0.95–0.98 against 0.94). Below that, results are noisy and non-monotone. *Corrected after review:* "at a quarter
+  or less it is level or below" was wrong (seed 2 at 25 % gives 0.965), and the random draws do not identify a
+  stable threshold. In the other direction, the mass result was understated: the top 1 % beats S3 in **22 of 22**
+  learners, not only in the median.
 - **Lesson for declarations:** a random-subset arm needs several seeds *declared*, not one. Next time I declare the
   distribution over seeds, not a single draw.

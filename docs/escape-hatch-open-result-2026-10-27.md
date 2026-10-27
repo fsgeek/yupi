@@ -16,6 +16,11 @@
 | B3: RESOLVE further from ½ than MEAN, U vs OL | 0.281 | 0.452 | 0.159 | 0.343 | **failed 0/4** |
 | B4: AUC_LEN(U vs OL) ≤ 0.70 | 0.548 | 0.351 | 0.412 | 0.346 | **held 4/4**: length does not explain B1 |
 
+> *Corrected after review (See `escape-hatch-codex-review-2026-10-27.md` for the review and dispositions.):* B1's threshold (≤ 0.70) accepts a perfect
+> inversion. Reversed, mean entropy separates U from OL at 0.843 / 0.576 / 0.962 / 0.743 (OLMo / Llama / Qwen /
+> Mistral). Entropy *carries* information here; what fails is the inherited alarm direction. "Yupana predicted it in
+> exact form" below is retrospective, not a declared prediction.
+
 ## What it shows
 
 **Per-token entropy orders the categories K < OS < U < OL in every model.** The median mean entropy (nats) is:

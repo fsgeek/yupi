@@ -17,8 +17,12 @@
   titles from real ones at 0.78–0.90. That is close to how well it separates unknowable from knowable closed
   queries (0.89–0.92).
 - **O2 held (4/4).** Correct answers to open-factual questions carry more entropy than single-answer facts.
-- **The audit passed** (0–11 %, under the declared 20 %). O1's failure is resolved, not an artefact of Wikidata's
-  gaps.
+- **The audit passed** (0–11 %, under the declared 20 %). *Corrected after review:* that audit searches the same
+  incomplete database and can mis-extract titles. Codex found Mistral's true rate is at least 3/9. "Resolved, not an
+  artefact of Wikidata's gaps" is withdrawn; the frozen audit passed, but its power is limited.
+- **Corrected labels (post hoc, after review):** two matching bugs are fixed in `scripts/open_factual_relabel_v2.py`
+  (three label changes). AUCs are 0.917 (OLMo), 0.873 (Llama), 0.791 (Qwen); O1 still fails 3/3. Per template
+  (novel / film / album): OLMo 0.945 / 0.847 / 0.938; Llama 0.836 / 0.972 / 0.836; Qwen 0.875 / **0.591** / 0.836.
 
 ## Post hoc checks (not declared)
 
@@ -35,6 +39,12 @@
   true separation is, if anything, higher.
 
 ## What B and B2 say together
+
+> *Corrected after review (See `escape-hatch-codex-review-2026-10-27.md` for the review and dispositions.):* the mechanism and the repair below are
+> **hypotheses**, not findings. LLM token entropy is not decomposed into randomness and hidden state the way Yupana's
+> H = R + G is. "Within one form" pooled three templates, and Qwen's films give 0.591. A per-form constant cannot
+> change ranking within a form; it can only help pooled screening across forms, which is untested. The weakest joint
+> in the analogy: a Yupana second step observes the world again, while an LLM's continuation is self-commitment.
 
 - **Across query forms, entropy fails.** Correct creative answers carry the most entropy of anything (Arm B: K <
   OS < U < OL), so no single threshold catches fabrication.
