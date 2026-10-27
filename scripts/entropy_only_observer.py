@@ -31,7 +31,7 @@ def auc(score, pos, w):
         wp, wn = w[i:j][y[i:j]].sum(), w[i:j][~y[i:j]].sum()
         num += wp * (wn_below + 0.5 * wn)
         wn_below += wn; i = j
-    return num / (w[pos].sum() * w[~pos].sum())
+    return num / (w[y].sum() * w[~y].sum())
 
 
 def bayes_ba(groups, pos, w):
