@@ -34,4 +34,22 @@
 
 ## Addendum: seeds (post hoc, not declared)
 
-(pending)
+Four more random draws (`--seed 1..4`, numbers in `partial-support-seeds-2026-10-27/`), with the mass mode unchanged:
+
+| random fraction | declared seed | seeds 1–4 |
+|---|---|---|
+| 0.5 | 0.948 | 0.956–0.979 |
+| 0.25 | 0.928 | 0.928–0.965 |
+| 0.1 | **0.968** | **0.886–0.905** |
+| 0.05 | 0.886 | 0.899–0.927 |
+| 0.01 | 0.926 | 0.914–0.951 |
+| P2 count (random 10 % < S3) | 3 / 22 | 15–16 / 22 |
+
+- **The declared draw was the outlier at 10 %.** Under every other seed, P2's condition holds (15–16 of 22, against
+  the declared 12). P2 stays *failed* as declared, and the failure is now understood: it came from one atypical draw,
+  not from the world.
+- **The robust pattern:** random knowledge of about half the laws keeps the full distribution ahead of the profile
+  (0.95–0.98 against 0.94). At a quarter or less it is level with or below the profile, and noisy, because a small
+  random subset is dominated by which rare laws it happens to contain.
+- **Lesson for declarations:** a random-subset arm needs several seeds *declared*, not one. Next time I declare the
+  distribution over seeds, not a single draw.
