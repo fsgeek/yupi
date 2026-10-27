@@ -1,0 +1,444 @@
+{
+ "Llama": {
+  "n_wrong": 23,
+  "n_audited": 20,
+  "misclassified_rate": 0.05,
+  "records": [
+   {
+    "entity": "Basil Dearden",
+    "title": "Saturday Night and Sunday Morning",
+    "response": "The film \"Saturday Night and Sunday Morning\" (1960) was directed by Basil Dearden.",
+    "misclassified": false
+   },
+   {
+    "entity": "Ralph Thomas",
+    "title": "Madhouse on Castle Street",
+    "response": "\"Madhouse on Castle Street\" (1963) is a film directed by Ralph Thomas.",
+    "misclassified": false
+   },
+   {
+    "entity": "Storm Jameson",
+    "title": "Cousin Honor.",
+    "response": "One novel by Storm Jameson is \"Cousin Honor.\"",
+    "misclassified": false
+   },
+   {
+    "entity": "Felt",
+    "title": "an album",
+    "response": "The Splinter Group is an album by Felt.",
+    "misclassified": false
+   },
+   {
+    "entity": "Microdisney",
+    "title": "The Clock Comes Good",
+    "response": "Microdisney's album \"The Clock Comes Good\" is one of their notable releases.",
+    "misclassified": false
+   },
+   {
+    "entity": "Penelope Fitzgerald",
+    "title": "a novel",
+    "response": "The Old Jest is a novel by Penelope Fitzgerald.",
+    "misclassified": false
+   },
+   {
+    "entity": "Soft Machine",
+    "title": "The Soft Machine",
+    "response": "Soft Machine's debut album is \"The Soft Machine\" (1968).",
+    "misclassified": true
+   },
+   {
+    "entity": "Allan Dwan",
+    "title": "Reap the Wild Wind",
+    "response": "\"Reap the Wild Wind\" (1942) is a film directed by Allan Dwan.",
+    "misclassified": false
+   },
+   {
+    "entity": "Television Personalities",
+    "title": "an album",
+    "response": "Mummy and the Losers is an album by Television Personalities.",
+    "misclassified": false
+   },
+   {
+    "entity": "Robyn Hitchcock",
+    "title": "Element of Light",
+    "response": "\"Element of Light\" is an album by Robyn Hitchcock.",
+    "misclassified": false
+   },
+   {
+    "entity": "Hawkwind",
+    "title": "Doremius",
+    "response": "Doremius.",
+    "misclassified": false
+   },
+   {
+    "entity": "Pamela Hansford Johnson",
+    "title": "This Other Eden",
+    "response": "This Other Eden.",
+    "misclassified": false
+   },
+   {
+    "entity": "Sylvia Townsend Warner",
+    "title": "Mr. Fortune's Magician",
+    "response": "Mr. Fortune's Magician.",
+    "misclassified": false
+   },
+   {
+    "entity": "Barbara Pym",
+    "title": "A Few Fair Days",
+    "response": "A Few Fair Days.",
+    "misclassified": false
+   },
+   {
+    "entity": "Rose Macaulay",
+    "title": "a novel",
+    "response": "The Towers of Silence is a novel by Rose Macaulay.",
+    "misclassified": false
+   },
+   {
+    "entity": "Caravan",
+    "title": "In the Neighborhood",
+    "response": "In the Neighborhood.",
+    "misclassified": false
+   },
+   {
+    "entity": "Hatfield and the North",
+    "title": "The Rotters' Social Club",
+    "response": "The Rotters' Social Club.",
+    "misclassified": false
+   },
+   {
+    "entity": "Hammond Innes",
+    "title": "The Conquistadors",
+    "response": "\"The Conquistadors\" is a novel by Hammond Innes.",
+    "misclassified": false
+   },
+   {
+    "entity": "Wolf Rilla",
+    "title": "The Gorgon",
+    "response": "The Gorgon.",
+    "misclassified": false
+   },
+   {
+    "entity": "Hiroshi Shimizu",
+    "title": "Children of Hiroshima",
+    "response": "\"Children of Hiroshima\" is a film directed by Hiroshi Shimizu.",
+    "misclassified": false
+   }
+  ]
+ },
+ "Mistral": {
+  "n_wrong": 9,
+  "n_audited": 9,
+  "misclassified_rate": 0.1111111111111111,
+  "records": [
+   {
+    "entity": "Pamela Hansford Johnson",
+    "title": "The Tyrant's Daughter.",
+    "response": "One of Pamela Hansford Johnson's notable novels is \"The Tyrant's Daughter.\" It is a historical novel set in ancient Rome, focusing on the life of Julia, the dau",
+    "misclassified": false
+   },
+   {
+    "entity": "Henry Cow",
+    "title": "Legend",
+    "response": "One of Henry Cow's notable albums is \"Legend\" (1973). This album features a mix of avant-garde rock, jazz, and classical music influences. It's considered a sig",
+    "misclassified": false
+   },
+   {
+    "entity": "Seth Holt",
+    "title": "Beyond the Fringe",
+    "response": "One film directed by Seth Holt is \"Beyond the Fringe\" (1964), although he is more known for his thriller \"A Study in Terror\" (1965). However, it's important to ",
+    "misclassified": false
+   },
+   {
+    "entity": "Hiroshi Shimizu",
+    "title": "The Ballad of Narayama",
+    "response": "One film directed by Hiroshi Shimizu is \"The Ballad of Narayama\" (1958). It's a Japanese drama that tells the story of an elderly woman who, according to tradit",
+    "misclassified": false
+   },
+   {
+    "entity": "Charles Crichton",
+    "title": "The Lavender Hill Mob",
+    "response": "\"The Lavender Hill Mob\" is a film directed by Charles Crichton. It's a British comedy about a mild-mannered bank clerk and an eccentric jeweler who plan to stea",
+    "misclassified": true
+   },
+   {
+    "entity": "Wolf Rilla",
+    "title": "Day of the Triffids",
+    "response": "The film \"Day of the Triffids\" was directed by Wolf Rilla. It is a British science fiction horror film from 1962, based on the novel of the same name by John Wy",
+    "misclassified": false
+   },
+   {
+    "entity": "Ralph Thomas",
+    "title": "The Long and the Short and the Tall",
+    "response": "One film directed by Ralph Thomas is \"The Long and the Short and the Tall\" (1961), a war drama set during World War II. The film stars Richard Burton, John Mill",
+    "misclassified": false
+   },
+   {
+    "entity": "Ivy Compton-Burnett",
+    "title": "Mother and Son",
+    "response": "One of Ivy Compton-Burnett's notable novels is \"Mother and Son\" (1934). This novel explores the complex relationships within a family, a common theme in Compton",
+    "misclassified": false
+   },
+   {
+    "entity": "Storm Jameson",
+    "title": "The Bride's House,",
+    "response": "One of Storm Jameson's notable novels is \"The Bride's House,\" published in 1928. This novel explores the lives of women in a small English town and their strugg",
+    "misclassified": false
+   }
+  ]
+ },
+ "OLMo": {
+  "n_wrong": 48,
+  "n_audited": 20,
+  "misclassified_rate": 0.0,
+  "records": [
+   {
+    "entity": "Hiroshi Shimizu",
+    "title": "\"House of the Nine Tigers\" (2003)",
+    "response": "A notable film directed by Hiroshi Shimizu is **\"House of the Nine Tigers\" (2003)**. Another well-known work is **\"The Tale of the Princess Kaguya\" (2013)**.",
+    "misclassified": false
+   },
+   {
+    "entity": "Lewis Gilbert",
+    "title": "\"The Blue Lagoon\" (1980)",
+    "response": "One film directed by Lewis Gilbert is **\"The Blue Lagoon\" (1980)**. He also directed **\"Tommy\" (1975)**, among others.",
+    "misclassified": false
+   },
+   {
+    "entity": "Basil Dearden",
+    "title": "\"The 39 Steps\" (1935)",
+    "response": "A good example is **\"The 39 Steps\" (1935)**, directed by Basil Dearden.",
+    "misclassified": false
+   },
+   {
+    "entity": "Anita Brookner",
+    "title": "\"The Milagro Beanfield War\"",
+    "response": "A notable novel by Anita Brookner is **\"The Milagro Beanfield War\"** (1980).",
+    "misclassified": false
+   },
+   {
+    "entity": "Felt",
+    "title": "\"Shufflin' It\"",
+    "response": "One of Felt's albums is **\"Shufflin' It\"** (released in 1978).",
+    "misclassified": false
+   },
+   {
+    "entity": "Ralph Thomas",
+    "title": "\"The Wombles\" (1973)",
+    "response": "One film directed by Ralph Thomas is **\"The Wombles\" (1973)**, though he is best known for producing and sometimes directing children's television and films. An",
+    "misclassified": false
+   },
+   {
+    "entity": "Seth Holt",
+    "title": "\"The Invisible Man\" (2020)",
+    "response": "A notable film directed by Seth Holt is **\"The Invisible Man\" (2020)**, which is a modern reboot of the classic horror story.",
+    "misclassified": false
+   },
+   {
+    "entity": "Jacques Rivette",
+    "title": "\"C\u00e9line et Jojo\" (1968)",
+    "response": "A notable film directed by Jacques Rivette is **\"C\u00e9line et Jojo\" (1968)**.",
+    "misclassified": false
+   },
+   {
+    "entity": "The Monochrome Set",
+    "title": "Turn on the Red",
+    "response": "\"Turn on the Red\"",
+    "misclassified": false
+   },
+   {
+    "entity": "Hatfield and the North",
+    "title": "Sweet Smell of Success",
+    "response": "\"Sweet Smell of Success\"",
+    "misclassified": false
+   },
+   {
+    "entity": "Hawkwind",
+    "title": "\"Levitating Blades of Steel\"",
+    "response": "A recommended Hawkwind album is **\"Levitating Blades of Steel\"** (1975). Other notable albums include **\"The War Machine\"** and **\"The Book of Lost Worlds.\"**",
+    "misclassified": false
+   },
+   {
+    "entity": "Delmer Daves",
+    "title": "\"The Magnificent Seven\" (1960)",
+    "response": "One notable film directed by Delmer Daves is **\"The Magnificent Seven\" (1960)**.",
+    "misclassified": false
+   },
+   {
+    "entity": "Mary Webb",
+    "title": "\"The Golden Arrow.\"",
+    "response": "A novel by Mary Webb is **\"The Golden Arrow.\"**",
+    "misclassified": false
+   },
+   {
+    "entity": "Wolf Rilla",
+    "title": "Wolfgang Rilla",
+    "response": "Wolf Rilla is not a widely recognized or prominent director in mainstream film history. It's possible there may be a spelling error or confusion with the name. ",
+    "misclassified": false
+   },
+   {
+    "entity": "Henry Hathaway",
+    "title": "\"The Misfits\" (1961)",
+    "response": "One notable film directed by Henry Hathaway is **\"The Misfits\" (1961)**.",
+    "misclassified": false
+   },
+   {
+    "entity": "Sylvia Townsend Warner",
+    "title": "\"The Green Years\"",
+    "response": "A notable novel by Sylvia Townsend Warner is **\"The Green Years\"** (published in 1939).",
+    "misclassified": false
+   },
+   {
+    "entity": "Hammond Innes",
+    "title": "\"The Riddle of the Sands\"",
+    "response": "A notable novel by Hammond Innes is **\"The Riddle of the Sands\"** (published in 1903).",
+    "misclassified": false
+   },
+   {
+    "entity": "Storm Jameson",
+    "title": "\"The Candy House\"",
+    "response": "A notable novel by Storm Jameson is **\"The Candy House\"** (2011).",
+    "misclassified": false
+   },
+   {
+    "entity": "The Clean",
+    "title": "Little by Little",
+    "response": "\"Little by Little\" is an album by The Clean.",
+    "misclassified": false
+   },
+   {
+    "entity": "J. Lee Thompson",
+    "title": "\"The Black Hole\" (1979)",
+    "response": "One film directed by J. Lee Thompson is **\"The Black Hole\" (1979)**.",
+    "misclassified": false
+   }
+  ]
+ },
+ "Qwen": {
+  "n_wrong": 45,
+  "n_audited": 20,
+  "misclassified_rate": 0.1,
+  "records": [
+   {
+    "entity": "Val Guest",
+    "title": "The Man in the White Suit",
+    "response": "A film directed by Val Guest is *The Man in the White Suit* (1951).",
+    "misclassified": false
+   },
+   {
+    "entity": "Julien Duvivier",
+    "title": "Les Enfants du Paradis",
+    "response": "\"Les Enfants du Paradis\"",
+    "misclassified": false
+   },
+   {
+    "entity": "The Chills",
+    "title": "The Chills",
+    "response": "One album by The Chills is *The Chills*.",
+    "misclassified": true
+   },
+   {
+    "entity": "Microdisney",
+    "title": "Microdisney",
+    "response": "One album by Microdisney is *Microdisney*.",
+    "misclassified": false
+   },
+   {
+    "entity": "Hatfield and the North",
+    "title": "The Hounds of Winter",
+    "response": "*The Hounds of Winter* is an album by Hatfield and the North.",
+    "misclassified": false
+   },
+   {
+    "entity": "Mary Webb",
+    "title": "The Wren",
+    "response": "A novel by Mary Webb is *The Wren*.",
+    "misclassified": false
+   },
+   {
+    "entity": "Henry Cow",
+    "title": "Henry Cow",
+    "response": "*Henry Cow* is a British progressive rock band, and one of their notable albums is *The Great Annihilator*.",
+    "misclassified": false
+   },
+   {
+    "entity": "Robert Hamer",
+    "title": "The Longest Day",
+    "response": "A film directed by Robert Hamer is *The Longest Day*.",
+    "misclassified": false
+   },
+   {
+    "entity": "The Fall",
+    "title": "Non-Stop",
+    "response": "\"Non-Stop\"",
+    "misclassified": false
+   },
+   {
+    "entity": "Rose Macaulay",
+    "title": "Sylvia's Lovers",
+    "response": "One novel by Rose Macaulay is *Sylvia's Lovers*.",
+    "misclassified": false
+   },
+   {
+    "entity": "Henry Hathaway",
+    "title": "Gone with the Wind",
+    "response": "Gone with the Wind",
+    "misclassified": false
+   },
+   {
+    "entity": "Desmond Bagley",
+    "title": "The Wasp Factory",
+    "response": "A novel by Desmond Bagley is *The Wasp Factory*.",
+    "misclassified": false
+   },
+   {
+    "entity": "Storm Jameson",
+    "title": "The Mind of the Child",
+    "response": "A novel by Storm Jameson is *The Mind of the Child*.",
+    "misclassified": false
+   },
+   {
+    "entity": "Charles Crichton",
+    "title": "The Man Who Knew Too Much",
+    "response": "A film directed by Charles Crichton is *The Man Who Knew Too Much* (1934).",
+    "misclassified": false
+   },
+   {
+    "entity": "Jacques Becker",
+    "title": "La Bataille de France",
+    "response": "\"La Bataille de France\" (1967) is a film directed by Jacques Becker.",
+    "misclassified": false
+   },
+   {
+    "entity": "Seth Holt",
+    "title": "The Man Who Knew Too Much",
+    "response": "Seth Holt directed the film *The Man Who Knew Too Much* (1934).",
+    "misclassified": false
+   },
+   {
+    "entity": "J. Lee Thompson",
+    "title": "The Longest Day",
+    "response": "A film directed by J. Lee Thompson is *The Longest Day*.",
+    "misclassified": false
+   },
+   {
+    "entity": "Lewis Gilbert",
+    "title": "The Italian Job",
+    "response": "A film directed by Lewis Gilbert is *The Italian Job* (1969).",
+    "misclassified": false
+   },
+   {
+    "entity": "Soft Machine",
+    "title": "The Soft Machine",
+    "response": "*The Soft Machine*",
+    "misclassified": true
+   },
+   {
+    "entity": "Hawkwind",
+    "title": "The Wandering Wind",
+    "response": "\"The Wandering Wind\" is an album by Hawkwind.",
+    "misclassified": false
+   }
+  ]
+ }
+}

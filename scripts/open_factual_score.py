@@ -67,8 +67,8 @@ def main():
         print(json.dumps(res), flush=True)
     sc = [r for r in rows if r["scored"]]
     verdict = dict(n_models=len(rows), n_scored=len(sc),
-                   O1=sum(r["AUC_wrong_vs_correct"] <= 0.75 for r in sc),
-                   O2=sum(r["AUC_correct_open_vs_knowable"] >= 0.70 for r in rows))
+                   O1=int(sum(r["AUC_wrong_vs_correct"] <= 0.75 for r in sc)),
+                   O2=int(sum(r["AUC_correct_open_vs_knowable"] >= 0.70 for r in rows)))
     print(verdict)
     if a.out:
         Path(a.out).write_text(json.dumps(dict(declared="docs/open-factual-declared-2026-10-27.md", rows=rows,
