@@ -47,6 +47,12 @@ def main():
             res[name] = {f"{x}_vs_{y}": contrast(F, cat, x, y, j) for x, y in (
                 ("unknowable", "knowable"), ("unknowable", "open_long"), ("unknowable", "open_short"),
                 ("open_short", "knowable"), ("open_long", "knowable"))}
+        # Post hoc (not declared, added after OLMo's data was seen): U restricted to non-refusals, i.e. fabrications.
+        fab = ["unknowable_fab" if c == "unknowable" and not any(m in r["response"].lower() for m in REFUSAL) else c
+               for c, r in zip(cat, R)]
+        res["posthoc_fabrication_only"] = {name: {f"fab_vs_{y}": contrast(F, fab, "unknowable_fab", y, j)
+                                                  for y in ("knowable", "open_long", "open_short")}
+                                           for j, name in enumerate(("MEAN", "RESOLVE", "LEN"))}
         res["refusal_rate"] = {c: float(np.mean([any(m in r["response"].lower() for m in REFUSAL)
                                                  for r in R if r["category"] == c])) for c in sorted(set(cat))}
         res["median_len"] = {c: float(np.median([f[2] for f, cc in zip(F, cat) if cc == c])) for c in sorted(set(cat))}
